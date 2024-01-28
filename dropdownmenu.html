@@ -1,0 +1,4023 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+  type="application/javascript"></script>
+  <script src="./abi.js"
+  type="application/javascript"></script>
+
+  <script>
+    console.log(ethers);
+ </script>
+  <script id="ethersScript">
+    //bugs to fix: When switching from merc to nomal back to merc it doesnt clear excess data
+
+    const address = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+      var _kingdomType;
+
+
+
+      const maxAllowableOrders = 
+                [0,0,0,0 //housing, ignore
+                ,0,0,0,0, //same
+                1,4,9,32, //cookery
+                2,4,6,14, // brewery
+                1,2,6,2, // Smeltery/Builder
+                1,2,1,0, // Blacksmith/Aging
+                0,0,3,7, // Jeweler/Battle order
+                0,0,0,0];
+    const Workers = 
+                [0,0,0,0 //housing, ignore
+                ,0,0,0,0, //same
+                3,8,16,23, //cookery
+                8,14,20,22, // brewery
+                6,12,14,5, // Smeltery/Builder
+                10,14,0,0, // Blacksmith/Aging
+                0,0,4,10, // Jeweler/Battle order
+                0,0,0,0];
+    const Time_Multiplier = 144;
+
+
+  async function signon() {
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+
+      await provider.send("eth_requestAccounts", []);
+
+      const signer = provider.getSigner()
+      NFTcontract = new ethers.Contract(address,abi,provider)
+      myAddress = await signer.getAddress()
+
+
+      _cityData = await NFTcontract.getKingdomInfo(myAddress);
+      let _kingdomType = _cityData[4]
+      console.log();
+      console.log("KingdomID:",_kingdomType); 
+
+       
+    } 
+
+  async function submitTX() {
+
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner()
+      const NFTcontract = new ethers.Contract(address,abi,provider)
+      const NFTcontractSigner = new ethers.Contract(address, abi, signer); 
+      const myAddress = await signer.getAddress()
+      var _cityData = await NFTcontract.getKingdomInfo(myAddress);
+      console.log(_cityData);
+      const _kingdomType = _cityData[4];
+
+
+    switch(actionSelect.value) {
+      
+      case "1":
+        var _fooditems = [document.getElementById("FoodInputID1").value,document.getElementById("FoodInputID2").value];
+        NFTcontractSigner.plant(
+
+          document.querySelectorAll(".Lands")[_kingdomType - 1].value,
+          document.getElementById("Amount").value,
+          document.getElementById("cropSelect").value,
+          _fooditems,
+          1)
+        break;
+
+      case "2":
+                
+        let whyJS = craftingRecipiesIngrediants(Number(document.getElementById("RecipeID").value));
+        var items = whyJS[0];
+        var instant = whyJS[1];
+        var item_amount = whyJS[2];
+        var item_output_amount = whyJS[3];
+        var item_output = whyJS[4];
+        console.log(item_amount);
+        if(item_amount[0] < 0) {
+          item_amount[0] = document.querySelectorAll(".Items")[Items - 1].value
+        }
+        let miniarray = [document.getElementById("FoodInputID1").value,document.getElementById("FoodInputID2").value];
+        NFTcontractSigner.cook(
+          document.getElementById("RecipeID").value,
+          document.getElementById("Amount").value,
+          item_amount,
+          document.getElementById("CID").value,
+          miniarray
+        )
+        break;
+
+      case "3":
+        const Trade = Number(document.getElementById("ItemMenuID").value) + Number(document.getElementById("BuyorSellID").value)
+        let array2 = craftingRecipiesIngrediants(Trade)
+        console.log(array2);
+        if(array2[0] < 0) {
+          array2[0] = document.querySelectorAll(".Items")[Items - 1].value
+        }
+        NFTcontractSigner.cook(
+          Trade,
+          document.getElementById("Amount").value,
+          array2,
+          0,
+          [document.getElementById("FoodInputID1").value,document.getElementById("FoodInputID2").value]
+        )
+        break;
+
+      case "4":
+        NFTcontractSigner.developCity(
+          document.getElementById("CID").value,
+          document.getElementById("Amount").value,
+          document.querySelectorAll(".Lands")[_kingdomType - 1].value
+        )
+        break;
+      case "5":
+        NFTcontractSigner.claim(
+          document.querySelectorAll(".Lands")[_kingdomType - 1].value
+        ) 
+        break;
+      case "6":
+        NFTcontractSigner.sendToWar(WID1.value,WID2.value,WID3.value,WID4.value,
+        WID5.value,WID6.value,
+        document.getElementById("Amount").value)
+        break;
+      case "7":
+        NFTcontractSigner.allocateLand(
+          document.querySelectorAll(".Lands")[_kingdomType - 1].value,
+          document.getElementById("Amount").value)
+        break;
+      case "8":
+        NFTcontractSigner.setKingdomType(KingdomID.value)
+        break;
+        
+      case "9":
+        NFTcontractSigner.recruitNewPeople(RecruitID.value,Amount.value)
+        break;
+      case "10":
+        NFTcontractSigner.collect(document.getElementById("CID").value)
+        break;
+      case "11":
+        var num = document.getElementById("ItemMenuID").value;
+        const balance1 = await NFTcontractSigner.balanceOf(myAddress,num)
+        console.log(balance)
+        if(document.getElementById("balance").textContent != "Balance of Item:") 
+        {document.getElementById("balance").textContent = "Balance of Item:";}
+        document.getElementById("balance").textContent += balance1;
+        document.getElementById("balance").style.display = "block";
+        break;
+      case "12":
+        
+        let _population = _cityData[0];
+        let _jobless_population = _cityData[1];
+        let _max_population = _cityData[2];
+        console.log(_population)
+        document.getElementById("peasentPop").style.display = "block";
+        if(document.getElementById("peasentPop").textContent != "Pesants:") 
+        {document.getElementById("peasentPop").textContent = "Pesants:";}
+        document.getElementById("peasentPop").textContent += _population[0];
+        document.getElementById("peasentPop").textContent += ",Jobless:";
+        document.getElementById("peasentPop").textContent += _jobless_population[0];
+        document.getElementById("peasentPop").textContent += ",Max:";
+        document.getElementById("peasentPop").textContent += _max_population[0];
+        document.getElementById("peasentPop").style.display = "block";
+        break;
+      
+
+    }
+
+  }
+  
+  function craftingRecipiesIngrediants(_value) {
+  console.log(_value, "inputhb")
+  var items;
+  var instant = false;
+  var item_amount;
+  var item_outputs_amount;
+  var item_outputs;
+  var valid_buildings;
+  var time = 10;
+  switch (_value) {
+    case -1:
+     console.log("Internal Error: Interacting with wrong box");
+     break; 
+    case "-1":
+     console.log("Internal Error: Interacting with wrong box");
+     break; 
+    case 536:
+      items = [536,0,0,0,0,0];
+      item_amount = [3000,0,0,0,0,0];
+      item_outputs_amount = [500,100];
+      item_outputs = [1301,2123];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1000:
+      items = [501,0,0,0,0,0];
+      item_amount = [2500,0,0,0,0,0];
+      item_outputs_amount = [250,0];
+      item_outputs = [1000,0];
+      valid_buildings = [12,13,14,15];
+      break;
+      
+    case 1001:
+      items = [502,0,0,0,0,0];
+      item_amount = [2500,0,0,0,0,0];
+      item_outputs_amount = [250,0];
+      item_outputs = [1001,0];
+      valid_buildings = [12,13,14,15];
+      break;
+    case 1002:
+      items = [540,0,0,0,0,0];
+      item_amount = [2500,0,0,0,0,0];
+      item_outputs_amount = [250,0];
+      item_outputs = [1002,0];
+      valid_buildings = [12,13,14,15];
+      break;
+    case 1003:
+      items = [538,0,0,0,0,0];
+      item_amount = [2500,0,0,0,0,0];
+      item_outputs_amount = [250,0];
+      item_outputs = [1003,0];
+      valid_buildings = [12,13,14,15];
+      break;
+    case 1004:
+      items = [503,0,0,0,0,0];
+      item_amount = [2500,0,0,0,0,0];
+      item_outputs_amount = [250,0];
+      item_outputs = [1004,0];
+      valid_buildings = [12,13,14,15];
+      break;
+    case 1005:
+      items = [505,0,0,0,0,0];
+      item_amount = [2500,0,0,0,0,0];
+      item_outputs_amount = [250,0];
+      item_outputs = [1005,0];
+      valid_buildings = [12,13,14,15];
+      break;
+    case 1010:
+      items = [506,0,0,0,0,0];
+      item_amount = [2500,0,0,0,0,0];
+      item_outputs_amount = [250,0];
+      item_outputs = [1010,0];
+      valid_buildings = [12,13,14,15];
+      break;
+    case 1011:
+      items = [522,0,0,0,0,0];
+      item_amount = [2500,0,0,0,0,0];
+      item_outputs_amount = [250,0];
+      item_outputs = [1011,0];
+      valid_buildings = [12,13,14,15];
+      break;
+    case 1012:
+      items = [507,0,0,0,0,0];
+      item_amount = [2500,0,0,0,0,0];
+      item_outputs_amount = [250,0];
+      item_outputs = [1012,0];
+      valid_buildings = [12,13,14,15];
+      break;
+    case 1013:
+      items = [515,0,0,0,0,0];
+      item_amount = [2500,0,0,0,0,0];
+      item_outputs_amount = [250,0];
+      item_outputs = [1013,0];
+      valid_buildings = [12,13,14,15];
+      break;
+    case 1014:
+      items = [514,0,0,0,0,0];
+      item_amount = [2500,0,0,0,0,0];
+      item_outputs_amount = [250,0];
+      item_outputs = [1014,0];
+      valid_buildings = [12,13,14,15];
+      break;
+    case 1020:
+      items = [537,0,0,0,0,0];
+      item_amount = [1750,0,0,0,0,0];
+      item_outputs_amount = [500,0];
+      item_outputs = [1020,0];
+      valid_buildings = [12,13,14,15];
+      break;
+    case 1030:
+      items = [-1,0,0,0,0,0];
+      item_amount = [16000,0,0,0,0,0];
+      item_outputs_amount = [200,0];
+      item_outputs = [1030,0];
+      valid_buildings = [13,14,15,15];
+      break;
+    case 1031:
+      items = [1301,0,0,0,0,0];
+      item_amount = [120,0,0,0,0,0];
+      item_outputs_amount = [75,0];
+      item_outputs = [1032,0];
+      valid_buildings = [14,15,15,15];
+      break;
+    case 1032:
+      items = [539,0,0,0,0,0];
+      item_amount = [1600,0,0,0,0,0];
+      item_outputs_amount = [120,0];
+      item_outputs = [1031,0];
+      valid_buildings = [13,14,15,15];
+      break;
+    case 1040:
+      items = [1002,0,0,0,0,0];
+      item_amount = [70,0,0,0,0,0];
+      item_outputs_amount = [25,0];
+      item_outputs = [1040,0];
+      valid_buildings = [14,15,15,15];
+      break;
+    case 1041:
+      items = [536,0,0,0,0,0];
+      item_amount = [1600,0,0,0,0,0];
+      item_outputs_amount = [80,0];
+      item_outputs = [1041,0];
+      valid_buildings = [13,14,15,15];
+      break;
+    case 1042:
+      items = [525,0,0,0,0,0];
+      item_amount = [800,0,0,0,0,0];
+      item_outputs_amount = [80,0];
+      item_outputs = [1042,0];
+      valid_buildings = [13,14,15,15];
+      break;
+    case 1043:
+      items = [524,0,0,0,0,0];
+      item_amount = [800,0,0,0,0,0];
+      item_outputs_amount = [80,0];
+      item_outputs = [1043,0];
+      valid_buildings = [13,14,15,15];
+      break;
+    case 1044:
+      items = [1031,0,0,0,0,0];
+      item_amount = [1000,0,0,0,0,0];
+      item_outputs_amount = [910,0];
+      item_outputs = [1044,0];
+      valid_buildings = [22,22,22,22];
+      time = 50;
+      break;
+    case 1050:
+      items = [523,0,0,0,0,0];
+      item_amount = [120,0,0,0,0,0];
+      item_outputs_amount = [15,0];
+      item_outputs = [1050,0];
+      valid_buildings = [14,15,15,15];
+      break;
+    case 1051:
+      items = [1030,521,0,0,0,0];
+      item_amount = [50,5000,0,0,0,0];
+      item_outputs_amount = [50,0];
+      item_outputs = [1051,0];
+      valid_buildings = [15,15,15,15];
+      break;
+    case 1060:
+      items = [1022,1023,0,0,0,0];
+      item_amount = [40,40,0,0,0,0];
+      item_outputs_amount = [50,0];
+      item_outputs = [1060,0];
+      valid_buildings = [15,15,15,15];
+      break;
+    case 1061:
+      items = [526,0,0,0,0,0];
+      item_amount = [35,0,0,0,0,0];
+      item_outputs_amount = [50,0];
+      item_outputs = [1061,0];
+      valid_buildings = [15,15,15,15];
+      break;
+    case 1200:
+      items = [501,0,0,0,0,0];
+      item_amount = [15000,0,0,0,0,0];
+      item_outputs_amount = [700,0];
+      item_outputs = [1200,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1201:
+      items = [502,0,0,0,0,0];
+      item_amount = [15000,0,0,0,0,0];
+      item_outputs_amount = [700,0];
+      item_outputs = [1201,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1202:
+      items = [504,0,0,0,0,0];
+      item_amount = [15000,0,0,0,0,0];
+      item_outputs_amount = [700,0];
+      item_outputs = [1202,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1203:
+      items = [503,0,0,0,0,0];
+      item_amount = [15000,0,0,0,0,0];
+      item_outputs_amount = [700,0];
+      item_outputs = [1203,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1204:
+      items = [505,0,0,0,0,0];
+      item_amount = [15000,0,0,0,0,0];
+      item_outputs_amount = [700,0];
+      item_outputs = [1204,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1205:
+      items = [505,0,0,0,0,0];
+      item_amount = [15000,0,0,0,0,0];
+      item_outputs_amount = [700,0];
+      item_outputs = [1205,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1206:
+      items = [505,0,0,0,0,0];
+      item_amount = [15000,0,0,0,0,0];
+      item_outputs_amount = [700,0];
+      item_outputs = [1206,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1207:
+      items = [1307,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs_amount = [100,0];
+      item_outputs = [1207,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1208:
+      items = [1307,1308,0,0,0,0];
+      item_amount = [100,150,0,0,0,0];
+      item_outputs_amount = [100,0];
+      item_outputs = [1208,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1220:
+      items = [505,1303,0,0,0,0];
+      item_amount = [10000,500,0,0,0,0];
+      item_outputs_amount = [250,0];
+      item_outputs = [1220,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1221:
+      items = [507,1303,0,0,0,0];
+      item_amount = [10000,500,0,0,0,0];
+      item_outputs_amount = [250,0];
+      item_outputs = [1221,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1222:
+      items = [515,1303,0,0,0,0];
+      item_amount = [10000,500,0,0,0,0];
+      item_outputs_amount = [250,0];
+      item_outputs = [1222,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1223:
+      items = [1301,1303,0,0,0,0];
+      item_amount = [400,500,0,0,0,0];
+      item_outputs_amount = [250,0];
+      item_outputs = [1223,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1224:
+      items = [-2,1303,535,0,0,0];
+      item_amount = [1000,500,5000,0,0,0];
+      item_outputs_amount = [250,0];
+      item_outputs = [1224,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1230:
+      items = [539,2103,0,0,0,0];
+      item_amount = [1000,250,0,0,0,0];
+      item_outputs_amount = [100,0];
+      item_outputs = [1230,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1231:
+      items = [1220,0,0,0,0,0];
+      item_amount = [125,0,0,0,0,0];
+      item_outputs_amount = [125,0];
+      item_outputs = [1231,0];
+      valid_buildings = [8,9,10,11];
+      time = 100;
+      break;
+    case 1232:
+      items = [1220,0,0,0,0,0];
+      item_amount = [125,0,0,0,0,0];
+      item_outputs_amount = [100,0];
+      item_outputs = [1232,0];
+      valid_buildings = [8,9,10,11];
+      time = 900;
+      break;
+    case 1240:
+      items = [-4,0,0,0,0,0];
+      item_amount = [20000,0,0,0,0,0];
+      item_outputs_amount = [300,0];
+      item_outputs = [1240,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1241:
+      items = [-4,1300,0,0,0,0];
+      item_amount = [10000,500,0,0,0,0];
+      item_outputs_amount = [150,0];
+      item_outputs = [1241,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1250:
+      items = [-3,0,0,0,0,0];
+      item_amount = [20000,0,0,0,0,0];
+      item_outputs_amount = [300,0];
+      item_outputs = [1250,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1251:
+      items = [-3,1040,0,0,0,0];
+      item_amount = [5000,50,0,0,0,0];
+      item_outputs_amount = [50,0];
+      item_outputs = [1251,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1260:
+      items = [-2,516,521,0,0,0];
+      item_amount = [3000,1500,1000,0,0,0];
+      item_outputs_amount = [100,0];
+      item_outputs = [1260,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1261:
+      items = [-2,1302,0,0,0,0];
+      item_amount = [1000,100,0,0,0,0];
+      item_outputs_amount = [125,0];
+      item_outputs = [1261,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1262:
+      items = [-2,-4,0,0,0,0];
+      item_amount = [1000,5000,0,0,0,0];
+      item_outputs_amount = [100,0];
+      item_outputs = [1262,0];
+      valid_buildings = [8,9,10,11];
+      break;
+    case 1263:
+      items = [-2,0,0,0,0,0];
+      item_amount = [1000,0,0,0,0,0];
+      break;
+    case 1264:
+      items = [-2,2103,0,0,0,0];
+      item_amount = [5000,1000,0,0,0,0];
+      break;
+    case 1265:
+      items = [2002,534,0,0,0,0];
+      item_amount = [20000,1000,0,0,0,0];
+      break;
+    case 1270:
+      items = [-2,517,518,535,1305,0];
+      item_amount = [1500,2500,2500,2500,10,0];
+      break;
+    case 1271:
+      items = [-2,517,518,535,1306,0];
+      item_amount = [2500,2500,2500,2500,10,0];
+      break;
+    case 1272:
+      items = [526,1307,0,0,0,0];
+      item_amount = [200,500,0,0,0,0];
+      break;
+    case 1273:
+      items = [1230,1303,0,0,0,0];
+      item_amount = [100,100,0,0,0,0];
+      break;
+    case 1274:
+      items = [1231,1303,0,0,0,0];
+      item_amount = [100,100,0,0,0,0];
+      break;
+    case 1275:
+      items = [503,509,0,0,0,0];
+      item_amount = [22500,25000,0,0,0,0];
+      break;
+    case 1276:
+      items = [535,534,521,1260,1303,1305];
+      item_amount = [5_000,500,10,220,10,0];
+      break;
+    case 1277:
+      items = [527,503,531,1300,0,0];
+      item_amount = [20,1500,250,5,0,0];
+      break;
+    case 1300:
+      items = [-7,0,0,0,0,0];
+      break;
+    case 1304:
+      items = [510,0,0,0,0,0];
+      break;
+    case 1303:
+      items = [-1,0,0,0,0,0];
+      break;
+    case 1302:
+      items = [508,0,0,0,0,0];
+      break;
+    case 1305:
+      items = [1300,1302,1304,2103,516,521];
+      instant = true;
+      break;
+    case 1306:
+      items = [1305,529,527,526,0,0];
+      instant = true;
+      break;
+    case 2101:
+      items = [2002,4000,0,0,0,0];
+      break;
+    case 2102:
+      items = [2001,0,0,0,0,0];
+      break;
+    case 2121:
+      items = [2021,0,0,0,0,0];
+      break;
+    case 2122:
+      items = [2022,0,0,0,0,0];
+      break;
+    case 2123:
+      items = [2023,0,0,0,0,0];
+      break;
+    case 2124:
+      items = [2024,0,0,0,0,0];
+      break;
+    case 2125:
+      items = [2025,0,0,0,0,0];
+      break;
+    case 2180:
+      items = [2024,2101,0,0,0,0];
+      break;
+    case 2181:
+      items = [2124,2125,0,0,0,0];
+      break;
+    case 2182:
+      items = [2121,0,0,0,0,0];
+      break;
+    case 2302:
+      items = [2200,0,0,0,0,0];
+      break;
+    case 2303:
+      items = [2101,0,0,0,0,0];
+      break;
+    case 2304:
+      items = [2102,0,0,0,0,0];
+      break;
+    case 2305:
+      items = [2208,0,0,0,0,0];
+      break;
+    case 2306:
+      items = [2204,0,0,0,0,0];
+      break;
+    case 2307:
+      items = [2205,0,0,0,0,0];
+      break;
+    case 2308:
+      items = [2206,0,0,0,0,0];
+      break;
+    case 2309:
+      items = [2209,0,0,0,0,0];
+      break;
+    case 2310:
+      items = [2210,0,0,0,0,0];
+      break;
+    case 2311:
+      items = [2211,0,0,0,0,0];
+      break;
+    case 2312:
+      items = [2212,0,0,0,0,0];
+      break;
+    case 4000:
+      items = [-6,0,0,0,0,0];
+      break;
+    case 4001:
+      items = [2203,0,0,0,0,0];
+          break;
+    case 100501:
+      items = [501,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100502:
+      items = [502,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100503:
+      items = [503,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100504:
+      items = [504,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100505:
+      items = [505,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100506:
+      items = [506,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100507:
+      items = [507,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100508:
+      items = [508,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100509:
+      items = [509,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100510:
+      items = [510,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100511:
+      items = [511,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100512:
+      items = [512,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100513:
+      items = [513,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100514:
+      items = [514,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100515:
+      items = [515,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100516:
+      items = [516,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100517:
+      items = [517,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100518:
+      items = [518,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100519:
+      items = [519,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [200,0];
+      instant = true;
+      break;
+
+    case 100520:
+      items = [520,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100521:
+      items = [521,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100522:
+      items = [522,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100523:
+      items = [523,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2500,0];
+      instant = true;
+      break;
+
+    case 100524:
+      items = [524,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2000,0];
+      instant = true;
+      break;
+
+    case 100525:
+      items = [525,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2000,0];
+      instant = true;
+      break;
+
+    case 100526:
+      items = [526,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [5000,0];
+      instant = true;
+      break;
+
+    case 100527:
+      items = [527,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2500,0];
+      instant = true;
+      break;
+
+    case 100528:
+      items = [528,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2500,0];
+      instant = true;
+      break;
+
+    case 100529:
+      items = [529,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100530:
+      items = [530,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [1250,0];
+      instant = true;
+      break;
+
+    case 100531:
+      items = [531,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [500,0];
+      instant = true;
+      break;
+
+    case 100532:
+      items = [532,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [500,0];
+      instant = true;
+      break;
+
+    case 100533:
+      items = [533,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [500,0];
+      instant = true;
+      break;
+
+    case 100534:
+      items = [534,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [500,0];
+      instant = true;
+      break;
+
+    case 100535:
+      items = [535,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100536:
+      items = [536,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [1000,0];
+      instant = true;
+      break;
+
+    case 100537:
+      items = [537,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [500,0];
+      instant = true;
+      break;
+
+    case 100538:
+      items = [538,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+
+    case 100539:
+      items = [539,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [500,0];
+      instant = true;
+      break;
+
+    case 100540:
+      items = [540,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100,0];
+      instant = true;
+      break;
+      
+
+    case 101000:
+      items = [1000,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2500,0];
+      instant = true;
+      break;
+
+        
+
+    case 101001:
+      items = [1001,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2500,0];
+      instant = true;
+      break;
+      
+
+    case 101002:
+      items = [1002,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2500,0];
+      instant = true;
+      break;
+      
+
+    case 101003:
+      items = [1003,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2500,0];
+      instant = true;
+      break;
+      
+
+    case 101004:
+      items = [1004,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2500,0];
+      instant = true;
+      break;
+      
+
+    case 101010:
+      items = [1010,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2500,0];
+      instant = true;
+      break;
+      
+
+    case 101011:
+      items = [1011,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2500,0];
+      instant = true;
+      break;
+        
+
+    case 101012:
+      items = [1000,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2500,0];
+      instant = true;
+      break;
+          
+
+    case 101013:
+      items = [1013,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2500,0];
+      instant = true;
+      break;
+      
+
+    case 101014:
+      items = [1014,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2500,0];
+      instant = true;
+      break;
+      
+
+    case 101020:
+      items = [1020,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2500,0];
+      instant = true;
+      break;
+
+      
+
+    case 101030:
+      items = [1030,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [10000,0];
+      instant = true;
+      break;
+      
+
+    case 101031:
+      items = [1031,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [10000,0];
+      instant = true;
+      break;
+
+    
+    case 101032:
+      items = [1032,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [10000,0];
+      instant = true;
+      break;
+      
+
+    case 101040:
+      items = [1040,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [25000,0];
+      instant = true;
+      break;
+  
+
+    case 101041:
+      items = [1041,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [25000,0];
+      instant = true;
+      break;
+      
+
+    case 101042:
+      items = [1042,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [25000,0];
+      instant = true;
+      break;
+      
+
+      
+
+    case 101043:
+      items = [1043,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [25000,0];
+      instant = true;
+      break;
+    
+
+    case 101044:
+      items = [1044,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [25000,0];
+      instant = true;
+      break;
+      
+    
+
+    case 101050:
+      items = [1050,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100000,0];
+      instant = true;
+      break;
+    
+
+    case 101051:
+      items = [1051,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [100000,0];
+      instant = true;
+      break;
+      
+    
+
+    case 101060:
+      items = [1044,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [125000,0];
+      instant = true;
+      break;
+      
+    
+
+    case 101061:
+      items = [1044,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [125000,0];
+      instant = true;
+      break;
+      
+
+    case 101200:
+      items = [1200,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2500,0];
+      instant = true;
+      break;
+  
+      
+
+    case 101201:
+      items = [1201,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2500,0];
+      instant = true;
+      break;
+    
+      
+
+    case 101202:
+      items = [1202,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2500,0];
+      instant = true;
+      break;
+    
+      
+
+    case 101203:
+      items = [1203,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2500,0];
+      instant = true;
+      break;
+    
+      
+
+    case 101204:
+      items = [1204,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2500,0];
+      instant = true;
+      break;
+    
+      
+
+    case 101205:
+      items = [1205,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2500,0];
+      instant = true;
+      break;
+    
+      
+
+    case 101206:
+      items = [1206,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [2500,0];
+      instant = true;
+      break;
+    
+    
+      
+
+    case 101207:
+      items = [1207,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [12500,0];
+      instant = true;
+      break;
+    
+      
+
+    case 101208:
+      items = [1208,0,0,0,0,0];
+      item_amount = [100,0,0,0,0,0];
+      item_outputs = [58800,0];
+      item_outputs_amount = [20000,0];
+      instant = true;
+      break;
+    
+    
+  
+      
+      
+
+      
+  
+      
+
+    default:
+      console.log("Recipe not found!");
+      console.log(_value);
+
+  }
+  if (instant == true) {time = 0;}
+  whyJS = [items,instant,item_amount,item_outputs_amount,item_outputs,valid_buildings,time];
+  return whyJS;
+}
+
+  function buildingCost(_value) {
+      hideBuildingInfo();
+
+      if(actionSelect.value == "4") {
+
+      switch (_value) {
+        case "0":
+        document.getElementsByClassName("B0")[0].style.display = "block";
+        document.getElementsByClassName("B0")[1].style.display = "block";
+          break;
+        case "1":
+          document.getElementsByClassName("B1")[0].style.display = "block";
+          document.getElementsByClassName("B1")[1].style.display = "block";
+          break;
+        case "2":
+          document.getElementsByClassName("B2")[0].style.display = "block";
+          document.getElementsByClassName("B2")[1].style.display = "block";
+          document.getElementsByClassName("B2")[2].style.display = "block";
+          document.getElementsByClassName("B2")[3].style.display = "block";
+          break;
+        case "3":
+          document.getElementsByClassName("B3")[0].style.display = "block";
+          document.getElementsByClassName("B3")[1].style.display = "block";
+          document.getElementsByClassName("B3")[2].style.display = "block";
+          document.getElementsByClassName("B3")[3].style.display = "block";
+          break;
+        case "4":
+          document.getElementsByClassName("B4")[0].style.display = "block";
+          document.getElementsByClassName("B4")[1].style.display = "block";
+          document.getElementsByClassName("B4")[2].style.display = "block";
+          document.getElementsByClassName("B4")[3].style.display = "block";
+          break;
+        case "5":
+          document.getElementsByClassName("B5")[0].style.display = "block";
+          document.getElementsByClassName("B5")[1].style.display = "block";
+          document.getElementsByClassName("B5")[2].style.display = "block";
+          document.getElementsByClassName("B5")[3].style.display = "block";
+          break;
+        case "6":
+          document.getElementsByClassName("B6")[0].style.display = "block";
+          document.getElementsByClassName("B6")[1].style.display = "block";
+          document.getElementsByClassName("B6")[2].style.display = "block";
+          document.getElementsByClassName("B6")[3].style.display = "block";
+          break;
+        case "7":
+          document.getElementsByClassName("B7")[0].style.display = "block";
+          document.getElementsByClassName("B7")[1].style.display = "block";
+          document.getElementsByClassName("B7")[2].style.display = "block";
+          document.getElementsByClassName("B7")[3].style.display = "block";
+          break;
+        case "8":
+          document.getElementsByClassName("B8")[0].style.display = "block";
+          document.getElementsByClassName("B8")[1].style.display = "block";
+          document.getElementsByClassName("B8")[2].style.display = "block";
+          document.getElementsByClassName("B8")[3].style.display = "block";
+          document.getElementsByClassName("B8")[4].style.display = "block";
+
+          break;
+        case "9":
+          document.getElementsByClassName("B9")[0].style.display = "block";
+          document.getElementsByClassName("B9")[1].style.display = "block";
+          document.getElementsByClassName("B9")[2].style.display = "block";
+          document.getElementsByClassName("B9")[3].style.display = "block";
+          document.getElementsByClassName("B9")[4].style.display = "block";
+          document.getElementsByClassName("B9")[5].style.display = "block";
+          document.getElementsByClassName("B9")[6].style.display = "block";
+          break;
+
+        case "10":
+          document.getElementsByClassName("B10")[0].style.display = "block";
+          document.getElementsByClassName("B10")[1].style.display = "block";
+          document.getElementsByClassName("B10")[2].style.display = "block";
+          document.getElementsByClassName("B10")[3].style.display = "block";
+          document.getElementsByClassName("B10")[4].style.display = "block";
+          document.getElementsByClassName("B10")[5].style.display = "block";
+          document.getElementsByClassName("B10")[6].style.display = "block";
+          break;
+
+        case "11":
+          document.getElementsByClassName("B11")[0].style.display = "block";
+          document.getElementsByClassName("B11")[1].style.display = "block";
+          document.getElementsByClassName("B11")[2].style.display = "block";
+          document.getElementsByClassName("B11")[3].style.display = "block";
+          document.getElementsByClassName("B11")[4].style.display = "block";
+          document.getElementsByClassName("B11")[5].style.display = "block";
+          document.getElementsByClassName("B11")[6].style.display = "block";
+          break;
+
+        case "12":
+          document.getElementsByClassName("B12")[0].style.display = "block";
+          document.getElementsByClassName("B12")[1].style.display = "block";
+          document.getElementsByClassName("B12")[2].style.display = "block";
+          document.getElementsByClassName("B12")[3].style.display = "block";
+          document.getElementsByClassName("B12")[4].style.display = "block";
+          document.getElementsByClassName("B12")[5].style.display = "block";
+          break;
+
+        case "13":
+          document.getElementsByClassName("B13")[0].style.display = "block";
+          document.getElementsByClassName("B13")[1].style.display = "block";
+          document.getElementsByClassName("B13")[2].style.display = "block";
+          document.getElementsByClassName("B13")[3].style.display = "block";
+          document.getElementsByClassName("B13")[4].style.display = "block";
+          document.getElementsByClassName("B13")[5].style.display = "block";
+          document.getElementsByClassName("B13")[6].style.display = "block";
+          document.getElementsByClassName("B13")[7].style.display = "block";
+          break;
+
+        case "14":
+          document.getElementsByClassName("B14")[0].style.display = "block";
+          document.getElementsByClassName("B14")[1].style.display = "block";
+          document.getElementsByClassName("B14")[2].style.display = "block";
+          document.getElementsByClassName("B14")[3].style.display = "block";
+          document.getElementsByClassName("B14")[4].style.display = "block";
+          document.getElementsByClassName("B14")[5].style.display = "block";
+          document.getElementsByClassName("B14")[6].style.display = "block";
+          break;
+
+        case "15":
+          document.getElementsByClassName("B15")[0].style.display = "block";
+          document.getElementsByClassName("B15")[1].style.display = "block";
+          document.getElementsByClassName("B15")[2].style.display = "block";
+          document.getElementsByClassName("B15")[3].style.display = "block";
+          document.getElementsByClassName("B15")[4].style.display = "block";
+          document.getElementsByClassName("B15")[5].style.display = "block";
+          document.getElementsByClassName("B15")[6].style.display = "block";
+          document.getElementsByClassName("B15")[7].style.display = "block";
+          break;
+
+        case "16":
+          document.getElementsByClassName("B16")[0].style.display = "block";
+          document.getElementsByClassName("B16")[1].style.display = "block";
+          document.getElementsByClassName("B16")[2].style.display = "block";
+          document.getElementsByClassName("B16")[3].style.display = "block";
+          document.getElementsByClassName("B16")[4].style.display = "block";
+          document.getElementsByClassName("B16")[5].style.display = "block";
+          break;
+
+        case "17":
+          document.getElementsByClassName("B17")[0].style.display = "block";
+          document.getElementsByClassName("B17")[1].style.display = "block";
+          document.getElementsByClassName("B17")[2].style.display = "block";
+          document.getElementsByClassName("B17")[3].style.display = "block";
+          document.getElementsByClassName("B17")[4].style.display = "block";
+          document.getElementsByClassName("B17")[5].style.display = "block";
+          break;
+
+        case "18":
+          document.getElementsByClassName("B18")[0].style.display = "block";
+          document.getElementsByClassName("B18")[1].style.display = "block";
+          document.getElementsByClassName("B18")[2].style.display = "block";
+          document.getElementsByClassName("B18")[3].style.display = "block";
+          document.getElementsByClassName("B18")[4].style.display = "block";
+          document.getElementsByClassName("B18")[5].style.display = "block";
+          break;
+
+        case "19":
+          document.getElementsByClassName("B19")[0].style.display = "block";
+          document.getElementsByClassName("B19")[1].style.display = "block";
+          document.getElementsByClassName("B19")[2].style.display = "block";
+          document.getElementsByClassName("B19")[3].style.display = "block";
+          document.getElementsByClassName("B19")[4].style.display = "block";
+          break;
+
+        case "20":
+          document.getElementsByClassName("B20")[0].style.display = "block";
+          document.getElementsByClassName("B20")[1].style.display = "block";
+          document.getElementsByClassName("B20")[2].style.display = "block";
+          document.getElementsByClassName("B20")[3].style.display = "block";
+          document.getElementsByClassName("B20")[4].style.display = "block";
+          document.getElementsByClassName("B20")[5].style.display = "block";
+          document.getElementsByClassName("B20")[6].style.display = "block";
+          document.getElementsByClassName("B20")[7].style.display = "block";
+          document.getElementsByClassName("B20")[8].style.display = "block";
+          break;
+
+        case "21":
+          document.getElementsByClassName("B21")[0].style.display = "block";
+          document.getElementsByClassName("B21")[1].style.display = "block";
+          document.getElementsByClassName("B21")[2].style.display = "block";
+          document.getElementsByClassName("B21")[3].style.display = "block";
+          document.getElementsByClassName("B21")[4].style.display = "block";
+          document.getElementsByClassName("B21")[5].style.display = "block";
+          document.getElementsByClassName("B21")[6].style.display = "block";
+          break;
+
+        case "22":
+          document.getElementsByClassName("B22")[0].style.display = "block";
+          document.getElementsByClassName("B22")[1].style.display = "block";
+          document.getElementsByClassName("B22")[2].style.display = "block";
+          document.getElementsByClassName("B22")[3].style.display = "block";
+          document.getElementsByClassName("B22")[4].style.display = "block";
+          break;
+
+        case "26":
+          document.getElementsByClassName("B26")[0].style.display = "block";
+          document.getElementsByClassName("B26")[1].style.display = "block";
+          document.getElementsByClassName("B26")[2].style.display = "block";
+          document.getElementsByClassName("B26")[3].style.display = "block";
+          document.getElementsByClassName("B26")[4].style.display = "block";
+          document.getElementsByClassName("B26")[5].style.display = "block";
+          document.getElementsByClassName("B26")[6].style.display = "block";
+          break;
+
+        case "27":
+          document.getElementsByClassName("B27")[0].style.display = "block";
+          document.getElementsByClassName("B27")[1].style.display = "block";
+          document.getElementsByClassName("B27")[2].style.display = "block";
+          document.getElementsByClassName("B27")[3].style.display = "block";
+          document.getElementsByClassName("B27")[4].style.display = "block";
+          document.getElementsByClassName("B27")[5].style.display = "block";
+          document.getElementsByClassName("B27")[6].style.display = "block";
+          break;
+        default:
+          console.log("error! Recipe Cost not found")
+
+      }}
+    }
+
+  function Stuff(_value) {
+  
+  showRecipe(_value);
+  var whyJS;
+  whyJS = craftingRecipiesIngrediants(Number(document.getElementById("RecipeID").value));
+  var array = whyJS[0];
+  var instant =  whyJS[1];
+  hideTimedCraftingMenu();
+  if (instant == false) {
+    showTimedCraftingMenu();
+  }
+
+      console.log(array);
+      if(array[0] < 0) {
+        showMultiItemMenu(array[0])
+      }
+      if(array[0] < 1) {
+        showMultiItemMenu(array[1])
+      }
+      console.log("it did run");
+
+}
+
+  function showTimedCraftingMenu() { 
+    document.getElementsByClassName("foodInput")[0].style.display = "block";
+    document.getElementsByClassName("foodInput")[1].style.display = "inline-block";
+    document.getElementsByClassName("foodInput")[2].style.display = "inline";
+    document.getElementsByClassName("CDInput")[0].style.display = "inline";
+    document.getElementsByClassName("CDInput")[1].style.display = "inline";
+    document.getElementsByClassName("CDInput")[2].style.display = "inline";
+  }  
+  
+  function hideTimedCraftingMenu() {
+    document.getElementsByClassName("foodInput")[0].style.display = "none";
+    document.getElementsByClassName("foodInput")[1].style.display = "none";
+    document.getElementsByClassName("foodInput")[2].style.display = "none";
+    document.getElementsByClassName("CDInput")[0].style.display = "none";
+    document.getElementsByClassName("CDInput")[1].style.display = "none";
+    document.getElementsByClassName("CDInput")[2].style.display = "none";
+  }
+  
+  function itemName(_value) {
+    var _name;
+    switch (_value) {
+      case -1:
+        _name = "Grain";
+        break;
+      case -2:
+        _name = "Meat";
+        break;
+      case -3:
+        _name = "Fruit";
+        break;
+      case -4:
+        _name = "Vegetables";
+        break;
+      case -5 :
+        _name = "Sweetners";
+        break;
+      case -6:
+        _name = "Tier 2 Metal";
+        break;
+      case -7:
+        _name = "Basic Drinks";
+        break;
+      case 1:
+        _name = "Arid Badlands";
+        break;
+      case 2:
+        _name = "Arid Steppes";
+        break;
+      case 3:
+        _name = "Arid Oasis";
+        break;
+      case 4:
+        _name = "Arid River";
+        break;
+      case 11:
+        _name = "Northern Rocky Wastes";
+        break;
+      case 12:
+        _name = "Northern Tundra";
+        break;
+      case 13:
+        _name = "Northern Forest";
+        break;
+      case 14:
+        _name = "Northern River";
+        break;
+      case 21:
+        _name = "Rocky Heartland";
+        break;
+      case 22:
+        _name = "Heartland";
+        break;
+      case 23:
+        _name = "River Heartland";
+        break;
+      case 31:
+        _name = "Southern Rocky";
+        break;
+      case 32:
+        _name = "Southern Forest";
+        break;
+      case 33:
+        _name = "Southern Jungle";
+        break;
+      case 34:
+        _name = "Southern River";
+        break;
+      case 41:
+        _name = "Northern Ocean";
+        break;
+      case 42:
+        _name = "Central Ocean";
+        break;
+      case 43:
+        _name = "Southern Ocean";
+        break;
+      case 44:
+        _name = "Desolate Ocean";
+        break;
+      case 51:
+        _name = "Brackish Swamp";
+        break;
+      case 52:
+        _name = "Swamp";
+        break;
+      case 53:
+        _name = "Lush Swamp";
+        break;
+      case 61:
+        _name = "Red Mountain";
+        break;
+      case 62:
+        _name = "Blue Mountain";
+        break;
+      case 63:
+        _name = "Green Mountain";
+        break;
+      case 64:
+        _name = "White Mountain";
+        break;
+      case 70:
+        _name = "Ochre Plains";
+        break;
+      case 71:
+        _name = "Lusterous River";
+        break;
+      case 72:
+        _name = "Silver Forest";
+        break;
+      case 80:
+        _name = "Golden Plains";
+        break;
+      case 81:
+        _name = "Golden Hills";
+        break;
+      case 82:
+        _name = "Golden Forest";
+        break;
+      case 501:
+        _name = "Wheat";
+        break;
+      case 502:
+        _name = "Rye";
+        break;
+      case 503:
+        _name = "Rice";
+        break;
+      case 504:
+        _name = "Corn";
+        break;
+      case 505:
+        _name = "Sorghum";
+        break;
+      case 506:
+        _name = "Apple";
+        break;
+      case 507:
+        _name = "Plum";
+        break;
+      case 508:
+        _name = "Olives";
+        break;
+      case 509:
+        _name = "Beans";
+        break;
+      case 510:
+        _name = "Mushroom";
+        break;
+      case 511:
+        _name = "Beets";
+        break;
+      case 512:
+        _name = "Cassava";
+        break;
+      case 513:
+        _name = "Peanut";
+        break;
+      case 514:
+        _name = "Cherry";
+        break;
+      case 515:
+        _name = "Peach";
+        break;
+      case 516:
+        _name = "Garlic";
+        break;
+      case 517:
+        _name = "Onion";
+        break;
+      case 518:
+        _name = "Carrot";
+        break;
+      case 519:
+        _name = "Sugarcane";
+        break;
+      case 520:
+        _name = "Beets";
+        break;
+      case 521:
+        _name = "Herbs";
+        break;
+      case 522:
+        _name = "Grapes";
+        break;
+      case 523:
+        _name = "Ginseng";
+        break;
+      case 524:
+        _name = "Winter Berry";
+        break;
+      case 525:
+        _name = "Jungle Berry";
+        break;
+      case 526:
+        _name = "Auric Honey";
+        break;
+      case 527:
+        _name = "Wasabi";
+        break;
+      case 528:
+        _name = "Rushseed";
+        break;
+      case 529:
+        _name = "Rare Herbs";
+        break;
+      case 530:
+        _name = "Oysters";
+        break;
+      case 531:
+        _name = "Fish";
+        break;
+      case 532:
+        _name = "Beef";
+        break;
+      case 533:
+        _name = "Chicken";
+        break;
+      case 534:
+        _name = "Eggs";
+        break;
+      case 535:
+        _name = "Potato";
+        break;
+      case 536:
+        _name = "Silver Sap";
+        break;
+      case 537:
+        _name = "Honey";
+        break;
+      case 538:
+        _name = "Oats";
+        break;
+      case 539:
+        _name = "Milk";
+        break;
+      case 540:
+        _name = "Barley";
+        break;
+      case 1000:
+        _name = "Wheat Beer";
+        break;
+      case 1001:
+        _name = "Rye Beer";
+        break;
+      case 1002:
+        _name = "Barley Beer";
+        break;
+      case 1003:
+        _name = "Oat Beer";
+        break;
+      case 1004:
+        _name = "Rice Beer";
+        break;
+      case 1010:
+        _name = "Cider";
+        break;
+      case 1011:
+        _name = "Wine";
+        break;
+      case 1012:
+        _name = "Plum Wine";
+        break;
+      case 1013:
+        _name = "Peach Wine";
+        break;
+      case 1014:
+        _name = "Cherry Wine";
+        break;
+      case 1020:
+        _name = "Mead";
+        break;
+      case 1030:
+        _name = "Vodka";
+        break;
+      case 1031:
+        _name = "Rum";
+        break;
+      case 1032:
+        _name = "Kumis";
+        break;
+      case 1040:
+        _name = "Brandy";
+        break;
+      case 1041:
+        _name = "Silver Wine";
+        break;
+      case 1042:
+        _name = "Jungle Wine";
+        break;
+      case 1043:
+        _name = "Winter Wine";
+        break;
+      case 1044:
+        _name = "Aged Rum";
+        break;
+      case 1050:
+        _name = "Ginseng Wine";
+        break;
+      case 1051:
+        _name = "Spiced Vodka";
+        break;
+      case 1060:
+        _name = "Double Brandy";
+        break;
+      case 1061:
+        _name = "Auric Mead";
+        break;
+      case 1200:
+        _name = "Wheat Bread";
+        break;
+      case 1201:
+        _name = "Rye Bread";
+        break;
+      case 1202:
+        _name = "Corn Bread";
+        break;
+      case 1203:
+        _name = "Rice Bread";
+        break;
+      case 1204:
+        _name = "Sorghum Bread";
+        break;
+      case 1205:
+        _name = "Barley Bread";
+        break;
+      case 1206:
+        _name = "Oat Bread";
+        break;
+      case 1207:
+        _name = "Pasteries";
+        break;
+      case 1208:
+        _name = "Fruit Pasteries";
+        break;
+      case 1220:
+        _name = "Apple Pie";
+        break;
+      case 1221:
+        _name = "Plum Pie";
+        break;
+      case 1222:
+        _name = "Peach Pie";
+        break;
+      case 1223:
+        _name = "Sugar Pie";
+        break;
+      case 1224:
+        _name = "Pot Pie";
+        break;
+      case 1230:
+        _name = "Cheese";
+        break;
+      case 1231:
+        _name = "Aged Cheese";
+        break;
+      case 1232:
+        _name = "Aged Reserve Cheese";
+        break;
+      case 1240:
+        _name = "Dried Vegetables";
+      case 1250:
+        _name = "Dried Fruit";
+        break;
+      case 1251:
+        _name = "Brandied Fruit";
+        break;
+      case 1260:
+        _name = "Sausage";
+        break;
+      case 1261:
+        _name = "Fried Meat";
+        break;
+      case 1262:
+        _name = "Roast";
+        break;
+      case 1263:
+        _name = "Cured Meat";
+        break;
+      case 1264:
+        _name = "Salted Meat";
+        break;
+      case 1265:
+        _name = "Preserved Eggs";
+        break;
+      case 1270:
+        _name = "Beef Stew";
+        break;
+      case 1271:
+        _name = "King's Stew";
+        break;
+      case 1272:
+        _name = "Glittercake";
+        break;
+      case 1273:
+        _name = "Cheesy Bread";
+        break;
+      case 1274:
+        _name = "Fancy Cheese Bread";
+        break;
+      case 1275:
+        _name = "Beans & Rice";
+        break;
+      case 1276:
+        _name = "Morning Plate";
+        break;
+      case 1277:
+        _name = "Spice Fish";
+        break;
+      case 1278:
+        _name = "Charcutery";
+        break;
+      case 1300:
+        _name = "Vinegar";
+        break;
+      case 1301:
+        _name = "Sugar";
+        break;
+      case 1302:
+        _name = "Olive Oil";
+        break;
+      case 1303:
+        _name = "Flour";
+        break;
+      case 1304:
+        _name = "Ketchup";
+        break;
+      case 1305:
+        _name = "Basic Spice Pack";
+        break;
+      case 1306:
+        _name = "Royal Spice Pack";
+        break;
+      case 1307:
+        _name = "Confectioner's Dough";
+        break;
+      case 1308:
+        _name = "Fruit Preserves";
+        break;
+      case 1500:
+        _name = "Unallocated";
+        break;
+      case 2000:
+        _name = "Natural reasources";
+        break;
+      case 2001:
+        _name = "Stone";
+        break;
+      case 2002:
+        _name = "Wood";
+        break;
+      case 2003:
+        _name = "Salt";
+        break;
+      case 2021:
+        _name = "Iron Ore";
+        break;
+      case 2022:
+        _name = "Gold Ore";
+        break;
+      case 2023:
+        _name = "Silver Ore";
+        break;
+      case 2024:
+        _name = "Copper Ore";
+        break;
+      case 2025:
+        _name = "Tin Ore";
+        break;
+      case 2101:
+        _name = "Refined Stone Blocks";
+        break;
+      case 2102:
+        _name = "Carved Wood";
+        break;
+      case 2121:
+        _name = "Iron";
+        break;
+      case 2122:
+        _name = "Gold";
+        break;
+      case 2123:
+        _name = "Silver";
+        break;
+      case 2124:
+        _name = "Copper";
+        break;
+      case 2125:
+        _name = "Tin";
+        break;
+      case 2180:
+        _name = "Emerald Bronze";
+        break;
+      case 2181:
+        _name = "Bronze";
+        break;
+      case 2182:
+        _name = "Steel";
+        break;
+      case 2183:
+        _name = "Damascus Steel";
+        break;
+      case 2200:
+        _name = "Ruby";
+        break;
+      case 2201:
+        _name = "Emerald";
+        break;
+      case 2202:
+        _name = "Sapphire";
+        break;
+      case 2203:
+        _name = "Diamond";
+        break;
+      case 2204:
+        _name = "Amethyst";
+        break;
+      case 2205:
+        _name = "Opal";
+        break;
+      case 2206:
+        _name = "Citrine";
+        break;
+      case 2207:
+        _name = "Pearls";
+        break;
+      case 2208:
+        _name = "Moonstone";
+        break;
+      case 2209:
+        _name = "Amber";
+        break;
+      case 2210:
+        _name = "Onyx";
+        break;
+      case 2211:
+        _name = "Aquamarine";
+        break;
+      case 2212:
+        _name = "Crystal Glass";
+        break;
+      case 2213:
+        _name = "Bloodstone";
+        break;
+      case 2300:
+        _name = "Polished Ruby";
+        break;
+      case 2301:
+        _name = "Polished Emerald";
+        break;
+      case 2302:
+        _name = "Polished Sapphire";
+        break;
+      case 2303:
+        _name = "Polished Diamond";
+        break;
+      case 2304:
+        _name = "Polished Amethyst";
+        break;
+      case 2305:
+        _name = "Polished Opal";
+        break;
+      case 2306:
+        _name = "Polished Citrine";
+        break;
+      case 2307:
+        _name = "Polished Pearls";
+        break;
+      case 2308:
+        _name = "Polished Moonstone";
+        break;
+      case 2309:
+        _name = "Polished Amber";
+        break;
+      case 2310:
+        _name = "Polished Onyx";
+        break;
+      case 2311:
+        _name = "Polished Aquamarine";
+        break;
+      case 2312:
+        _name = "Polished Crystal Glass";
+        break;
+      case 4000:
+        _name = "Nails";
+        break;
+      case 4001:
+        _name = "Diamond Blades";
+        break;
+      case 4079:
+        _name = "magnificent lens component";
+        break;
+      case 4080:
+        _name = "magnificent lens";
+        break;
+      case 5000:
+        _name = "Bronze Spear";
+        break;
+      case 5001:
+        _name = "Iron Spear";
+        break;
+      case 5002:
+        _name = "Steel Spear";
+        break;
+      case 5003:
+        _name = "Emerald Spear";
+        break;
+      case 5004:
+        _name = "Damascus Spear";
+        break;
+      case 5010:
+        _name = "Bronze Axe";
+        break;
+      case 5011:
+        _name = "Iron Axe";
+        break;
+      case 5012:
+        _name = "Steel Axe";
+        break;
+      case 5013:
+        _name = "Emerald Axe";
+        break;
+      case 5014:
+        _name = "Damascus Axe";
+        break;
+      case 5020:
+        _name = "Bronze Sword";
+        break;
+      case 5021:
+        _name = "Iron Sword";
+        break;
+      case 5022:
+        _name = "Steel Sword";
+        break;
+      case 5023:
+        _name = "Emerald Sword";
+        break;
+      case 5024:
+        _name = "Damascus Sword";
+        break;
+      case 5025:
+        _name = "Diamond Sword";
+        break;
+      case 5030:
+        _name = "Bronze Mace";
+        break;
+      case 5031:
+        _name = "Iron Mace";
+        break;
+      case 5032:
+        _name = "Steel Mace";
+        break;
+      case 5033:
+        _name = "Emerald Mace";
+        break;
+      case 5034:
+        _name = "Damascus Mace";
+        break;
+      case 5040:
+        _name = "Bronze Lance";
+        break;
+      case 5041:
+        _name = "Iron Lance";
+        break;
+      case 5042:
+        _name = "Steel Lance";
+        break;
+      case 5043:
+        _name = "Emerald Lance";
+        break;
+      case 5044:
+        _name = "Damascus Lance";
+        break;
+      case 5050:
+        _name = "Bronze Poleaxe";
+        break;
+      case 5051:
+        _name = "Iron Poleaxe";
+        break;
+      case 5052:
+        _name = "Iron Poleaxe";
+        break;
+      case 5053:
+        _name = "Emerald Poleaxe";
+        break;
+      case 5054:
+        _name = "Damascus Poleaxe";
+        break;
+      case 5060:
+        _name = "Bronze Greatsword";
+        break;
+      case 5061:
+        _name = "Iron Greatsword";
+        break;
+      case 5062:
+        _name = "Steel Greatsword";
+        break;
+      case 5063:
+        _name = "Emerald Greatsword";
+        break;
+      case 5064:
+        _name = "Damascus Greatsword";
+        break;
+      case 5070:
+        _name = "Bronze Warhammer";
+        break;
+      case 5071:
+        _name = "Iron Warhammer";
+        break;
+      case 5072:
+        _name = "Steel Warhammer";
+        break;
+      case 5073:
+        _name = "Emerald Warhammer";
+        break;
+      case 5074:
+        _name = "Damascus Warhammer";
+        break;
+      case 5100:
+        _name = "Short Bow";
+        break;
+      case 5101:
+        _name = "Bow";
+        break;
+      case 5102:
+        _name = "Long Bow";
+        break;
+      case 5110:
+        _name = "Sling";
+        break;
+      case 5111:
+        _name = "Golden Sling";
+        break;
+      case 5120:
+        _name = "Flame Grenade";
+        break;
+      case 5121:
+        _name = "Flamethrower";
+        break;
+      case 5501:
+        _name = "Bronze Light Plate";
+        break;
+      case 5502:
+        _name = "Iron Light Plate";
+        break;
+      case 5503:
+        _name = "Steel Light Plate";
+        break;
+      case 5504:
+        _name = "Emerald Light Plate";
+        break;
+      case 5505:
+        _name = "Damascus Light Plate";
+        break;
+      case 5511:
+        _name = "Bronze Light Mail";
+        break;
+      case 5512:
+        _name = "Iron Light Mail";
+        break;
+      case 5513:
+        _name = "Steel Light Mail";
+        break;
+      case 5514:
+        _name = "Emerald Light Mail";
+        break;
+      case 5515:
+        _name = "Damascus Light Mail";
+        break;
+      case 5521:
+        _name = "Bronze Medium Plate";
+        break;
+      case 5522:
+        _name = "Iron Medium Plate";
+        break;
+      case 5523:
+        _name = "Steel Medium Plate";
+        break;
+      case 5524:
+        _name = "Emerald Medium Plate";
+        break;
+      case 5525:
+        _name = "Damascus Medium Plate";
+        break;
+      case 5531:
+        _name = "Bronze Medium Mail";
+        break;
+      case 5532:
+        _name = "Iron Medium Mail";
+        break;
+      case 5533:
+        _name = "Steel Medium Mail";
+        break;
+      case 5534:
+        _name = "Emerald Medium Mail";
+        break;
+      case 5535:
+        _name = "Damascus Medium Mail";
+        break;
+      case 5541:
+        _name = "Bronze Heavy Armor";
+        break;
+      case 5542:
+        _name = "Iron Heavy Armor";
+        break;
+      case 5543:
+        _name = "Steel Heavy Armor";
+        break;
+      case 5544:
+        _name = "Emerald Heavy Armor";
+        break;
+      case 5545:
+        _name = "Damascus Heavy Armor";
+        break;
+      case 5551:
+        _name = "Bronze Light Horse Armor";
+        break;
+      case 5552:
+        _name = "Iron Light Horse Armor";
+        break;
+      case 5553:
+        _name = "Steel Light Horse Armor";
+        break;
+      case 5554:
+        _name = "Emerald Light Horse Armor";
+        break;
+      case 5555:
+        _name = "Damascus Light Horse Armor";
+        break;
+      case 5561:
+        _name = "Bronze Medium Horse Armor";
+        break;
+      case 5562:
+        _name = "Iron Medium Horse Armor";
+        break;
+      case 58800:
+        _name = "Coins";
+        break;
+      default:
+        _name = "Name Not Found";
+    }
+    return (_name);
+  }
+  
+  function showRecipe(_value) {
+    let whyJS = craftingRecipiesIngrediants(Number(document.getElementById("RecipeID").value));
+    var items = whyJS[0];
+    var instant = whyJS[1];
+    var item_amount = whyJS[2];
+    var item_output_amount = whyJS[3];
+    var item_output = whyJS[4];
+    var time = whyJS[6];
+    var _recipeText;
+    if(document.getElementById("Cost").textContent != "Cost:")
+    {document.getElementById("Cost").textContent = "Cost:"}
+    for(let i = 0;i < 6;i++) {
+      if(items[i] == 0) {break;}
+      document.getElementById("Cost").textContent += (item_amount[i]);
+      document.getElementById("Cost").textContent +=" ";
+      document.getElementById("Cost").textContent += itemName(items[i]);
+    }
+    document.getElementById("Cost").textContent +=" For ";
+
+    document.getElementById("Cost").textContent += item_output_amount[0];
+
+    document.getElementById("Cost").textContent +=" ";
+
+    document.getElementById("Cost").textContent += itemName(item_output[0]);
+
+    if(item_output[1] != 0) {
+      
+    document.getElementById("Cost").textContent +=" & ";
+
+    document.getElementById("Cost").textContent += item_output_amount[1];
+
+    document.getElementById("Cost").textContent +=" ";
+
+    document.getElementById("Cost").textContent += itemName(item_output[1]);
+    }
+    document.getElementById("Cost").style.display = "block";
+  }
+
+  function calcCost() {
+
+    var _orderSize;
+    _orderSize = document.getElementById("Amount").value * maxAllowableOrders[document.getElementById("CID").value]
+    console.log(_orderSize)
+  }
+
+  function selectTask(_value) {
+    hideAll();
+    showAmount();
+
+    switch(_value) {
+
+      case "1":
+      document.getElementById("FarmLabel").style.display = "block";
+      document.getElementById("cropSelect").style.display = "block";
+      document.getElementById("Farming").style.display = "block";
+        break;
+      case "2":
+        showCraftingFields();
+        document.getElementById("totalCostID").style.display = "block";
+        hideTest();
+
+        break;
+      case "3":
+
+        document.getElementsByClassName("ItemMenu")[0].style.display = "block";
+        document.getElementsByClassName("ItemMenu")[1].style.display = "block";
+        document.getElementsByClassName("BuyorSell")[0].style.display = "block";
+        document.getElementById("BuyorSellID").style.display = "block"; 
+        document.getElementById("totalCostID").style.display = "block";
+
+
+        break;
+      case "4":
+        document.getElementById("CDInput").style.display = "block";
+        document.getElementById("CDLabel").style.display = "inline";
+        document.getElementById("CID").style.display = "inline";
+        document.getElementById("landLabel").style.display = "inline";
+        document.getElementById("landSelection").style.display = "block";
+        showLandMenu();
+
+        break;
+      case "5":
+        document.getElementById("landLabel").style.display = "inline";
+        document.getElementById("landSelection").style.display = "block";
+        showLandMenu();
+        break;
+      case "6":
+        showWarInput();
+        break;
+      case "7":
+        document.getElementById("landLabel").style.display = "inline";
+        document.getElementById("landSelection").style.display = "block";
+        showLandMenu();
+        break;
+      case "8":
+
+        document.getElementById("KIDInfo").style.display = "block";
+        document.getElementById("KingdomID").style.display = "block";
+        hideAmount();
+        break;
+      case "9":
+        document.getElementById("RecruitInput").style.display = "block";
+        document.getElementById("RecruitID").style.display = "inline";
+        break;
+      case "10":
+        document.getElementById("CDInput").style.display = "block";
+        document.getElementById("CDLabel").style.display = "inline";
+        document.getElementById("CID").style.display = "inline";
+        hideAmount();
+        break;
+      case "11": 
+        document.getElementsByClassName("ItemMenu")[0].style.display = "block";
+        document.getElementsByClassName("ItemMenu")[1].style.display = "block";
+        hideAmount();
+        break;
+      case "12":
+        hideAmount();
+        break;
+      default:
+        console.log("Error: Invalid Task Selected")
+
+    } 
+    document.getElementById("Amount").style.display = "block";
+
+    }
+
+  async function showLandMenu() {
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner()
+      const NFTcontract = new ethers.Contract(address,abi,provider)
+      const myAddress = await signer.getAddress()
+      var _cityData = await NFTcontract.getKingdomInfo(myAddress);
+      const _kingdomType = _cityData[4]
+
+    switch(_kingdomType) {
+
+      case 1:
+        document.getElementById("Arid").style.display = "inline";
+        break;
+      case 2:
+        document.getElementById("Northern").style.display = "inline";
+        break;
+      case 3:
+        document.getElementById("Heartland").style.display = "inline";
+        break;
+      case 4:
+        document.getElementById("Southern").style.display = "inline";
+        break;
+      case 5:
+        document.getElementById("Ocean").style.display = "inline";
+        break;
+      case 6:
+        document.getElementById("Swamp").style.display = "inline";
+        break;
+      case 7:
+        document.getElementById("Mountain").style.display = "inline";
+        break;
+      case 8:
+        document.getElementById("Silver").style.display = "inline";
+        break;
+      case 9:
+        document.getElementById("Guilded").style.display = "inline";
+        break;
+      default:
+      console.log("kingdom undefined");
+
+      }
+          
+      document.getElementById("landLabel").style.display = "inline";
+      document.getElementById("landSelection").style.display = "block";
+  }
+  
+  function hideTest() {
+
+    let whyJS = craftingRecipiesIngrediants(Number(document.getElementById("RecipeID").value));
+    var _item_building = whyJS[5];
+    for(let i = 0; i < 32; i++) {
+      if (i != _item_building[0] && i != _item_building[1] && i != _item_building[2] && i != _item_building[3] )
+      {document.getElementsByClassName("_test")[i].style.display = "none";}
+    }
+
+
+  }
+  
+  function showCraftingFields() {    
+    document.getElementsByClassName("Recipe")[0].style.display = "block";
+    document.getElementsByClassName("Recipe")[1].style.display = "block";
+    document.getElementsByClassName("Recipe")[2].style.display = "block";
+  }
+  
+  function totalCostCalc() {
+    let whyJS = craftingRecipiesIngrediants(Number(selector()));
+    var items = whyJS[0];
+    var instant = whyJS[1];
+    var item_amount = whyJS[2];
+    var item_output_amount = whyJS[3];
+    var item_output = whyJS[4];
+    var time = whyJS[6];
+    var _recipeText;
+    var _foodcost;
+    _foodcost = Workers[document.getElementById("CID").value] * document.getElementById("Amount").value;
+    var _outputText;
+    _outputText = item_output_amount[0] * document.getElementById("Amount").value ;
+    if(document.getElementById("totalCostID").textContent != "Total Cost:")
+      {document.getElementById("totalCostID").textContent = "Total Cost:";}
+    if(instant == false) {
+
+
+      for(var i = 0;i < 6;i++) {
+       if(items[i] == 0) {break;}
+        document.getElementById("totalCostID").textContent += ((item_amount[i])* maxAllowableOrders[document.getElementById("CID").value] * document.getElementById("Amount").value);
+        document.getElementById("totalCostID").textContent +=" ";
+        document.getElementById("totalCostID").textContent += itemName(items[i]);
+    }}
+    else{
+      for(var i = 0; i < 6; i++) {
+        if(items[i] == 0) {break;}
+        document.getElementById("totalCostID").textContent += ((item_amount[i])* document.getElementById("Amount").value);
+        document.getElementById("totalCostID").textContent +=" ";
+        document.getElementById("totalCostID").textContent += itemName(items[i]);
+        document.getElementById("totalCostID").textContent +=" ";
+    }}
+    
+
+    document.getElementById("totalCostID").textContent +=" & ";
+
+    document.getElementById("totalCostID").textContent += _foodcost;
+    document.getElementById("totalCostID").textContent +=" ";
+    document.getElementById("totalCostID").textContent += "Food";
+    document.getElementById("totalCostID").textContent +=" For ";
+
+
+    if(document.getElementById("actionSelect").value == 2) {_outputText = _outputText * maxAllowableOrders[document.getElementById("CID").value];}
+    document.getElementById("totalCostID").textContent += (_outputText);
+
+    document.getElementById("totalCostID").textContent +=" ";
+
+    document.getElementById("totalCostID").textContent += itemName(item_output[0]);
+    document.getElementById("totalCostID").style.display = "block";
+
+
+    if(item_output[1] != 0) {
+      
+      document.getElementById("totalCostID").textContent +=" & ";
+  
+      document.getElementById("totalCostID").textContent += ((item_output_amount[1])* document.getElementById("Amount").value * maxAllowableOrders[document.getElementById("CID").value]);
+  
+      document.getElementById("totalCostID").textContent +=" ";
+  
+      document.getElementById("totalCostID").textContent += itemName(item_output[1]);
+    }
+
+
+    document.getElementById("timeToCompletion").style.display = "block";
+
+    if(document.getElementById("timeToCompletion").textContent != "Time To Completion: ")
+      {document.getElementById("timeToCompletion").textContent = "Time To Completion: ";}
+
+      document.getElementById("timeToCompletion").textContent += (Time_Multiplier * time);
+
+      document.getElementById("timeToCompletion").textContent += " Seconds (WIP: More expensive food means faster then this number. No/poor food means slower)";
+
+  }
+ 
+  function showMultiItemMenu(_value) {
+
+    document.getElementById("itemSelection").style.display = "inline";
+
+
+
+    switch(_value) {
+      case -1:
+      document.getElementById("Grain").style.display = "inline";
+      document.getElementById("GrainLabel").style.display = "inline";
+        break;
+      case -2:
+        document.getElementById("Meat").style.display = "block";
+        document.getElementById("MeatLabel").style.display = "inline";
+        break;
+      case -3:
+        document.getElementById("Fruit").style.display = "block";
+        document.getElementById("FruitLabel").style.display = "inline";
+        break;
+      case -4:
+        document.getElementById("Veggie").style.display = "block";
+        document.getElementById("VeggieLabel").style.display = "inline";
+        break;
+
+      default:
+        console.log("did NOT work");
+
+    }
+  }
+ 
+  function selector() {
+    if(document.getElementById("actionSelect").value == 2) {
+      return document.getElementById("RecipeID").value;
+    }
+    var _r;
+    _r = Number(document.getElementById("ItemMenuID").value) + Number(document.getElementById("BuyorSellID").value);
+    return _r;
+
+  }
+  
+  function hideAll() {
+
+    
+
+
+      document.getElementById("landSelection").style.display = "none";
+
+
+      document.getElementById("Farming").style.display = "none";
+
+      document.getElementById("WarInput").style.display = "none";
+
+      document.getElementById("Recipe RecipeText").style.display = "none";
+
+      document.getElementById("Cost").style.display = "none";
+
+      
+      document.getElementById("RecruitInput").style.display = "none";
+      document.getElementById("RecruitID").style.display = "none";
+      
+      document.getElementById("CDInput").style.display = "none";
+      document.getElementById("CID").style.display = "none";
+
+      document.getElementById("KingdomID").style.display = "none";
+      document.getElementById("KIDInfo").style.display = "none";
+
+      hideBuildingInfo();
+
+      document.getElementById("BuyorSellID").style.display = "none";
+      hideAmount();
+
+      
+      document.getElementsByClassName("ItemMenu")[0].style.display = "none";
+      document.getElementsByClassName("ItemMenu")[1].style.display = "none";
+      document.getElementById("balance").style.display = "none";
+
+      hideTimedCraftingMenu();
+      document.getElementById("totalCostID").style.display = "none";
+
+      document.getElementById("BuyorSellLabel").style.display = "none";
+
+
+  }
+  
+  function showAmount() {
+    
+    document.getElementsByClassName("Amount")[0].style.display = "block";
+    document.getElementsByClassName("Amount")[1].style.display = "block";
+    document.getElementsByClassName("Amount")[2].style.display = "block";
+  }
+ 
+  function hideAmount() {
+    
+    document.getElementsByClassName("Amount")[0].style.display = "none";
+    document.getElementsByClassName("Amount")[1].style.display = "none";
+    document.getElementsByClassName("Amount")[2].style.display = "none";
+  }
+ 
+  function showWarInput() {
+
+    document.getElementById("WLabel1").style.display = "block";
+    document.getElementById("WID1").style.display = "block";
+    document.getElementById("WBR1").style.display = "block";
+
+    document.getElementById("WLabel2").style.display = "block";
+    document.getElementById("WID2").style.display = "block";
+    document.getElementById("WBR2").style.display = "block";
+
+    document.getElementById("WLabel3").style.display = "block";
+    document.getElementById("WID3").style.display = "block";
+    document.getElementById("WBR3").style.display = "block";
+
+    document.getElementById("WLabel4").style.display = "block";
+    document.getElementById("WID4").style.display = "block";
+    document.getElementById("WBR4").style.display = "block";
+
+    document.getElementById("WLabel5").style.display = "block";
+    document.getElementById("WID5").style.display = "block";
+    document.getElementById("WBR5").style.display = "block";
+
+    document.getElementById("WLabel6").style.display = "block";
+    document.getElementById("WID6").style.display = "block";
+    document.getElementById("WBR6").style.display = "block";
+
+    document.getElementById("WarInput").style.display = "block";
+
+
+   }
+
+  function selectLand(_value) {
+
+    showLandMenu();
+    document.getElementsByClassName("foodInput")[0].style.display = "block";
+    document.getElementsByClassName("foodInput")[1].style.display = "inline-block";
+    document.getElementsByClassName("foodInput")[2].style.display = "inline";
+  }
+
+  function hideBuildingInfo() {
+
+        document.getElementsByClassName("B0")[0].style.display = "none";
+        document.getElementsByClassName("B0")[1].style.display = "none";
+
+        document.getElementsByClassName("B1")[0].style.display = "none";
+        document.getElementsByClassName("B1")[1].style.display = "none";
+
+        document.getElementsByClassName("B2")[0].style.display = "none";
+        document.getElementsByClassName("B2")[1].style.display = "none";
+        document.getElementsByClassName("B2")[2].style.display = "none";
+
+        document.getElementsByClassName("B3")[0].style.display = "none";
+        document.getElementsByClassName("B3")[1].style.display = "none";
+        document.getElementsByClassName("B3")[2].style.display = "none";
+        document.getElementsByClassName("B3")[3].style.display = "none";
+
+        document.getElementsByClassName("B4")[0].style.display = "none";
+        document.getElementsByClassName("B4")[1].style.display = "none";
+        document.getElementsByClassName("B4")[2].style.display = "none";
+        document.getElementsByClassName("B4")[3].style.display = "none";
+
+        document.getElementsByClassName("B5")[0].style.display = "none";
+        document.getElementsByClassName("B5")[1].style.display = "none";
+        document.getElementsByClassName("B5")[2].style.display = "none";
+        document.getElementsByClassName("B5")[3].style.display = "none";
+
+        document.getElementsByClassName("B6")[0].style.display = "none";
+        document.getElementsByClassName("B6")[1].style.display = "none";
+        document.getElementsByClassName("B6")[2].style.display = "none";
+        document.getElementsByClassName("B6")[3].style.display = "none";
+
+        document.getElementsByClassName("B7")[0].style.display = "none";
+        document.getElementsByClassName("B7")[1].style.display = "none";
+        document.getElementsByClassName("B7")[2].style.display = "none";
+        document.getElementsByClassName("B7")[3].style.display = "none";
+
+        document.getElementsByClassName("B8")[0].style.display = "none";
+        document.getElementsByClassName("B8")[1].style.display = "none";
+        document.getElementsByClassName("B8")[2].style.display = "none";
+        document.getElementsByClassName("B8")[3].style.display = "none";
+        document.getElementsByClassName("B8")[4].style.display = "none";
+
+        document.getElementsByClassName("B9")[0].style.display = "none";
+        document.getElementsByClassName("B9")[1].style.display = "none";
+        document.getElementsByClassName("B9")[2].style.display = "none";
+        document.getElementsByClassName("B9")[3].style.display = "none";
+        document.getElementsByClassName("B9")[4].style.display = "none";
+        document.getElementsByClassName("B9")[5].style.display = "none";
+        document.getElementsByClassName("B9")[6].style.display = "none";
+
+        document.getElementsByClassName("B10")[0].style.display = "none";
+        document.getElementsByClassName("B10")[1].style.display = "none";
+        document.getElementsByClassName("B10")[2].style.display = "none";
+        document.getElementsByClassName("B10")[3].style.display = "none";
+        document.getElementsByClassName("B10")[4].style.display = "none";
+        document.getElementsByClassName("B10")[5].style.display = "none";
+        document.getElementsByClassName("B10")[6].style.display = "none";
+
+        document.getElementsByClassName("B11")[0].style.display = "none";
+        document.getElementsByClassName("B11")[1].style.display = "none";
+        document.getElementsByClassName("B11")[2].style.display = "none";
+        document.getElementsByClassName("B11")[3].style.display = "none";
+        document.getElementsByClassName("B11")[4].style.display = "none";
+        document.getElementsByClassName("B11")[5].style.display = "none";
+        document.getElementsByClassName("B11")[6].style.display = "none";
+
+        document.getElementsByClassName("B12")[0].style.display = "none";
+        document.getElementsByClassName("B12")[1].style.display = "none";
+        document.getElementsByClassName("B12")[2].style.display = "none";
+        document.getElementsByClassName("B12")[3].style.display = "none";
+        document.getElementsByClassName("B12")[4].style.display = "none";
+        document.getElementsByClassName("B12")[5].style.display = "none";
+
+        document.getElementsByClassName("B13")[0].style.display = "none";
+        document.getElementsByClassName("B13")[1].style.display = "none";
+        document.getElementsByClassName("B13")[2].style.display = "none";
+        document.getElementsByClassName("B13")[3].style.display = "none";
+        document.getElementsByClassName("B13")[4].style.display = "none";
+        document.getElementsByClassName("B13")[5].style.display = "none";
+        document.getElementsByClassName("B13")[6].style.display = "none";
+        document.getElementsByClassName("B13")[7].style.display = "none";
+
+        document.getElementsByClassName("B14")[0].style.display = "none";
+        document.getElementsByClassName("B14")[1].style.display = "none";
+        document.getElementsByClassName("B14")[2].style.display = "none";
+        document.getElementsByClassName("B14")[3].style.display = "none";
+        document.getElementsByClassName("B14")[4].style.display = "none";
+        document.getElementsByClassName("B14")[5].style.display = "none";
+        document.getElementsByClassName("B14")[6].style.display = "none";
+
+        document.getElementsByClassName("B15")[0].style.display = "none";
+        document.getElementsByClassName("B15")[1].style.display = "none";
+        document.getElementsByClassName("B15")[2].style.display = "none";
+        document.getElementsByClassName("B15")[3].style.display = "none";
+        document.getElementsByClassName("B15")[4].style.display = "none";
+        document.getElementsByClassName("B15")[5].style.display = "none";
+        document.getElementsByClassName("B15")[6].style.display = "none";
+        document.getElementsByClassName("B15")[7].style.display = "none";
+
+        document.getElementsByClassName("B16")[0].style.display = "none";
+        document.getElementsByClassName("B16")[1].style.display = "none";
+        document.getElementsByClassName("B16")[2].style.display = "none";
+        document.getElementsByClassName("B16")[3].style.display = "none";
+        document.getElementsByClassName("B16")[4].style.display = "none";
+        document.getElementsByClassName("B16")[5].style.display = "none";
+
+        document.getElementsByClassName("B17")[0].style.display = "none";
+        document.getElementsByClassName("B17")[1].style.display = "none";
+        document.getElementsByClassName("B17")[2].style.display = "none";
+        document.getElementsByClassName("B17")[3].style.display = "none";
+        document.getElementsByClassName("B17")[4].style.display = "none";
+        document.getElementsByClassName("B17")[5].style.display = "none";
+
+        document.getElementsByClassName("B18")[0].style.display = "none";
+        document.getElementsByClassName("B18")[1].style.display = "none";
+        document.getElementsByClassName("B18")[2].style.display = "none";
+        document.getElementsByClassName("B18")[3].style.display = "none";
+        document.getElementsByClassName("B18")[4].style.display = "none";
+        document.getElementsByClassName("B18")[5].style.display = "none";
+
+        document.getElementsByClassName("B19")[0].style.display = "none";
+        document.getElementsByClassName("B19")[1].style.display = "none";
+        document.getElementsByClassName("B19")[2].style.display = "none";
+        document.getElementsByClassName("B19")[3].style.display = "none";
+        document.getElementsByClassName("B19")[4].style.display = "none";
+
+        document.getElementsByClassName("B20")[0].style.display = "none";
+        document.getElementsByClassName("B20")[1].style.display = "none";
+        document.getElementsByClassName("B20")[2].style.display = "none";
+        document.getElementsByClassName("B20")[3].style.display = "none";
+        document.getElementsByClassName("B20")[4].style.display = "none";
+        document.getElementsByClassName("B20")[5].style.display = "none";
+        document.getElementsByClassName("B20")[6].style.display = "none";
+        document.getElementsByClassName("B20")[7].style.display = "none";
+        document.getElementsByClassName("B20")[8].style.display = "none";
+
+        document.getElementsByClassName("B21")[0].style.display = "none";
+        document.getElementsByClassName("B21")[1].style.display = "none";
+        document.getElementsByClassName("B21")[2].style.display = "none";
+        document.getElementsByClassName("B21")[3].style.display = "none";
+        document.getElementsByClassName("B21")[4].style.display = "none";
+        document.getElementsByClassName("B21")[5].style.display = "none";
+        document.getElementsByClassName("B21")[6].style.display = "none";
+
+        document.getElementsByClassName("B22")[0].style.display = "none";
+        document.getElementsByClassName("B22")[1].style.display = "none";
+        document.getElementsByClassName("B22")[2].style.display = "none";
+        document.getElementsByClassName("B22")[3].style.display = "none";
+        document.getElementsByClassName("B22")[4].style.display = "none";
+
+        document.getElementsByClassName("B26")[0].style.display = "none";
+        document.getElementsByClassName("B26")[1].style.display = "none";
+        document.getElementsByClassName("B26")[2].style.display = "none";
+        document.getElementsByClassName("B26")[3].style.display = "none";
+        document.getElementsByClassName("B26")[4].style.display = "none";
+        document.getElementsByClassName("B26")[5].style.display = "none";
+        document.getElementsByClassName("B26")[6].style.display = "none";
+
+        document.getElementsByClassName("B27")[0].style.display = "none";
+        document.getElementsByClassName("B27")[1].style.display = "none";
+        document.getElementsByClassName("B27")[2].style.display = "none";
+        document.getElementsByClassName("B27")[3].style.display = "none";
+        document.getElementsByClassName("B27")[4].style.display = "none";
+        document.getElementsByClassName("B27")[5].style.display = "none";
+        document.getElementsByClassName("B27")[6].style.display = "none";
+  }
+  
+</script>
+
+</head>
+
+<body>
+
+
+  
+    <button id="walletConnect"class="walletConnect"onclick="signon();">Connect Your Wallet Here!</button>
+
+  <label class="actionSelect" for="actionSelect">Select an action:</label>
+  <select class="actionSelect Dropdown" id="actionSelect"onchange="selectTask(this.value);">
+    <option value="0"></option>
+    <option value="1">Work Land</option>
+    <option value="2">Craft</option>
+    <option value="3">Shop</option>
+    <option value="4">Build</option>
+    <option value="5">Claim Farming Rewards</option>
+    <option value="6">WIP</option>
+    <option value="7">Add Land To Kingdom</option>
+    <option value="8">Set Kingdom Type</option>
+    <option value="9">Recruit Pops</option>
+    <option value="10">Claim Crafting Items</option>
+    <option value="11">Check Balance</option>
+    <option value="12">Population Info</option>
+    
+
+  </select>
+
+
+    <WorkingLand class="Farming" id="Farming"> 
+      <label class="Farming" id="FarmLabel">What would you like to farm?</label>
+      <select class="Farming Dropdown" id="cropSelect"onchange="selectLand(this.value);">
+      <option value="_"></option>
+      <option value="1">Natural Reasources</option>
+      <option value=501>Wheat</option>
+      <option value=502>Rye</option>
+      <option value=503>Rice</option>
+      <option value=504>Corn</option>
+      <option value=505>Sorghum</option>
+      <option value=506>Apple</option>
+      <option value=507>Plum</option>
+      <option value=508>Olives</option>
+      <option value=509>Beans</option>
+      <option value=510>Mushroom</option>
+      <option value=511>Beets</option>
+      <option value=512>Casava</option>
+      <option value=513>Peanut</option>
+      <option value=514>Cherry</option>
+      <option value=515>Peach</option>
+      <option value=516>Garlic</option>
+      <option value=517>Onion</option>
+      <option value=518>Carrot</option>
+      <option value=519>Sugarcane</option>
+      <option value=521>Herbs</option>
+      <option value=522>Grapes</option>
+      <option value=535>Potato</option>
+    </select>
+    </WorkingLand>
+
+    <landSelection class="landSelection " id="landSelection">
+
+      <label class="landSelection" for="landSelection" id="landLabel">Which Land?</label>
+      <select class="AridKingdom Lands Dropdown" id="Arid">
+          <option value="-1"></option>
+          <option value="1">Badlands</option>
+          <option value="2">Steppes</option>
+          <option value="3">Oasis</option>
+          <option value="4">River</option>
+          <option value="44">Desolate Ocean</option>
+      </select>
+      <select class="NorthernKingdom Lands Dropdown" id="Northern">
+          <option value="-1"></option>
+          <option value="11">Rocky Wastes</option>
+          </option value="12">Tundra</option>
+          <option value="13">Northern Forest</option>
+          <option value="14">Icey River</option>
+          <option value="41">Northern Ocean</option>
+      </select>
+      <select class="HeartlandKingdom Lands Dropdown" id="Heartland">
+          <option value="-1"></option>
+          <option value="21">Rocky Heartland</option>
+          <option value="22">Heartland</option>
+          <option value="23">Heart River</option>
+          <option value="42">Central Ocean</option>
+      </select>
+      <select class="SouthernKingdom Lands Dropdown" id="Southern">
+          <option value="-1"></option>
+          <option value="31">Southern Rocky Wastes</option>
+          <option value="32">Southern Forest</option>
+          <option value="33">Southern Jungle</option>
+          <option value="34">Rainforest River</option>
+          <option value="43">Rainforest Ocean</option>
+      </select>
+      <select class="OceanKingdom Lands Dropdown" id="Ocean">
+        <option value="-1"></option>
+        <option value="41">Northern Ocean</option>
+        <option value="42">Heartland Ocean</option>
+        <option value="43">Southern Ocean</option>
+        <option value="44">Desolate Ocean</option>
+      </select>
+      <select class="SwampKingdom Lands Dropdown" id="Swamp">
+          <option value="-1"></option>
+          <option value="51">Brackish Swamp</option>
+          <option value="52">Swamp</option>
+          <option value="53">Lush Swamp</option>
+      </select>
+      <select class="MountainKingdom Lands Dropdown" id="Mountain">
+        <option value="-1"></option>
+        <option value="61">Red Mountain</option>
+        <option value="62">Blue Mountain</option>
+        <option value="63">Green Mountain</option>
+        <option value="64">White Mountain</option>
+      </select>
+      
+      <select class="SilverKingdom Lands Dropdown" id="Silver">
+        <option value="-1"></option>
+        <option value="70">Rocky Wastes</option>
+        <option value="71">Tundra</option>
+        <option value="72">Northern Forest</option>
+      </select>
+      <select class="GuildedKingdom Lands Dropdown" id="Gold">
+          <option value="-1"></option>
+          <option value="80">Rocky Wastes</option>
+          <option value="81">Tundra</option>
+          <option value="82">Northern Forest</option>
+      </select>
+        
+
+    </landSelection>
+    <Recipe class="Recipe RecipeText"id="Recipe RecipeText">
+      <label class="Recipe"for="RecipeID" id="RecipeLabel">Input Recipe Number:</label>
+
+      <select class="Recipe Dropdown" id="RecipeID" onchange="Stuff(this.value); totalCostCalc(); hideTest();">
+        <option value="-1"></option>
+        <option value="0">--Drinks</option>
+        <option value="-1"></option>
+        <option value="1000">Wheat Beer</option>
+        <option value="1001">Rye Beer</option>
+        <option value="1002">Barley Beer</option>
+        <option value="1003">Oat Beer</option>
+        <option value="1004">Rice Beer</option>
+        <option value="1010">Cider</option>
+        <option value="1011">Wine</option>
+        <option value="1012">Plum Wine</option>
+        <option value="1013">Peach Wine</option>
+        <option value="1014">Cherry Wine</option>
+        <option value="1020">Mead</option>
+        <option value="1030">Vodka</option>
+        <option value="1031">Rum</option>
+        <option value="1032">Kumis</option>
+        <option value="1040">Brandy</option>
+        <option value="1041">Silver Wine</option>
+        <option value="1042">Jungle Wine</option>
+        <option value="1043">Winter Wine</option>
+        <option value="1044">Aged Rum</option>
+        <option value="1050">Ginseng Wine</option>
+        <option value="1051">Spiced Vodka</option>
+        <option value="1060">Double Brandy</option>
+        <option value="1061">Auric Mead</option>
+
+        <option value="-1"></option>
+        <option value="0">--Food Production
+        <option value="-1"></option>
+
+        <option value="1200">Wheat Bread</option>
+        <option value="1201">Rye Bread</option>
+        <option value="1202">Corn Bread</option>
+        <option value="1203">Rice Bread</option>
+        <option value="1204">Sorghum Bread</option>
+        <option value="1205">Barley Bread</option>
+        <option value="1206">Oat Bread</option>
+        <option value="1207">Pastries</option>
+        <option value="1208">Fruit Pastries</option>
+        <option value="1220">Apple Pie</option>
+        <option value="1221">Plum Pie</option>
+        <option value="1222">Peach Pie</option>
+        <option value="1223">Sugar Pie</option>
+        <option value="1224">Pot Pie</option>
+        <option value="1230">Cheese</option>
+        <option value="1231">Aged Cheese</option>
+        <option value="1232">Imperial Cheese</option>
+        <option value="1240">Dried Vegetables</option>
+        <option value="1241">Pickled Vegetables</option>
+        <option value="1250">Dried Fruit</option>
+        <option value="1251">Brandied Fruit</option>
+        <option value="1260">Sausage</option> 
+        <option value="1261">Fried Meat</option>
+        <option value="1262">Roast</option>
+        <option value="1263">Cured Meat</option>
+        <option value="1264">Salted Meat</option>
+        <option value="1265">Preserved Eggs</option>
+        <option value="1270">Beef Stew</option>
+        <option value="1271">King's Stew</option>
+        <option value="1272">Glittercake</option>
+        <option value="1273">Cheesy Bread</option>
+        <option value="1274">Fancy Cheese Bread</option>
+        <option value="1275">Beans And Rice</option>
+        <option value="1276">Morning Plate</option>
+        <option value="1277">Spice Fish</option>
+        <option value="1278">Charcutery</option>
+
+        <option value="-1"></option>
+        <option value="0">--Non-Edible Foods</option>
+        <option value="-1"></option>
+        
+        <option value="1300">Vinegar</option>
+        <option value="1301">Sugar</option>
+        <option value="1302">Olive Oil</option>
+        <option value="1303">Flour</option>
+        <option value="1304">Ketchup</option>
+        <option value="1305">Basic Spice Pack</option>
+        <option value="1306">Royal Spice Pack</option>
+        <option value="1307">Confectioner's Dough</option>
+        <option value="1308">Fruit Preserves</option>
+
+        <option value="-1"></option>
+        <option value="0">--Industrial Goods</option>
+        <option value="-1"></option>
+
+        
+        <option value="2101">Refined Stone Blocks</option>
+        <option value="2102">Carved Wood</option>
+        <option value="2121">Iron</option>
+        <option value="2122">Gold</option>
+        <option value="2123">Silver</option>
+        <option value="2124">Copper</option>
+        <option value="2125">Tin</option>
+        <option value="2180">Emerald Bronze</option>
+        <option value="2181">Bronze</option>
+        <option value="2182">Steel</option>
+        <option value="2183">Damascus Steel</option>
+
+        
+        <option value="2300">Polished Ruby</option>
+        <option value="2301">Polished Emerald</option>
+        <option value="2302">Polished Sapphire</option>
+        <option value="2303">Polished Diamond</option>
+        <option value="2304">Polished Amethyst</option>
+        <option value="2305">Polished Opal</option>
+        <option value="2306">Polished Citrine</option>
+        <option value="2307">Polished Pearls</option>
+        <option value="2308">Polished Moonstone</option>
+        <option value="2309">Polished Amber</option>
+        <option value="2310">Polished Onyx</option>
+        <option value="2311">Polished Aquamarine</option>
+        <option value="2312">Polished Crystal Glass</option>
+
+        
+
+        <option value="-1"></option>
+        <option value="0">--Finished Goods</option>
+        <option value="-1"></option>
+
+
+        
+        <option value="4000">Nails</option>
+        <option value="4001">Diamond Blades</option>
+
+        <option value="-1"></option>
+        <option value="0">--Refing Process</option>
+        <option value="-1"></option>
+        <option value="536">Sugar From Silver Sap</option>
+
+
+      </select>
+
+      <text class="Recipe RecipeText" id="Cost">Cost:</text>
+
+
+
+    </Recipe>
+
+    <CityDevelopment class="CDInput" id="CDInput">
+      <br>
+      <text class="CDInput" id="CDLabel">Which Building is involved?</text>
+      <select class="CDInput Dropdown" id="CID" onclick="buildingCost(this.value); calcCost(); totalCostCalc();">
+        <option value="-1"></option>
+        <option class="_test" value="0">Land Permit</option>
+        <option class="_test" value="1">Tier 1 Housing</option>
+        <option class="_test" value="2">Tier 2 Housing</option>
+        <option class="_test" value="3">Tier 3 Housing</option>
+        <option class="_test" value="4">Tier 4 Housing</option>
+        <option class="_test" value="5">Tier 5 Housing</option>
+        <option class="_test" value="6">Tier 6 Housing</option>
+        <option class="_test" value="7">Tier 7 Housing</option>
+
+        <option class="_test" value="8">Tier 1 Cookery</option>
+        <option class="_test" value="9">Tier 2 Cookery</option>
+        <option class="_test" value="10">Tier 3 Cookery</option>
+        <option class="_test" value="11">Tier 4 Cookery</option>
+
+        <option class="_test" value="12">Tier 1 Brewery</option>
+        <option class="_test" value="13">Tier 2 Brewery</option>
+        <option class="_test" value="14">Tier 3 Brewery</option>
+        <option class="_test" value="15">Tier 4 Brewery</option>
+        
+        <option class="_test" value="16">Tier 1 Smeltery</option>
+        <option class="_test" value="17">Tier 2 Smeltery</option>
+        <option class="_test" value="18">Tier 3 Smeltery</option>
+
+        <option class="_test" value="19">Builder</option>
+
+        <option class="_test" value="20">Tier 1 Blacksmith</option>
+        <option class="_test" value="21">Tier 2 Blacksmith</option>
+
+        <option class="_test" value="22">Aging Facilitity</option>
+        <option class="_test" value="23"></option>
+
+        <option class="_test" value="24">Tier 1 Temple</option>
+        <option class="_test" value="25">Tier 2 Temple</option>
+
+        <option class="_test" value="26">Tier 1 Jeweler</option>
+        <option class="_test" value="27">Tier 2 Jeweler</option>
+
+      </select>
+
+      
+
+      <text class="RecipeText B0 Indented" id="B0-0">Cost:</text>
+      <text class="RecipeText B0" id="B0-1">20 Land </text>
+
+      <text class="RecipeText B1" id="B1-0">Cost:</text>
+      <text class="RecipeText B1 Indented" id="B1-1">18 Million Wood</text>
+
+      <text class="RecipeText B2" id="B2-0">Cost:</text>
+      <text class="RecipeText B2 Indented" id="B2-1">20 Million Wood</text>
+      <text class="RecipeText B2 Indented" id="B2-2">10 Million Stone</text>
+
+      <text class="RecipeText B3" id="B3-0">Cost:</text>
+      <text class="RecipeText B3 Indented" id="B3-1">15 Million Wood</text>
+      <text class="RecipeText B3 Indented" id="B3-2">25 Million Stone</text>
+      <text class="RecipeText B3 Indented" id="B3-3">800,000 Pearls</text>
+
+      <text class="RecipeText B4" id="B4-0">Cost:</text>
+      <text class="RecipeText B4 Indented" id="B4-1">200,000 Refined Wood</text>
+      <text class="RecipeText B4 Indented" id="B4-2">20 Million Stone</text>
+      <text class="RecipeText B4 Indented" id="B4-3">2 Million Pearls</text>
+
+      <text class="RecipeText B5" id="B5-0">Cost:</text>
+      <text class="RecipeText B5 Indented" id="B5-1">500,000 Refined Wood</text>
+      <text class="RecipeText B5 Indented" id="B5-2">30 Million Stone</text>
+      <text class="RecipeText B5 Indented" id="B5-3">4 Million Pearls</text>
+
+      <text class="RecipeText B6" id="B6-0">Cost:</text>
+      <text class="RecipeText B6 Indented" id="B6-1">1 Million Refined Wood</text>
+      <text class="RecipeText B6 Indented" id="B6-2">700,000 Refined Stone</text>
+      <text class="RecipeText B6 Indented" id="B6-3">5 Million Moonstone</text>
+
+      <text class="RecipeText B7" id="B7-0">Cost:</text>
+      <text class="RecipeText B7 Indented" id="B7-1">1 Million Refined Wood</text>
+      <text class="RecipeText B7 Indented" id="B7-2">500,000 Refined Stone</text>
+      <text class="RecipeText B7 Indented" id="B7-3">8 Million Refined Moonstone</text>
+
+ 
+      <text class="RecipeText B8" id="B8-0">Cost:</text>
+      <text class="RecipeText B8 Indented" id="B8-1">4 Million Wood</text>
+      <text class="RecipeText B8 Indented" id="B8-2">6 Land</text>
+      <text class="RecipeText B8" id="B8-3">Staffing Needs:</text>
+      <text class="RecipeText B8 Indented" id="B8-4">3 Peasents</text>
+      
+      <text class="RecipeText B9" id="B9-0">Cost:</text>
+      <text class="RecipeText B9 Indented" id="B9-1">4 Million Wood</text>
+      <text class="RecipeText B9 Indented" id="B9-2">8 Million Stone</text>
+      <text class="RecipeText B9 Indented" id="B9-3">1 Million Aquamarine</text>
+      <text class="RecipeText B9 " id="B9-4">Staffing Needs:</text>
+      <text class="RecipeText B9 Indented" id="B9-5">3 Peasents</text>
+      <text class="RecipeText B9 Indented" id="B9-6">2 Low-Born Nobles</text>
+      
+      <text class="RecipeText B10" id="B10-0">Cost:</text>
+      <text class="RecipeText B10 Indented" id="B10-1">30,000 Refined Wood</text>
+      <text class="RecipeText B10 Indented" id="B10-2">70,000 Refined Stone</text>
+      <text class="RecipeText B10 Indented" id="B10-3">350,000 Polished Aquamarine</text>
+      <text class="RecipeText B10 " id="B10-4">Staffing Needs:</text>
+      <text class="RecipeText B10 Indented" id="B10-5">5 Peasents</text>
+      <text class="RecipeText B10 Indented" id="B10-6">3 Low-Born Nobles</text>      
+
+      
+      <text class="RecipeText B11" id="B11-0">Cost:</text>
+      <text class="RecipeText B11 Indented" id="B11-1">100,000 Refined Wood</text>
+      <text class="RecipeText B11 Indented" id="B11-2">200,000 Refined Stone</text>
+      <text class="RecipeText B11 Indented" id="B11-3">500,000 Polished Aquamarine</text>
+      <text class="RecipeText B11 " id="B11-4">Staffing Needs:</text>
+      <text class="RecipeText B11 Indented" id="B11-5">5 Low-Born Nobles</text>
+      <text class="RecipeText B11 Indented" id="B11-6">2 High-Born Nobles</text> 
+      
+      <text class="RecipeText B12" id="B12-0">Cost:</text>
+      <text class="RecipeText B12 Indented" id="B12-1">5 Million Wood</text>
+      <text class="RecipeText B12 Indented" id="B12-2">500,000 Copper</text>
+      <text class="RecipeText B12 Indented" id="B12-3">10 Land</text>
+      <text class="RecipeText B12 " id="B12-4">Staffing Needs:</text>
+      <text class="RecipeText B12 Indented" id="B12-5">8 Peasents</text>
+  
+      <text class="RecipeText B13" id="B13-0">Cost:</text>
+      <text class="RecipeText B13 Indented" id="B13-1">5 Million Stone</text>
+      <text class="RecipeText B13 Indented" id="B13-2">5 Million Wood</text>
+      <text class="RecipeText B13 Indented" id="B13-3">1 Million Copper</text>
+      <text class="RecipeText B13 Indented" id="B13-4">1 Million Citrine</text>
+      <text class="RecipeText B13 " id="B13-5">Staffing Needs:</text>
+      <text class="RecipeText B13 Indented" id="B13-6">5 Peasents</text>
+      <text class="RecipeText B13 Indented" id="B13-7">1 Low-Born Noble</text> 
+   
+  
+      <text class="RecipeText B14" id="B14-0">Cost:</text>
+      <text class="RecipeText B14 Indented" id="B14-1">5 Million Stone</text>
+      <text class="RecipeText B14 Indented" id="B14-2">1 Million Copper</text>
+      <text class="RecipeText B14 Indented" id="B14-3">200,000 Polished Citrine</text>
+      <text class="RecipeText B14 " id="B14-4">Staffing Needs:</text>
+      <text class="RecipeText B14 Indented" id="B14-5">5 Peasents</text>
+      <text class="RecipeText B14 Indented" id="B14-6">1 Low-Born Noble</text> 
+   
+      <text class="RecipeText B15" id="B15-0">Cost:</text>
+      <text class="RecipeText B15 Indented" id="B15-1">100,000 Refined Wood</text>
+      <text class="RecipeText B15 Indented" id="B15-2">400,000 Refined Stone</text>
+      <text class="RecipeText B15 Indented" id="B15-3">2 Million Copper</text>
+      <text class="RecipeText B15 Indented" id="B15-4">500,000 Polished Citrine</text>
+      <text class="RecipeText B15 " id="B15-5">Staffing Needs:</text>
+      <text class="RecipeText B15 Indented" id="B15-6">1 Low-Born Noble</text>
+      <text class="RecipeText B15 Indented" id="B15-7">1 High-Born Noble</text> 
+     
+      <text class="RecipeText B16" id="B16-0">Cost:</text>
+      <text class="RecipeText B16 Indented" id="B16-1">4 Million Wood</text>
+      <text class="RecipeText B16 Indented" id="B16-2">2.5 Million Stone</text>
+      <text class="RecipeText B16 Indented" id="B16-3">10 Land</text>
+      <text class="RecipeText B16 " id="B16-4">Staffing Needs:</text>
+      <text class="RecipeText B16 Indented" id="B16-5">5 Peasents</text>
+      <text class="RecipeText B16 Indented" id="B16-6">1 Low-Born Noble</text> 
+     
+      <text class="RecipeText B17" id="B17-0">Cost:</text>
+      <text class="RecipeText B17 Indented" id="B17-1">5 Million Stone</text>
+      <text class="RecipeText B17 Indented" id="B17-2">1 Million Bronze</text>
+      <text class="RecipeText B17 " id="B17-3">Staffing Needs:</text>
+      <text class="RecipeText B17 Indented" id="B17-4">5 Peasents</text>
+      <text class="RecipeText B17 Indented" id="B17-5">1 Low-Born Noble</text>  
+     
+      <text class="RecipeText B18" id="B18-0">Cost:</text>
+      <text class="RecipeText B18 Indented" id="B18-1">10 Million Stone</text>
+      <text class="RecipeText B18 Indented" id="B18-2">1 Million Iron</text>
+      <text class="RecipeText B18 Indented" id="B18-3">1 Million Polished Onyx</text>
+      <text class="RecipeText B18 " id="B18-4">Staffing Needs:</text>
+      <text class="RecipeText B18 Indented" id="B18-5">1 Low-Born Noble</text>
+      <text class="RecipeText B18 Indented" id="B18-6">1 High-Born Noble</text>  
+     
+      <text class="RecipeText B19" id="B19-0">Cost:</text>
+      <text class="RecipeText B19 Indented" id="B19-1">10 Million Wood</text>
+      <text class="RecipeText B19 Indented" id="B19-2">10 Million Stone</text>
+      <text class="RecipeText B19 Indented" id="B19-3">10 Land</text>
+      <text class="RecipeText B19 " id="B19-4">Staffing Needs:</text>
+      <text class="RecipeText B19 Indented" id="B19-5">5 Low-Born Nobles</text>
+ 
+      <text class="RecipeText B20" id="B20-0">Cost:</text>
+      <text class="RecipeText B20 Indented" id="B20-1">8 Million Wood</text>
+      <text class="RecipeText B20 Indented" id="B20-2">12 Million Stone</text>
+      <text class="RecipeText B20 Indented" id="B20-3">2 Million Iron</text>
+      <text class="RecipeText B20 Indented" id="B20-4">1.5 Million Onyx</text>
+      <text class="RecipeText B20 Indented" id="B20-5">6 Land</text>
+      <text class="RecipeText B20 " id="B20-6">Staffing Needs:</text>
+      <text class="RecipeText B20 Indented" id="B20-7">4 Peasents</text>
+      <text class="RecipeText B20 Indented" id="B20-8">6 Low-Born Nobles</text>  
+     
+      <text class="RecipeText B21" id="B21-0">Cost:</text>
+      <text class="RecipeText B21 Indented" id="B21-1">300,000 Refined Stone</text>
+      <text class="RecipeText B21 Indented" id="B21-2">300,000 Refined Wood</text>
+      <text class="RecipeText B21 Indented" id="B21-3">1 Million Polished Onyx</text>
+      <text class="RecipeText B21 " id="B21-4">Staffing Needs:</text>
+      <text class="RecipeText B21 Indented" id="B21-5">3 Low-Born Nobles</text>
+      <text class="RecipeText B21 Indented" id="B21-6">1 High-Born Noble</text>
+ 
+      <text class="RecipeText B22" id="B22-0">Cost:</text>
+      <text class="RecipeText B22 Indented" id="B22-1">7 Million Wood</text>
+      <text class="RecipeText B22 Indented" id="B22-2">4 Land</text>
+      <text class="RecipeText B22" id="B22-3">Staffing Needs:</text>
+      <text class="RecipeText B22 Indented" id="B22-4">1 Peasent</text>  
+
+      <text class="RecipeText B26" id="B26-0">Cost:</text>
+      <text class="RecipeText B26 Indented" id="B26-1">400,000 Refined Stone</text>
+      <text class="RecipeText B26 Indented" id="B26-2">200,000 Refined Wood</text>
+      <text class="RecipeText B26 Indented" id="B26-3">1 Million Amethyst</text>
+      <text class="RecipeText B26 Indented" id="B26-3">4 Land</text>
+      <text class="RecipeText B26 " id="B26-4">Staffing Needs:</text>
+      <text class="RecipeText B26 Indented" id="B26-5">3 Low-Born Nobles</text>
+      <text class="RecipeText B26 Indented" id="B26-6">1 High-Born Noble</text>      <text class="RecipeText B26 Indented" id="B26-3">1 Million Amethyst</text>
+  
+
+      <text class="RecipeText B27" id="B27-0">Cost:</text>
+      <text class="RecipeText B27 Indented" id="B27-1">300,000 Refined Stone</text>
+      <text class="RecipeText B27 Indented" id="B27-2">150,000 Refined Wood</text>
+      <text class="RecipeText B27 Indented" id="B27-3">1 Million Polished Amethyst</text>
+      <text class="RecipeText B27 " id="B27-4">Staffing Needs:</text>
+      <text class="RecipeText B27 Indented" id="B27-5">5 Low-Born Nobles</text>
+      <text class="RecipeText B27 Indented" id="B27-6">1 High-Born Noble</text>      <text class="RecipeText B27 Indented" id="B27-3">1 Million Amethyst</text>
+
+ 
+      
+     
+     
+  
+ 
+
+
+    </CityDevelopment>
+    <ItemMenu>
+      <label id="ItemMenuLabelID" class="ItemMenu" for="ItemMenuID">What Item are you looking for?</label><br>
+      <select class="ItemMenu Dropdown" id="ItemMenuID">
+        <option value="-1"></option>
+        <option value="0">--Lands</option>
+        <option value="-1"></option>
+        <option value="1">Arid Badlands</option>
+        <option value="2">Arid Steppes</option>
+        <option value="3">Arid Oasis</option>
+        <option value="4">Arid River</option>
+        <option value="11">Northern Rocky Wastes</option>
+        <option value="12">Northern Tundra</option>
+        <option value="13">Northern Forest</option>
+        <option value="14">Northern River</option>
+        <option value="21">Rocky Heartland</option>
+        <option value="22">Heartland</option>
+        <option value="23">River Heartland</option>
+        <option value="31">Southern Rocky</option>
+        <option value="32">Southern Forest</option>
+        <option value="33">Southern Jungle</option>
+        <option value="34">Southern River</option>
+        <option value="41">Northern Ocean</option>
+        <option value="42">Central Ocean</option>
+        <option value="43">Southern Ocean</option>
+        <option value="44">Desolate Ocean</option>
+        <option value="51">Brackish Swamp</option>
+        <option value="52">Swamp</option>
+        <option value="53">Lush Swamp</option>
+        <option value="61">Red Mountain</option>
+        <option value="62">Blue Mountain</option>
+        <option value="63">Green Mountain</option>
+        <option value="64">White Mountain</option>
+        <option value="70">Ochre Plains</option>
+        <option value="71">Lustrous River</option>
+        <option value="72">Silver Forest</option>
+        <option value="80">Golden Plains</option>
+        <option value="81">Golden Hills</option>
+        <option value="82">Golden Forest</option>
+        <option value="-1"></option>
+        <option value="0">--Raw Food Items</option>
+        <option value="-1"></option>
+        <option value="501">Wheat</option>
+        <option value="502">Rye</option>
+        <option value="503">Rice</option>
+        <option value="504">Corn</option>
+        <option value="505">Sorghum</option>
+        <option value="506">Apple</option>
+        <option value="507">Plum</option>
+        <option value="508">Olives</option>
+        <option value="509">Beans</option>
+        <option value="510">Mushroom</option>
+        <option value="511">Beets</option>
+        <option value="512">Cassava</option>
+        <option value="513">Peanut</option>
+        <option value="514">Cherry</option>
+        <option value="515">Peach</option>
+        <option value="516">Garlic</option>
+        <option value="517">Onion</option>
+        <option value="518">Carrot</option>
+        <option value="519">Sugarcane</option>
+        <option value="521">Herbs</option>
+        <option value="522">Grapes</option>
+        <option value="523">Ginseng</option>
+        <option value="524">Winter Berry</option>
+        <option value="525">Jungle Berry</option>
+        <option value="526">Auric Honey</option>
+        <option value="527">Wasabi</option>
+        <option value="528">Rushseed</option>
+        <option value="529">Rare Herbs</option>
+        <option value="530">Oysters</option>
+        <option value="531">Fish</option>
+        <option value="532">Beef</option>
+        <option value="533">Chicken</option>
+        <option value="534">Eggs</option>
+        <option value="535">Potato</option>
+        <option value="536">Silver Sap</option>
+        <option value="537">Honey</option>
+        <option value="538">Oats</option>
+        <option value="539">Milk</option>
+        <option value="540">Barley</option>
+        <option value="-1"></option>
+        <option value="0">--Food & Drinks</option>
+        <option value="-1"></option>
+        <option value="1000">Wheat Beer</option>
+        <option value="1001">Rye Beer</option>
+        <option value="1002">Barley Beer</option>
+        <option value="1003">Oat Beer</option>
+        <option value="1004">Rice Beer</option>
+        <option value="1010">Cider</option>
+        <option value="1011">Wine</option>
+        <option value="1012">Plum Wine</option>
+        <option value="1013">Peach Wine</option>
+        <option value="1014">Cherry Wine</option>
+        <option value="1020">Mead</option>
+        <option value="1030">Vodka</option>
+        <option value="1031">Rum</option>
+        <option value="1032">Kumis</option>
+        <option value="1040">Brandy</option>
+        <option value="1041">Silver Wine</option>
+        <option value="1042">Jungle Wine</option>
+        <option value="1043">Winter Wine</option>
+        <option value="1044">Aged Rum</option>
+        <option value="1050">Ginseng Wine</option>
+        <option value="1051">Spiced Vodka</option>
+        <option value="1060">Double Brandy</option>
+        <option value="1061">Auric Mead</option>
+        <option value="1200">Wheat Bread</option>
+        <option value="1201">Rye Bread</option>
+        <option value="1202">Corn Bread</option>
+        <option value="1203">Rice Bread</option>
+        <option value="1204">Sorghum Bread</option>
+        <option value="1205">Barley Bread</option>
+        <option value="1206">Oat Bread</option>
+        <option value="1207">Pastries</option>
+        <option value="1208">Fruit Pastries</option>
+        <option value="1220">Apple Pie</option>
+        <option value="1221">Plum Pie</option>
+        <option value="1222">Peach Pie</option>
+        <option value="1223">Sugar Pie</option>
+        <option value="1224">Pot Pie</option>
+        <option value="1230">Cheese</option>
+        <option value="1231">Aged Cheese</option>
+        <option value="1232">Imperial Cheese</option>
+        <option value="1240">Dried Vegetables</option>
+        <option value="1241">Pickled Vegetables</option>
+        <option value="1250">Dried Fruit</option>
+        <option value="1251">Brandied Fruit</option>
+        <option value="1260">Sausage</option> 
+        <option value="1261">Fried Meat</option>
+        <option value="1262">Roast</option>
+        <option value="1263">Cured Meat</option>
+        <option value="1264">Salted Meat</option>
+        <option value="1265">Preserved Eggs</option>
+        <option value="1270">Beef Stew</option>
+        <option value="1271">King's Stew</option>
+        <option value="1272">Glittercake</option>
+        <option value="1273">Cheesy Bread</option>
+        <option value="1274">Fancy Cheese Bread</option>
+        <option value="1275">Beans And Rice</option>
+        <option value="1276">Morning Plate</option>
+        <option value="1277">Spice Fish</option>
+        <option value="1278">Charcutery</option>
+        <option value="1300">Vinegar</option>
+        <option value="1301">Sugar</option>
+        <option value="1302">Olive Oil</option>
+        <option value="1303">Flour</option>
+        <option value="1304">Ketchup</option>
+        <option value="1305">Basic Spice Pack</option>
+        <option value="1306">Royal Spice Pack</option>
+        <option value="1307">Confectioners Dough</option>
+        <option value="1308">Fruit Preserves</option> 
+        <option value="-1"></option>
+        <option value="0">--Raw Materials</option>
+        <option value="-1"></option>
+        <option value="2001">Stone</option>
+        <option value="2002">Wood</option>
+        <option value="2003">Salt</option>
+        <option value="2021">Iron Ore</option>
+        <option value="2022">Gold Ore</option>
+        <option value="2023">Silver Ore</option>
+        <option value="2024">Copper Ore</option>
+        <option value="2025">Tin Ore</option>
+        <option value="-1"></option>
+        <option value="0">--Industrial Goods</option>
+        <option value="-1"></option>
+        <option value="2101">Refined Stone Blocks</option>
+        <option value="2102">Carved Wood</option>
+        <option value="2121">Iron</option>
+        <option value="2122">Gold</option>
+        <option value="2123">Silver</option>
+        <option value="2124">Copper</option>
+        <option value="2125">Tin</option>
+        <option value="2180">Emerald Bronze</option>
+        <option value="2181">Bronze</option>
+        <option value="2182">Steel</option>
+        <option value="2183">Damascus Steel</option>
+        <option value="-1"></option>
+        <option value="0">--Gemstones</option>
+        <option value="-1"></option>
+        <option value="2200">Ruby</option>
+        <option value="2201">Emerald</option>
+        <option value="2202">Sapphire</option>
+        <option value="2203">Diamond</option>
+        <option value="2204">Amethyst</option>
+        <option value="2205">Opal</option>
+        <option value="2206">Citrine</option>
+        <option value="2207">Pearls</option>
+        <option value="2208">Moonstone</option>
+        <option value="2209">Amber</option>
+        <option value="2210">Onyx</option>
+        <option value="2211">Aquamarine</option>
+        <option value="2212">Crystal Glass</option>
+        <option value="2213">Bloodstone</option>
+        <option value="2300">Polished Ruby</option>
+        <option value="2301">Polished Emerald</option>
+        <option value="2302">Polished Sapphire</option>
+        <option value="2303">Polished Diamond</option>
+        <option value="2304">Polished Amethyst</option>
+        <option value="2305">Polished Opal</option>
+        <option value="2306">Polished Citrine</option>
+        <option value="2307">Polished Pearls</option>
+        <option value="2308">Polished Moonstone</option>
+        <option value="2309">Polished Amber</option>
+        <option value="2310">Polished Onyx</option>
+        <option value="2311">Polished Aquamarine</option>
+        <option value="2312">Polished Crystal Glass</option>
+        <option value="-1"></option>
+        <option value="0">--Drinks</option>
+        <option value="-1"></option>
+        <option value="4000">Nails</option>
+        <option value="4001">Diamond Blades</option>
+        <option value="4079">Magnificent Lens Component</option>
+        <option value="4080">MagnificentcLens</option>
+        <option value="58800">Coins</option>
+        
+        
+      </select>
+    </ItemMenu>
+    <BuyorSell>
+      <label for="BuyorSellID" class="BuyorSell" id="BuyorSellLabel">Are you Buying or Selling?</label>
+
+      <select class="BuyorSell Dropdown" id="BuyorSellID">
+        <option value="-1"></option>
+        <option value="200000">Buy</option>
+        <option value="100000">Sell</option>
+      </select>
+    
+
+
+
+    </BuyorSell>
+
+
+
+
+    <ItemTypes>
+
+      <label for="ItemTypesID" class="ItemTypes" id="ItemTypesLabel">What kind of item are you trying to trade?</label>
+
+      <select class="ItemTypes Dropdown" id="ItemTypesID">
+        <option value="-1"></option>
+        <option value="0">Land</option>
+        <option value="1">Raw Foods</option>
+        <option value="2">Food/Drinks</option>
+        <option value="3">Raw Materials</option>
+        <option value="4">Refined Materials</option>
+        <option value="5">Gemstones</option>
+        <option value="6">Finished Goods</option>
+        <option value="7">Military Goods</option>
+      </select>
+    
+
+
+    </ItemTypes>
+
+    <FoodAmounts>
+
+      <br>
+      <text class="foodInput" id="foodInputLabel">What would you like to feed the workers?</text>
+
+      <select class="foodInput Dropdown" id="FoodInputID1">
+        <option value="-1"></option>
+        <option value="0">None</option>
+        <option value="-1"></option>       
+        <option value="1000">Wheat Beer</option>
+        <option value="1001">Rye Beer</option>
+        <option value="1002">Barley Beer</option>
+        <option value="1003">Oat Beer</option>
+        <option value="1004">Rice Beer</option>
+        <option value="1010">Cider</option>
+        <option value="1011">Wine</option>
+        <option value="1012">Plum Wine</option>
+        <option value="1013">Peach Wine</option>
+        <option value="1014">Cherry Wine</option>
+        <option value="1020">Mead</option>
+        <option value="1030">Vodka</option>
+        <option value="1031">Rum</option>
+        <option value="1032">Kumis</option>
+        <option value="1040">Brandy</option>
+        <option value="1041">Silver Wine</option>
+        <option value="1042">Jungle Wine</option>
+        <option value="1043">Winter Wine</option>
+        <option value="1044">Aged Rum</option>
+        <option value="1050">Ginseng Wine</option>
+        <option value="1051">Spiced Vodka</option>
+        <option value="1060">Double Brandy</option>
+        <option value="1061">Auric Mead</option>
+      </select>
+      <select class="foodInput Dropdown" id="FoodInputID2">
+        <option value="-1"></option>
+        <option value="0">None</option>
+        <option value="-1"></option>    
+        <option value="1200">Wheat Bread</option>
+        <option value="1201">Rye Bread</option>
+        <option value="1202">Corn Bread</option>
+        <option value="1203">Rice Bread</option>
+        <option value="1204">Sorghum Bread</option>
+        <option value="1205">Barley Bread</option>
+        <option value="1206">Oat Bread</option>
+        <option value="1207">Pastries</option>
+        <option value="1208">Fruit Pastries</option>
+        <option value="1220">Apple Pie</option>
+        <option value="1221">Plum Pie</option>
+        <option value="1222">Peach Pie</option>
+        <option value="1223">Sugar Pie</option>
+        <option value="1224">Pot Pie</option>
+        <option value="1230">Cheese</option>
+        <option value="1231">Aged Cheese</option>
+        <option value="1232">Imperial Cheese</option>
+        <option value="1240">Dried Vegetables</option>
+        <option value="1241">Pickled Vegetables</option>
+        <option value="1250">Dried Fruit</option>
+        <option value="1251">Brandied Fruit</option>
+        <option value="1260">Sausage</option> 
+        <option value="1261">Fried Meat</option>
+        <option value="1262">Roast</option>
+        <option value="1263">Cured Meat</option>
+        <option value="1264">Salted Meat</option>
+        <option value="1265">Preserved Eggs</option>
+        <option value="1270">Beef Stew</option>
+        <option value="1271">King's Stew</option>
+        <option value="1272">Glittercake</option>
+        <option value="1273">Cheesy Bread</option>
+        <option value="1274">Fancy Cheese Bread</option>
+        <option value="1275">Beans And Rice</option>
+        <option value="1276">Morning Plate</option>
+        <option value="1277">Spice Fish</option>
+        <option value="1278">Charcutery</option>
+      </select>
+    </FoodAmounts>
+    <WarInput class="WarInput" id="WarInput">
+
+      <text class="WarInput" id="WLabel1">Which slot do troops go in?</text>
+      <input type="text" class="WarInput" id="WID1">
+      <br class="WarInput" id="WBR1">
+
+
+        <text class="MercWarInput WarInput" id="WLabel2">what type of solider?</text>
+        <input type="text" class="WarInput MercWarInput" id="WID2">
+        <br class="WarInput MercWarInput" id="WBR2">
+
+      <text class="WarInput" id="WLabel3">what weapon?</text>
+      <input type="text" class="WarInput" id="WID3">
+      <br class="WarInput" id="WBR3">
+
+      <text class="WarInput" id="WLabel4">what offhand?</text>
+      <input type="text" class="WarInput" id="WID4">
+      <br class="WarInput" id="WBR4">
+
+      <text class="WarInput" id="WLabel5">what armor?</text>
+      <input type="text" class="WarInput" id="WID5">
+      <br class="WarInput" id="WBR5">
+
+      <text class="WarInput" id="WLabel6">what other item?</text>
+      <input type="text" class="WarInput" id="WID6">
+      <br class="WarInput" id="WBR6">
+
+    </WarInput>
+
+
+    <KingdomInput class="KingdomInput" id="KIDInfo">
+      <label id="KIDInfo" for="KingdomID">What kind of Kingdom would you like? WARNING: CAN ONLY BE DONE ONCE</label><br>
+      <select class="KingdomInput Dropdown" id="KingdomID">
+      <option value="-1"></option>
+      <option value="1">Arid</option>
+      <option value="2">Northern</option>
+      <option value="3">Heartland</option>
+      <option value="4">Southern</option>
+      <option value="5">Ocean</option>
+      <option value="6">Mountain</option>
+      <option value="7">Swamp</option>
+      <option value="8">Silver</option>
+      <option value="9">Gold</option>
+      </select>
+    </KingdomInput>
+
+
+
+    <RecruitPeople class="RecruitInput" id="RecruitInput">
+      <label for="RecruitID">What Type of citizen are you recruiting?</label><br>
+      <input type="text"id="RecruitID">
+
+    </RecruitPeople>
+      <br>
+    <ItemSelection class="itemSelection" id ="itemSelection">
+      <br>
+        <label class="itemSelection Grains" id="GrainLabel">What Kind of Grain would you like to use?</label>
+        <select class="Grains Items Dropdown" id="Grain">
+          <option value="-1"></option>
+          <option value="501">Wheat</option>
+          <option value="502">Rye</option>
+          <option value="504">Corn</option>
+          <option value="503">Rice</option>
+          <option value="505">Sorghum</option>
+          <option value="538">Oats</option>
+          <option value="540">Barley</option>
+      </select>
+      <label class="itemSelection Meats" id="MeatLabel">What Kind of Meat would you like to use?</label>
+      <select class="Meats Items Dropdown" id="Meat">
+        <option value="-1"></option>
+        <option value="531">Fish</option>
+        <option value="532">Beef</option>
+        <option value="533">Chicken</option>
+      </select>
+      <label class="itemSelection Fruits" id="FruitLabel">What Kind of Fruit would you like to use?</label>
+      <select class="Fruits Items Dropdown" id="Fruit">
+        <option value="-1"></option>
+        <option value="522">Grapes</option>
+        <option value="515">Peaches</option>
+        <option value="507">Plums</option>
+        <option value="506">Apples</option>
+        <option value="514">Cherries</option>
+      </select>
+      <label class="itemSelection Veggies" id="VeggieLabel">What Kind of Vegetables would you like to use?</label>
+      <select class="Veggies Items Dropdown" id="Veggie">
+        <option value="-1"></option>
+        <option value="517">Potatoes</option>
+        <option value="518">Onions</option>
+        <option value="520">Carrots</option>
+      </select>
+    </ItemSelection>
+    <br>
+    <TXamount class="Amount" id="AmountID">
+      <text class="Amount"id="AmountLabel">How much of this transaction would you like to do?</text>
+      <input type="text" class="Amount NumericInput" id="Amount"onchange="totalCostCalc()">
+      
+
+    </TXamount>
+
+    <TotalCost>
+
+      <text id="totalCostID" class="TotalCost">Total Cost:</text>
+
+    </TotalCost>
+      
+      <button class="sendTX" id="sendTX" onclick="submitTX()">Confirm Transaction</button>
+      <text id="balance" class="Balance">Balance of Item:</text>
+      <text id="peasentPop" class="Population">Pesants:</text>
+
+    <Time>
+      <text class="Time"id="timeToCompletion">Time To Completion:</text>
+    </Time>
+
+</body>
+</html>
+
+
+ 
+
+<style>
+
+body {
+
+background-color: mediumseagreen;
+}
+.Farming,.landAmount,.landSelection,.Recipe,.CraftingInput,.BuildingInput,
+.KingdomInput,.WarInput,.RecruitInput,.CDInput,.MercWarInput,.AridKingdom,
+.NorthernKingdom,.HeartlandKingdom,.SouthernKingdom,.OceanKingdom,.SwampKingdom,
+.MountainKingdom,.SilverKingdom,.GuildedKingdom,.Grains,.Meats,.itemSelection,
+.RecipeText,.BuyorSell,.ItemTypes,.BuyorSell,.Balance,.ItemMenu,.Amount,.foodInput,
+.Fruits,.Veggies,.TotalCost,.Population,.Time
+ {
+  display: none;
+}
+
+
+.walletConnect {
+  background-color:brown;
+  position:absolute;
+  right: 5%;
+  width: 150px;
+  height: 50px;
+  border-radius: 12px;
+}
+.CraftingInput{
+  width: 60px;
+  
+}
+.sendTX{
+  background-color: darkred;
+  color: black;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  width: 150px;
+  height: 75px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 12px;
+}
+.sendTX:hover{
+  background-color: brown;
+  font-size: 18px;
+}
+.NumericInput {
+  border-radius: 2px;
+  background-color: aqua;
+  border: none;
+}
+.Dropdown {
+  background-color: wheat;
+  border-radius: 4px;
+  font-size: 16px;
+
+}
+.CIWrap{
+  display: grid;
+  grid-template-columns: 60px 70px 60px 5px;
+}
+.RecipeText {
+  font-size: 20px;  
+
+}
+.Indented {
+  text-indent: 20px;
+}
+.Balance {
+  font-size: 24px;
+}
+
+</style>
+
+
+
