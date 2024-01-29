@@ -2605,7 +2605,7 @@
     var _item_building = whyJS[5];
     for(let i = 0; i < 32; i++) {
       if (i != _item_building[0] && i != _item_building[1] && i != _item_building[2] && i != _item_building[3] )
-      {document.getElementsByClassName("_test")[i].style.display = "none";}
+      {document.getElementsByClassName("buildingSelector")[i].style.display = "none";}
     }
 
 
@@ -3274,42 +3274,42 @@
       <text class="CDInput" id="CDLabel">Which Building is involved?</text>
       <select class="CDInput Dropdown" id="CID" onclick="buildingCost(this.value); calcCost(); totalCostCalc();">
         <option value="-1"></option>
-        <option class="_test" value="0">Land Permit</option>
-        <option class="_test" value="1">Tier 1 Housing</option>
-        <option class="_test" value="2">Tier 2 Housing</option>
-        <option class="_test" value="3">Tier 3 Housing</option>
-        <option class="_test" value="4">Tier 4 Housing</option>
-        <option class="_test" value="5">Tier 5 Housing</option>
-        <option class="_test" value="6">Tier 6 Housing</option>
-        <option class="_test" value="7">Tier 7 Housing</option>
+        <option class="buildingSelector" value="0">Land Permit</option>
+        <option class="buildingSelector" value="1">Tier 1 Housing</option>
+        <option class="buildingSelector" value="2">Tier 2 Housing</option>
+        <option class="buildingSelector" value="3">Tier 3 Housing</option>
+        <option class="buildingSelector" value="4">Tier 4 Housing</option>
+        <option class="buildingSelector" value="5">Tier 5 Housing</option>
+        <option class="buildingSelector" value="6">Tier 6 Housing</option>
+        <option class="buildingSelector" value="7">Tier 7 Housing</option>
 
-        <option class="_test" value="8">Tier 1 Cookery</option>
-        <option class="_test" value="9">Tier 2 Cookery</option>
-        <option class="_test" value="10">Tier 3 Cookery</option>
-        <option class="_test" value="11">Tier 4 Cookery</option>
+        <option class="buildingSelector" value="8">Tier 1 Cookery</option>
+        <option class="buildingSelector" value="9">Tier 2 Cookery</option>
+        <option class="buildingSelector" value="10">Tier 3 Cookery</option>
+        <option class="buildingSelector" value="11">Tier 4 Cookery</option>
 
-        <option class="_test" value="12">Tier 1 Brewery</option>
-        <option class="_test" value="13">Tier 2 Brewery</option>
-        <option class="_test" value="14">Tier 3 Brewery</option>
-        <option class="_test" value="15">Tier 4 Brewery</option>
+        <option class="buildingSelector" value="12">Tier 1 Brewery</option>
+        <option class="buildingSelector" value="13">Tier 2 Brewery</option>
+        <option class="buildingSelector" value="14">Tier 3 Brewery</option>
+        <option class="buildingSelector" value="15">Tier 4 Brewery</option>
         
-        <option class="_test" value="16">Tier 1 Smeltery</option>
-        <option class="_test" value="17">Tier 2 Smeltery</option>
-        <option class="_test" value="18">Tier 3 Smeltery</option>
+        <option class="buildingSelector" value="16">Tier 1 Smeltery</option>
+        <option class="buildingSelector" value="17">Tier 2 Smeltery</option>
+        <option class="buildingSelector" value="18">Tier 3 Smeltery</option>
 
-        <option class="_test" value="19">Builder</option>
+        <option class="buildingSelector" value="19">Builder</option>
 
-        <option class="_test" value="20">Tier 1 Blacksmith</option>
-        <option class="_test" value="21">Tier 2 Blacksmith</option>
+        <option class="buildingSelector" value="20">Tier 1 Blacksmith</option>
+        <option class="buildingSelector" value="21">Tier 2 Blacksmith</option>
 
-        <option class="_test" value="22">Aging Facilitity</option>
-        <option class="_test" value="23"></option>
+        <option class="buildingSelector" value="22">Aging Facilitity</option>
+        <option class="buildingSelector" value="23"></option>
 
-        <option class="_test" value="24">Tier 1 Temple</option>
-        <option class="_test" value="25">Tier 2 Temple</option>
+        <option class="buildingSelector" value="24">Tier 1 Temple</option>
+        <option class="buildingSelector" value="25">Tier 2 Temple</option>
 
-        <option class="_test" value="26">Tier 1 Jeweler</option>
-        <option class="_test" value="27">Tier 2 Jeweler</option>
+        <option class="buildingSelector" value="26">Tier 1 Jeweler</option>
+        <option class="buildingSelector" value="27">Tier 2 Jeweler</option>
 
       </select>
 
@@ -3932,13 +3932,20 @@
 
     </TotalCost>
       
-      <button class="sendTX" id="sendTX" onclick="submitTX()">Confirm Transaction</button>
       <text id="balance" class="Balance">Balance of Item:</text>
       <text id="peasentPop" class="Population">Pesants:</text>
 
     <Time>
       <text class="Time"id="timeToCompletion">Time To Completion:</text>
     </Time>
+
+    <NotesButton class="MenuButtons">
+        <button class="sendTX" id="sendTX" onclick="submitTX()">Confirm Transaction</button>
+
+      <a  href="notes.html">
+        <button class="notesButton">See Notes Here!</button>
+      </a>
+    </NotesButton>
 
 </body>
 </html>
@@ -3978,14 +3985,22 @@ background-color: mediumseagreen;
 .sendTX{
   background-color: darkred;
   color: black;
-  position: absolute;
-  bottom: 5px;
-  left: 5px;
+  position: relative;
   width: 150px;
-  height: 75px;
+  height: 80px;
   text-align: center;
   font-size: 16px;
   border-radius: 12px;
+}
+.notesButton{
+  background-color: gray;
+  width: 150px;
+  height:40px;
+  position: relative;
+  border-radius: 12px;
+  font-size: 16px;
+  left: 25%;
+  bottom:20px;
 }
 .sendTX:hover{
   background-color: brown;
@@ -4000,7 +4015,10 @@ background-color: mediumseagreen;
   background-color: wheat;
   border-radius: 4px;
   font-size: 16px;
-
+}
+.MenuButtons{
+  position:absolute;
+  bottom:10px;
 }
 .CIWrap{
   display: grid;
