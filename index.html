@@ -3942,9 +3942,12 @@
     <NotesButton class="MenuButtons">
         <button class="sendTX" id="sendTX" onclick="submitTX()">Confirm Transaction</button>
 
-      <a  href="notes.html">
-        <button class="notesButton">See Notes Here!</button>
-      </a>
+        <a  href="notes.html">
+          <button class="notesButton">See Notes Here!</button>
+        </a>
+        <a  href="dev.html">
+          <button class="debugButton">Debug</button>
+        </a>
     </NotesButton>
 
 </body>
@@ -3971,12 +3974,15 @@ background-color: mediumseagreen;
 
 
 .walletConnect {
-  background-color:brown;
+  background-color:darkred;
   position:absolute;
   right: 5%;
   width: 150px;
   height: 50px;
   border-radius: 12px;
+}
+.walletConnect:hover {
+  background-color: brown;
 }
 .CraftingInput{
   width: 60px;
@@ -3992,6 +3998,10 @@ background-color: mediumseagreen;
   font-size: 16px;
   border-radius: 12px;
 }
+.sendTX:hover{
+  background-color: brown;
+  font-size: 18px;
+}
 .notesButton{
   background-color: gray;
   width: 150px;
@@ -4002,9 +4012,16 @@ background-color: mediumseagreen;
   left: 25%;
   bottom:20px;
 }
-.sendTX:hover{
-  background-color: brown;
-  font-size: 18px;
+.notesButton:hover {
+    background-color: rgb(179, 165, 165);
+}
+.debugButton{
+  position: absolute;
+  bottom: 10px;
+  left:700px;
+  font-size:5px;
+  background-color: mediumseagreen;
+  border: 0px;
 }
 .NumericInput {
   border-radius: 2px;
