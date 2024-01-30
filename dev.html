@@ -2,17 +2,56 @@
 
 <html>
 <head>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+    type="application/javascript"></script>
+    <script src="./abi.js"
+    type="application/javascript"></script>
+    
+<script>
+        const address = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
+    async function submitTX() {
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner()
+      const NFTcontract = new ethers.Contract(address,abi,provider)
+      const NFTcontractSigner = new ethers.Contract(address, abi, signer); 
+      const myAddress = await signer.getAddress()
+      var _cityData = await NFTcontract.getKingdomInfo(myAddress);
+      console.log(_cityData);
+      const _kingdomType = _cityData[4];
+
+    switch(FunctionCalled.value) {
+
+        case "1":
+        NFTcontractSigner.adminMint(document.getElementById("Input1").value,
+        document.getElementById("Input2").value);
+        break;
+        case "2":
+        NFTcontractSigner.adjustTime(document.getElementById("Input1").value);
+        break;
+    }
+
+    }
+</script>
 </head>
 <body>
+    
     <text>Dev Features: Dev use only. If you aren't dev any TX's sent from this menu will fail</text>
+    <br>
+    <text>Mint Items:</text>
+    <input id="Input1">
+    <input id="Input2">
+    <br>
+    <input id="FunctionCalled">
 
     <MenuButtons class="menuButtons">
+        <button class="sendTX" id="sendTX" onclick="submitTX()">Confirm Transaction</button>
         <a href="index.html">
             <button class="indexButton">Return to Main Menu</button>
           </a>
     </MenuButtons>
 
+    
 </body>
 </html>
 
@@ -37,5 +76,20 @@ body {background-color: mediumseagreen;}
 }
 .indexButton:hover {
     background-color: rgb(179, 165, 165);
+}
+
+.sendTX{
+  background-color: darkred;
+  color: black;
+  position: relative;
+  width: 150px;
+  height: 80px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 12px;
+}
+.sendTX:hover{
+  background-color: brown;
+  font-size: 18px;
 }
 </style>
