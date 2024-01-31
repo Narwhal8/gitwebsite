@@ -166,7 +166,6 @@
         let _population = _cityData[0];
         let _jobless_population = _cityData[1];
         let _max_population = _cityData[2];
-        console.log(_population)
         document.getElementById("peasentPop").style.display = "block";
         if(document.getElementById("peasentPop").textContent != "Pesants:") 
         {document.getElementById("peasentPop").textContent = "Pesants:";}
@@ -2486,7 +2485,7 @@
       case "2":
         showCraftingFields();
         document.getElementById("totalCostID").style.display = "block";
-        hideTest();
+        hideInvalidBuildings();
 
         break;
       case "3":
@@ -2599,7 +2598,7 @@
       document.getElementById("landSelection").style.display = "block";
   }
   
-  function hideTest() {
+  function hideInvalidBuildings() {
 
     let whyJS = craftingRecipiesIngrediants(Number(document.getElementById("RecipeID").value));
     var _item_building = whyJS[5];
@@ -2771,6 +2770,9 @@
       document.getElementById("totalCostID").style.display = "none";
 
       document.getElementById("BuyorSellLabel").style.display = "none";
+
+      document.getElementById("peasentPop").style.display = "none";
+
 
 
   }
@@ -3129,7 +3131,7 @@
     <Recipe class="Recipe RecipeText"id="Recipe RecipeText">
       <label class="Recipe"for="RecipeID" id="RecipeLabel">Input Recipe Number:</label>
 
-      <select class="Recipe Dropdown" id="RecipeID" onchange="Stuff(this.value); totalCostCalc(); hideTest();">
+      <select class="Recipe Dropdown" id="RecipeID" onchange="Stuff(this.value); totalCostCalc(); hideInvalidBuildings();">
         <option value="-1"></option>
         <option value="0">--Drinks</option>
         <option value="-1"></option>
@@ -3931,9 +3933,14 @@
       <text id="totalCostID" class="TotalCost">Total Cost:</text>
 
     </TotalCost>
+
+    <KingdomInfo>
+      <text id="peasentPop" class="Population">Pesants:</text>
+      <text class="Population"></text>
+   
+    </KingdomInfo>
       
       <text id="balance" class="Balance">Balance of Item:</text>
-      <text id="peasentPop" class="Population">Pesants:</text>
 
     <Time>
       <text class="Time"id="timeToCompletion">Time To Completion:</text>
