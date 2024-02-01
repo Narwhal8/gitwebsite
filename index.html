@@ -37,6 +37,17 @@
                 0,0,4,10, // Jeweler/Battle order
                 0,0,0,0];
     const Time_Multiplier = 144;
+    const Kingdom_Lands = 
+    [[0],
+    [1,2,3,4,44,0,0,0],
+    [11,12,13,14,41,0,0,0],
+    [21,22,23,42,0,0,0,0],
+    [31,32,33,34,43,0,0,0],
+    [41,42,43,44,0,0,0,0],
+    [51,52,53,0,0,0,0,0],
+    [61,62,63,64,0,0,0,0],
+    [70,71,72,0,0,0,0,0],
+    [80,81,82,0,0,0,0,0]];
 
 
   async function signon() {
@@ -166,6 +177,7 @@
         let _population = _cityData[0];
         let _jobless_population = _cityData[1];
         let _max_population = _cityData[2];
+        let _land = _cityData[5];
         document.getElementById("peasentPop").style.display = "block";
         if(document.getElementById("peasentPop").textContent != "Pesants:") 
         {document.getElementById("peasentPop").textContent = "Pesants:";}
@@ -193,6 +205,25 @@
         document.getElementById("highNobelPop").textContent += _jobless_population[2];
         document.getElementById("highNobelPop").textContent += ", Max:";
         document.getElementById("highNobelPop").textContent += _max_population[2];
+
+        for(let i = 0; i < 10; i++) {
+
+          var _name = "land";
+          _name += (i + 1);
+
+          if(Kingdom_Lands[_kingdomType][i] != 0) 
+          {document.getElementById(_name).style.display = "block";}
+          else{break;}
+          if(document.getElementById(_name).textContent != "Land Balance:")
+          {document.getElementById(_name).textContent = "Land Balance:"}
+
+
+          document.getElementById(_name).textContent += _land[i];
+          document.getElementById(_name).textContent += " ";
+          document.getElementById(_name).textContent += itemName(Kingdom_Lands[_kingdomType][i]);
+
+
+        }
         break;
       
 
@@ -3956,6 +3987,14 @@
       <text id="peasentPop" class="Population">Pesants:</text>
       <text id="lowNobelPop" class="Population">Low Nobles:</text>
       <text id="highNobelPop" class="Population">High Nobles:</text>
+      <text id="land1" class="Population">Land Balance:</text>
+      <text id="land2" class="Population">Land Balance:</text>
+      <text id="land3" class="Population">Land Balance:</text>
+      <text id="land4" class="Population">Land Balance:</text>
+      <text id="land5" class="Population">Land Balance:</text>
+      <text id="land6" class="Population">Land Balance:</text>
+      <text id="land7" class="Population">Land Balance:</text>
+      <text id="land8" class="Population">Land Balance:</text>
    
     </KingdomInfo>
       
