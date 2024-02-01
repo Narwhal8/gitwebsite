@@ -170,11 +170,29 @@
         if(document.getElementById("peasentPop").textContent != "Pesants:") 
         {document.getElementById("peasentPop").textContent = "Pesants:";}
         document.getElementById("peasentPop").textContent += _population[0];
-        document.getElementById("peasentPop").textContent += ",Jobless:";
+        document.getElementById("peasentPop").textContent += ", Jobless:";
         document.getElementById("peasentPop").textContent += _jobless_population[0];
-        document.getElementById("peasentPop").textContent += ",Max:";
+        document.getElementById("peasentPop").textContent += ", Max:";
         document.getElementById("peasentPop").textContent += _max_population[0];
         document.getElementById("peasentPop").style.display = "block";
+        
+        document.getElementById("lowNobelPop").style.display = "block";
+        if(document.getElementById("lowNobelPop").textContent != "Low Nobles:") 
+        {document.getElementById("lowNobelPop").textContent = "Low Nobles:";}
+        document.getElementById("lowNobelPop").textContent += _population[1];
+        document.getElementById("lowNobelPop").textContent += ", Jobless:";
+        document.getElementById("lowNobelPop").textContent += _jobless_population[1];
+        document.getElementById("lowNobelPop").textContent += ", Max:";
+        document.getElementById("lowNobelPop").textContent += _max_population[1];
+        
+        document.getElementById("highNobelPop").style.display = "block";
+        if(document.getElementById("highNobelPop").textContent != "High Nobles:") 
+        {document.getElementById("highNobelPop").textContent = "High Nobles:";}
+        document.getElementById("highNobelPop").textContent += _population[2];
+        document.getElementById("highNobelPop").textContent += ", Jobless:";
+        document.getElementById("highNobelPop").textContent += _jobless_population[2];
+        document.getElementById("highNobelPop").textContent += ", Max:";
+        document.getElementById("highNobelPop").textContent += _max_population[2];
         break;
       
 
@@ -3936,7 +3954,8 @@
 
     <KingdomInfo>
       <text id="peasentPop" class="Population">Pesants:</text>
-      <text class="Population"></text>
+      <text id="lowNobelPop" class="Population">Low Nobles:</text>
+      <text id="highNobelPop" class="Population">High Nobles:</text>
    
     </KingdomInfo>
       
