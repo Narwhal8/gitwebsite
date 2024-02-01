@@ -262,14 +262,14 @@
 						"type": "uint8[4]"
 					}
 				],
-				"internalType": "struct City.CookingRecipes",
+				"internalType": "struct City.CookingRecipes[32]",
 				"name": "_recipies",
-				"type": "tuple"
+				"type": "tuple[32]"
 			},
 			{
-				"internalType": "uint256",
+				"internalType": "uint256[32]",
 				"name": "_id",
-				"type": "uint256"
+				"type": "uint256[32]"
 			}
 		],
 		"name": "addCraftingData",
@@ -409,12 +409,12 @@
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "_amount",
+				"name": "_id",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "_id",
+				"name": "_amount",
 				"type": "uint256"
 			}
 		],
@@ -500,32 +500,6 @@
 			}
 		],
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			}
-		],
-		"name": "bridgeToOrFrom20",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			}
-		],
-		"name": "bridgefrom20",
-		"outputs": [],
-		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
