@@ -688,19 +688,14 @@
 				"internalType": "address",
 				"name": "_who",
 				"type": "address"
-			},
-			{
-				"internalType": "uint8",
-				"name": "_building",
-				"type": "uint8"
 			}
 		],
 		"name": "getBuildingCount",
 		"outputs": [
 			{
-				"internalType": "uint16",
+				"internalType": "uint16[32]",
 				"name": "",
-				"type": "uint16"
+				"type": "uint16[32]"
 			}
 		],
 		"stateMutability": "view",
@@ -1003,39 +998,39 @@
 				"type": "bool"
 			},
 			{
-				"internalType": "uint8",
+				"internalType": "uint256",
 				"name": "_armySlot",
-				"type": "uint8"
+				"type": "uint256"
 			},
 			{
-				"internalType": "uint16",
+				"internalType": "uint256",
 				"name": "_soliderType",
-				"type": "uint16"
+				"type": "uint256"
 			},
 			{
-				"internalType": "uint16",
+				"internalType": "uint256",
 				"name": "_weapon",
-				"type": "uint16"
+				"type": "uint256"
 			},
 			{
-				"internalType": "uint16",
+				"internalType": "uint256",
 				"name": "_offhand",
-				"type": "uint16"
+				"type": "uint256"
 			},
 			{
-				"internalType": "uint16",
+				"internalType": "uint256",
 				"name": "_armor",
-				"type": "uint16"
+				"type": "uint256"
 			},
 			{
-				"internalType": "uint16",
+				"internalType": "uint256",
 				"name": "_other",
-				"type": "uint16"
+				"type": "uint256"
 			},
 			{
-				"internalType": "uint32",
+				"internalType": "uint256",
 				"name": "_amount",
-				"type": "uint32"
+				"type": "uint256"
 			}
 		],
 		"name": "sendToWar",
