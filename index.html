@@ -177,7 +177,10 @@
         let _population = _cityData[0];
         let _jobless_population = _cityData[1];
         let _max_population = _cityData[2];
+        let _land_available = _cityData[3];
         let _land = _cityData[5];
+
+
         document.getElementById("peasentPop").style.display = "block";
         if(document.getElementById("peasentPop").textContent != "Pesants:") 
         {document.getElementById("peasentPop").textContent = "Pesants:";}
@@ -206,10 +209,15 @@
         document.getElementById("highNobelPop").textContent += ", Max:";
         document.getElementById("highNobelPop").textContent += _max_population[2];
 
+
+        document.getElementsByClassName("Population")[3].style.display = "block";
+
         for(let i = 0; i < 10; i++) {
 
           var _name = "land";
           _name += (i + 1);
+
+          document.getElementsByClassName("Population")[i + 3].style.display = "block";
 
           if(Kingdom_Lands[_kingdomType][i] != 0) 
           {document.getElementById(_name).style.display = "block";}
@@ -221,6 +229,10 @@
           document.getElementById(_name).textContent += _land[i];
           document.getElementById(_name).textContent += " ";
           document.getElementById(_name).textContent += itemName(Kingdom_Lands[_kingdomType][i]);
+          document.getElementById(_name).textContent += "________";
+          if(_land_available[i] == false) 
+          {document.getElementById(_name).textContent += "Land is available";}
+          else {document.getElementById(_name).textContent += "Land NOT available";}
 
 
         }
@@ -2820,8 +2832,9 @@
 
       document.getElementById("BuyorSellLabel").style.display = "none";
 
-      document.getElementById("peasentPop").style.display = "none";
-
+      for(let i = 0; i < 12; i++) {
+          document.getElementsByClassName("Population")[i].style.display = "none"
+        }
 
 
   }
@@ -3987,6 +4000,7 @@
       <text id="peasentPop" class="Population">Pesants:</text>
       <text id="lowNobelPop" class="Population">Low Nobles:</text>
       <text id="highNobelPop" class="Population">High Nobles:</text>
+      <br class="Population">
       <text id="land1" class="Population">Land Balance:</text>
       <text id="land2" class="Population">Land Balance:</text>
       <text id="land3" class="Population">Land Balance:</text>
