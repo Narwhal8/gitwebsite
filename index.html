@@ -2643,9 +2643,6 @@
         document.getElementById("CDInput").style.display = "block";
         document.getElementById("CDLabel").style.display = "inline";
         document.getElementById("CID").style.display = "inline";
-        document.getElementById("landLabel").style.display = "inline";
-        document.getElementById("landSelection").style.display = "block";
-        showLandMenu();
 
         break;
       case "5":
@@ -2735,8 +2732,15 @@
 
       }
           
+
       document.getElementById("landLabel").style.display = "inline";
-      document.getElementById("landSelection").style.display = "block";
+        document.getElementById("landSelection").style.display = "block";
+  }
+  
+  function hideLandMenu() {
+    
+    document.getElementById("landLabel").style.display = "none";
+        document.getElementById("landSelection").style.display = "none";
   }
   
   function hideInvalidBuildings() {
@@ -3140,6 +3144,25 @@
         document.getElementsByClassName("B27")[6].style.display = "none";
   }
   
+  function cityDevHelper() {
+    hideLandMenu();
+
+    switch(actionSelect.value) {
+
+      case "4":
+        if(document.getElementById("CID").value == "0" ||
+          document.getElementById("CID").value == "8" ||
+          document.getElementById("CID").value == "12" ||
+          document.getElementById("CID").value == "16" ||
+          document.getElementById("CID").value == "19" ||
+          document.getElementById("CID").value == "20" ||
+          document.getElementById("CID").value == "22" ||
+          document.getElementById("CID").value == "24" ||
+          document.getElementById("CID").value == "26" )
+        showLandMenu();
+
+    }
+  }
 </script>
 
 </head>
@@ -3416,7 +3439,7 @@
     <CityDevelopment class="CDInput" id="CDInput">
       <br>
       <text class="CDInput" id="CDLabel">Which Building is involved?</text>
-      <select class="CDInput Dropdown" id="CID" onclick="buildingCost(this.value); calcCost(); totalCostCalc();">
+      <select class="CDInput Dropdown" id="CID" onclick="cityDevHelper(); buildingCost(this.value); calcCost(); totalCostCalc();">
         <option value="-1"></option>
         <option class="buildingSelector" value="0">Land Permit</option>
         <option class="buildingSelector" value="1">Tier 1 Housing</option>
