@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+</head>
+<body>
+    <text class="textBox">
+        <h1>FAQ: <br></h1>
+        <h3>What is this game?<br></h3>          
+        This (as of yet unnamed game) Is simply a passion project by me. It is my first major solidity project and I wanted to make an on-chain game where EVERYTHING was on-chain, not just some of the mechanics. <br><br>
+        <h3>What are the features?<br></h3>
+        Currently the only implemented gameplay mechanics revolve around city building. Currently you can Harvest reasources from your land, make buildings to refine these reasources and trade the resulting items for other items. The following features are also planned in descending order of completion
+        <ul>
+            <li>Copper Coins as an ERC20 Contract (Finished, not implemented due to lack of need)</li>
+            <li>Combat (Mostly Finished, not implemented due to lack of use)</li>
+            <li>Quests revoling around troops</li>
+            <li>Literally any other mechanic I can and feel like adding</li>
+        </ul>
+        <h3>Wen Launch?</h3>
+         If you are reading this, the freeplay test version is probably live. A full, premium mainnet launch may or may not happen subject to time and economic constraints.<br><br>
+        <h3>Will Progess be Reset? <br></h3>
+        As a test version, it is highly likely that the game will be reset at various points in time. I will attempt to ensure players get reasources to rebuild but no promises.<br><br>
+        <h3>Is this website safe?<br></h3>
+        Probably. I realize this isn't reassuring but as this is my first website and I realize people can have alot on hot wallets so I would rather be transparent. This website uses only a single library (ethers.js) and is otherwise coded by me.
+        There is very little chance ethers.js gets compromised and my code only interacts with the blockchain in basic well-defined ways. There are also no approvals of any tokens required to play as of now.
+        If this is not enough to make you feel comfortable connecting I would highly recomend using a new wallet with no funds in it to reduce potential losses to zero.
+        <h3>Is the smart contract safe?<br></h3>
+        This is another probably. Although I have tested the contract to a degree, due to both the novelty of this game and relative lack of experience with programing I cannot guarntee such. 
+        This is why the game is currently on testnet, is free to play, and does not rely on approving tokens of any sort to minimize any potential harm to users. Again if the lack of certainty bothers you and you are still intrested in trying the project, it is best to use a wallet with no valueble tokens in it.
+
+    </text>
+
+    <MenuButtons class="menuButtons">
+        <a href="index.html">
+            <button class="indexButton">Return to Main Menu</button>
+          </a>
+    </MenuButtons>
+
+</body>
+</html>
+
+<style>
+body {background-color: mediumseagreen;}
+
+
+.indexButton{
+  background-color: gray;
+  width: 150px;
+  height:40px;
+  position: relative;
+  border-radius: 12px;
+  font-size: 16px;
+}
+.menuButtons{
+    position: absolute;
+    top: 5px;
+    right:20px;
+}
+.indexButton:hover {
+    background-color: rgb(179, 165, 165);
+}
+.textBox {
+    width: 500px
+}
+.pt16 {
+    font-size: 16px;
+
+}
+</style>
