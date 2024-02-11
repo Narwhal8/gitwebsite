@@ -4585,9 +4585,11 @@ async function showLandMenu() {
 
     let whyJS = craftingRecipiesIngrediants(Number(document.getElementById("RecipeID").value));
     var _item_building = whyJS[5];
-    for(let i = 0; i < 32; i++) {
+    for(let i = 0; i < 28; i++) {
       if (i != _item_building[0] && i != _item_building[1] && i != _item_building[2] && i != _item_building[3] )
       {document.getElementsByClassName("buildingSelector")[i].style.display = "none";}
+      else {document.getElementsByClassName("buildingSelector")[i].style.display = "initial";}
+
     }
 
 
