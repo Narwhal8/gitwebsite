@@ -329,7 +329,6 @@
   }
   
   function craftingRecipiesIngrediants(_value) {
-  console.log(_value, "inputhb")
   var items;
   var instant = false;
   var item_amount;
@@ -620,7 +619,7 @@
       valid_buildings = [8,9,10,11];
       break;
     case 1230:
-      items = [539,2103,0,0,0,0];
+      items = [539,2003,0,0,0,0];
       item_amount = [1000,250,0,0,0,0];
       item_outputs_amount = [100,0];
       item_outputs = [1230,0];
@@ -699,7 +698,7 @@
       valid_buildings = [8,9,10,11];
       break;
     case 1264:
-      items = [-2,2103,0,0,0,0];
+      items = [-2,2003,0,0,0,0];
       item_amount = [5000,1000,0,0,0,0];
       item_outputs_amount = [750,0];
       item_outputs = [1264,0];
@@ -811,7 +810,7 @@
       valid_buildings = [8,9,10,11];
       break;
     case 1305:
-      items = [1300,1302,1304,2103,516,521];
+      items = [1300,1302,1304,2003,516,521];
       item_amount = [1,1,5,25,25,1];
       item_outputs_amount = [1,0];
       item_outputs = [1305,0];
@@ -4027,7 +4026,6 @@
         break;
       case 2102:
         _name = "Carved Wood";
-        break;
       case 2121:
         _name = "Iron";
         break;
@@ -4475,6 +4473,9 @@
         document.getElementById("CDLabel").style.display = "inline";
         document.getElementById("CID").style.display = "inline";
 
+        for(let i = 0; i < 28; i++) {
+          document.getElementsByClassName("buildingSelector")[i].style.display = "initial";
+        }
         break;
       case "5":
         document.getElementById("landLabel").style.display = "inline";
