@@ -897,7 +897,7 @@
       items = [2124,2125,0,0,0,0];
       item_amount = [25000,0,0,0,0,0];
       item_outputs_amount = [300,0];
-      item_outputs = [2102,0];
+      item_outputs = [2181,0];
       valid_buildings = [16,17,18,18];
       break;
     case 2182:
@@ -3917,6 +3917,10 @@
         break;
       case 1240:
         _name = "Dried Vegetables";
+        break;
+      case 1241:
+        _name = "Pickled Vegetables";
+        break;
       case 1250:
         _name = "Dried Fruit";
         break;
@@ -4030,6 +4034,7 @@
         break;
       case 2102:
         _name = "Carved Wood";
+        break;
       case 2121:
         _name = "Iron";
         break;
@@ -4527,9 +4532,10 @@
       case "13":
         document.getElementsByClassName("ItemMenu")[0].style.display = "block";
         document.getElementsByClassName("ItemMenu")[1].style.display = "block";
-        document.getElementsByClassName("Amount")[2].style.display = "block";
-        document.getElementsByClassName("Amount")[3].style.display = "block";
+        document.getElementById("AmountLabel").style.display = "block";
+        document.getElementById("Amount").style.display = "block";
         document.getElementById("Address").style.display = "block";
+        document.getElementById("AddressLabel").style.display = "block";
         break;
       default:
         console.log("Error: Invalid Task Selected")
@@ -4757,6 +4763,10 @@
       document.getElementById("LandAmountLabel").style.display = "none";
       document.getElementById("AmountLabel").style.display = "none";
       document.getElementById("TimeAmountLabel").style.display = "none";
+
+      document.getElementById("Address").style.display = "none";
+      document.getElementById("AddressLabel").style.display = "none";
+
 
       document.getElementById("landSelection").style.display = "none";
 
