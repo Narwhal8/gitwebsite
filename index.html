@@ -81,7 +81,7 @@
       switch (actionSelect.value) {
 
         case "1":
-          var _fooditems = [document.getElementById("FoodInputID1").value, document.getElementById("FoodInputID2").value];
+          var _fooditems = document.getElementById("FoodInputID").value;
           NFTcontractSigner.plant(
 
             document.querySelectorAll(".Lands")[_kingdomType - 1].value,
@@ -103,7 +103,7 @@
           if (item_amount[0] < 0) {
             item_amount[0] = document.querySelectorAll(".Items")[Items - 1].value
           }
-          let miniarray = [document.getElementById("FoodInputID1").value, document.getElementById("FoodInputID2").value];
+          let miniarray = document.getElementById("FoodInputID").value;
           NFTcontractSigner.cook(
             document.getElementById("RecipeID").value,
             document.getElementById("Amount").value,
@@ -125,7 +125,7 @@
             document.getElementById("Amount").value,
             array2,
             0,
-            [document.getElementById("FoodInputID1").value, document.getElementById("FoodInputID2").value]
+            document.getElementById("FoodInputID").value
           )
           break;
 
@@ -1035,6 +1035,14 @@
           item_outputs_amount = [300, 0];
           item_outputs = [4001, 0];
           valid_buildings = [27, 27, 27, 27];
+          break;
+        case 7400:
+          items = [7400, 0, 0, 0, 0, 0];
+          item_amount = [5, 0, 0, 0, 0, 0];
+          item_outputs_amount = [150, 30];
+          item_outputs = [532, 4004];
+          valid_buildings = [8, 9, 10, 11];
+          time = 1;
           break;
 
 
@@ -3531,6 +3539,50 @@
             document.getElementsByClassName("B27")[5].style.display = "block";
             document.getElementsByClassName("B27")[6].style.display = "block";
             break;
+
+          case "28":
+            document.getElementsByClassName("B28")[0].style.display = "block";
+            document.getElementsByClassName("B28")[1].style.display = "block";
+            document.getElementsByClassName("B28")[2].style.display = "block";
+            document.getElementsByClassName("B28")[3].style.display = "block";
+            document.getElementsByClassName("B28")[4].style.display = "block";
+            document.getElementsByClassName("B28")[5].style.display = "block";
+            document.getElementsByClassName("B28")[6].style.display = "block";
+            document.getElementsByClassName("B28")[7].style.display = "block";
+            break;
+
+          case "29":
+            document.getElementsByClassName("B29")[0].style.display = "block";
+            document.getElementsByClassName("B29")[1].style.display = "block";
+            document.getElementsByClassName("B29")[2].style.display = "block";
+            document.getElementsByClassName("B29")[3].style.display = "block";
+            document.getElementsByClassName("B29")[4].style.display = "block";
+            document.getElementsByClassName("B29")[5].style.display = "block";
+            document.getElementsByClassName("B29")[6].style.display = "block";
+            document.getElementsByClassName("B29")[7].style.display = "block";
+            break;
+
+          case "30":
+            document.getElementsByClassName("B30")[0].style.display = "block";
+            document.getElementsByClassName("B30")[1].style.display = "block";
+            document.getElementsByClassName("B30")[2].style.display = "block";
+            document.getElementsByClassName("B30")[3].style.display = "block";
+            document.getElementsByClassName("B30")[4].style.display = "block";
+            document.getElementsByClassName("B30")[5].style.display = "block";
+            document.getElementsByClassName("B30")[6].style.display = "block";
+            document.getElementsByClassName("B30")[7].style.display = "block";
+            break;
+
+          case "31":
+            document.getElementsByClassName("B31")[0].style.display = "block";
+            document.getElementsByClassName("B31")[1].style.display = "block";
+            document.getElementsByClassName("B31")[2].style.display = "block";
+            document.getElementsByClassName("B31")[3].style.display = "block";
+            document.getElementsByClassName("B31")[4].style.display = "block";
+            document.getElementsByClassName("B31")[5].style.display = "block";
+            document.getElementsByClassName("B31")[6].style.display = "block";
+            document.getElementsByClassName("B31")[7].style.display = "block";
+            break;
           default:
             console.log("error! Recipe Cost not found")
 
@@ -3564,7 +3616,6 @@
     function showTimedCraftingMenu() {
       document.getElementsByClassName("foodInput")[0].style.display = "block";
       document.getElementsByClassName("foodInput")[1].style.display = "inline-block";
-      document.getElementsByClassName("foodInput")[2].style.display = "inline";
       document.getElementsByClassName("CDInput")[0].style.display = "inline";
       document.getElementsByClassName("CDInput")[1].style.display = "inline";
       document.getElementsByClassName("CDInput")[2].style.display = "inline";
@@ -3573,7 +3624,6 @@
     function hideTimedCraftingMenu() {
       document.getElementsByClassName("foodInput")[0].style.display = "none";
       document.getElementsByClassName("foodInput")[1].style.display = "none";
-      document.getElementsByClassName("foodInput")[2].style.display = "none";
       document.getElementsByClassName("CDInput")[0].style.display = "none";
       document.getElementsByClassName("CDInput")[1].style.display = "none";
       document.getElementsByClassName("CDInput")[2].style.display = "none";
@@ -4765,7 +4815,7 @@
 
       let whyJS = craftingRecipiesIngrediants(Number(document.getElementById("RecipeID").value));
       var _item_building = whyJS[5];
-      for (let i = 0; i < 28; i++) {
+      for (let i = 0; i < 32; i++) {
         if (i != _item_building[0] && i != _item_building[1] && i != _item_building[2] && i != _item_building[3]) { document.getElementsByClassName("buildingSelector")[i].style.display = "none"; }
         else { document.getElementsByClassName("buildingSelector")[i].style.display = "initial"; }
 
@@ -4847,7 +4897,7 @@
       }
 
       if (instant == false && document.getElementById("actionSelect").value != "7") {
-        setTTC(Number(document.getElementById("Amount").value));
+        setTTC(Number(document.getElementById("Amount").value) * time);
       }
 
     }
@@ -5197,6 +5247,42 @@
       document.getElementsByClassName("B27")[4].style.display = "none";
       document.getElementsByClassName("B27")[5].style.display = "none";
       document.getElementsByClassName("B27")[6].style.display = "none";
+
+      document.getElementsByClassName("B28")[0].style.display = "none";
+      document.getElementsByClassName("B28")[1].style.display = "none";
+      document.getElementsByClassName("B28")[2].style.display = "none";
+      document.getElementsByClassName("B28")[3].style.display = "none";
+      document.getElementsByClassName("B28")[4].style.display = "none";
+      document.getElementsByClassName("B28")[5].style.display = "none";
+      document.getElementsByClassName("B28")[6].style.display = "none";
+      document.getElementsByClassName("B28")[7].style.display = "none";
+
+      document.getElementsByClassName("B29")[0].style.display = "none";
+      document.getElementsByClassName("B29")[1].style.display = "none";
+      document.getElementsByClassName("B29")[2].style.display = "none";
+      document.getElementsByClassName("B29")[3].style.display = "none";
+      document.getElementsByClassName("B29")[4].style.display = "none";
+      document.getElementsByClassName("B29")[5].style.display = "none";
+      document.getElementsByClassName("B29")[6].style.display = "none";
+      document.getElementsByClassName("B29")[7].style.display = "none";
+
+      document.getElementsByClassName("B30")[0].style.display = "none";
+      document.getElementsByClassName("B30")[1].style.display = "none";
+      document.getElementsByClassName("B30")[2].style.display = "none";
+      document.getElementsByClassName("B30")[3].style.display = "none";
+      document.getElementsByClassName("B30")[4].style.display = "none";
+      document.getElementsByClassName("B30")[5].style.display = "none";
+      document.getElementsByClassName("B30")[6].style.display = "none";
+      document.getElementsByClassName("B30")[7].style.display = "none";
+
+      document.getElementsByClassName("B31")[0].style.display = "none";
+      document.getElementsByClassName("B31")[1].style.display = "none";
+      document.getElementsByClassName("B31")[2].style.display = "none";
+      document.getElementsByClassName("B31")[3].style.display = "none";
+      document.getElementsByClassName("B31")[4].style.display = "none";
+      document.getElementsByClassName("B31")[5].style.display = "none";
+      document.getElementsByClassName("B31")[6].style.display = "none";
+      document.getElementsByClassName("B31")[7].style.display = "none";
     }
 
     function cityDevHelper() {
@@ -5212,8 +5298,9 @@
             document.getElementById("CID").value == "19" ||
             document.getElementById("CID").value == "20" ||
             document.getElementById("CID").value == "22" ||
-            document.getElementById("CID").value == "24" ||
-            document.getElementById("CID").value == "26")
+            document.getElementById("CID").value == "26" ||
+            document.getElementById("CID").value == "28" ||
+            document.getElementById("CID").value == "30" )
             showLandMenu();
 
       }
@@ -5362,6 +5449,11 @@
     <select class="Recipe Dropdown" id="RecipeID"
       onchange=" selectTask('2');  Stuff(this.value); totalCostCalc(); hideInvalidBuildings(); ">
       <option value="-1"></option>
+      <option value="0">--Misc</option>
+      <option value="-1"></option>
+      <option value="519">Sugar From Sugarcane</option>
+      <option value="536">Sugar From Silver Sap</option>
+      <option value="-1"></option>
       <option value="0">--Drinks</option>
       <option value="-1"></option>
       <option value="1000">Wheat Beer</option>
@@ -5421,20 +5513,35 @@
       <option value="1265">Preserved Eggs</option>
       <option value="1270">Beef Stew</option>
       <option value="1271">King's Stew</option>
-      <option value="1272">Glittercake</option>
-      <option value="1273">Cheesy Bread</option>
-      <option value="1274">Fancy Cheese Bread</option>
-      <option value="1275">Beans And Rice</option>
-      <option value="1276">Morning Plate</option>
-      <option value="1277">Spice Fish</option>
-      <option value="1278">Charcutery</option>
+      <option value="1272">Onion Soup</option>
+      <option value="1273">Huntsman's Ster</option>
+      <option value="1274">Chicken Soup</option>
+      <option value="1275">Fish Soup</option>
+      <option value="1280">Baked Beans</option>
+      <option value="1281">Beans & Rice</option>
+
+      <option value="-1"></option>
+      <option value="0">--Food Combos</option>
+      <option value="-1"></option>
+
+      <option value="1400">Bread Combo</option>
+      <option value="1401">Deluxe Bread Combo</option>
+      <option value="1420">Basic Soup Combo</option>
+      <option value="1430">Deluxe Soup Combo</option>
+      <option value="1440">Sausage Combo</option>
+      <option value="1450">Roast Combo</option>
+      <option value="1460">Deluxe Roast Combo</option>
+      <option value="1470">Charcutery Combo</option>
+      <option value="1471">Deluxe Charcutery Combo</option>
+      <option value="1480">Basic Soup Combo</option>
+
 
       <option value="-1"></option>
       <option value="0">--Non-Edible Foods</option>
       <option value="-1"></option>
 
       <option value="1300">Vinegar</option>
-      <option value="1301">Sugar</option>
+      <option value="1301">Sugar From Honey</option>
       <option value="1302">Olive Oil</option>
       <option value="1303">Flour</option>
       <option value="1304">Ketchup</option>
@@ -5492,6 +5599,40 @@
       <option value="536">Sugar From Silver Sap</option>
 
 
+
+      <option value="-1"></option>
+      <option value="0">--Butcher Animals</option>
+      <option value="-1"></option>
+      <option value="7000">Butcher Rabbit</option>
+      <option value="7001">Butcher Deer</option>
+      <option value="7002">Butcher Turkey</option>
+      <option value="7003">Butcher Mink</option>
+      <option value="7004">Butcher Cyote</option>
+      <option value="7005">Butcher Snake</option>
+      <option value="7100">Butcher Fox</option>
+      <option value="7101">Butcher Boar</option>
+      <option value="7102">Butcher Zebra</option>
+      <option value="7103">Butcher Reindeer</option>
+      <option value="7104">Butcher Leopard</option>
+      <option value="7105">Butcher Crocodile</option>
+      <option value="7106">Butcher Otter</option>
+      <option value="7107">Butcher Wolf</option>
+      <option value="7108">Butcher Seal</option>
+      <option value="7200">Butcher Elk</option>
+      <option value="7201">Butcher Aurochs</option>
+      <option value="7202">Butcher Black Leopard</option>
+      <option value="7203">Butcher Bear</option>
+      <option value="7204">Butcher Sea Mink</option>
+      <option value="7205">Butcher Whalrus</option>
+      <option value="7206">Butcher Poison Snake</option>
+      <option value="7300">Butcher Elephant</option>
+      <option value="7301">Butcher Rhino</option>
+      <option value="7302">Butcher Polar Bear</option>
+      <option value="7303">Butcher Tiger</option>
+      <option value="7304">Butcher Titan Snake</option>
+      <option value="7400">Butcher Cow</option>
+      <option value="7401">Butcher Chicken</option>
+      <option value="7402">Butcher Sheep</option>
     </select>
 
     <text class="Recipe RecipeText" id="Cost">Cost:</text>
@@ -5537,11 +5678,14 @@
       <option class="buildingSelector" value="22">Aging Facilitity</option>
       <option class="buildingSelector" value="23"></option>
 
-      <option class="buildingSelector" value="24">Tier 1 Temple</option>
-      <option class="buildingSelector" value="25">Tier 2 Temple</option>
-
       <option class="buildingSelector" value="26">Tier 1 Jeweler</option>
       <option class="buildingSelector" value="27">Tier 2 Jeweler</option>
+
+      <option class="buildingSelector" value="28">Tier 1 Weaver</option>
+      <option class="buildingSelector" value="29">Tier 2 Weaver</option>
+
+      <option class="buildingSelector" value="30">Tier 1 Carpenter</option>
+      <option class="buildingSelector" value="31">Tier 2 Carpenter</option>
 
     </select>
 
@@ -5592,27 +5736,30 @@
     <text class="RecipeText B9" id="B9-0">Cost:</text>
     <text class="RecipeText B9 Indented" id="B9-1">4 Million Wood</text>
     <text class="RecipeText B9 Indented" id="B9-2">8 Million Stone</text>
-    <text class="RecipeText B9 Indented" id="B9-3">1 Million Aquamarine</text>
-    <text class="RecipeText B9 " id="B9-4">Staffing Needs:</text>
-    <text class="RecipeText B9 Indented" id="B9-5">3 Peasents</text>
-    <text class="RecipeText B9 Indented" id="B9-6">2 Low-Born Nobles</text>
+    <text class="RecipeText B9 Indented" id="B9-3">4,000 Basic Tools</text>
+    <text class="RecipeText B9 Indented" id="B19-4">1 Million Aquamarine</text>
+    <text class="RecipeText B9 " id="B9-5">Staffing Needs:</text>
+    <text class="RecipeText B9 Indented" id="B9-6">3 Peasents</text>
+    <text class="RecipeText B9 Indented" id="B9-7">2 Low-Born Nobles</text>
 
     <text class="RecipeText B10" id="B10-0">Cost:</text>
     <text class="RecipeText B10 Indented" id="B10-1">30,000 Refined Wood</text>
     <text class="RecipeText B10 Indented" id="B10-2">70,000 Refined Stone</text>
-    <text class="RecipeText B10 Indented" id="B10-3">350,000 Polished Aquamarine</text>
-    <text class="RecipeText B10 " id="B10-4">Staffing Needs:</text>
-    <text class="RecipeText B10 Indented" id="B10-5">5 Peasents</text>
-    <text class="RecipeText B10 Indented" id="B10-6">3 Low-Born Nobles</text>
+    <text class="RecipeText B10 Indented" id="B10-3">3,750 Artisan Tools</text>
+    <text class="RecipeText B10 Indented" id="B10-4">200,000 Polished Aquamarine</text>
+    <text class="RecipeText B10 " id="B10-5">Staffing Needs:</text>
+    <text class="RecipeText B10 Indented" id="B10-6">5 Peasents</text>
+    <text class="RecipeText B10 Indented" id="B10-7">3 Low-Born Nobles</text>
 
 
     <text class="RecipeText B11" id="B11-0">Cost:</text>
     <text class="RecipeText B11 Indented" id="B11-1">100,000 Refined Wood</text>
-    <text class="RecipeText B11 Indented" id="B11-2">200,000 Refined Stone</text>
-    <text class="RecipeText B11 Indented" id="B11-3">500,000 Polished Aquamarine</text>
-    <text class="RecipeText B11 " id="B11-4">Staffing Needs:</text>
-    <text class="RecipeText B11 Indented" id="B11-5">5 Low-Born Nobles</text>
-    <text class="RecipeText B11 Indented" id="B11-6">2 High-Born Nobles</text>
+    <text class="RecipeText B11 Indented" id="B11-2">100,000 Refined Stone</text>
+    <text class="RecipeText B11 Indented" id="B11-3">3,700 Oppulant Tools</text>
+    <text class="RecipeText B11 Indented" id="B11-4">400,000 Polished Aquamarine</text>
+    <text class="RecipeText B11 " id="B11-5">Staffing Needs:</text>
+    <text class="RecipeText B11 Indented" id="B11-6">5 Low-Born Nobles</text>
+    <text class="RecipeText B11 Indented" id="B11-7">2 High-Born Nobles</text>
 
     <text class="RecipeText B12" id="B12-0">Cost:</text>
     <text class="RecipeText B12 Indented" id="B12-1">5 Million Wood</text>
@@ -5649,8 +5796,8 @@
     <text class="RecipeText B15 Indented" id="B15-7">1 High-Born Noble</text>
 
     <text class="RecipeText B16" id="B16-0">Cost:</text>
-    <text class="RecipeText B16 Indented" id="B16-1">4 Million Wood</text>
-    <text class="RecipeText B16 Indented" id="B16-2">2.5 Million Stone</text>
+    <text class="RecipeText B16 Indented" id="B16-1">2.5 Million Wood</text>
+    <text class="RecipeText B16 Indented" id="B16-2">4 Million Stone</text>
     <text class="RecipeText B16 Indented" id="B16-3">10 Land</text>
     <text class="RecipeText B16 " id="B16-4">Staffing Needs:</text>
     <text class="RecipeText B16 Indented" id="B16-5">5 Peasents</text>
@@ -5709,8 +5856,7 @@
     <text class="RecipeText B26 Indented" id="B26-3">4 Land</text>
     <text class="RecipeText B26 " id="B26-4">Staffing Needs:</text>
     <text class="RecipeText B26 Indented" id="B26-5">3 Low-Born Nobles</text>
-    <text class="RecipeText B26 Indented" id="B26-6">1 High-Born Noble</text> <text class="RecipeText B26 Indented"
-      id="B26-3">1 Million Amethyst</text>
+    <text class="RecipeText B26 Indented" id="B26-6">1 High-Born Noble</text>
 
 
     <text class="RecipeText B27" id="B27-0">Cost:</text>
@@ -5719,8 +5865,43 @@
     <text class="RecipeText B27 Indented" id="B27-3">1 Million Polished Amethyst</text>
     <text class="RecipeText B27 " id="B27-4">Staffing Needs:</text>
     <text class="RecipeText B27 Indented" id="B27-5">5 Low-Born Nobles</text>
-    <text class="RecipeText B27 Indented" id="B27-6">1 High-Born Noble</text> <text class="RecipeText B27 Indented"
-      id="B27-3">1 Million Amethyst</text>
+    <text class="RecipeText B27 Indented" id="B27-6">1 High-Born Noble</text>
+
+    <text class="RecipeText B28" id="B28-0">Cost:</text>
+    <text class="RecipeText B28 Indented" id="B28-1">100,000 Refined Stone</text>
+    <text class="RecipeText B28 Indented" id="B28-2">100,000 Refined Wood</text>
+    <text class="RecipeText B28 Indented" id="B28-3">1 Million Amber</text>
+    <text class="RecipeText B28 Indented" id="B28-4">4 Land</text>
+    <text class="RecipeText B28 " id="B28-5">Staffing Needs:</text>
+    <text class="RecipeText B28 Indented" id="B28-6">5 Peasents</text>
+    <text class="RecipeText B28 Indented" id="B28-7">1 Low-Born Noble</text>
+
+    <text class="RecipeText B29" id="B29-0">Cost:</text>
+    <text class="RecipeText B29 Indented" id="B29-1">300,000 Refined Stone</text>
+    <text class="RecipeText B29 Indented" id="B29-2">200,000 Refined Wood</text>
+    <text class="RecipeText B29 Indented" id="B29-3">1 Million Amber</text>
+    <text class="RecipeText B29 " id="B29-4">Staffing Needs:</text>
+    <text class="RecipeText B29 Indented" id="B29-5">2 Peasents</text>
+    <text class="RecipeText B29 Indented" id="B29-6">1 Low-Born Noble</text>
+    <text class="RecipeText B29 Indented" id="B29-7">1 High-Born Noble</text>
+
+    <text class="RecipeText B30" id="B30-0">Cost:</text>
+    <text class="RecipeText B30 Indented" id="B30-1">250,000 Refined Stone</text>
+    <text class="RecipeText B30 Indented" id="B30-2">250,000 Refined Wood</text>
+    <text class="RecipeText B30 Indented" id="B30-3">2 Million Amber</text>
+    <text class="RecipeText B30 Indented" id="B30-4">4 Land</text>
+    <text class="RecipeText B30 " id="B30-5">Staffing Needs:</text>
+    <text class="RecipeText B30 Indented" id="B30-6">5 Peasents</text>
+    <text class="RecipeText B30 Indented" id="B30-7">1 Low-Born Noble</text>
+
+    <text class="RecipeText B31" id="B31-0">Cost:</text>
+    <text class="RecipeText B31 Indented" id="B31-1">600,000 Refined Stone</text>
+    <text class="RecipeText B31 Indented" id="B31-2">400,000 Refined Wood</text>
+    <text class="RecipeText B31 Indented" id="B31-3">2 Million Amber</text>
+    <text class="RecipeText B31 " id="B31-4">Staffing Needs:</text>
+    <text class="RecipeText B31 Indented" id="B31-5">2 Peasents</text>
+    <text class="RecipeText B31 Indented" id="B31-6">1 Low-Born Noble</text>
+    <text class="RecipeText B31 Indented" id="B31-7">1 High-Born Noble</text>
 
 
 
@@ -5995,74 +6176,22 @@
     <br>
     <text class="foodInput" id="foodInputLabel">What would you like to feed the workers?</text>
 
-    <select class="foodInput Dropdown" id="FoodInputID1">
+    <select class="foodInput Dropdown" id="FoodInputID">
       <option value="-1"></option>
       <option value="0">None</option>
       <option value="-1"></option>
-      <option value="1000">Wheat Beer</option>
-      <option value="1001">Rye Beer</option>
-      <option value="1002">Barley Beer</option>
-      <option value="1003">Oat Beer</option>
-      <option value="1004">Rice Beer</option>
-      <option value="1010">Cider</option>
-      <option value="1011">Wine</option>
-      <option value="1012">Plum Wine</option>
-      <option value="1013">Peach Wine</option>
-      <option value="1014">Cherry Wine</option>
-      <option value="1020">Mead</option>
-      <option value="1030">Vodka</option>
-      <option value="1031">Rum</option>
-      <option value="1032">Kumis</option>
-      <option value="1040">Brandy</option>
-      <option value="1041">Silver Wine</option>
-      <option value="1042">Jungle Wine</option>
-      <option value="1043">Winter Wine</option>
-      <option value="1044">Aged Rum</option>
-      <option value="1050">Ginseng Wine</option>
-      <option value="1051">Spiced Vodka</option>
-      <option value="1060">Double Brandy</option>
-      <option value="1061">Auric Mead</option>
-    </select>
-    <select class="foodInput Dropdown" id="FoodInputID2">
-      <option value="-1"></option>
-      <option value="0">None</option>
-      <option value="-1"></option>
-      <option value="1200">Wheat Bread</option>
-      <option value="1201">Rye Bread</option>
-      <option value="1202">Corn Bread</option>
-      <option value="1203">Rice Bread</option>
-      <option value="1204">Sorghum Bread</option>
-      <option value="1205">Barley Bread</option>
-      <option value="1206">Oat Bread</option>
-      <option value="1207">Pastries</option>
-      <option value="1208">Fruit Pastries</option>
-      <option value="1220">Apple Pie</option>
-      <option value="1221">Plum Pie</option>
-      <option value="1222">Peach Pie</option>
-      <option value="1223">Sugar Pie</option>
-      <option value="1224">Pot Pie</option>
-      <option value="1230">Cheese</option>
-      <option value="1231">Aged Cheese</option>
-      <option value="1232">Imperial Cheese</option>
-      <option value="1240">Dried Vegetables</option>
-      <option value="1241">Pickled Vegetables</option>
-      <option value="1250">Dried Fruit</option>
-      <option value="1251">Brandied Fruit</option>
-      <option value="1260">Sausage</option>
-      <option value="1261">Fried Meat</option>
-      <option value="1262">Roast</option>
-      <option value="1263">Cured Meat</option>
-      <option value="1264">Salted Meat</option>
-      <option value="1265">Preserved Eggs</option>
-      <option value="1270">Beef Stew</option>
-      <option value="1271">King's Stew</option>
-      <option value="1272">Glittercake</option>
-      <option value="1273">Cheesy Bread</option>
-      <option value="1274">Fancy Cheese Bread</option>
-      <option value="1275">Beans And Rice</option>
-      <option value="1276">Morning Plate</option>
-      <option value="1277">Spice Fish</option>
-      <option value="1278">Charcutery</option>
+      <option value="1400">Bread Combo</option>
+      <option value="1401">Deluxe Bread Combo</option>
+      <option value="1420">Basic Soup Combo</option>
+      <option value="1430">Deluxe Bread Combo</option>
+      <option value="1440">Sausage Combo</option>
+      <option value="1450">Roast Combo</option>
+      <option value="1460">Deluxe Roast Combo</option>
+      <option value="1470">Charcutery Combo</option>
+      <option value="1471">Deluxe Charcutery Combo</option>
+      <option value="1480">Pie Combo</option>
+
+
     </select>
   </FoodAmounts>
   <WarInput class="WarInput" id="WarInput">
