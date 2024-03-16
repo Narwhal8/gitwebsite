@@ -1,6 +1,224 @@
-
-
- const abi = [
+[
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [],
+		"name": "AccountBalanceOverflow",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "ArrayLengthsMismatch",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "InsufficientBalance",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "NotOwnerNorApproved",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			}
+		],
+		"name": "OwnableInvalidOwner",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "OwnableUnauthorizedAccount",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "TransferToNonERC1155ReceiverImplementer",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "TransferToZeroAddress",
+		"type": "error"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "bool",
+				"name": "isApproved",
+				"type": "bool"
+			}
+		],
+		"name": "ApprovalForAll",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256[]",
+				"name": "ids",
+				"type": "uint256[]"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256[]",
+				"name": "amounts",
+				"type": "uint256[]"
+			}
+		],
+		"name": "TransferBatch",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "TransferSingle",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "value",
+				"type": "string"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "URI",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "TIME_MULTIPLIER",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "_seasonLength",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
 	{
 		"inputs": [
 			{
@@ -24,6 +242,11 @@
 						"internalType": "uint16[2]",
 						"name": "output",
 						"type": "uint16[2]"
+					},
+					{
+						"internalType": "uint8",
+						"name": "capacityUsed",
+						"type": "uint8"
 					},
 					{
 						"internalType": "uint16",
@@ -192,6 +415,61 @@
 	{
 		"inputs": [
 			{
+				"components": [
+					{
+						"internalType": "uint16[6]",
+						"name": "amount",
+						"type": "uint16[6]"
+					},
+					{
+						"internalType": "int16[6]",
+						"name": "ingrediant",
+						"type": "int16[6]"
+					},
+					{
+						"internalType": "uint16[2]",
+						"name": "outputAmount",
+						"type": "uint16[2]"
+					},
+					{
+						"internalType": "uint16[2]",
+						"name": "output",
+						"type": "uint16[2]"
+					},
+					{
+						"internalType": "uint8",
+						"name": "capacityUsed",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint16",
+						"name": "timeToMake",
+						"type": "uint16"
+					},
+					{
+						"internalType": "uint8[4]",
+						"name": "allowableBuildings",
+						"type": "uint8[4]"
+					}
+				],
+				"internalType": "struct City.CookingRecipes[32]",
+				"name": "_recipies",
+				"type": "tuple[32]"
+			},
+			{
+				"internalType": "uint256[32]",
+				"name": "_id",
+				"type": "uint256[32]"
+			}
+		],
+		"name": "addMultiCraftingData",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "uint256",
 				"name": "_amount",
 				"type": "uint256"
@@ -242,6 +520,93 @@
 		"inputs": [
 			{
 				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "result",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address[]",
+				"name": "owners",
+				"type": "address[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "ids",
+				"type": "uint256[]"
+			}
+		],
+		"name": "balanceOfBatch",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "balances",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "base",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "bridgeToOrFrom20",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "bridgefrom20",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
 				"name": "_newCA",
 				"type": "address"
 			}
@@ -254,9 +619,9 @@
 	{
 		"inputs": [
 			{
-				"internalType": "uint8",
+				"internalType": "uint256",
 				"name": "_land",
-				"type": "uint8"
+				"type": "uint256"
 			}
 		],
 		"name": "claim",
@@ -265,11 +630,24 @@
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "coins",
+		"outputs": [
+			{
+				"internalType": "contract coppercoins",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
-				"internalType": "uint8",
+				"internalType": "uint256",
 				"name": "_buildingType",
-				"type": "uint8"
+				"type": "uint256"
 			}
 		],
 		"name": "collect",
@@ -280,9 +658,9 @@
 	{
 		"inputs": [
 			{
-				"internalType": "uint24",
+				"internalType": "uint256",
 				"name": "_recipenumber",
-				"type": "uint24"
+				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
@@ -295,19 +673,32 @@
 				"type": "uint16[6]"
 			},
 			{
-				"internalType": "uint8",
+				"internalType": "uint256",
 				"name": "_buildingType",
-				"type": "uint8"
+				"type": "uint256"
 			},
 			{
-				"internalType": "uint16[2]",
-				"name": "_fooditems",
-				"type": "uint16[2]"
+				"internalType": "uint256",
+				"name": "_fooditem",
+				"type": "uint256"
 			}
 		],
 		"name": "cook",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "deploytime",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -336,20 +727,98 @@
 	{
 		"inputs": [
 			{
-				"internalType": "uint8",
-				"name": "_kingdomType",
-				"type": "uint8"
+				"internalType": "address",
+				"name": "_who",
+				"type": "address"
 			}
 		],
-		"name": "setKingdomType",
-		"outputs": [],
-		"stateMutability": "nonpayable",
+		"name": "getBuildingCount",
+		"outputs": [
+			{
+				"internalType": "uint16[32]",
+				"name": "",
+				"type": "uint16[32]"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_who",
+				"type": "address"
+			}
+		],
+		"name": "getKingdomInfo",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint24[3]",
+						"name": "population",
+						"type": "uint24[3]"
+					},
+					{
+						"internalType": "uint24[3]",
+						"name": "nonWorkingPopulation",
+						"type": "uint24[3]"
+					},
+					{
+						"internalType": "uint24[3]",
+						"name": "maxPopulation",
+						"type": "uint24[3]"
+					},
+					{
+						"internalType": "bool[8]",
+						"name": "isWorking",
+						"type": "bool[8]"
+					},
+					{
+						"internalType": "uint8",
+						"name": "kingdomType",
+						"type": "uint8"
+					}
+				],
+				"internalType": "struct City.Playercity",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_who",
+				"type": "address"
+			}
+		],
+		"name": "getStockedGoods",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint40[5]",
+						"name": "lastTithing",
+						"type": "uint40[5]"
+					},
+					{
+						"internalType": "uint8[5]",
+						"name": "stockpiles",
+						"type": "uint8[5]"
+					}
+				],
+				"internalType": "struct City.ConsumerStockpiles",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
 		"inputs": [
@@ -357,65 +826,54 @@
 				"internalType": "address",
 				"name": "owner",
 				"type": "address"
-			}
-		],
-		"name": "OwnableInvalidOwner",
-		"type": "error"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "account",
-				"type": "address"
-			}
-		],
-		"name": "OwnableUnauthorizedAccount",
-		"type": "error"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "account",
-				"type": "address"
 			},
 			{
-				"indexed": true,
 				"internalType": "address",
 				"name": "operator",
 				"type": "address"
-			},
+			}
+		],
+		"name": "isApprovedForAll",
+		"outputs": [
 			{
-				"indexed": false,
 				"internalType": "bool",
-				"name": "approved",
+				"name": "result",
 				"type": "bool"
 			}
 		],
-		"name": "ApprovalForAll",
-		"type": "event"
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-		"anonymous": false,
-		"inputs": [
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
 			{
-				"indexed": true,
 				"internalType": "address",
-				"name": "previousOwner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "newOwner",
+				"name": "",
 				"type": "address"
 			}
 		],
-		"name": "OwnershipTransferred",
-		"type": "event"
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_tithe",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint8",
+				"name": "_amount",
+				"type": "uint8"
+			}
+		],
+		"name": "payTithe",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
 		"inputs": [
@@ -435,9 +893,9 @@
 				"type": "uint16"
 			},
 			{
-				"internalType": "uint16[2]",
-				"name": "_fooditems",
-				"type": "uint16[2]"
+				"internalType": "uint256",
+				"name": "_fooditem",
+				"type": "uint256"
 			},
 			{
 				"internalType": "uint16",
@@ -598,7 +1056,7 @@
 			},
 			{
 				"internalType": "bool",
-				"name": "approved",
+				"name": "isApproved",
 				"type": "bool"
 			}
 		],
@@ -608,41 +1066,36 @@
 		"type": "function"
 	},
 	{
-		"anonymous": false,
 		"inputs": [
 			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256[]",
-				"name": "ids",
-				"type": "uint256[]"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256[]",
-				"name": "values",
-				"type": "uint256[]"
+				"internalType": "uint8",
+				"name": "_kingdomType",
+				"type": "uint8"
 			}
 		],
-		"name": "TransferBatch",
-		"type": "event"
+		"name": "setKingdomType",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes4",
+				"name": "interfaceId",
+				"type": "bytes4"
+			}
+		],
+		"name": "supportsInterface",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "result",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
 		"inputs": [
@@ -658,604 +1111,22 @@
 		"type": "function"
 	},
 	{
-		"anonymous": false,
 		"inputs": [
 			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"indexed": false,
 				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "value",
+				"name": "",
 				"type": "uint256"
 			}
 		],
-		"name": "TransferSingle",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
+		"name": "uri",
+		"outputs": [
 			{
-				"indexed": false,
 				"internalType": "string",
-				"name": "value",
+				"name": "",
 				"type": "string"
-			},
-			{
-				"indexed": true,
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
 			}
 		],
-		"name": "URI",
-		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint8",
-				"name": "",
-				"type": "uint8"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "AllowableLand",
-		"outputs": [
-			{
-				"internalType": "uint8",
-				"name": "",
-				"type": "uint8"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "account",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			}
-		],
-		"name": "balanceOf",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address[]",
-				"name": "accounts",
-				"type": "address[]"
-			},
-			{
-				"internalType": "uint256[]",
-				"name": "ids",
-				"type": "uint256[]"
-			}
-		],
-		"name": "balanceOfBatch",
-		"outputs": [
-			{
-				"internalType": "uint256[]",
-				"name": "",
-				"type": "uint256[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "base",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "BuildingCost",
-		"outputs": [
-			{
-				"internalType": "uint8",
-				"name": "baseBuilding",
-				"type": "uint8"
-			},
-			{
-				"internalType": "uint8",
-				"name": "employees",
-				"type": "uint8"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "BuildingCount",
-		"outputs": [
-			{
-				"internalType": "uint16",
-				"name": "",
-				"type": "uint16"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "coins",
-		"outputs": [
-			{
-				"internalType": "contract coppercoins",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "cropMetaData",
-		"outputs": [
-			{
-				"internalType": "uint16",
-				"name": "yield",
-				"type": "uint16"
-			},
-			{
-				"internalType": "uint16",
-				"name": "secondaryYield",
-				"type": "uint16"
-			},
-			{
-				"internalType": "uint8",
-				"name": "minsoil",
-				"type": "uint8"
-			},
-			{
-				"internalType": "uint8",
-				"name": "maxheight",
-				"type": "uint8"
-			},
-			{
-				"internalType": "uint16",
-				"name": "growthTime",
-				"type": "uint16"
-			},
-			{
-				"internalType": "uint16",
-				"name": "secondaryGrowthTime",
-				"type": "uint16"
-			},
-			{
-				"internalType": "uint16",
-				"name": "primaryOutput",
-				"type": "uint16"
-			},
-			{
-				"internalType": "uint16",
-				"name": "secondaryOutput",
-				"type": "uint16"
-			},
-			{
-				"internalType": "bool",
-				"name": "isAnimal",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "deploytime",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "Farmtimer",
-		"outputs": [
-			{
-				"internalType": "uint64",
-				"name": "time",
-				"type": "uint64"
-			},
-			{
-				"internalType": "uint8",
-				"name": "land",
-				"type": "uint8"
-			},
-			{
-				"internalType": "uint8",
-				"name": "landcount",
-				"type": "uint8"
-			},
-			{
-				"internalType": "uint16",
-				"name": "cropfarm",
-				"type": "uint16"
-			},
-			{
-				"internalType": "uint16",
-				"name": "yieldperland",
-				"type": "uint16"
-			},
-			{
-				"internalType": "uint16",
-				"name": "worktime",
-				"type": "uint16"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "foodInfo",
-		"outputs": [
-			{
-				"internalType": "uint32",
-				"name": "value",
-				"type": "uint32"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_who",
-				"type": "address"
-			}
-		],
-		"name": "getBuildingCount",
-		"outputs": [
-			{
-				"internalType": "uint16[32]",
-				"name": "",
-				"type": "uint16[32]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_who",
-				"type": "address"
-			}
-		],
-		"name": "getKingdomInfo",
-		"outputs": [
-			{
-				"components": [
-					{
-						"internalType": "uint24[3]",
-						"name": "population",
-						"type": "uint24[3]"
-					},
-					{
-						"internalType": "uint24[3]",
-						"name": "nonWorkingPopulation",
-						"type": "uint24[3]"
-					},
-					{
-						"internalType": "uint24[3]",
-						"name": "maxPopulation",
-						"type": "uint24[3]"
-					},
-					{
-						"internalType": "bool[8]",
-						"name": "isWorking",
-						"type": "bool[8]"
-					},
-					{
-						"internalType": "uint8",
-						"name": "kingdomType",
-						"type": "uint8"
-					},
-					{
-						"internalType": "uint24[8]",
-						"name": "landForHarvest",
-						"type": "uint24[8]"
-					}
-				],
-				"internalType": "struct City.Playercity",
-				"name": "_city",
-				"type": "tuple"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "account",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			}
-		],
-		"name": "isApprovedForAll",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "landData",
-		"outputs": [
-			{
-				"internalType": "uint8",
-				"name": "temperature",
-				"type": "uint8"
-			},
-			{
-				"internalType": "uint8",
-				"name": "waterQuantity",
-				"type": "uint8"
-			},
-			{
-				"internalType": "uint8",
-				"name": "altitude",
-				"type": "uint8"
-			},
-			{
-				"internalType": "uint8",
-				"name": "soilQuality",
-				"type": "uint8"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "MaxPopulation",
-		"outputs": [
-			{
-				"internalType": "uint16",
-				"name": "",
-				"type": "uint16"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "int256",
-				"name": "",
-				"type": "int256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "mixedIngrediants",
-		"outputs": [
-			{
-				"internalType": "uint16",
-				"name": "",
-				"type": "uint16"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "owner",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "PlayerCity",
-		"outputs": [
-			{
-				"internalType": "uint8",
-				"name": "kingdomType",
-				"type": "uint8"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "recipies",
-		"outputs": [
-			{
-				"internalType": "uint16",
-				"name": "timeToMake",
-				"type": "uint16"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "bytes4",
-				"name": "interfaceId",
-				"type": "bytes4"
-			}
-		],
-		"name": "supportsInterface",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "TIME_MULTIPLIER",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
+		"stateMutability": "pure",
 		"type": "function"
 	},
 	{
@@ -1266,45 +1137,6 @@
 				"internalType": "contract warcontract",
 				"name": "",
 				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "workInProgress",
-		"outputs": [
-			{
-				"internalType": "uint64",
-				"name": "timeWhenCompleted",
-				"type": "uint64"
-			},
-			{
-				"internalType": "uint24",
-				"name": "amountAtWork",
-				"type": "uint24"
-			},
-			{
-				"internalType": "uint16",
-				"name": "recipe",
-				"type": "uint16"
-			},
-			{
-				"internalType": "bool",
-				"name": "isWorking",
-				"type": "bool"
 			}
 		],
 		"stateMutability": "view",
