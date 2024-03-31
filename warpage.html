@@ -2,86 +2,190 @@
 
 <head>
     <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
-    <script src="./abi.js" type="application/javascript"></script>
+    <script src="./warabi.js" type="application/javascript"></script>
+    <script src="./itemlist.js" type="application/javascript"></script>
+
+    <script>
+        const waraddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
+
+        async function selectAction(_value) {
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
+
+
+            const signer = provider.getSigner()
+            NFTcontract = new ethers.Contract(waraddress, abi, provider)
+            myAddress = await signer.getAddress()
+
+            switch (_value) {
+                case "3":
+                    document.getElementById("TroopRemoval").style.display = "block";
+                    break;
+            }
+
+            console.log("test");
+        }
+        async function submitTX(_value) {
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
+
+
+            const signer = provider.getSigner()
+            NFTcontract = new ethers.Contract(waraddress, abi, provider)
+            myAddress = await signer.getAddress()
+
+            var _armyData = await NFTcontract.currentArmy(myAddress);
+
+            _value = "1";
+            switch (_value) {
+                case "1":
+                    document.getElementById("TroopCount").style.display = "block";
+
+                    if (document.getElementById("Frontline1").textContent != "Frontline 1:") { document.getElementById("Frontline1").textContent = "Frontline 1:" }
+                    document.getElementById("Frontline1").textContent += "Unit Type: ";
+                    document.getElementById("Frontline1").textContent += itemName(_armyData[3][0]);
+                    document.getElementById("Frontline1").textContent += "Amount: ";
+                    document.getElementById("Frontline1").textContent += _armyData[2][0];
+
+                    document.getElementById("Frontline1").textContent += "Unit Type: ";
+                    document.getElementById("Frontline1").textContent += itemName(_armyData[3][5]);
+                    document.getElementById("Frontline1").textContent += "Amount: ";
+                    document.getElementById("Frontline1").textContent += _armyData[2][1];
+
+                    document.getElementById("Frontline1").textContent += "Unit Type: ";
+                    document.getElementById("Frontline1").textContent += itemName(_armyData[3][10]);
+                    document.getElementById("Frontline1").textContent += "Amount: ";
+                    document.getElementById("Frontline1").textContent += _armyData[2][2];
+
+
+
+                    if (document.getElementById("Frontline2").textContent != "Frontline 2:") { document.getElementById("Frontline2").textContent = "Frontline 2:" }
+                    document.getElementById("Frontline2").textContent += "Unit Type: ";
+                    document.getElementById("Frontline2").textContent += itemName(_armyData[3][15]);
+                    document.getElementById("Frontline2").textContent += "Amount: ";
+                    document.getElementById("Frontline2").textContent += _armyData[2][3];
+
+                    document.getElementById("Frontline2").textContent += "Unit Type: ";
+                    document.getElementById("Frontline2").textContent += itemName(_armyData[3][20]);
+                    document.getElementById("Frontline2").textContent += "Amount: ";
+                    document.getElementById("Frontline2").textContent += _armyData[2][4];
+
+                    document.getElementById("Frontline2").textContent += "Unit Type: ";
+                    document.getElementById("Frontline2").textContent += itemName(_armyData[3][25]);
+                    document.getElementById("Frontline2").textContent += "Amount: ";
+                    document.getElementById("Frontline2").textContent += _armyData[2][5];
+                    break;
+            }
+
+            console.log("web submit script TX completed");
+        }
+    </script>
 </head>
 
 <body>
 
     <MainSelector>
         <text>What would you like to do?</text>
-        <select class="Dropdown">
+        <select class="Dropdown" onclick="selectAction(this.value)">
             <option value="0"></option>
             <option value="1">Check Your Army</option>
             <option value="2">Add Troop To Army</option>
             <option value="3">Remove Troop From Army</option>
             <option value="4">Start Quest</option>
-            <option value="5"></option>
+            <option value="5">Promote Solider</option>
 
         </select>
+        <ArmyViewer id="TroopCount" class="InvisableOnStart">
+            <text id="Frontline1">Frontline 1:</text>
+            <br>
+            <text id="Frontline2">Frontline 2:</text>
+            <br>
+            <text id="Ranged">Ranged Units:</text>
+            <br>
+            <text id="Skirmishers">Skirmish Line:</text>
+
+        </ArmyViewer>
+        <RemoveTroops id="TroopRemoval" class="InvisableOnStart">
+            <br>
+            <input type="number" class="NumericInput">Which Slot would you like to remove troops from?</input>
+        </RemoveTroops>
+
     </MainSelector>
 
 
     <MenuButtons class="menuButtons">
         <a href="index.html">
             <button class="indexButton">Return to Main Menu</button>
-          </a>
-          
+        </a>
+
     </MenuButtons>
-    <button class="sendTX" id="sendTX" onclick="submitTX()">Confirm Transaction</button>
+    <button class="sendTX" id="sendTX" onclick="submitTX(selectAction.value)">Confirm Transaction</button>
 
 </body>
 
 <style>
-body {background-color: rgb(216, 71, 71);}
+    body {
+        background-color: rgb(216, 71, 71);
+    }
 
 
-.indexButton{
-  background-color: gray;
-  width: 150px;
-  height:40px;
-  position: relative;
-  border-radius: 12px;
-  font-size: 16px;
-}
-.menuButtons{
-    position: absolute;
-    top: 5px;
-    right:20px;
-}
-.indexButton:hover {
-    background-color: rgb(179, 165, 165);
-}
+    .InvisableOnStart {
+        display: none;
+    }
 
-.Dropdown {
-    background-color: wheat;
-    border-radius: 4px;
-    font-size: 16px;
-  }
+    .indexButton {
+        background-color: gray;
+        width: 150px;
+        height: 40px;
+        position: relative;
+        border-radius: 12px;
+        font-size: 16px;
+    }
 
-  .MenuButtons {
-    position: absolute;
-    bottom: 10px;
-  }
-  .sendTX {
-    background-color: darkred;
-    color: black;
-    position: absolute;
-    width: 150px;
-    height: 80px;
-    text-align: center;
-    font-size: 16px;
-    border-radius: 12px;
-    bottom:10px;
-    left: 10px;
-  }
-  
-  .walletConnect {
-    background-color: darkred;
-    position: absolute;
-    right: 5%;
-    width: 150px;
-    height: 50px;
-    border-radius: 12px;
-  }
+    .menuButtons {
+        position: absolute;
+        top: 5px;
+        right: 20px;
+    }
 
+    .indexButton:hover {
+        background-color: rgb(179, 165, 165);
+    }
+
+    .Dropdown {
+        background-color: wheat;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    .NumericInput {
+        background-color: wheat;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    .MenuButtons {
+        position: absolute;
+        bottom: 10px;
+    }
+
+    .sendTX {
+        background-color: darkred;
+        color: black;
+        position: absolute;
+        width: 150px;
+        height: 80px;
+        text-align: center;
+        font-size: 16px;
+        border-radius: 12px;
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .walletConnect {
+        background-color: darkred;
+        position: absolute;
+        right: 5%;
+        width: 150px;
+        height: 50px;
+        border-radius: 12px;
+    }
 </style>
