@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<head>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+    <script src="./abi.js" type="application/javascript"></script>
+</head>
+
+<body>
+
+    <MainSelector>
+        <text>What would you like to do?</text>
+        <select class="Dropdown">
+            <option value="0"></option>
+            <option value="1">Check Your Army</option>
+            <option value="2">Add Troop To Army</option>
+            <option value="3">Remove Troop From Army</option>
+            <option value="4">Start Quest</option>
+            <option value="5"></option>
+
+        </select>
+    </MainSelector>
+
+
+    <MenuButtons class="menuButtons">
+        <a href="index.html">
+            <button class="indexButton">Return to Main Menu</button>
+          </a>
+    </MenuButtons>
+
+</body>
+
+<style>
+body {background-color: rgb(216, 71, 71);}
+
+
+.indexButton{
+  background-color: gray;
+  width: 150px;
+  height:40px;
+  position: relative;
+  border-radius: 12px;
+  font-size: 16px;
+}
+.menuButtons{
+    position: absolute;
+    top: 5px;
+    right:20px;
+}
+.indexButton:hover {
+    background-color: rgb(179, 165, 165);
+}
+
+.Dropdown {
+    background-color: wheat;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+  .MenuButtons {
+    position: absolute;
+    bottom: 10px;
+  }
+
+</style>
