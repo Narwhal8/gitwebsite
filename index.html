@@ -4517,206 +4517,115 @@
 
     function hideBuildingInfo() {
 
-      document.getElementsByClassName("B0")[0].style.display = "none";
-      document.getElementsByClassName("B0")[1].style.display = "none";
+      for (let i = 0; i < 2; ++i) {
+        document.getElementsByClassName("B0")[i].style.display = "none";
+      }
+      for (let i = 0; i < 2; ++i) {
+        document.getElementsByClassName("B1")[i].style.display = "none";
+      }
 
-      document.getElementsByClassName("B1")[0].style.display = "none";
-      document.getElementsByClassName("B1")[1].style.display = "none";
+      for (let i = 0; i < 3; ++i) {
+        document.getElementsByClassName("B2")[i].style.display = "none";
+      }
+      for (let i = 0; i < 4; ++i) {
+        document.getElementsByClassName("B3")[i].style.display = "none";
+      }
+      for (let i = 0; i < 4; ++i) {
+        document.getElementsByClassName("B4")[i].style.display = "none";
+      }
+      for (let i = 0; i < 4; ++i) {
+        document.getElementsByClassName("B5")[i].style.display = "none";
+      }
+      for (let i = 0; i < 4; ++i) {
+        document.getElementsByClassName("B6")[i].style.display = "none";
+      }
 
-      document.getElementsByClassName("B2")[0].style.display = "none";
-      document.getElementsByClassName("B2")[1].style.display = "none";
-      document.getElementsByClassName("B2")[2].style.display = "none";
+      for (let i = 0; i < 4; ++i) {
+        document.getElementsByClassName("B7")[i].style.display = "none";
+      }
 
-      document.getElementsByClassName("B3")[0].style.display = "none";
-      document.getElementsByClassName("B3")[1].style.display = "none";
-      document.getElementsByClassName("B3")[2].style.display = "none";
-      document.getElementsByClassName("B3")[3].style.display = "none";
+      for (let i = 0; i < 5; ++i) {
+        document.getElementsByClassName("B8")[i].style.display = "none";
+      }
 
-      document.getElementsByClassName("B4")[0].style.display = "none";
-      document.getElementsByClassName("B4")[1].style.display = "none";
-      document.getElementsByClassName("B4")[2].style.display = "none";
-      document.getElementsByClassName("B4")[3].style.display = "none";
-
-      document.getElementsByClassName("B5")[0].style.display = "none";
-      document.getElementsByClassName("B5")[1].style.display = "none";
-      document.getElementsByClassName("B5")[2].style.display = "none";
-      document.getElementsByClassName("B5")[3].style.display = "none";
-
-      document.getElementsByClassName("B6")[0].style.display = "none";
-      document.getElementsByClassName("B6")[1].style.display = "none";
-      document.getElementsByClassName("B6")[2].style.display = "none";
-      document.getElementsByClassName("B6")[3].style.display = "none";
-
-      document.getElementsByClassName("B7")[0].style.display = "none";
-      document.getElementsByClassName("B7")[1].style.display = "none";
-      document.getElementsByClassName("B7")[2].style.display = "none";
-      document.getElementsByClassName("B7")[3].style.display = "none";
-
-      document.getElementsByClassName("B8")[0].style.display = "none";
-      document.getElementsByClassName("B8")[1].style.display = "none";
-      document.getElementsByClassName("B8")[2].style.display = "none";
-      document.getElementsByClassName("B8")[3].style.display = "none";
-      document.getElementsByClassName("B8")[4].style.display = "none";
-
-      document.getElementsByClassName("B9")[0].style.display = "none";
-      document.getElementsByClassName("B9")[1].style.display = "none";
-      document.getElementsByClassName("B9")[2].style.display = "none";
-      document.getElementsByClassName("B9")[3].style.display = "none";
-      document.getElementsByClassName("B9")[4].style.display = "none";
-      document.getElementsByClassName("B9")[5].style.display = "none";
-      document.getElementsByClassName("B9")[6].style.display = "none";
-
-      document.getElementsByClassName("B10")[0].style.display = "none";
-      document.getElementsByClassName("B10")[1].style.display = "none";
-      document.getElementsByClassName("B10")[2].style.display = "none";
-      document.getElementsByClassName("B10")[3].style.display = "none";
-      document.getElementsByClassName("B10")[4].style.display = "none";
-      document.getElementsByClassName("B10")[5].style.display = "none";
-      document.getElementsByClassName("B10")[6].style.display = "none";
-
-      document.getElementsByClassName("B11")[0].style.display = "none";
-      document.getElementsByClassName("B11")[1].style.display = "none";
-      document.getElementsByClassName("B11")[2].style.display = "none";
-      document.getElementsByClassName("B11")[3].style.display = "none";
-      document.getElementsByClassName("B11")[4].style.display = "none";
-      document.getElementsByClassName("B11")[5].style.display = "none";
-      document.getElementsByClassName("B11")[6].style.display = "none";
-
-      document.getElementsByClassName("B12")[0].style.display = "none";
-      document.getElementsByClassName("B12")[1].style.display = "none";
-      document.getElementsByClassName("B12")[2].style.display = "none";
-      document.getElementsByClassName("B12")[3].style.display = "none";
-      document.getElementsByClassName("B12")[4].style.display = "none";
-      document.getElementsByClassName("B12")[5].style.display = "none";
-
-      document.getElementsByClassName("B13")[0].style.display = "none";
-      document.getElementsByClassName("B13")[1].style.display = "none";
-      document.getElementsByClassName("B13")[2].style.display = "none";
-      document.getElementsByClassName("B13")[3].style.display = "none";
-      document.getElementsByClassName("B13")[4].style.display = "none";
-      document.getElementsByClassName("B13")[5].style.display = "none";
-      document.getElementsByClassName("B13")[6].style.display = "none";
-      document.getElementsByClassName("B13")[7].style.display = "none";
-
-      document.getElementsByClassName("B14")[0].style.display = "none";
-      document.getElementsByClassName("B14")[1].style.display = "none";
-      document.getElementsByClassName("B14")[2].style.display = "none";
-      document.getElementsByClassName("B14")[3].style.display = "none";
-      document.getElementsByClassName("B14")[4].style.display = "none";
-      document.getElementsByClassName("B14")[5].style.display = "none";
-      document.getElementsByClassName("B14")[6].style.display = "none";
-
-      document.getElementsByClassName("B15")[0].style.display = "none";
-      document.getElementsByClassName("B15")[1].style.display = "none";
-      document.getElementsByClassName("B15")[2].style.display = "none";
-      document.getElementsByClassName("B15")[3].style.display = "none";
-      document.getElementsByClassName("B15")[4].style.display = "none";
-      document.getElementsByClassName("B15")[5].style.display = "none";
-      document.getElementsByClassName("B15")[6].style.display = "none";
-      document.getElementsByClassName("B15")[7].style.display = "none";
-
-      document.getElementsByClassName("B16")[0].style.display = "none";
-      document.getElementsByClassName("B16")[1].style.display = "none";
-      document.getElementsByClassName("B16")[2].style.display = "none";
-      document.getElementsByClassName("B16")[3].style.display = "none";
-      document.getElementsByClassName("B16")[4].style.display = "none";
-      document.getElementsByClassName("B16")[5].style.display = "none";
-
-      document.getElementsByClassName("B17")[0].style.display = "none";
-      document.getElementsByClassName("B17")[1].style.display = "none";
-      document.getElementsByClassName("B17")[2].style.display = "none";
-      document.getElementsByClassName("B17")[3].style.display = "none";
-      document.getElementsByClassName("B17")[4].style.display = "none";
-      document.getElementsByClassName("B17")[5].style.display = "none";
-
-      document.getElementsByClassName("B18")[0].style.display = "none";
-      document.getElementsByClassName("B18")[1].style.display = "none";
-      document.getElementsByClassName("B18")[2].style.display = "none";
-      document.getElementsByClassName("B18")[3].style.display = "none";
-      document.getElementsByClassName("B18")[4].style.display = "none";
-      document.getElementsByClassName("B18")[5].style.display = "none";
-
-      document.getElementsByClassName("B19")[0].style.display = "none";
-      document.getElementsByClassName("B19")[1].style.display = "none";
-      document.getElementsByClassName("B19")[2].style.display = "none";
-      document.getElementsByClassName("B19")[3].style.display = "none";
-      document.getElementsByClassName("B19")[4].style.display = "none";
-
-      document.getElementsByClassName("B20")[0].style.display = "none";
-      document.getElementsByClassName("B20")[1].style.display = "none";
-      document.getElementsByClassName("B20")[2].style.display = "none";
-      document.getElementsByClassName("B20")[3].style.display = "none";
-      document.getElementsByClassName("B20")[4].style.display = "none";
-      document.getElementsByClassName("B20")[5].style.display = "none";
-      document.getElementsByClassName("B20")[6].style.display = "none";
-      document.getElementsByClassName("B20")[7].style.display = "none";
-      document.getElementsByClassName("B20")[8].style.display = "none";
-
-      document.getElementsByClassName("B21")[0].style.display = "none";
-      document.getElementsByClassName("B21")[1].style.display = "none";
-      document.getElementsByClassName("B21")[2].style.display = "none";
-      document.getElementsByClassName("B21")[3].style.display = "none";
-      document.getElementsByClassName("B21")[4].style.display = "none";
-      document.getElementsByClassName("B21")[5].style.display = "none";
-      document.getElementsByClassName("B21")[6].style.display = "none";
-
-      document.getElementsByClassName("B22")[0].style.display = "none";
-      document.getElementsByClassName("B22")[1].style.display = "none";
-      document.getElementsByClassName("B22")[2].style.display = "none";
-      document.getElementsByClassName("B22")[3].style.display = "none";
-      document.getElementsByClassName("B22")[4].style.display = "none";
-
-      document.getElementsByClassName("B26")[0].style.display = "none";
-      document.getElementsByClassName("B26")[1].style.display = "none";
-      document.getElementsByClassName("B26")[2].style.display = "none";
-      document.getElementsByClassName("B26")[3].style.display = "none";
-      document.getElementsByClassName("B26")[4].style.display = "none";
-      document.getElementsByClassName("B26")[5].style.display = "none";
-      document.getElementsByClassName("B26")[6].style.display = "none";
-
-      document.getElementsByClassName("B27")[0].style.display = "none";
-      document.getElementsByClassName("B27")[1].style.display = "none";
-      document.getElementsByClassName("B27")[2].style.display = "none";
-      document.getElementsByClassName("B27")[3].style.display = "none";
-      document.getElementsByClassName("B27")[4].style.display = "none";
-      document.getElementsByClassName("B27")[5].style.display = "none";
-      document.getElementsByClassName("B27")[6].style.display = "none";
-
-      document.getElementsByClassName("B28")[0].style.display = "none";
-      document.getElementsByClassName("B28")[1].style.display = "none";
-      document.getElementsByClassName("B28")[2].style.display = "none";
-      document.getElementsByClassName("B28")[3].style.display = "none";
-      document.getElementsByClassName("B28")[4].style.display = "none";
-      document.getElementsByClassName("B28")[5].style.display = "none";
-      document.getElementsByClassName("B28")[6].style.display = "none";
-      document.getElementsByClassName("B28")[7].style.display = "none";
-
-      document.getElementsByClassName("B29")[0].style.display = "none";
-      document.getElementsByClassName("B29")[1].style.display = "none";
-      document.getElementsByClassName("B29")[2].style.display = "none";
-      document.getElementsByClassName("B29")[3].style.display = "none";
-      document.getElementsByClassName("B29")[4].style.display = "none";
-      document.getElementsByClassName("B29")[5].style.display = "none";
-      document.getElementsByClassName("B29")[6].style.display = "none";
-      document.getElementsByClassName("B29")[7].style.display = "none";
-
-      document.getElementsByClassName("B30")[0].style.display = "none";
-      document.getElementsByClassName("B30")[1].style.display = "none";
-      document.getElementsByClassName("B30")[2].style.display = "none";
-      document.getElementsByClassName("B30")[3].style.display = "none";
-      document.getElementsByClassName("B30")[4].style.display = "none";
-      document.getElementsByClassName("B30")[5].style.display = "none";
-      document.getElementsByClassName("B30")[6].style.display = "none";
-      document.getElementsByClassName("B30")[7].style.display = "none";
-
-      document.getElementsByClassName("B31")[0].style.display = "none";
-      document.getElementsByClassName("B31")[1].style.display = "none";
-      document.getElementsByClassName("B31")[2].style.display = "none";
-      document.getElementsByClassName("B31")[3].style.display = "none";
-      document.getElementsByClassName("B31")[4].style.display = "none";
-      document.getElementsByClassName("B31")[5].style.display = "none";
-      document.getElementsByClassName("B31")[6].style.display = "none";
-      document.getElementsByClassName("B31")[7].style.display = "none";
+      for (let i = 0; i < 8; ++i) {
+        document.getElementsByClassName("B9")[i].style.display = "none";
+      }
+            
+      for(let i = 0; i < 8; ++i) {
+        document.getElementsByClassName("B10")[i].style.display = "none";
+      }
+            
+      for(let i = 0; i < 8; ++i) {
+        document.getElementsByClassName("B11")[i].style.display = "none";
+      }
+            
+      for(let i = 0; i < 6; ++i) {
+        document.getElementsByClassName("B12")[i].style.display = "none";
+      }
+            
+      for(let i = 0; i < 8; ++i) {
+        document.getElementsByClassName("B13")[i].style.display = "none";
+      }
+      
+      for(let i = 0; i < 7; ++i) {
+        document.getElementsByClassName("B14")[i].style.display = "none";
+      }      
+      for(let i = 0; i < 8; ++i) {
+        document.getElementsByClassName("B15")[i].style.display = "none";
+      }
+      
+      for(let i = 0; i < 7; ++i) {
+        document.getElementsByClassName("B16")[i].style.display = "none";
+      }
+      
+      for(let i = 0; i < 6; ++i) {
+        document.getElementsByClassName("B17")[i].style.display = "none";
+      }
+      
+      for(let i = 0; i < 7; ++i) {
+        document.getElementsByClassName("B18")[i].style.display = "none";
+      }
+      
+      for(let i = 0; i < 6; ++i) {
+        document.getElementsByClassName("B19")[i].style.display = "none";
+      }
+      
+      for(let i = 0; i < 9; ++i) {
+        document.getElementsByClassName("B20")[i].style.display = "none";
+      }
+      
+      for(let i = 0; i < 7; ++i) {
+        document.getElementsByClassName("B21")[i].style.display = "none";
+      }
+      
+      for(let i = 0; i < 5; ++i) {
+        document.getElementsByClassName("B22")[i].style.display = "none";
+      }
+      
+      for(let i = 0; i < 8; ++i) {
+        document.getElementsByClassName("B26")[i].style.display = "none";
+      }
+      
+      for(let i = 0; i < 7; ++i) {
+        document.getElementsByClassName("B27")[i].style.display = "none";
+      }
+      
+      for(let i = 0; i < 8; ++i) {
+        document.getElementsByClassName("B28")[i].style.display = "none";
+      }
+      
+      for(let i = 0; i < 8; ++i) {
+        document.getElementsByClassName("B29")[i].style.display = "none";
+      }
+      
+      for(let i = 0; i < 8; ++i) {
+        document.getElementsByClassName("B30")[i].style.display = "none";
+      }
+      
+      for(let i = 0; i < 8; ++i) {
+        document.getElementsByClassName("B31")[i].style.display = "none";
+      }
     }
 
     function cityDevHelper() {
@@ -4770,7 +4679,7 @@
   </select>
 
 
-  <WorkingLand class="Farming" id="Farming">
+  <WorkingLand class="Farming InvisableOnStart" id="Farming">
     <label class="Farming" id="FarmLabel">What would you like to farm?</label>
     <select class="Farming Dropdown" id="cropSelect" onchange="selectLand(this.value);">
       <option value="_"></option>
@@ -4808,7 +4717,7 @@
     </select>
   </WorkingLand>
 
-  <landSelection class="landSelection " id="landSelection">
+  <landSelection class="landSelection  InvisableOnStart" id="landSelection">
 
     <label class="landSelection" for="landSelection" id="landLabel">Which Land?</label>
     <select class="AridKingdom Lands Dropdown" id="Arid">
@@ -4878,7 +4787,7 @@
 
 
   </landSelection>
-  <Recipe class="Recipe RecipeText" id="Recipe RecipeText">
+  <Recipe class="Recipe RecipeText InvisableOnStart" id="Recipe RecipeText">
     <label class="Recipe" for="RecipeID" id="RecipeLabel">What Would You Like To Make:</label>
 
     <select class="Recipe Dropdown" id="RecipeID"
@@ -5076,7 +4985,7 @@
 
   </Recipe>
 
-  <CityDevelopment class="CDInput" id="CDInput">
+  <CityDevelopment class="CDInput InvisableOnStart" id="CDInput">
     <br>
     <text class="CDInput" id="CDLabel">Which Building is involved?</text>
     <select class="CDInput Dropdown" id="CID"
@@ -5175,7 +5084,7 @@
     <text class="RecipeText B9 Indented" id="B19-4">1 Million Aquamarine</text>
     <text class="RecipeText B9 " id="B9-5">Staffing Needs:</text>
     <text class="RecipeText B9 Indented" id="B9-6">3 Peasents</text>
-    <text class="RecipeText B9 Indented" id="B9-7">2 Low-Born Nobles</text>
+    <text class="RecipeText B9 Indented" id="B9-7">2 Low-BornNobles</text>
 
     <text class="RecipeText B10" id="B10-0">Cost:</text>
     <text class="RecipeText B10 Indented" id="B10-1">30,000 Refined Wood</text>
@@ -5349,7 +5258,7 @@
   </CityDevelopment>
 
 
-  <ItemMenu>
+  <ItemMenu class="InvisableOnStart">
     <label id="ItemMenuLabelID" class="ItemMenu" for="ItemMenuID">What Item are you looking for?</label><br>
     <select class="ItemMenu Dropdown" id="ItemMenuID">
       <option value="-1"></option>
@@ -5569,7 +5478,7 @@
   </ItemMenu>
 
 
-  <BuyorSell>
+  <BuyorSell class="InvisableOnStart">
     <label for="BuyorSellID" class="BuyorSell" id="BuyorSellLabel">Are you Buying or Selling?</label>
 
     <select class="BuyorSell Dropdown" id="BuyorSellID">
@@ -5586,7 +5495,7 @@
 
 
 
-  <ItemTypes>
+  <ItemTypes class="InvisableOnStart">
 
     <label for="ItemTypesID" class="ItemTypes" id="ItemTypesLabel">What kind of item are you trying to trade?</label>
 
@@ -5606,7 +5515,7 @@
 
   </ItemTypes>
 
-  <FoodAmounts>
+  <FoodAmounts class="InvisableOnStart">
 
     <br>
     <text class="foodInput" id="foodInputLabel">What would you like to feed the workers?</text>
@@ -5629,7 +5538,8 @@
 
     </select>
   </FoodAmounts>
-  <WarInput class="WarInput" id="WarInput">
+
+  <WarInput class="WarInput InvisableOnStart" id="WarInput">
 
     <text class="WarInput" id="WLabel1">Which slot do troops go in?</text>
     <input type="text" class="WarInput" id="WID1">
@@ -5659,7 +5569,7 @@
   </WarInput>
 
 
-  <KingdomInput class="KingdomInput" id="KIDInfo">
+  <KingdomInput class="KingdomInput InvisableOnStart" id="KIDInfo">
     <label id="KIDInfo" for="KingdomID">What kind of Kingdom would you like? WARNING: CAN ONLY BE DONE ONCE</label><br>
     <select class="KingdomInput Dropdown" id="KingdomID">
       <option value="-1"></option>
@@ -5675,7 +5585,7 @@
     </select>
   </KingdomInput>
 
-  <CivGoods class="CivG">
+  <CivGoods class="CivG InvisableOnStart">
     <label id="CivGInfo">What Item Would you like to contribute</label>
     <select class="Dropdown CivG" id="CivGM">
       <option value="-1"></option>
@@ -5690,13 +5600,13 @@
 
   </CivGoods>
 
-  <RecruitPeople class="RecruitInput" id="RecruitInput">
+  <RecruitPeople class="RecruitInput InvisableOnStart" id="RecruitInput">
     <label for="RecruitID">What Type of citizen are you recruiting?</label><br>
     <input type="text" id="RecruitID">
 
   </RecruitPeople>
   <br>
-  <ItemSelection class="itemSelection Items" id="itemSelection">
+  <ItemSelection class="itemSelection Items InvisableOnStart" id="itemSelection">
     <br>
     <label class="itemSelection Grains" id="GrainLabel">What Kind of Grain would you like to use?</label>
     <select class="Grains Items Dropdown" id="Grain">
@@ -5761,7 +5671,7 @@
     </select>
   </ItemSelection>
   <br>
-  <TXamount class="Amount" id="AmountID">
+  <TXamount class="Amount InvisableOnStart" id="AmountID">
     <text class="Amount" id="AmountLabel">How much of this transaction would you like to do?</text>
     <text class="Amount" id="TimeAmountLabel">How many units of time would you like to run this for?</text>
     <input type="text" class="Amount NumericInput" id="Amount" onchange="totalCostCalc();">
@@ -5778,13 +5688,13 @@
 
   </TXamount>
 
-  <TotalCost>
+  <TotalCost class="InvisableOnStart">
 
     <text id="totalCostID" class="TotalCost">Total Cost:</text>
 
   </TotalCost>
 
-  <KingdomInfo>
+  <KingdomInfo class="InvisableOnStart">
     <text id="peasentPop" class="Population">Pesants:</text>
     <text id="lowNobelPop" class="Population">Low Nobles:</text>
     <text id="highNobelPop" class="Population">High Nobles:</text>
@@ -5813,9 +5723,9 @@
 
   </KingdomInfo>
 
-  <text id="balance" class="Balance">Balance of Item:</text>
+  <text id="balance" class="Balance InvisableOnStart">Balance of Item:</text>
 
-  <Time>
+  <Time class="InvisableOnStart">
     <text class="Time" id="timeToCompletion">Time To Completion:</text>
   </Time>
 
@@ -5849,45 +5759,10 @@
     background-color: mediumseagreen;
   }
 
-  .Farming,
-  .landAmount,
-  .landSelection,
-  .Recipe,
-  .CraftingInput,
-  .BuildingInput,
-  .KingdomInput,
-  .WarInput,
-  .RecruitInput,
-  .CDInput,
-  .MercWarInput,
-  .AridKingdom,
-  .NorthernKingdom,
-  .HeartlandKingdom,
-  .SouthernKingdom,
-  .OceanKingdom,
-  .SwampKingdom,
-  .MountainKingdom,
-  .SilverKingdom,
-  .GuildedKingdom,
-  .Grains,
-  .Meats,
-  .itemSelection,
-  .RecipeText,
-  .BuyorSell,
-  .ItemTypes,
-  .BuyorSell,
-  .Balance,
-  .ItemMenu,
-  .Amount,
-  .foodInput,
-  .Fruits,
-  .Veggies,
-  .Sweetners,
-  .Tier2Metals,
-  .BasicDrinks,
-  .TotalCost,
-  .Population,
-  .Time,
+  .InvisableOnStart {
+    display: none;
+  }
+
   .CivG {
     display: none;
   }
