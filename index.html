@@ -6,6 +6,7 @@
   <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
   <script src="./abi.js" type="application/javascript"></script>
   <script src="./itemlist.js" type="application/javascript"></script>
+  <script src="./itemvalue.js" type="application/javascript"></script>
 
   <script>
     console.log(ethers);
@@ -4329,10 +4330,10 @@
         document.getElementById("actionSelect").value == "3") { }
       //Why is this here? Because I cant figure out how to make it work right in the if statement and its not worth the time to fix when this works
       else {
-        var _time_multi = await _buildTimeBasedOnFood(10000);
+        var _time_multi = await _buildTimeBasedOnFood(_itemValue(Number(document.getElementById("FoodInputID").value)));
         console.log("time multiplier",_time_multi);
 
-        setTTC((Number(document.getElementById("Amount").value) * time / _time_multi));
+        setTTC((Number(document.getElementById("Amount").value) * time * 200 / _time_multi));
       }
 
     }
@@ -4346,11 +4347,12 @@
       let _item_stocks = _civilian_stockpiles[1];
 
       let _value2 = (65 + (Math.sqrt((_value * 2)))) ;
+      _value2 = Math.trunc(_value2);
       console.log("first value check", _value2);
-      _value = (1000/(1000 + (25 * (_item_stocks[0] + _item_stocks[1] + _item_stocks[2] + _item_stocks[3] + _item_stocks[4]))))
+      _value2 +=  50 + (0.5 * (100 *(1/(1 + (0.025 * (_item_stocks[0] + _item_stocks[1] + _item_stocks[2] + _item_stocks[3] + _item_stocks[4]))))))
       console.log("second value check", _value2);
-      Math.trunc(_value2);
-      _value2 = _value2 / 100;
+      _value2 = Math.trunc(_value2);
+      //_value2 = _value2 / 100;
       console.log("final value check", _value2);
       return (_value2);
     }
