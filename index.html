@@ -183,7 +183,9 @@
           let _max_population = _cityData[2];
           let _land_available = _cityData[3];
           let _land = _cityData[5];
-          let _tithe_items = _cityData[6];
+
+          var _civilian_stockpiles = await NFTcontract.getStockedGoods(myAddress);
+          let _tithe_items = _civilian_stockpiles[1];
 
           var _buildingAmount = await NFTcontract.getBuildingCount(myAddress);
 
@@ -220,7 +222,6 @@
 
           for (let i = 12; i < 21; i++) {
             document.getElementsByClassName("Population")[i].style.display = "block";
-
           }
           document.getElementById("housing").textContent += "Land Permits: ";
           document.getElementById("housing").textContent += _buildingAmount[0];
@@ -298,16 +299,16 @@
           document.getElementsByClassName("Population")[3].style.display = "block";
 
 
-          document.getElementById("titheData").textContent = "Tithe Item Stockpiles2:";
-          document.getElementById("titheData").textContent += " Clothes:";
+          document.getElementById("titheData").textContent = "Tithe Item Stockpiles:";
+          document.getElementById("titheData").textContent += " Clothes: ";
           document.getElementById("titheData").textContent += _tithe_items[0];
-          document.getElementById("titheData").textContent += "Tools:";
+          document.getElementById("titheData").textContent += " Tools: ";
           document.getElementById("titheData").textContent += _tithe_items[1];
-          document.getElementById("titheData").textContent += "Furniture:";
+          document.getElementById("titheData").textContent += " Furniture: ";
           document.getElementById("titheData").textContent += _tithe_items[2];
-          document.getElementById("titheData").textContent += "Bedding:";
+          document.getElementById("titheData").textContent += " Bedding: ";
           document.getElementById("titheData").textContent += _tithe_items[3];
-          document.getElementById("titheData").textContent += "Jewelery:";
+          document.getElementById("titheData").textContent += " Jewelery: ";
           document.getElementById("titheData").textContent += _tithe_items[4];
 
 
@@ -4333,6 +4334,12 @@
 
     }
 
+    function buildTimeBasedOnFood(_value) {
+
+      _value = (65 + (Math.sqrt((_value * 2)))) / 100
+      return (_value)
+    }
+
     function showMultiItemMenu(_value) {
 
       document.getElementById("itemSelection").style.display = "inline";
@@ -4551,79 +4558,79 @@
       for (let i = 0; i < 8; ++i) {
         document.getElementsByClassName("B9")[i].style.display = "none";
       }
-            
-      for(let i = 0; i < 8; ++i) {
+
+      for (let i = 0; i < 8; ++i) {
         document.getElementsByClassName("B10")[i].style.display = "none";
       }
-            
-      for(let i = 0; i < 8; ++i) {
+
+      for (let i = 0; i < 8; ++i) {
         document.getElementsByClassName("B11")[i].style.display = "none";
       }
-            
-      for(let i = 0; i < 6; ++i) {
+
+      for (let i = 0; i < 6; ++i) {
         document.getElementsByClassName("B12")[i].style.display = "none";
       }
-            
-      for(let i = 0; i < 8; ++i) {
+
+      for (let i = 0; i < 8; ++i) {
         document.getElementsByClassName("B13")[i].style.display = "none";
       }
-      
-      for(let i = 0; i < 7; ++i) {
+
+      for (let i = 0; i < 7; ++i) {
         document.getElementsByClassName("B14")[i].style.display = "none";
-      }      
-      for(let i = 0; i < 8; ++i) {
+      }
+      for (let i = 0; i < 8; ++i) {
         document.getElementsByClassName("B15")[i].style.display = "none";
       }
-      
-      for(let i = 0; i < 7; ++i) {
+
+      for (let i = 0; i < 7; ++i) {
         document.getElementsByClassName("B16")[i].style.display = "none";
       }
-      
-      for(let i = 0; i < 6; ++i) {
+
+      for (let i = 0; i < 6; ++i) {
         document.getElementsByClassName("B17")[i].style.display = "none";
       }
-      
-      for(let i = 0; i < 7; ++i) {
+
+      for (let i = 0; i < 7; ++i) {
         document.getElementsByClassName("B18")[i].style.display = "none";
       }
-      
-      for(let i = 0; i < 6; ++i) {
+
+      for (let i = 0; i < 6; ++i) {
         document.getElementsByClassName("B19")[i].style.display = "none";
       }
-      
-      for(let i = 0; i < 9; ++i) {
+
+      for (let i = 0; i < 9; ++i) {
         document.getElementsByClassName("B20")[i].style.display = "none";
       }
-      
-      for(let i = 0; i < 7; ++i) {
+
+      for (let i = 0; i < 7; ++i) {
         document.getElementsByClassName("B21")[i].style.display = "none";
       }
-      
-      for(let i = 0; i < 5; ++i) {
+
+      for (let i = 0; i < 5; ++i) {
         document.getElementsByClassName("B22")[i].style.display = "none";
       }
-      
-      for(let i = 0; i < 8; ++i) {
+
+      for (let i = 0; i < 8; ++i) {
         document.getElementsByClassName("B26")[i].style.display = "none";
       }
-      
-      for(let i = 0; i < 7; ++i) {
+
+      for (let i = 0; i < 7; ++i) {
         document.getElementsByClassName("B27")[i].style.display = "none";
       }
-      
-      for(let i = 0; i < 8; ++i) {
+
+      for (let i = 0; i < 8; ++i) {
         document.getElementsByClassName("B28")[i].style.display = "none";
       }
-      
-      for(let i = 0; i < 8; ++i) {
+
+      for (let i = 0; i < 8; ++i) {
         document.getElementsByClassName("B29")[i].style.display = "none";
       }
-      
-      for(let i = 0; i < 8; ++i) {
+
+      for (let i = 0; i < 8; ++i) {
         document.getElementsByClassName("B30")[i].style.display = "none";
       }
-      
-      for(let i = 0; i < 8; ++i) {
+
+      for (let i = 0; i < 8; ++i) {
         document.getElementsByClassName("B31")[i].style.display = "none";
       }
     }
