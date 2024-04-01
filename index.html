@@ -4257,7 +4257,7 @@
       document.getElementsByClassName("Recipe")[2].style.display = "block";
     }
 
-    function totalCostCalc() {
+    async function totalCostCalc() {
       let whyJS = craftingRecipiesIngrediants(Number(selector()));
       var items = whyJS[0];
       var instant = whyJS[1];
@@ -4329,15 +4329,30 @@
         document.getElementById("actionSelect").value == "3") { }
       //Why is this here? Because I cant figure out how to make it work right in the if statement and its not worth the time to fix when this works
       else {
-        setTTC(Number(document.getElementById("Amount").value) * time);
+        var _time_multi = await _buildTimeBasedOnFood(10000);
+        console.log("time multiplier",_time_multi);
+
+        setTTC((Number(document.getElementById("Amount").value) * time / _time_multi));
       }
 
     }
 
-    function buildTimeBasedOnFood(_value) {
+    async function _buildTimeBasedOnFood(_value) {
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner()
+      const NFTcontract = new ethers.Contract(address, abi, provider)
+      const myAddress = await signer.getAddress()
+      var _civilian_stockpiles = await NFTcontract.getStockedGoods(myAddress);
+      let _item_stocks = _civilian_stockpiles[1];
 
-      _value = (65 + (Math.sqrt((_value * 2)))) / 100
-      return (_value)
+      let _value2 = (65 + (Math.sqrt((_value * 2)))) ;
+      console.log("first value check", _value2);
+      _value = (1000/(1000 + (25 * (_item_stocks[0] + _item_stocks[1] + _item_stocks[2] + _item_stocks[3] + _item_stocks[4]))))
+      console.log("second value check", _value2);
+      Math.trunc(_value2);
+      _value2 = _value2 / 100;
+      console.log("final value check", _value2);
+      return (_value2);
     }
 
     function showMultiItemMenu(_value) {
@@ -4388,7 +4403,7 @@
 
       if (document.getElementById("timeToCompletion").textContent != "Time To Completion: ") { document.getElementById("timeToCompletion").textContent = "Time To Completion: "; }
 
-      document.getElementById("timeToCompletion").textContent += (Time_Multiplier * _time);
+      document.getElementById("timeToCompletion").textContent += Math.trunc(Time_Multiplier * _time);
 
       document.getElementById("timeToCompletion").textContent += " Seconds (WIP: More expensive food means faster then this number. No/poor food means slower)";
     }
