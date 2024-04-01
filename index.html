@@ -4679,7 +4679,7 @@
   </select>
 
 
-  <WorkingLand class="Farming InvisableOnStart" id="Farming">
+  <WorkingLand class="Farming " id="Farming">
     <label class="Farming" id="FarmLabel">What would you like to farm?</label>
     <select class="Farming Dropdown" id="cropSelect" onchange="selectLand(this.value);">
       <option value="_"></option>
@@ -4717,7 +4717,7 @@
     </select>
   </WorkingLand>
 
-  <landSelection class="landSelection  InvisableOnStart" id="landSelection">
+  <landSelection class="landSelection" id="landSelection">
 
     <label class="landSelection" for="landSelection" id="landLabel">Which Land?</label>
     <select class="AridKingdom Lands Dropdown" id="Arid">
@@ -4787,7 +4787,7 @@
 
 
   </landSelection>
-  <Recipe class="Recipe RecipeText InvisableOnStart" id="Recipe RecipeText">
+  <Recipe class="Recipe RecipeText " id="Recipe RecipeText">
     <label class="Recipe" for="RecipeID" id="RecipeLabel">What Would You Like To Make:</label>
 
     <select class="Recipe Dropdown" id="RecipeID"
@@ -4985,7 +4985,7 @@
 
   </Recipe>
 
-  <CityDevelopment class="CDInput InvisableOnStart" id="CDInput">
+  <CityDevelopment class="CDInput " id="CDInput">
     <br>
     <text class="CDInput" id="CDLabel">Which Building is involved?</text>
     <select class="CDInput Dropdown" id="CID"
@@ -5258,7 +5258,7 @@
   </CityDevelopment>
 
 
-  <ItemMenu class="InvisableOnStart">
+  <ItemMenu class="">
     <label id="ItemMenuLabelID" class="ItemMenu" for="ItemMenuID">What Item are you looking for?</label><br>
     <select class="ItemMenu Dropdown" id="ItemMenuID">
       <option value="-1"></option>
@@ -5478,7 +5478,7 @@
   </ItemMenu>
 
 
-  <BuyorSell class="InvisableOnStart">
+  <BuyorSell class="">
     <label for="BuyorSellID" class="BuyorSell" id="BuyorSellLabel">Are you Buying or Selling?</label>
 
     <select class="BuyorSell Dropdown" id="BuyorSellID">
@@ -5495,7 +5495,7 @@
 
 
 
-  <ItemTypes class="InvisableOnStart">
+  <ItemTypes class="">
 
     <label for="ItemTypesID" class="ItemTypes" id="ItemTypesLabel">What kind of item are you trying to trade?</label>
 
@@ -5515,7 +5515,7 @@
 
   </ItemTypes>
 
-  <FoodAmounts class="InvisableOnStart">
+  <FoodAmounts class="">
 
     <br>
     <text class="foodInput" id="foodInputLabel">What would you like to feed the workers?</text>
@@ -5539,7 +5539,7 @@
     </select>
   </FoodAmounts>
 
-  <WarInput class="WarInput InvisableOnStart" id="WarInput">
+  <WarInput class="WarInput " id="WarInput">
 
     <text class="WarInput" id="WLabel1">Which slot do troops go in?</text>
     <input type="text" class="WarInput" id="WID1">
@@ -5569,7 +5569,7 @@
   </WarInput>
 
 
-  <KingdomInput class="KingdomInput InvisableOnStart" id="KIDInfo">
+  <KingdomInput class="KingdomInput " id="KIDInfo">
     <label id="KIDInfo" for="KingdomID">What kind of Kingdom would you like? WARNING: CAN ONLY BE DONE ONCE</label><br>
     <select class="KingdomInput Dropdown" id="KingdomID">
       <option value="-1"></option>
@@ -5585,7 +5585,7 @@
     </select>
   </KingdomInput>
 
-  <CivGoods class="CivG InvisableOnStart">
+  <CivGoods class="CivG ">
     <label id="CivGInfo">What Item Would you like to contribute</label>
     <select class="Dropdown CivG" id="CivGM">
       <option value="-1"></option>
@@ -5600,13 +5600,13 @@
 
   </CivGoods>
 
-  <RecruitPeople class="RecruitInput InvisableOnStart" id="RecruitInput">
+  <RecruitPeople class="RecruitInput " id="RecruitInput">
     <label for="RecruitID">What Type of citizen are you recruiting?</label><br>
     <input type="text" id="RecruitID">
 
   </RecruitPeople>
   <br>
-  <ItemSelection class="itemSelection Items InvisableOnStart" id="itemSelection">
+  <ItemSelection class="itemSelection Items " id="itemSelection">
     <br>
     <label class="itemSelection Grains" id="GrainLabel">What Kind of Grain would you like to use?</label>
     <select class="Grains Items Dropdown" id="Grain">
@@ -5671,7 +5671,7 @@
     </select>
   </ItemSelection>
   <br>
-  <TXamount class="Amount InvisableOnStart" id="AmountID">
+  <TXamount class="Amount " id="AmountID">
     <text class="Amount" id="AmountLabel">How much of this transaction would you like to do?</text>
     <text class="Amount" id="TimeAmountLabel">How many units of time would you like to run this for?</text>
     <input type="text" class="Amount NumericInput" id="Amount" onchange="totalCostCalc();">
@@ -5688,13 +5688,13 @@
 
   </TXamount>
 
-  <TotalCost class="InvisableOnStart">
+  <TotalCost class="">
 
     <text id="totalCostID" class="TotalCost">Total Cost:</text>
 
   </TotalCost>
 
-  <KingdomInfo class="InvisableOnStart">
+  <KingdomInfo class="">
     <text id="peasentPop" class="Population">Pesants:</text>
     <text id="lowNobelPop" class="Population">Low Nobles:</text>
     <text id="highNobelPop" class="Population">High Nobles:</text>
@@ -5723,9 +5723,9 @@
 
   </KingdomInfo>
 
-  <text id="balance" class="Balance InvisableOnStart">Balance of Item:</text>
+  <text id="balance" class="Balance ">Balance of Item:</text>
 
-  <Time class="InvisableOnStart">
+  <Time class="">
     <text class="Time" id="timeToCompletion">Time To Completion:</text>
   </Time>
 
@@ -5759,7 +5759,46 @@
     background-color: mediumseagreen;
   }
 
-  .InvisableOnStart {
+  .Farming,
+  .landAmount,
+  .landSelection,
+  .Recipe,
+  .CraftingInput,
+  .BuildingInput,
+  .KingdomInput,
+  .WarInput,
+  .RecruitInput,
+  .CDInput,
+  .MercWarInput,
+  .AridKingdom,
+  .NorthernKingdom,
+  .HeartlandKingdom,
+  .SouthernKingdom,
+  .OceanKingdom,
+  .SwampKingdom,
+  .MountainKingdom,
+  .SilverKingdom,
+  .GuildedKingdom,
+  .Grains,
+  .Meats,
+  .itemSelection,
+  .RecipeText,
+  .BuyorSell,
+  .ItemTypes,
+  .BuyorSell,
+  .Balance,
+  .ItemMenu,
+  .Amount,
+  .foodInput,
+  .Fruits,
+  .Veggies,
+  .Sweetners,
+  .Tier2Metals,
+  .BasicDrinks,
+  .TotalCost,
+  .Population,
+  .Time,
+  .CivG {
     display: none;
   }
 
