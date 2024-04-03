@@ -1217,16 +1217,16 @@ function itemName(_value) {
     var _name;
     switch (_value) {
           case -20:
-    _name = "Rare_Gemstone";
+    _name = "Rare Gemstone";
     break;
   case -19:
-    _name = "Common_Gemstone";
+    _name = "Common Gemstone";
     break;
   case -18:
-    _name = "Polished_Rare_Gemstone";
+    _name = "Polished Rare Gemstone";
     break;
   case -17:
-    _name = "Polished_Common_Gemstone";
+    _name = "Polished Common Gemstone";
     break;
   case -16:
     _name = "Crop";
@@ -1238,28 +1238,28 @@ function itemName(_value) {
     _name = "Pie";
     break;
   case -13:
-    _name = "T5_Drink";
+    _name = "T5 Drink";
     break;
   case -12:
-    _name = "T4_Drink";
+    _name = "T4 Drink";
     break;
   case -11:
-    _name = "T3_Drink";
+    _name = "T3 Drink";
     break;
   case -10:
-    _name = "T2_Drink";
+    _name = "T2 Drink";
     break;
   case -9:
     _name = "Bread";
     break;
   case -8:
-    _name = "Exotic_Berry";
+    _name = "Exotic Berry";
     break;
   case -7:
-    _name = "T1_Drink";
+    _name = "T1 Drink";
     break;
   case -6:
-    _name = "T2_Metal";
+    _name = "T2 Metal";
     break;
   case -5:
     _name = "Side";
@@ -1277,100 +1277,100 @@ function itemName(_value) {
     _name = "Grain";
     break;
   case 1:
-    _name = "Arid_Badlands";
+    _name = "Arid Badlands";
     break;
   case 2:
-    _name = "Arid_Steppe";
+    _name = "Arid Steppe";
     break;
   case 3:
-    _name = "Arid_Oasis";
+    _name = "Arid Oasis";
     break;
   case 4:
-    _name = "Arid_River";
+    _name = "Arid River";
     break;
   case 11:
-    _name = "Northern_Rocky_Wastes";
+    _name = "Northern Rocky Wastes";
     break;
   case 12:
-    _name = "Northern_Tundra";
+    _name = "Northern Tundra";
     break;
   case 13:
-    _name = "Northern_Forest";
+    _name = "Northern Forest";
     break;
   case 14:
-    _name = "Northern_River";
+    _name = "Northern River";
     break;
   case 21:
-    _name = "Rocky_Heartland";
+    _name = "Rocky Heartland";
     break;
   case 22:
     _name = "Heartland";
     break;
   case 23:
-    _name = "River_Heartland";
+    _name = "River Heartland";
     break;
   case 31:
-    _name = "Southern_Rocky";
+    _name = "Southern Rocky";
     break;
   case 32:
-    _name = "Southern_Forest";
+    _name = "Southern Forest";
     break;
   case 33:
-    _name = "Southern_Jungle";
+    _name = "Southern Jungle";
     break;
   case 34:
-    _name = "Southern_River";
+    _name = "Southern River";
     break;
   case 41:
-    _name = "Northern_Ocean";
+    _name = "Northern Ocean";
     break;
   case 42:
-    _name = "Central_Ocean";
+    _name = "Central Ocean";
     break;
   case 43:
-    _name = "Southern_Ocean";
+    _name = "Southern Ocean";
     break;
   case 44:
-    _name = "Desolate_Ocean";
+    _name = "Desolate Ocean";
     break;
   case 51:
-    _name = "Brackish_Swamp";
+    _name = "Brackish Swamp";
     break;
   case 52:
     _name = "Swamp";
     break;
   case 53:
-    _name = "Lush_Swamp";
+    _name = "Lush Swamp";
     break;
   case 61:
-    _name = "Red_Mountain";
+    _name = "Red Mountain";
     break;
   case 62:
-    _name = "Blue_Mountain";
+    _name = "Blue Mountain";
     break;
   case 63:
-    _name = "Green_Mountain";
+    _name = "Green Mountain";
     break;
   case 64:
-    _name = "White_Mountain";
+    _name = "White Mountain";
     break;
   case 70:
-    _name = "Ochre_Plains";
+    _name = "Ochre Plains";
     break;
   case 71:
-    _name = "Lusterous_River";
+    _name = "Lusterous River";
     break;
   case 72:
-    _name = "Silver_Forest";
+    _name = "Silver Forest";
     break;
   case 80:
-    _name = "Golden_Plains";
+    _name = "Golden Plains";
     break;
   case 81:
-    _name = "Golden_Forest";
+    _name = "Golden Forest";
     break;
   case 82:
-    _name = "Golden_Hills";
+    _name = "Golden Hills";
     break;
   case 501:
     _name = "Wheat";
@@ -1448,7 +1448,7 @@ function itemName(_value) {
     _name = "Jungleberries";
     break;
   case 526:
-    _name = "Auric_Honey";
+    _name = "Auric Honey";
     break;
   case 527:
     _name = "Wasabi";
@@ -1457,19 +1457,19 @@ function itemName(_value) {
     _name = "Rushseed";
     break;
   case 529:
-    _name = "Rare_Herb";
+    _name = "Rare Herb";
     break;
   case 530:
     _name = "Oysters";
     break;
   case 531:
-    _name = "Fish_Meat";
+    _name = "Fish Meat";
     break;
   case 532:
     _name = "Beef";
     break;
   case 533:
-    _name = "Chicken_Meat";
+    _name = "Chicken Meat";
     break;
   case 534:
     _name = "Eggs";
@@ -1478,7 +1478,7 @@ function itemName(_value) {
     _name = "Potato";
     break;
   case 536:
-    _name = "Silver_Sap";
+    _name = "Silver Sap";
     break;
   case 537:
     _name = "Honey";
@@ -1493,7 +1493,7 @@ function itemName(_value) {
     _name = "Barley";
     break;
   case 541:
-    _name = "Exotic_Meat";
+    _name = "Exotic Meat";
     break;
   case 542:
     _name = "Wool";
@@ -1505,22 +1505,22 @@ function itemName(_value) {
     _name = "Mutton";
     break;
   case 1000:
-    _name = "Wheat_Beer";
+    _name = "Wheat Beer";
     break;
   case 1001:
-    _name = "Rye_Beer";
+    _name = "Rye Beer";
     break;
   case 1002:
-    _name = "Barley_Beer";
+    _name = "Barley Beer";
     break;
   case 1003:
-    _name = "Oat_Beer";
+    _name = "Oat Beer";
     break;
   case 1004:
-    _name = "Rice_Beer";
+    _name = "Rice Beer";
     break;
   case 1005:
-    _name = "Sorghum_Beer";
+    _name = "Sorghum Beer";
     break;
   case 1010:
     _name = "Cider";
@@ -1529,13 +1529,13 @@ function itemName(_value) {
     _name = "Wine";
     break;
   case 1012:
-    _name = "Plum_Wine";
+    _name = "Plum Wine";
     break;
   case 1013:
-    _name = "Peach_Wine";
+    _name = "Peach Wine";
     break;
   case 1014:
-    _name = "Cherry_Wine";
+    _name = "Cherry Wine";
     break;
   case 1020:
     _name = "Mead";
@@ -1550,160 +1550,160 @@ function itemName(_value) {
     _name = "Rum";
     break;
   case 1033:
-    _name = "Grain_Whiskey";
+    _name = "Grain Whiskey";
     break;
   case 1040:
     _name = "Brandy";
     break;
   case 1041:
-    _name = "Silver_Wine";
+    _name = "Silver Wine";
     break;
   case 1042:
-    _name = "Jungle_Wine";
+    _name = "Jungle Wine";
     break;
   case 1043:
-    _name = "Winter_Wine";
+    _name = "Winter Wine";
     break;
   case 1044:
-    _name = "Aged_Rum";
+    _name = "Aged Rum";
     break;
   case 1050:
-    _name = "Ginseng_Wine";
+    _name = "Ginseng Wine";
     break;
   case 1051:
-    _name = "Spiced_Vodka";
+    _name = "Spiced Vodka";
     break;
   case 1060:
-    _name = "Double_Brandy";
+    _name = "Double Brandy";
     break;
   case 1061:
-    _name = "Auric_Mead";
+    _name = "Auric Mead";
     break;
   case 1200:
-    _name = "Wheat_Bread";
+    _name = "Wheat Bread";
     break;
   case 1201:
-    _name = "Rye_Bread";
+    _name = "Rye Bread";
     break;
   case 1202:
-    _name = "Corn_Bread";
+    _name = "Corn Bread";
     break;
   case 1203:
-    _name = "Rice_Bread";
+    _name = "Rice Bread";
     break;
   case 1204:
-    _name = "Sorghum_Bread";
+    _name = "Sorghum Bread";
     break;
   case 1205:
-    _name = "Barley_Bread";
+    _name = "Barley Bread";
     break;
   case 1206:
-    _name = "Oat_Bread";
+    _name = "Oat Bread";
     break;
   case 1207:
     _name = "Pastry";
     break;
   case 1208:
-    _name = "Fruit_Pastry";
+    _name = "Fruit Pastry";
     break;
   case 1209:
     _name = "Glittercake";
     break;
   case 1210:
-    _name = "Fruit_Glittercake";
+    _name = "Fruit Glittercake";
     break;
   case 1211:
     _name = "Glittercakeette";
     break;
   case 1220:
-    _name = "Apple_Pie";
+    _name = "Apple Pie";
     break;
   case 1221:
-    _name = "Plum_Pie";
+    _name = "Plum Pie";
     break;
   case 1222:
-    _name = "Peach_Pie";
+    _name = "Peach Pie";
     break;
   case 1223:
-    _name = "Sugar_Pie";
+    _name = "Sugar Pie";
     break;
   case 1224:
-    _name = "Pot_Pie";
+    _name = "Pot Pie";
     break;
   case 1230:
     _name = "Cheese";
     break;
   case 1231:
-    _name = "Aged_Cheese";
+    _name = "Aged Cheese";
     break;
   case 1232:
-    _name = "Imperial_Cheese";
+    _name = "Imperial Cheese";
     break;
   case 1240:
-    _name = "Dried_Vegetables";
+    _name = "Dried Vegetables";
     break;
   case 1241:
-    _name = "Pickled_Vegetables";
+    _name = "Pickled Vegetables";
     break;
   case 1242:
-    _name = "Hearty_Dried_Vegetables";
+    _name = "Hearty Dried Vegetables";
     break;
   case 1250:
-    _name = "Dried_Fruit";
+    _name = "Dried Fruit";
     break;
   case 1251:
-    _name = "Brandied_Fruit";
+    _name = "Brandied Fruit";
     break;
   case 1260:
     _name = "Sausage";
     break;
   case 1261:
-    _name = "Fried_Meat";
+    _name = "Fried Meat";
     break;
   case 1262:
     _name = "Roast";
     break;
   case 1263:
-    _name = "Cured_Meat";
+    _name = "Cured Meat";
     break;
   case 1264:
-    _name = "Salted_Meat";
+    _name = "Salted Meat";
     break;
   case 1265:
-    _name = "Preserved_Eggs";
+    _name = "Preserved Eggs";
     break;
   case 1266:
-    _name = "Exotic_Cured_Meat";
+    _name = "Exotic Cured Meat";
     break;
   case 1266:
-    _name = "Boiled_Meat";
+    _name = "Boiled Meat";
     break;
   case 1267:
-    _name = "Noble_Roast";
+    _name = "Noble Roast";
     break;
   case 1270:
-    _name = "Beef_Stew";
+    _name = "Beef Stew";
     break;
   case 1271:
-    _name = "Kings_Soup";
+    _name = "Kings Soup";
     break;
   case 1272:
-    _name = "Onion_Stew";
+    _name = "Onion Stew";
     break;
   case 1273:
-    _name = "Huntsmans_Soup";
+    _name = "Huntsmans Soup";
     break;
   case 1274:
-    _name = "Chicken_Soup";
+    _name = "Chicken Soup";
     break;
   case 1275:
-    _name = "Fish_Soup";
+    _name = "Fish Soup";
     break;
   case 1280:
-    _name = "Baked_Beans";
+    _name = "Baked Beans";
     break;
   case 1281:
-    _name = "Beans_And_Rice";
+    _name = "Beans And Rice";
     break;
   case 1300:
     _name = "Vinegar";
@@ -1712,7 +1712,7 @@ function itemName(_value) {
     _name = "Sugar";
     break;
   case 1302:
-    _name = "Olive_Oil";
+    _name = "Olive Oil";
     break;
   case 1303:
     _name = "Flour";
@@ -1721,142 +1721,142 @@ function itemName(_value) {
     _name = "Ketchup";
     break;
   case 1305:
-    _name = "Basic_Spice_Pack";
+    _name = "Basic Spice Pack";
     break;
   case 1306:
-    _name = "Royal_Spice_Pack";
+    _name = "Royal Spice Pack";
     break;
   case 1307:
-    _name = "Confectioners_Dough";
+    _name = "Confectioners Dough";
     break;
   case 1308:
-    _name = "Fruit_Preserve";
+    _name = "Fruit Preserve";
     break;
   case 1309:
-    _name = "Exotic_Fruit_Preserve";
+    _name = "Exotic Fruit Preserve";
     break;
   case 1310:
-    _name = "Mushroom_Stock";
+    _name = "Mushroom Stock";
     break;
   case 1311:
-    _name = "Meat_Stock";
+    _name = "Meat Stock";
     break;
   case 1312:
-    _name = "Vegetable_Stock";
+    _name = "Vegetable Stock";
     break;
   case 1400:
-    _name = "Bread_Combo";
+    _name = "Bread Combo";
     break;
   case 1401:
-    _name = "Deluxe_Bread";
+    _name = "Deluxe Bread";
     break;
   case 1420:
-    _name = "Basic_Soup";
+    _name = "Basic Soup";
     break;
   case 1430:
-    _name = "Deluxe_Soup";
+    _name = "Deluxe Soup";
     break;
   case 1440:
-    _name = "Sausage_Combo";
+    _name = "Sausage Combo";
     break;
   case 1450:
-    _name = "Roast_Combo";
+    _name = "Roast Combo";
     break;
   case 1460:
-    _name = "Deluxe_Roast";
+    _name = "Deluxe Roast";
     break;
   case 1470:
     _name = "Charcutery";
     break;
   case 1471:
-    _name = "Deluxe_Charcutery";
+    _name = "Deluxe Charcutery";
     break;
   case 1480:
-    _name = "Pie_Combo";
+    _name = "Pie Combo";
     break;
   case 1900:
-    _name = "Fodder_Bread";
+    _name = "Fodder Bread";
     break;
   case 1901:
-    _name = "Main_Ration_1";
+    _name = "Main Ration 1";
     break;
   case 1902:
-    _name = "Main_Ration_2";
+    _name = "Main Ration 2";
     break;
   case 1903:
-    _name = "Main_Ration_3";
+    _name = "Main Ration 3";
     break;
   case 1904:
-    _name = "Main_Ration_4";
+    _name = "Main Ration 4";
     break;
   case 1905:
-    _name = "Main_Ration_5";
+    _name = "Main Ration 5";
     break;
   case 1906:
-    _name = "Main_Ration_6";
+    _name = "Main Ration 6";
     break;
   case 1907:
-    _name = "Main_Ration_7";
+    _name = "Main Ration 7";
     break;
   case 1908:
-    _name = "Main_Ration_8";
+    _name = "Main Ration 8";
     break;
   case 1909:
-    _name = "Main_Ration_9";
+    _name = "Main Ration 9";
     break;
   case 1911:
-    _name = "Extras_1";
+    _name = "Extras 1";
     break;
   case 1912:
-    _name = "Extras_2";
+    _name = "Extras 2";
     break;
   case 1913:
-    _name = "Extras_3";
+    _name = "Extras 3";
     break;
   case 1914:
-    _name = "Extras_4";
+    _name = "Extras 4";
     break;
   case 1915:
-    _name = "Extras_5";
+    _name = "Extras 5";
     break;
   case 1916:
-    _name = "Extras_6";
+    _name = "Extras 6";
     break;
   case 1917:
-    _name = "Extras_7";
+    _name = "Extras 7";
     break;
   case 1918:
-    _name = "Extras_8";
+    _name = "Extras 8";
     break;
   case 1919:
-    _name = "Extras_9";
+    _name = "Extras 9";
     break;
   case 1921:
-    _name = "Drink_Pack_1";
+    _name = "Drink Pack 1";
     break;
   case 1922:
-    _name = "Drink_Pack_2";
+    _name = "Drink Pack 2";
     break;
   case 1923:
-    _name = "Drink_Pack_3";
+    _name = "Drink Pack 3";
     break;
   case 1924:
-    _name = "Drink_Pack_4";
+    _name = "Drink Pack 4";
     break;
   case 1925:
-    _name = "Drink_Pack_5";
+    _name = "Drink Pack 5";
     break;
   case 1926:
-    _name = "Drink_Pack_6";
+    _name = "Drink Pack 6";
     break;
   case 1927:
-    _name = "Drink_Pack_7";
+    _name = "Drink Pack 7";
     break;
   case 1928:
-    _name = "Drink_Pack_8";
+    _name = "Drink Pack 8";
     break;
   case 1929:
-    _name = "Drink_Pack_9";
+    _name = "Drink Pack 9";
     break;
   case 2001:
     _name = "Stone";
@@ -1868,25 +1868,25 @@ function itemName(_value) {
     _name = "Salt";
     break;
   case 2021:
-    _name = "Iron_Ore";
+    _name = "Iron Ore";
     break;
   case 2022:
-    _name = "Gold_Ore";
+    _name = "Gold Ore";
     break;
   case 2023:
-    _name = "Silver_Ore";
+    _name = "Silver Ore";
     break;
   case 2024:
-    _name = "Copper_Ore";
+    _name = "Copper Ore";
     break;
   case 2025:
-    _name = "Tin_Ore";
+    _name = "Tin Ore";
     break;
   case 2101:
-    _name = "Refined_Stone";
+    _name = "Refined Stone";
     break;
   case 2102:
-    _name = "Refined_Wood";
+    _name = "Refined Wood";
     break;
   case 2121:
     _name = "Iron";
@@ -1904,7 +1904,7 @@ function itemName(_value) {
     _name = "Tin";
     break;
   case 2180:
-    _name = "Emerald_Bronze";
+    _name = "Emerald Bronze";
     break;
   case 2181:
     _name = "Bronze";
@@ -1913,7 +1913,7 @@ function itemName(_value) {
     _name = "Steel";
     break;
   case 2183:
-    _name = "Damascus_Steel";
+    _name = "Damascus Steel";
     break;
   case 2200:
     _name = "Ruby";
@@ -1952,55 +1952,55 @@ function itemName(_value) {
     _name = "Aquamarine";
     break;
   case 2212:
-    _name = "Crystal_Glass";
+    _name = "Crystal Glass";
     break;
   case 2213:
     _name = "Bloodstone";
     break;
   case 2300:
-    _name = "Polished_Ruby";
+    _name = "Polished Ruby";
     break;
   case 2301:
-    _name = "Polished_Emerald";
+    _name = "Polished Emerald";
     break;
   case 2302:
-    _name = "Polished_Sapphire";
+    _name = "Polished Sapphire";
     break;
   case 2303:
-    _name = "Polished_Diamond";
+    _name = "Polished Diamond";
     break;
   case 2304:
-    _name = "Polished_Amethyst";
+    _name = "Polished Amethyst";
     break;
   case 2305:
-    _name = "Polished_Opal";
+    _name = "Polished Opal";
     break;
   case 2306:
-    _name = "Polished_Citrine";
+    _name = "Polished Citrine";
     break;
   case 2307:
-    _name = "Polished_Pearl";
+    _name = "Polished Pearl";
     break;
   case 2308:
-    _name = "Polished_Moonstone";
+    _name = "Polished Moonstone";
     break;
   case 2309:
-    _name = "Polished_Amber";
+    _name = "Polished Amber";
     break;
   case 2310:
-    _name = "Polished_Onyx";
+    _name = "Polished Onyx";
     break;
   case 2311:
-    _name = "Polished_Aquamarine";
+    _name = "Polished Aquamarine";
     break;
   case 2312:
-    _name = "Polished_Crystal_Glass";
+    _name = "Polished Crystal Glass";
     break;
   case 4000:
     _name = "Nails";
     break;
   case 4001:
-    _name = "Diamond_Blade";
+    _name = "Diamond Blade";
     break;
   case 4002:
     _name = "Fabric";
@@ -2018,13 +2018,13 @@ function itemName(_value) {
     _name = "Fur";
     break;
   case 4007:
-    _name = "Exotic_Fur";
+    _name = "Exotic Fur";
     break;
   case 4008:
     _name = "Feather";
     break;
   case 4009:
-    _name = "Thick_Leather";
+    _name = "Thick Leather";
     break;
   case 4010:
     _name = "Antler";
@@ -2036,391 +2036,391 @@ function itemName(_value) {
     _name = "Poison";
     break;
   case 4013:
-    _name = "Leopard_Skin";
+    _name = "Leopard Skin";
     break;
   case 4014:
-    _name = "Aurochs_Hide";
+    _name = "Aurochs Hide";
     break;
   case 4015:
-    _name = "Black_Leopard_Skin";
+    _name = "Black Leopard Skin";
     break;
   case 4016:
-    _name = "Bear_Hide";
+    _name = "Bear Hide";
     break;
   case 4017:
-    _name = "Polar_Bear_Hide";
+    _name = "Polar Bear Hide";
     break;
   case 4018:
-    _name = "Tiger_Hide";
+    _name = "Tiger Hide";
     break;
   case 4019:
-    _name = "Rushseed_Oil";
+    _name = "Rushseed Oil";
     break;
   case 4100:
-    _name = "Bronze_Plate";
+    _name = "Bronze Plate";
     break;
   case 4101:
-    _name = "Iron_Plate";
+    _name = "Iron Plate";
     break;
   case 4102:
-    _name = "Steel_Plate";
+    _name = "Steel Plate";
     break;
   case 4103:
-    _name = "Emerald_Bronze_Plate";
+    _name = "Emerald Bronze Plate";
     break;
   case 4104:
-    _name = "Damascus_Steel_Plate";
+    _name = "Damascus Steel Plate";
     break;
   case 4105:
-    _name = "Bronze_Chainmail";
+    _name = "Bronze Chainmail";
     break;
   case 4106:
-    _name = "Iron_Chainmail";
+    _name = "Iron Chainmail";
     break;
   case 4107:
-    _name = "Steel_Chainmail";
+    _name = "Steel Chainmail";
     break;
   case 4108:
-    _name = "Emerald_Bronze_Chainmail";
+    _name = "Emerald Bronze Chainmail";
     break;
   case 4109:
-    _name = "Damascus_Steel_Chainmail";
+    _name = "Damascus Steel Chainmail";
     break;
   case 4500:
-    _name = "Fur_Clothes";
+    _name = "Fur Clothes";
     break;
   case 4501:
-    _name = "Fabric_Clothes";
+    _name = "Fabric Clothes";
     break;
   case 4502:
-    _name = "Leather_Clothes";
+    _name = "Leather Clothes";
     break;
   case 4503:
-    _name = "Tailored_Fur_Clothes";
+    _name = "Tailored Fur Clothes";
     break;
   case 4504:
-    _name = "Tailored_Fabric_Clothes";
+    _name = "Tailored Fabric Clothes";
     break;
   case 4505:
     _name = "Clothes";
     break;
   case 4520:
-    _name = "Basic_Furniture";
+    _name = "Basic Furniture";
     break;
   case 4521:
-    _name = "Ornate_Furniture";
+    _name = "Ornate Furniture";
     break;
   case 4522:
-    _name = "Oppulant_Furniture";
+    _name = "Oppulant Furniture";
     break;
   case 4540:
-    _name = "Basic_Tool";
+    _name = "Basic Tool";
     break;
   case 4541:
-    _name = "Artisan_Tool";
+    _name = "Artisan Tool";
     break;
   case 4542:
-    _name = "Oppulant_Tool";
+    _name = "Oppulant Tool";
     break;
   case 4560:
-    _name = "Copper_Jewelery";
+    _name = "Copper Jewelery";
     break;
   case 4561:
-    _name = "Silver_Jewelery";
+    _name = "Silver Jewelery";
     break;
   case 4562:
-    _name = "Gold_Jewelery";
+    _name = "Gold Jewelery";
     break;
   case 4580:
-    _name = "Fur_Bedding";
+    _name = "Fur Bedding";
     break;
   case 4581:
-    _name = "Enhanced_Bedding";
+    _name = "Enhanced Bedding";
     break;
   case 4582:
-    _name = "Down_Beeding";
+    _name = "Down Beeding";
     break;
   case 5000:
-    _name = "Bronze_Spear";
+    _name = "Bronze Spear";
     break;
   case 5001:
-    _name = "Iron_Spear";
+    _name = "Iron Spear";
     break;
   case 5002:
-    _name = "Steel_Spear";
+    _name = "Steel Spear";
     break;
   case 5003:
-    _name = "Emerald_Bronze_Spear";
+    _name = "Emerald Bronze Spear";
     break;
   case 5004:
-    _name = "Damascus_Steel_Spear";
+    _name = "Damascus Steel Spear";
     break;
   case 5010:
-    _name = "Bronze_Axe";
+    _name = "Bronze Axe";
     break;
   case 5011:
-    _name = "Iron_Axe";
+    _name = "Iron Axe";
     break;
   case 5012:
-    _name = "Steel_Axe";
+    _name = "Steel Axe";
     break;
   case 5013:
-    _name = "Emerald_Bronze_Axe";
+    _name = "Emerald Bronze Axe";
     break;
   case 5014:
-    _name = "Damascus_Steel_Axe";
+    _name = "Damascus Steel Axe";
     break;
   case 5020:
-    _name = "Bronze_Sword";
+    _name = "Bronze Sword";
     break;
   case 5021:
-    _name = "Iron_Sword";
+    _name = "Iron Sword";
     break;
   case 5022:
-    _name = "Steel_Sword";
+    _name = "Steel Sword";
     break;
   case 5023:
-    _name = "Emerald_Bronze_Sword";
+    _name = "Emerald Bronze Sword";
     break;
   case 5024:
-    _name = "Damascus_Steel_Sword";
+    _name = "Damascus Steel Sword";
     break;
   case 5030:
-    _name = "Bronze_Mace";
+    _name = "Bronze Mace";
     break;
   case 5031:
-    _name = "Iron_Mace";
+    _name = "Iron Mace";
     break;
   case 5032:
-    _name = "Steel_Mace";
+    _name = "Steel Mace";
     break;
   case 5033:
-    _name = "Emerald_Bronze_Mace";
+    _name = "Emerald Bronze Mace";
     break;
   case 5034:
-    _name = "Damascus_Steel_Mace";
+    _name = "Damascus Steel Mace";
     break;
   case 5040:
-    _name = "Bronze_Lance";
+    _name = "Bronze Lance";
     break;
   case 5041:
-    _name = "Iron_Lance";
+    _name = "Iron Lance";
     break;
   case 5042:
-    _name = "Steel_Lance";
+    _name = "Steel Lance";
     break;
   case 5043:
-    _name = "Emerald_Bronze_Lance";
+    _name = "Emerald Bronze Lance";
     break;
   case 5044:
-    _name = "Damascus_Steel_Lance";
+    _name = "Damascus Steel Lance";
     break;
   case 5050:
-    _name = "Bronze_Poleaxe";
+    _name = "Bronze Poleaxe";
     break;
   case 5051:
-    _name = "Iron_Poleaxe";
+    _name = "Iron Poleaxe";
     break;
   case 5052:
-    _name = "Steel_Poleaxe";
+    _name = "Steel Poleaxe";
     break;
   case 5053:
-    _name = "Emerald_Bronze_Poleaxe";
+    _name = "Emerald Bronze Poleaxe";
     break;
   case 5054:
-    _name = "Damascus_Steel_Poleaxe";
+    _name = "Damascus Steel Poleaxe";
     break;
   case 5060:
-    _name = "Bronze_Greatsword";
+    _name = "Bronze Greatsword";
     break;
   case 5061:
-    _name = "Iron_Greatsword";
+    _name = "Iron Greatsword";
     break;
   case 5062:
-    _name = "Steel_Greatsword";
+    _name = "Steel Greatsword";
     break;
   case 5063:
-    _name = "Emerald_Bronze_Greatsword";
+    _name = "Emerald Bronze Greatsword";
     break;
   case 5064:
-    _name = "Damascus_Steel_Greatsword";
+    _name = "Damascus Steel Greatsword";
     break;
   case 5070:
-    _name = "Bronze_Warhammer";
+    _name = "Bronze Warhammer";
     break;
   case 5071:
-    _name = "Iron_Warhammer";
+    _name = "Iron Warhammer";
     break;
   case 5072:
-    _name = "Steel_Warhammer";
+    _name = "Steel Warhammer";
     break;
   case 5073:
-    _name = "Emerald_Bronze_Warhammer";
+    _name = "Emerald Bronze Warhammer";
     break;
   case 5074:
-    _name = "Damascus_Steel_Warhammer";
+    _name = "Damascus Steel Warhammer";
     break;
   case 5400:
-    _name = "Farm_Horse";
+    _name = "Farm Horse";
     break;
   case 5401:
     _name = "Horse";
     break;
   case 5402:
-    _name = "Charge_Horse";
+    _name = "Charge Horse";
     break;
   case 5403:
-    _name = "War_Horse";
+    _name = "War Horse";
     break;
   case 5500:
-    _name = "Light_Bronze_Mail";
+    _name = "Light Bronze Mail";
     break;
   case 5501:
-    _name = "Light_Iron_Mail";
+    _name = "Light Iron Mail";
     break;
   case 5502:
-    _name = "Light_Steel_Mail";
+    _name = "Light Steel Mail";
     break;
   case 5503:
-    _name = "Light_Emerald_Bronze_Mail";
+    _name = "Light Emerald Bronze Mail";
     break;
   case 5504:
-    _name = "Light_Damascus_Steel_Mail";
+    _name = "Light Damascus Steel Mail";
     break;
   case 5510:
-    _name = "Light_Bronze_Plate";
+    _name = "Light Bronze Plate";
     break;
   case 5511:
-    _name = "Light_Iron_Plate";
+    _name = "Light Iron Plate";
     break;
   case 5512:
-    _name = "Light_Steel_Plate";
+    _name = "Light Steel Plate";
     break;
   case 5513:
-    _name = "Light_Emerald_Bronze_Plate";
+    _name = "Light Emerald Bronze Plate";
     break;
   case 5514:
-    _name = "Light_Damascus_Steel_Plate";
+    _name = "Light Damascus Steel Plate";
     break;
   case 5520:
-    _name = "Medium_Bronze_Mail";
+    _name = "Medium Bronze Mail";
     break;
   case 5521:
-    _name = "Medium_Iron_Mail";
+    _name = "Medium Iron Mail";
     break;
   case 5522:
-    _name = "Medium_Steel_Mail";
+    _name = "Medium Steel Mail";
     break;
   case 5523:
-    _name = "Medium_Emerald_Bronze_Mail";
+    _name = "Medium Emerald Bronze Mail";
     break;
   case 5524:
-    _name = "Medium_Damascus_Steel_Mail";
+    _name = "Medium Damascus Steel Mail";
     break;
   case 5530:
-    _name = "Medium_Bronze_Plate";
+    _name = "Medium Bronze Plate";
     break;
   case 5531:
-    _name = "Medium_Iron_Plate";
+    _name = "Medium Iron Plate";
     break;
   case 5532:
-    _name = "Medium_Steel_Plate";
+    _name = "Medium Steel Plate";
     break;
   case 5533:
-    _name = "Medium_Emerald_Bronze_Plate";
+    _name = "Medium Emerald Bronze Plate";
     break;
   case 5534:
-    _name = "Medium_Damascus_Steel_Plate";
+    _name = "Medium Damascus Steel Plate";
     break;
   case 5540:
-    _name = "Bronze_Heavy_Armor";
+    _name = "Bronze Heavy Armor";
     break;
   case 5541:
-    _name = "Iron_Heavy_Armor";
+    _name = "Iron Heavy Armor";
     break;
   case 5542:
-    _name = "Steel_Heavy_Armor";
+    _name = "Steel Heavy Armor";
     break;
   case 5543:
-    _name = "Emerald_Bronze_Heavy_Armor";
+    _name = "Emerald Bronze Heavy Armor";
     break;
   case 5544:
-    _name = "Damascus_Steel_Heavy_Armor";
+    _name = "Damascus Steel Heavy Armor";
     break;
   case 5550:
-    _name = "Light_Bronze_Horse_Armor";
+    _name = "Light Bronze Horse Armor";
     break;
   case 5551:
-    _name = "Light_Iron_Horse_Armor";
+    _name = "Light Iron Horse Armor";
     break;
   case 5552:
-    _name = "Light_Steel_Horse_Armor";
+    _name = "Light Steel Horse Armor";
     break;
   case 5553:
-    _name = "Light_Emerald_Bronze_Horse_Armor";
+    _name = "Light Emerald Bronze Horse Armor";
     break;
   case 5554:
-    _name = "Light_Damascus_Steel_Horse_Armor";
+    _name = "Light Damascus Steel Horse Armor";
     break;
   case 5560:
-    _name = "Medium_Bronze_Horse_Armor";
+    _name = "Medium Bronze Horse Armor";
     break;
   case 5561:
-    _name = "Medium_Iron_Horse_Armor";
+    _name = "Medium Iron Horse Armor";
     break;
   case 5562:
-    _name = "Medium_Steel_Horse_Armor";
+    _name = "Medium Steel Horse Armor";
     break;
   case 5563:
-    _name = "Medium_Emerald_Bronze_Horse_Armor";
+    _name = "Medium Emerald Bronze Horse Armor";
     break;
   case 5564:
-    _name = "Medium_Damascus_Steel_Horse_Armor";
+    _name = "Medium Damascus Steel Horse Armor";
     break;
   case 5570:
-    _name = "Heavy_Bronze_Horse_Armor";
+    _name = "Heavy Bronze Horse Armor";
     break;
   case 5571:
-    _name = "Heavy_Iron_Horse_Armor";
+    _name = "Heavy Iron Horse Armor";
     break;
   case 5572:
-    _name = "Heavy_Steel_Horse_Armor";
+    _name = "Heavy Steel Horse Armor";
     break;
   case 5573:
-    _name = "Heavy_Emerald_Bronze_Horse_Armor";
+    _name = "Heavy Emerald Bronze Horse Armor";
     break;
   case 5574:
-    _name = "Heavy_Damascus_Steel_Horse_Armor";
+    _name = "Heavy Damascus Steel Horse Armor";
     break;
   case 5580:
-    _name = "Leather_Armor";
+    _name = "Leather Armor";
     break;
   case 5581:
-    _name = "Thick_Leather_Armor";
+    _name = "Thick Leather Armor";
     break;
   case 5582:
     _name = "Gambeson";
     break;
   case 5900:
-    _name = "Wooden_Shield";
+    _name = "Wooden Shield";
     break;
   case 5901:
-    _name = "Banded_Shield";
+    _name = "Banded Shield";
     break;
   case 5902:
-    _name = "Standard_Shield";
+    _name = "Standard Shield";
     break;
   case 5903:
-    _name = "Metal_Shield";
+    _name = "Metal Shield";
     break;
   case 5904:
-    _name = "Gong_Shield";
+    _name = "Gong Shield";
     break;
   case 5905:
-    _name = "Heirloom_Shield";
+    _name = "Heirloom Shield";
     break;
   case 5910:
-    _name = "Wall_Shield";
+    _name = "Wall Shield";
     break;
   case 7000:
     _name = "Rabbit";
@@ -2477,19 +2477,19 @@ function itemName(_value) {
     _name = "Aurochs";
     break;
   case 7202:
-    _name = "Black_Leopard";
+    _name = "Black Leopard";
     break;
   case 7203:
     _name = "Bear";
     break;
   case 7204:
-    _name = "Sea_Mink";
+    _name = "Sea Mink";
     break;
   case 7205:
     _name = "Whalrus";
     break;
   case 7206:
-    _name = "Poison_Snake";
+    _name = "Poison Snake";
     break;
   case 7300:
     _name = "Elephant";
@@ -2498,13 +2498,13 @@ function itemName(_value) {
     _name = "Rhino";
     break;
   case 7302:
-    _name = "Polar_Bear";
+    _name = "Polar Bear";
     break;
   case 7303:
     _name = "Tiger";
     break;
   case 7304:
-    _name = "Titan_Snake";
+    _name = "Titan Snake";
     break;
   case 7400:
     _name = "Cow";
@@ -2516,316 +2516,316 @@ function itemName(_value) {
     _name = "Sheep";
     break;
   case 10001:
-    _name = "T1_Spearman";
+    _name = "T1 Spearman";
     break;
   case 10002:
-    _name = "T2_Spearman";
+    _name = "T2 Spearman";
     break;
   case 10003:
-    _name = "T3_Spearman";
+    _name = "T3 Spearman";
     break;
   case 10004:
-    _name = "T4_Spearman";
+    _name = "T4 Spearman";
     break;
   case 10005:
-    _name = "T5_Spearman";
+    _name = "T5 Spearman";
     break;
   case 10006:
-    _name = "T6_Spearman";
+    _name = "T6 Spearman";
     break;
   case 10007:
-    _name = "T7_Spearman";
+    _name = "T7 Spearman";
     break;
   case 10008:
-    _name = "T8_Spearman";
+    _name = "T8 Spearman";
     break;
   case 10011:
-    _name = "T1_Swordman";
+    _name = "T1 Swordman";
     break;
   case 10012:
-    _name = "T2_Swordman";
+    _name = "T2 Swordman";
     break;
   case 10013:
-    _name = "T3_Swordman";
+    _name = "T3 Swordman";
     break;
   case 10014:
-    _name = "T4_Swordman";
+    _name = "T4 Swordman";
     break;
   case 10015:
-    _name = "T5_Swordman";
+    _name = "T5 Swordman";
     break;
   case 10016:
-    _name = "T6_Swordman";
+    _name = "T6 Swordman";
     break;
   case 10017:
-    _name = "T7_Swordman";
+    _name = "T7 Swordman";
     break;
   case 10018:
-    _name = "T8_Swordman";
+    _name = "T8 Swordman";
     break;
   case 10021:
-    _name = "T1_Axeman";
+    _name = "T1 Axeman";
     break;
   case 10022:
-    _name = "T2_Axeman";
+    _name = "T2 Axeman";
     break;
   case 10023:
-    _name = "T3_Axeman";
+    _name = "T3 Axeman";
     break;
   case 10024:
-    _name = "T4_Axeman";
+    _name = "T4 Axeman";
     break;
   case 10025:
-    _name = "T5_Axeman";
+    _name = "T5 Axeman";
     break;
   case 10026:
-    _name = "T6_Axeman";
+    _name = "T6 Axeman";
     break;
   case 10027:
-    _name = "T7_Axeman";
+    _name = "T7 Axeman";
     break;
   case 10028:
-    _name = "T8_Axeman";
+    _name = "T8 Axeman";
     break;
   case 10201:
-    _name = "T1_Archer";
+    _name = "T1 Archer";
     break;
   case 10202:
-    _name = "T2_Archer";
+    _name = "T2 Archer";
     break;
   case 10203:
-    _name = "T3_Archer";
+    _name = "T3 Archer";
     break;
   case 10204:
-    _name = "T4_Archer";
+    _name = "T4 Archer";
     break;
   case 10205:
-    _name = "T5_Archer";
+    _name = "T5 Archer";
     break;
   case 10206:
-    _name = "T6_Archer";
+    _name = "T6 Archer";
     break;
   case 10207:
-    _name = "T7_Archer";
+    _name = "T7 Archer";
     break;
   case 10208:
-    _name = "T8_Archer";
+    _name = "T8 Archer";
     break;
   case 10211:
-    _name = "T1_Slinger";
+    _name = "T1 Slinger";
     break;
   case 10212:
-    _name = "T2_Slinger";
+    _name = "T2 Slinger";
     break;
   case 10213:
-    _name = "T3_Slinger";
+    _name = "T3 Slinger";
     break;
   case 10214:
-    _name = "T4_Slinger";
+    _name = "T4 Slinger";
     break;
   case 10215:
-    _name = "T5_Slinger";
+    _name = "T5 Slinger";
     break;
   case 10216:
-    _name = "T6_Slimger";
+    _name = "T6 Slimger";
     break;
   case 10217:
-    _name = "T7_Slinger";
+    _name = "T7 Slinger";
     break;
   case 10218:
-    _name = "T8_Slinger";
+    _name = "T8 Slinger";
     break;
   case 10225:
-    _name = "T5_Flamer";
+    _name = "T5 Flamer";
     break;
   case 10226:
-    _name = "T6_Flamer";
+    _name = "T6 Flamer";
     break;
   case 10227:
-    _name = "T7_Flamer";
+    _name = "T7 Flamer";
     break;
   case 10228:
-    _name = "T8_Flamer";
+    _name = "T8 Flamer";
     break;
   case 10231:
-    _name = "T1_Crossbowman";
+    _name = "T1 Crossbowman";
     break;
   case 10232:
-    _name = "T2_Crossbowman";
+    _name = "T2 Crossbowman";
     break;
   case 10233:
-    _name = "T3_Crossbowman";
+    _name = "T3 Crossbowman";
     break;
   case 10234:
-    _name = "T4_Crossbowman";
+    _name = "T4 Crossbowman";
     break;
   case 10235:
-    _name = "T5_Crossbowman";
+    _name = "T5 Crossbowman";
     break;
   case 10236:
-    _name = "T6_Crossbowman";
+    _name = "T6 Crossbowman";
     break;
   case 10237:
-    _name = "T7_Crossbowman";
+    _name = "T7 Crossbowman";
     break;
   case 10238:
-    _name = "T8_Crossbowman";
+    _name = "T8 Crossbowman";
     break;
   case 10301:
-    _name = "T1_Lancer";
+    _name = "T1 Lancer";
     break;
   case 10302:
-    _name = "T2_Lancer";
+    _name = "T2 Lancer";
     break;
   case 10303:
-    _name = "T3_Lancer";
+    _name = "T3 Lancer";
     break;
   case 10304:
-    _name = "T4_Lancer";
+    _name = "T4 Lancer";
     break;
   case 10305:
-    _name = "T5_Lancer";
+    _name = "T5 Lancer";
     break;
   case 10306:
-    _name = "T6_Lancer";
+    _name = "T6 Lancer";
     break;
   case 10307:
-    _name = "T7_Lancer";
+    _name = "T7 Lancer";
     break;
   case 10308:
-    _name = "T8_Lancer";
+    _name = "T8 Lancer";
     break;
   case 10311:
-    _name = "T1_Mounted_Sword";
+    _name = "T1 Mounted Sword";
     break;
   case 10312:
-    _name = "T2_Mounted_Sword";
+    _name = "T2 Mounted Sword";
     break;
   case 10313:
-    _name = "T3_Mounted_Sword";
+    _name = "T3 Mounted Sword";
     break;
   case 10314:
-    _name = "T4_Mounted_Sword";
+    _name = "T4 Mounted Sword";
     break;
   case 10315:
-    _name = "T5_Mounted_Sword";
+    _name = "T5 Mounted Sword";
     break;
   case 10316:
-    _name = "T6_Mounted_Sword";
+    _name = "T6 Mounted Sword";
     break;
   case 10317:
-    _name = "T7_Mounted_Sword";
+    _name = "T7 Mounted Sword";
     break;
   case 10318:
-    _name = "T8_Mounted_Sword";
+    _name = "T8 Mounted Sword";
     break;
   case 10321:
-    _name = "T1_Mounted_Axeman";
+    _name = "T1 Mounted Axeman";
     break;
   case 10322:
-    _name = "T2_Mounted_Axeman";
+    _name = "T2 Mounted Axeman";
     break;
   case 10323:
-    _name = "T3_Mounted_Axeman";
+    _name = "T3 Mounted Axeman";
     break;
   case 10324:
-    _name = "T4_Mounted_Axeman";
+    _name = "T4 Mounted Axeman";
     break;
   case 10325:
-    _name = "T5_Mounted_Axeman";
+    _name = "T5 Mounted Axeman";
     break;
   case 10326:
-    _name = "T6_Mounted_Axeman";
+    _name = "T6 Mounted Axeman";
     break;
   case 10327:
-    _name = "T7_Mounted_Axeman";
+    _name = "T7 Mounted Axeman";
     break;
   case 10328:
-    _name = "T8_Mounted_Axeman";
+    _name = "T8 Mounted Axeman";
     break;
   case 10505:
-    _name = "T5_Elephant";
+    _name = "T5 Elephant";
     break;
   case 10506:
-    _name = "T6_Elephant";
+    _name = "T6 Elephant";
     break;
   case 10507:
-    _name = "T7_Elephant";
+    _name = "T7 Elephant";
     break;
   case 10508:
-    _name = "T8_Elephant";
+    _name = "T8 Elephant";
     break;
   case 10601:
-    _name = "T1_Horse_Archer";
+    _name = "T1 Horse Archer";
     break;
   case 10602:
-    _name = "T2_Horse_Archer";
+    _name = "T2 Horse Archer";
     break;
   case 10603:
-    _name = "T3_Horse_Archer";
+    _name = "T3 Horse Archer";
     break;
   case 10604:
-    _name = "T4_Horse_Archer";
+    _name = "T4 Horse Archer";
     break;
   case 10605:
-    _name = "T5_Horse_Archer";
+    _name = "T5 Horse Archer";
     break;
   case 10606:
-    _name = "T6_Horse_Archer";
+    _name = "T6 Horse Archer";
     break;
   case 10607:
-    _name = "T7_Horse_Archer";
+    _name = "T7 Horse Archer";
     break;
   case 10608:
-    _name = "T8_Horse_Archer";
+    _name = "T8 Horse Archer";
     break;
   case 11000:
     _name = "Bandits";
     break;
   case 11010:
-    _name = "Peasent_Levy";
+    _name = "Peasent Levy";
     break;
   case 11011:
-    _name = "Veteran_Peasent_Levy";
+    _name = "Veteran Peasent Levy";
     break;
   case 11020:
-    _name = "Levy_Spear";
+    _name = "Levy Spear";
     break;
   case 11021:
-    _name = "Veteran_Levy_Spear";
+    _name = "Veteran Levy Spear";
     break;
   case 11030:
-    _name = "Mountain_Levy";
+    _name = "Mountain Levy";
     break;
   case 11031:
-    _name = "Veteran_Mountain_Levy";
+    _name = "Veteran Mountain Levy";
     break;
   case 11040:
-    _name = "Mercenary_Swordsman";
+    _name = "Mercenary Swordsman";
     break;
   case 11041:
-    _name = "Veteran_Mercenary_Swordsman";
+    _name = "Veteran Mercenary Swordsman";
     break;
   case 11042:
-    _name = "Palace_Guard";
+    _name = "Palace Guard";
     break;
   case 11050:
-    _name = "Mercenary_Axeman";
+    _name = "Mercenary Axeman";
     break;
   case 11060:
-    _name = "Mercenary_Maceman";
+    _name = "Mercenary Maceman";
     break;
   case 11070:
     _name = "Pikeman";
     break;
   case 11200:
-    _name = "Peasent_Bowman";
+    _name = "Peasent Bowman";
     break;
   case 11210:
-    _name = "Levy_Archer";
+    _name = "Levy Archer";
     break;
   case 11211:
-    _name = "Veteran_Levy_Archer";
+    _name = "Veteran Levy Archer";
     break;
   case 11220:
     _name = "Huntsman";
@@ -2834,52 +2834,52 @@ function itemName(_value) {
     _name = "Slinger";
     break;
   case 11241:
-    _name = "Imperial_Flamer";
+    _name = "Imperial Flamer";
     break;
   case 11300:
-    _name = "Free_lance";
+    _name = "Free lance";
     break;
   case 11301:
     _name = "Knight";
     break;
   case 11310:
-    _name = "Mounted_Levy";
+    _name = "Mounted Levy";
     break;
   case 11310:
-    _name = "Mounted_Palace_Guard";
+    _name = "Mounted Palace Guard";
     break;
   case 11600:
-    _name = "Horse_Archer";
+    _name = "Horse Archer";
     break;
   case 11601:
-    _name = "Veteran_Horse_Archer";
+    _name = "Veteran Horse Archer";
     break;
   case 11602:
-    _name = "Palace_Archer";
+    _name = "Palace Archer";
     break;
   case 28501:
-    _name = "T1_XP";
+    _name = "T1 XP";
     break;
   case 28502:
-    _name = "T2_XP";
+    _name = "T2 XP";
     break;
   case 28503:
-    _name = "T3_XP";
+    _name = "T3 XP";
     break;
   case 28504:
-    _name = "T4_XP";
+    _name = "T4 XP";
     break;
   case 28505:
-    _name = "T5_XP";
+    _name = "T5 XP";
     break;
   case 28506:
-    _name = "T6_XP";
+    _name = "T6 XP";
     break;
   case 28507:
-    _name = "T7_XP";
+    _name = "T7 XP";
     break;
   case 28508:
-    _name = "T8_XP";
+    _name = "T8 XP";
     break;
   case 28800:
     _name = "Coins";
