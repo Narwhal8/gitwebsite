@@ -5,7 +5,6 @@
 <head>
   <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
   <script src="./abi.js" type="application/javascript"></script>
-  <script src="./itemlist.js" type="application/javascript"></script>
   <script src="./itemvalue.js" type="application/javascript"></script>
   <script src="./excelIntegration.js" type="application/javascript"></script>
 
@@ -858,13 +857,15 @@
       let whyJS = returnRecipe(Number(document.getElementById("RecipeID").value));
       console.log(whyJS);
       var _item_building = whyJS[6];
-      for (let i = 0; i < 32; i++) {
-        if (i != _item_building[0] && i != _item_building[1] && i != _item_building[2] && i != _item_building[3]) { document.getElementsByClassName("buildingSelector")[i].style.display = "none"; }
+ 
+      //Removes 0 to begin with as 0 is never a valid option
+      document.getElementsByClassName("buildingSelector")[0].style.display = "none";
+
+      for (let i = 1; i < 32; i++) {
+        if (i != _item_building[0] && i != _item_building[1] && i != _item_building[2] && i != _item_building[3] ) { document.getElementsByClassName("buildingSelector")[i].style.display = "none"; }
         else { document.getElementsByClassName("buildingSelector")[i].style.display = "initial"; }
 
       }
-
-
     }
 
     function showCraftingFields() {

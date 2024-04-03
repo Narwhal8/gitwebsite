@@ -576,644 +576,2318 @@ const Weaver_T1 = 28;
 const Weaver_T2 = 29;
 const Carpenter_T1 = 30;
 const Carpenter_T2 = 31;
-const recipe519 = [[2500,0,0,0,0,0], [Sugarcane,0,0,0,0,0], [300,0], [Sugar,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe536 = [[1000,0,0,0,0,0], [Silver_Sap,0,0,0,0,0], [500,0], [Sugar|Silver,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1000 = [[2500,0,0,0,0,0], [Wheat,0,0,0,0,0], [250,0], [Wheat_Beer,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-const recipe1001 = [[2500,0,0,0,0,0], [Rye,0,0,0,0,0], [250,0], [Rye_Beer,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-const recipe1002 = [[2500,0,0,0,0,0], [Barley,0,0,0,0,0], [250,0], [Barley_Beer,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-const recipe1003 = [[2500,0,0,0,0,0], [Oats,0,0,0,0,0], [250,0], [Oat_Beer,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-const recipe1004 = [[2500,0,0,0,0,0], [Rice,0,0,0,0,0], [250,0], [Rice_Beer,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-const recipe1005 = [[2500,0,0,0,0,0], [Sorghum,0,0,0,0,0], [250,0], [Sorghum_Beer,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-const recipe1010 = [[2500,0,0,0,0,0], [Apples,0,0,0,0,0], [250,0], [Cider,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-const recipe1011 = [[2500,0,0,0,0,0], [Grapes,0,0,0,0,0], [250,0], [Wine,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-const recipe1012 = [[2500,0,0,0,0,0], [Plums,0,0,0,0,0], [250,0], [Plum_Wine,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-const recipe1013 = [[2500,0,0,0,0,0], [Peaches,0,0,0,0,0], [250,0], [Peach_Wine,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-const recipe1014 = [[2500,0,0,0,0,0], [Cherries,0,0,0,0,0], [250,0], [Cherry_Wine,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-const recipe1020 = [[1750,0,0,0,0,0], [Honey,0,0,0,0,0], [500,0], [Mead,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-const recipe1030 = [[16000,0,0,0,0,0], [Potato,0,0,0,0,0], [200,0], [Vodka,0], 1, 10, [Brewery_T2,Brewery_T3,Brewery_T4,0]];
-const recipe1031 = [[1600,0,0,0,0,0], [Milk,0,0,0,0,0], [120,0], [Kumis,0], 1, 10, [Brewery_T2,Brewery_T3,Brewery_T4,0]];
-const recipe1032 = [[120,0,0,0,0,0], [Sugar,0,0,0,0,0], [75,0], [Rum,0], 1, 10, [Brewery_T3,Brewery_T4,0,0]];
-const recipe1033 = [[16000,0,0,0,0,0], [Grain,0,0,0,0,0], [200,0], [Grain_Whiskey,0], 1, 10, [Brewery_T2,Brewery_T3,Brewery_T4,0]];
-const recipe1040 = [[70,0,0,0,0,0], [Wine,0,0,0,0,0], [25,0], [Brandy,0], 1, 10, [Brewery_T3,Brewery_T4,0,0]];
-const recipe1041 = [[1600,0,0,0,0,0], [Silver_Sap,0,0,0,0,0], [160,0], [Silver_Wine,0], 1, 10, [Brewery_T2,Brewery_T3,Brewery_T4,0]];
-const recipe1042 = [[800,0,0,0,0,0], [Jungleberries,0,0,0,0,0], [80,0], [Jungle_Wine,0], 1, 10, [Brewery_T2,Brewery_T3,Brewery_T4,0]];
-const recipe1043 = [[800,0,0,0,0,0], [Winterberries,0,0,0,0,0], [80,0], [Winter_Wine,0], 1, 10, [Brewery_T2,Brewery_T3,Brewery_T4,0]];
-const recipe1044 = [[1000,0,0,0,0,0], [Rum,0,0,0,0,0], [910,0], [Aged_Rum,0], 1, 500, [0,0,0,0]];
-const recipe1050 = [[120,0,0,0,0,0], [Ginseng,0,0,0,0,0], [15,0], [Ginseng_Wine,0], 1, 10, [Brewery_T3,Brewery_T4,0,0]];
-const recipe1051 = [[50,0,0,0,0,0], [Vodka|Allspice|Allspice,0,0,0,0,0], [50,0], [Spiced_Vodka,0], 1, 10, [Brewery_T4,0,0,0]];
-const recipe1060 = [[40,0,0,0,0,0], [Winter_Wine|Jungle_Wine,0,0,0,0,0], [20,0], [Double_Brandy,0], 1, 10, [Brewery_T4,0,0,0]];
-const recipe1061 = [[35,0,0,0,0,0], [Auric_Honey,0,0,0,0,0], [5,0], [Auric_Mead,0], 1, 10, [Brewery_T3,Brewery_T4,0,0]];
-const recipe1200 = [[15000,0,0,0,0,0], [Wheat,0,0,0,0,0], [700,0], [Wheat_Bread,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1201 = [[15000,0,0,0,0,0], [Rye,0,0,0,0,0], [700,0], [Rye_Bread,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1202 = [[15000,0,0,0,0,0], [Corn,0,0,0,0,0], [700,0], [Corn_Bread,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1203 = [[15000,0,0,0,0,0], [Rice,0,0,0,0,0], [700,0], [Rice_Bread,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1204 = [[15000,0,0,0,0,0], [Sorghum,0,0,0,0,0], [700,0], [Sorghum_Bread,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1205 = [[15000,0,0,0,0,0], [Barley,0,0,0,0,0], [700,0], [Barley_Bread,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1206 = [[15000,0,0,0,0,0], [Oats,0,0,0,0,0], [700,0], [Oat_Bread,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1207 = [[100,0,0,0,0,0], [Confectioners_Dough,0,0,0,0,0], [100,0], [Pastry,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1208 = [[100,0,0,0,0,0], [Confectioners_Dough|Fruit_Preserve,0,0,0,0,0], [100,0], [Fruit_Pastry,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1209 = [[200,0,0,0,0,0], [Auric_Honey|Confectioners_Dough,0,0,0,0,0], [125,0], [Glittercake,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1210 = [[50,0,0,0,0,0], [Exotic_Fruit_Preserve|Glittercake,0,0,0,0,0], [50,0], [Fruit_Glittercake,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1211 = [[1,0,0,0,0,0], [Fruit_Glittercake,0,0,0,0,0], [25,0], [Glittercakeette,0], 0, 0, [0,0,0,0]];
-const recipe1220 = [[500,0,0,0,0,0], [Flour|Apples,0,0,0,0,0], [250,0], [Apple_Pie,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1221 = [[500,0,0,0,0,0], [Flour|Plums,0,0,0,0,0], [250,0], [Plum_Pie,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1222 = [[500,0,0,0,0,0], [Flour|Peaches,0,0,0,0,0], [250,0], [Peach_Pie,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1223 = [[500,0,0,0,0,0], [Flour|Sugar,0,0,0,0,0], [250,0], [Sugar_Pie,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1224 = [[500,0,0,0,0,0], [Flour|Meat|Potato,0,0,0,0,0], [250,0], [Pot_Pie,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1230 = [[1000,0,0,0,0,0], [Milk|Salt,0,0,0,0,0], [100,0], [Cheese,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1231 = [[125,0,0,0,0,0], [Cheese,0,0,0,0,0], [125,0], [Aged_Cheese,0], 1, 100, [0,0,0,0]];
-const recipe1232 = [[125,0,0,0,0,0], [Cheese,0,0,0,0,0], [100,0], [Imperial_Cheese,0], 1, 900, [0,0,0,0]];
-const recipe1240 = [[20000,0,0,0,0,0], [Vegetables,0,0,0,0,0], [500,0], [Dried_Vegetables,0], 1, 20, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1241 = [[10000,0,0,0,0,0], [Vegetables|Vinegar,0,0,0,0,0], [150,0], [Pickled_Vegetables,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1250 = [[20000,0,0,0,0,0], [Fruit,0,0,0,0,0], [500,0], [Dried_Fruit,0], 1, 20, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1251 = [[5000,0,0,0,0,0], [Fruit|Brandy,0,0,0,0,0], [50,0], [Brandied_Fruit,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1260 = [[3000,0,0,0,0,0], [Meat|Allspice|Garlic,0,0,0,0,0], [100,0], [Sausage,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1261 = [[1000,0,0,0,0,0], [Meat|Olive_Oil|Flour,0,0,0,0,0], [150,0], [Fried_Meat,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1262 = [[1000,0,0,0,0,0], [Meat|Vegetables|T1_Drink,0,0,0,0,0], [100,0], [Roast,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1263 = [[1000,0,0,0,0,0], [Meat,0,0,0,0,0], [10,0], [Cured_Meat,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1264 = [[5000,0,0,0,0,0], [Meat|Salt,0,0,0,0,0], [375,0], [Salted_Meat,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1265 = [[15000,0,0,0,0,0], [Wood|Eggs,0,0,0,0,0], [100,0], [Preserved_Eggs,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1266 = [[1000,0,0,0,0,0], [Exotic_Meat,0,0,0,0,0], [10,0], [Exotic_Cured_Meat,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1270 = [[1500,0,0,0,0,0], [Beef|Onion|Carrots|Potato|Basic_Spice_Pack,0,0,0,0,0], [200,0], [Beef_Stew,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1271 = [[5000,0,0,0,0,0], [Beef|Onion|Carrots|Potato|Royal_Spice_Pack,0,0,0,0,0], [50,0], [Kings_Soup,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1272 = [[8000,0,0,0,0,0], [Onion|Cheese,0,0,0,0,0], [200,0], [Onion_Stew,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1273 = [[1500,0,0,0,0,0], [Exotic_Meat|Onion|Carrots|Potato|Basic_Spice_Pack,0,0,0,0,0], [50,0], [Huntsmans_Soup,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1274 = [[1000,0,0,0,0,0], [Chicken|Flour|Vegetables,0,0,0,0,0], [150,0], [Chicken_Soup,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1275 = [[1500,0,0,0,0,0], [Fish_Meat|Milk|Corn|Potato|Basic_Spice_Pack,0,0,0,0,0], [200,0], [Fish_Soup,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1280 = [[10000,0,0,0,0,0], [Beans|Sugar,0,0,0,0,0], [150,0], [Baked_Beans,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1281 = [[25000,0,0,0,0,0], [Beans|Rice,0,0,0,0,0], [500,0], [Beans_And_Rice,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1300 = [[250,0,0,0,0,0], [T1_Drink,0,0,0,0,0], [200,0], [Vinegar,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-const recipe1301 = [[5,0,0,0,0,0], [Honey,0,0,0,0,0], [1,0], [Sugar,0], 0, 0, [0,0,0,0]];
-const recipe1302 = [[10000,0,0,0,0,0], [Olives,0,0,0,0,0], [250,0], [Olive_Oil,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1303 = [[10000,0,0,0,0,0], [Grain,0,0,0,0,0], [500,0], [Flour,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1304 = [[10000,0,0,0,0,0], [Mushrooms,0,0,0,0,0], [250,0], [Ketchup,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1305 = [[1,0,0,0,0,0], [Vinegar|Ketchup|Salt|Garlic|Allspice|Olive_Oil,0,0,0,0,0], [1,0], [Basic_Spice_Pack,0], 0, 0, [0,0,0,0]];
-const recipe1306 = [[1,0,0,0,0,0], [Rare_Herb|Wasabi|Auric_Honey|Basic_Spice_Pack,0,0,0,0,0], [1,0], [Royal_Spice_Pack,0], 0, 0, [0,0,0,0]];
-const recipe1307 = [[100,0,0,0,0,0], [Flour|Milk|Eggs,0,0,0,0,0], [100,0], [Confectioners_Dough,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1308 = [[100,0,0,0,0,0], [Sugar|Fruit,0,0,0,0,0], [100,0], [Fruit_Preserve,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1309 = [[100,0,0,0,0,0], [Sugar|Exotic_Berry,0,0,0,0,0], [10,0], [Exotic_Fruit_Preserve,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1400 = [[1,0,0,0,0,0], [Bread|T1_Drink,0,0,0,0,0], [1,0], [Bread_Combo,0], 0, 0, [0,0,0,0]];
-const recipe1401 = [[2,0,0,0,0,0], [Bread|Side|T1_Drink,0,0,0,0,0], [2,0], [Deluxe_Bread,0], 0, 0, [0,0,0,0]];
-const recipe1310 = [[2500,0,0,0,0,0], [Mushrooms,0,0,0,0,0], [200,0], [Mushroom_Stock,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1311 = [[500,0,0,0,0,0], [Meat,0,0,0,0,0], [100,0], [Meat_Stock|Boiled_Meat,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1312 = [[2500,0,0,0,0,0], [Vegetables,0,0,0,0,0], [200,0], [Vegetable_Stock,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1420 = [[1,0,0,0,0,0], [Soup|Side|T1_Drink,0,0,0,0,0], [2,0], [Basic_Soup,0], 0, 0, [0,0,0,0]];
-const recipe1430 = [[1,0,0,0,0,0], [Deluxe_Soup|Side|Fruit_Preserve|T2_Drink|T3_Drink,0,0,0,0,0], [2,0], [Deluxe_Soup,0], 0, 0, [0,0,0,0]];
-const recipe1440 = [[1,0,0,0,0,0], [Sausage|Side|T1_Drink|T2_Drink,0,0,0,0,0], [2,0], [Sausage_Combo,0], 0, 0, [0,0,0,0]];
-const recipe1450 = [[1,0,0,0,0,0], [Roast|Side|Bread|T1_Drink|T2_Drink,0,0,0,0,0], [2,0], [Roast_Combo,0], 0, 0, [0,0,0,0]];
-const recipe1460 = [[1,0,0,0,0,0], [Noble_Roast|Aged_Cheese|Pastry|T3_Drink|T2_Drink,0,0,0,0,0], [2,0], [Deluxe_Roast,0], 0, 0, [0,0,0,0]];
-const recipe1461 = [[1,0,0,0,0,0], [Noble_Roast|Side|Cheese|T3_Drink|T2_Drink,0,0,0,0,0], [2,0], [Roast_Combo,0], 0, 0, [0,0,0,0]];
-const recipe1470 = [[1,0,0,0,0,0], [Cured_Meat|Aged_Cheese|Fruit_Pastry|T4_Drink|T3_Drink,0,0,0,0,0], [2,0], [Charcutery,0], 0, 0, [0,0,0,0]];
-const recipe1471 = [[1,0,0,0,0,0], [Exotic_Cured_Meat|Imperial_Cheese|Fruit_Glittercake|T5_Drink,0,0,0,0,0], [1,0], [Deluxe_Charcutery,0], 0, 0, [0,0,0,0]];
-const recipe1480 = [[1,0,0,0,0,0], [Pie|T1_Drink,0,0,0,0,0], [1,0], [Pie_Combo,0], 0, 0, [0,0,0,0]];
-const recipe1900 = [[22500,0,0,0,0,0], [Crop,0,0,0,0,0], [2000,0], [Fodder_Bread,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe1901 = [[250,0,0,0,0,0], [Grain|Dried_Vegetables,0,0,0,0,0], [1,0], [Main_Ration_1,0], 0, 0, [0,0,0,0]];
-const recipe1902 = [[250,0,0,0,0,0], [Grain|Hearty_Dried_Vegetables|Dried_Vegetables,0,0,0,0,0], [1,0], [Main_Ration_2,0], 0, 0, [0,0,0,0]];
-const recipe1903 = [[10,0,0,0,0,0], [Flour|Dried_Vegetables|Salted_Meat,0,0,0,0,0], [1,0], [Main_Ration_3,0], 0, 0, [0,0,0,0]];
-const recipe1904 = [[20,0,0,0,0,0], [Flour|Dried_Vegetables|Salted_Meat,0,0,0,0,0], [1,0], [Main_Ration_4,0], 0, 0, [0,0,0,0]];
-const recipe1905 = [[20,0,0,0,0,0], [Flour|Pickled_Vegetables|Salted_Meat,0,0,0,0,0], [1,0], [Main_Ration_5,0], 0, 0, [0,0,0,0]];
-const recipe1906 = [[20,0,0,0,0,0], [Flour|Pickled_Vegetables|Salted_Meat|Preserved_Eggs,0,0,0,0,0], [1,0], [Main_Ration_6,0], 0, 0, [0,0,0,0]];
-const recipe1907 = [[20,0,0,0,0,0], [Flour|Pickled_Vegetables|Cured_Meat|Preserved_Eggs,0,0,0,0,0], [1,0], [Main_Ration_7,0], 0, 0, [0,0,0,0]];
-const recipe1908 = [[40,0,0,0,0,0], [Flour|Pickled_Vegetables|Cured_Meat|Preserved_Eggs,0,0,0,0,0], [1,0], [Main_Ration_8,0], 0, 0, [0,0,0,0]];
-const recipe1909 = [[20,0,0,0,0,0], [Flour|Pickled_Vegetables|Exotic_Cured_Meat|Preserved_Eggs,0,0,0,0,0], [1,0], [Main_Ration_9,0], 0, 0, [0,0,0,0]];
-const recipe1911 = [[1,0,0,0,0,0], [Cheese|Sugar,0,0,0,0,0], [1,0], [Extras_1,0], 0, 0, [0,0,0,0]];
-const recipe1912 = [[1,0,0,0,0,0], [Basic_Spice_Pack|Dried_Fruit|Cheese,0,0,0,0,0], [2,0], [Extras_2,0], 0, 0, [0,0,0,0]];
-const recipe1913 = [[1,0,0,0,0,0], [Basic_Spice_Pack|Dried_Fruit|Cheese,0,0,0,0,0], [1,0], [Extras_3,0], 0, 0, [0,0,0,0]];
-const recipe1914 = [[1,0,0,0,0,0], [Basic_Spice_Pack,Fruit_Preserve|Cheese,0,0,0,0,0], [1,0], [Extras_4,0], 0, 0, [0,0,0,0]];
-const recipe1915 = [[2,0,0,0,0,0], [Basic_Spice_Pack|Fruit_Preserve|Aged_Cheese,0,0,0,0,0], [1,0], [Extras_5,0], 0, 0, [0,0,0,0]];
-const recipe1916 = [[2,0,0,0,0,0], [Basic_Spice_Pack|Brandied_Fruit|Aged_Cheese,0,0,0,0,0], [1,0], [Extras_6,0], 0, 0, [0,0,0,0]];
-const recipe1917 = [[1,0,0,0,0,0], [Royal_Spice_Pack|Brandied_Fruit|Aged_Cheese,0,0,0,0,0], [1,0], [Extras_7,0], 0, 0, [0,0,0,0]];
-const recipe1918 = [[1,0,0,0,0,0], [Royal_Spice_Pack|Brandied_Fruit|Imperial_Cheese,0,0,0,0,0], [1,0], [Extras_8,0], 0, 0, [0,0,0,0]];
-const recipe1919 = [[2,0,0,0,0,0], [Royal_Spice_Pack|Brandied_Fruit|Aged_Cheese,0,0,0,0,0], [1,0], [Extras_9,0], 0, 0, [0,0,0,0]];
-const recipe1921 = [[5,0,0,0,0,0], [T1_Drink,0,0,0,0,0], [1,0], [Drink_Pack_1,0], 0, 0, [0,0,0,0]];
-const recipe1922 = [[1,0,0,0,0,0], [T1_Drink|T2_Drink,0,0,0,0,0], [1,0], [Drink_Pack_2,0], 0, 0, [0,0,0,0]];
-const recipe1923 = [[5,0,0,0,0,0], [T2_Drink,0,0,0,0,0], [1,0], [Drink_Pack_3,0], 0, 0, [0,0,0,0]];
-const recipe1924 = [[2,0,0,0,0,0], [T3_Drink|T2_Drink,0,0,0,0,0], [1,0], [Drink_Pack_4,0], 0, 0, [0,0,0,0]];
-const recipe1925 = [[8,0,0,0,0,0], [T3_Drink,0,0,0,0,0], [1,0], [Drink_Pack_5,0], 0, 0, [0,0,0,0]];
-const recipe1926 = [[3,0,0,0,0,0], [T4_Drink|T3_Drink,0,0,0,0,0], [1,0], [Drink_Pack_6,0], 0, 0, [0,0,0,0]];
-const recipe1927 = [[8,0,0,0,0,0], [T4_Drink,0,0,0,0,0], [1,0], [Drink_Pack_7,0], 0, 0, [0,0,0,0]];
-const recipe1928 = [[4,0,0,0,0,0], [T4_Drink|T5_Drink,0,0,0,0,0], [1,0], [Drink_Pack_8,0], 0, 0, [0,0,0,0]];
-const recipe1929 = [[12,0,0,0,0,0], [T5_Drink,0,0,0,0,0], [1,0], [Drink_Pack_9,0], 0, 0, [0,0,0,0]];
-const recipe2101 = [[25000,0,0,0,0,0], [Stone,0,0,0,0,0], [300,0], [Refined_Stone,0], 2, 10, [0,0,0,0]];
-const recipe2102 = [[15000,0,0,0,0,0], [Wood|Nails,0,0,0,0,0], [300,0], [Refined_Wood,0], 2, 10, [Carpenter_T1,Carpenter_T2,0,0]];
-const recipe2121 = [[3,0,0,0,0,0], [Iron_Ore,0,0,0,0,0], [1500,0], [Iron,0], 1, 10, [Smeltery_T2,Smeltery_T3,0,0]];
-const recipe2122 = [[200,0,0,0,0,0], [Gold_Ore,0,0,0,0,0], [50,0], [Gold,0], 1, 10, [Smeltery_T1,Smeltery_T2,Smeltery_T3,0]];
-const recipe2123 = [[400,0,0,0,0,0], [Silver_Ore,0,0,0,0,0], [250,0], [Silver,0], 1, 10, [Smeltery_T1,Smeltery_T2,Smeltery_T3,0]];
-const recipe2124 = [[2000,0,0,0,0,0], [Copper_Ore,0,0,0,0,0], [2000,0], [Copper,0], 1, 10, [Smeltery_T1,Smeltery_T2,Smeltery_T3,0]];
-const recipe2125 = [[1500,0,0,0,0,0], [Tin_Ore,0,0,0,0,0], [500,0], [Tin,0], 1, 10, [Smeltery_T1,Smeltery_T2,Smeltery_T3,0]];
-const recipe2180 = [[500,0,0,0,0,0], [Copper|Emerald,0,0,0,0,0], [100,0], [Emerald_Bronze,0], 1, 10, [Smeltery_T3,0,0,0]];
-const recipe2181 = [[800,0,0,0,0,0], [Copper|Tin,0,0,0,0,0], [1000,0], [Bronze,0], 1, 10, [Smeltery_T1,Smeltery_T2,Smeltery_T3,0]];
-const recipe2182 = [[500,0,0,0,0,0], [Iron,0,0,0,0,0], [300,0], [Steel,0], 1, 10, [Smeltery_T3,0,0,0]];
-const recipe2300 = [[200,0,0,0,0,0], [Ruby,0,0,0,0,0], [200,0], [Polished_Ruby,0], 1, 10, [Jeweler_T2,0,0,0]];
-const recipe2301 = [[200,0,0,0,0,0], [Emerald,0,0,0,0,0], [200,0], [Polished_Emerald,0], 1, 10, [Jeweler_T2,0,0,0]];
-const recipe2302 = [[200,0,0,0,0,0], [Sapphire,0,0,0,0,0], [200,0], [Polished_Sapphire,0], 1, 10, [Jeweler_T2,0,0,0]];
-const recipe2303 = [[200,0,0,0,0,0], [Diamond,0,0,0,0,0], [200,0], [Polished_Diamond,0], 1, 10, [Jeweler_T2,0,0,0]];
-const recipe2304 = [[200,0,0,0,0,0], [Amethyst,0,0,0,0,0], [160,0], [Polished_Amethyst,0], 1, 10, [Jeweler_T2,0,0,0]];
-const recipe2305 = [[200,0,0,0,0,0], [Opal,0,0,0,0,0], [160,0], [Polished_Opal,0], 1, 10, [Jeweler_T1,Jeweler_T2,0,0]];
-const recipe2306 = [[200,0,0,0,0,0], [Citrine,0,0,0,0,0], [160,0], [Polished_Citrine,0], 1, 10, [Jeweler_T1,Jeweler_T2,0,0]];
-const recipe2307 = [[200,0,0,0,0,0], [Pearl,0,0,0,0,0], [160,0], [Polished_Pearl,0], 1, 10, [Jeweler_T1,Jeweler_T2,0,0]];
-const recipe2308 = [[200,0,0,0,0,0], [Moonstone,0,0,0,0,0], [160,0], [Polished_Moonstone,0], 1, 10, [Jeweler_T1,Jeweler_T2,0,0]];
-const recipe2309 = [[200,0,0,0,0,0], [Amber,0,0,0,0,0], [160,0], [Polished_Amber,0], 1, 10, [Jeweler_T1,Jeweler_T2,0,0]];
-const recipe2310 = [[200,0,0,0,0,0], [Onyx,0,0,0,0,0], [160,0], [Polished_Onyx,0], 1, 10, [Jeweler_T1,Jeweler_T2,0,0]];
-const recipe2311 = [[200,0,0,0,0,0], [Aquamarine,0,0,0,0,0], [160,0], [Polished_Aquamarine,0], 1, 10, [Jeweler_T1,Jeweler_T2,0,0]];
-const recipe2312 = [[200,0,0,0,0,0], [Crystal_Glass,0,0,0,0,0], [160,0], [Polished_Crystal_Glass,0], 1, 10, [Jeweler_T1,Jeweler_T2,0,0]];
-const recipe4000 = [[200,0,0,0,0,0], [Iron/Bronze,0,0,0,0,0], [600,0], [Nails,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe4001 = [[25,0,0,0,0,0], [Diamond,0,0,0,0,0], [300,0], [Diamond_Blade,0], 1, 10, [Jeweler_T2,0,0,0]];
-const recipe4002 = [[2500,0,0,0,0,0], [Cotton/Wool,0,0,0,0,0], [100,0], [Fabric,0], 1, 10, [Weaver_T1,Weaver_T2,0,0]];
-const recipe4013 = [[1,0,0,0,0,0], [Leopard_Skin,0,0,0,0,0], [1,0], [Oppulant_Furniture,0], 0, 0, [0,0,0,0]];
-const recipe4014 = [[1,0,0,0,0,0], [Aurochs_Hide,0,0,0,0,0], [2,0], [Oppulant_Furniture,0], 0, 0, [0,0,0,0]];
-const recipe4015 = [[1,0,0,0,0,0], [Black_Leopard_Skin,0,0,0,0,0], [2,0], [Oppulant_Furniture,0], 0, 0, [0,0,0,0]];
-const recipe4016 = [[1,0,0,0,0,0], [Bear_Hide,0,0,0,0,0], [10,0], [Oppulant_Furniture,0], 0, 0, [0,0,0,0]];
-const recipe4017 = [[1,0,0,0,0,0], [Polar_Bear_Hide,0,0,0,0,0], [10,0], [Oppulant_Furniture,0], 0, 0, [0,0,0,0]];
-const recipe4018 = [[1,0,0,0,0,0], [Tiger_Hide,0,0,0,0,0], [10,0], [Oppulant_Furniture,0], 0, 0, [0,0,0,0]];
-const recipe4019 = [[400,0,0,0,0,0], [Rushseed,0,0,0,0,0], [10,0], [Rushseed_Oil,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe4100 = [[5000,0,0,0,0,0], [Bronze,0,0,0,0,0], [5,0], [Bronze_Plate,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe4101 = [[2000,0,0,0,0,0], [Iron,0,0,0,0,0], [2,0], [Iron_Plate,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe4102 = [[2000,0,0,0,0,0], [Steel,0,0,0,0,0], [2,0], [Steel_Plate,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe4103 = [[2000,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [2,0], [Emerald_Bronze_Plate,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe4104 = [[2000,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [2,0], [Damascus_Steel_Plate,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe4105 = [[2000,0,0,0,0,0], [Bronze,0,0,0,0,0], [4,0], [Bronze_Chainmail,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe4106 = [[500,0,0,0,0,0], [Iron,0,0,0,0,0], [1,0], [Iron_Chainmail,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe4107 = [[500,0,0,0,0,0], [Steel,0,0,0,0,0], [1,0], [Steel_Chainmail,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe4108 = [[500,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [1,0], [Emerald_Bronze_Chainmail,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe4109 = [[500,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [1,0], [Damascus_Steel_Chainmail,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe4500 = [[200,0,0,0,0,0], [Fur,0,0,0,0,0], [10,0], [Fur_Clothes,0], 1, 10, [Weaver_T1,Weaver_T2,0,0]];
-const recipe4501 = [[200,0,0,0,0,0], [Fabric,0,0,0,0,0], [10,0], [Fabric_Clothes,0], 1, 10, [Weaver_T1,Weaver_T2,0,0]];
-const recipe4502 = [[400,0,0,0,0,0], [Leather,0,0,0,0,0], [10,0], [Leather_Clothes,0], 1, 10, [Weaver_T1,Weaver_T2,0,0]];
-const recipe4503 = [[200,0,0,0,0,0], [Exotic_Fur,0,0,0,0,0], [1,0], [Tailored_Fur_Clothes,0], 1, 10, [Weaver_T1,Weaver_T2,0,0]];
-const recipe4504 = [[150,0,0,0,0,0], [Fabric,0,0,0,0,0], [1,0], [Tailored_Fabric_Clothes,0], 1, 10, [Weaver_T1,Weaver_T2,0,0]];
-const recipe4520 = [[12500,0,0,0,0,0], [Wood,0,0,0,0,0], [10,0], [Basic_Furniture,0], 1, 10, [Carpenter_T1,Carpenter_T2,0,0]];
-const recipe4521 = [[100,0,0,0,0,0], [Refined_Wood|Antler|Leather,0,0,0,0,0], [5,0], [Ornate_Furniture,0], 1, 10, [Carpenter_T1,Carpenter_T2,0,0]];
-const recipe4522 = [[100,0,0,0,0,0], [Refined_Wood|ExoticLeather|Ivory,0,0,0,0,0], [1,0], [Oppulant_Furniture,0], 1, 10, [Carpenter_T2,0,0,0]];
-const recipe4540 = [[1000,0,0,0,0,0], [T2_Metal|Wood|Stone,0,0,0,0,0], [100,0], [Basic_Tool,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe4541 = [[1000,0,0,0,0,0], [Steel|Wood|Antler,0,0,0,0,0], [50,0], [Artisan_Tool,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe4542 = [[100,0,0,0,0,0], [Emerald_Bronze|Ivory|ExoticLeather,0,0,0,0,0], [10,0], [Oppulant_Tool,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe4560 = [[800,0,0,0,0,0], [Copper|Common_Gemstone,0,0,0,0,0], [10,0], [Copper_Jewelery,0], 1, 10, [Jeweler_T1,Jeweler_T2,0,0]];
-const recipe4561 = [[325,0,0,0,0,0], [Silver|Polished_Common_Gemstone,0,0,0,0,0], [5,0], [Silver_Jewelery,0], 1, 10, [Jeweler_T1,Jeweler_T2,0,0]];
-const recipe4562 = [[300,0,0,0,0,0], [Gold|Polished_Rare_Gemstone,0,0,0,0,0], [1,0], [Gold_Jewelery,0], 1, 10, [Jeweler_T2,0,0,0]];
-const recipe4580 = [[12500,0,0,0,0,0], [Wood,0,0,0,0,0], [10,0], [Basic_Furniture,0], 1, 10, [Carpenter_T1,Carpenter_T2,0,0]];
-const recipe4581 = [[100,0,0,0,0,0], [Refined_Wood|Antler|Leather,0,0,0,0,0], [5,0], [Ornate_Furniture,0], 1, 10, [Carpenter_T1,Carpenter_T2,0,0]];
-const recipe4582 = [[100,0,0,0,0,0], [Refined_Wood|Ivory|ExoticLeather,0,0,0,0,0], [1,0], [Oppulant_Furniture,0], 1, 10, [Carpenter_T2,0,0,0]];
-const recipe5000 = [[4000,0,0,0,0,0], [Bronze,0,0,0,0,0], [10,0], [Bronze_Spear,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe5001 = [[2000,0,0,0,0,0], [Iron,0,0,0,0,0], [5,0], [Iron_Spear,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe5002 = [[2000,0,0,0,0,0], [Steel,0,0,0,0,0], [5,0], [Steel_Spear,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe5003 = [[2000,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [5,0], [Emerald_Bronze_Spear,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe5004 = [[2000,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [5,0], [Damascus_Steel_Spear,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe5010 = [[4000,0,0,0,0,0], [Bronze,0,0,0,0,0], [4,0], [Bronze_Axe,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe5011 = [[1000,0,0,0,0,0], [Iron,0,0,0,0,0], [1,0], [Iron_Axe,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe5012 = [[1000,0,0,0,0,0], [Steel,0,0,0,0,0], [1,0], [Steel_Axe,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe5013 = [[1000,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [1,0], [Emerald_Bronze_Axe,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe5014 = [[1000,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [1,0], [Damascus_Steel_Axe,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe5020 = [[4000,0,0,0,0,0], [Bronze,0,0,0,0,0], [4,0], [Bronze_Sword,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe5021 = [[1000,0,0,0,0,0], [Iron,0,0,0,0,0], [1,0], [Iron_Sword,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe5022 = [[1000,0,0,0,0,0], [Steel,0,0,0,0,0], [1,0], [Steel_Sword,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe5023 = [[1000,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [1,0], [Emerald_Bronze_Sword,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe5024 = [[1000,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [1,0], [Damascus_Steel_Sword,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe5030 = [[4000,0,0,0,0,0], [Bronze,0,0,0,0,0], [4,0], [Bronze_Mace,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe5031 = [[1000,0,0,0,0,0], [Iron,0,0,0,0,0], [1,0], [Iron_Mace,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe5032 = [[1000,0,0,0,0,0], [Steel,0,0,0,0,0], [1,0], [Steel_Mace,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe5033 = [[1000,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [1,0], [Emerald_Bronze_Mace,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe5034 = [[1000,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [1,0], [Damascus_Steel_Mace,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
-const recipe5040 = [[3000,0,0,0,0,0], [Bronze,0,0,0,0,0], [2,0], [Bronze_Lance,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe5041 = [[1500,0,0,0,0,0], [Iron,0,0,0,0,0], [1,0], [Iron_Lance,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe5042 = [[1500,0,0,0,0,0], [Steel,0,0,0,0,0], [1,0], [Steel_Lance,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe5043 = [[1500,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [1,0], [Emerald_Bronze_Lance,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe5044 = [[1500,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [1,0], [Damascus_Steel_Lance,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe5050 = [[3000,0,0,0,0,0], [Bronze,0,0,0,0,0], [2,0], [Bronze_Poleaxe,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe5051 = [[1500,0,0,0,0,0], [Iron,0,0,0,0,0], [1,0], [Iron_Poleaxe,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe5052 = [[1500,0,0,0,0,0], [Steel,0,0,0,0,0], [1,0], [Steel_Poleaxe,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe5053 = [[1500,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [1,0], [Emerald_Bronze_Poleaxe,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe5054 = [[1500,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [1,0], [Damascus_Steel_Poleaxe,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe5060 = [[3000,0,0,0,0,0], [Bronze,0,0,0,0,0], [2,0], [Bronze_Greatsword,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe5061 = [[1500,0,0,0,0,0], [Iron,0,0,0,0,0], [1,0], [Iron_Greatsword,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe5062 = [[1500,0,0,0,0,0], [Steel,0,0,0,0,0], [1,0], [Steel_Greatsword,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe5063 = [[1500,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [1,0], [Emerald_Bronze_Greatsword,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe5064 = [[1500,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [1,0], [Damascus_Steel_Greatsword,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe5070 = [[3000,0,0,0,0,0], [Bronze,0,0,0,0,0], [2,0], [Bronze_Warhammer,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe5071 = [[1500,0,0,0,0,0], [Iron,0,0,0,0,0], [1,0], [Iron_Warhammer,0], 1, 10, [Blacksmith_T2,0,0,0]];
-const recipe5072 = [[1500,0,0,0,0,0], [Steel,0,0,0,0,0], [1,0], [Steel_Warhammer,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe5073 = [[1500,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [1,0], [Emerald_Bronze_Warhammer,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe5074 = [[1500,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [1,0], [Damascus_Steel_Warhammer,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe5580 = [[1000,0,0,0,0,0], [Leather,0,0,0,0,0], [1,0], [Leather_Armor,0], 5, 1, [Weaver_T1,Weaver_T2,0,0]];
-const recipe5581 = [[1000,0,0,0,0,0], [Thick_Leather,0,0,0,0,0], [1,0], [Thick_Leather_Armor,0], 10, 1, [Weaver_T2,0,0,0]];
-const recipe5592 = [[500,0,0,0,0,0], [Fabric,0,0,0,0,0], [1,0], [Gambeson,0], 2, 1, [Weaver_T1,Weaver_T2,0,0]];
-const recipe5900 = [[200,0,0,0,0,0], [Refined_Wood,0,0,0,0,0], [1,0], [Wooden_Shield,0], 1, 10, [Carpenter_T1,Carpenter_T2,0,0]];
-const recipe5901 = [[450,0,0,0,0,0], [Refined_Wood,0,0,0,0,0], [1,0], [Wall_Shield,0], 1, 10, [Carpenter_T1,Carpenter_T2,0,0]];
-const recipe5902 = [[200,0,0,0,0,0], [Refined_Wood|Iron_Plate,0,0,0,0,0], [1,0], [Banded_Shield,0], 1, 10, [Carpenter_T1,Carpenter_T2,0,0]];
-const recipe5903 = [[200,0,0,0,0,0], [Refined_Wood|Iron_Plate|Leather,0,0,0,0,0], [1,0], [Banded_Shield,0], 1, 10, [Carpenter_T1,Carpenter_T2,0,0]];
-const recipe5904 = [[2,0,0,0,0,0], [Steel_Plate,0,0,0,0,0], [1,0], [Metal_Shield,0], 5, 10, [Blacksmith_T2,0,0,0]];
-const recipe5905 = [[2,0,0,0,0,0], [Emerald_Bronze_Plate,0,0,0,0,0], [1,0], [Gong_Shield,0], 5, 20, [Blacksmith_T2,0,0,0]];
-const recipe5906 = [[2,0,0,0,0,0], [Damascus_Steel_Plate,0,0,0,0,0], [1,0], [Heirloom_Shield,0], 5, 100, [Blacksmith_T2,0,0,0]];
-const recipe5910 = [[400,0,0,0,0,0], [Refined_Wood|Iron_Plate|Leather,0,0,0,0,0], [1,0], [Wall_Shield,0], 2, 10, [Carpenter_T1,Carpenter_T2,0,0]];
-const recipe7000 = [[1,0,0,0,0,0], [Rabbit,0,0,0,0,0], [250,0], [Meat|Fur,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7001 = [[1,0,0,0,0,0], [Deer,0,0,0,0,0], [1000,0], [Meat|Leather|Antler,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7002 = [[1,0,0,0,0,0], [Turkey,0,0,0,0,0], [250,0], [Meat|Feather,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7003 = [[1,0,0,0,0,0], [Mink,0,0,0,0,0], [10,0], [Exotic_Meat|Exotic_Fur,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7004 = [[1,0,0,0,0,0], [Cyote,0,0,0,0,0], [100,0], [Exotic_Meat|Fur,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7005 = [[1,0,0,0,0,0], [Snake,0,0,0,0,0], [10,0], [Exotic_Meat|ExoticLeather,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7100 = [[1,0,0,0,0,0], [Fox,0,0,0,0,0], [100,0], [Exotic_Meat|Fur,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7101 = [[1,0,0,0,0,0], [Boar,0,0,0,0,0], [5,0], [Ivory|Exotic_Meat|Leather,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7102 = [[1,0,0,0,0,0], [Zebra,0,0,0,0,0], [400,0], [Exotic_Meat|Leather,0], 1, 4, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7103 = [[1,0,0,0,0,0], [Reindeer,0,0,0,0,0], [800,0], [Exotic_Meat|Leather|Antler,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7104 = [[1,0,0,0,0,0], [Leopard,0,0,0,0,0], [300,0], [Exotic_Meat|Leopard_Skin,0], 1, 4, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7105 = [[1,0,0,0,0,0], [Crocodie,0,0,0,0,0], [200,0], [Exotic_Meat|ExoticLeather,0], 1, 5, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7106 = [[1,0,0,0,0,0], [Otter,0,0,0,0,0], [20,0], [Exotic_Meat|Exotic_Fur,0], 1, 5, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7107 = [[1,0,0,0,0,0], [Wolf,0,0,0,0,0], [100,0], [Exotic_Meat|Fur,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7108 = [[1,0,0,0,0,0], [Seal,0,0,0,0,0], [200,0], [Exotic_Meat|Fur,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7200 = [[1,0,0,0,0,0], [Elk,0,0,0,0,0], [2000,0], [Meat|Leather|Antler,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7201 = [[1,0,0,0,0,0], [Aurochs,0,0,0,0,0], [3000,0], [Beef|Aurochs_Hide,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7202 = [[1,0,0,0,0,0], [Black_Leopard,0,0,0,0,0], [400,0], [Exotic_Meat|Black_Leopard_Skin,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7203 = [[1,0,0,0,0,0], [Bear,0,0,0,0,0], [1000,0], [Exotic_Meat|Bear_Hide,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7204 = [[1,0,0,0,0,0], [Sea_Mink,0,0,0,0,0], [100,0], [Exotic_Meat|Exotic_Fur,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7205 = [[1,0,0,0,0,0], [Whalrus,0,0,0,0,0], [800,0], [Exotic_Meat|Leather|Ivory,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7206 = [[1,0,0,0,0,0], [Poison_Snake,0,0,0,0,0], [40,0], [ExoticLeather|Poison|Exotic_Meat,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7300 = [[1,0,0,0,0,0], [Elephant,0,0,0,0,0], [4000,0], [Exotic_Meat|Ivory|Thick_Leather,0], 10, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7301 = [[1,0,0,0,0,0], [Rhino,0,0,0,0,0], [4000,0], [Exotic_Meat|Thick_Leather,0], 10, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7302 = [[1,0,0,0,0,0], [Polar_Bear,0,0,0,0,0], [2000,0], [Exotic_Meat|Polar_Bear_Hide,0], 2, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7303 = [[1,0,0,0,0,0], [Tiger,0,0,0,0,0], [2000,0], [Exotic_Meat|Tiger_Hide,0], 2, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7304 = [[1,0,0,0,0,0], [Titan_Snake,0,0,0,0,0], [2000,0], [Exotic_Meat|ExoticLeather,0], 2, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7400 = [[5,0,0,0,0,0], [Cow,0,0,0,0,0], [150,0], [Beef|Leather,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7401 = [[10,0,0,0,0,0], [Chicken,0,0,0,0,0], [250,0], [Mutton|Wool,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe7402 = [[10,0,0,0,0,0], [Sheep,0,0,0,0,0], [100,0], [Chicken|Feather,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-const recipe10001 = [[150000,0,0,0,0,0], [Coins,0,0,0,0,0], [1,0], [T1_Spearman,0], 0, 0, [0,0,0,0]];
-const recipe10002 = [[100,0,0,0,0,0], [T1_XP|T1_Spearman,0,0,0,0,0], [1,0], [T2_Spearman,0], 0, 0, [0,0,0,0]];
-const recipe74013 = [[1,0,0,0,0,0], [Leopard_Skin,0,0,0,0,0], [300,0], [Fur,0], 0, 0, [0,0,0,0]];
-const recipe74014 = [[1,0,0,0,0,0], [Aurochs_Hide,0,0,0,0,0], [2000,0], [Leather,0], 0, 0, [0,0,0,0]];
-const recipe74015 = [[1,0,0,0,0,0], [Black_Leopard_Skin,0,0,0,0,0], [300,0], [Fur,0], 0, 0, [0,0,0,0]];
-const recipe74016 = [[1,0,0,0,0,0], [Bear_Hide,0,0,0,0,0], [300,0], [Exotic_Fur,0], 0, 0, [0,0,0,0]];
-const recipe74017 = [[1,0,0,0,0,0], [Polar_Bear_Hide,0,0,0,0,0], [500,0], [Exotic_Fur,0], 0, 0, [0,0,0,0]];
-const recipe74018 = [[1,0,0,0,0,0], [Tiger_Hide,0,0,0,0,0], [500,0], [Exotic_Fur,0], 0, 0, [0,0,0,0]];
-const recipe100501 = [[100,0,0,0,0,0], [Wheat,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100502 = [[100,0,0,0,0,0], [Rye,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100503 = [[100,0,0,0,0,0], [Rice,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100504 = [[100,0,0,0,0,0], [Corn,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100505 = [[100,0,0,0,0,0], [Sorghum,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100506 = [[100,0,0,0,0,0], [Apples,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100507 = [[100,0,0,0,0,0], [Plums,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100508 = [[100,0,0,0,0,0], [Olives,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100509 = [[100,0,0,0,0,0], [Beans,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100510 = [[100,0,0,0,0,0], [Mushrooms,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100511 = [[100,0,0,0,0,0], [Beets,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100512 = [[100,0,0,0,0,0], [Casava,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100513 = [[100,0,0,0,0,0], [Peanuts,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100514 = [[100,0,0,0,0,0], [Cherries,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100515 = [[100,0,0,0,0,0], [Peaches,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100516 = [[100,0,0,0,0,0], [Garlic,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100517 = [[100,0,0,0,0,0], [Onion,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100518 = [[100,0,0,0,0,0], [Carrots,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100519 = [[100,0,0,0,0,0], [Sugarcane,0,0,0,0,0], [200,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100521 = [[100,0,0,0,0,0], [Allspice,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100522 = [[100,0,0,0,0,0], [Grapes,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100523 = [[100,0,0,0,0,0], [Ginseng,0,0,0,0,0], [2500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100524 = [[100,0,0,0,0,0], [Winterberries,0,0,0,0,0], [2000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100525 = [[100,0,0,0,0,0], [Jungleberries,0,0,0,0,0], [2000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100526 = [[100,0,0,0,0,0], [Auric_Honey,0,0,0,0,0], [5000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100527 = [[100,0,0,0,0,0], [Wasabi,0,0,0,0,0], [2500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100528 = [[100,0,0,0,0,0], [Rushseed,0,0,0,0,0], [2500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100530 = [[100,0,0,0,0,0], [Oysters,0,0,0,0,0], [1250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100531 = [[100,0,0,0,0,0], [Fish_Meat,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100532 = [[100,0,0,0,0,0], [Beef,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100533 = [[100,0,0,0,0,0], [Chicken_Meat,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100534 = [[100,0,0,0,0,0], [Eggs,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100535 = [[100,0,0,0,0,0], [Potato,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100536 = [[100,0,0,0,0,0], [Silver_Sap,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100537 = [[100,0,0,0,0,0], [Honey,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100538 = [[100,0,0,0,0,0], [Oats,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100539 = [[100,0,0,0,0,0], [Milk,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100540 = [[100,0,0,0,0,0], [Barley,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100541 = [[100,0,0,0,0,0], [Exotic_Meat,0,0,0,0,0], [2500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100542 = [[100,0,0,0,0,0], [Wool,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe100543 = [[100,0,0,0,0,0], [Cotton,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101000 = [[1,0,0,0,0,0], [Wheat_Beer,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101001 = [[1,0,0,0,0,0], [Rye_Beer,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101002 = [[1,0,0,0,0,0], [Barley_Beer,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101003 = [[1,0,0,0,0,0], [Oat_Beer,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101004 = [[1,0,0,0,0,0], [Rice_Beer,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101005 = [[1,0,0,0,0,0], [Sorghum_Beer,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101010 = [[1,0,0,0,0,0], [Cider,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101011 = [[1,0,0,0,0,0], [Wine,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101012 = [[1,0,0,0,0,0], [Plum_Wine,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101013 = [[1,0,0,0,0,0], [Peach_Wine,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101014 = [[1,0,0,0,0,0], [Cherry_Wine,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101020 = [[1,0,0,0,0,0], [Mead,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101030 = [[1,0,0,0,0,0], [Vodka,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101031 = [[1,0,0,0,0,0], [Kumis,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101032 = [[1,0,0,0,0,0], [Rum,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101033 = [[1,0,0,0,0,0], [Grain_Whiskey,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101040 = [[1,0,0,0,0,0], [Brandy,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101041 = [[1,0,0,0,0,0], [Silver_Wine,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101042 = [[1,0,0,0,0,0], [Jungle_Wine,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101043 = [[1,0,0,0,0,0], [Winter_Wine,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101044 = [[1,0,0,0,0,0], [Aged_Rum,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101050 = [[1,0,0,0,0,0], [Ginseng_Wine,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101051 = [[1,0,0,0,0,0], [Spiced_Vodka,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101060 = [[1,0,0,0,0,0], [Double_Brandy,0,0,0,0,0], [2500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101061 = [[1,0,0,0,0,0], [Auric_Mead,0,0,0,0,0], [2500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101200 = [[1,0,0,0,0,0], [Wheat_Bread,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101201 = [[1,0,0,0,0,0], [Rye_Bread,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101202 = [[1,0,0,0,0,0], [Corn_Bread,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101203 = [[1,0,0,0,0,0], [Rice_Bread,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101204 = [[1,0,0,0,0,0], [Sorghum_Bread,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101205 = [[1,0,0,0,0,0], [Barley_Bread,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101206 = [[1,0,0,0,0,0], [Oat_Bread,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101207 = [[1,0,0,0,0,0], [Pastry,0,0,0,0,0], [125,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101208 = [[1,0,0,0,0,0], [Fruit_Pastry,0,0,0,0,0], [200,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101209 = [[1,0,0,0,0,0], [Glittercake,0,0,0,0,0], [1500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101210 = [[1,0,0,0,0,0], [Fruit_Glittercake,0,0,0,0,0], [2500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101211 = [[1,0,0,0,0,0], [Glittercakeette,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101220 = [[1,0,0,0,0,0], [Apple_Pie,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101221 = [[1,0,0,0,0,0], [Plum_Pie,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101222 = [[1,0,0,0,0,0], [Peach_Pie,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101223 = [[1,0,0,0,0,0], [Sugar_Pie,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101224 = [[1,0,0,0,0,0], [Pot_Pie,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101230 = [[1,0,0,0,0,0], [Cheese,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101231 = [[1,0,0,0,0,0], [Aged_Cheese,0,0,0,0,0], [300,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101232 = [[1,0,0,0,0,0], [Imperial_Cheese,0,0,0,0,0], [2000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101240 = [[1,0,0,0,0,0], [Dried_Vegetables,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101241 = [[1,0,0,0,0,0], [Pickled_Vegetables,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101250 = [[1,0,0,0,0,0], [Dried_Fruit,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101251 = [[1,0,0,0,0,0], [Brandied_Fruit,0,0,0,0,0], [400,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101260 = [[1,0,0,0,0,0], [Sausage,0,0,0,0,0], [200,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101261 = [[1,0,0,0,0,0], [Fried_Meat,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101262 = [[1,0,0,0,0,0], [Roast,0,0,0,0,0], [150,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101263 = [[1,0,0,0,0,0], [Cured_Meat,0,0,0,0,0], [750,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101264 = [[1,0,0,0,0,0], [Salted_Meat,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101265 = [[1,0,0,0,0,0], [Preserved_Eggs,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101266 = [[1,0,0,0,0,0], [Exotic_Cured_Meat,0,0,0,0,0], [3750,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101270 = [[1,0,0,0,0,0], [Beef_Stew,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101271 = [[1,0,0,0,0,0], [Kings_Soup,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101272 = [[1,0,0,0,0,0], [Onion_Stew,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101273 = [[1,0,0,0,0,0], [Huntsmans_Soup,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101274 = [[1,0,0,0,0,0], [Chicken_Soup,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101275 = [[1,0,0,0,0,0], [Fish_Soup,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101280 = [[1,0,0,0,0,0], [Baked_Beans,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101281 = [[1,0,0,0,0,0], [Beans_And_Rice,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101300 = [[1,0,0,0,0,0], [Vinegar,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101301 = [[1,0,0,0,0,0], [Sugar,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101302 = [[1,0,0,0,0,0], [Olive_Oil,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101303 = [[1,0,0,0,0,0], [Flour,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101304 = [[1,0,0,0,0,0], [Ketchup,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101305 = [[1,0,0,0,0,0], [Basic_Spice_Pack,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101306 = [[1,0,0,0,0,0], [Royal_Spice_Pack,0,0,0,0,0], [2000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101307 = [[1,0,0,0,0,0], [Confectioners_Dough,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101308 = [[1,0,0,0,0,0], [Fruit_Preserve,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101309 = [[1,0,0,0,0,0], [Exotic_Fruit_Preserve,0,0,0,0,0], [1500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101400 = [[1,0,0,0,0,0], [Bread_Combo,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101401 = [[1,0,0,0,0,0], [Deluxe_Bread,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101420 = [[1,0,0,0,0,0], [Basic_Soup,0,0,0,0,0], [125,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101430 = [[1,0,0,0,0,0], [Deluxe_Soup,0,0,0,0,0], [800,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101440 = [[1,0,0,0,0,0], [Sausage_Combo,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101450 = [[1,0,0,0,0,0], [Roast_Combo,0,0,0,0,0], [175,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101460 = [[1,0,0,0,0,0], [Deluxe_Roast,0,0,0,0,0], [525,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101470 = [[1,0,0,0,0,0], [Charcutery,0,0,0,0,0], [1250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101471 = [[1,0,0,0,0,0], [Deluxe_Charcutery,0,0,0,0,0], [9500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101480 = [[1,0,0,0,0,0], [Pie_Combo,0,0,0,0,0], [62,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101900 = [[1,0,0,0,0,0], [Fodder_Bread,0,0,0,0,0], [12,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101901 = [[1,0,0,0,0,0], [Main_Ration_1,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101902 = [[1,0,0,0,0,0], [Main_Ration_2,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101903 = [[1,0,0,0,0,0], [Main_Ration_3,0,0,0,0,0], [2000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101904 = [[1,0,0,0,0,0], [Main_Ration_4,0,0,0,0,0], [4000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101905 = [[1,0,0,0,0,0], [Main_Ration_5,0,0,0,0,0], [8000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101906 = [[1,0,0,0,0,0], [Main_Ration_6,0,0,0,0,0], [16000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101907 = [[1,0,0,0,0,0], [Main_Ration_7,0,0,0,0,0], [32000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101908 = [[1,0,0,0,0,0], [Main_Ration_8,0,0,0,0,0], [64000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101909 = [[1,0,0,0,0,0], [Main_Ration_9,0,0,0,0,0], [128000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101911 = [[1,0,0,0,0,0], [Extras_1,0,0,0,0,0], [125,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101912 = [[1,0,0,0,0,0], [Extras_2,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101913 = [[1,0,0,0,0,0], [Extras_3,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101914 = [[1,0,0,0,0,0], [Extras_4,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101915 = [[1,0,0,0,0,0], [Extras_5,0,0,0,0,0], [2000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101916 = [[1,0,0,0,0,0], [Extras_6,0,0,0,0,0], [4000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101917 = [[1,0,0,0,0,0], [Extras_7,0,0,0,0,0], [8000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101918 = [[1,0,0,0,0,0], [Extras_8,0,0,0,0,0], [16000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101919 = [[1,0,0,0,0,0], [Extras_9,0,0,0,0,0], [32000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101921 = [[1,0,0,0,0,0], [Drink_Pack_1,0,0,0,0,0], [125,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101922 = [[1,0,0,0,0,0], [Drink_Pack_2,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101923 = [[1,0,0,0,0,0], [Drink_Pack_3,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101924 = [[1,0,0,0,0,0], [Drink_Pack_4,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101925 = [[1,0,0,0,0,0], [Drink_Pack_5,0,0,0,0,0], [2000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101926 = [[1,0,0,0,0,0], [Drink_Pack_6,0,0,0,0,0], [4000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101927 = [[1,0,0,0,0,0], [Drink_Pack_7,0,0,0,0,0], [8000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101928 = [[1,0,0,0,0,0], [Drink_Pack_8,0,0,0,0,0], [16000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe101929 = [[1,0,0,0,0,0], [Drink_Pack_9,0,0,0,0,0], [32000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102001 = [[100,0,0,0,0,0], [Stone,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102002 = [[100,0,0,0,0,0], [Wood,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102003 = [[100,0,0,0,0,0], [Salt,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102021 = [[100,0,0,0,0,0], [Iron_Ore,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102022 = [[100,0,0,0,0,0], [Gold_Ore,0,0,0,0,0], [20000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102023 = [[100,0,0,0,0,0], [Silver_Ore,0,0,0,0,0], [10000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102024 = [[100,0,0,0,0,0], [Copper_Ore,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102025 = [[100,0,0,0,0,0], [Tin_Ore,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102101 = [[1,0,0,0,0,0], [Refined_Stone,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102102 = [[1,0,0,0,0,0], [Refined_Wood,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102210 = [[1,0,0,0,0,0], [Onyx,0,0,0,0,0], [10,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102121 = [[1,0,0,0,0,0], [Iron,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102122 = [[1,0,0,0,0,0], [Gold,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102123 = [[1,0,0,0,0,0], [Silver,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102124 = [[1,0,0,0,0,0], [Copper,0,0,0,0,0], [12,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102125 = [[1,0,0,0,0,0], [Tin,0,0,0,0,0], [40,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102180 = [[1,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [225,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102181 = [[1,0,0,0,0,0], [Bronze,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102182 = [[1,0,0,0,0,0], [Steel,0,0,0,0,0], [75,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102183 = [[1,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102200 = [[1,0,0,0,0,0], [Ruby,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102201 = [[1,0,0,0,0,0], [Emerald,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102202 = [[1,0,0,0,0,0], [Sapphire,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102203 = [[1,0,0,0,0,0], [Diamond,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102204 = [[1,0,0,0,0,0], [Amethyst,0,0,0,0,0], [10,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102205 = [[1,0,0,0,0,0], [Opal,0,0,0,0,0], [10,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102206 = [[1,0,0,0,0,0], [Citrine,0,0,0,0,0], [10,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102207 = [[1,0,0,0,0,0], [Pearl,0,0,0,0,0], [10,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102208 = [[1,0,0,0,0,0], [Moonstone,0,0,0,0,0], [10,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102209 = [[1,0,0,0,0,0], [Amber,0,0,0,0,0], [10,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102211 = [[1,0,0,0,0,0], [Aquamarine,0,0,0,0,0], [10,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102212 = [[1,0,0,0,0,0], [Crystal_Glass,0,0,0,0,0], [10,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102213 = [[1,0,0,0,0,0], [Bloodstone,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102300 = [[1,0,0,0,0,0], [Polished_Ruby,0,0,0,0,0], [87,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102301 = [[1,0,0,0,0,0], [Polished_Emerald,0,0,0,0,0], [87,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102302 = [[1,0,0,0,0,0], [Polished_Sapphire,0,0,0,0,0], [87,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102303 = [[1,0,0,0,0,0], [Polished_Diamond,0,0,0,0,0], [150,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102304 = [[1,0,0,0,0,0], [Polished_Amethyst,0,0,0,0,0], [75,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102305 = [[1,0,0,0,0,0], [Polished_Opal,0,0,0,0,0], [75,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102306 = [[1,0,0,0,0,0], [Polished_Citrine,0,0,0,0,0], [75,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102308 = [[1,0,0,0,0,0], [Polished_Moonstone,0,0,0,0,0], [112,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102309 = [[1,0,0,0,0,0], [Polished_Amber,0,0,0,0,0], [75,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102310 = [[1,0,0,0,0,0], [Polished_Onyx,0,0,0,0,0], [75,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102311 = [[1,0,0,0,0,0], [Polished_Aquamarine,0,0,0,0,0], [75,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe102312 = [[1,0,0,0,0,0], [Polished_Crystal_Glass,0,0,0,0,0], [75,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104000 = [[1,0,0,0,0,0], [Nails,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104001 = [[1,0,0,0,0,0], [Diamond_Blade,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104002 = [[1,0,0,0,0,0], [Fabric,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104003 = [[1,0,0,0,0,0], [Down,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104004 = [[1,0,0,0,0,0], [Leather,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104005 = [[1,0,0,0,0,0], [ExoticLeather,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104006 = [[1,0,0,0,0,0], [Fur,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104007 = [[1,0,0,0,0,0], [Exotic_Fur,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104008 = [[1,0,0,0,0,0], [Feather,0,0,0,0,0], [10,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104009 = [[1,0,0,0,0,0], [Thick_Leather,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104010 = [[1,0,0,0,0,0], [Antler,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104011 = [[1,0,0,0,0,0], [Ivory,0,0,0,0,0], [1250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104012 = [[1,0,0,0,0,0], [Poison,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104013 = [[1,0,0,0,0,0], [Leopard_Skin,0,0,0,0,0], [25000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104014 = [[1,0,0,0,0,0], [Aurochs_Hide,0,0,0,0,0], [50000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104015 = [[1,0,0,0,0,0], [Black_Leopard_Skin,0,0,0,0,0], [50000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104016 = [[1,0,0,0,0,0], [Bear_Hide,0,0,0,0,0], [250000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104017 = [[1,0,0,0,0,0], [Polar_Bear_Hide,0,0,0,0,0], [250000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104018 = [[1,0,0,0,0,0], [Tiger_Hide,0,0,0,0,0], [250000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104100 = [[1,0,0,0,0,0], [Bronze_Plate,0,0,0,0,0], [30000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104101 = [[1,0,0,0,0,0], [Iron_Plate,0,0,0,0,0], [37500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104102 = [[1,0,0,0,0,0], [Steel_Plate,0,0,0,0,0], [87500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104103 = [[1,0,0,0,0,0], [Emerald_Bronze_Plate,0,0,0,0,0], [237500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104104 = [[1,0,0,0,0,0], [Damascus_Steel_Plate,0,0,0,0,0], [1012500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104105 = [[1,0,0,0,0,0], [Bronze_Chainmail,0,0,0,0,0], [18750,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104106 = [[1,0,0,0,0,0], [Iron_Chainmail,0,0,0,0,0], [37500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104107 = [[1,0,0,0,0,0], [Steel_Chainmail,0,0,0,0,0], [62500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104108 = [[1,0,0,0,0,0], [Emerald_Bronze_Chainmail,0,0,0,0,0], [137500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104109 = [[1,0,0,0,0,0], [Damascus_Steel_Chainmail,0,0,0,0,0], [525000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104500 = [[1,0,0,0,0,0], [Fur_Clothes,0,0,0,0,0], [1250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104501 = [[1,0,0,0,0,0], [Fabric_Clothes,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104502 = [[1,0,0,0,0,0], [Leather_Clothes,0,0,0,0,0], [1250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104503 = [[1,0,0,0,0,0], [Tailored_Fur_Clothes,0,0,0,0,0], [12500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104504 = [[1,0,0,0,0,0], [Tailored_Fabric_Clothes,0,0,0,0,0], [10000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104505 = [[1,0,0,0,0,0], [Clothes,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104520 = [[1,0,0,0,0,0], [Basic_Furniture,0,0,0,0,0], [1750,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104521 = [[1,0,0,0,0,0], [Ornate_Furniture,0,0,0,0,0], [4500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104522 = [[1,0,0,0,0,0], [Oppulant_Furniture,0,0,0,0,0], [25000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104540 = [[1,0,0,0,0,0], [Basic_Tool,0,0,0,0,0], [1250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104541 = [[1,0,0,0,0,0], [Artisan_Tool,0,0,0,0,0], [3500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104542 = [[1,0,0,0,0,0], [Oppulant_Tool,0,0,0,0,0], [12500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104560 = [[1,0,0,0,0,0], [Copper_Jewelery,0,0,0,0,0], [2500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104561 = [[1,0,0,0,0,0], [Silver_Jewelery,0,0,0,0,0], [13750,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104562 = [[1,0,0,0,0,0], [Gold_Jewelery,0,0,0,0,0], [250000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104580 = [[1,0,0,0,0,0], [Fur_Bedding,0,0,0,0,0], [2250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104581 = [[1,0,0,0,0,0], [Enhanced_Bedding,0,0,0,0,0], [11500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe104582 = [[1,0,0,0,0,0], [Down_Beeding,0,0,0,0,0], [205,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105000 = [[1,0,0,0,0,0], [Bronze_Spear,0,0,0,0,0], [12500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105001 = [[1,0,0,0,0,0], [Iron_Spear,0,0,0,0,0], [15000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105002 = [[1,0,0,0,0,0], [Steel_Spear,0,0,0,0,0], [35000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105003 = [[1,0,0,0,0,0], [Emerald_Bronze_Spear,0,0,0,0,0], [95000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105004 = [[1,0,0,0,0,0], [Damascus_Steel_Spear,0,0,0,0,0], [405000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105010 = [[1,0,0,0,0,0], [Bronze_Axe,0,0,0,0,0], [31250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105011 = [[1,0,0,0,0,0], [Iron_Axe,0,0,0,0,0], [50000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105012 = [[1,0,0,0,0,0], [Steel_Axe,0,0,0,0,0], [100000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105013 = [[1,0,0,0,0,0], [Emerald_Bronze_Axe,0,0,0,0,0], [250000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105014 = [[1,0,0,0,0,0], [Damascus_Steel_Axe,0,0,0,0,0], [1025000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105020 = [[1,0,0,0,0,0], [Bronze_Sword,0,0,0,0,0], [31250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105021 = [[1,0,0,0,0,0], [Iron_Sword,0,0,0,0,0], [50000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105022 = [[1,0,0,0,0,0], [Steel_Sword,0,0,0,0,0], [100000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105023 = [[1,0,0,0,0,0], [Emerald_Bronze_Sword,0,0,0,0,0], [250000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105024 = [[1,0,0,0,0,0], [Damascus_Steel_Sword,0,0,0,0,0], [1025000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105030 = [[1,0,0,0,0,0], [Bronze_Mace,0,0,0,0,0], [31250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105031 = [[1,0,0,0,0,0], [Iron_Mace,0,0,0,0,0], [50000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105032 = [[1,0,0,0,0,0], [Steel_Mace,0,0,0,0,0], [100000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105033 = [[1,0,0,0,0,0], [Emerald_Bronze_Mace,0,0,0,0,0], [250000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105034 = [[1,0,0,0,0,0], [Damascus_Steel_Mace,0,0,0,0,0], [1025000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105040 = [[1,0,0,0,0,0], [Bronze_Lance,0,0,0,0,0], [56250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105041 = [[1,0,0,0,0,0], [Iron_Lance,0,0,0,0,0], [75000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105042 = [[1,0,0,0,0,0], [Steel_Lance,0,0,0,0,0], [150000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105043 = [[1,0,0,0,0,0], [Emerald_Bronze_Lance,0,0,0,0,0], [375000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105044 = [[1,0,0,0,0,0], [Damascus_Steel_Lance,0,0,0,0,0], [1537500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105050 = [[1,0,0,0,0,0], [Bronze_Poleaxe,0,0,0,0,0], [56250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105051 = [[1,0,0,0,0,0], [Iron_Poleaxe,0,0,0,0,0], [75000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105052 = [[1,0,0,0,0,0], [Steel_Poleaxe,0,0,0,0,0], [150000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105053 = [[1,0,0,0,0,0], [Emerald_Bronze_Poleaxe,0,0,0,0,0], [375000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105054 = [[1,0,0,0,0,0], [Damascus_Steel_Poleaxe,0,0,0,0,0], [1537500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105060 = [[1,0,0,0,0,0], [Bronze_Greatsword,0,0,0,0,0], [68750,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105061 = [[1,0,0,0,0,0], [Iron_Greatsword,0,0,0,0,0], [175000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105062 = [[1,0,0,0,0,0], [Steel_Greatsword,0,0,0,0,0], [375000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105063 = [[1,0,0,0,0,0], [Emerald_Bronze_Greatsword,0,0,0,0,0], [975000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105064 = [[1,0,0,0,0,0], [Damascus_Steel_Greatsword,0,0,0,0,0], [2037500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105070 = [[1,0,0,0,0,0], [Bronze_Warhammer,0,0,0,0,0], [56250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105071 = [[1,0,0,0,0,0], [Iron_Warhammer,0,0,0,0,0], [75000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105072 = [[1,0,0,0,0,0], [Steel_Warhammer,0,0,0,0,0], [150000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105073 = [[1,0,0,0,0,0], [Emerald_Bronze_Warhammer,0,0,0,0,0], [375000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105074 = [[1,0,0,0,0,0], [Damascus_Steel_Warhammer,0,0,0,0,0], [1537500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105400 = [[1,0,0,0,0,0], [Farm_Horse,0,0,0,0,0], [75000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105401 = [[1,0,0,0,0,0], [Horse,0,0,0,0,0], [150000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105402 = [[1,0,0,0,0,0], [Charge_Horse,0,0,0,0,0], [750000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105403 = [[1,0,0,0,0,0], [War_Horse,0,0,0,0,0], [750000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105500 = [[1,0,0,0,0,0], [Light_Bronze_Mail,0,0,0,0,0], [50000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105501 = [[1,0,0,0,0,0], [Light_Iron_Mail,0,0,0,0,0], [100000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105502 = [[1,0,0,0,0,0], [Light_Steel_Mail,0,0,0,0,0], [150000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105503 = [[1,0,0,0,0,0], [Light_Emerald_Bronze_Mail,0,0,0,0,0], [300000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105504 = [[1,0,0,0,0,0], [Light_Damascus_Steel_Mail,0,0,0,0,0], [1087500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105510 = [[1,0,0,0,0,0], [Light_Bronze_Plate,0,0,0,0,0], [72500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105511 = [[1,0,0,0,0,0], [Light_Iron_Plate,0,0,0,0,0], [100000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105512 = [[1,0,0,0,0,0], [Light_Steel_Plate,0,0,0,0,0], [200000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105513 = [[1,0,0,0,0,0], [Light_Emerald_Bronze_Plate,0,0,0,0,0], [500000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105514 = [[1,0,0,0,0,0], [Light_Damascus_Steel_Plate,0,0,0,0,0], [2050000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105520 = [[1,0,0,0,0,0], [Medium_Bronze_Mail,0,0,0,0,0], [75000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105521 = [[1,0,0,0,0,0], [Medium_Iron_Mail,0,0,0,0,0], [175000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105522 = [[1,0,0,0,0,0], [Medium_Steel_Mail,0,0,0,0,0], [275000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105523 = [[1,0,0,0,0,0], [Medium_Emerald_Bronze_Mail,0,0,0,0,0], [575000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105524 = [[1,0,0,0,0,0], [Medium_Damascus_Steel_Mail,0,0,0,0,0], [2125000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105530 = [[1,0,0,0,0,0], [Medium_Bronze_Plate,0,0,0,0,0], [120000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105531 = [[1,0,0,0,0,0], [Medium_Iron_Plate,0,0,0,0,0], [175000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105532 = [[1,0,0,0,0,0], [Medium_Steel_Plate,0,0,0,0,0], [375000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105533 = [[1,0,0,0,0,0], [Medium_Emerald_Bronze_Plate,0,0,0,0,0], [975000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105534 = [[1,0,0,0,0,0], [Medium_Damascus_Steel_Plate,0,0,0,0,0], [4075000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105540 = [[1,0,0,0,0,0], [Bronze_Heavy_Armor,0,0,0,0,0], [170000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105541 = [[1,0,0,0,0,0], [Iron_Heavy_Armor,0,0,0,0,0], [325000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105542 = [[1,0,0,0,0,0], [Steel_Heavy_Armor,0,0,0,0,0], [625000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105543 = [[1,0,0,0,0,0], [Emerald_Bronze_Heavy_Armor,0,0,0,0,0], [1475000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105544 = [[1,0,0,0,0,0], [Damascus_Steel_Heavy_Armor,0,0,0,0,0], [6175000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105550 = [[1,0,0,0,0,0], [Light_Bronze_Horse_Armor,0,0,0,0,0], [192500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105551 = [[1,0,0,0,0,0], [Light_Iron_Horse_Armor,0,0,0,0,0], [250000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105552 = [[1,0,0,0,0,0], [Light_Steel_Horse_Armor,0,0,0,0,0], [550000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105553 = [[1,0,0,0,0,0], [Light_Emerald_Bronze_Horse_Armor,0,0,0,0,0], [1450000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105554 = [[1,0,0,0,0,0], [Light_Damascus_Steel_Horse_Armor,0,0,0,0,0], [6100000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105560 = [[1,0,0,0,0,0], [Medium_Bronze_Horse_Armor,0,0,0,0,0], [372500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105561 = [[1,0,0,0,0,0], [Medium_Iron_Horse_Armor,0,0,0,0,0], [475000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105562 = [[1,0,0,0,0,0], [Medium_Steel_Horse_Armor,0,0,0,0,0], [1075000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105563 = [[1,0,0,0,0,0], [Medium_Emerald_Bronze_Horse_Armor,0,0,0,0,0], [2875000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105564 = [[1,0,0,0,0,0], [Medium_Damascus_Steel_Horse_Armor,0,0,0,0,0], [12175000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105570 = [[1,0,0,0,0,0], [Heavy_Bronze_Horse_Armor,0,0,0,0,0], [665000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105571 = [[1,0,0,0,0,0], [Heavy_Iron_Horse_Armor,0,0,0,0,0], [925000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105572 = [[1,0,0,0,0,0], [Heavy_Steel_Horse_Armor,0,0,0,0,0], [1975000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105573 = [[1,0,0,0,0,0], [Heavy_Emerald_Bronze_Horse_Armor,0,0,0,0,0], [5125000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105574 = [[1,0,0,0,0,0], [Heavy_Damascus_Steel_Horse_Armor,0,0,0,0,0], [21400000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105580 = [[1,0,0,0,0,0], [Leather_Armor,0,0,0,0,0], [62500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105581 = [[1,0,0,0,0,0], [Thick_Leather_Armor,0,0,0,0,0], [125000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105582 = [[1,0,0,0,0,0], [Gambeson,0,0,0,0,0], [30000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105900 = [[1,0,0,0,0,0], [Wooden_Shield,0,0,0,0,0], [25000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105901 = [[1,0,0,0,0,0], [Banded_Shield,0,0,0,0,0], [62500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105902 = [[1,0,0,0,0,0], [Standard_Shield,0,0,0,0,0], [100000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105903 = [[1,0,0,0,0,0], [Metal_Shield,0,0,0,0,0], [212500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105904 = [[1,0,0,0,0,0], [Gong_Shield,0,0,0,0,0], [550000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105905 = [[1,0,0,0,0,0], [Heirloom_Shield,0,0,0,0,0], [2400000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe105910 = [[1,0,0,0,0,0], [Wall_Shield,0,0,0,0,0], [200000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107000 = [[1,0,0,0,0,0], [Rabbit,0,0,0,0,0], [3250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107001 = [[1,0,0,0,0,0], [Deer,0,0,0,0,0], [6000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107002 = [[1,0,0,0,0,0], [Turkey,0,0,0,0,0], [3250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107003 = [[1,0,0,0,0,0], [Mink,0,0,0,0,0], [5000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107004 = [[1,0,0,0,0,0], [Cyote,0,0,0,0,0], [5500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107005 = [[1,0,0,0,0,0], [Snake,0,0,0,0,0], [5000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107100 = [[1,0,0,0,0,0], [Fox,0,0,0,0,0], [9500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107101 = [[1,0,0,0,0,0], [Boar,0,0,0,0,0], [13250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107102 = [[1,0,0,0,0,0], [Zebra,0,0,0,0,0], [16500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107103 = [[1,0,0,0,0,0], [Reindeer,0,0,0,0,0], [27000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107104 = [[1,0,0,0,0,0], [Leopard,0,0,0,0,0], [34000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107105 = [[1,0,0,0,0,0], [Crocodie,0,0,0,0,0], [53750,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107106 = [[1,0,0,0,0,0], [Otter,0,0,0,0,0], [31250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107107 = [[1,0,0,0,0,0], [Wolf,0,0,0,0,0], [20000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107108 = [[1,0,0,0,0,0], [Seal,0,0,0,0,0], [27000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107109 = [[1,0,0,0,0,0], [Ostridge,0,0,0,0,0], [31250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107200 = [[1,0,0,0,0,0], [Elk,0,0,0,0,0], [24500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107201 = [[1,0,0,0,0,0], [Aurochs,0,0,0,0,0], [32500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107202 = [[1,0,0,0,0,0], [Black_Leopard,0,0,0,0,0], [62500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107203 = [[1,0,0,0,0,0], [Bear,0,0,0,0,0], [57500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107204 = [[1,0,0,0,0,0], [Sea_Mink,0,0,0,0,0], [50000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107205 = [[1,0,0,0,0,0], [Whalrus,0,0,0,0,0], [105000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107206 = [[1,0,0,0,0,0], [Poison_Snake,0,0,0,0,0], [63500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107300 = [[1,0,0,0,0,0], [Elephant,0,0,0,0,0], [825000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107301 = [[1,0,0,0,0,0], [Rhino,0,0,0,0,0], [577500,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107302 = [[1,0,0,0,0,0], [Polar_Bear,0,0,0,0,0], [545000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107303 = [[1,0,0,0,0,0], [Tiger,0,0,0,0,0], [295000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107304 = [[1,0,0,0,0,0], [Titan_Snake,0,0,0,0,0], [545000,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107400 = [[1,0,0,0,0,0], [Cow,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107401 = [[1,0,0,0,0,0], [Chicken,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
-const recipe107402 = [[1,0,0,0,0,0], [Sheep,0,0,0,0,0], [150,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe519 = [[2500,0,0,0,0,0], [Sugarcane,0,0,0,0,0], [300,0], [Sugar,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe536 = [[1000,0,0,0,0,0], [Silver_Sap,0,0,0,0,0], [500,0], [Sugar|Silver,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1000 = [[2500,0,0,0,0,0], [Wheat,0,0,0,0,0], [250,0], [Wheat_Beer,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
+let recipe1001 = [[2500,0,0,0,0,0], [Rye,0,0,0,0,0], [250,0], [Rye_Beer,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
+let recipe1002 = [[2500,0,0,0,0,0], [Barley,0,0,0,0,0], [250,0], [Barley_Beer,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
+let recipe1003 = [[2500,0,0,0,0,0], [Oats,0,0,0,0,0], [250,0], [Oat_Beer,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
+let recipe1004 = [[2500,0,0,0,0,0], [Rice,0,0,0,0,0], [250,0], [Rice_Beer,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
+let recipe1005 = [[2500,0,0,0,0,0], [Sorghum,0,0,0,0,0], [250,0], [Sorghum_Beer,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
+let recipe1010 = [[2500,0,0,0,0,0], [Apples,0,0,0,0,0], [250,0], [Cider,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
+let recipe1011 = [[2500,0,0,0,0,0], [Grapes,0,0,0,0,0], [250,0], [Wine,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
+let recipe1012 = [[2500,0,0,0,0,0], [Plums,0,0,0,0,0], [250,0], [Plum_Wine,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
+let recipe1013 = [[2500,0,0,0,0,0], [Peaches,0,0,0,0,0], [250,0], [Peach_Wine,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
+let recipe1014 = [[2500,0,0,0,0,0], [Cherries,0,0,0,0,0], [250,0], [Cherry_Wine,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
+let recipe1020 = [[1750,0,0,0,0,0], [Honey,0,0,0,0,0], [500,0], [Mead,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
+let recipe1030 = [[16000,0,0,0,0,0], [Potato,0,0,0,0,0], [200,0], [Vodka,0], 1, 10, [Brewery_T2,Brewery_T3,Brewery_T4,0]];
+let recipe1031 = [[1600,0,0,0,0,0], [Milk,0,0,0,0,0], [120,0], [Kumis,0], 1, 10, [Brewery_T2,Brewery_T3,Brewery_T4,0]];
+let recipe1032 = [[120,0,0,0,0,0], [Sugar,0,0,0,0,0], [75,0], [Rum,0], 1, 10, [Brewery_T3,Brewery_T4,0,0]];
+let recipe1033 = [[16000,0,0,0,0,0], [Grain,0,0,0,0,0], [200,0], [Grain_Whiskey,0], 1, 10, [Brewery_T2,Brewery_T3,Brewery_T4,0]];
+let recipe1040 = [[70,0,0,0,0,0], [Wine,0,0,0,0,0], [25,0], [Brandy,0], 1, 10, [Brewery_T3,Brewery_T4,0,0]];
+let recipe1041 = [[1600,0,0,0,0,0], [Silver_Sap,0,0,0,0,0], [160,0], [Silver_Wine,0], 1, 10, [Brewery_T2,Brewery_T3,Brewery_T4,0]];
+let recipe1042 = [[800,0,0,0,0,0], [Jungleberries,0,0,0,0,0], [80,0], [Jungle_Wine,0], 1, 10, [Brewery_T2,Brewery_T3,Brewery_T4,0]];
+let recipe1043 = [[800,0,0,0,0,0], [Winterberries,0,0,0,0,0], [80,0], [Winter_Wine,0], 1, 10, [Brewery_T2,Brewery_T3,Brewery_T4,0]];
+let recipe1044 = [[1000,0,0,0,0,0], [Rum,0,0,0,0,0], [910,0], [Aged_Rum,0], 1, 500, [0,0,0,0]];
+let recipe1050 = [[120,0,0,0,0,0], [Ginseng,0,0,0,0,0], [15,0], [Ginseng_Wine,0], 1, 10, [Brewery_T3,Brewery_T4,0,0]];
+let recipe1051 = [[50,0,0,0,0,0], [Vodka|Allspice|Allspice,0,0,0,0,0], [50,0], [Spiced_Vodka,0], 1, 10, [Brewery_T4,0,0,0]];
+let recipe1060 = [[40,0,0,0,0,0], [Winter_Wine|Jungle_Wine,0,0,0,0,0], [20,0], [Double_Brandy,0], 1, 10, [Brewery_T4,0,0,0]];
+let recipe1061 = [[35,0,0,0,0,0], [Auric_Honey,0,0,0,0,0], [5,0], [Auric_Mead,0], 1, 10, [Brewery_T3,Brewery_T4,0,0]];
+let recipe1200 = [[15000,0,0,0,0,0], [Wheat,0,0,0,0,0], [700,0], [Wheat_Bread,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1201 = [[15000,0,0,0,0,0], [Rye,0,0,0,0,0], [700,0], [Rye_Bread,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1202 = [[15000,0,0,0,0,0], [Corn,0,0,0,0,0], [700,0], [Corn_Bread,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1203 = [[15000,0,0,0,0,0], [Rice,0,0,0,0,0], [700,0], [Rice_Bread,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1204 = [[15000,0,0,0,0,0], [Sorghum,0,0,0,0,0], [700,0], [Sorghum_Bread,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1205 = [[15000,0,0,0,0,0], [Barley,0,0,0,0,0], [700,0], [Barley_Bread,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1206 = [[15000,0,0,0,0,0], [Oats,0,0,0,0,0], [700,0], [Oat_Bread,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1207 = [[100,0,0,0,0,0], [Confectioners_Dough,0,0,0,0,0], [100,0], [Pastry,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1208 = [[100,0,0,0,0,0], [Confectioners_Dough|Fruit_Preserve,0,0,0,0,0], [100,0], [Fruit_Pastry,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1209 = [[200,0,0,0,0,0], [Auric_Honey|Confectioners_Dough,0,0,0,0,0], [125,0], [Glittercake,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1210 = [[50,0,0,0,0,0], [Exotic_Fruit_Preserve|Glittercake,0,0,0,0,0], [50,0], [Fruit_Glittercake,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1211 = [[1,0,0,0,0,0], [Fruit_Glittercake,0,0,0,0,0], [25,0], [Glittercakeette,0], 0, 0, [0,0,0,0]];
+let recipe1220 = [[500,0,0,0,0,0], [Flour|Apples,0,0,0,0,0], [250,0], [Apple_Pie,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1221 = [[500,0,0,0,0,0], [Flour|Plums,0,0,0,0,0], [250,0], [Plum_Pie,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1222 = [[500,0,0,0,0,0], [Flour|Peaches,0,0,0,0,0], [250,0], [Peach_Pie,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1223 = [[500,0,0,0,0,0], [Flour|Sugar,0,0,0,0,0], [250,0], [Sugar_Pie,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1224 = [[500,0,0,0,0,0], [Flour|Meat|Potato,0,0,0,0,0], [250,0], [Pot_Pie,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1230 = [[1000,0,0,0,0,0], [Milk|Salt,0,0,0,0,0], [100,0], [Cheese,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1231 = [[125,0,0,0,0,0], [Cheese,0,0,0,0,0], [125,0], [Aged_Cheese,0], 1, 100, [0,0,0,0]];
+let recipe1232 = [[125,0,0,0,0,0], [Cheese,0,0,0,0,0], [100,0], [Imperial_Cheese,0], 1, 900, [0,0,0,0]];
+let recipe1240 = [[20000,0,0,0,0,0], [Vegetables,0,0,0,0,0], [500,0], [Dried_Vegetables,0], 1, 20, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1241 = [[10000,0,0,0,0,0], [Vegetables|Vinegar,0,0,0,0,0], [150,0], [Pickled_Vegetables,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1250 = [[20000,0,0,0,0,0], [Fruit,0,0,0,0,0], [500,0], [Dried_Fruit,0], 1, 20, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1251 = [[5000,0,0,0,0,0], [Fruit|Brandy,0,0,0,0,0], [50,0], [Brandied_Fruit,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1260 = [[3000,0,0,0,0,0], [Meat|Allspice|Garlic,0,0,0,0,0], [100,0], [Sausage,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1261 = [[1000,0,0,0,0,0], [Meat|Olive_Oil|Flour,0,0,0,0,0], [150,0], [Fried_Meat,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1262 = [[1000,0,0,0,0,0], [Meat|Vegetables|T1_Drink,0,0,0,0,0], [100,0], [Roast,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1263 = [[1000,0,0,0,0,0], [Meat,0,0,0,0,0], [10,0], [Cured_Meat,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1264 = [[5000,0,0,0,0,0], [Meat|Salt,0,0,0,0,0], [375,0], [Salted_Meat,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1265 = [[15000,0,0,0,0,0], [Wood|Eggs,0,0,0,0,0], [100,0], [Preserved_Eggs,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1266 = [[1000,0,0,0,0,0], [Exotic_Meat,0,0,0,0,0], [10,0], [Exotic_Cured_Meat,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1270 = [[1500,0,0,0,0,0], [Beef|Onion|Carrots|Potato|Basic_Spice_Pack,0,0,0,0,0], [200,0], [Beef_Stew,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1271 = [[5000,0,0,0,0,0], [Beef|Onion|Carrots|Potato|Royal_Spice_Pack,0,0,0,0,0], [50,0], [Kings_Soup,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1272 = [[8000,0,0,0,0,0], [Onion|Cheese,0,0,0,0,0], [200,0], [Onion_Stew,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1273 = [[1500,0,0,0,0,0], [Exotic_Meat|Onion|Carrots|Potato|Basic_Spice_Pack,0,0,0,0,0], [50,0], [Huntsmans_Soup,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1274 = [[1000,0,0,0,0,0], [Chicken|Flour|Vegetables,0,0,0,0,0], [150,0], [Chicken_Soup,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1275 = [[1500,0,0,0,0,0], [Fish_Meat|Milk|Corn|Potato|Basic_Spice_Pack,0,0,0,0,0], [200,0], [Fish_Soup,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1280 = [[10000,0,0,0,0,0], [Beans|Sugar,0,0,0,0,0], [150,0], [Baked_Beans,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1281 = [[25000,0,0,0,0,0], [Beans|Rice,0,0,0,0,0], [500,0], [Beans_And_Rice,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1300 = [[250,0,0,0,0,0], [T1_Drink,0,0,0,0,0], [200,0], [Vinegar,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
+let recipe1301 = [[5,0,0,0,0,0], [Honey,0,0,0,0,0], [1,0], [Sugar,0], 0, 0, [0,0,0,0]];
+let recipe1302 = [[10000,0,0,0,0,0], [Olives,0,0,0,0,0], [250,0], [Olive_Oil,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1303 = [[10000,0,0,0,0,0], [Grain,0,0,0,0,0], [500,0], [Flour,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1304 = [[10000,0,0,0,0,0], [Mushrooms,0,0,0,0,0], [250,0], [Ketchup,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1305 = [[1,0,0,0,0,0], [Vinegar|Ketchup|Salt|Garlic|Allspice|Olive_Oil,0,0,0,0,0], [1,0], [Basic_Spice_Pack,0], 0, 0, [0,0,0,0]];
+let recipe1306 = [[1,0,0,0,0,0], [Rare_Herb|Wasabi|Auric_Honey|Basic_Spice_Pack,0,0,0,0,0], [1,0], [Royal_Spice_Pack,0], 0, 0, [0,0,0,0]];
+let recipe1307 = [[100,0,0,0,0,0], [Flour|Milk|Eggs,0,0,0,0,0], [100,0], [Confectioners_Dough,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1308 = [[100,0,0,0,0,0], [Sugar|Fruit,0,0,0,0,0], [100,0], [Fruit_Preserve,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1309 = [[100,0,0,0,0,0], [Sugar|Exotic_Berry,0,0,0,0,0], [10,0], [Exotic_Fruit_Preserve,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1400 = [[1,0,0,0,0,0], [Bread|T1_Drink,0,0,0,0,0], [1,0], [Bread_Combo,0], 0, 0, [0,0,0,0]];
+let recipe1401 = [[2,0,0,0,0,0], [Bread|Side|T1_Drink,0,0,0,0,0], [2,0], [Deluxe_Bread,0], 0, 0, [0,0,0,0]];
+let recipe1310 = [[2500,0,0,0,0,0], [Mushrooms,0,0,0,0,0], [200,0], [Mushroom_Stock,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1311 = [[500,0,0,0,0,0], [Meat,0,0,0,0,0], [100,0], [Meat_Stock|Boiled_Meat,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1312 = [[2500,0,0,0,0,0], [Vegetables,0,0,0,0,0], [200,0], [Vegetable_Stock,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1420 = [[1,0,0,0,0,0], [Soup|Side|T1_Drink,0,0,0,0,0], [2,0], [Basic_Soup,0], 0, 0, [0,0,0,0]];
+let recipe1430 = [[1,0,0,0,0,0], [Deluxe_Soup|Side|Fruit_Preserve|T2_Drink|T3_Drink,0,0,0,0,0], [2,0], [Deluxe_Soup,0], 0, 0, [0,0,0,0]];
+let recipe1440 = [[1,0,0,0,0,0], [Sausage|Side|T1_Drink|T2_Drink,0,0,0,0,0], [2,0], [Sausage_Combo,0], 0, 0, [0,0,0,0]];
+let recipe1450 = [[1,0,0,0,0,0], [Roast|Side|Bread|T1_Drink|T2_Drink,0,0,0,0,0], [2,0], [Roast_Combo,0], 0, 0, [0,0,0,0]];
+let recipe1460 = [[1,0,0,0,0,0], [Noble_Roast|Aged_Cheese|Pastry|T3_Drink|T2_Drink,0,0,0,0,0], [2,0], [Deluxe_Roast,0], 0, 0, [0,0,0,0]];
+let recipe1461 = [[1,0,0,0,0,0], [Noble_Roast|Side|Cheese|T3_Drink|T2_Drink,0,0,0,0,0], [2,0], [Roast_Combo,0], 0, 0, [0,0,0,0]];
+let recipe1470 = [[1,0,0,0,0,0], [Cured_Meat|Aged_Cheese|Fruit_Pastry|T4_Drink|T3_Drink,0,0,0,0,0], [2,0], [Charcutery,0], 0, 0, [0,0,0,0]];
+let recipe1471 = [[1,0,0,0,0,0], [Exotic_Cured_Meat|Imperial_Cheese|Fruit_Glittercake|T5_Drink,0,0,0,0,0], [1,0], [Deluxe_Charcutery,0], 0, 0, [0,0,0,0]];
+let recipe1480 = [[1,0,0,0,0,0], [Pie|T1_Drink,0,0,0,0,0], [1,0], [Pie_Combo,0], 0, 0, [0,0,0,0]];
+let recipe1900 = [[22500,0,0,0,0,0], [Crop,0,0,0,0,0], [2000,0], [Fodder_Bread,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe1901 = [[250,0,0,0,0,0], [Grain|Dried_Vegetables,0,0,0,0,0], [1,0], [Main_Ration_1,0], 0, 0, [0,0,0,0]];
+let recipe1902 = [[250,0,0,0,0,0], [Grain|Hearty_Dried_Vegetables|Dried_Vegetables,0,0,0,0,0], [1,0], [Main_Ration_2,0], 0, 0, [0,0,0,0]];
+let recipe1903 = [[10,0,0,0,0,0], [Flour|Dried_Vegetables|Salted_Meat,0,0,0,0,0], [1,0], [Main_Ration_3,0], 0, 0, [0,0,0,0]];
+let recipe1904 = [[20,0,0,0,0,0], [Flour|Dried_Vegetables|Salted_Meat,0,0,0,0,0], [1,0], [Main_Ration_4,0], 0, 0, [0,0,0,0]];
+let recipe1905 = [[20,0,0,0,0,0], [Flour|Pickled_Vegetables|Salted_Meat,0,0,0,0,0], [1,0], [Main_Ration_5,0], 0, 0, [0,0,0,0]];
+let recipe1906 = [[20,0,0,0,0,0], [Flour|Pickled_Vegetables|Salted_Meat|Preserved_Eggs,0,0,0,0,0], [1,0], [Main_Ration_6,0], 0, 0, [0,0,0,0]];
+let recipe1907 = [[20,0,0,0,0,0], [Flour|Pickled_Vegetables|Cured_Meat|Preserved_Eggs,0,0,0,0,0], [1,0], [Main_Ration_7,0], 0, 0, [0,0,0,0]];
+let recipe1908 = [[40,0,0,0,0,0], [Flour|Pickled_Vegetables|Cured_Meat|Preserved_Eggs,0,0,0,0,0], [1,0], [Main_Ration_8,0], 0, 0, [0,0,0,0]];
+let recipe1909 = [[20,0,0,0,0,0], [Flour|Pickled_Vegetables|Exotic_Cured_Meat|Preserved_Eggs,0,0,0,0,0], [1,0], [Main_Ration_9,0], 0, 0, [0,0,0,0]];
+let recipe1911 = [[1,0,0,0,0,0], [Cheese|Sugar,0,0,0,0,0], [1,0], [Extras_1,0], 0, 0, [0,0,0,0]];
+let recipe1912 = [[1,0,0,0,0,0], [Basic_Spice_Pack|Dried_Fruit|Cheese,0,0,0,0,0], [2,0], [Extras_2,0], 0, 0, [0,0,0,0]];
+let recipe1913 = [[1,0,0,0,0,0], [Basic_Spice_Pack|Dried_Fruit|Cheese,0,0,0,0,0], [1,0], [Extras_3,0], 0, 0, [0,0,0,0]];
+let recipe1914 = [[1,0,0,0,0,0], [Basic_Spice_Pack,Fruit_Preserve|Cheese,0,0,0,0,0], [1,0], [Extras_4,0], 0, 0, [0,0,0,0]];
+let recipe1915 = [[2,0,0,0,0,0], [Basic_Spice_Pack|Fruit_Preserve|Aged_Cheese,0,0,0,0,0], [1,0], [Extras_5,0], 0, 0, [0,0,0,0]];
+let recipe1916 = [[2,0,0,0,0,0], [Basic_Spice_Pack|Brandied_Fruit|Aged_Cheese,0,0,0,0,0], [1,0], [Extras_6,0], 0, 0, [0,0,0,0]];
+let recipe1917 = [[1,0,0,0,0,0], [Royal_Spice_Pack|Brandied_Fruit|Aged_Cheese,0,0,0,0,0], [1,0], [Extras_7,0], 0, 0, [0,0,0,0]];
+let recipe1918 = [[1,0,0,0,0,0], [Royal_Spice_Pack|Brandied_Fruit|Imperial_Cheese,0,0,0,0,0], [1,0], [Extras_8,0], 0, 0, [0,0,0,0]];
+let recipe1919 = [[2,0,0,0,0,0], [Royal_Spice_Pack|Brandied_Fruit|Aged_Cheese,0,0,0,0,0], [1,0], [Extras_9,0], 0, 0, [0,0,0,0]];
+let recipe1921 = [[5,0,0,0,0,0], [T1_Drink,0,0,0,0,0], [1,0], [Drink_Pack_1,0], 0, 0, [0,0,0,0]];
+let recipe1922 = [[1,0,0,0,0,0], [T1_Drink|T2_Drink,0,0,0,0,0], [1,0], [Drink_Pack_2,0], 0, 0, [0,0,0,0]];
+let recipe1923 = [[5,0,0,0,0,0], [T2_Drink,0,0,0,0,0], [1,0], [Drink_Pack_3,0], 0, 0, [0,0,0,0]];
+let recipe1924 = [[2,0,0,0,0,0], [T3_Drink|T2_Drink,0,0,0,0,0], [1,0], [Drink_Pack_4,0], 0, 0, [0,0,0,0]];
+let recipe1925 = [[8,0,0,0,0,0], [T3_Drink,0,0,0,0,0], [1,0], [Drink_Pack_5,0], 0, 0, [0,0,0,0]];
+let recipe1926 = [[3,0,0,0,0,0], [T4_Drink|T3_Drink,0,0,0,0,0], [1,0], [Drink_Pack_6,0], 0, 0, [0,0,0,0]];
+let recipe1927 = [[8,0,0,0,0,0], [T4_Drink,0,0,0,0,0], [1,0], [Drink_Pack_7,0], 0, 0, [0,0,0,0]];
+let recipe1928 = [[4,0,0,0,0,0], [T4_Drink|T5_Drink,0,0,0,0,0], [1,0], [Drink_Pack_8,0], 0, 0, [0,0,0,0]];
+let recipe1929 = [[12,0,0,0,0,0], [T5_Drink,0,0,0,0,0], [1,0], [Drink_Pack_9,0], 0, 0, [0,0,0,0]];
+let recipe2101 = [[25000,0,0,0,0,0], [Stone,0,0,0,0,0], [300,0], [Refined_Stone,0], 2, 10, [0,0,0,0]];
+let recipe2102 = [[15000,0,0,0,0,0], [Wood|Nails,0,0,0,0,0], [300,0], [Refined_Wood,0], 2, 10, [Carpenter_T1,Carpenter_T2,0,0]];
+let recipe2121 = [[3,0,0,0,0,0], [Iron_Ore,0,0,0,0,0], [1500,0], [Iron,0], 1, 10, [Smeltery_T2,Smeltery_T3,0,0]];
+let recipe2122 = [[200,0,0,0,0,0], [Gold_Ore,0,0,0,0,0], [50,0], [Gold,0], 1, 10, [Smeltery_T1,Smeltery_T2,Smeltery_T3,0]];
+let recipe2123 = [[400,0,0,0,0,0], [Silver_Ore,0,0,0,0,0], [250,0], [Silver,0], 1, 10, [Smeltery_T1,Smeltery_T2,Smeltery_T3,0]];
+let recipe2124 = [[2000,0,0,0,0,0], [Copper_Ore,0,0,0,0,0], [2000,0], [Copper,0], 1, 10, [Smeltery_T1,Smeltery_T2,Smeltery_T3,0]];
+let recipe2125 = [[1500,0,0,0,0,0], [Tin_Ore,0,0,0,0,0], [500,0], [Tin,0], 1, 10, [Smeltery_T1,Smeltery_T2,Smeltery_T3,0]];
+let recipe2180 = [[500,0,0,0,0,0], [Copper|Emerald,0,0,0,0,0], [100,0], [Emerald_Bronze,0], 1, 10, [Smeltery_T3,0,0,0]];
+let recipe2181 = [[800,0,0,0,0,0], [Copper|Tin,0,0,0,0,0], [1000,0], [Bronze,0], 1, 10, [Smeltery_T1,Smeltery_T2,Smeltery_T3,0]];
+let recipe2182 = [[500,0,0,0,0,0], [Iron,0,0,0,0,0], [300,0], [Steel,0], 1, 10, [Smeltery_T3,0,0,0]];
+let recipe2300 = [[200,0,0,0,0,0], [Ruby,0,0,0,0,0], [200,0], [Polished_Ruby,0], 1, 10, [Jeweler_T2,0,0,0]];
+let recipe2301 = [[200,0,0,0,0,0], [Emerald,0,0,0,0,0], [200,0], [Polished_Emerald,0], 1, 10, [Jeweler_T2,0,0,0]];
+let recipe2302 = [[200,0,0,0,0,0], [Sapphire,0,0,0,0,0], [200,0], [Polished_Sapphire,0], 1, 10, [Jeweler_T2,0,0,0]];
+let recipe2303 = [[200,0,0,0,0,0], [Diamond,0,0,0,0,0], [200,0], [Polished_Diamond,0], 1, 10, [Jeweler_T2,0,0,0]];
+let recipe2304 = [[200,0,0,0,0,0], [Amethyst,0,0,0,0,0], [160,0], [Polished_Amethyst,0], 1, 10, [Jeweler_T2,0,0,0]];
+let recipe2305 = [[200,0,0,0,0,0], [Opal,0,0,0,0,0], [160,0], [Polished_Opal,0], 1, 10, [Jeweler_T1,Jeweler_T2,0,0]];
+let recipe2306 = [[200,0,0,0,0,0], [Citrine,0,0,0,0,0], [160,0], [Polished_Citrine,0], 1, 10, [Jeweler_T1,Jeweler_T2,0,0]];
+let recipe2307 = [[200,0,0,0,0,0], [Pearl,0,0,0,0,0], [160,0], [Polished_Pearl,0], 1, 10, [Jeweler_T1,Jeweler_T2,0,0]];
+let recipe2308 = [[200,0,0,0,0,0], [Moonstone,0,0,0,0,0], [160,0], [Polished_Moonstone,0], 1, 10, [Jeweler_T1,Jeweler_T2,0,0]];
+let recipe2309 = [[200,0,0,0,0,0], [Amber,0,0,0,0,0], [160,0], [Polished_Amber,0], 1, 10, [Jeweler_T1,Jeweler_T2,0,0]];
+let recipe2310 = [[200,0,0,0,0,0], [Onyx,0,0,0,0,0], [160,0], [Polished_Onyx,0], 1, 10, [Jeweler_T1,Jeweler_T2,0,0]];
+let recipe2311 = [[200,0,0,0,0,0], [Aquamarine,0,0,0,0,0], [160,0], [Polished_Aquamarine,0], 1, 10, [Jeweler_T1,Jeweler_T2,0,0]];
+let recipe2312 = [[200,0,0,0,0,0], [Crystal_Glass,0,0,0,0,0], [160,0], [Polished_Crystal_Glass,0], 1, 10, [Jeweler_T1,Jeweler_T2,0,0]];
+let recipe4000 = [[200,0,0,0,0,0], [Iron/Bronze,0,0,0,0,0], [600,0], [Nails,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe4001 = [[25,0,0,0,0,0], [Diamond,0,0,0,0,0], [300,0], [Diamond_Blade,0], 1, 10, [Jeweler_T2,0,0,0]];
+let recipe4002 = [[2500,0,0,0,0,0], [Cotton/Wool,0,0,0,0,0], [100,0], [Fabric,0], 1, 10, [Weaver_T1,Weaver_T2,0,0]];
+let recipe4013 = [[1,0,0,0,0,0], [Leopard_Skin,0,0,0,0,0], [1,0], [Oppulant_Furniture,0], 0, 0, [0,0,0,0]];
+let recipe4014 = [[1,0,0,0,0,0], [Aurochs_Hide,0,0,0,0,0], [2,0], [Oppulant_Furniture,0], 0, 0, [0,0,0,0]];
+let recipe4015 = [[1,0,0,0,0,0], [Black_Leopard_Skin,0,0,0,0,0], [2,0], [Oppulant_Furniture,0], 0, 0, [0,0,0,0]];
+let recipe4016 = [[1,0,0,0,0,0], [Bear_Hide,0,0,0,0,0], [10,0], [Oppulant_Furniture,0], 0, 0, [0,0,0,0]];
+let recipe4017 = [[1,0,0,0,0,0], [Polar_Bear_Hide,0,0,0,0,0], [10,0], [Oppulant_Furniture,0], 0, 0, [0,0,0,0]];
+let recipe4018 = [[1,0,0,0,0,0], [Tiger_Hide,0,0,0,0,0], [10,0], [Oppulant_Furniture,0], 0, 0, [0,0,0,0]];
+let recipe4019 = [[400,0,0,0,0,0], [Rushseed,0,0,0,0,0], [10,0], [Rushseed_Oil,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe4100 = [[5000,0,0,0,0,0], [Bronze,0,0,0,0,0], [5,0], [Bronze_Plate,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe4101 = [[2000,0,0,0,0,0], [Iron,0,0,0,0,0], [2,0], [Iron_Plate,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe4102 = [[2000,0,0,0,0,0], [Steel,0,0,0,0,0], [2,0], [Steel_Plate,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe4103 = [[2000,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [2,0], [Emerald_Bronze_Plate,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe4104 = [[2000,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [2,0], [Damascus_Steel_Plate,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe4105 = [[2000,0,0,0,0,0], [Bronze,0,0,0,0,0], [4,0], [Bronze_Chainmail,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe4106 = [[500,0,0,0,0,0], [Iron,0,0,0,0,0], [1,0], [Iron_Chainmail,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe4107 = [[500,0,0,0,0,0], [Steel,0,0,0,0,0], [1,0], [Steel_Chainmail,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe4108 = [[500,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [1,0], [Emerald_Bronze_Chainmail,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe4109 = [[500,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [1,0], [Damascus_Steel_Chainmail,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe4500 = [[200,0,0,0,0,0], [Fur,0,0,0,0,0], [10,0], [Fur_Clothes,0], 1, 10, [Weaver_T1,Weaver_T2,0,0]];
+let recipe4501 = [[200,0,0,0,0,0], [Fabric,0,0,0,0,0], [10,0], [Fabric_Clothes,0], 1, 10, [Weaver_T1,Weaver_T2,0,0]];
+let recipe4502 = [[400,0,0,0,0,0], [Leather,0,0,0,0,0], [10,0], [Leather_Clothes,0], 1, 10, [Weaver_T1,Weaver_T2,0,0]];
+let recipe4503 = [[200,0,0,0,0,0], [Exotic_Fur,0,0,0,0,0], [1,0], [Tailored_Fur_Clothes,0], 1, 10, [Weaver_T1,Weaver_T2,0,0]];
+let recipe4504 = [[150,0,0,0,0,0], [Fabric,0,0,0,0,0], [1,0], [Tailored_Fabric_Clothes,0], 1, 10, [Weaver_T1,Weaver_T2,0,0]];
+let recipe4520 = [[12500,0,0,0,0,0], [Wood,0,0,0,0,0], [10,0], [Basic_Furniture,0], 1, 10, [Carpenter_T1,Carpenter_T2,0,0]];
+let recipe4521 = [[100,0,0,0,0,0], [Refined_Wood|Antler|Leather,0,0,0,0,0], [5,0], [Ornate_Furniture,0], 1, 10, [Carpenter_T1,Carpenter_T2,0,0]];
+let recipe4522 = [[100,0,0,0,0,0], [Refined_Wood|ExoticLeather|Ivory,0,0,0,0,0], [1,0], [Oppulant_Furniture,0], 1, 10, [Carpenter_T2,0,0,0]];
+let recipe4540 = [[1000,0,0,0,0,0], [T2_Metal|Wood|Stone,0,0,0,0,0], [100,0], [Basic_Tool,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe4541 = [[1000,0,0,0,0,0], [Steel|Wood|Antler,0,0,0,0,0], [50,0], [Artisan_Tool,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe4542 = [[100,0,0,0,0,0], [Emerald_Bronze|Ivory|ExoticLeather,0,0,0,0,0], [10,0], [Oppulant_Tool,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe4560 = [[800,0,0,0,0,0], [Copper|Common_Gemstone,0,0,0,0,0], [10,0], [Copper_Jewelery,0], 1, 10, [Jeweler_T1,Jeweler_T2,0,0]];
+let recipe4561 = [[325,0,0,0,0,0], [Silver|Polished_Common_Gemstone,0,0,0,0,0], [5,0], [Silver_Jewelery,0], 1, 10, [Jeweler_T1,Jeweler_T2,0,0]];
+let recipe4562 = [[300,0,0,0,0,0], [Gold|Polished_Rare_Gemstone,0,0,0,0,0], [1,0], [Gold_Jewelery,0], 1, 10, [Jeweler_T2,0,0,0]];
+let recipe4580 = [[12500,0,0,0,0,0], [Wood,0,0,0,0,0], [10,0], [Basic_Furniture,0], 1, 10, [Carpenter_T1,Carpenter_T2,0,0]];
+let recipe4581 = [[100,0,0,0,0,0], [Refined_Wood|Antler|Leather,0,0,0,0,0], [5,0], [Ornate_Furniture,0], 1, 10, [Carpenter_T1,Carpenter_T2,0,0]];
+let recipe4582 = [[100,0,0,0,0,0], [Refined_Wood|Ivory|ExoticLeather,0,0,0,0,0], [1,0], [Oppulant_Furniture,0], 1, 10, [Carpenter_T2,0,0,0]];
+let recipe5000 = [[4000,0,0,0,0,0], [Bronze,0,0,0,0,0], [10,0], [Bronze_Spear,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe5001 = [[2000,0,0,0,0,0], [Iron,0,0,0,0,0], [5,0], [Iron_Spear,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe5002 = [[2000,0,0,0,0,0], [Steel,0,0,0,0,0], [5,0], [Steel_Spear,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe5003 = [[2000,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [5,0], [Emerald_Bronze_Spear,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe5004 = [[2000,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [5,0], [Damascus_Steel_Spear,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe5010 = [[4000,0,0,0,0,0], [Bronze,0,0,0,0,0], [4,0], [Bronze_Axe,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe5011 = [[1000,0,0,0,0,0], [Iron,0,0,0,0,0], [1,0], [Iron_Axe,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe5012 = [[1000,0,0,0,0,0], [Steel,0,0,0,0,0], [1,0], [Steel_Axe,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe5013 = [[1000,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [1,0], [Emerald_Bronze_Axe,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe5014 = [[1000,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [1,0], [Damascus_Steel_Axe,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe5020 = [[4000,0,0,0,0,0], [Bronze,0,0,0,0,0], [4,0], [Bronze_Sword,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe5021 = [[1000,0,0,0,0,0], [Iron,0,0,0,0,0], [1,0], [Iron_Sword,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe5022 = [[1000,0,0,0,0,0], [Steel,0,0,0,0,0], [1,0], [Steel_Sword,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe5023 = [[1000,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [1,0], [Emerald_Bronze_Sword,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe5024 = [[1000,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [1,0], [Damascus_Steel_Sword,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe5030 = [[4000,0,0,0,0,0], [Bronze,0,0,0,0,0], [4,0], [Bronze_Mace,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe5031 = [[1000,0,0,0,0,0], [Iron,0,0,0,0,0], [1,0], [Iron_Mace,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe5032 = [[1000,0,0,0,0,0], [Steel,0,0,0,0,0], [1,0], [Steel_Mace,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe5033 = [[1000,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [1,0], [Emerald_Bronze_Mace,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe5034 = [[1000,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [1,0], [Damascus_Steel_Mace,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
+let recipe5040 = [[3000,0,0,0,0,0], [Bronze,0,0,0,0,0], [2,0], [Bronze_Lance,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe5041 = [[1500,0,0,0,0,0], [Iron,0,0,0,0,0], [1,0], [Iron_Lance,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe5042 = [[1500,0,0,0,0,0], [Steel,0,0,0,0,0], [1,0], [Steel_Lance,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe5043 = [[1500,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [1,0], [Emerald_Bronze_Lance,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe5044 = [[1500,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [1,0], [Damascus_Steel_Lance,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe5050 = [[3000,0,0,0,0,0], [Bronze,0,0,0,0,0], [2,0], [Bronze_Poleaxe,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe5051 = [[1500,0,0,0,0,0], [Iron,0,0,0,0,0], [1,0], [Iron_Poleaxe,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe5052 = [[1500,0,0,0,0,0], [Steel,0,0,0,0,0], [1,0], [Steel_Poleaxe,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe5053 = [[1500,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [1,0], [Emerald_Bronze_Poleaxe,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe5054 = [[1500,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [1,0], [Damascus_Steel_Poleaxe,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe5060 = [[3000,0,0,0,0,0], [Bronze,0,0,0,0,0], [2,0], [Bronze_Greatsword,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe5061 = [[1500,0,0,0,0,0], [Iron,0,0,0,0,0], [1,0], [Iron_Greatsword,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe5062 = [[1500,0,0,0,0,0], [Steel,0,0,0,0,0], [1,0], [Steel_Greatsword,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe5063 = [[1500,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [1,0], [Emerald_Bronze_Greatsword,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe5064 = [[1500,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [1,0], [Damascus_Steel_Greatsword,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe5070 = [[3000,0,0,0,0,0], [Bronze,0,0,0,0,0], [2,0], [Bronze_Warhammer,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe5071 = [[1500,0,0,0,0,0], [Iron,0,0,0,0,0], [1,0], [Iron_Warhammer,0], 1, 10, [Blacksmith_T2,0,0,0]];
+let recipe5072 = [[1500,0,0,0,0,0], [Steel,0,0,0,0,0], [1,0], [Steel_Warhammer,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe5073 = [[1500,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [1,0], [Emerald_Bronze_Warhammer,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe5074 = [[1500,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [1,0], [Damascus_Steel_Warhammer,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe5580 = [[1000,0,0,0,0,0], [Leather,0,0,0,0,0], [1,0], [Leather_Armor,0], 5, 1, [Weaver_T1,Weaver_T2,0,0]];
+let recipe5581 = [[1000,0,0,0,0,0], [Thick_Leather,0,0,0,0,0], [1,0], [Thick_Leather_Armor,0], 10, 1, [Weaver_T2,0,0,0]];
+let recipe5592 = [[500,0,0,0,0,0], [Fabric,0,0,0,0,0], [1,0], [Gambeson,0], 2, 1, [Weaver_T1,Weaver_T2,0,0]];
+let recipe5900 = [[200,0,0,0,0,0], [Refined_Wood,0,0,0,0,0], [1,0], [Wooden_Shield,0], 1, 10, [Carpenter_T1,Carpenter_T2,0,0]];
+let recipe5901 = [[450,0,0,0,0,0], [Refined_Wood,0,0,0,0,0], [1,0], [Wall_Shield,0], 1, 10, [Carpenter_T1,Carpenter_T2,0,0]];
+let recipe5902 = [[200,0,0,0,0,0], [Refined_Wood|Iron_Plate,0,0,0,0,0], [1,0], [Banded_Shield,0], 1, 10, [Carpenter_T1,Carpenter_T2,0,0]];
+let recipe5903 = [[200,0,0,0,0,0], [Refined_Wood|Iron_Plate|Leather,0,0,0,0,0], [1,0], [Banded_Shield,0], 1, 10, [Carpenter_T1,Carpenter_T2,0,0]];
+let recipe5904 = [[2,0,0,0,0,0], [Steel_Plate,0,0,0,0,0], [1,0], [Metal_Shield,0], 5, 10, [Blacksmith_T2,0,0,0]];
+let recipe5905 = [[2,0,0,0,0,0], [Emerald_Bronze_Plate,0,0,0,0,0], [1,0], [Gong_Shield,0], 5, 20, [Blacksmith_T2,0,0,0]];
+let recipe5906 = [[2,0,0,0,0,0], [Damascus_Steel_Plate,0,0,0,0,0], [1,0], [Heirloom_Shield,0], 5, 100, [Blacksmith_T2,0,0,0]];
+let recipe5910 = [[400,0,0,0,0,0], [Refined_Wood|Iron_Plate|Leather,0,0,0,0,0], [1,0], [Wall_Shield,0], 2, 10, [Carpenter_T1,Carpenter_T2,0,0]];
+let recipe7000 = [[1,0,0,0,0,0], [Rabbit,0,0,0,0,0], [250,0], [Meat|Fur,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7001 = [[1,0,0,0,0,0], [Deer,0,0,0,0,0], [1000,0], [Meat|Leather|Antler,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7002 = [[1,0,0,0,0,0], [Turkey,0,0,0,0,0], [250,0], [Meat|Feather,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7003 = [[1,0,0,0,0,0], [Mink,0,0,0,0,0], [10,0], [Exotic_Meat|Exotic_Fur,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7004 = [[1,0,0,0,0,0], [Cyote,0,0,0,0,0], [100,0], [Exotic_Meat|Fur,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7005 = [[1,0,0,0,0,0], [Snake,0,0,0,0,0], [10,0], [Exotic_Meat|ExoticLeather,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7100 = [[1,0,0,0,0,0], [Fox,0,0,0,0,0], [100,0], [Exotic_Meat|Fur,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7101 = [[1,0,0,0,0,0], [Boar,0,0,0,0,0], [5,0], [Ivory|Exotic_Meat|Leather,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7102 = [[1,0,0,0,0,0], [Zebra,0,0,0,0,0], [400,0], [Exotic_Meat|Leather,0], 1, 4, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7103 = [[1,0,0,0,0,0], [Reindeer,0,0,0,0,0], [800,0], [Exotic_Meat|Leather|Antler,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7104 = [[1,0,0,0,0,0], [Leopard,0,0,0,0,0], [300,0], [Exotic_Meat|Leopard_Skin,0], 1, 4, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7105 = [[1,0,0,0,0,0], [Crocodie,0,0,0,0,0], [200,0], [Exotic_Meat|ExoticLeather,0], 1, 5, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7106 = [[1,0,0,0,0,0], [Otter,0,0,0,0,0], [20,0], [Exotic_Meat|Exotic_Fur,0], 1, 5, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7107 = [[1,0,0,0,0,0], [Wolf,0,0,0,0,0], [100,0], [Exotic_Meat|Fur,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7108 = [[1,0,0,0,0,0], [Seal,0,0,0,0,0], [200,0], [Exotic_Meat|Fur,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7200 = [[1,0,0,0,0,0], [Elk,0,0,0,0,0], [2000,0], [Meat|Leather|Antler,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7201 = [[1,0,0,0,0,0], [Aurochs,0,0,0,0,0], [3000,0], [Beef|Aurochs_Hide,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7202 = [[1,0,0,0,0,0], [Black_Leopard,0,0,0,0,0], [400,0], [Exotic_Meat|Black_Leopard_Skin,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7203 = [[1,0,0,0,0,0], [Bear,0,0,0,0,0], [1000,0], [Exotic_Meat|Bear_Hide,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7204 = [[1,0,0,0,0,0], [Sea_Mink,0,0,0,0,0], [100,0], [Exotic_Meat|Exotic_Fur,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7205 = [[1,0,0,0,0,0], [Whalrus,0,0,0,0,0], [800,0], [Exotic_Meat|Leather|Ivory,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7206 = [[1,0,0,0,0,0], [Poison_Snake,0,0,0,0,0], [40,0], [ExoticLeather|Poison|Exotic_Meat,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7300 = [[1,0,0,0,0,0], [Elephant,0,0,0,0,0], [4000,0], [Exotic_Meat|Ivory|Thick_Leather,0], 10, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7301 = [[1,0,0,0,0,0], [Rhino,0,0,0,0,0], [4000,0], [Exotic_Meat|Thick_Leather,0], 10, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7302 = [[1,0,0,0,0,0], [Polar_Bear,0,0,0,0,0], [2000,0], [Exotic_Meat|Polar_Bear_Hide,0], 2, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7303 = [[1,0,0,0,0,0], [Tiger,0,0,0,0,0], [2000,0], [Exotic_Meat|Tiger_Hide,0], 2, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7304 = [[1,0,0,0,0,0], [Titan_Snake,0,0,0,0,0], [2000,0], [Exotic_Meat|ExoticLeather,0], 2, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7400 = [[5,0,0,0,0,0], [Cow,0,0,0,0,0], [150,0], [Beef|Leather,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7401 = [[10,0,0,0,0,0], [Chicken,0,0,0,0,0], [250,0], [Mutton|Wool,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7402 = [[10,0,0,0,0,0], [Sheep,0,0,0,0,0], [100,0], [Chicken|Feather,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe10001 = [[150000,0,0,0,0,0], [Coins,0,0,0,0,0], [1,0], [T1_Spearman,0], 0, 0, [0,0,0,0]];
+let recipe10002 = [[100,0,0,0,0,0], [T1_XP|T1_Spearman,0,0,0,0,0], [1,0], [T2_Spearman,0], 0, 0, [0,0,0,0]];
+let recipe74013 = [[1,0,0,0,0,0], [Leopard_Skin,0,0,0,0,0], [300,0], [Fur,0], 0, 0, [0,0,0,0]];
+let recipe74014 = [[1,0,0,0,0,0], [Aurochs_Hide,0,0,0,0,0], [2000,0], [Leather,0], 0, 0, [0,0,0,0]];
+let recipe74015 = [[1,0,0,0,0,0], [Black_Leopard_Skin,0,0,0,0,0], [300,0], [Fur,0], 0, 0, [0,0,0,0]];
+let recipe74016 = [[1,0,0,0,0,0], [Bear_Hide,0,0,0,0,0], [300,0], [Exotic_Fur,0], 0, 0, [0,0,0,0]];
+let recipe74017 = [[1,0,0,0,0,0], [Polar_Bear_Hide,0,0,0,0,0], [500,0], [Exotic_Fur,0], 0, 0, [0,0,0,0]];
+let recipe74018 = [[1,0,0,0,0,0], [Tiger_Hide,0,0,0,0,0], [500,0], [Exotic_Fur,0], 0, 0, [0,0,0,0]];
+let recipe100501 = [[100,0,0,0,0,0], [Wheat,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100502 = [[100,0,0,0,0,0], [Rye,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100503 = [[100,0,0,0,0,0], [Rice,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100504 = [[100,0,0,0,0,0], [Corn,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100505 = [[100,0,0,0,0,0], [Sorghum,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100506 = [[100,0,0,0,0,0], [Apples,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100507 = [[100,0,0,0,0,0], [Plums,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100508 = [[100,0,0,0,0,0], [Olives,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100509 = [[100,0,0,0,0,0], [Beans,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100510 = [[100,0,0,0,0,0], [Mushrooms,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100511 = [[100,0,0,0,0,0], [Beets,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100512 = [[100,0,0,0,0,0], [Casava,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100513 = [[100,0,0,0,0,0], [Peanuts,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100514 = [[100,0,0,0,0,0], [Cherries,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100515 = [[100,0,0,0,0,0], [Peaches,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100516 = [[100,0,0,0,0,0], [Garlic,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100517 = [[100,0,0,0,0,0], [Onion,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100518 = [[100,0,0,0,0,0], [Carrots,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100519 = [[100,0,0,0,0,0], [Sugarcane,0,0,0,0,0], [200,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100521 = [[100,0,0,0,0,0], [Allspice,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100522 = [[100,0,0,0,0,0], [Grapes,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100523 = [[100,0,0,0,0,0], [Ginseng,0,0,0,0,0], [2500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100524 = [[100,0,0,0,0,0], [Winterberries,0,0,0,0,0], [2000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100525 = [[100,0,0,0,0,0], [Jungleberries,0,0,0,0,0], [2000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100526 = [[100,0,0,0,0,0], [Auric_Honey,0,0,0,0,0], [5000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100527 = [[100,0,0,0,0,0], [Wasabi,0,0,0,0,0], [2500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100528 = [[100,0,0,0,0,0], [Rushseed,0,0,0,0,0], [2500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100530 = [[100,0,0,0,0,0], [Oysters,0,0,0,0,0], [1250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100531 = [[100,0,0,0,0,0], [Fish_Meat,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100532 = [[100,0,0,0,0,0], [Beef,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100533 = [[100,0,0,0,0,0], [Chicken_Meat,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100534 = [[100,0,0,0,0,0], [Eggs,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100535 = [[100,0,0,0,0,0], [Potato,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100536 = [[100,0,0,0,0,0], [Silver_Sap,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100537 = [[100,0,0,0,0,0], [Honey,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100538 = [[100,0,0,0,0,0], [Oats,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100539 = [[100,0,0,0,0,0], [Milk,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100540 = [[100,0,0,0,0,0], [Barley,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100541 = [[100,0,0,0,0,0], [Exotic_Meat,0,0,0,0,0], [2500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100542 = [[100,0,0,0,0,0], [Wool,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe100543 = [[100,0,0,0,0,0], [Cotton,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101000 = [[1,0,0,0,0,0], [Wheat_Beer,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101001 = [[1,0,0,0,0,0], [Rye_Beer,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101002 = [[1,0,0,0,0,0], [Barley_Beer,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101003 = [[1,0,0,0,0,0], [Oat_Beer,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101004 = [[1,0,0,0,0,0], [Rice_Beer,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101005 = [[1,0,0,0,0,0], [Sorghum_Beer,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101010 = [[1,0,0,0,0,0], [Cider,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101011 = [[1,0,0,0,0,0], [Wine,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101012 = [[1,0,0,0,0,0], [Plum_Wine,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101013 = [[1,0,0,0,0,0], [Peach_Wine,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101014 = [[1,0,0,0,0,0], [Cherry_Wine,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101020 = [[1,0,0,0,0,0], [Mead,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101030 = [[1,0,0,0,0,0], [Vodka,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101031 = [[1,0,0,0,0,0], [Kumis,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101032 = [[1,0,0,0,0,0], [Rum,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101033 = [[1,0,0,0,0,0], [Grain_Whiskey,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101040 = [[1,0,0,0,0,0], [Brandy,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101041 = [[1,0,0,0,0,0], [Silver_Wine,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101042 = [[1,0,0,0,0,0], [Jungle_Wine,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101043 = [[1,0,0,0,0,0], [Winter_Wine,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101044 = [[1,0,0,0,0,0], [Aged_Rum,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101050 = [[1,0,0,0,0,0], [Ginseng_Wine,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101051 = [[1,0,0,0,0,0], [Spiced_Vodka,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101060 = [[1,0,0,0,0,0], [Double_Brandy,0,0,0,0,0], [2500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101061 = [[1,0,0,0,0,0], [Auric_Mead,0,0,0,0,0], [2500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101200 = [[1,0,0,0,0,0], [Wheat_Bread,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101201 = [[1,0,0,0,0,0], [Rye_Bread,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101202 = [[1,0,0,0,0,0], [Corn_Bread,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101203 = [[1,0,0,0,0,0], [Rice_Bread,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101204 = [[1,0,0,0,0,0], [Sorghum_Bread,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101205 = [[1,0,0,0,0,0], [Barley_Bread,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101206 = [[1,0,0,0,0,0], [Oat_Bread,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101207 = [[1,0,0,0,0,0], [Pastry,0,0,0,0,0], [125,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101208 = [[1,0,0,0,0,0], [Fruit_Pastry,0,0,0,0,0], [200,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101209 = [[1,0,0,0,0,0], [Glittercake,0,0,0,0,0], [1500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101210 = [[1,0,0,0,0,0], [Fruit_Glittercake,0,0,0,0,0], [2500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101211 = [[1,0,0,0,0,0], [Glittercakeette,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101220 = [[1,0,0,0,0,0], [Apple_Pie,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101221 = [[1,0,0,0,0,0], [Plum_Pie,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101222 = [[1,0,0,0,0,0], [Peach_Pie,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101223 = [[1,0,0,0,0,0], [Sugar_Pie,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101224 = [[1,0,0,0,0,0], [Pot_Pie,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101230 = [[1,0,0,0,0,0], [Cheese,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101231 = [[1,0,0,0,0,0], [Aged_Cheese,0,0,0,0,0], [300,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101232 = [[1,0,0,0,0,0], [Imperial_Cheese,0,0,0,0,0], [2000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101240 = [[1,0,0,0,0,0], [Dried_Vegetables,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101241 = [[1,0,0,0,0,0], [Pickled_Vegetables,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101250 = [[1,0,0,0,0,0], [Dried_Fruit,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101251 = [[1,0,0,0,0,0], [Brandied_Fruit,0,0,0,0,0], [400,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101260 = [[1,0,0,0,0,0], [Sausage,0,0,0,0,0], [200,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101261 = [[1,0,0,0,0,0], [Fried_Meat,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101262 = [[1,0,0,0,0,0], [Roast,0,0,0,0,0], [150,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101263 = [[1,0,0,0,0,0], [Cured_Meat,0,0,0,0,0], [750,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101264 = [[1,0,0,0,0,0], [Salted_Meat,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101265 = [[1,0,0,0,0,0], [Preserved_Eggs,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101266 = [[1,0,0,0,0,0], [Exotic_Cured_Meat,0,0,0,0,0], [3750,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101270 = [[1,0,0,0,0,0], [Beef_Stew,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101271 = [[1,0,0,0,0,0], [Kings_Soup,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101272 = [[1,0,0,0,0,0], [Onion_Stew,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101273 = [[1,0,0,0,0,0], [Huntsmans_Soup,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101274 = [[1,0,0,0,0,0], [Chicken_Soup,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101275 = [[1,0,0,0,0,0], [Fish_Soup,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101280 = [[1,0,0,0,0,0], [Baked_Beans,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101281 = [[1,0,0,0,0,0], [Beans_And_Rice,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101300 = [[1,0,0,0,0,0], [Vinegar,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101301 = [[1,0,0,0,0,0], [Sugar,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101302 = [[1,0,0,0,0,0], [Olive_Oil,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101303 = [[1,0,0,0,0,0], [Flour,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101304 = [[1,0,0,0,0,0], [Ketchup,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101305 = [[1,0,0,0,0,0], [Basic_Spice_Pack,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101306 = [[1,0,0,0,0,0], [Royal_Spice_Pack,0,0,0,0,0], [2000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101307 = [[1,0,0,0,0,0], [Confectioners_Dough,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101308 = [[1,0,0,0,0,0], [Fruit_Preserve,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101309 = [[1,0,0,0,0,0], [Exotic_Fruit_Preserve,0,0,0,0,0], [1500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101400 = [[1,0,0,0,0,0], [Bread_Combo,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101401 = [[1,0,0,0,0,0], [Deluxe_Bread,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101420 = [[1,0,0,0,0,0], [Basic_Soup,0,0,0,0,0], [125,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101430 = [[1,0,0,0,0,0], [Deluxe_Soup,0,0,0,0,0], [800,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101440 = [[1,0,0,0,0,0], [Sausage_Combo,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101450 = [[1,0,0,0,0,0], [Roast_Combo,0,0,0,0,0], [175,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101460 = [[1,0,0,0,0,0], [Deluxe_Roast,0,0,0,0,0], [525,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101470 = [[1,0,0,0,0,0], [Charcutery,0,0,0,0,0], [1250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101471 = [[1,0,0,0,0,0], [Deluxe_Charcutery,0,0,0,0,0], [9500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101480 = [[1,0,0,0,0,0], [Pie_Combo,0,0,0,0,0], [62,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101900 = [[1,0,0,0,0,0], [Fodder_Bread,0,0,0,0,0], [12,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101901 = [[1,0,0,0,0,0], [Main_Ration_1,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101902 = [[1,0,0,0,0,0], [Main_Ration_2,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101903 = [[1,0,0,0,0,0], [Main_Ration_3,0,0,0,0,0], [2000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101904 = [[1,0,0,0,0,0], [Main_Ration_4,0,0,0,0,0], [4000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101905 = [[1,0,0,0,0,0], [Main_Ration_5,0,0,0,0,0], [8000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101906 = [[1,0,0,0,0,0], [Main_Ration_6,0,0,0,0,0], [16000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101907 = [[1,0,0,0,0,0], [Main_Ration_7,0,0,0,0,0], [32000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101908 = [[1,0,0,0,0,0], [Main_Ration_8,0,0,0,0,0], [64000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101909 = [[1,0,0,0,0,0], [Main_Ration_9,0,0,0,0,0], [128000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101911 = [[1,0,0,0,0,0], [Extras_1,0,0,0,0,0], [125,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101912 = [[1,0,0,0,0,0], [Extras_2,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101913 = [[1,0,0,0,0,0], [Extras_3,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101914 = [[1,0,0,0,0,0], [Extras_4,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101915 = [[1,0,0,0,0,0], [Extras_5,0,0,0,0,0], [2000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101916 = [[1,0,0,0,0,0], [Extras_6,0,0,0,0,0], [4000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101917 = [[1,0,0,0,0,0], [Extras_7,0,0,0,0,0], [8000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101918 = [[1,0,0,0,0,0], [Extras_8,0,0,0,0,0], [16000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101919 = [[1,0,0,0,0,0], [Extras_9,0,0,0,0,0], [32000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101921 = [[1,0,0,0,0,0], [Drink_Pack_1,0,0,0,0,0], [125,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101922 = [[1,0,0,0,0,0], [Drink_Pack_2,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101923 = [[1,0,0,0,0,0], [Drink_Pack_3,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101924 = [[1,0,0,0,0,0], [Drink_Pack_4,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101925 = [[1,0,0,0,0,0], [Drink_Pack_5,0,0,0,0,0], [2000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101926 = [[1,0,0,0,0,0], [Drink_Pack_6,0,0,0,0,0], [4000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101927 = [[1,0,0,0,0,0], [Drink_Pack_7,0,0,0,0,0], [8000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101928 = [[1,0,0,0,0,0], [Drink_Pack_8,0,0,0,0,0], [16000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe101929 = [[1,0,0,0,0,0], [Drink_Pack_9,0,0,0,0,0], [32000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102001 = [[100,0,0,0,0,0], [Stone,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102002 = [[100,0,0,0,0,0], [Wood,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102003 = [[100,0,0,0,0,0], [Salt,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102021 = [[100,0,0,0,0,0], [Iron_Ore,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102022 = [[100,0,0,0,0,0], [Gold_Ore,0,0,0,0,0], [20000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102023 = [[100,0,0,0,0,0], [Silver_Ore,0,0,0,0,0], [10000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102024 = [[100,0,0,0,0,0], [Copper_Ore,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102025 = [[100,0,0,0,0,0], [Tin_Ore,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102101 = [[1,0,0,0,0,0], [Refined_Stone,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102102 = [[1,0,0,0,0,0], [Refined_Wood,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102210 = [[1,0,0,0,0,0], [Onyx,0,0,0,0,0], [10,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102121 = [[1,0,0,0,0,0], [Iron,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102122 = [[1,0,0,0,0,0], [Gold,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102123 = [[1,0,0,0,0,0], [Silver,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102124 = [[1,0,0,0,0,0], [Copper,0,0,0,0,0], [12,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102125 = [[1,0,0,0,0,0], [Tin,0,0,0,0,0], [40,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102180 = [[1,0,0,0,0,0], [Emerald_Bronze,0,0,0,0,0], [225,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102181 = [[1,0,0,0,0,0], [Bronze,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102182 = [[1,0,0,0,0,0], [Steel,0,0,0,0,0], [75,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102183 = [[1,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102200 = [[1,0,0,0,0,0], [Ruby,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102201 = [[1,0,0,0,0,0], [Emerald,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102202 = [[1,0,0,0,0,0], [Sapphire,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102203 = [[1,0,0,0,0,0], [Diamond,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102204 = [[1,0,0,0,0,0], [Amethyst,0,0,0,0,0], [10,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102205 = [[1,0,0,0,0,0], [Opal,0,0,0,0,0], [10,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102206 = [[1,0,0,0,0,0], [Citrine,0,0,0,0,0], [10,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102207 = [[1,0,0,0,0,0], [Pearl,0,0,0,0,0], [10,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102208 = [[1,0,0,0,0,0], [Moonstone,0,0,0,0,0], [10,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102209 = [[1,0,0,0,0,0], [Amber,0,0,0,0,0], [10,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102211 = [[1,0,0,0,0,0], [Aquamarine,0,0,0,0,0], [10,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102212 = [[1,0,0,0,0,0], [Crystal_Glass,0,0,0,0,0], [10,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102213 = [[1,0,0,0,0,0], [Bloodstone,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102300 = [[1,0,0,0,0,0], [Polished_Ruby,0,0,0,0,0], [87,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102301 = [[1,0,0,0,0,0], [Polished_Emerald,0,0,0,0,0], [87,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102302 = [[1,0,0,0,0,0], [Polished_Sapphire,0,0,0,0,0], [87,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102303 = [[1,0,0,0,0,0], [Polished_Diamond,0,0,0,0,0], [150,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102304 = [[1,0,0,0,0,0], [Polished_Amethyst,0,0,0,0,0], [75,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102305 = [[1,0,0,0,0,0], [Polished_Opal,0,0,0,0,0], [75,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102306 = [[1,0,0,0,0,0], [Polished_Citrine,0,0,0,0,0], [75,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102308 = [[1,0,0,0,0,0], [Polished_Moonstone,0,0,0,0,0], [112,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102309 = [[1,0,0,0,0,0], [Polished_Amber,0,0,0,0,0], [75,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102310 = [[1,0,0,0,0,0], [Polished_Onyx,0,0,0,0,0], [75,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102311 = [[1,0,0,0,0,0], [Polished_Aquamarine,0,0,0,0,0], [75,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe102312 = [[1,0,0,0,0,0], [Polished_Crystal_Glass,0,0,0,0,0], [75,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104000 = [[1,0,0,0,0,0], [Nails,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104001 = [[1,0,0,0,0,0], [Diamond_Blade,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104002 = [[1,0,0,0,0,0], [Fabric,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104003 = [[1,0,0,0,0,0], [Down,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104004 = [[1,0,0,0,0,0], [Leather,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104005 = [[1,0,0,0,0,0], [ExoticLeather,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104006 = [[1,0,0,0,0,0], [Fur,0,0,0,0,0], [50,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104007 = [[1,0,0,0,0,0], [Exotic_Fur,0,0,0,0,0], [500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104008 = [[1,0,0,0,0,0], [Feather,0,0,0,0,0], [10,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104009 = [[1,0,0,0,0,0], [Thick_Leather,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104010 = [[1,0,0,0,0,0], [Antler,0,0,0,0,0], [25,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104011 = [[1,0,0,0,0,0], [Ivory,0,0,0,0,0], [1250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104012 = [[1,0,0,0,0,0], [Poison,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104013 = [[1,0,0,0,0,0], [Leopard_Skin,0,0,0,0,0], [25000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104014 = [[1,0,0,0,0,0], [Aurochs_Hide,0,0,0,0,0], [50000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104015 = [[1,0,0,0,0,0], [Black_Leopard_Skin,0,0,0,0,0], [50000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104016 = [[1,0,0,0,0,0], [Bear_Hide,0,0,0,0,0], [250000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104017 = [[1,0,0,0,0,0], [Polar_Bear_Hide,0,0,0,0,0], [250000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104018 = [[1,0,0,0,0,0], [Tiger_Hide,0,0,0,0,0], [250000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104100 = [[1,0,0,0,0,0], [Bronze_Plate,0,0,0,0,0], [30000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104101 = [[1,0,0,0,0,0], [Iron_Plate,0,0,0,0,0], [37500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104102 = [[1,0,0,0,0,0], [Steel_Plate,0,0,0,0,0], [87500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104103 = [[1,0,0,0,0,0], [Emerald_Bronze_Plate,0,0,0,0,0], [237500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104104 = [[1,0,0,0,0,0], [Damascus_Steel_Plate,0,0,0,0,0], [1012500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104105 = [[1,0,0,0,0,0], [Bronze_Chainmail,0,0,0,0,0], [18750,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104106 = [[1,0,0,0,0,0], [Iron_Chainmail,0,0,0,0,0], [37500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104107 = [[1,0,0,0,0,0], [Steel_Chainmail,0,0,0,0,0], [62500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104108 = [[1,0,0,0,0,0], [Emerald_Bronze_Chainmail,0,0,0,0,0], [137500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104109 = [[1,0,0,0,0,0], [Damascus_Steel_Chainmail,0,0,0,0,0], [525000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104500 = [[1,0,0,0,0,0], [Fur_Clothes,0,0,0,0,0], [1250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104501 = [[1,0,0,0,0,0], [Fabric_Clothes,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104502 = [[1,0,0,0,0,0], [Leather_Clothes,0,0,0,0,0], [1250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104503 = [[1,0,0,0,0,0], [Tailored_Fur_Clothes,0,0,0,0,0], [12500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104504 = [[1,0,0,0,0,0], [Tailored_Fabric_Clothes,0,0,0,0,0], [10000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104505 = [[1,0,0,0,0,0], [Clothes,0,0,0,0,0], [1000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104520 = [[1,0,0,0,0,0], [Basic_Furniture,0,0,0,0,0], [1750,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104521 = [[1,0,0,0,0,0], [Ornate_Furniture,0,0,0,0,0], [4500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104522 = [[1,0,0,0,0,0], [Oppulant_Furniture,0,0,0,0,0], [25000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104540 = [[1,0,0,0,0,0], [Basic_Tool,0,0,0,0,0], [1250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104541 = [[1,0,0,0,0,0], [Artisan_Tool,0,0,0,0,0], [3500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104542 = [[1,0,0,0,0,0], [Oppulant_Tool,0,0,0,0,0], [12500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104560 = [[1,0,0,0,0,0], [Copper_Jewelery,0,0,0,0,0], [2500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104561 = [[1,0,0,0,0,0], [Silver_Jewelery,0,0,0,0,0], [13750,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104562 = [[1,0,0,0,0,0], [Gold_Jewelery,0,0,0,0,0], [250000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104580 = [[1,0,0,0,0,0], [Fur_Bedding,0,0,0,0,0], [2250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104581 = [[1,0,0,0,0,0], [Enhanced_Bedding,0,0,0,0,0], [11500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe104582 = [[1,0,0,0,0,0], [Down_Beeding,0,0,0,0,0], [205,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105000 = [[1,0,0,0,0,0], [Bronze_Spear,0,0,0,0,0], [12500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105001 = [[1,0,0,0,0,0], [Iron_Spear,0,0,0,0,0], [15000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105002 = [[1,0,0,0,0,0], [Steel_Spear,0,0,0,0,0], [35000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105003 = [[1,0,0,0,0,0], [Emerald_Bronze_Spear,0,0,0,0,0], [95000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105004 = [[1,0,0,0,0,0], [Damascus_Steel_Spear,0,0,0,0,0], [405000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105010 = [[1,0,0,0,0,0], [Bronze_Axe,0,0,0,0,0], [31250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105011 = [[1,0,0,0,0,0], [Iron_Axe,0,0,0,0,0], [50000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105012 = [[1,0,0,0,0,0], [Steel_Axe,0,0,0,0,0], [100000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105013 = [[1,0,0,0,0,0], [Emerald_Bronze_Axe,0,0,0,0,0], [250000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105014 = [[1,0,0,0,0,0], [Damascus_Steel_Axe,0,0,0,0,0], [1025000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105020 = [[1,0,0,0,0,0], [Bronze_Sword,0,0,0,0,0], [31250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105021 = [[1,0,0,0,0,0], [Iron_Sword,0,0,0,0,0], [50000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105022 = [[1,0,0,0,0,0], [Steel_Sword,0,0,0,0,0], [100000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105023 = [[1,0,0,0,0,0], [Emerald_Bronze_Sword,0,0,0,0,0], [250000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105024 = [[1,0,0,0,0,0], [Damascus_Steel_Sword,0,0,0,0,0], [1025000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105030 = [[1,0,0,0,0,0], [Bronze_Mace,0,0,0,0,0], [31250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105031 = [[1,0,0,0,0,0], [Iron_Mace,0,0,0,0,0], [50000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105032 = [[1,0,0,0,0,0], [Steel_Mace,0,0,0,0,0], [100000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105033 = [[1,0,0,0,0,0], [Emerald_Bronze_Mace,0,0,0,0,0], [250000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105034 = [[1,0,0,0,0,0], [Damascus_Steel_Mace,0,0,0,0,0], [1025000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105040 = [[1,0,0,0,0,0], [Bronze_Lance,0,0,0,0,0], [56250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105041 = [[1,0,0,0,0,0], [Iron_Lance,0,0,0,0,0], [75000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105042 = [[1,0,0,0,0,0], [Steel_Lance,0,0,0,0,0], [150000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105043 = [[1,0,0,0,0,0], [Emerald_Bronze_Lance,0,0,0,0,0], [375000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105044 = [[1,0,0,0,0,0], [Damascus_Steel_Lance,0,0,0,0,0], [1537500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105050 = [[1,0,0,0,0,0], [Bronze_Poleaxe,0,0,0,0,0], [56250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105051 = [[1,0,0,0,0,0], [Iron_Poleaxe,0,0,0,0,0], [75000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105052 = [[1,0,0,0,0,0], [Steel_Poleaxe,0,0,0,0,0], [150000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105053 = [[1,0,0,0,0,0], [Emerald_Bronze_Poleaxe,0,0,0,0,0], [375000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105054 = [[1,0,0,0,0,0], [Damascus_Steel_Poleaxe,0,0,0,0,0], [1537500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105060 = [[1,0,0,0,0,0], [Bronze_Greatsword,0,0,0,0,0], [68750,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105061 = [[1,0,0,0,0,0], [Iron_Greatsword,0,0,0,0,0], [175000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105062 = [[1,0,0,0,0,0], [Steel_Greatsword,0,0,0,0,0], [375000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105063 = [[1,0,0,0,0,0], [Emerald_Bronze_Greatsword,0,0,0,0,0], [975000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105064 = [[1,0,0,0,0,0], [Damascus_Steel_Greatsword,0,0,0,0,0], [2037500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105070 = [[1,0,0,0,0,0], [Bronze_Warhammer,0,0,0,0,0], [56250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105071 = [[1,0,0,0,0,0], [Iron_Warhammer,0,0,0,0,0], [75000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105072 = [[1,0,0,0,0,0], [Steel_Warhammer,0,0,0,0,0], [150000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105073 = [[1,0,0,0,0,0], [Emerald_Bronze_Warhammer,0,0,0,0,0], [375000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105074 = [[1,0,0,0,0,0], [Damascus_Steel_Warhammer,0,0,0,0,0], [1537500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105400 = [[1,0,0,0,0,0], [Farm_Horse,0,0,0,0,0], [75000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105401 = [[1,0,0,0,0,0], [Horse,0,0,0,0,0], [150000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105402 = [[1,0,0,0,0,0], [Charge_Horse,0,0,0,0,0], [750000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105403 = [[1,0,0,0,0,0], [War_Horse,0,0,0,0,0], [750000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105500 = [[1,0,0,0,0,0], [Light_Bronze_Mail,0,0,0,0,0], [50000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105501 = [[1,0,0,0,0,0], [Light_Iron_Mail,0,0,0,0,0], [100000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105502 = [[1,0,0,0,0,0], [Light_Steel_Mail,0,0,0,0,0], [150000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105503 = [[1,0,0,0,0,0], [Light_Emerald_Bronze_Mail,0,0,0,0,0], [300000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105504 = [[1,0,0,0,0,0], [Light_Damascus_Steel_Mail,0,0,0,0,0], [1087500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105510 = [[1,0,0,0,0,0], [Light_Bronze_Plate,0,0,0,0,0], [72500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105511 = [[1,0,0,0,0,0], [Light_Iron_Plate,0,0,0,0,0], [100000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105512 = [[1,0,0,0,0,0], [Light_Steel_Plate,0,0,0,0,0], [200000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105513 = [[1,0,0,0,0,0], [Light_Emerald_Bronze_Plate,0,0,0,0,0], [500000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105514 = [[1,0,0,0,0,0], [Light_Damascus_Steel_Plate,0,0,0,0,0], [2050000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105520 = [[1,0,0,0,0,0], [Medium_Bronze_Mail,0,0,0,0,0], [75000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105521 = [[1,0,0,0,0,0], [Medium_Iron_Mail,0,0,0,0,0], [175000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105522 = [[1,0,0,0,0,0], [Medium_Steel_Mail,0,0,0,0,0], [275000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105523 = [[1,0,0,0,0,0], [Medium_Emerald_Bronze_Mail,0,0,0,0,0], [575000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105524 = [[1,0,0,0,0,0], [Medium_Damascus_Steel_Mail,0,0,0,0,0], [2125000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105530 = [[1,0,0,0,0,0], [Medium_Bronze_Plate,0,0,0,0,0], [120000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105531 = [[1,0,0,0,0,0], [Medium_Iron_Plate,0,0,0,0,0], [175000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105532 = [[1,0,0,0,0,0], [Medium_Steel_Plate,0,0,0,0,0], [375000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105533 = [[1,0,0,0,0,0], [Medium_Emerald_Bronze_Plate,0,0,0,0,0], [975000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105534 = [[1,0,0,0,0,0], [Medium_Damascus_Steel_Plate,0,0,0,0,0], [4075000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105540 = [[1,0,0,0,0,0], [Bronze_Heavy_Armor,0,0,0,0,0], [170000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105541 = [[1,0,0,0,0,0], [Iron_Heavy_Armor,0,0,0,0,0], [325000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105542 = [[1,0,0,0,0,0], [Steel_Heavy_Armor,0,0,0,0,0], [625000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105543 = [[1,0,0,0,0,0], [Emerald_Bronze_Heavy_Armor,0,0,0,0,0], [1475000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105544 = [[1,0,0,0,0,0], [Damascus_Steel_Heavy_Armor,0,0,0,0,0], [6175000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105550 = [[1,0,0,0,0,0], [Light_Bronze_Horse_Armor,0,0,0,0,0], [192500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105551 = [[1,0,0,0,0,0], [Light_Iron_Horse_Armor,0,0,0,0,0], [250000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105552 = [[1,0,0,0,0,0], [Light_Steel_Horse_Armor,0,0,0,0,0], [550000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105553 = [[1,0,0,0,0,0], [Light_Emerald_Bronze_Horse_Armor,0,0,0,0,0], [1450000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105554 = [[1,0,0,0,0,0], [Light_Damascus_Steel_Horse_Armor,0,0,0,0,0], [6100000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105560 = [[1,0,0,0,0,0], [Medium_Bronze_Horse_Armor,0,0,0,0,0], [372500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105561 = [[1,0,0,0,0,0], [Medium_Iron_Horse_Armor,0,0,0,0,0], [475000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105562 = [[1,0,0,0,0,0], [Medium_Steel_Horse_Armor,0,0,0,0,0], [1075000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105563 = [[1,0,0,0,0,0], [Medium_Emerald_Bronze_Horse_Armor,0,0,0,0,0], [2875000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105564 = [[1,0,0,0,0,0], [Medium_Damascus_Steel_Horse_Armor,0,0,0,0,0], [12175000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105570 = [[1,0,0,0,0,0], [Heavy_Bronze_Horse_Armor,0,0,0,0,0], [665000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105571 = [[1,0,0,0,0,0], [Heavy_Iron_Horse_Armor,0,0,0,0,0], [925000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105572 = [[1,0,0,0,0,0], [Heavy_Steel_Horse_Armor,0,0,0,0,0], [1975000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105573 = [[1,0,0,0,0,0], [Heavy_Emerald_Bronze_Horse_Armor,0,0,0,0,0], [5125000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105574 = [[1,0,0,0,0,0], [Heavy_Damascus_Steel_Horse_Armor,0,0,0,0,0], [21400000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105580 = [[1,0,0,0,0,0], [Leather_Armor,0,0,0,0,0], [62500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105581 = [[1,0,0,0,0,0], [Thick_Leather_Armor,0,0,0,0,0], [125000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105582 = [[1,0,0,0,0,0], [Gambeson,0,0,0,0,0], [30000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105900 = [[1,0,0,0,0,0], [Wooden_Shield,0,0,0,0,0], [25000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105901 = [[1,0,0,0,0,0], [Banded_Shield,0,0,0,0,0], [62500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105902 = [[1,0,0,0,0,0], [Standard_Shield,0,0,0,0,0], [100000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105903 = [[1,0,0,0,0,0], [Metal_Shield,0,0,0,0,0], [212500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105904 = [[1,0,0,0,0,0], [Gong_Shield,0,0,0,0,0], [550000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105905 = [[1,0,0,0,0,0], [Heirloom_Shield,0,0,0,0,0], [2400000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe105910 = [[1,0,0,0,0,0], [Wall_Shield,0,0,0,0,0], [200000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107000 = [[1,0,0,0,0,0], [Rabbit,0,0,0,0,0], [3250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107001 = [[1,0,0,0,0,0], [Deer,0,0,0,0,0], [6000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107002 = [[1,0,0,0,0,0], [Turkey,0,0,0,0,0], [3250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107003 = [[1,0,0,0,0,0], [Mink,0,0,0,0,0], [5000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107004 = [[1,0,0,0,0,0], [Cyote,0,0,0,0,0], [5500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107005 = [[1,0,0,0,0,0], [Snake,0,0,0,0,0], [5000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107100 = [[1,0,0,0,0,0], [Fox,0,0,0,0,0], [9500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107101 = [[1,0,0,0,0,0], [Boar,0,0,0,0,0], [13250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107102 = [[1,0,0,0,0,0], [Zebra,0,0,0,0,0], [16500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107103 = [[1,0,0,0,0,0], [Reindeer,0,0,0,0,0], [27000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107104 = [[1,0,0,0,0,0], [Leopard,0,0,0,0,0], [34000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107105 = [[1,0,0,0,0,0], [Crocodie,0,0,0,0,0], [53750,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107106 = [[1,0,0,0,0,0], [Otter,0,0,0,0,0], [31250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107107 = [[1,0,0,0,0,0], [Wolf,0,0,0,0,0], [20000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107108 = [[1,0,0,0,0,0], [Seal,0,0,0,0,0], [27000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107109 = [[1,0,0,0,0,0], [Ostridge,0,0,0,0,0], [31250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107200 = [[1,0,0,0,0,0], [Elk,0,0,0,0,0], [24500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107201 = [[1,0,0,0,0,0], [Aurochs,0,0,0,0,0], [32500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107202 = [[1,0,0,0,0,0], [Black_Leopard,0,0,0,0,0], [62500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107203 = [[1,0,0,0,0,0], [Bear,0,0,0,0,0], [57500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107204 = [[1,0,0,0,0,0], [Sea_Mink,0,0,0,0,0], [50000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107205 = [[1,0,0,0,0,0], [Whalrus,0,0,0,0,0], [105000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107206 = [[1,0,0,0,0,0], [Poison_Snake,0,0,0,0,0], [63500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107300 = [[1,0,0,0,0,0], [Elephant,0,0,0,0,0], [825000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107301 = [[1,0,0,0,0,0], [Rhino,0,0,0,0,0], [577500,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107302 = [[1,0,0,0,0,0], [Polar_Bear,0,0,0,0,0], [545000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107303 = [[1,0,0,0,0,0], [Tiger,0,0,0,0,0], [295000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107304 = [[1,0,0,0,0,0], [Titan_Snake,0,0,0,0,0], [545000,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107400 = [[1,0,0,0,0,0], [Cow,0,0,0,0,0], [250,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107401 = [[1,0,0,0,0,0], [Chicken,0,0,0,0,0], [100,0], [Coins,0], 0, 0, [0,0,0,0]];
+let recipe107402 = [[1,0,0,0,0,0], [Sheep,0,0,0,0,0], [150,0], [Coins,0], 0, 0, [0,0,0,0]];
+function itemName(_value) {
+    var _name;
+    switch (_value) {
+          case -20:
+    _name = "Rare_Gemstone";
+    break;
+  case -19:
+    _name = "Common_Gemstone";
+    break;
+  case -18:
+    _name = "Polished_Rare_Gemstone";
+    break;
+  case -17:
+    _name = "Polished_Common_Gemstone";
+    break;
+  case -16:
+    _name = "Crop";
+    break;
+  case -15:
+    _name = "Soup";
+    break;
+  case -14:
+    _name = "Pie";
+    break;
+  case -13:
+    _name = "T5_Drink";
+    break;
+  case -12:
+    _name = "T4_Drink";
+    break;
+  case -11:
+    _name = "T3_Drink";
+    break;
+  case -10:
+    _name = "T2_Drink";
+    break;
+  case -9:
+    _name = "Bread";
+    break;
+  case -8:
+    _name = "Exotic_Berry";
+    break;
+  case -7:
+    _name = "T1_Drink";
+    break;
+  case -6:
+    _name = "T2_Metal";
+    break;
+  case -5:
+    _name = "Side";
+    break;
+  case -4:
+    _name = "Vegetables";
+    break;
+  case -3:
+    _name = "Fruit";
+    break;
+  case -2:
+    _name = "Meat";
+    break;
+  case -1:
+    _name = "Grain";
+    break;
+  case 1:
+    _name = "Arid_Badlands";
+    break;
+  case 2:
+    _name = "Arid_Steppe";
+    break;
+  case 3:
+    _name = "Arid_Oasis";
+    break;
+  case 4:
+    _name = "Arid_River";
+    break;
+  case 11:
+    _name = "Northern_Rocky_Wastes";
+    break;
+  case 12:
+    _name = "Northern_Tundra";
+    break;
+  case 13:
+    _name = "Northern_Forest";
+    break;
+  case 14:
+    _name = "Northern_River";
+    break;
+  case 21:
+    _name = "Rocky_Heartland";
+    break;
+  case 22:
+    _name = "Heartland";
+    break;
+  case 23:
+    _name = "River_Heartland";
+    break;
+  case 31:
+    _name = "Southern_Rocky";
+    break;
+  case 32:
+    _name = "Southern_Forest";
+    break;
+  case 33:
+    _name = "Southern_Jungle";
+    break;
+  case 34:
+    _name = "Southern_River";
+    break;
+  case 41:
+    _name = "Northern_Ocean";
+    break;
+  case 42:
+    _name = "Central_Ocean";
+    break;
+  case 43:
+    _name = "Southern_Ocean";
+    break;
+  case 44:
+    _name = "Desolate_Ocean";
+    break;
+  case 51:
+    _name = "Brackish_Swamp";
+    break;
+  case 52:
+    _name = "Swamp";
+    break;
+  case 53:
+    _name = "Lush_Swamp";
+    break;
+  case 61:
+    _name = "Red_Mountain";
+    break;
+  case 62:
+    _name = "Blue_Mountain";
+    break;
+  case 63:
+    _name = "Green_Mountain";
+    break;
+  case 64:
+    _name = "White_Mountain";
+    break;
+  case 70:
+    _name = "Ochre_Plains";
+    break;
+  case 71:
+    _name = "Lusterous_River";
+    break;
+  case 72:
+    _name = "Silver_Forest";
+    break;
+  case 80:
+    _name = "Golden_Plains";
+    break;
+  case 81:
+    _name = "Golden_Forest";
+    break;
+  case 82:
+    _name = "Golden_Hills";
+    break;
+  case 501:
+    _name = "Wheat";
+    break;
+  case 502:
+    _name = "Rye";
+    break;
+  case 503:
+    _name = "Rice";
+    break;
+  case 504:
+    _name = "Corn";
+    break;
+  case 505:
+    _name = "Sorghum";
+    break;
+  case 506:
+    _name = "Apples";
+    break;
+  case 507:
+    _name = "Plums";
+    break;
+  case 508:
+    _name = "Olives";
+    break;
+  case 509:
+    _name = "Beans";
+    break;
+  case 510:
+    _name = "Mushrooms";
+    break;
+  case 511:
+    _name = "Beets";
+    break;
+  case 512:
+    _name = "Casava";
+    break;
+  case 513:
+    _name = "Peanuts";
+    break;
+  case 514:
+    _name = "Cherries";
+    break;
+  case 515:
+    _name = "Peaches";
+    break;
+  case 516:
+    _name = "Garlic";
+    break;
+  case 517:
+    _name = "Onion";
+    break;
+  case 518:
+    _name = "Carrots";
+    break;
+  case 519:
+    _name = "Sugarcane";
+    break;
+  case 520:
+    _name = "Uknown";
+    break;
+  case 521:
+    _name = "Allspice";
+    break;
+  case 522:
+    _name = "Grapes";
+    break;
+  case 523:
+    _name = "Ginseng";
+    break;
+  case 524:
+    _name = "Winterberries";
+    break;
+  case 525:
+    _name = "Jungleberries";
+    break;
+  case 526:
+    _name = "Auric_Honey";
+    break;
+  case 527:
+    _name = "Wasabi";
+    break;
+  case 528:
+    _name = "Rushseed";
+    break;
+  case 529:
+    _name = "Rare_Herb";
+    break;
+  case 530:
+    _name = "Oysters";
+    break;
+  case 531:
+    _name = "Fish_Meat";
+    break;
+  case 532:
+    _name = "Beef";
+    break;
+  case 533:
+    _name = "Chicken_Meat";
+    break;
+  case 534:
+    _name = "Eggs";
+    break;
+  case 535:
+    _name = "Potato";
+    break;
+  case 536:
+    _name = "Silver_Sap";
+    break;
+  case 537:
+    _name = "Honey";
+    break;
+  case 538:
+    _name = "Oats";
+    break;
+  case 539:
+    _name = "Milk";
+    break;
+  case 540:
+    _name = "Barley";
+    break;
+  case 541:
+    _name = "Exotic_Meat";
+    break;
+  case 542:
+    _name = "Wool";
+    break;
+  case 543:
+    _name = "Cotton";
+    break;
+  case 544:
+    _name = "Mutton";
+    break;
+  case 1000:
+    _name = "Wheat_Beer";
+    break;
+  case 1001:
+    _name = "Rye_Beer";
+    break;
+  case 1002:
+    _name = "Barley_Beer";
+    break;
+  case 1003:
+    _name = "Oat_Beer";
+    break;
+  case 1004:
+    _name = "Rice_Beer";
+    break;
+  case 1005:
+    _name = "Sorghum_Beer";
+    break;
+  case 1010:
+    _name = "Cider";
+    break;
+  case 1011:
+    _name = "Wine";
+    break;
+  case 1012:
+    _name = "Plum_Wine";
+    break;
+  case 1013:
+    _name = "Peach_Wine";
+    break;
+  case 1014:
+    _name = "Cherry_Wine";
+    break;
+  case 1020:
+    _name = "Mead";
+    break;
+  case 1030:
+    _name = "Vodka";
+    break;
+  case 1031:
+    _name = "Kumis";
+    break;
+  case 1032:
+    _name = "Rum";
+    break;
+  case 1033:
+    _name = "Grain_Whiskey";
+    break;
+  case 1040:
+    _name = "Brandy";
+    break;
+  case 1041:
+    _name = "Silver_Wine";
+    break;
+  case 1042:
+    _name = "Jungle_Wine";
+    break;
+  case 1043:
+    _name = "Winter_Wine";
+    break;
+  case 1044:
+    _name = "Aged_Rum";
+    break;
+  case 1050:
+    _name = "Ginseng_Wine";
+    break;
+  case 1051:
+    _name = "Spiced_Vodka";
+    break;
+  case 1060:
+    _name = "Double_Brandy";
+    break;
+  case 1061:
+    _name = "Auric_Mead";
+    break;
+  case 1200:
+    _name = "Wheat_Bread";
+    break;
+  case 1201:
+    _name = "Rye_Bread";
+    break;
+  case 1202:
+    _name = "Corn_Bread";
+    break;
+  case 1203:
+    _name = "Rice_Bread";
+    break;
+  case 1204:
+    _name = "Sorghum_Bread";
+    break;
+  case 1205:
+    _name = "Barley_Bread";
+    break;
+  case 1206:
+    _name = "Oat_Bread";
+    break;
+  case 1207:
+    _name = "Pastry";
+    break;
+  case 1208:
+    _name = "Fruit_Pastry";
+    break;
+  case 1209:
+    _name = "Glittercake";
+    break;
+  case 1210:
+    _name = "Fruit_Glittercake";
+    break;
+  case 1211:
+    _name = "Glittercakeette";
+    break;
+  case 1220:
+    _name = "Apple_Pie";
+    break;
+  case 1221:
+    _name = "Plum_Pie";
+    break;
+  case 1222:
+    _name = "Peach_Pie";
+    break;
+  case 1223:
+    _name = "Sugar_Pie";
+    break;
+  case 1224:
+    _name = "Pot_Pie";
+    break;
+  case 1230:
+    _name = "Cheese";
+    break;
+  case 1231:
+    _name = "Aged_Cheese";
+    break;
+  case 1232:
+    _name = "Imperial_Cheese";
+    break;
+  case 1240:
+    _name = "Dried_Vegetables";
+    break;
+  case 1241:
+    _name = "Pickled_Vegetables";
+    break;
+  case 1242:
+    _name = "Hearty_Dried_Vegetables";
+    break;
+  case 1250:
+    _name = "Dried_Fruit";
+    break;
+  case 1251:
+    _name = "Brandied_Fruit";
+    break;
+  case 1260:
+    _name = "Sausage";
+    break;
+  case 1261:
+    _name = "Fried_Meat";
+    break;
+  case 1262:
+    _name = "Roast";
+    break;
+  case 1263:
+    _name = "Cured_Meat";
+    break;
+  case 1264:
+    _name = "Salted_Meat";
+    break;
+  case 1265:
+    _name = "Preserved_Eggs";
+    break;
+  case 1266:
+    _name = "Exotic_Cured_Meat";
+    break;
+  case 1266:
+    _name = "Boiled_Meat";
+    break;
+  case 1267:
+    _name = "Noble_Roast";
+    break;
+  case 1270:
+    _name = "Beef_Stew";
+    break;
+  case 1271:
+    _name = "Kings_Soup";
+    break;
+  case 1272:
+    _name = "Onion_Stew";
+    break;
+  case 1273:
+    _name = "Huntsmans_Soup";
+    break;
+  case 1274:
+    _name = "Chicken_Soup";
+    break;
+  case 1275:
+    _name = "Fish_Soup";
+    break;
+  case 1280:
+    _name = "Baked_Beans";
+    break;
+  case 1281:
+    _name = "Beans_And_Rice";
+    break;
+  case 1300:
+    _name = "Vinegar";
+    break;
+  case 1301:
+    _name = "Sugar";
+    break;
+  case 1302:
+    _name = "Olive_Oil";
+    break;
+  case 1303:
+    _name = "Flour";
+    break;
+  case 1304:
+    _name = "Ketchup";
+    break;
+  case 1305:
+    _name = "Basic_Spice_Pack";
+    break;
+  case 1306:
+    _name = "Royal_Spice_Pack";
+    break;
+  case 1307:
+    _name = "Confectioners_Dough";
+    break;
+  case 1308:
+    _name = "Fruit_Preserve";
+    break;
+  case 1309:
+    _name = "Exotic_Fruit_Preserve";
+    break;
+  case 1310:
+    _name = "Mushroom_Stock";
+    break;
+  case 1311:
+    _name = "Meat_Stock";
+    break;
+  case 1312:
+    _name = "Vegetable_Stock";
+    break;
+  case 1400:
+    _name = "Bread_Combo";
+    break;
+  case 1401:
+    _name = "Deluxe_Bread";
+    break;
+  case 1420:
+    _name = "Basic_Soup";
+    break;
+  case 1430:
+    _name = "Deluxe_Soup";
+    break;
+  case 1440:
+    _name = "Sausage_Combo";
+    break;
+  case 1450:
+    _name = "Roast_Combo";
+    break;
+  case 1460:
+    _name = "Deluxe_Roast";
+    break;
+  case 1470:
+    _name = "Charcutery";
+    break;
+  case 1471:
+    _name = "Deluxe_Charcutery";
+    break;
+  case 1480:
+    _name = "Pie_Combo";
+    break;
+  case 1900:
+    _name = "Fodder_Bread";
+    break;
+  case 1901:
+    _name = "Main_Ration_1";
+    break;
+  case 1902:
+    _name = "Main_Ration_2";
+    break;
+  case 1903:
+    _name = "Main_Ration_3";
+    break;
+  case 1904:
+    _name = "Main_Ration_4";
+    break;
+  case 1905:
+    _name = "Main_Ration_5";
+    break;
+  case 1906:
+    _name = "Main_Ration_6";
+    break;
+  case 1907:
+    _name = "Main_Ration_7";
+    break;
+  case 1908:
+    _name = "Main_Ration_8";
+    break;
+  case 1909:
+    _name = "Main_Ration_9";
+    break;
+  case 1911:
+    _name = "Extras_1";
+    break;
+  case 1912:
+    _name = "Extras_2";
+    break;
+  case 1913:
+    _name = "Extras_3";
+    break;
+  case 1914:
+    _name = "Extras_4";
+    break;
+  case 1915:
+    _name = "Extras_5";
+    break;
+  case 1916:
+    _name = "Extras_6";
+    break;
+  case 1917:
+    _name = "Extras_7";
+    break;
+  case 1918:
+    _name = "Extras_8";
+    break;
+  case 1919:
+    _name = "Extras_9";
+    break;
+  case 1921:
+    _name = "Drink_Pack_1";
+    break;
+  case 1922:
+    _name = "Drink_Pack_2";
+    break;
+  case 1923:
+    _name = "Drink_Pack_3";
+    break;
+  case 1924:
+    _name = "Drink_Pack_4";
+    break;
+  case 1925:
+    _name = "Drink_Pack_5";
+    break;
+  case 1926:
+    _name = "Drink_Pack_6";
+    break;
+  case 1927:
+    _name = "Drink_Pack_7";
+    break;
+  case 1928:
+    _name = "Drink_Pack_8";
+    break;
+  case 1929:
+    _name = "Drink_Pack_9";
+    break;
+  case 2001:
+    _name = "Stone";
+    break;
+  case 2002:
+    _name = "Wood";
+    break;
+  case 2003:
+    _name = "Salt";
+    break;
+  case 2021:
+    _name = "Iron_Ore";
+    break;
+  case 2022:
+    _name = "Gold_Ore";
+    break;
+  case 2023:
+    _name = "Silver_Ore";
+    break;
+  case 2024:
+    _name = "Copper_Ore";
+    break;
+  case 2025:
+    _name = "Tin_Ore";
+    break;
+  case 2101:
+    _name = "Refined_Stone";
+    break;
+  case 2102:
+    _name = "Refined_Wood";
+    break;
+  case 2121:
+    _name = "Iron";
+    break;
+  case 2122:
+    _name = "Gold";
+    break;
+  case 2123:
+    _name = "Silver";
+    break;
+  case 2124:
+    _name = "Copper";
+    break;
+  case 2125:
+    _name = "Tin";
+    break;
+  case 2180:
+    _name = "Emerald_Bronze";
+    break;
+  case 2181:
+    _name = "Bronze";
+    break;
+  case 2182:
+    _name = "Steel";
+    break;
+  case 2183:
+    _name = "Damascus_Steel";
+    break;
+  case 2200:
+    _name = "Ruby";
+    break;
+  case 2201:
+    _name = "Emerald";
+    break;
+  case 2202:
+    _name = "Sapphire";
+    break;
+  case 2203:
+    _name = "Diamond";
+    break;
+  case 2204:
+    _name = "Amethyst";
+    break;
+  case 2205:
+    _name = "Opal";
+    break;
+  case 2206:
+    _name = "Citrine";
+    break;
+  case 2207:
+    _name = "Pearl";
+    break;
+  case 2208:
+    _name = "Moonstone";
+    break;
+  case 2209:
+    _name = "Amber";
+    break;
+  case 2210:
+    _name = "Onyx";
+    break;
+  case 2211:
+    _name = "Aquamarine";
+    break;
+  case 2212:
+    _name = "Crystal_Glass";
+    break;
+  case 2213:
+    _name = "Bloodstone";
+    break;
+  case 2300:
+    _name = "Polished_Ruby";
+    break;
+  case 2301:
+    _name = "Polished_Emerald";
+    break;
+  case 2302:
+    _name = "Polished_Sapphire";
+    break;
+  case 2303:
+    _name = "Polished_Diamond";
+    break;
+  case 2304:
+    _name = "Polished_Amethyst";
+    break;
+  case 2305:
+    _name = "Polished_Opal";
+    break;
+  case 2306:
+    _name = "Polished_Citrine";
+    break;
+  case 2307:
+    _name = "Polished_Pearl";
+    break;
+  case 2308:
+    _name = "Polished_Moonstone";
+    break;
+  case 2309:
+    _name = "Polished_Amber";
+    break;
+  case 2310:
+    _name = "Polished_Onyx";
+    break;
+  case 2311:
+    _name = "Polished_Aquamarine";
+    break;
+  case 2312:
+    _name = "Polished_Crystal_Glass";
+    break;
+  case 4000:
+    _name = "Nails";
+    break;
+  case 4001:
+    _name = "Diamond_Blade";
+    break;
+  case 4002:
+    _name = "Fabric";
+    break;
+  case 4003:
+    _name = "Down";
+    break;
+  case 4004:
+    _name = "Leather";
+    break;
+  case 4005:
+    _name = "ExoticLeather";
+    break;
+  case 4006:
+    _name = "Fur";
+    break;
+  case 4007:
+    _name = "Exotic_Fur";
+    break;
+  case 4008:
+    _name = "Feather";
+    break;
+  case 4009:
+    _name = "Thick_Leather";
+    break;
+  case 4010:
+    _name = "Antler";
+    break;
+  case 4011:
+    _name = "Ivory";
+    break;
+  case 4012:
+    _name = "Poison";
+    break;
+  case 4013:
+    _name = "Leopard_Skin";
+    break;
+  case 4014:
+    _name = "Aurochs_Hide";
+    break;
+  case 4015:
+    _name = "Black_Leopard_Skin";
+    break;
+  case 4016:
+    _name = "Bear_Hide";
+    break;
+  case 4017:
+    _name = "Polar_Bear_Hide";
+    break;
+  case 4018:
+    _name = "Tiger_Hide";
+    break;
+  case 4019:
+    _name = "Rushseed_Oil";
+    break;
+  case 4100:
+    _name = "Bronze_Plate";
+    break;
+  case 4101:
+    _name = "Iron_Plate";
+    break;
+  case 4102:
+    _name = "Steel_Plate";
+    break;
+  case 4103:
+    _name = "Emerald_Bronze_Plate";
+    break;
+  case 4104:
+    _name = "Damascus_Steel_Plate";
+    break;
+  case 4105:
+    _name = "Bronze_Chainmail";
+    break;
+  case 4106:
+    _name = "Iron_Chainmail";
+    break;
+  case 4107:
+    _name = "Steel_Chainmail";
+    break;
+  case 4108:
+    _name = "Emerald_Bronze_Chainmail";
+    break;
+  case 4109:
+    _name = "Damascus_Steel_Chainmail";
+    break;
+  case 4500:
+    _name = "Fur_Clothes";
+    break;
+  case 4501:
+    _name = "Fabric_Clothes";
+    break;
+  case 4502:
+    _name = "Leather_Clothes";
+    break;
+  case 4503:
+    _name = "Tailored_Fur_Clothes";
+    break;
+  case 4504:
+    _name = "Tailored_Fabric_Clothes";
+    break;
+  case 4505:
+    _name = "Clothes";
+    break;
+  case 4520:
+    _name = "Basic_Furniture";
+    break;
+  case 4521:
+    _name = "Ornate_Furniture";
+    break;
+  case 4522:
+    _name = "Oppulant_Furniture";
+    break;
+  case 4540:
+    _name = "Basic_Tool";
+    break;
+  case 4541:
+    _name = "Artisan_Tool";
+    break;
+  case 4542:
+    _name = "Oppulant_Tool";
+    break;
+  case 4560:
+    _name = "Copper_Jewelery";
+    break;
+  case 4561:
+    _name = "Silver_Jewelery";
+    break;
+  case 4562:
+    _name = "Gold_Jewelery";
+    break;
+  case 4580:
+    _name = "Fur_Bedding";
+    break;
+  case 4581:
+    _name = "Enhanced_Bedding";
+    break;
+  case 4582:
+    _name = "Down_Beeding";
+    break;
+  case 5000:
+    _name = "Bronze_Spear";
+    break;
+  case 5001:
+    _name = "Iron_Spear";
+    break;
+  case 5002:
+    _name = "Steel_Spear";
+    break;
+  case 5003:
+    _name = "Emerald_Bronze_Spear";
+    break;
+  case 5004:
+    _name = "Damascus_Steel_Spear";
+    break;
+  case 5010:
+    _name = "Bronze_Axe";
+    break;
+  case 5011:
+    _name = "Iron_Axe";
+    break;
+  case 5012:
+    _name = "Steel_Axe";
+    break;
+  case 5013:
+    _name = "Emerald_Bronze_Axe";
+    break;
+  case 5014:
+    _name = "Damascus_Steel_Axe";
+    break;
+  case 5020:
+    _name = "Bronze_Sword";
+    break;
+  case 5021:
+    _name = "Iron_Sword";
+    break;
+  case 5022:
+    _name = "Steel_Sword";
+    break;
+  case 5023:
+    _name = "Emerald_Bronze_Sword";
+    break;
+  case 5024:
+    _name = "Damascus_Steel_Sword";
+    break;
+  case 5030:
+    _name = "Bronze_Mace";
+    break;
+  case 5031:
+    _name = "Iron_Mace";
+    break;
+  case 5032:
+    _name = "Steel_Mace";
+    break;
+  case 5033:
+    _name = "Emerald_Bronze_Mace";
+    break;
+  case 5034:
+    _name = "Damascus_Steel_Mace";
+    break;
+  case 5040:
+    _name = "Bronze_Lance";
+    break;
+  case 5041:
+    _name = "Iron_Lance";
+    break;
+  case 5042:
+    _name = "Steel_Lance";
+    break;
+  case 5043:
+    _name = "Emerald_Bronze_Lance";
+    break;
+  case 5044:
+    _name = "Damascus_Steel_Lance";
+    break;
+  case 5050:
+    _name = "Bronze_Poleaxe";
+    break;
+  case 5051:
+    _name = "Iron_Poleaxe";
+    break;
+  case 5052:
+    _name = "Steel_Poleaxe";
+    break;
+  case 5053:
+    _name = "Emerald_Bronze_Poleaxe";
+    break;
+  case 5054:
+    _name = "Damascus_Steel_Poleaxe";
+    break;
+  case 5060:
+    _name = "Bronze_Greatsword";
+    break;
+  case 5061:
+    _name = "Iron_Greatsword";
+    break;
+  case 5062:
+    _name = "Steel_Greatsword";
+    break;
+  case 5063:
+    _name = "Emerald_Bronze_Greatsword";
+    break;
+  case 5064:
+    _name = "Damascus_Steel_Greatsword";
+    break;
+  case 5070:
+    _name = "Bronze_Warhammer";
+    break;
+  case 5071:
+    _name = "Iron_Warhammer";
+    break;
+  case 5072:
+    _name = "Steel_Warhammer";
+    break;
+  case 5073:
+    _name = "Emerald_Bronze_Warhammer";
+    break;
+  case 5074:
+    _name = "Damascus_Steel_Warhammer";
+    break;
+  case 5400:
+    _name = "Farm_Horse";
+    break;
+  case 5401:
+    _name = "Horse";
+    break;
+  case 5402:
+    _name = "Charge_Horse";
+    break;
+  case 5403:
+    _name = "War_Horse";
+    break;
+  case 5500:
+    _name = "Light_Bronze_Mail";
+    break;
+  case 5501:
+    _name = "Light_Iron_Mail";
+    break;
+  case 5502:
+    _name = "Light_Steel_Mail";
+    break;
+  case 5503:
+    _name = "Light_Emerald_Bronze_Mail";
+    break;
+  case 5504:
+    _name = "Light_Damascus_Steel_Mail";
+    break;
+  case 5510:
+    _name = "Light_Bronze_Plate";
+    break;
+  case 5511:
+    _name = "Light_Iron_Plate";
+    break;
+  case 5512:
+    _name = "Light_Steel_Plate";
+    break;
+  case 5513:
+    _name = "Light_Emerald_Bronze_Plate";
+    break;
+  case 5514:
+    _name = "Light_Damascus_Steel_Plate";
+    break;
+  case 5520:
+    _name = "Medium_Bronze_Mail";
+    break;
+  case 5521:
+    _name = "Medium_Iron_Mail";
+    break;
+  case 5522:
+    _name = "Medium_Steel_Mail";
+    break;
+  case 5523:
+    _name = "Medium_Emerald_Bronze_Mail";
+    break;
+  case 5524:
+    _name = "Medium_Damascus_Steel_Mail";
+    break;
+  case 5530:
+    _name = "Medium_Bronze_Plate";
+    break;
+  case 5531:
+    _name = "Medium_Iron_Plate";
+    break;
+  case 5532:
+    _name = "Medium_Steel_Plate";
+    break;
+  case 5533:
+    _name = "Medium_Emerald_Bronze_Plate";
+    break;
+  case 5534:
+    _name = "Medium_Damascus_Steel_Plate";
+    break;
+  case 5540:
+    _name = "Bronze_Heavy_Armor";
+    break;
+  case 5541:
+    _name = "Iron_Heavy_Armor";
+    break;
+  case 5542:
+    _name = "Steel_Heavy_Armor";
+    break;
+  case 5543:
+    _name = "Emerald_Bronze_Heavy_Armor";
+    break;
+  case 5544:
+    _name = "Damascus_Steel_Heavy_Armor";
+    break;
+  case 5550:
+    _name = "Light_Bronze_Horse_Armor";
+    break;
+  case 5551:
+    _name = "Light_Iron_Horse_Armor";
+    break;
+  case 5552:
+    _name = "Light_Steel_Horse_Armor";
+    break;
+  case 5553:
+    _name = "Light_Emerald_Bronze_Horse_Armor";
+    break;
+  case 5554:
+    _name = "Light_Damascus_Steel_Horse_Armor";
+    break;
+  case 5560:
+    _name = "Medium_Bronze_Horse_Armor";
+    break;
+  case 5561:
+    _name = "Medium_Iron_Horse_Armor";
+    break;
+  case 5562:
+    _name = "Medium_Steel_Horse_Armor";
+    break;
+  case 5563:
+    _name = "Medium_Emerald_Bronze_Horse_Armor";
+    break;
+  case 5564:
+    _name = "Medium_Damascus_Steel_Horse_Armor";
+    break;
+  case 5570:
+    _name = "Heavy_Bronze_Horse_Armor";
+    break;
+  case 5571:
+    _name = "Heavy_Iron_Horse_Armor";
+    break;
+  case 5572:
+    _name = "Heavy_Steel_Horse_Armor";
+    break;
+  case 5573:
+    _name = "Heavy_Emerald_Bronze_Horse_Armor";
+    break;
+  case 5574:
+    _name = "Heavy_Damascus_Steel_Horse_Armor";
+    break;
+  case 5580:
+    _name = "Leather_Armor";
+    break;
+  case 5581:
+    _name = "Thick_Leather_Armor";
+    break;
+  case 5582:
+    _name = "Gambeson";
+    break;
+  case 5900:
+    _name = "Wooden_Shield";
+    break;
+  case 5901:
+    _name = "Banded_Shield";
+    break;
+  case 5902:
+    _name = "Standard_Shield";
+    break;
+  case 5903:
+    _name = "Metal_Shield";
+    break;
+  case 5904:
+    _name = "Gong_Shield";
+    break;
+  case 5905:
+    _name = "Heirloom_Shield";
+    break;
+  case 5910:
+    _name = "Wall_Shield";
+    break;
+  case 7000:
+    _name = "Rabbit";
+    break;
+  case 7001:
+    _name = "Deer";
+    break;
+  case 7002:
+    _name = "Turkey";
+    break;
+  case 7003:
+    _name = "Mink";
+    break;
+  case 7004:
+    _name = "Cyote";
+    break;
+  case 7005:
+    _name = "Snake";
+    break;
+  case 7100:
+    _name = "Fox";
+    break;
+  case 7101:
+    _name = "Boar";
+    break;
+  case 7102:
+    _name = "Zebra";
+    break;
+  case 7103:
+    _name = "Reindeer";
+    break;
+  case 7104:
+    _name = "Leopard";
+    break;
+  case 7105:
+    _name = "Crocodie";
+    break;
+  case 7106:
+    _name = "Otter";
+    break;
+  case 7107:
+    _name = "Wolf";
+    break;
+  case 7108:
+    _name = "Seal";
+    break;
+  case 7109:
+    _name = "Ostridge";
+    break;
+  case 7200:
+    _name = "Elk";
+    break;
+  case 7201:
+    _name = "Aurochs";
+    break;
+  case 7202:
+    _name = "Black_Leopard";
+    break;
+  case 7203:
+    _name = "Bear";
+    break;
+  case 7204:
+    _name = "Sea_Mink";
+    break;
+  case 7205:
+    _name = "Whalrus";
+    break;
+  case 7206:
+    _name = "Poison_Snake";
+    break;
+  case 7300:
+    _name = "Elephant";
+    break;
+  case 7301:
+    _name = "Rhino";
+    break;
+  case 7302:
+    _name = "Polar_Bear";
+    break;
+  case 7303:
+    _name = "Tiger";
+    break;
+  case 7304:
+    _name = "Titan_Snake";
+    break;
+  case 7400:
+    _name = "Cow";
+    break;
+  case 7401:
+    _name = "Chicken";
+    break;
+  case 7402:
+    _name = "Sheep";
+    break;
+  case 10001:
+    _name = "T1_Spearman";
+    break;
+  case 10002:
+    _name = "T2_Spearman";
+    break;
+  case 10003:
+    _name = "T3_Spearman";
+    break;
+  case 10004:
+    _name = "T4_Spearman";
+    break;
+  case 10005:
+    _name = "T5_Spearman";
+    break;
+  case 10006:
+    _name = "T6_Spearman";
+    break;
+  case 10007:
+    _name = "T7_Spearman";
+    break;
+  case 10008:
+    _name = "T8_Spearman";
+    break;
+  case 10011:
+    _name = "T1_Swordman";
+    break;
+  case 10012:
+    _name = "T2_Swordman";
+    break;
+  case 10013:
+    _name = "T3_Swordman";
+    break;
+  case 10014:
+    _name = "T4_Swordman";
+    break;
+  case 10015:
+    _name = "T5_Swordman";
+    break;
+  case 10016:
+    _name = "T6_Swordman";
+    break;
+  case 10017:
+    _name = "T7_Swordman";
+    break;
+  case 10018:
+    _name = "T8_Swordman";
+    break;
+  case 10021:
+    _name = "T1_Axeman";
+    break;
+  case 10022:
+    _name = "T2_Axeman";
+    break;
+  case 10023:
+    _name = "T3_Axeman";
+    break;
+  case 10024:
+    _name = "T4_Axeman";
+    break;
+  case 10025:
+    _name = "T5_Axeman";
+    break;
+  case 10026:
+    _name = "T6_Axeman";
+    break;
+  case 10027:
+    _name = "T7_Axeman";
+    break;
+  case 10028:
+    _name = "T8_Axeman";
+    break;
+  case 10201:
+    _name = "T1_Archer";
+    break;
+  case 10202:
+    _name = "T2_Archer";
+    break;
+  case 10203:
+    _name = "T3_Archer";
+    break;
+  case 10204:
+    _name = "T4_Archer";
+    break;
+  case 10205:
+    _name = "T5_Archer";
+    break;
+  case 10206:
+    _name = "T6_Archer";
+    break;
+  case 10207:
+    _name = "T7_Archer";
+    break;
+  case 10208:
+    _name = "T8_Archer";
+    break;
+  case 10211:
+    _name = "T1_Slinger";
+    break;
+  case 10212:
+    _name = "T2_Slinger";
+    break;
+  case 10213:
+    _name = "T3_Slinger";
+    break;
+  case 10214:
+    _name = "T4_Slinger";
+    break;
+  case 10215:
+    _name = "T5_Slinger";
+    break;
+  case 10216:
+    _name = "T6_Slimger";
+    break;
+  case 10217:
+    _name = "T7_Slinger";
+    break;
+  case 10218:
+    _name = "T8_Slinger";
+    break;
+  case 10225:
+    _name = "T5_Flamer";
+    break;
+  case 10226:
+    _name = "T6_Flamer";
+    break;
+  case 10227:
+    _name = "T7_Flamer";
+    break;
+  case 10228:
+    _name = "T8_Flamer";
+    break;
+  case 10231:
+    _name = "T1_Crossbowman";
+    break;
+  case 10232:
+    _name = "T2_Crossbowman";
+    break;
+  case 10233:
+    _name = "T3_Crossbowman";
+    break;
+  case 10234:
+    _name = "T4_Crossbowman";
+    break;
+  case 10235:
+    _name = "T5_Crossbowman";
+    break;
+  case 10236:
+    _name = "T6_Crossbowman";
+    break;
+  case 10237:
+    _name = "T7_Crossbowman";
+    break;
+  case 10238:
+    _name = "T8_Crossbowman";
+    break;
+  case 10301:
+    _name = "T1_Lancer";
+    break;
+  case 10302:
+    _name = "T2_Lancer";
+    break;
+  case 10303:
+    _name = "T3_Lancer";
+    break;
+  case 10304:
+    _name = "T4_Lancer";
+    break;
+  case 10305:
+    _name = "T5_Lancer";
+    break;
+  case 10306:
+    _name = "T6_Lancer";
+    break;
+  case 10307:
+    _name = "T7_Lancer";
+    break;
+  case 10308:
+    _name = "T8_Lancer";
+    break;
+  case 10311:
+    _name = "T1_Mounted_Sword";
+    break;
+  case 10312:
+    _name = "T2_Mounted_Sword";
+    break;
+  case 10313:
+    _name = "T3_Mounted_Sword";
+    break;
+  case 10314:
+    _name = "T4_Mounted_Sword";
+    break;
+  case 10315:
+    _name = "T5_Mounted_Sword";
+    break;
+  case 10316:
+    _name = "T6_Mounted_Sword";
+    break;
+  case 10317:
+    _name = "T7_Mounted_Sword";
+    break;
+  case 10318:
+    _name = "T8_Mounted_Sword";
+    break;
+  case 10321:
+    _name = "T1_Mounted_Axeman";
+    break;
+  case 10322:
+    _name = "T2_Mounted_Axeman";
+    break;
+  case 10323:
+    _name = "T3_Mounted_Axeman";
+    break;
+  case 10324:
+    _name = "T4_Mounted_Axeman";
+    break;
+  case 10325:
+    _name = "T5_Mounted_Axeman";
+    break;
+  case 10326:
+    _name = "T6_Mounted_Axeman";
+    break;
+  case 10327:
+    _name = "T7_Mounted_Axeman";
+    break;
+  case 10328:
+    _name = "T8_Mounted_Axeman";
+    break;
+  case 10505:
+    _name = "T5_Elephant";
+    break;
+  case 10506:
+    _name = "T6_Elephant";
+    break;
+  case 10507:
+    _name = "T7_Elephant";
+    break;
+  case 10508:
+    _name = "T8_Elephant";
+    break;
+  case 10601:
+    _name = "T1_Horse_Archer";
+    break;
+  case 10602:
+    _name = "T2_Horse_Archer";
+    break;
+  case 10603:
+    _name = "T3_Horse_Archer";
+    break;
+  case 10604:
+    _name = "T4_Horse_Archer";
+    break;
+  case 10605:
+    _name = "T5_Horse_Archer";
+    break;
+  case 10606:
+    _name = "T6_Horse_Archer";
+    break;
+  case 10607:
+    _name = "T7_Horse_Archer";
+    break;
+  case 10608:
+    _name = "T8_Horse_Archer";
+    break;
+  case 11000:
+    _name = "Bandits";
+    break;
+  case 11010:
+    _name = "Peasent_Levy";
+    break;
+  case 11011:
+    _name = "Veteran_Peasent_Levy";
+    break;
+  case 11020:
+    _name = "Levy_Spear";
+    break;
+  case 11021:
+    _name = "Veteran_Levy_Spear";
+    break;
+  case 11030:
+    _name = "Mountain_Levy";
+    break;
+  case 11031:
+    _name = "Veteran_Mountain_Levy";
+    break;
+  case 11040:
+    _name = "Mercenary_Swordsman";
+    break;
+  case 11041:
+    _name = "Veteran_Mercenary_Swordsman";
+    break;
+  case 11042:
+    _name = "Palace_Guard";
+    break;
+  case 11050:
+    _name = "Mercenary_Axeman";
+    break;
+  case 11060:
+    _name = "Mercenary_Maceman";
+    break;
+  case 11070:
+    _name = "Pikeman";
+    break;
+  case 11200:
+    _name = "Peasent_Bowman";
+    break;
+  case 11210:
+    _name = "Levy_Archer";
+    break;
+  case 11211:
+    _name = "Veteran_Levy_Archer";
+    break;
+  case 11220:
+    _name = "Huntsman";
+    break;
+  case 11230:
+    _name = "Slinger";
+    break;
+  case 11241:
+    _name = "Imperial_Flamer";
+    break;
+  case 11300:
+    _name = "Free_lance";
+    break;
+  case 11301:
+    _name = "Knight";
+    break;
+  case 11310:
+    _name = "Mounted_Levy";
+    break;
+  case 11310:
+    _name = "Mounted_Palace_Guard";
+    break;
+  case 11600:
+    _name = "Horse_Archer";
+    break;
+  case 11601:
+    _name = "Veteran_Horse_Archer";
+    break;
+  case 11602:
+    _name = "Palace_Archer";
+    break;
+  case 28501:
+    _name = "T1_XP";
+    break;
+  case 28502:
+    _name = "T2_XP";
+    break;
+  case 28503:
+    _name = "T3_XP";
+    break;
+  case 28504:
+    _name = "T4_XP";
+    break;
+  case 28505:
+    _name = "T5_XP";
+    break;
+  case 28506:
+    _name = "T6_XP";
+    break;
+  case 28507:
+    _name = "T7_XP";
+    break;
+  case 28508:
+    _name = "T8_XP";
+    break;
+  case 28800:
+    _name = "Coins";
+    break;
 
+}
+return (_name);
+}
 
 function returnRecipe(_value) {
     _value = "recipe" + _value;
