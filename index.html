@@ -945,10 +945,12 @@
         document.getElementById("actionSelect").value == "3") { }
       //Why is this here? Because I cant figure out how to make it work right in the if statement and its not worth the time to fix when this works
       else {
+        if(document.getElementById("CID"). value != 22) {
         var _time_multi = await _buildTimeBasedOnFood(_itemValue(Number(document.getElementById("FoodInputID").value)));
         console.log("time multiplier", _time_multi);
 
-        setTTC((Number(document.getElementById("Amount").value) * time * 200 / _time_multi));
+        setTTC((Number(document.getElementById("Amount").value) * time * 200 / _time_multi));}
+        else {setTTC(Number(document.getElementById("Amount").value) * time);}
       }
 
     }
@@ -1294,6 +1296,10 @@
             document.getElementById("CID").value == "30")
             showLandMenu();
 
+      }
+      if(document.getElementById("CID").value == 22)
+      {
+        document.getElementById("FoodAmounts").style.display = "none";
       }
     }
   </script>
@@ -1668,7 +1674,7 @@
       <option class="buildingSelector" value="21">Tier 2 Blacksmith</option>
 
       <option class="buildingSelector" value="22">Aging Facilitity</option>
-      
+
       <option class="buildingSelector" value="23"></option>
       <option class="buildingSelector" value="24"></option>
       <option class="buildingSelector" value="25"></option>
@@ -2166,7 +2172,7 @@
 
   </ItemTypes>
 
-  <FoodAmounts class="">
+  <FoodAmounts class="" id="FoodAmounts">
 
     <br>
     <text class="foodInput" id="foodInputLabel">What would you like to feed the workers?</text>
