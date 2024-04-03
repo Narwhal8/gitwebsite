@@ -858,7 +858,7 @@
       let whyJS = returnRecipe(Number(document.getElementById("RecipeID").value));
       console.log(whyJS);
       var _item_building = whyJS[6];
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < 32; i++) {
         if (i != _item_building[0] && i != _item_building[1] && i != _item_building[2] && i != _item_building[3]) { document.getElementsByClassName("buildingSelector")[i].style.display = "none"; }
         else { document.getElementsByClassName("buildingSelector")[i].style.display = "initial"; }
 
@@ -1661,13 +1661,15 @@
       <option class="buildingSelector" value="17">Tier 2 Smeltery</option>
       <option class="buildingSelector" value="18">Tier 3 Smeltery</option>
 
-      <option class="buildingSelector" value="19">Builder</option>
+      <option class="buildingSelector" value="19">Mason</option>
 
       <option class="buildingSelector" value="20">Tier 1 Blacksmith</option>
       <option class="buildingSelector" value="21">Tier 2 Blacksmith</option>
 
       <option class="buildingSelector" value="22">Aging Facilitity</option>
       <option class="buildingSelector" value="23"></option>
+      <option class="buildingSelector" value="24"></option>
+      <option class="buildingSelector" value="25"></option>
 
       <option class="buildingSelector" value="26">Tier 1 Jeweler</option>
       <option class="buildingSelector" value="27">Tier 2 Jeweler</option>
