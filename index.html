@@ -144,31 +144,26 @@
           )
           break;
         case "6":
-          NFTcontractSigner.sendToWar(WID1.value, WID2.value, WID3.value, WID4.value,
-            WID5.value, WID6.value,
-            document.getElementById("Amount").value)
-          break;
-        case "7":
           NFTcontractSigner.allocateLand(
             document.querySelectorAll(".Lands")[_kingdomType - 1].value,
             document.getElementById("Amount").value)
           break;
-        case "8":
+        case "7":
           NFTcontractSigner.payTithe(
             document.getElementById("CivGM").value,
             document.getElementById("Amount").value)
           break;
-        case "9":
+        case "8":
           NFTcontractSigner.setKingdomType(KingdomID.value)
           break;
 
-        case "10":
+        case "9":
           NFTcontractSigner.recruitNewPeople(RecruitID.value, Amount.value)
           break;
-        case "11":
+        case "10":
           NFTcontractSigner.collect(document.getElementById("CID").value)
           break;
-        case "12":
+        case "11":
           var num = document.getElementById("ItemMenuID").value;
           const balance1 = await NFTcontractSigner.balanceOf(myAddress, num)
           console.log(balance)
@@ -176,7 +171,7 @@
           document.getElementById("balance").textContent += balance1;
           document.getElementById("balance").style.display = "block";
           break;
-        case "13":
+        case "12":
 
           let _population = _cityData[0];
           let _jobless_population = _cityData[1];
@@ -336,7 +331,7 @@
           }
           break;
 
-        case "14":
+        case "13":
           NFTcontractSigner.safeTransferFrom(myAddress,
             document.getElementById("Address").value,
             document.getElementById("ItemMenuID").value,
@@ -749,46 +744,43 @@
           showLandMenu();
           break;
         case "6":
-          showWarInput();
-          break;
-        case "7":
           document.getElementById("landLabel").style.display = "inline";
           document.getElementById("landSelection").style.display = "block";
           showLandMenu();
           break;
 
-        case "8":
+        case "7":
 
           document.getElementsByClassName("CivG")[0].style.display = "block";
           document.getElementsByClassName("CivG")[1].style.display = "block";
 
 
           break;
-        case "9":
+        case "8":
 
           document.getElementById("KIDInfo").style.display = "block";
           document.getElementById("KingdomID").style.display = "block";
           hideAmount();
           break;
-        case "10":
+        case "9":
           document.getElementById("RecruitInput").style.display = "block";
           document.getElementById("RecruitID").style.display = "inline";
           break;
-        case "11":
+        case "10":
           document.getElementById("CDInput").style.display = "block";
           document.getElementById("CDLabel").style.display = "inline";
           document.getElementById("CID").style.display = "inline";
           hideAmount();
           break;
-        case "12":
+        case "11":
           document.getElementsByClassName("ItemMenu")[0].style.display = "block";
           document.getElementsByClassName("ItemMenu")[1].style.display = "block";
           hideAmount();
           break;
-        case "13":
+        case "12":
           hideAmount();
           break;
-        case "14":
+        case "13":
           document.getElementsByClassName("ItemMenu")[0].style.display = "block";
           document.getElementsByClassName("ItemMenu")[1].style.display = "block";
           document.getElementById("Amount").style.display = "block";
@@ -1339,14 +1331,14 @@
     <option value="3">Shop</option>
     <option value="4">Build</option>
     <option value="5">Claim Farming Rewards</option>
-    <option value="7">Add Land To Kingdom</option>
-    <option value="8">Give Civilians Goods</option>
-    <option value="9">Set Kingdom Type</option>
-    <option value="10">Recruit Pops</option>
-    <option value="11">Claim Crafting Items</option>
-    <option value="12">Check Balance</option>
-    <option value="13">City Info</option>
-    <option value="14">Transfer</option>
+    <option value="6">Add Land To Kingdom</option>
+    <option value="7">Give Civilians Goods</option>
+    <option value="8">Set Kingdom Type</option>
+    <option value="9">Recruit Pops</option>
+    <option value="10">Claim Crafting Items</option>
+    <option value="11">Check Balance</option>
+    <option value="12">City Info</option>
+    <option value="13">Transfer</option>
 
 
   </select>
@@ -1357,6 +1349,8 @@
     <select class="Farming Dropdown" id="cropSelect" onchange="selectLand(this.value);">
       <option value="_"></option>
       <option value="1">Natural Reasources</option>
+      <option value="2">Low Noble Hunt</option>
+      <option value="2">High Noble Hunt</option>
       <option value="_"></option>
       <option value="0">--Plants</option>
       <option value="_"></option>
@@ -2144,9 +2138,54 @@
       <option value="0">--Drinks</option>
       <option value="-1"></option>
       <option value="4000">Nails</option>
-      <option value="4001">Diamond Blades</option>
-      <option value="4079">Magnificent Lens Component</option>
-      <option value="4080">MagnificentcLens</option>
+      <option value="4001">Diamond_Blade</option>
+      <option value="4002">Fabric</option>
+      <option value="4003">Down</option>
+      <option value="4004">Leather</option>
+      <option value="4005">ExoticLeather</option>
+      <option value="4006">Fur</option>
+      <option value="4007">Exotic_Fur</option>
+      <option value="4008">Feather</option>
+      <option value="4009">Thick_Leather</option>
+      <option value="4010">Antler</option>
+      <option value="4011">Ivory</option>
+      <option value="4012">Poison</option>
+      <option value="4013">Leopard_Skin</option>
+      <option value="4014">Aurochs_Hide</option>
+      <option value="4015">Black_Leopard_Skin</option>
+      <option value="4016">Bear_Hide</option>
+      <option value="4017">Polar_Bear_Hide</option>
+      <option value="4018">Tiger_Hide</option>
+      <option value="4019">Rushseed_Oil</option>
+      <option value="4100">Bronze_Plate</option>
+      <option value="4101">Iron_Plate</option>
+      <option value="4102">Steel_Plate</option>
+      <option value="4103">Emerald_Bronze_Plate</option>
+      <option value="4104">Damascus_Steel_Plate</option>
+      <option value="4105">Bronze_Chainmail</option>
+      <option value="4106">Iron_Chainmail</option>
+      <option value="4107">Steel_Chainmail</option>
+      <option value="4108">Emerald_Bronze_Chainmail</option>
+      <option value="4109">Damascus_Steel_Chainmail</option>
+      <option value="4500">Fur_Clothes</option>
+      <option value="4501">Fabric_Clothes</option>
+      <option value="4502">Leather_Clothes</option>
+      <option value="4503">Tailored_Fur_Clothes</option>
+      <option value="4504">Tailored_Fabric_Clothes</option>
+      <option value="4505">Clothes</option>
+      <option value="4520">Basic_Furniture</option>
+      <option value="4521">Ornate_Furniture</option>
+      <option value="4522">Oppulant_Furniture</option>
+      <option value="4540">Basic_Tool</option>
+      <option value="4541">Artisan_Tool</option>
+      <option value="4542">Oppulant_Tool</option>
+      <option value="4560">Copper_Jewelery</option>
+      <option value="4561">Silver_Jewelery</option>
+      <option value="4562">Gold_Jewelery</option>
+      <option value="4580">Fur_Bedding</option>
+      <option value="4581">Enhanced_Bedding</option>
+      <option value="4582">Down_Beeding</option>
+
       <option value="28800">Coins</option>
 
 
@@ -2265,11 +2304,11 @@
     <label id="CivGInfo">What Item Would you like to contribute</label>
     <select class="Dropdown CivG" id="CivGM">
       <option value="-1"></option>
-      <option value="1">Clothes</option>
-      <option value="2">Tools</option>
-      <option value="3">Furniture</option>
-      <option value="4">Bedding</option>
-      <option value="5">Jewelery</option>
+      <option value="0">Clothes</option>
+      <option value="1">Tools</option>
+      <option value="2">Furniture</option>
+      <option value="3">Bedding</option>
+      <option value="4">Jewelery</option>
     </select>
 
 
