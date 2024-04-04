@@ -88,10 +88,10 @@
           NFTcontractSigner.plant(
 
             document.querySelectorAll(".Lands")[_kingdomType - 1].value,
-            document.getElementById("LandAmount").value,
+            document.getElementById("Amount").value,
             document.getElementById("cropSelect").value,
             _fooditems,
-            document.getElementById("Amount").value)
+            document.getElementById("TimeAmount").value)
           break;
 
         case "2":
@@ -705,14 +705,18 @@
       switch (_value) {
 
         case "1":
+
+          hideAmount();
+
+          document.getElementsByClassName("Amount")[0].style.display = "block";
+
           document.getElementById("FarmLabel").style.display = "block";
           document.getElementById("cropSelect").style.display = "block";
           document.getElementById("Farming").style.display = "block";
 
-          document.getElementById("Amount").style.display = "none";
           document.getElementById("TimeAmountLabel").style.display = "block";
+          document.getElementById("TimeAmount").style.display = "block";
 
-          document.getElementById("LandAmount").style.display = "block";
           document.getElementById("LandAmountLabel").style.display = "block";
           break;
         case "2":
@@ -1068,11 +1072,11 @@
         document.getElementsByClassName("itemSelection")[i].style.display = "none"
       }
 
-      document.getElementById("LandAmount").style.display = "none";
       document.getElementById("LandAmountLabel").style.display = "none";
       document.getElementById("Amount").style.display = "none";
       document.getElementById("AmountLabel").style.display = "none";
       document.getElementById("TimeAmountLabel").style.display = "none";
+      document.getElementById("TimeAmount").style.display = "none";
       document.getElementById("BatchAmount").style.display = "none";
       document.getElementById("BatchAmountLabel").style.display = "none";
 
@@ -1138,9 +1142,9 @@
 
     function hideAmount() {
 
-      document.getElementsByClassName("Amount")[0].style.display = "none";
-      document.getElementsByClassName("Amount")[1].style.display = "none";
-      document.getElementsByClassName("Amount")[2].style.display = "none";
+      document.getElementById("Amount").style.display = "none";
+      document.getElementById("AmountID").style.display = "none";
+      document.getElementById("AmountLabel").style.display = "none";
     }
 
     function showWarInput() {
@@ -1179,7 +1183,6 @@
       showLandMenu();
       document.getElementsByClassName("foodInput")[0].style.display = "block";
       document.getElementsByClassName("foodInput")[1].style.display = "inline-block";
-      document.getElementsByClassName("foodInput")[2].style.display = "inline";
     }
 
     function hideBuildingInfo() {
@@ -2348,12 +2351,13 @@
     <text class="" id="BatchAmountLabel">How many batches would you like to make?</text>
     <input class=" NumericInput" type="number" id="BatchAmount" onchange="totalCostCalc();"></input>
     <text class="Amount" id="AmountLabel">How many times would you like to do this?</text>
+    <text class="Amount" id="LandAmountLabel">How many land would you like to use?</text>
     <input class="Amount NumericInput" type="number" id="Amount" onchange="totalCostCalc();"></input>
     <text class="Amount" id="TimeAmountLabel" onchange="totalCostCalc();">How many units of time would you like to run
       this for?</text>
 
-    <text class="Amount" id="LandAmountLabel">How many land would you like to use?</text>
-    <input type="text" class="Amount NumericInput" id="LandAmount">
+    <input class=" NumericInput" type="number" id="TimeAmount" onchange="totalCostCalc();"></input>
+
 
 
 
