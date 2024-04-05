@@ -103,13 +103,13 @@
           var item_output = whyJS[3];
           var time = whyJS[5];
           console.log(item_amount);
-          if (item_amount[0] < 0) {
-            item_amount[0] = document.querySelectorAll(".Items")[Items - 1].value
+          if (items[0] < 0) {
+            items[0] = document.querySelectorAll(".Items")[(-1 * items[0])].value
           }
           NFTcontractSigner.cook(
             document.getElementById("RecipeID").value,
             document.getElementById("Amount").value,
-            item_amount,
+            items,
             document.getElementById("CID").value,
             document.getElementById("FoodInputID").value
           )
@@ -120,7 +120,7 @@
           let array2 = returnRecipe(Trade)
           console.log(array2);
           if (array2[0] < 0) {
-            array2[0] = document.querySelectorAll(".Items")[Items - 1].value
+            array2[0] = document.querySelectorAll(".Items")[(-1 * array2[0])].value
           }
           NFTcontractSigner.cook(
             Trade,
