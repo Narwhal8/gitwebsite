@@ -3,7 +3,9 @@
 <head>
     <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
     <script src="./warabi.js" type="application/javascript"></script>
-    <script src="./itemlist.js" type="application/javascript"></script>
+    <script src="./abi.js" type="application/javascript"></script>
+    <script src="./itemvalue.js" type="application/javascript"></script>
+    <script src="./excelIntegration.js" type="application/javascript"></script>
 
     <script>
         const waraddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
@@ -26,6 +28,10 @@
                     break;
                 case "4":
                     document.getElementById("TroopRemoval").style.display = "block";
+                    break;
+                case "5":
+                    document.getElementById("QuestSelector").style.display = "inline";
+                    document.getElementById("QuestSelectorText").style.display = "block";
                     break;
             }
 
@@ -117,8 +123,44 @@
             }
 
             console.log("web submit script TX completed");
-    }
-    
+        }
+        function questText(_value) {
+
+            document.getElementById("QuestDescriptionText").style.display = "block";
+
+            switch (_value) {
+                case "1":
+                    document.getElementById("QuestDescriptionText").textContent = "Enemies: 20 Bandits";
+                    break;
+                case "2":
+                    document.getElementById("QuestDescriptionText").textContent = "Enemies: 50 Peasent Levies";
+                    break;
+                case "3":
+                    document.getElementById("QuestDescriptionText").textContent = "Enemies: 50 Peasent Levies, 50 Veteran Peasent Levies, 50 Peasent Bowman";
+                    break;
+                case "4":
+                    document.getElementById("QuestDescriptionText").textContent = "Enemies: 100 Levy Spearmen, 100 Peasent Levies, 25 Veteran Mountain Levies";
+                    break;
+                case "5":
+                    document.getElementById("QuestDescriptionText").textContent = "Enemies: 100 Levy Spearmen, 100 Mercenary Swordsmen, 100 Levy Archers, 50 Mounted Levies";
+                    break;
+                case "6":
+                    document.getElementById("QuestDescriptionText").textContent = "Enemies: 200 Veteran Levy Spearmen, 400 Levy Axemen, 50 Free Lancees, 200 Levy Archers, 50 Horse Archers, 100 Veteran Levy Axemen";
+                    break;
+                case "7":
+                    document.getElementById("QuestDescriptionText").textContent = "Enemies: 400 Mercenary Macemen, 500 Pikemen, 200 Veteran Mercenary Swordsmen, 300 Huntsmen, 50 Knights";
+                    break;
+                case "8":
+                    document.getElementById("QuestDescriptionText").textContent = "Enemies: 1000 Veteran Mercenary Axemen, 1000 Veteran Mercenary Swordsmen, 2000 Pikemen, 500 Veteran Horse Archers, 1000 Horse Archers, 300 Mounted Palace Guards";
+                    break;
+                case "9":
+                    document.getElementById("QuestDescriptionText").textContent = "WIP";
+                    break;
+                case "10":
+                    document.getElementById("QuestDescriptionText").textContent = "Enemies: 6000 Palace Guards, 2500 Mounted Palace Guards, 2000 Palace Horse Archers, 2000 Golden Slingers, 500 Imperial Flamers, 500 War Elephants";
+                    break;
+            }
+        }
         function hideAll() {
             document.getElementById("TroopAdder").style.display = "none";
             document.getElementById("MercAdder").style.display = "none";
@@ -156,7 +198,7 @@
             <br>
             <select class="Dropdown" id="Trooplist">
                 What Troop would you like to add?
-                <option value="0"></option>
+                <option value="-1"></option>
                 <option value="10001">T1_Spearman</option>
                 <option value="10002">T2_Spearman</option>
                 <option value="10003">T3_Spearman</option>
@@ -291,8 +333,28 @@
             <input type="number" class="NumericInput">Which Quest would you like to do?</input>
         </Questing>
         <SoliderPromotion>
-            
+
         </SoliderPromotion>
+        <QuestMenu>
+            <text class="InvisableOnStart" id="QuestSelectorText">Which Quest Would you like to do?</text>
+            <select class="Dropdown InvisableOnStart" id="QuestSelector" onchange="questText(this.value)">
+                <option value="-1"></option>
+                <option value="1">Quest 1</option>
+                <option value="2">Quest 2</option>
+                <option value="3">Quest 3</option>
+                <option value="4">Quest 4</option>
+                <option value="5">Quest 5</option>
+                <option value="6">Quest 6</option>
+                <option value="7">Quest 7</option>
+                <option value="8">Quest 8</option>
+                <option value="9">Quest 9</option>
+                <option value="10">Quest 10</option>
+
+
+            </select>
+            <text class="InvisableOnStart WidthLimited" id="QuestDescriptionText"></text>
+
+        </QuestMenu>
     </MainSelector>
 
 
@@ -314,6 +376,10 @@
 
     .InvisableOnStart {
         display: none;
+    }
+
+    .WidthLimited {
+        width: 50%;
     }
 
     .indexButton {
