@@ -18,106 +18,115 @@
             NFTcontract = new ethers.Contract(waraddress, abi, provider)
             myAddress = await signer.getAddress()
 
-            hideAll();
+            //This is wonky, Ideally would run hideAll() first but it stops army stats from appearing. 
+            //This works and I'd rather not waste time on it before I'm happy with everything else
             switch (_value) {
                 case "2":
+                    hideAll();
                     document.getElementById("TroopAdder").style.display = "block";
                     break;
                 case "3":
+                    hideAll();
                     document.getElementById("MercAdder").style.display = "block";
                     break;
                 case "4":
+                    hideAll();
                     document.getElementById("TroopRemoval").style.display = "block";
                     break;
                 case "5":
+                    hideAll();
                     document.getElementById("QuestSelector").style.display = "inline";
                     document.getElementById("QuestSelectorText").style.display = "block";
+                    break;
+                case "6":
+                    hideAll();
+                    document.getElementById("TroopList").style.display = "block";
                     break;
             }
 
             console.log("test");
         }
-        async function submitTX(_value) {
+        async function submitTX() {
             const provider = new ethers.providers.Web3Provider(window.ethereum)
-
+            const _value = document.getElementById("actionSelector").value;
 
             const signer = provider.getSigner()
-            NFTcontract = new ethers.Contract(waraddress, abi, provider)
-            myAddress = await signer.getAddress()
+            const NFTcontract = new ethers.Contract(waraddress, warabi, provider)
+            const myAddress = await signer.getAddress()
 
-            var _armyData = await NFTcontract.currentArmy(myAddress);
+            const _armyData = await NFTcontract.currentArmy(myAddress);
+            console.log(_value)
 
-            _value = "1";
             switch (_value) {
                 case "1":
                     document.getElementById("TroopCount").style.display = "block";
 
-                    if (document.getElementById("Frontline1").textContent != "Frontline 1:") { document.getElementById("Frontline1").textContent = "Frontline 1:" }
-                    document.getElementById("Frontline1").textContent += "Unit Type: ";
+                    document.getElementById("Frontline1").textContent = "Frontline 1:";
+                    document.getElementById("Frontline1").textContent += " Unit Type: ";
                     document.getElementById("Frontline1").textContent += itemName(_armyData[3][0]);
-                    document.getElementById("Frontline1").textContent += "Amount: ";
+                    document.getElementById("Frontline1").textContent += " Amount: ";
                     document.getElementById("Frontline1").textContent += _armyData[2][0];
 
-                    document.getElementById("Frontline1").textContent += "Unit Type: ";
+                    document.getElementById("Frontline1").textContent += " Unit Type: ";
                     document.getElementById("Frontline1").textContent += itemName(_armyData[3][5]);
-                    document.getElementById("Frontline1").textContent += "Amount: ";
+                    document.getElementById("Frontline1").textContent += " Amount: ";
                     document.getElementById("Frontline1").textContent += _armyData[2][1];
 
-                    document.getElementById("Frontline1").textContent += "Unit Type: ";
+                    document.getElementById("Frontline1").textContent += " Unit Type: ";
                     document.getElementById("Frontline1").textContent += itemName(_armyData[3][10]);
-                    document.getElementById("Frontline1").textContent += "Amount: ";
+                    document.getElementById("Frontline1").textContent += " Amount: ";
                     document.getElementById("Frontline1").textContent += _armyData[2][2];
 
 
 
-                    if (document.getElementById("Frontline2").textContent != "Frontline 2:") { document.getElementById("Frontline2").textContent = "Frontline 2:" }
-                    document.getElementById("Frontline2").textContent += "Unit Type: ";
+                    document.getElementById("Frontline2").textContent = "Frontline 2:";
+                    document.getElementById("Frontline2").textContent += " Unit Type: ";
                     document.getElementById("Frontline2").textContent += itemName(_armyData[3][15]);
-                    document.getElementById("Frontline2").textContent += "Amount: ";
+                    document.getElementById("Frontline2").textContent += " Amount: ";
                     document.getElementById("Frontline2").textContent += _armyData[2][3];
 
-                    document.getElementById("Frontline2").textContent += "Unit Type: ";
+                    document.getElementById("Frontline2").textContent += " Unit Type: ";
                     document.getElementById("Frontline2").textContent += itemName(_armyData[3][20]);
-                    document.getElementById("Frontline2").textContent += "Amount: ";
+                    document.getElementById("Frontline2").textContent += " Amount: ";
                     document.getElementById("Frontline2").textContent += _armyData[2][4];
 
-                    document.getElementById("Frontline2").textContent += "Unit Type: ";
+                    document.getElementById("Frontline2").textContent += " Unit Type: ";
                     document.getElementById("Frontline2").textContent += itemName(_armyData[3][25]);
-                    document.getElementById("Frontline2").textContent += "Amount: ";
+                    document.getElementById("Frontline2").textContent += " Amount: ";
                     document.getElementById("Frontline2").textContent += _armyData[2][5];
 
 
-                    if (document.getElementById("Ranged").textContent != "Ranged:") { document.getElementById("Ranged").textContent = "Ranged:" }
-                    document.getElementById("Ranged").textContent += "Unit Type: ";
+                    document.getElementById("Ranged").textContent = "Ranged:";
+                    document.getElementById("Ranged").textContent += " Unit Type: ";
                     document.getElementById("Ranged").textContent += itemName(_armyData[3][30]);
-                    document.getElementById("Ranged").textContent += "Amount: ";
+                    document.getElementById("Ranged").textContent += " Amount: ";
                     document.getElementById("Ranged").textContent += _armyData[2][6];
 
-                    document.getElementById("Ranged").textContent += "Unit Type: ";
+                    document.getElementById("Ranged").textContent += " Unit Type: ";
                     document.getElementById("Ranged").textContent += itemName(_armyData[3][35]);
-                    document.getElementById("Ranged").textContent += "Amount: ";
+                    document.getElementById("Ranged").textContent += " Amount: ";
                     document.getElementById("Ranged").textContent += _armyData[2][7];
 
-                    document.getElementById("Ranged").textContent += "Unit Type: ";
+                    document.getElementById("Ranged").textContent += " Unit Type: ";
                     document.getElementById("Ranged").textContent += itemName(_armyData[3][40]);
-                    document.getElementById("Ranged").textContent += "Amount: ";
+                    document.getElementById("Ranged").textContent += " Amount: ";
                     document.getElementById("Ranged").textContent += _armyData[2][8];
 
 
-                    if (document.getElementById("Skirmishers").textContent != "Skirmishers:") { document.getElementById("Skirmishers").textContent = "Skirmishers:" }
-                    document.getElementById("Skirmishers").textContent += "Unit Type: ";
+                    document.getElementById("Skirmishers").textContent = "Skirmishers:";
+                    document.getElementById("Skirmishers").textContent += " Unit Type: ";
                     document.getElementById("Skirmishers").textContent += itemName(_armyData[3][45]);
-                    document.getElementById("Skirmishers").textContent += "Amount: ";
+                    document.getElementById("Skirmishers").textContent += " Amount: ";
                     document.getElementById("Skirmishers").textContent += _armyData[2][9];
 
-                    document.getElementById("Skirmishers").textContent += "Unit Type: ";
+                    document.getElementById("Skirmishers").textContent += " Unit Type: ";
                     document.getElementById("Skirmishers").textContent += itemName(_armyData[3][50]);
-                    document.getElementById("Skirmishers").textContent += "Amount: ";
+                    document.getElementById("Skirmishers").textContent += " Amount: ";
                     document.getElementById("Skirmishers").textContent += _armyData[2][10];
 
-                    document.getElementById("Skirmishers").textContent += "Unit Type: ";
+                    document.getElementById("Skirmishers").textContent += " Unit Type: ";
                     document.getElementById("Skirmishers").textContent += itemName(_armyData[3][55]);
-                    document.getElementById("Skirmishers").textContent += "Amount: ";
+                    document.getElementById("Skirmishers").textContent += " Amount: ";
                     document.getElementById("Skirmishers").textContent += _armyData[2][11];
                     break;
             }
@@ -165,6 +174,13 @@
             document.getElementById("TroopAdder").style.display = "none";
             document.getElementById("MercAdder").style.display = "none";
             document.getElementById("TroopRemoval").style.display = "none";
+            document.getElementById("QuestSelectorText").style.display = "none";
+            document.getElementById("QuestSelector").style.display = "none";
+            document.getElementById("QuestDescriptionText").style.display = "none";
+            document.getElementById("Frontline1").style.display = "none";
+            document.getElementById("Frontline2").style.display = "none";
+            document.getElementById("Ranged").style.display = "none";
+            document.getElementById("Skirmishers").style.display = "none";
         }
     </script>
 </head>
@@ -173,8 +189,8 @@
 
     <MainSelector>
         <text>What would you like to do?</text>
-        <select class="Dropdown" id="actionSelector" onclick="selectAction(this.value)">
-            <option value="0"></option>
+        <select class="Dropdown" id="actionSelector" onchange="selectAction(this.value)">
+            <option value="-1"></option>
             <option value="1">Check Your Army</option>
             <option value="2">Add Soliders To Army</option>
             <option value="3">Add Mercenaries To Army</option>
@@ -196,8 +212,75 @@
         <AddTroops id="TroopAdder" class="InvisableOnStart">
             <input class="NumericInput">Which Slot would you like this troop to go into?</input>
             <br>
+            What Troop would you like to add?
+
+        </AddTroops>
+        <AddMercs id="MercAdder" class="InvisableOnStart">
+            <input class="NumericInput">Which Slot would you like this troop to go into?</input>
+            <br>
             <select class="Dropdown" id="Trooplist">
-                What Troop would you like to add?
+                <option value="0"></option>
+                <option value="11000">Bandits</option>
+                <option value="11010">Peasent_Levy</option>
+                <option value="11011">Veteran_Peasent_Levy</option>
+                <option value="11020">Levy_Spear</option>
+                <option value="11021">Veteran_Levy_Spear</option>
+                <option value="11030">Mountain_Levy</option>
+                <option value="11031">Veteran_Mountain_Levy</option>
+                <option value="11040">Mercenary Swordsman</option>
+                <option value="11041">Veteran_Mercenary_Swordsman</option>
+                <option value="11042">Palace Guard</option>
+                <option value="11050">Mercenary Axeman</option>
+                <option value="11060">Mercenary Maceman</option>
+                <option value="11070">Pikeman</option>
+                <option value="11200">Peasent_Bowman</option>
+                <option value="11210">Levy Archer</option>
+                <option value="11211">Veteran_Levy_Archer</option>
+                <option value="11220">Huntsman</option>
+                <option value="11230">Slinger</option>
+                <option value="11241">Imperial Flamer</option>
+                <option value="11300">Free lance</option>
+                <option value="11301">Knight</option>
+                <option value="11310">Mounted Levy</option>
+                <option value="11310">Mounted Palace Guard</option>
+                <option value="11600">Horse_Archer</option>
+                <option value="11601">Veteran_Horse_Archer</option>
+                <option value="11602">Palace_Archer</option>
+            </select>
+            What Mercenaries would you like to add?
+        </AddMercs>
+        <RemoveTroops id="TroopRemoval" class="InvisableOnStart">
+            <br>
+            <input type="number" class="NumericInput">Which Slot would you like to remove troops from?</input>
+        </RemoveTroops>
+        <Questing id="QuestMenu" class="InvisableOnStart">
+            <input type="number" class="NumericInput">Which Quest would you like to do?</input>
+        </Questing>
+        <SoliderPromotion id="SoliderPromotion" class="InvisableOnStart">
+
+        </SoliderPromotion>
+        <QuestMenu>
+            <text class="InvisableOnStart" id="QuestSelectorText">Which Quest Would you like to do?</text>
+            <select class="Dropdown InvisableOnStart" id="QuestSelector" onchange="questText(this.value)">
+                <option value="-1"></option>
+                <option value="1">Quest 1</option>
+                <option value="2">Quest 2</option>
+                <option value="3">Quest 3</option>
+                <option value="4">Quest 4</option>
+                <option value="5">Quest 5</option>
+                <option value="6">Quest 6</option>
+                <option value="7">Quest 7</option>
+                <option value="8">Quest 8</option>
+                <option value="9">Quest 9</option>
+                <option value="10">Quest 10</option>
+
+
+            </select>
+            <text class="InvisableOnStart WidthLimited" id="QuestDescriptionText"></text>
+
+        </QuestMenu>
+        <TroopList class="InvisableOnStart" id="TroopList">
+            <select class="Dropdown">
                 <option value="-1"></option>
                 <option value="10001">T1_Spearman</option>
                 <option value="10002">T2_Spearman</option>
@@ -288,73 +371,7 @@
                 <option value="10607">T7_Horse_Archer</option>
                 <option value="10608">T8_Horse_Archer</option>
             </select>
-            What Troop would you like to add?
-
-        </AddTroops>
-        <AddMercs id="MercAdder" class="InvisableOnStart">
-            <input class="NumericInput">Which Slot would you like this troop to go into?</input>
-            <br>
-            <select class="Dropdown" id="Trooplist">
-                <option value="0"></option>
-                <option value="11000">Bandits</option>
-                <option value="11010">Peasent_Levy</option>
-                <option value="11011">Veteran_Peasent_Levy</option>
-                <option value="11020">Levy_Spear</option>
-                <option value="11021">Veteran_Levy_Spear</option>
-                <option value="11030">Mountain_Levy</option>
-                <option value="11031">Veteran_Mountain_Levy</option>
-                <option value="11040">Mercenary Swordsman</option>
-                <option value="11041">Veteran_Mercenary_Swordsman</option>
-                <option value="11042">Palace Guard</option>
-                <option value="11050">Mercenary Axeman</option>
-                <option value="11060">Mercenary Maceman</option>
-                <option value="11070">Pikeman</option>
-                <option value="11200">Peasent_Bowman</option>
-                <option value="11210">Levy Archer</option>
-                <option value="11211">Veteran_Levy_Archer</option>
-                <option value="11220">Huntsman</option>
-                <option value="11230">Slinger</option>
-                <option value="11241">Imperial Flamer</option>
-                <option value="11300">Free lance</option>
-                <option value="11301">Knight</option>
-                <option value="11310">Mounted Levy</option>
-                <option value="11310">Mounted Palace Guard</option>
-                <option value="11600">Horse_Archer</option>
-                <option value="11601">Veteran_Horse_Archer</option>
-                <option value="11602">Palace_Archer</option>
-            </select>
-            What Mercenaries would you like to add?
-        </AddMercs>
-        <RemoveTroops id="TroopRemoval" class="InvisableOnStart">
-            <br>
-            <input type="number" class="NumericInput">Which Slot would you like to remove troops from?</input>
-        </RemoveTroops>
-        <Questing id="QuestMenu" class="InvisableOnStart">
-            <input type="number" class="NumericInput">Which Quest would you like to do?</input>
-        </Questing>
-        <SoliderPromotion>
-
-        </SoliderPromotion>
-        <QuestMenu>
-            <text class="InvisableOnStart" id="QuestSelectorText">Which Quest Would you like to do?</text>
-            <select class="Dropdown InvisableOnStart" id="QuestSelector" onchange="questText(this.value)">
-                <option value="-1"></option>
-                <option value="1">Quest 1</option>
-                <option value="2">Quest 2</option>
-                <option value="3">Quest 3</option>
-                <option value="4">Quest 4</option>
-                <option value="5">Quest 5</option>
-                <option value="6">Quest 6</option>
-                <option value="7">Quest 7</option>
-                <option value="8">Quest 8</option>
-                <option value="9">Quest 9</option>
-                <option value="10">Quest 10</option>
-
-
-            </select>
-            <text class="InvisableOnStart WidthLimited" id="QuestDescriptionText"></text>
-
-        </QuestMenu>
+        </TroopList>
     </MainSelector>
 
 
@@ -364,7 +381,8 @@
         </a>
 
     </MenuButtons>
-    <button class="sendTX" id="sendTX" onclick="submitTX(selectAction.value)">Confirm Transaction</button>
+    <button class="sendTX" id="sendTX" onclick="submitTX()">Confirm
+        Transaction</button>
 
 </body>
 

@@ -423,6 +423,7 @@ const Brewery_T1 = 12;
 const Brewery_T2 = 13;
 const Brewery_T3 = 14;
 const Brewery_T4 = 15;
+
 let recipe519 = [[2500,0,0,0,0,0], [Sugarcane,0,0,0,0,0], [300,0], [Sugar,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
 let recipe536 = [[1000,0,0,0,0,0], [Silver_Sap,0,0,0,0,0], [500,0], [Sugar|Silver,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
 let recipe1000 = [[2500,0,0,0,0,0], [Wheat,0,0,0,0,0], [250,0], [Wheat_Beer,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
