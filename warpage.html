@@ -8,8 +8,50 @@
     <script src="./excelIntegration.js" type="application/javascript"></script>
 
     <script>
+        const baseaddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
         const waraddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
 
+
+        function showRecipe(_value) {
+            if (actionSelector.value == "6") {
+                let whyJS = returnRecipe(_value);
+                var items = whyJS[1];
+                var item_amount = whyJS[0];
+                var item_output_amount = whyJS[2];
+                var item_output = whyJS[3];
+                var time = whyJS[5];
+                var _recipeText;
+                if (document.getElementById("Cost").textContent != "Cost:") { document.getElementById("Cost").textContent = "Cost:" }
+                for (let i = 0; i < 6; i++) {
+                    if (items[i] == 0) { break; }
+                    document.getElementById("Cost").textContent += (item_amount[i]);
+                    document.getElementById("Cost").textContent += " ";
+                    document.getElementById("Cost").textContent += itemName(items[i]);
+                    if (items[(i + 1)] != 0) {
+                        document.getElementById("Cost").textContent += ", ";
+                    }
+                }
+                document.getElementById("Cost").textContent += " For ";
+
+                document.getElementById("Cost").textContent += item_output_amount[0];
+
+                document.getElementById("Cost").textContent += " ";
+
+                document.getElementById("Cost").textContent += itemName(item_output[0]);
+
+                if (item_output[1] != 0) {
+
+                    document.getElementById("Cost").textContent += " & ";
+
+                    document.getElementById("Cost").textContent += item_output_amount[1];
+
+                    document.getElementById("Cost").textContent += " ";
+
+                    document.getElementById("Cost").textContent += itemName(item_output[1]);
+                }
+                document.getElementById("Cost").style.display = "block";
+            }
+        }
         async function selectAction(_value) {
             const provider = new ethers.providers.Web3Provider(window.ethereum)
 
@@ -18,28 +60,24 @@
             NFTcontract = new ethers.Contract(waraddress, abi, provider)
             myAddress = await signer.getAddress()
 
-            //This is wonky, Ideally would run hideAll() first but it stops army stats from appearing. 
-            //This works and I'd rather not waste time on it before I'm happy with everything else
+            hideAll();
             switch (_value) {
                 case "2":
-                    hideAll();
                     document.getElementById("TroopAdder").style.display = "block";
+                    document.getElementById("TroopList").style.display = "block";
+                    document.getElementById("Cost").style.display = "none";
                     break;
                 case "3":
-                    hideAll();
                     document.getElementById("MercAdder").style.display = "block";
                     break;
                 case "4":
-                    hideAll();
                     document.getElementById("TroopRemoval").style.display = "block";
                     break;
                 case "5":
-                    hideAll();
                     document.getElementById("QuestSelector").style.display = "inline";
                     document.getElementById("QuestSelectorText").style.display = "block";
                     break;
                 case "6":
-                    hideAll();
                     document.getElementById("TroopList").style.display = "block";
                     break;
             }
@@ -52,6 +90,7 @@
 
             const signer = provider.getSigner()
             const NFTcontract = new ethers.Contract(waraddress, warabi, provider)
+            const NFTBaseContract = new ethers.Contract(baseaddress, warabi, provider)
             const myAddress = await signer.getAddress()
 
             const _armyData = await NFTcontract.currentArmy(myAddress);
@@ -129,6 +168,52 @@
                     document.getElementById("Skirmishers").textContent += " Amount: ";
                     document.getElementById("Skirmishers").textContent += _armyData[2][11];
                     break;
+                case "2":
+                    NFTBaseContractSigner.sendToWar(
+                        false,
+                        document.getElementById("TroopSlot").value,
+                        document.getElementById("WeaponInput").value,
+                        document.getElementById("OffhandInput").value,
+                        document.getElementById("ArmorInput").value,
+                        document.getElementById("OtherInput").value,
+                        document.getElementById("TroopCost").value,
+                        document.getElementById("TroopAmount").value
+                    )
+                    break;
+                case "3":
+                    NFTBaseContractSigner.sendToWar(
+                        true,
+                        document.getElementById("MercSlot").value,
+                        0,
+                        0,
+                        0,
+                        0,
+                        document.getElementById("MercCost").value,
+                        document.getElementById("MercAmount").value
+                    )
+                    break;
+                case "4":
+                    NFTBaseContract.returnHome(
+                        document.getElementById("TroopSlot").value,
+                    )
+                    break;
+                case "5":
+                    NFTBaseContract.startQuest(
+                        document.getElementById("QuestSelector").value
+                    )
+                    break;
+                case "6":
+                    const Trade = Number(document.getElementById("TroopListDropdown").value)
+                    let array2 = returnRecipe(Trade)
+                    console.log(array2);
+                    NFTcontractSigner.cook(
+                        Trade,
+                        document.getElementById("TroopUpgrade").value,
+                        array2,
+                        0,
+                        0
+                    )
+                    break;
             }
 
             console.log("web submit script TX completed");
@@ -177,10 +262,10 @@
             document.getElementById("QuestSelectorText").style.display = "none";
             document.getElementById("QuestSelector").style.display = "none";
             document.getElementById("QuestDescriptionText").style.display = "none";
-            document.getElementById("Frontline1").style.display = "none";
-            document.getElementById("Frontline2").style.display = "none";
-            document.getElementById("Ranged").style.display = "none";
-            document.getElementById("Skirmishers").style.display = "none";
+            document.getElementById("TroopCount").style.display = "none";
+            document.getElementById("TroopList").style.display = "none";
+
+
         }
     </script>
 </head>
@@ -210,13 +295,23 @@
 
         </ArmyViewer>
         <AddTroops id="TroopAdder" class="InvisableOnStart">
-            <input class="NumericInput">Which Slot would you like this troop to go into?</input>
+            <input class="NumericInput" id="TroopSlot">Which Slot would you like this troop to go into?</input>
             <br>
-            What Troop would you like to add?
+            <input class="NumericInput" id="WeaponInput">What Weapon would you like to give?</input>
+            <br>
+            <input class="NumericInput" id="ArmorInput">What Armor would you like to give?</input>
+            <br>
+            <input class="NumericInput" id="OffhandInput">What Offhand would you like to give?</input>
+            <br>
+            <input class="NumericInput" id="OtherInput">What Other Item would you like to give?</input>
+            <br>
 
+            <input class="NumericInput" id="TroopAmount">How many would you like to add?</input>
         </AddTroops>
         <AddMercs id="MercAdder" class="InvisableOnStart">
-            <input class="NumericInput">Which Slot would you like this troop to go into?</input>
+            <input class="NumericInput" id="MercSlot">Which Slot would you like this troop to go into?</input>
+            <br>
+            <input class="NumericInput" id="MercAmount">How many would you like to add?</input>
             <br>
             <select class="Dropdown" id="Trooplist">
                 <option value="0"></option>
@@ -280,7 +375,7 @@
 
         </QuestMenu>
         <TroopList class="InvisableOnStart" id="TroopList">
-            <select class="Dropdown">
+            <select class="Dropdown" id="TroopListDropdown" onchange="showRecipe(Number(this.value))">
                 <option value="-1"></option>
                 <option value="10001">T1_Spearman</option>
                 <option value="10002">T2_Spearman</option>
@@ -371,6 +466,11 @@
                 <option value="10607">T7_Horse_Archer</option>
                 <option value="10608">T8_Horse_Archer</option>
             </select>
+            <text class="Recipe RecipeText BigText" id="Cost">Cost:</text>
+            <br>
+            <input type="number" class="NumericInput" id="TroopUpgrade">How many troops would you like to
+            upgrade?</input>
+
         </TroopList>
     </MainSelector>
 
@@ -398,6 +498,10 @@
 
     .WidthLimited {
         width: 50%;
+    }
+
+    .BigText {
+        font-size: 18px;
     }
 
     .indexButton {
