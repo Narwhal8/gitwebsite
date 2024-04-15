@@ -5,70 +5,23 @@
 <head>
   <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
   <script src="./abi.js" type="application/javascript"></script>
-  <script src="./craftingRecipeData.js" type="module"></script>
-  <script src="./itemDatabase.js" type="module"></script>
+  <script src="./warabi.js" type="application/javascript"></script>
+  <script src="./excelIntegration.js" type="application/javascript"></script>
+
 
   <script>
     const address = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-    const waraddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+    const waraddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
 
     async function submitTX() {
       const provider = new ethers.providers.Web3Provider(window.ethereum)
-      const signer = provider.getSigner()
+      const signer = provider.getSigner();
       const NFTcontract = new ethers.Contract(address, abi, provider)
       const NFTcontractSigner = new ethers.Contract(address, abi, signer);
       const myAddress = await signer.getAddress()
       var _cityData = await NFTcontract.getKingdomInfo(myAddress);
       console.log(_cityData);
       const _kingdomType = _cityData[4];
-
-
-      const Cookery_T1 = 8;
-      const Cookery_T2 = 9;
-      const Cookery_T3 = 10;
-      const Cookery_T4 = 11;
-
-      const Brewery_T1 = 12;
-      const Brewery_T2 = 13;
-      const Brewery_T3 = 14;
-      const Brewery_T4 = 15;
-
-      const Smeltery_T1 = 16;
-      const Smeltery_T2 = 17;
-      const Smeltery_T3 = 18;
-
-      const Mason = 19
-
-      const Blacksmith_T1 = 20;
-      const Blacksmith_T2 = 21;
-
-      const agingFacility = 22;
-
-      const Jeweler_T1 = 26;
-      const Jeweler_T2 = 27;
-
-      const Weaver_T1 = 28;
-      const Weaver_T2 = 29;
-
-      const Carpenter_T1 = 30;
-      const Carpenter_T2 = 31;
-
-
-      const Grain = -1;
-      const Meat = -2;
-      const Fruit = -3;
-      const Veggie = -4;
-      const T2_Metal = -6;
-      const T1_Drink = -7;
-      const Exotic_Berry = -8;
-      const Any_Wine = -9;
-      const Common_Gemstone = -10;
-      const Polished_Common_Gemstone = -11;
-      const Rare_Gemstone = -12;
-      const Polished_Rare_Gemstone = -13;
-
-
-      const Wheat = 501;
 
 
       switch (FunctionCalled.value) {
@@ -81,226 +34,315 @@
           NFTcontractSigner.adjustTime(document.getElementById("Input1").value);
           break;
         case "3": // Initiator
+          const ItemID = returnItemID();
+          console.log(ItemID);
+          var j = 0;
+          let temp_array = [];
+          let temp_array_data = [];
+          let max_val = 867; 
+          for (var i = 0; i <= max_val; ++i) {
+
+            
+            //var _recipe = returnRecipe(ItemID[i]);
+              //temp_array.push(_recipe); 
+              temp_array.push(ItemID[i]);
+              ++j;
+              if (j == 32 || i == (max_val)) {
+                console.log("thid do dun");
+                console.log(temp_array);
+                console.log(temp_array_data);
+                var _variable_val = 31;
+                if( i == (max_val)) {_variable_val = max_val % 32}
+                for(var k = 0; k <= _variable_val; ++k) {
+                  temp_array_data.push(eval("recipe" + temp_array[k]));
+                }
+                
+                while(temp_array.length < 32) {
+                  temp_array.push(0);
+                  temp_array_data.push(([[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0 ,0], [0, 0, 0], 0, 0, [0,0,0,0]]));
+
+                } 
+                NFTcontractSigner.addMultiCraftingData(temp_array_data,temp_array)
+                temp_array = [];
+                temp_array_data = [];
+                j = 0;
+              
+              }
+
+          }
+          console.log("passed giant loop mess");
+
+          //Deer: 0 - 50. Zebra: 50 - 60. Ostridge: 60 - 80;
+          const aridLowHuntDrops = [Deer,0,Zebra,Ostridge,0,0,0,0,0,0,0,0,0,0,0,0];
+          const aridLowHuntDropsChance = [2,0,5,5,0,0,0,0,0,0,0,0,0,0,0,0];
+
+          //Elelphant: 0 - 10. Rhino: 10 - 20.
+          const aridHighHuntDrops = [Elephant,Rhino,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+          const aridHighHuntDropsChance = [10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+          
+          // Rabbit: 0 - 50. Fox: 50 - 70. Seal: 70 - 100
+          const arcticLowHuntDrops = [0,0,0,0,Rabbit,0,Fox,0,0,Seal,0,0,0,0,0,0];
+          const arcticLowHuntDropsChance = [0,0,0,0,10,0,10,0,0,10,0,0,0,0,0,0];
+
+          // Whalrus: 0-70. Polar Bear: 70 - 80.
+          const arcticHighHuntDrops = [0,0,0,0,0,0,Whalrus,Polar_Bear,0,0,0,0,0,0,0,0];
+          const arcticHighHuntDropsChance = [0,0,0,0,0,0,10,10,0,0,0,0,0,0,0,0];
+          
+          // Deer: 0 - 20. Rabbit: 20 - 40. Mink: 40 - 60. Fox: 60 - 80. Reindeer: 80 - 100
+          const borealLowHuntDrops = [Deer,Rabbit,Mink,Fox,Reindeer,0,0,0,0,0,0,0,0,0,0,0];
+          const borealLowHuntDropsChance = [5,5,5,5,5,0,0,0,0,0,0,0,0,0,0,0];
+
+          // Elk: 0 - 50. Polar Bear: 50 - 60. Bear: 60 - 80
+          const borealHighHuntDrops = [Elk,0,Polar_Bear,Bear,0,0,0,0,0,0,0,0,0,0,0,0];
+          const borealHighHuntDropsChance = [2,0,5,5,0,0,0,0,0,0,0,0,0,0,0,0];
+
+          // Turkey: 0 - 40. Rabbit: 40 - 60. Deer: 60 - 80. Wolf: 80 - 100
+          const temprateLowHuntDrops = [0,Turkey,Rabbit,Deer,Wolf,0,0,0,0,0,0,0,0,0,0,0];
+          const temprateLowHuntDropsChance = [0,5,5,5,5,0,0,0,0,0,0,0,0,0,0,0];
+
+          // Elk: 0 - 20, Aurochs 20 - 40, Tiger 40 - 60. Bear: 60 - 80
+          const temprateHighHuntDrops = [Elk,Aurochs,Tiger,Bear,0,0,0,0,0,0,0,0,0,0,0,0];
+          const temprateHighHuntDropsChance = [5,5,5,5,0,0,0,0,0,0,0,0,0,0,0,0];
+
+          // Turkey: 0 - 50. Crocodile: 50 - 60. Deer: 60 - 90. Otter: 90 - 100
+          const temprateRiverLowHuntDrops = [Turkey,0,Crocodile,0,0,0,0,0,Deer,Otter,0,0,0,0,0,0];
+          const temprateRiverLowHuntDropsChance = [2,0,5,0,0,0,0,0,10,10,0,0,0,0,0,0];
+
+          // Sea Mink: 0 - 50. Tiger: 50 - 80. Black Leopard: 80 - 100
+          const temprateRiverHighHuntDrops = [Sea_Mink,0,0,Tiger,Black_Leopard,0,0,0,0,0,0,0,0,0,0,0];
+          const temprateRiverHighHuntDropsChance = [2,0,0,5,5,0,0,0,0,0,0,0,0,0,0,0];
+
+          // Zebra: 0 - 25. Leopard: 25 - 33.333. Snake: 33.333 - 100.
+          const jungleLowHuntDrops = [Zebra,Leopard,Snake,0,0,0,0,0,0,0,0,0,0,0,0,0];
+          const jungleLowHuntDropsChance = [4,6,1,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+          // Black Leopard: 0 - 20. Elephant: 20 - 30. Titan Snake: 30 - 40
+          const jungleHighHuntDrops = [Black_Leopard,0,Elephant,Titan_Snake,0,0,0,0,0,0,0,0,0,0,0,0];
+          const jungleHighHuntDropsChance = [5,0,10,10,0,0,0,0,0,0,0,0,0,0,0,0];
+
+          // Deer: 0-50. Leopard: 50 - 100.
+          const silverLowHuntDrops = [Deer,Leopard,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+          const silverLowHuntDropsChance = [2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+          // Rhino: 0 - 40. Elk: 40 - 100
+          const silverHighHuntDrops = [0,Rhino,Elk,0,0,0,0,0,0,0,0,0,0,0,0,0];
+          const silverHighHuntDropsChance = [0,5,3,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+          // Its all Otters
+          const guildedLowHuntDrops = [Otter,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+          const guildedLowHuntDropsChance = [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+          // Elephant: 0 - 40. Aurochs: 40 - 100.
+          const guildedHighHuntDrops = [0,Elephant,Aurochs,0,0,0,0,0,0,0,0,0,0,0,0,0];
+          const guildedHighHuntDropsChance = [0,5,3,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+          // Crocodiles: 0 - 20
+          const swampLowHuntDrops = [Crocodile,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+          const swampLowHuntDropsChance = [5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+          // Titan Snake: 0 - 12.5. Poison Snake: 12.5 - 100.
+          const swampHighHuntDrops = [Titan_Snake,Poison_Snake,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+          const swampHighHuntDropsChance = [8,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 
-          let cropdata501 = [500, 0, [50, 100, 75], [50, 150], 25, 1, 10, 0, 0, 150, 501, 0];
+
+          NFTcontractSigner.addHuntingData([aridLowHuntDrops,aridLowHuntDropsChance],[Arid_Badlands,Arid_Steppe,Arid_Oasis,Arid_River,Southern_Rocky,Desolate_Ocean,0,0]);
+          NFTcontractSigner.addHuntingData([aridHighHuntDrops,aridHighHuntDropsChance],[Arid_Badlands,Arid_Steppe,Arid_Oasis,Arid_River,Southern_Rocky,Desolate_Ocean,0,0]);
+
+          NFTcontractSigner.addHuntingData([arcticLowHuntDrops,arcticLowHuntDropsChance],[Northern_Rocky_Waste,Northern_Tundra,Northern_Ocean,White_Mountain,0,0,0,0])
+          NFTcontractSigner.addHuntingData([arcticHighHuntDrops,arcticHighHuntDropsChance],[Northern_Rocky_Waste,Northern_Tundra,Northern_Ocean,White_Mountain,0,0,0,0])
+
+          NFTcontractSigner.addHuntingData([borealLowHuntDrops,borealLowHuntDropsChance],[Northern_Forest,Northern_River,0,0,0,0,0,0]);
+          NFTcontractSigner.addHuntingData([borealHighHuntDrops,borealHighHuntDropsChance],[Northern_Forest,Northern_River,0,0,0,0,0,0]);
+
+          NFTcontractSigner.addHuntingData([temprateLowHuntDrops,temprateLowHuntDropsChance],[Rocky_Heartland,Red_Mountain,Green_Mountain,Blue_Mountain,0,0,0,0]);
+          NFTcontractSigner.addHuntingData([temprateHighHuntDrops,temprateHighHuntDropsChance],[Rocky_Heartland,Red_Mountain,Green_Mountain,Blue_Mountain,0,0,0,0]);
+          
+          NFTcontractSigner.addHuntingData([temprateRiverLowHuntDrops,temprateRiverLowHuntDropsChance],[Heartland,River_Heartland,Central_Ocean,0,0,0,0,0]);
+          NFTcontractSigner.addHuntingData([temprateRiverHighHuntDrops,temprateRiverHighHuntDropsChance],[Heartland,River_Heartland,Central_Ocean,0,0,0,0,0]);
+
+          NFTcontractSigner.addHuntingData([swampLowHuntDrops,swampLowHuntDropsChance],[Brackish_Swamp,Swamp,Lush_Swamp,0,0,0,0,0]);
+          NFTcontractSigner.addHuntingData([swampHighHuntDrops,swampHighHuntDropsChance],[Brackish_Swamp,Swamp,Lush_Swamp,0,0,0,0,0]);
+          
+          NFTcontractSigner.addHuntingData([jungleLowHuntDrops,jungleLowHuntDropsChance],[Southern_Forest,Southern_Jungle,Southern_River,Southern_Ocean,0,0,0,0]);
+          NFTcontractSigner.addHuntingData([jungleHighHuntDrops,jungleHighHuntDropsChance],[Southern_Forest,Southern_Jungle,Southern_River,Southern_Ocean,0,0,0,0]);
+
+          NFTcontractSigner.addHuntingData([silverLowHuntDrops,silverLowHuntDropsChance],[Ochre_Plains,Lusterous_River,Silver_Forest,0,0,0,0,0]);
+          NFTcontractSigner.addHuntingData([silverLowHuntDrops,silverLowHuntDropsChance],[Ochre_Plains,Lusterous_River,Silver_Forest,0,0,0,0,0]);
+
+          NFTcontractSigner.addHuntingData([guildedLowHuntDrops,guildedLowHuntDropsChance],[Golden_Plains,Golden_Forest,Golden_Hills,0,0,0,0,0]);
+          NFTcontractSigner.addHuntingData([guildedHighHuntDrops,guildedHighHuntDropsChance],[Golden_Plains,Golden_Forest,Golden_Hills,0,0,0,0,0]);
+          
+          let cropdata501 = [500, 0, [50, 100, 75], [50, 150], 25, 150, 10, 0, false, Wheat, 0];
           //NFTcontractSigner.addCropData(cropdata501,501);
 
-          let cropdata502 = [500, 0, [0, 80, 60], [50, 150], 0, 1, 10, 0, 0, 150, 502, 0];
+          let cropdata502 = [500, 0, [0, 80, 60], [50, 150], 0, 150, 10, 0, false, Rye, 0];
           //NFTcontractSigner.addCropData(cropdata502,502);
 
-          let cropdata503 = [500, 0, [50, 120, 80], [110, 200], 25, 1, 10, 0, 0, 150, 503, 0];
+          let cropdata503 = [500, 0, [50, 120, 80], [110, 200], 25, 150, 10, 0, false, Rice, 0];
           //NFTcontractSigner.addCropData(cropdata503,503);
 
-          let cropdata504 = [500, 0, [50, 100, 75], [50, 150], 25, 1, 10, 0, 0, 150, 504, 0];
+          let cropdata504 = [500, 0, [50, 100, 75], [50, 150], 25, 150, 10, 0, false, Corn, 0];
           //NFTcontractSigner.addCropData(cropdata504,504);
 
-          let cropdata505 = [500, 0, [30, 120, 90], [20, 150], 25, 1, 10, 0, 0, 150, 505, 0];
+          let cropdata505 = [500, 0, [30, 120, 90], [20, 150], 25, 150, 10, 0, false, Sorghum, 0];
           //NFTcontractSigner.addCropData(cropdata505,505);
 
-          let cropdata535 = [500, 0, [30, 110, 60], [50, 150], 25, 1, 10, 0, 0, 200, 535, 0];
+          let cropdata535 = [600, 0, [30, 110, 60], [50, 150], 0, 200, 10, 0, false, Potato, 0];
           //NFTcontractSigner.addCropData(cropdata535,535);
 
-          let cropdata506 = [2500, 500, [60, 110, 80], [50, 150], 25, 50, 1, 10, 0, 100, 506, 2002];
+          let cropdata506 = [2500, 500, [60, 110, 80], [50, 150], 25, 100, 50, 10, false, Wood, Apples];
           //NFTcontractSigner.addCropData(cropdata506,506);
 
-          let cropdata507 = [2500, 500, [30, 110, 70], [50, 150], 25, 50, 1, 10, 0, 100, 507, 2002];
+          let cropdata507 = [2500, 500, [30, 110, 70], [50, 150], 25, 100, 50, 10,false, Wood, Plums];
           //NFTcontractSigner.addCropData(cropdata507,507);
 
-          let cropdata508 = [500, 0, [50, 120, 80], [25, 150], 0, 50, 1, 10, 0, 100, 508, 0];
+          let cropdata508 = [2500, 500, [50, 120, 80], [25, 150], 25, 100, 50, 10, false, Wood, Olives];
           //NFTcontractSigner.addCropData(cropdata508,508);
 
-          let cropdata509 = [500, 0, [50, 120, 75], [50, 150], 25, 1, 10, 0, 0, 150, 509, 0];
+          let cropdata509 = [500, 0, [50, 120, 75], [50, 150], 25, 150, 10, 0, false,  Beans, 0];
           //NFTcontractSigner.addCropData(cropdata509,509);
 
-          let cropdata510 = [500, 0, [30, 120, 60], [50, 100], 0, 1, 10, 0, 0, 150, 510, 0];
+          let cropdata510 = [500, 0, [30, 120, 60], [50, 100], 0, 150, 10, 0, false, Mushrooms, 0];
           //NFTcontractSigner.addCropData(cropdata510,510);
 
-          let cropdata514 = [2500, 500, [50, 110, 70], [50, 150], 25, 50, 1, 10, 0, 100, 514, 2002];
+          let cropdata514 = [2500, 500, [50, 110, 70], [50, 150], 25,100, 50, 10, false, Wood, Cherries];
           //NFTcontractSigner.addCropData(cropdata514,514);
 
-          let cropdata512 = [600, 0, [70, 120, 80], [50, 150], 25, 1, 10, 0, 0, 150, 512, 0];
+          let cropdata512 = [600, 0, [70, 120, 80], [50, 150], 25, 150, 10, 0, false, Casava, 0];
           //NFTcontractSigner.addCropData(cropdata512,512);
 
-          let cropdata513 = [500, 0, [50, 100, 75], [50, 150], 25, 1, 10, 0, 0, 150, 513, 0];
+          let cropdata513 = [500, 0, [50, 100, 75], [50, 150], 25, 150, 10, 0, false, Peanuts, 0];
           //NFTcontractSigner.addCropData(cropdata513,513);
 
-          let cropdata515 = [2500, 500, [60, 110, 80], [50, 150], 25, 50, 1, 10, 0, 100, 515, 2002];
+          let cropdata515 = [2500, 500, [60, 110, 80], [50, 150], 0, 100, 50, 10, false, Wood, Peaches];
           //NFTcontractSigner.addCropData(cropdata515,515);
 
-          let cropdata516 = [500, 0, [50, 120, 75], [50, 150], 25, 1, 10, 0, 0, 200, 516, 0];
+          let cropdata516 = [500, 0, [50, 120, 75], [50, 150], 25, 200, 10, 0, false, Garlic, 0];
           //NFTcontractSigner.addCropData(cropdata516,516);
 
-          let cropdata517 = [500, 0, [50, 120, 75], [50, 150], 25, 1, 10, 0, 0, 200, 517, 0];
+          let cropdata517 = [500, 0, [50, 120, 75], [50, 150], 25, 200, 10, 0, false, Onion, 0];
           //NFTcontractSigner.addCropData(cropdata517,517);
 
-          let cropdata518 = [500, 0, [50, 120, 75], [50, 150], 25, 1, 10, 0, 0, 200, 518, 0];
+          let cropdata518 = [500, 0, [50, 120, 75], [50, 150], 25, 200, 10, 0, false, 200, Carrots, 0];
           //NFTcontractSigner.addCropData(cropdata518,518);
 
-          let cropdata519 = [500, 0, [75, 150, 90], [80, 170], 25, 40, 0, 0, 100, 519, 0];
+          let cropdata519 = [500, 0, [75, 150, 90], [80, 170], 25,100 , 10, 0, false, Sugarcane, 0];
           //NFTcontractSigner.addCropData(cropdata519,519);
 
-          let cropdata520 = [400, 0, [20, 100, 60], [50, 150], 0, 1, 10, 0, 0, 200, 520, 0];
+          let cropdata511 = [400, 0, [20, 100, 60], [50, 150], 0, 1, 10, 0, false, 200, Beets, 0];
           //NFTcontractSigner.addCropData(cropdata520,520);
 
-          let cropdata521 = [500, 0, [60, 120, 85], [50, 150], 25, 200, 1, 10, 0, 100, 521, 0];
+          let cropdata521 = [500, 0, [60, 120, 85], [50, 150], 25, 200, 1, 10, false, 100, Allspice, 0];
           //NFTcontractSigner.addCropData(cropdata521,521);
 
-          let cropdata522 = [500, 0, [50, 120, 75], [50, 150], 25, 1, 10, 0, 0, 150, 522, 0];
+          let cropdata522 = [500, 0, [50, 120, 75], [50, 150], 25, 1, 10, 0, false, 150, Grapes, 0];
           //NFTcontractSigner.addCropData(cropdata522,522);
 
-          let cropdata538 = [500, 0, [30, 80, 60], [50, 150], 0, 1, 10, 0, 0, 150, 502, 0];
+          let cropdata538 = [500, 0, [30, 80, 60], [50, 150], 0, 200, 10, 0, false, Oats, 0];
+
+          let cropdata540 = [500, 0, [30, 80, 60], [25, 125], 0, 200, 10, 0, false, Barley, 0];
+
+          let cropdata542 = [500, 0, [70, 120, 85], [75, 150], 0, 150, 10, 0, false, Cotton, 0];
           //NFTcontractSigner.addCropData(cropdata538,538);
 
-          let recipe0 = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0], [0, 0], 0, [0, 0, 0, 0]];
+          let cropdata532 = [10, 100, [30, 80, 60], [50, 150], 0, 250, 50, 10, true, Cow, Milk];
+          let cropdata533 = [10, 100, [30, 80, 60], [0, 200], 0, 250, 20, 10, true, Chicken, Eggs];
+          let cropdata544 = [10, 500, [30, 80, 60], [25, 200], 0, 250, 30, 10, true, Sheep, Wool];
 
-          let foodvalue1000 = [1000, 50, 3, 0];
-          NFTcontractSigner.addFoodData(foodvalue1000);
-          let foodvalue1001 = [1001, 50, 2, 0];
-          NFTcontractSigner.addFoodData(foodvalue1001);
-          let foodvalue1002 = [1002, 50, 3, 0];
-          NFTcontractSigner.addFoodData(foodvalue1002);
-          let foodvalue1003 = [1003, 50, 4, 0];
-          NFTcontractSigner.addFoodData(foodvalue1003);
-          let foodvalue1004 = [1004, 50, 2, 9];
-          NFTcontractSigner.addFoodData(foodvalue1004);
-          let foodvalue1005 = [1005, 50, 7, 0];
-          NFTcontractSigner.addFoodData(foodvalue1005);
+          let cropdata0 = [0, 0, [0, 0, 0], [0, 0], 0, 0, 0, 0, false, 0, 0, 0];
 
-          let foodvalue1010 = [1010, 50, 8, 9];
-          NFTcontractSigner.addFoodData(foodvalue1010);
-          let foodvalue1011 = [1011, 50, 2, 3];
-          NFTcontractSigner.addFoodData(foodvalue1011);
-          let foodvalue1012 = [1012, 50, 5, 8];
-          NFTcontractSigner.addFoodData(foodvalue1012);
-          let foodvalue1013 = [1013, 50, 1, 7];
-          NFTcontractSigner.addFoodData(foodvalue1013);
-          let foodvalue1014 = [1014, 50, 3, 7];
-          NFTcontractSigner.addFoodData(foodvalue1014);
+          //let recipe0 = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0], [0, 0], 0, [0, 0, 0, 0]];
 
-          let foodvalue1020 = [1020, 50, 2, 6];
-          NFTcontractSigner.addFoodData(foodvalue1020);
+          
+          NFTcontractSigner.addMultiCropData([cropdata501,cropdata502,cropdata503,cropdata504,cropdata505,cropdata506,cropdata507,cropdata508],[501,502,503,504,505,506,507,508]);
+          NFTcontractSigner.addMultiCropData([cropdata509,cropdata510,cropdata511,cropdata512,cropdata513,cropdata514,cropdata515,cropdata516],[509,510,511,512,513,514,515,516]);
+          NFTcontractSigner.addMultiCropData([cropdata517,cropdata518,cropdata519,cropdata521,cropdata522,cropdata532,cropdata533,cropdata535],[517,518,519,521,522,532,533,535]);
+          NFTcontractSigner.addMultiCropData([cropdata538,cropdata540,cropdata542,cropdata544,cropdata0,cropdata0,cropdata0,cropdata0],[509,510,511,512,0,0,0,0]);
+          
+          //Null
+          const mixedItemData0 = [];
+          //Grain
+          const mixedItemData1 = [Wheat,Rye,Corn,Sorghum,Oats,Barley,Rice];
+          //Meat
+          const mixedItemData2 = [Beef,Chicken_Meat,Fish_Meat,Mutton];
+          //Fruit
+          const mixedItemData3 = [Grapes,Peaches,Plums,Apples,Cherries];
+          //Vegetables
+          const mixedItemData4 = [Potato,Onion,Carrots,Casava];
+          //Sides
+          const mixedItemData5 = [Beef_Stew,Onion_Soup,Chicken_Soup,Fish_Soup,Beans_And_Rice,Glittercakeette,Apple_Pie,Plum_Pie,Peach_Pie,Sugar_Pie,Pot_Pie,Cheese]
+          //T2 Metal
+          const mixedItemData6 = [Iron,Bronze];
+          //T1 Drink
+          const mixedItemData7 = [Wheat_Beer,Rye_Beer,Barley_Beer,Oat_Beer,Rice_Beer,Sorghum_Beer,Cider,Wine,Plum_Wine,Peach_Wine,Cherry_Wine,Mead];
+          //Exotic Berries
+          const mixedItemData8 = [Winterberries,Jungleberries];
+          //Bread
+          const mixedItemData9 = [Wheat_Bread,Rye_Bread,Corn_Bread,Rice_Bread,Sorghum_Bread,Barley_Bread,Oat_Bread];
+          //T2 Drink
+          const mixedItemData10 = [Vodka,Kumis,Rum,Grain_Whiskey];
+          //T3 Drink
+          const mixedItemData11 = [Brandy,Jungle_Wine,Winter_Wine,Aged_Rum];
+          //T4 Drink
+          const mixedItemData12 = [Ginseng_Wine,Spiced_Vodka];
+          //T5 Drink
+          const mixedItemData13 = [Double_Brandy,Auric_Mead];
+          //Pie
+          const mixedItemData14 = [Apple_Pie,Plum_Pie,Peach_Pie,Sugar_Pie,Pot_Pie];
+          //Soup
+          const mixedItemData15 = [Beef_Stew,Onion_Soup,Chicken_Soup,Fish_Soup];
+          //Crops
+          const mixedItemData16 = [Wheat,Rye,Corn,Sorghum,Oats,Barley,Rice,Apples,Plums,Beans];
+          //Polished Common Gemstones
+          const mixedItemData17 = [Polished_Amethyst,Polished_Opal,Polished_Citrine,Polished_Pearl,Polished_Amber,Polished_Onyx,Polished_Aquamarine,Polished_Crystal_Glass];
+          //Polished Rare Gemstones
+          const mixedItemData18 = [Polished_Ruby,Polished_Emerald,Polished_Sapphire];
+          //Common Gemstones
+          const mixedItemData19 = [Amethyst,Opal,Citrine,Pearl,Amber,Onyx,Aquamarine,Crystal_Glass];
+          //Rare Gemstones
+          const mixedItemData20 = [Ruby,Emerald,Sapphire];
 
-          let foodvalue1030 = [1030, 50, 2, 6];
-          NFTcontractSigner.addFoodData(foodvalue1020);
-          let foodvalue1031 = [1031, 50, 2, 6];
-          NFTcontractSigner.addFoodData(foodvalue1020);
-          let foodvalue1032 = [1032, 50, 2, 6];
-          NFTcontractSigner.addFoodData(foodvalue1020);
-
-
-          let foodvalue1040 = [1020, 50, 2, 6];
-          NFTcontractSigner.addFoodData(foodvalue1020);
-          let foodvalue1041 = [1020, 50, 2, 6];
-          NFTcontractSigner.addFoodData(foodvalue1020);
-          let foodvalue1042 = [1020, 50, 2, 6];
-          NFTcontractSigner.addFoodData(foodvalue1020);
-          let foodvalue1043 = [1020, 50, 2, 6];
-          NFTcontractSigner.addFoodData(foodvalue1020);
-          let foodvalue1044 = [1020, 50, 2, 6];
-          NFTcontractSigner.addFoodData(foodvalue1020);
-
-
-          let foodvalue1050 = [1050, 50, 2, 6];
-          NFTcontractSigner.addFoodData(foodvalue1020);
-          let foodvalue1051 = [1051, 50, 2, 6];
-          NFTcontractSigner.addFoodData(foodvalue1020);
-
-          let foodvalue1060 = [1060, 50, 2, 6];
-          NFTcontractSigner.addFoodData(foodvalue1020);
-          let foodvalue1061 = [1061, 50, 2, 6];
-          NFTcontractSigner.addFoodData(foodvalue1020);
-
-          let foodvalue1200 = [1200, 50, 1, 3];
-          NFTcontractSigner.addFoodData(foodvalue1200);
-          let foodvalue1201 = [1201, 50, 6, 1];
-          NFTcontractSigner.addFoodData(foodvalue1201);
-          let foodvalue1202 = [1202, 50, 8, 5];
-          NFTcontractSigner.addFoodData(foodvalue1202);
-          let foodvalue1203 = [1203, 50, 4, 3];
-          NFTcontractSigner.addFoodData(foodvalue1203);
-          let foodvalue1204 = [1204, 50, 2, 7];
-          NFTcontractSigner.addFoodData(foodvalue1204);
-          let foodvalue1205 = [1205, 50, 1, 2];
-          NFTcontractSigner.addFoodData(foodvalue1205);
-          let foodvalue1206 = [1206, 50, 4, 6];
-          NFTcontractSigner.addFoodData(foodvalue1206);
-          let foodvalue1207 = [1207, 250, 5, 9];
-          NFTcontractSigner.addFoodData(foodvalue1207);
-          let foodvalue1208 = [1208, 400, 5, 9];
-          NFTcontractSigner.addFoodData(foodvalue1208);
-
-          let foodvalue1220 = [1220, 200, 1, 3];
-          NFTcontractSigner.addFoodData(foodvalue1220);
-          let foodvalue1221 = [1221, 200, 1, 4];
-          NFTcontractSigner.addFoodData(foodvalue1221);
-          let foodvalue1222 = [1222, 200, 1, 2];
-          NFTcontractSigner.addFoodData(foodvalue1222);
-          let foodvalue1223 = [1223, 200, 6, 8];
-          NFTcontractSigner.addFoodData(foodvalue1223);
-          let foodvalue1224 = [1224, 200, 3, 9];
-          NFTcontractSigner.addFoodData(foodvalue1224);
-
-
-          let foodvalue1230 = [1230, 200, 7, 0];
-          NFTcontractSigner.addFoodData(foodvalue1230);
-          let foodvalue1231 = [1231, 600, 7, 8];
-          NFTcontractSigner.addFoodData(foodvalue1231);
-          let foodvalue1232 = [1232, 4000, 7, 9];
-          NFTcontractSigner.addFoodData(foodvalue1232);
-
-          let foodvalue1240 = [1240, 150, 1, 10, 0];
-          NFTcontractSigner.addFoodData(foodvalue1240);
-          let foodvalue1241 = [1241, 500, 1, 10, 0];
-          NFTcontractSigner.addFoodData(foodvalue1241);
-
-          let foodvalue1250 = [1250, 150, 1, 10, 0];
-          NFTcontractSigner.addFoodData(foodvalue1250);
-          let foodvalue1251 = [1251, 800, 1, 10, 2];
-          NFTcontractSigner.addFoodData(foodvalue1251);
-          let foodvalue1252 = [1252, 100, 0, 0];
-          NFTcontractSigner.addFoodData(foodvalue1252);
-
-          let foodvalue1260 = [1260, 400, 8, 10];
-          NFTcontractSigner.addFoodData(foodvalue1260);
-          let foodvalue1261 = [1261, 200, 2, 0];
-          NFTcontractSigner.addFoodData(foodvalue1261);
-          let foodvalue1262 = [1262, 250, 1, 0];
-          NFTcontractSigner.addFoodData(foodvalue1262);
-          let foodvalue1263 = [1263, 1500, 7, 10];
-          NFTcontractSigner.addFoodData(foodvalue1263);
-          let foodvalue1264 = [1264, 100, 1, 10, 6];
-          NFTcontractSigner.addFoodData(foodvalue1264);
-          let foodvalue1265 = [1265, 1100, 1, 10, 0];
-          NFTcontractSigner.addFoodData(foodvalue1265);
-
-
-          let foodvalue1270 = [1270, 400, 2, 0];
-          NFTcontractSigner.addFoodData(foodvalue1270);
-          let foodvalue1271 = [1271, 400, 2, 0];
-          NFTcontractSigner.addFoodData(foodvalue1271);
-          let foodvalue1272 = [1272, 400, 8, 9];
-          NFTcontractSigner.addFoodData(foodvalue1272);
-          let foodvalue1273 = [1273, 400, 4, 0];
-          NFTcontractSigner.addFoodData(foodvalue1273);
-          let foodvalue1274 = [1274, 400, 4, 0];
-          NFTcontractSigner.addFoodData(foodvalue1274);
-          let foodvalue1275 = [1275, 400, 4, 0];
-          NFTcontractSigner.addFoodData(foodvalue1275);
-          let foodvalue1276 = [1276, 400, 3, 0];
-          NFTcontractSigner.addFoodData(foodvalue1276);
-          let foodvalue1277 = [1277, 400, 7, 0];
-          NFTcontractSigner.addFoodData(foodvalue1277);
-          let foodvalue1278 = [1278, 400, 9, 0];
-          NFTcontractSigner.addFoodData(foodvalue1278);
-
+          NFTcontractSigner.addMultiMixItemData([mixedItemData1,mixedItemData2,mixedItemData3,mixedItemData4,mixedItemData5,mixedItemData6,mixedItemData7,mixedItemData8],[-1,-2,-3,-4,-5,-6,-7,-8]);
+          NFTcontractSigner.addMultiMixItemData([mixedItemData9,mixedItemData10,mixedItemData11,mixedItemData12,mixedItemData13,mixedItemData14,mixedItemData15,mixedItemData16],[-9,-10,-11,-12,-13,-14,-15,-16]);
+          NFTcontractSigner.addMultiMixItemData([mixedItemData17,mixedItemData18,mixedItemData19,mixedItemData20,mixedItemData0,mixedItemData0,mixedItemData0,mixedItemData0],[-17,-18,-19,-20,0,0,0,0]);
+          
 
           break;
 
         case "4":
-          let recipe11200 = [[15000, 0, 0, 0, 0, 0], [Wheat, 0, 0, 0, 0, 0], [700, 0], [1200, 0], 1, 10, [8, 9, 1, 10, 11]];
-          console.log(recipe11200);
-          NFTcontractSigner.addCraftingData(recipe11200, 1200);
+            
+          const NFTWarcontract = new ethers.Contract(waraddress, warabi, provider)
+          const NFTWarcontractSigner = new ethers.Contract(waraddress, warabi, signer);
+          const SoliderID = returnsoliderID();
+            var j = 0;
+            let temp_solider_array = [];
+            let temp_solider_array_data = [];
+            let max_war_val = 113 ;
+            for (var i = 0; i <= max_war_val; ++i) {
+  
+                temp_solider_array.push(SoliderID[i]);
+                ++j;
+                if (j == 32 || i == (max_war_val)) {
+                  console.log(temp_solider_array_data,temp_solider_array);
+                  var _variable_val = 31;
+                  if( i == (max_war_val)) {_variable_val = max_war_val % 32}
+                  for(var k = 0; k <= _variable_val; ++k) {
+                    temp_solider_array_data.push(eval("soldier" + temp_solider_array[k]));
+                  }
+                  while(temp_solider_array.length < 32) {
+                    temp_solider_array_data.push([0, 0, 0, 0, 0, 0, false, [0, 0, 0, 0], [false, false, false, false], 0, [0, 0] ]);
+                    temp_solider_array.push(0);
+
+                  }
+                  NFTWarcontractSigner.addSoliderDataLoop(temp_solider_array_data,temp_solider_array);
+                  temp_solider_array = [];
+                  temp_solider_array_data = [];
+                  j = 0;
+                
+                }
+
+            }
           break;
       }
 
@@ -318,7 +360,7 @@
     <option value="1">Mint</option>
     <option value="2"></option>
     <option value="3">Initiator</option>
-    <option value="4">Test</option>
+    <option value="4">War Initiator</option>
 
   </select>
   <text>Mint Items:</text>

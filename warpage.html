@@ -57,7 +57,7 @@
 
 
             const signer = provider.getSigner()
-            NFTcontract = new ethers.Contract(waraddress, abi, provider)
+            const NFTcontract = new ethers.Contract(waraddress, warabi, provider)
             myAddress = await signer.getAddress()
 
             hideAll();
@@ -85,15 +85,20 @@
             console.log("test");
         }
         async function submitTX() {
+            
             const provider = new ethers.providers.Web3Provider(window.ethereum)
+            const signer = provider.getSigner();
+
+            const NFTWarcontract = new ethers.Contract(waraddress, warabi, provider);
+            const NFTBasecontract = new ethers.Contract(baseaddress, abi, provider)
+
+            const NFTWarcontractSigner = new ethers.Contract(waraddress, warabi, signer);
+            const NFTBasecontractSigner = new ethers.Contract(baseaddress, abi, signer);
+
+            const myAddress = await signer.getAddress();
+            var _armyData = await NFTWarcontract.currentArmy(myAddress);
+            
             const _value = document.getElementById("actionSelector").value;
-
-            const signer = provider.getSigner()
-            const NFTcontract = new ethers.Contract(waraddress, warabi, provider)
-            const NFTBaseContract = new ethers.Contract(baseaddress, warabi, provider)
-            const myAddress = await signer.getAddress()
-
-            const _armyData = await NFTcontract.currentArmy(myAddress);
             console.log(_value)
 
             switch (_value) {
@@ -204,9 +209,9 @@
                     break;
                 case "6":
                     const Trade = Number(document.getElementById("TroopListDropdown").value)
-                    let array2 = returnRecipe(Trade)
+                    let array2 = returnRecipe(Trade)[1];
                     console.log(array2);
-                    NFTcontractSigner.cook(
+                    NFTBasecontractSigner.cook(
                         Trade,
                         document.getElementById("TroopUpgrade").value,
                         array2,
