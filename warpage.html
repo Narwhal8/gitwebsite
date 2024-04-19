@@ -62,16 +62,22 @@
 
             hideAll();
             switch (_value) {
+                case "1":
+                document.getElementById("SoliderSlotList").style.display = "block";
+                document.getElementById("SoliderInfo").style.display = "block";
+
+                    break;
                 case "2":
-                    document.getElementById("TroopAdder").style.display = "block";
                     document.getElementById("TroopList").style.display = "block";
                     document.getElementById("Cost").style.display = "none";
                     break;
                 case "3":
                     document.getElementById("MercAdder").style.display = "block";
+                    document.getElementById("SoliderSlotList").style.display = "block";
                     break;
                 case "4":
-                    document.getElementById("TroopRemoval").style.display = "block";
+                document.getElementById("TroopRemoval").style.display = "block";
+                document.getElementById("SoliderSlotList").style.display = "block";
                     break;
                 case "5":
                     document.getElementById("QuestSelector").style.display = "inline";
@@ -84,25 +90,51 @@
 
             console.log("test");
         }
+        function TroopListDropdownHelper() {
+            switch(actionSelector.value) {
+                case "2":
+                    document.getElementById("SoliderSlotList").style.display = "block";
+                    document.getElementById("SoliderItemAdder").style.display = "block";
+                    var _solider_data = eval("soldier" + TroopListDropdown.value);
+                    console.log(_solider_data);
+                    if (_solider_data[7][0] != 0) {
+                        document.getElementById("WeaponInput").style.display = "block";
+                        document.getElementById("WeaponInputLabel").style.display = "block";
+                        removeInvalidEquipment(_solider_data[7][0]);
+                    }
+                    if (_solider_data[7][1] != 0) {
+                        document.getElementById("ArmorInput").style.display = "block";
+                        document.getElementById("ArmorInputLabel").style.display = "block";
+                    }
+                    if (_solider_data[7][2] != 0) {
+                        document.getElementById("OffhandInput").style.display = "block";
+                        document.getElementById("OffhandInputLabel").style.display = "block";
+                    }
+                    if (_solider_data[7][3] != 0) {
+                        document.getElementById("OtherInput").style.display = "block";
+                        document.getElementById("OtherInputLabel").style.display = "block";
+                    }
+                    break;
+            }
+        }
         async function submitTX() {
             
             const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner();
 
-            const NFTWarcontract = new ethers.Contract(waraddress, warabi, provider);
-            const NFTBasecontract = new ethers.Contract(baseaddress, abi, provider)
+            const NFTWarContract = new ethers.Contract(waraddress, warabi, provider);
+            const NFTBaseContract = new ethers.Contract(baseaddress, abi, provider)
 
-            const NFTWarcontractSigner = new ethers.Contract(waraddress, warabi, signer);
-            const NFTBasecontractSigner = new ethers.Contract(baseaddress, abi, signer);
+            const NFTWarContractSigner = new ethers.Contract(waraddress, warabi, signer);
+            const NFTBaseContractSigner = new ethers.Contract(baseaddress, abi, signer);
 
             const myAddress = await signer.getAddress();
-            var _armyData = await NFTWarcontract.currentArmy(myAddress);
-            
+            var _armyData = await NFTWarContractSigner.currentArmy(myAddress);
             const _value = document.getElementById("actionSelector").value;
             console.log(_value)
-
             switch (_value) {
-                case "1":
+                case "0":
+                    console.log(_armyData);
                     document.getElementById("TroopCount").style.display = "block";
 
                     document.getElementById("Frontline1").textContent = "Frontline 1:";
@@ -173,6 +205,26 @@
                     document.getElementById("Skirmishers").textContent += " Amount: ";
                     document.getElementById("Skirmishers").textContent += _armyData[2][11];
                     break;
+                case "1":
+                document.getElementById("SoliderDetailView").style.display = "block";
+
+                document.getElementById("SoliderType").textContent = "Solider Name:";
+                document.getElementById("SoliderType").textContent += itemName(_armyData[3][(5 *(SoliderSlotSelector.value))]);
+                
+                document.getElementById("SoliderWeapon").textContent = "Solider Weapon:";
+                document.getElementById("SoliderWeapon").textContent += itemName(_armyData[3][(5 *(SoliderSlotSelector.value)) + 1]);
+
+                document.getElementById("SoliderOffhand").textContent = "Solider Offhand:";
+                document.getElementById("SoliderOffhand").textContent += itemName(_armyData[3][(5 *(SoliderSlotSelector.value)) + 2]);
+
+
+                document.getElementById("SoliderArmor").textContent = "Solider Armor:";
+                document.getElementById("SoliderArmor").textContent += itemName(_armyData[3][(5 *(SoliderSlotSelector.value)) + 3]);
+
+
+                document.getElementById("SoliderOther").textContent = "Solider Other:";
+                document.getElementById("SoliderOther").textContent += itemName(_armyData[3][(5 *(SoliderSlotSelector.value)) + 4]);
+                    break;
                 case "2":
                     NFTBaseContractSigner.sendToWar(
                         false,
@@ -188,22 +240,22 @@
                 case "3":
                     NFTBaseContractSigner.sendToWar(
                         true,
-                        document.getElementById("MercSlot").value,
+                        9,//document.getElementById("MercSlot").value,
+                        11320,//document.getElementById("TroopList").value,
                         0,
                         0,
                         0,
                         0,
-                        document.getElementById("MercCost").value,
-                        document.getElementById("MercAmount").value
+                        10//document.getElementById("MercAmount").value
                     )
                     break;
                 case "4":
-                    NFTBaseContract.returnHome(
-                        document.getElementById("TroopSlot").value,
+                    NFTBaseContractSigner.returnHome(
+                        document.getElementById("SoliderSlotList").value,
                     )
                     break;
                 case "5":
-                    NFTBaseContract.startQuest(
+                    NFTBaseContractSigner.startQuest(
                         document.getElementById("QuestSelector").value
                     )
                     break;
@@ -211,7 +263,7 @@
                     const Trade = Number(document.getElementById("TroopListDropdown").value)
                     let array2 = returnRecipe(Trade)[1];
                     console.log(array2);
-                    NFTBasecontractSigner.cook(
+                    NFTBaseContractSigner.cook(
                         Trade,
                         document.getElementById("TroopUpgrade").value,
                         array2,
@@ -223,6 +275,21 @@
 
             console.log("web submit script TX completed");
         }
+        function removeInvalidEquipment(_value) {
+            const _equipment_type = Math.floor(_value / 100);
+            const _string_value = toString(_value);
+            switch (_equipment_type) {
+                case 1:
+                console.log(document.getElementById("WeaponInput").options[1].classList.contains(_value));
+                for(let i = 0; i < document.getElementById("WeaponInput").options.length; ++i) {
+                    if(document.getElementById("WeaponInput").options[i].classList.contains(_value) == true) 
+                    {document.getElementById("WeaponInput").options[i].style.display = "inital"}
+                    else {document.getElementById("WeaponInput").options[i].style.display = "none"}
+                }
+                break;
+            }
+        }
+
         function questText(_value) {
 
             document.getElementById("QuestDescriptionText").style.display = "block";
@@ -261,7 +328,14 @@
             }
         }
         function hideAll() {
-            document.getElementById("TroopAdder").style.display = "none";
+            document.getElementById("WeaponInput").style.display = "none";
+            document.getElementById("WeaponInputLabel").style.display = "none";
+            document.getElementById("OffhandInput").style.display = "none";
+            document.getElementById("OffhandInputLabel").style.display = "none";
+            document.getElementById("ArmorInput").style.display = "none";
+            document.getElementById("ArmorInputLabel").style.display = "none";
+            document.getElementById("OtherInput").style.display = "none";
+            document.getElementById("OtherInputLabel").style.display = "none";
             document.getElementById("MercAdder").style.display = "none";
             document.getElementById("TroopRemoval").style.display = "none";
             document.getElementById("QuestSelectorText").style.display = "none";
@@ -269,8 +343,8 @@
             document.getElementById("QuestDescriptionText").style.display = "none";
             document.getElementById("TroopCount").style.display = "none";
             document.getElementById("TroopList").style.display = "none";
-
-
+            document.getElementById("SoliderDetailView").style.display = "none";
+            document.getElementById("SoliderSlotList").style.display = "none";
         }
     </script>
 </head>
@@ -281,7 +355,8 @@
         <text>What would you like to do?</text>
         <select class="Dropdown" id="actionSelector" onchange="selectAction(this.value)">
             <option value="-1"></option>
-            <option value="1">Check Your Army</option>
+            <option value="0">Army Overview</option>
+            <option value="1">Individual Solider Overview</option>
             <option value="2">Add Soliders To Army</option>
             <option value="3">Add Mercenaries To Army</option>
             <option value="4">Remove Troop From Army</option>
@@ -299,24 +374,26 @@
             <text id="Skirmishers">Skirmish Line:</text>
 
         </ArmyViewer>
-        <AddTroops id="TroopAdder" class="InvisableOnStart">
-            <input class="NumericInput" id="TroopSlot">Which Slot would you like this troop to go into?</input>
-            <br>
-            <input class="NumericInput" id="WeaponInput">What Weapon would you like to give?</input>
-            <br>
-            <input class="NumericInput" id="ArmorInput">What Armor would you like to give?</input>
-            <br>
-            <input class="NumericInput" id="OffhandInput">What Offhand would you like to give?</input>
-            <br>
-            <input class="NumericInput" id="OtherInput">What Other Item would you like to give?</input>
-            <br>
-
-            <input class="NumericInput" id="TroopAmount">How many would you like to add?</input>
-        </AddTroops>
+        <SoliderSlotList id="SoliderSlotList" class="InvisableOnStart">
+            <label id="SSSLabel" for="SoliderSlotSelector">Which Slot does this operation involve?</label>
+            <select class="Dropdown" id="SoliderSlotSelector">
+                <option value="-1"></option>
+                <option value="0">Frontline Slot 1</option>
+                <option value="1">Frontline Slot 2</option>
+                <option value="2">Frontline Slot 3</option>
+                <option value="3">Frontline Slot 4</option>
+                <option value="4">Frontline Slot 5</option>
+                <option value="5">Frontline Slot 6</option>
+                <option value="6">Ranged Slot 1</option>
+                <option value="7">Ranged Slot 2</option>
+                <option value="8">Ranged Slot 3</option>
+                <option value="9">Skirmish Slot 1</option>
+                <option value="10">Skirmish Slot 2</option>
+                <option value="11">Skirmish Slot 3</option>
+            </select>
+        </SoliderSlotList>
         <AddMercs id="MercAdder" class="InvisableOnStart">
-            <input class="NumericInput" id="MercSlot">Which Slot would you like this troop to go into?</input>
-            <br>
-            <input class="NumericInput" id="MercAmount">How many would you like to add?</input>
+            <input class="NumericInput" type="number" id="MercAmount">How many would you like to add?</input>
             <br>
             <select class="Dropdown" id="Trooplist">
                 <option value="0"></option>
@@ -342,7 +419,7 @@
                 <option value="11300">Free lance</option>
                 <option value="11301">Knight</option>
                 <option value="11310">Mounted Levy</option>
-                <option value="11310">Mounted Palace Guard</option>
+                <option value="11320">Mounted Palace Guard</option>
                 <option value="11600">Horse_Archer</option>
                 <option value="11601">Veteran_Horse_Archer</option>
                 <option value="11602">Palace_Archer</option>
@@ -351,14 +428,153 @@
         </AddMercs>
         <RemoveTroops id="TroopRemoval" class="InvisableOnStart">
             <br>
-            <input type="number" class="NumericInput">Which Slot would you like to remove troops from?</input>
+            <text>Which Slot would you like to remove troops from?</text>
         </RemoveTroops>
-        <Questing id="QuestMenu" class="InvisableOnStart">
+        <Questing id="QuestMenu" class="InvisableOnStart"> 
             <input type="number" class="NumericInput">Which Quest would you like to do?</input>
         </Questing>
-        <SoliderPromotion id="SoliderPromotion" class="InvisableOnStart">
-
-        </SoliderPromotion>
+        <SoliderDetailView id="SoliderDetailView" class="InvisableOnStart">
+            <text id="SoliderType">Solider Name:</text>
+            <br>
+            <text id="SoliderWeapon">Solider Weapon:</text>
+            <br>
+            <text id="SoliderOffhand">Solider Offhand:</text>
+            <br>
+            <text id="SoliderArmor">Solider Armor:</text>
+            <br>
+            <text id="SoliderOther">Solider Other:</text>
+        </SoliderDetailView>
+        <SoliderItemAdder id="SoliderItemAdder">
+            <br>
+            <label for="WeaponInput" class="InvisableOnStart" id="WeaponInputLabel">What Weapon would you like to give?</label>
+            <select class="InvisableOnStart Dropdown" id="WeaponInput">
+                <option value="0"></option>
+                <option value="5000" class=" 100">Bronze Spear</option>
+                <option value="5001" class=" 100">Iron Spear</option>
+                <option value="5002" class=" 100">Steel Spear</option>
+                <option value="5003" class=" 100">Emerald Bronze Spear</option>
+                <option value="5004" class=" 100">Damascus Steel Spear</option>
+                <option value="5010" class=" 102">Bronze Axe</option>
+                <option value="5011" class=" 102">Iron Axe</option>
+                <option value="5012" class=" 102">Steel Axe</option>
+                <option value="5013" class=" 102">Emerald Bronze Axe</option>
+                <option value="5014" class=" 102">Damascus Steel Axe</option>
+                <option value="5020" class=" 101">Bronze Sword</option>
+                <option value="5021" class=" 101">Iron Sword</option>
+                <option value="5022" class=" 101">Steel Sword</option>
+                <option value="5023" class=" 101">Emerald Bronze Sword</option>
+                <option value="5024" class=" 101">Damascus Steel Sword</option>
+                <option value="5030" class=" 101">Bronze Mace</option>
+                <option value="5031" class=" 101">Iron Mace</option>
+                <option value="5032" class=" 101">Steel Mace</option>
+                <option value="5033" class=" 101">Emerald Bronze Mace</option>
+                <option value="5034" class=" 101">Damascus Steel Mace</option>
+                <option value="5040" class=" 100">Bronze Lance</option>
+                <option value="5041" class=" 100">Iron Lance</option>
+                <option value="5042" class=" 100">Steel Lance</option>
+                <option value="5043" class=" 100">Emerald Bronze Lance</option>
+                <option value="5044" class=" 100">Damascus Steel Lance</option>
+                <option value="5050" class=" 100 102">Bronze Poleaxe</option>
+                <option value="5051" class=" 100 102">Iron Poleaxe</option>
+                <option value="5052" class=" 100 102">Steel Poleaxe</option>
+                <option value="5053" class=" 100 102">Emerald Bronze Poleaxe</option>
+                <option value="5054" class=" 100 102">Damascus Steel Poleaxe</option>
+                <option value="5060" class=" 101">Bronze Greatsword</option>
+                <option value="5061" class=" 101">Iron Greatsword</option>
+                <option value="5062" class=" 101">Steel Greatsword</option>
+                <option value="5063" class=" 101">Emerald Bronze Greatsword</option>
+                <option value="5064" class=" 101">Damascus Steel Greatsword</option>
+                <option value="5070" class=" 101">Bronze Warhammer</option>
+                <option value="5071" class=" 101">Iron Warhammer</option>
+                <option value="5072" class=" 101">Steel Warhammer</option>
+                <option value="5073" class=" 101">Emerald Bronze Warhammer</option>
+                <option value="5074" class=" 101">Damascus Steel Warhammer</option>
+                <option value="5200" class=" 104">Bow</option>
+                <option value="5201" class=" 104">Longbow</option>
+                <option value="5202" class=" 104">Greatbow</option>
+                <option value="5210" class=" 107">Crossbow</option>
+                <option value="5211" class=" 105">Sling</option>
+                <option value="5212" class=" 106">Flamer</option>
+                <option value="5213" class=" 106">Flame Grenade</option>
+                <option value="5214" class=" 105">Golden Sling</option>
+                
+            </select>
+            <br>
+            <label for="OffhanInput" class="InvisableOnStart" id="OffhandInputLabel">What Offhand would you like to give?</label>
+            <select class="Dropdown InvisableOnStart" id="OffhandInput">
+                <option value="0"></option>
+                <option value="5900" class= "200">Wooden Shield</option>
+                <option value="5901" class= "200">Banded Shield</option>
+                <option value="5902" class= "200">Standard Shield</option>
+                <option value="5903" class= "200">Metal Shield</option>
+                <option value="5904" class= "200">Gong Shield</option>
+                <option value="5905" class= "200">Heirloom Shield</option>
+                <option value="5910" class= "200">Wall Shield</option>
+                <option value="5911" class= "200">Advanced Wall Shield</option>
+                
+            </select>
+            <br>
+            <label for="ArmorInput" class="InvisableOnStart" id="ArmorInputLabel"  class="300">What Armor would you like to give?</label>
+            <select class="Dropdown InvisableOnStart" id="ArmorInput"  class="300">
+                <option value="0"></option>
+                <option value="5500"  class="300">Light Bronze Mail</option>
+                <option value="5501"  class="300">Light Iron Mail</option>
+                <option value="5502"  class="300">Light Steel Mail</option>
+                <option value="5503"  class="300">Light Emerald Bronze Mail</option>
+                <option value="5504"  class="300">Light Damascus Steel Mail</option>
+                <option value="5510"  class="300">Light Bronze Plate</option>
+                <option value="5511"  class="300">Light Iron Plate</option>
+                <option value="5512"  class="300">Light Steel Plate</option>
+                <option value="5513"  class="300">Light Emerald Bronze Plate</option>
+                <option value="5514"  class="300">Light Damascus Steel Plate</option>
+                <option value="5520"  class="300">Medium Bronze Mail</option>
+                <option value="5521"  class="300">Medium Iron Mail</option>
+                <option value="5522"  class="300">Medium Steel Mail</option>
+                <option value="5523"  class="300">Medium Emerald Bronze Mail</option>
+                <option value="5524"  class="300">Medium Damascus Steel Mail</option>
+                <option value="5530"  class="300">Medium Bronze Plate</option>
+                <option value="5531"  class="300">Medium Iron Plate</option>
+                <option value="5532"  class="300">Medium Steel Plate</option>
+                <option value="5533"  class="300">Medium Emerald Bronze Plate</option>
+                <option value="5534"  class="300">Medium Damascus Steel Plate</option>
+                <option value="5540"  class="300">Bronze Heavy Armor</option>
+                <option value="5541"  class="300">Iron Heavy Armor</option>
+                <option value="5542"  class="300">Steel Heavy Armor</option>
+                <option value="5543"  class="300">Emerald Bronze Heavy Armor</option>
+                <option value="5544"  class="300">Damascus Steel Heavy Armor</option>
+                <option value="5550"  class="301">Light Bronze Horse Armor</option>
+                <option value="5551"  class="301">Light Iron Horse Armor</option>
+                <option value="5552"  class="301">Light Steel Horse Armor</option>
+                <option value="5553"  class="301">Light Emerald Bronze Horse Armor</option>
+                <option value="5554"  class="301">Light Damascus Steel Horse Armor</option>
+                <option value="5560"  class="301">Medium Bronze Horse Armor</option>
+                <option value="5561"  class="301">Medium Iron Horse Armor</option>
+                <option value="5562"  class="301">Medium Steel Horse Armor</option>
+                <option value="5563"  class="301">Medium Emerald Bronze Horse Armor</option>
+                <option value="5564"  class="301">Medium Damascus Steel Horse Armor</option>
+                <option value="5570"  class="301">Heavy Bronze Horse Armor</option>
+                <option value="5571"  class="301">Heavy Iron Horse Armor</option>
+                <option value="5572"  class="301">Heavy Steel Horse Armor</option>
+                <option value="5573"  class="301">Heavy Emerald Bronze Horse Armor</option>
+                <option value="5574"  class="301">Heavy Damascus Steel Horse Armor</option>
+                <option value="5580"  class="300">Leather Armor</option>
+                <option value="5581"  class="300">Thick Leather Armor</option>
+                <option value="5582"  class="300">Gambeson</option>
+            </select>
+            <br>
+            <label for="OtherInput" class="InvisableOnStart" id="OtherInputLabel">What Other Item would you like to give?</label>
+            <select class="Dropdown InvisableOnStart" id="OtherInput">
+                <option value="0"></option>
+                <option value="5400" class="400">Farm Horse</option>
+                <option value="5401" class="400">Horse</option>
+                <option value="5402" class="400">Charge Horse</option>
+                <option value="5403" class="400">War Horse</option>
+                <option value="7300" class="401">Elephant</option>
+            </select>
+            <br>
+            <label for="TroopAmount" class="InvisableOnStart">How many would you like to add?</label>
+            <input class="NumericInput InvisableOnStart" id="TroopAmount"></input>
+        </SoliderItemAdder>
         <QuestMenu>
             <text class="InvisableOnStart" id="QuestSelectorText">Which Quest Would you like to do?</text>
             <select class="Dropdown InvisableOnStart" id="QuestSelector" onchange="questText(this.value)">
@@ -380,7 +596,8 @@
 
         </QuestMenu>
         <TroopList class="InvisableOnStart" id="TroopList">
-            <select class="Dropdown" id="TroopListDropdown" onchange="showRecipe(Number(this.value))">
+            <label for="TroopListDropdown">Which Troop would you like?</label>
+            <select class="Dropdown" id="TroopListDropdown" onchange="TroopListDropdownHelper()">
                 <option value="-1"></option>
                 <option value="10001">T1_Spearman</option>
                 <option value="10002">T2_Spearman</option>
@@ -500,7 +717,9 @@
     .InvisableOnStart {
         display: none;
     }
-
+    .WeaponOption {
+        display: inherit;
+    }
     .WidthLimited {
         width: 50%;
     }

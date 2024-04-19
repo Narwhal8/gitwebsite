@@ -23,7 +23,9 @@
       console.log(_cityData);
       const _kingdomType = _cityData[4];
 
-
+            
+      const NFTWarcontract = new ethers.Contract(waraddress, warabi, provider);
+          const NFTWarcontractSigner = new ethers.Contract(waraddress, warabi, signer);
       switch (FunctionCalled.value) {
 
         case "1":
@@ -311,40 +313,94 @@
           break;
 
         case "4":
-            
-          const NFTWarcontract = new ethers.Contract(waraddress, warabi, provider)
-          const NFTWarcontractSigner = new ethers.Contract(waraddress, warabi, signer);
-          const SoliderID = returnsoliderID();
-            var j = 0;
-            let temp_solider_array = [];
-            let temp_solider_array_data = [];
-            let max_war_val = 113 ;
-            for (var i = 0; i <= max_war_val; ++i) {
-  
-                temp_solider_array.push(SoliderID[i]);
-                ++j;
-                if (j == 32 || i == (max_war_val)) {
-                  console.log(temp_solider_array_data,temp_solider_array);
-                  var _variable_val = 31;
-                  if( i == (max_war_val)) {_variable_val = max_war_val % 32}
-                  for(var k = 0; k <= _variable_val; ++k) {
-                    temp_solider_array_data.push(eval("soldier" + temp_solider_array[k]));
-                  }
-                  while(temp_solider_array.length < 32) {
-                    temp_solider_array_data.push([0, 0, 0, 0, 0, 0, false, [0, 0, 0, 0], [false, false, false, false], 0, [0, 0] ]);
-                    temp_solider_array.push(0);
 
-                  }
-                  NFTWarcontractSigner.addSoliderDataLoop(temp_solider_array_data,temp_solider_array);
-                  temp_solider_array = [];
-                  temp_solider_array_data = [];
-                  j = 0;
-                
-                }
+const SoliderID = returnsoliderID();
+  var j = 0;
+  var temp_solider_array = [];
+  var temp_solider_array_data = [];
+  var max_war_val = 113 ;
+  for (var i = 0; i <= max_war_val; ++i) {
 
-            }
-          break;
+      temp_solider_array.push(SoliderID[i]);
+      ++j;
+      if (j == 32 || i == (max_war_val)) {
+        console.log(temp_solider_array_data,temp_solider_array);
+        var _variable_val = 31;
+        if( i == (max_war_val)) {_variable_val = max_war_val % 32}
+        for(var k = 0; k <= _variable_val; ++k) {
+          temp_solider_array_data.push(eval("soldier" + temp_solider_array[k]));
+        }
+        while(temp_solider_array.length < 32) {
+          temp_solider_array_data.push([0, 0, 0, 0, 0, 0, false, [0, 0, 0, 0], [false, false, false, false], 0, [0, 0] ]);
+          temp_solider_array.push(0);
+
+        }
+        NFTWarcontractSigner.addSoliderDataLoop(temp_solider_array_data,temp_solider_array);
+        temp_solider_array = [];
+        temp_solider_array_data = [];
+        j = 0;
+      
       }
+
+  }
+
+      const WeaponID = returnweaponID();
+        var j = 0;
+        var temp_weapon_array = [];
+        var temp_weapon_array_data = [];
+        var max_war_val = 103 ;
+        for (var i = 0; i <= max_war_val; ++i) {
+
+            temp_weapon_array.push(WeaponID[i]);
+            ++j;
+            if (j == 32 || i == (max_war_val)) {
+              console.log(temp_weapon_array_data,temp_weapon_array);
+              var _variable_val = 31;
+              if( i == (max_war_val)) {_variable_val = max_war_val % 32}
+              for(var k = 0; k <= _variable_val; ++k) {
+                temp_weapon_array_data.push(eval("weapon" + temp_weapon_array[k]));
+              }
+              while(temp_weapon_array.length < 32) {
+                temp_weapon_array_data.push([0,false,0,0,0,0,0,0]);
+                temp_weapon_array.push(0);
+
+              }
+              NFTWarcontractSigner.addEquipmentDataLoop(temp_weapon_array_data,temp_weapon_array);
+              temp_weapon_array = [];
+              temp_weapon_array_data = [];
+              j = 0;
+            
+            }
+
+  }
+          break;
+        case "5":
+                      
+          NFTWarcontractSigner.addMercADMIN(11320,1,50,myAddress);
+          break;
+        case "6":
+          //Note: Quest rewards are stored on the War contract
+          NFTWarcontractSigner.changeQuestRewards(questRewards1);
+          NFTWarcontractSigner.changeQuestRewards(questRewards2);
+          NFTWarcontractSigner.changeQuestRewards(questRewards3);
+          NFTWarcontractSigner.changeQuestRewards(questRewards4);
+          NFTWarcontractSigner.changeQuestRewards(questRewards5);
+          NFTWarcontractSigner.changeQuestRewards(questRewards6);
+          NFTWarcontractSigner.changeQuestRewards(questRewards7);
+          NFTWarcontractSigner.changeQuestRewards(questRewards8);
+          NFTWarcontractSigner.changeQuestRewards(questRewards10);
+
+          NFTWarcontractSigner.createQuest((questAddress + 1),questArmy1[0],questArmy1[1]);
+          NFTWarcontractSigner.createQuest((questAddress + 2),questArmy2[0],questArmy2[1]);
+          NFTWarcontractSigner.createQuest((questAddress + 3),questArmy3[0],questArmy3[1]);
+          NFTWarcontractSigner.createQuest((questAddress + 4),questArmy4[0],questArmy4[1]);
+          NFTWarcontractSigner.createQuest((questAddress + 5),questArmy5[0],questArmy5[1]);
+          NFTWarcontractSigner.createQuest((questAddress + 6),questArmy6[0],questArmy6[1]);
+          NFTWarcontractSigner.createQuest((questAddress + 7),questArmy7[0],questArmy7[1]);
+          NFTWarcontractSigner.createQuest((questAddress + 8),questArmy8[0],questArmy8[1]);
+          NFTWarcontractSigner.createQuest((questAddress + 10),questArmy10[0],questArmy10[1]);
+          break;
+        }
 
 
     }
@@ -361,6 +417,8 @@
     <option value="2"></option>
     <option value="3">Initiator</option>
     <option value="4">War Initiator</option>
+    <option value="5">Test Army</option>
+    <option value="6">Quest Initiator</option>
 
   </select>
   <text>Mint Items:</text>

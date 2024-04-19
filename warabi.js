@@ -96,17 +96,17 @@ const warabi = [
 						"type": "uint8"
 					}
 				],
-				"internalType": "struct NewCombat.Equipment",
+				"internalType": "struct NewCombat.Equipment[32]",
 				"name": "_equipment",
-				"type": "tuple"
+				"type": "tuple[32]"
 			},
 			{
-				"internalType": "uint256",
+				"internalType": "uint256[32]",
 				"name": "_id",
-				"type": "uint256"
+				"type": "uint256[32]"
 			}
 		],
-		"name": "addEquipmentData",
+		"name": "addEquipmentDataLoop",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -142,9 +142,9 @@ const warabi = [
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "uint16",
 				"name": "_mercType",
-				"type": "uint256"
+				"type": "uint16"
 			},
 			{
 				"internalType": "uint8",
@@ -163,136 +163,6 @@ const warabi = [
 			}
 		],
 		"name": "addMercADMIN",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"components": [
-					{
-						"internalType": "int16",
-						"name": "attack",
-						"type": "int16"
-					},
-					{
-						"internalType": "int16",
-						"name": "defence",
-						"type": "int16"
-					},
-					{
-						"internalType": "int16",
-						"name": "armor",
-						"type": "int16"
-					},
-					{
-						"internalType": "int16",
-						"name": "speed",
-						"type": "int16"
-					},
-					{
-						"internalType": "uint8",
-						"name": "range",
-						"type": "uint8"
-					},
-					{
-						"internalType": "int16",
-						"name": "piercing",
-						"type": "int16"
-					},
-					{
-						"internalType": "int16",
-						"name": "morale",
-						"type": "int16"
-					},
-					{
-						"internalType": "bool",
-						"name": "hasShield",
-						"type": "bool"
-					},
-					{
-						"internalType": "uint16[2]",
-						"name": "additionalDeployCost",
-						"type": "uint16[2]"
-					}
-				],
-				"internalType": "struct NewCombat.Solider",
-				"name": "_troop",
-				"type": "tuple"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_id",
-				"type": "uint256"
-			}
-		],
-		"name": "addMercData",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"components": [
-					{
-						"internalType": "int16",
-						"name": "attack",
-						"type": "int16"
-					},
-					{
-						"internalType": "int16",
-						"name": "defence",
-						"type": "int16"
-					},
-					{
-						"internalType": "int16",
-						"name": "armor",
-						"type": "int16"
-					},
-					{
-						"internalType": "int16",
-						"name": "speed",
-						"type": "int16"
-					},
-					{
-						"internalType": "uint8",
-						"name": "range",
-						"type": "uint8"
-					},
-					{
-						"internalType": "int16",
-						"name": "piercing",
-						"type": "int16"
-					},
-					{
-						"internalType": "int16",
-						"name": "morale",
-						"type": "int16"
-					},
-					{
-						"internalType": "bool",
-						"name": "hasShield",
-						"type": "bool"
-					},
-					{
-						"internalType": "uint16[2]",
-						"name": "additionalDeployCost",
-						"type": "uint16[2]"
-					}
-				],
-				"internalType": "struct NewCombat.Solider[32]",
-				"name": "_troop",
-				"type": "tuple[32]"
-			},
-			{
-				"internalType": "uint256[32]",
-				"name": "_id",
-				"type": "uint256[32]"
-			}
-		],
-		"name": "addMercDataLoop",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
