@@ -875,100 +875,107 @@
     }
 
     async function totalCostCalc() {
-      let whyJS = returnRecipe(Number(selector()));
-      var items = whyJS[1];
-      var item_amount = whyJS[0];
-      var item_output_amount = whyJS[2];
-      var item_output = whyJS[3];
-      var time = whyJS[5];
+      document.getElementById("totalCostID").textContent = "Total Cost:";
+      document.getElementById("totalCostID").style.display = "block";
+      if (actionSelect.value == "1") {
+        setTTC(TimeAmount.value * 10);
+        if(cropSelect.value > 100){await farmYieldApproximator(TimeAmount.value);}
+      }
+      else if(actionSelect.value == "2") {
+        let whyJS = returnRecipe(Number(selector()));
+        var items = whyJS[1];
+        var item_amount = whyJS[0];
+        var item_output_amount = whyJS[2];
+        var item_output = whyJS[3];
+        var time = whyJS[5];
 
-      const provider = new ethers.providers.Web3Provider(window.ethereum)
-      const signer = provider.getSigner()
-      const NFTcontract = new ethers.Contract(address, abi, provider)
-      const NFTcontractSigner = new ethers.Contract(address, abi, signer);
-      const myAddress = await signer.getAddress()
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+        const signer = provider.getSigner()
+        const NFTcontract = new ethers.Contract(address, abi, provider)
+        const NFTcontractSigner = new ethers.Contract(address, abi, signer);
+        const myAddress = await signer.getAddress()
 
-      if (items[0] != 0) {
-        var _recipeText;
-        var _foodcost;
-        var _foodMultiplier = (document.getElementById("Amount").value * Math.ceil(document.getElementById("BatchAmount").value / maxAllowableOrders[document.getElementById("CID").value]));
-        console.log(document.getElementById("BatchAmount").value, "a")
-        console.log(document.getElementById("Amount").value, "b")
-        _foodcost = Workers[document.getElementById("CID").value] * (_foodMultiplier);
-        var _outputText;
-        _outputText = item_output_amount[0] * document.getElementById("Amount").value;
-        if (document.getElementById("totalCostID").textContent != "Total Cost:") { document.getElementById("totalCostID").textContent = "Total Cost:"; }
-        if (time != 0) {
-          const _buildingCount = await NFTcontract.getBuildingCount(myAddress);
-          console.log("is this running?");
-          document.getElementById("BatchAmountLabel").textContent = "How many batches would you like to make? Max: ";
-          document.getElementById("BatchAmountLabel").textContent += (maxAllowableOrders[document.getElementById("CID").value] * _buildingCount[document.getElementById("CID").value])
-          for (var i = 0; i < 6; i++) {
-            if (items[i] == 0) { break; }
-            document.getElementById("totalCostID").textContent += ((item_amount[i]) * maxAllowableOrders[document.getElementById("CID").value] * document.getElementById("Amount").value);
+        if (items[0] != 0) {
+          var _recipeText;
+          var _foodcost;
+          var _foodMultiplier = (document.getElementById("Amount").value * Math.ceil(document.getElementById("BatchAmount").value / maxAllowableOrders[document.getElementById("CID").value]));
+          console.log(document.getElementById("BatchAmount").value, "a")
+          console.log(document.getElementById("Amount").value, "b")
+          _foodcost = Workers[document.getElementById("CID").value] * (_foodMultiplier);
+          var _outputText;
+          _outputText = item_output_amount[0] * document.getElementById("Amount").value;
+          if (time != 0) {
+            const _buildingCount = await NFTcontract.getBuildingCount(myAddress);
+            console.log("is this running?");
+            document.getElementById("BatchAmountLabel").textContent = "How many batches would you like to make? Max: ";
+            document.getElementById("BatchAmountLabel").textContent += (maxAllowableOrders[document.getElementById("CID").value] * _buildingCount[document.getElementById("CID").value])
+            for (var i = 0; i < 6; i++) {
+              if (items[i] == 0) { break; }
+              document.getElementById("totalCostID").textContent += ((item_amount[i]) * maxAllowableOrders[document.getElementById("CID").value] * document.getElementById("Amount").value);
+              document.getElementById("totalCostID").textContent += " ";
+              document.getElementById("totalCostID").textContent += itemName(items[i]);
+            }
+          }
+          else {
+            for (var i = 0; i < 6; i++) {
+              if (items[i] == 0) { break; }
+              document.getElementById("totalCostID").textContent += ((item_amount[i]) * document.getElementById("Amount").value);
+              document.getElementById("totalCostID").textContent += " ";
+              document.getElementById("totalCostID").textContent += itemName(items[i]);
+              document.getElementById("totalCostID").textContent += " ";
+            }
+          }
+
+          if (time != 0) {
+            document.getElementById("totalCostID").textContent += " & ";
+
+            document.getElementById("totalCostID").textContent += _foodcost;
             document.getElementById("totalCostID").textContent += " ";
-            document.getElementById("totalCostID").textContent += itemName(items[i]);
+            document.getElementById("totalCostID").textContent += "Food";
+          }
+          document.getElementById("totalCostID").textContent += " For ";
+
+
+          if (document.getElementById("actionSelect").value == 2) { _outputText = _outputText * Number(document.getElementById("BatchAmount").value); }
+          document.getElementById("totalCostID").textContent += (_outputText);
+
+          document.getElementById("totalCostID").textContent += " ";
+
+          document.getElementById("totalCostID").textContent += itemName(item_output[0]);
+          document.getElementById("totalCostID").style.display = "block";
+
+
+          if (item_output[1] != 0) {
+
+            document.getElementById("totalCostID").textContent += " & ";
+
+            document.getElementById("totalCostID").textContent += ((item_output_amount[1]) * document.getElementById("Amount").value * maxAllowableOrders[document.getElementById("CID").value]);
+
+            document.getElementById("totalCostID").textContent += " ";
+
+            document.getElementById("totalCostID").textContent += itemName(item_output[1]);
           }
         }
+
+        if (time == 0 || document.getElementById("actionSelect").value == "7" ||
+          document.getElementById("actionSelect").value == "8" ||
+          document.getElementById("actionSelect").value == "4" ||
+          document.getElementById("actionSelect").value == "3") { }
+        //Why is this here? Because I cant figure out how to make it work right in the if statement and its not worth the time to fix when this works
         else {
-          for (var i = 0; i < 6; i++) {
-            if (items[i] == 0) { break; }
-            document.getElementById("totalCostID").textContent += ((item_amount[i]) * document.getElementById("Amount").value);
-            document.getElementById("totalCostID").textContent += " ";
-            document.getElementById("totalCostID").textContent += itemName(items[i]);
-            document.getElementById("totalCostID").textContent += " ";
+          if (document.getElementById("CID").value != 22) {
+            var _time_multi = await _buildTimeBasedOnFood(itemValue(Number(document.getElementById("FoodInputID").value)),false);
+            console.log("time multiplier", _time_multi);
+
+            setTTC((Number(document.getElementById("Amount").value) * time * 200 / _time_multi));
           }
+          else { setTTC(Number(document.getElementById("Amount").value) * time); }
         }
 
-        if (time != 0) {
-          document.getElementById("totalCostID").textContent += " & ";
-
-          document.getElementById("totalCostID").textContent += _foodcost;
-          document.getElementById("totalCostID").textContent += " ";
-          document.getElementById("totalCostID").textContent += "Food";
-        }
-        document.getElementById("totalCostID").textContent += " For ";
-
-
-        if (document.getElementById("actionSelect").value == 2) { _outputText = _outputText * Number(document.getElementById("BatchAmount").value); }
-        document.getElementById("totalCostID").textContent += (_outputText);
-
-        document.getElementById("totalCostID").textContent += " ";
-
-        document.getElementById("totalCostID").textContent += itemName(item_output[0]);
-        document.getElementById("totalCostID").style.display = "block";
-
-
-        if (item_output[1] != 0) {
-
-          document.getElementById("totalCostID").textContent += " & ";
-
-          document.getElementById("totalCostID").textContent += ((item_output_amount[1]) * document.getElementById("Amount").value * maxAllowableOrders[document.getElementById("CID").value]);
-
-          document.getElementById("totalCostID").textContent += " ";
-
-          document.getElementById("totalCostID").textContent += itemName(item_output[1]);
-        }
       }
-
-      if (time == 0 || document.getElementById("actionSelect").value == "7" ||
-        document.getElementById("actionSelect").value == "8" ||
-        document.getElementById("actionSelect").value == "4" ||
-        document.getElementById("actionSelect").value == "3") { }
-      //Why is this here? Because I cant figure out how to make it work right in the if statement and its not worth the time to fix when this works
-      else {
-        if (document.getElementById("CID").value != 22) {
-          var _time_multi = await _buildTimeBasedOnFood(_itemValue(Number(document.getElementById("FoodInputID").value)));
-          console.log("time multiplier", _time_multi);
-
-          setTTC((Number(document.getElementById("Amount").value) * time * 200 / _time_multi));
-        }
-        else { setTTC(Number(document.getElementById("Amount").value) * time); }
       }
-
-    }
-
-    async function _buildTimeBasedOnFood(_value) {
+    
+    async function _buildTimeBasedOnFood(_value,_isFarming) {
       const provider = new ethers.providers.Web3Provider(window.ethereum)
       const signer = provider.getSigner()
       const NFTcontract = new ethers.Contract(address, abi, provider)
@@ -979,7 +986,11 @@
       let _value2 = (65 + (Math.sqrt((_value * 2))));
       _value2 = Math.trunc(_value2);
       console.log("first value check", _value2);
-      _value2 += 50 + (0.5 * (100 * (1 / (1 + (0.025 * (_item_stocks[0] + _item_stocks[1] + _item_stocks[2] + _item_stocks[3] + _item_stocks[4]))))))
+      var _civGoodsBonus = (1 / (1 + (0.025 * (_item_stocks[0] + _item_stocks[1] + _item_stocks[2] + _item_stocks[3] + _item_stocks[4]))));
+      if(_isFarming == false) {
+        _value2 += 50 + (0.5 * _civGoodsBonus)
+      }
+      else {_value2 = _value2 * (100 + _civGoodsBonus)/100}
       console.log("second value check", _value2);
       _value2 = Math.trunc(_value2);
       console.log("final value check", _value2);
@@ -1175,6 +1186,43 @@
 
     }
 
+    async function farmYieldApproximator(_value) {
+      var crop_info = returnCropData(cropSelect.value);
+
+      var crop_yield_times = crop_info[6];
+      var secondary_crop_yield_times = crop_info[7];
+
+
+      var yield_mod = await _buildTimeBasedOnFood(itemValue(Number(FoodInputID.value)),true)/100;  
+
+      var primary_yield = (crop_info[0] * _value * Amount.value * yield_mod);
+
+      if(secondary_crop_yield_times != 0) {
+        document.getElementById("SecondaryCropYieldAmount").style.display = "block";
+        document.getElementById("SecondaryCropYieldAmount").textContent = "Estimated Secondary Yield: ";
+
+        primary_yield = (crop_info[0] * yield_mod * Amount.value);
+        var secondary_start = (crop_info[6]/10)
+
+        var secondary_yield_check = crop_info[1] * (_value - secondary_start) * Amount.value * yield_mod ;
+        if(secondary_yield_check < 0 ) {secondary_yield_check = 0}
+        if(_value * 10 - crop_info[6] < 0) {primary_yield = 0}
+
+        document.getElementById("SecondaryCropYieldAmount").textContent += secondary_yield_check;
+        document.getElementById("SecondaryCropYieldAmount").textContent += " ";
+        document.getElementById("SecondaryCropYieldAmount").textContent += itemName(crop_info[10]);
+      }
+
+      document.getElementById("CropYieldAmount").style.display = "block";
+
+      document.getElementById("CropYieldAmount").textContent = "Estimated Primary Yield: ";
+      document.getElementById("CropYieldAmount").textContent += primary_yield;
+      document.getElementById("CropYieldAmount").textContent += " ";
+      document.getElementById("CropYieldAmount").textContent += itemName(crop_info[9]);
+      document.getElementById("CropYieldAmount").textContent += " NOTE: Estimates do not currently include effects based on land conditions or season";
+
+
+    }
     function selectLand(_value) {
 
       showLandMenu();
@@ -1324,8 +1372,7 @@
 
 <body>
 
-
-
+  <h3>Attention: This website is very WIP. If something doesn't work try connecting your wallet. If that doesn't work refresh the page. If it still doesnt work contact me with the details.</h3>
   <button id="walletConnect" class="walletConnect" onclick="signon();">Connect Your Wallet Here!</button>
 
   <label class="actionSelect" for="actionSelect">Select an action:</label>
@@ -1353,7 +1400,9 @@
     <label class="Farming" id="FarmLabel">What would you like to farm?</label>
     <select class="Farming Dropdown" id="cropSelect" onchange="selectLand(this.value);">
       <option value="_"></option>
-      <option value="1">Natural Reasources</option>
+      <option value="0">--Natural Reasources</option>
+      <option value="_"></option>
+      <option value="0">Natural Reasources</option>
       <option value="2">Low Noble Hunt</option>
       <option value="2">High Noble Hunt</option>
       <option value="_"></option>
@@ -1364,16 +1413,11 @@
       <option value=503>Rice</option>
       <option value=504>Corn</option>
       <option value=505>Sorghum</option>
-      <option value=506>Apple</option>
-      <option value=507>Plum</option>
-      <option value=508>Olives</option>
       <option value=509>Beans</option>
       <option value=510>Mushroom</option>
       <option value=511>Beets</option>
       <option value=512>Casava</option>
       <option value=513>Peanut</option>
-      <option value=514>Cherry</option>
-      <option value=515>Peach</option>
       <option value=516>Garlic</option>
       <option value=517>Onion</option>
       <option value=518>Carrot</option>
@@ -1381,11 +1425,24 @@
       <option value=521>Herbs</option>
       <option value=522>Grapes</option>
       <option value=535>Potato</option>
+      <option value=538>Oats</option>
+      <option value=540>Barley</option>
+      <option value=542>Cotton</option>
+
+      <option value="_"></option>
+      <option value="0">--Tree Crops</option>
+      <option value="_"></option>
+      <option value=506>Apple</option>
+      <option value=507>Plum</option>
+      <option value=508>Olives</option>
+      <option value=514>Cherry</option>
+      <option value=515>Peach</option>
       <option value="_"></option>
       <option value="0">--Animals</option>
       <option value="_"></option>
       <option value=532>Cows</option>
       <option value=533>Chickens</option>
+      <option value=544>Sheep</option>
     </select>
   </WorkingLand>
 
@@ -2363,9 +2420,9 @@
     <text class="foodInput" id="foodInputLabel">What would you like to feed the workers?</text>
 
     <select class="foodInput Dropdown" id="FoodInputID">
-      <option value="-1"></option>
+      <option value="0"></option>
       <option value="0">None</option>
-      <option value="-1"></option>
+      <option value="0"></option>
       <option value="1400">Bread Combo</option>
       <option value="1401">Deluxe Bread Combo</option>
       <option value="1420">Basic Soup Combo</option>
@@ -2526,7 +2583,8 @@
 
     <input class=" NumericInput" type="number" id="TimeAmount" onchange="totalCostCalc();"></input>
 
-
+    <text id="CropYieldAmount" class="InvisableOnStart"></text>
+    <text id="SecondaryCropYieldAmount" class="InvisableOnStart"></text>
 
 
 
@@ -2650,7 +2708,7 @@
     display: none;
   }
 
-  .CivG {
+  .InvisableOnStart {
     display: none;
   }
 

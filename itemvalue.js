@@ -1,4 +1,4 @@
-function _itemValue(_itemID) {
+function itemValue(_itemID) {
     switch (_itemID) {
         case 0:
             return (0);

@@ -3721,6 +3721,64 @@ const questArmy7 = [[Mercenary_Maceman,Pikeman,Mercenary_Maceman,Veteran_Mercena
 const questArmy8 = [[Mercenary_Axeman,Pikeman,Veteran_Mercenary_Swordman,Mounted_Palace_Guard,0,0,Veteran_Horse_Archer,Horse_Archer,0,Mounted_Palace_Guard,0,0],[1000,2000,1000,200,0,0,500,1000,0,100,0,0]];
 const questArmy10 = [[Palace_Guard,Mounted_Palace_Guard,Palace_Guard,T7_Elephant,Palace_Guard,Mounted_Palace_Guard,Golden_Slinger,Imperial_Flamer,Palace_Archer,Mounted_Palace_Guard,0,0],[2000,1000,2000,500,2000,1000,2000,500,2000,500,0,0]];
 
+
+          
+let cropdata501 = [500, 0, [50, 100, 75], [50, 150], 25, 150, 10, 0, false, Wheat, 0];
+
+let cropdata502 = [500, 0, [0, 80, 60], [50, 150], 0, 150, 10, 0, false, Rye, 0];
+
+let cropdata503 = [500, 0, [50, 120, 80], [110, 200], 25, 150, 10, 0, false, Rice, 0];
+
+let cropdata504 = [500, 0, [50, 100, 75], [50, 150], 25, 150, 10, 0, false, Corn, 0];
+
+let cropdata505 = [500, 0, [30, 120, 90], [20, 150], 25, 150, 10, 0, false, Sorghum, 0];
+
+let cropdata535 = [600, 0, [30, 110, 60], [50, 150], 0, 200, 10, 0, false, Potato, 0];
+
+let cropdata506 = [2500, 500, [60, 110, 80], [50, 150], 25, 100, 50, 10, false, Wood, Apples];
+
+let cropdata507 = [2500, 500, [30, 110, 70], [50, 150], 25, 100, 50, 10,false, Wood, Plums];
+
+let cropdata508 = [2500, 500, [50, 120, 80], [25, 150], 25, 100, 50, 10, false, Wood, Olives];
+
+let cropdata509 = [500, 0, [50, 120, 75], [50, 150], 25, 150, 10, 0, false,  Beans, 0];
+
+let cropdata510 = [500, 0, [30, 120, 60], [50, 100], 0, 150, 10, 0, false, Mushrooms, 0];
+
+let cropdata514 = [2500, 500, [50, 110, 70], [50, 150], 25,100, 50, 10, false, Wood, Cherries];
+
+let cropdata512 = [600, 0, [70, 120, 80], [50, 150], 25, 150, 10, 0, false, Casava, 0];
+
+let cropdata513 = [500, 0, [50, 100, 75], [50, 150], 25, 150, 10, 0, false, Peanuts, 0];
+
+let cropdata515 = [2500, 500, [60, 110, 80], [50, 150], 0, 100, 50, 10, false, Wood, Peaches];
+
+let cropdata516 = [500, 0, [50, 120, 75], [50, 150], 25, 200, 10, 0, false, Garlic, 0];
+
+let cropdata517 = [500, 0, [50, 120, 75], [50, 150], 25, 200, 10, 0, false, Onion, 0];
+
+let cropdata518 = [500, 0, [50, 120, 75], [50, 150], 25, 200, 10, 0, false, 200, Carrots, 0];
+
+let cropdata519 = [500, 0, [75, 150, 90], [80, 170], 25,100 , 10, 0, false, Sugarcane, 0];
+
+let cropdata511 = [400, 0, [20, 100, 60], [50, 150], 0, 1, 10, 0, false, 200, Beets, 0];
+
+let cropdata521 = [500, 0, [60, 120, 85], [50, 150], 25, 200, 1, 10, false, 100, Allspice, 0];
+
+let cropdata522 = [500, 0, [50, 120, 75], [50, 150], 25, 1, 10, 0, false, 150, Grapes, 0];
+
+let cropdata538 = [500, 0, [30, 80, 60], [50, 150], 0, 200, 10, 0, false, Oats, 0];
+
+let cropdata540 = [500, 0, [30, 80, 60], [25, 125], 0, 200, 10, 0, false, Barley, 0];
+
+let cropdata542 = [500, 0, [70, 120, 85], [75, 150], 0, 150, 10, 0, false, Cotton, 0];
+
+let cropdata532 = [10, 100, [30, 80, 60], [50, 150], 0, 250, 50, 10, true, Cow, Milk];
+let cropdata533 = [10, 100, [30, 80, 60], [0, 200], 0, 250, 20, 10, true, Chicken, Eggs];
+let cropdata544 = [10, 500, [30, 80, 60], [25, 200], 0, 250, 30, 10, true, Sheep, Wool];
+
+let cropdata0 = [0, 0, [0, 0, 0], [0, 0], 0, 0, 0, 0, false, 0, 0, 0];
+
 function returnRecipe(_value) {
     _value = "recipe" + _value;
     _value = eval(_value);
@@ -3744,6 +3802,11 @@ function returnweaponID(_value) {
 }
 function returnWeaponData(_value) {
     _value = "weapon" + _value;
+    _value = eval(_value);
+    return _value;
+}
+function returnCropData(_value) {
+    _value = "cropdata" + _value;
     _value = eval(_value);
     return _value;
 }
