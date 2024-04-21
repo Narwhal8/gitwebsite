@@ -463,6 +463,24 @@ const warabi = [
 	{
 		"inputs": [
 			{
+				"internalType": "uint256[12]",
+				"name": "_data",
+				"type": "uint256[12]"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_questID",
+				"type": "uint256"
+			}
+		],
+		"name": "changeQuestRewards",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "uint256",
 				"name": "_mission",
 				"type": "uint256"

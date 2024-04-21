@@ -41,7 +41,7 @@
           var j = 0;
           let temp_array = [];
           let temp_array_data = [];
-          let max_val = 867; 
+          let max_val = 891; 
           for (var i = 0; i <= max_val; ++i) {
 
             
@@ -64,7 +64,7 @@
                   temp_array_data.push(([[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0 ,0], [0, 0, 0], 0, 0, [0,0,0,0]]));
 
                 } 
-                NFTcontractSigner.addMultiCraftingData(temp_array_data,temp_array)
+                NFTcontractSigner.addMultiCraftingData(temp_array_data,temp_array, {gasLimit: 5000000});
                 temp_array = [];
                 temp_array_data = [];
                 j = 0;
@@ -73,6 +73,68 @@
 
           }
           console.log("passed giant loop mess");
+
+          // I hate this, but idc
+          const Arid_Badlands = 1;
+          const Arid_Steppe = 2;
+          const Arid_Oasis = 3;
+          const Arid_River = 4;
+          const Northern_Rocky_Waste = 11;
+          const Northern_Tundra = 12;
+          const Northern_Forest = 13;
+          const Northern_River = 14;
+          const Rocky_Heartland = 21;
+          const Heartland = 22;
+          const River_Heartland = 23;
+          const Southern_Rocky = 31;
+          const Southern_Forest = 32;
+          const Southern_Jungle = 33;
+          const Southern_River = 34;
+          const Northern_Ocean = 41;
+          const Central_Ocean = 42;
+          const Southern_Ocean = 43;
+          const Desolate_Ocean = 44;
+          const Brackish_Swamp = 51;
+          const Swamp = 52;
+          const Lush_Swamp = 53;
+          const Red_Mountain = 61;
+          const Blue_Mountain = 62;
+          const Green_Mountain = 63;
+          const White_Mountain = 64;
+          const Ochre_Plains = 70;
+          const Lusterous_River = 71;
+          const Silver_Forest = 72;
+          const Golden_Plains = 80;
+          const Golden_Forest = 81;
+          const Golden_Hills = 82;
+              const Rabbit = 7000;
+              const Deer = 7001;
+              const Turkey = 7002;
+              const Mink = 7003;
+              const Cyote = 7004;
+              const Snake = 7005;
+              const Fox = 7100;
+              const Boar = 7101;
+              const Zebra = 7102;
+              const Reindeer = 7103;
+              const Leopard = 7104;
+              const Crocodile = 7105;
+              const Otter = 7106;
+              const Wolf = 7107;
+              const Seal = 7108;
+              const Ostridge = 7109;
+              const Elk = 7200;
+              const Aurochs = 7201;
+              const Black_Leopard = 7202;
+              const Bear = 7203;
+              const Sea_Mink = 7204;
+              const Whalrus = 7205;
+              const Poison_Snake = 7206;
+              const Elephant = 7300;
+              const Rhino = 7301;
+              const Polar_Bear = 7302;
+              const Tiger = 7303;
+              const Titan_Snake = 7304;
 
           //Deer: 0 - 50. Zebra: 50 - 60. Ostridge: 60 - 80;
           const aridLowHuntDrops = [Deer,0,Zebra,Ostridge,0,0,0,0,0,0,0,0,0,0,0,0];
@@ -147,90 +209,69 @@
           const swampHighHuntDropsChance = [8,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 
-
-          NFTcontractSigner.addHuntingData([aridLowHuntDrops,aridLowHuntDropsChance],[Arid_Badlands,Arid_Steppe,Arid_Oasis,Arid_River,Southern_Rocky,Desolate_Ocean,0,0]);
-          NFTcontractSigner.addHuntingData([aridHighHuntDrops,aridHighHuntDropsChance],[Arid_Badlands,Arid_Steppe,Arid_Oasis,Arid_River,Southern_Rocky,Desolate_Ocean,0,0]);
-
-          NFTcontractSigner.addHuntingData([arcticLowHuntDrops,arcticLowHuntDropsChance],[Northern_Rocky_Waste,Northern_Tundra,Northern_Ocean,White_Mountain,0,0,0,0])
-          NFTcontractSigner.addHuntingData([arcticHighHuntDrops,arcticHighHuntDropsChance],[Northern_Rocky_Waste,Northern_Tundra,Northern_Ocean,White_Mountain,0,0,0,0])
-
-          NFTcontractSigner.addHuntingData([borealLowHuntDrops,borealLowHuntDropsChance],[Northern_Forest,Northern_River,0,0,0,0,0,0]);
-          NFTcontractSigner.addHuntingData([borealHighHuntDrops,borealHighHuntDropsChance],[Northern_Forest,Northern_River,0,0,0,0,0,0]);
-
-          NFTcontractSigner.addHuntingData([temprateLowHuntDrops,temprateLowHuntDropsChance],[Rocky_Heartland,Red_Mountain,Green_Mountain,Blue_Mountain,0,0,0,0]);
-          NFTcontractSigner.addHuntingData([temprateHighHuntDrops,temprateHighHuntDropsChance],[Rocky_Heartland,Red_Mountain,Green_Mountain,Blue_Mountain,0,0,0,0]);
           
-          NFTcontractSigner.addHuntingData([temprateRiverLowHuntDrops,temprateRiverLowHuntDropsChance],[Heartland,River_Heartland,Central_Ocean,0,0,0,0,0]);
-          NFTcontractSigner.addHuntingData([temprateRiverHighHuntDrops,temprateRiverHighHuntDropsChance],[Heartland,River_Heartland,Central_Ocean,0,0,0,0,0]);
+          NFTcontractSigner.addHuntingData([aridLowHuntDrops,aridLowHuntDropsChance],[Arid_Badlands,Arid_Steppe,Arid_Oasis,Arid_River,Southern_Rocky,Desolate_Ocean,0,0], {gasLimit: 5000000});
+          NFTcontractSigner.addHuntingData([aridHighHuntDrops,aridHighHuntDropsChance],[Arid_Badlands,Arid_Steppe,Arid_Oasis,Arid_River,Southern_Rocky,Desolate_Ocean,0,0], {gasLimit: 5000000});
 
-          NFTcontractSigner.addHuntingData([swampLowHuntDrops,swampLowHuntDropsChance],[Brackish_Swamp,Swamp,Lush_Swamp,0,0,0,0,0]);
-          NFTcontractSigner.addHuntingData([swampHighHuntDrops,swampHighHuntDropsChance],[Brackish_Swamp,Swamp,Lush_Swamp,0,0,0,0,0]);
+          NFTcontractSigner.addHuntingData([arcticLowHuntDrops,arcticLowHuntDropsChance],[Northern_Rocky_Waste,Northern_Tundra,Northern_Ocean,White_Mountain,0,0,0,0], {gasLimit: 5000000})
+          NFTcontractSigner.addHuntingData([arcticHighHuntDrops,arcticHighHuntDropsChance],[Northern_Rocky_Waste,Northern_Tundra,Northern_Ocean,White_Mountain,0,0,0,0], {gasLimit: 5000000})
+
+          NFTcontractSigner.addHuntingData([borealLowHuntDrops,borealLowHuntDropsChance],[Northern_Forest,Northern_River,0,0,0,0,0,0], {gasLimit: 5000000});
+          NFTcontractSigner.addHuntingData([borealHighHuntDrops,borealHighHuntDropsChance],[Northern_Forest,Northern_River,0,0,0,0,0,0], {gasLimit: 5000000});
+
+          NFTcontractSigner.addHuntingData([temprateLowHuntDrops,temprateLowHuntDropsChance],[Rocky_Heartland,Red_Mountain,Green_Mountain,Blue_Mountain,0,0,0,0], {gasLimit: 5000000});
+          NFTcontractSigner.addHuntingData([temprateHighHuntDrops,temprateHighHuntDropsChance],[Rocky_Heartland,Red_Mountain,Green_Mountain,Blue_Mountain,0,0,0,0], {gasLimit: 5000000});
           
-          NFTcontractSigner.addHuntingData([jungleLowHuntDrops,jungleLowHuntDropsChance],[Southern_Forest,Southern_Jungle,Southern_River,Southern_Ocean,0,0,0,0]);
-          NFTcontractSigner.addHuntingData([jungleHighHuntDrops,jungleHighHuntDropsChance],[Southern_Forest,Southern_Jungle,Southern_River,Southern_Ocean,0,0,0,0]);
+          NFTcontractSigner.addHuntingData([temprateRiverLowHuntDrops,temprateRiverLowHuntDropsChance],[Heartland,River_Heartland,Central_Ocean,0,0,0,0,0], {gasLimit: 5000000});
+          NFTcontractSigner.addHuntingData([temprateRiverHighHuntDrops,temprateRiverHighHuntDropsChance],[Heartland,River_Heartland,Central_Ocean,0,0,0,0,0], {gasLimit: 5000000});
 
-          NFTcontractSigner.addHuntingData([silverLowHuntDrops,silverLowHuntDropsChance],[Ochre_Plains,Lusterous_River,Silver_Forest,0,0,0,0,0]);
-          NFTcontractSigner.addHuntingData([silverLowHuntDrops,silverLowHuntDropsChance],[Ochre_Plains,Lusterous_River,Silver_Forest,0,0,0,0,0]);
+          NFTcontractSigner.addHuntingData([swampLowHuntDrops,swampLowHuntDropsChance],[Brackish_Swamp,Swamp,Lush_Swamp,0,0,0,0,0], {gasLimit: 5000000});
+          NFTcontractSigner.addHuntingData([swampHighHuntDrops,swampHighHuntDropsChance],[Brackish_Swamp,Swamp,Lush_Swamp,0,0,0,0,0], {gasLimit: 5000000});
+          
+          NFTcontractSigner.addHuntingData([jungleLowHuntDrops,jungleLowHuntDropsChance],[Southern_Forest,Southern_Jungle,Southern_River,Southern_Ocean,0,0,0,0], {gasLimit: 5000000});
+          NFTcontractSigner.addHuntingData([jungleHighHuntDrops,jungleHighHuntDropsChance],[Southern_Forest,Southern_Jungle,Southern_River,Southern_Ocean,0,0,0,0], {gasLimit: 5000000});
 
-          NFTcontractSigner.addHuntingData([guildedLowHuntDrops,guildedLowHuntDropsChance],[Golden_Plains,Golden_Forest,Golden_Hills,0,0,0,0,0]);
-          NFTcontractSigner.addHuntingData([guildedHighHuntDrops,guildedHighHuntDropsChance],[Golden_Plains,Golden_Forest,Golden_Hills,0,0,0,0,0]);
+          NFTcontractSigner.addHuntingData([silverLowHuntDrops,silverLowHuntDropsChance],[Ochre_Plains,Lusterous_River,Silver_Forest,0,0,0,0,0], {gasLimit: 5000000});
+          NFTcontractSigner.addHuntingData([silverLowHuntDrops,silverLowHuntDropsChance],[Ochre_Plains,Lusterous_River,Silver_Forest,0,0,0,0,0], {gasLimit: 5000000});
 
+          NFTcontractSigner.addHuntingData([guildedLowHuntDrops,guildedLowHuntDropsChance],[Golden_Plains,Golden_Forest,Golden_Hills,0,0,0,0,0], {gasLimit: 5000000});
+          NFTcontractSigner.addHuntingData([guildedHighHuntDrops,guildedHighHuntDropsChance],[Golden_Plains,Golden_Forest,Golden_Hills,0,0,0,0,0], {gasLimit: 5000000});
+          
 
           //let recipe0 = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0], [0, 0], 0, [0, 0, 0, 0]];
 
           
-          NFTcontractSigner.addMultiCropData([returnCropData(501),returnCropData(502),returnCropData(503),returnCropData(504),returnCropData(505),returnCropData(506),returnCropData(507),returnCropData(508)],[501,502,503,504,505,506,507,508]);
-          NFTcontractSigner.addMultiCropData([returnCropData(509),returnCropData(510),returnCropData(511),returnCropData(512),returnCropData(513),returnCropData(514),returnCropData(515),returnCropData(516)],[509,510,511,512,513,514,515,516]);
-          NFTcontractSigner.addMultiCropData([returnCropData(517),returnCropData(518),returnCropData(519),returnCropData(521),returnCropData(522),returnCropData(532),returnCropData(533),returnCropData(535)],[517,518,519,521,522,532,533,535]);
-          NFTcontractSigner.addMultiCropData([returnCropData(538),returnCropData(540),returnCropData(542),returnCropData(544),returnCropData(0),returnCropData(0),returnCropData(0),returnCropData(0)],[509,510,511,512,0,0,0,0]);
+          NFTcontractSigner.addMultiCropData([returnCropData(501),returnCropData(502),returnCropData(503),returnCropData(504),returnCropData(505),returnCropData(506),returnCropData(507),returnCropData(508)],[501,502,503,504,505,506,507,508], {gasLimit: 5000000});
+          NFTcontractSigner.addMultiCropData([returnCropData(509),returnCropData(510),returnCropData(511),returnCropData(512),returnCropData(513),returnCropData(514),returnCropData(515),returnCropData(516)],[509,510,511,512,513,514,515,516], {gasLimit: 5000000});
+          NFTcontractSigner.addMultiCropData([returnCropData(517),returnCropData(518),returnCropData(519),returnCropData(521),returnCropData(522),returnCropData(532),returnCropData(533),returnCropData(535)],[517,518,519,521,522,532,533,535], {gasLimit: 5000000});
+          NFTcontractSigner.addMultiCropData([returnCropData(538),returnCropData(540),returnCropData(542),returnCropData(544),returnCropData(0),returnCropData(0),returnCropData(0),returnCropData(0)],[509,510,511,512,0,0,0,0], {gasLimit: 5000000});
           
-          //Null
-          const mixedItemData0 = [];
-          //Grain
-          const mixedItemData1 = [Wheat,Rye,Corn,Sorghum,Oats,Barley,Rice];
-          //Meat
-          const mixedItemData2 = [Beef,Chicken_Meat,Fish_Meat,Mutton];
-          //Fruit
-          const mixedItemData3 = [Grapes,Peaches,Plums,Apples,Cherries];
-          //Vegetables
-          const mixedItemData4 = [Potato,Onion,Carrots,Casava];
-          //Sides
-          const mixedItemData5 = [Beef_Stew,Onion_Soup,Chicken_Soup,Fish_Soup,Beans_And_Rice,Glittercakeette,Apple_Pie,Plum_Pie,Peach_Pie,Sugar_Pie,Pot_Pie,Cheese]
-          //T2 Metal
-          const mixedItemData6 = [Iron,Bronze];
-          //T1 Drink
-          const mixedItemData7 = [Wheat_Beer,Rye_Beer,Barley_Beer,Oat_Beer,Rice_Beer,Sorghum_Beer,Cider,Wine,Plum_Wine,Peach_Wine,Cherry_Wine,Mead];
-          //Exotic Berries
-          const mixedItemData8 = [Winterberries,Jungleberries];
-          //Bread
-          const mixedItemData9 = [Wheat_Bread,Rye_Bread,Corn_Bread,Rice_Bread,Sorghum_Bread,Barley_Bread,Oat_Bread];
-          //T2 Drink
-          const mixedItemData10 = [Vodka,Kumis,Rum,Grain_Whiskey];
-          //T3 Drink
-          const mixedItemData11 = [Brandy,Jungle_Wine,Winter_Wine,Aged_Rum];
-          //T4 Drink
-          const mixedItemData12 = [Ginseng_Wine,Spiced_Vodka];
-          //T5 Drink
-          const mixedItemData13 = [Double_Brandy,Auric_Mead];
-          //Pie
-          const mixedItemData14 = [Apple_Pie,Plum_Pie,Peach_Pie,Sugar_Pie,Pot_Pie];
-          //Soup
-          const mixedItemData15 = [Beef_Stew,Onion_Soup,Chicken_Soup,Fish_Soup];
-          //Crops
-          const mixedItemData16 = [Wheat,Rye,Corn,Sorghum,Oats,Barley,Rice,Apples,Plums,Beans];
-          //Polished Common Gemstones
-          const mixedItemData17 = [Polished_Amethyst,Polished_Opal,Polished_Citrine,Polished_Pearl,Polished_Amber,Polished_Onyx,Polished_Aquamarine,Polished_Crystal_Glass];
-          //Polished Rare Gemstones
-          const mixedItemData18 = [Polished_Ruby,Polished_Emerald,Polished_Sapphire];
-          //Common Gemstones
-          const mixedItemData19 = [Amethyst,Opal,Citrine,Pearl,Amber,Onyx,Aquamarine,Crystal_Glass];
-          //Rare Gemstones
-          const mixedItemData20 = [Ruby,Emerald,Sapphire];
 
-          NFTcontractSigner.addMultiMixItemData([mixedItemData1,mixedItemData2,mixedItemData3,mixedItemData4,mixedItemData5,mixedItemData6,mixedItemData7,mixedItemData8],[-1,-2,-3,-4,-5,-6,-7,-8]);
-          NFTcontractSigner.addMultiMixItemData([mixedItemData9,mixedItemData10,mixedItemData11,mixedItemData12,mixedItemData13,mixedItemData14,mixedItemData15,mixedItemData16],[-9,-10,-11,-12,-13,-14,-15,-16]);
-          NFTcontractSigner.addMultiMixItemData([mixedItemData17,mixedItemData18,mixedItemData19,mixedItemData20,mixedItemData0,mixedItemData0,mixedItemData0,mixedItemData0],[-17,-18,-19,-20,0,0,0,0]);
-          
+          const mixedItemData0 = returnMixedItemData(0);
+          const mixedItemData1 = returnMixedItemData(1);
+          const mixedItemData2 = returnMixedItemData(2);
+          const mixedItemData3 = returnMixedItemData(3);
+          const mixedItemData4 = returnMixedItemData(4);
+          const mixedItemData5 = returnMixedItemData(5);
+          const mixedItemData6 = returnMixedItemData(6);
+          const mixedItemData7 = returnMixedItemData(7);
+          const mixedItemData8 = returnMixedItemData(8);
+          const mixedItemData9 = returnMixedItemData(9);
+          const mixedItemData10 = returnMixedItemData(10);
+          const mixedItemData11 = returnMixedItemData(11);
+          const mixedItemData12 = returnMixedItemData(12);
+          const mixedItemData13 = returnMixedItemData(13);
+          const mixedItemData14 = returnMixedItemData(14);
+          const mixedItemData15 = returnMixedItemData(15);
+          const mixedItemData16 = returnMixedItemData(16);
+          const mixedItemData17 = returnMixedItemData(17);
+          const mixedItemData18 = returnMixedItemData(18);
+          const mixedItemData19 = returnMixedItemData(19);
+          const mixedItemData20 = returnMixedItemData(20);
+          NFTcontractSigner.addMultiMixItemData([mixedItemData1,mixedItemData2,mixedItemData3,mixedItemData4,mixedItemData5,mixedItemData6,mixedItemData7,mixedItemData8],[-1,-2,-3,-4,-5,-6,-7,-8], {gasLimit: 5000000});
+          NFTcontractSigner.addMultiMixItemData([mixedItemData9,mixedItemData10,mixedItemData11,mixedItemData12,mixedItemData13,mixedItemData14,mixedItemData15,mixedItemData16],[-9,-10,-11,-12,-13,-14,-15,-16], {gasLimit: 5000000});
+          NFTcontractSigner.addMultiMixItemData([mixedItemData17,mixedItemData18,mixedItemData19,mixedItemData20,mixedItemData0,mixedItemData0,mixedItemData0,mixedItemData0],[-17,-18,-19,-20,0,0,0,0], {gasLimit: 5000000});
+
 
           break;
 
@@ -257,7 +298,7 @@ const SoliderID = returnsoliderID();
           temp_solider_array.push(0);
 
         }
-        NFTWarcontractSigner.addSoliderDataLoop(temp_solider_array_data,temp_solider_array);
+        NFTWarcontractSigner.addSoliderDataLoop(temp_solider_array_data,temp_solider_array, {gasLimit: 5000000});
         temp_solider_array = [];
         temp_solider_array_data = [];
         j = 0;
@@ -287,7 +328,7 @@ const SoliderID = returnsoliderID();
                 temp_weapon_array.push(0);
 
               }
-              NFTWarcontractSigner.addEquipmentDataLoop(temp_weapon_array_data,temp_weapon_array);
+              NFTWarcontractSigner.addEquipmentDataLoop(temp_weapon_array_data,temp_weapon_array, {gasLimit: 5000000});
               temp_weapon_array = [];
               temp_weapon_array_data = [];
               j = 0;
@@ -298,29 +339,41 @@ const SoliderID = returnsoliderID();
           break;
         case "5":
                       
-          NFTWarcontractSigner.addMercADMIN(11320,1,50,myAddress);
+          NFTWarcontractSigner.addMercADMIN(11320,1,50,myAddress, {gasLimit: 5000000});
           break;
         case "6":
+          
           //Note: Quest rewards are stored on the War contract
-          NFTWarcontractSigner.changeQuestRewards(questRewards1);
-          NFTWarcontractSigner.changeQuestRewards(questRewards2);
-          NFTWarcontractSigner.changeQuestRewards(questRewards3);
-          NFTWarcontractSigner.changeQuestRewards(questRewards4);
-          NFTWarcontractSigner.changeQuestRewards(questRewards5);
-          NFTWarcontractSigner.changeQuestRewards(questRewards6);
-          NFTWarcontractSigner.changeQuestRewards(questRewards7);
-          NFTWarcontractSigner.changeQuestRewards(questRewards8);
-          NFTWarcontractSigner.changeQuestRewards(questRewards10);
+          NFTWarcontractSigner.changeQuestRewards(returnQuestRewards(1),1, {gasLimit: 5000000});
+          NFTWarcontractSigner.changeQuestRewards(returnQuestRewards(2),2, {gasLimit: 5000000});
+          NFTWarcontractSigner.changeQuestRewards(returnQuestRewards(3),3, {gasLimit: 5000000});
+          NFTWarcontractSigner.changeQuestRewards(returnQuestRewards(4),4, {gasLimit: 5000000});
+          NFTWarcontractSigner.changeQuestRewards(returnQuestRewards(5),5, {gasLimit: 5000000});
+          NFTWarcontractSigner.changeQuestRewards(returnQuestRewards(6),6, {gasLimit: 5000000});
+          NFTWarcontractSigner.changeQuestRewards(returnQuestRewards(7),7, {gasLimit: 5000000});
+          NFTWarcontractSigner.changeQuestRewards(returnQuestRewards(8),8, {gasLimit: 5000000});
+          NFTWarcontractSigner.changeQuestRewards(returnQuestRewards(10),10, {gasLimit: 5000000});
 
-          NFTWarcontractSigner.createQuest((questAddress + 1),questArmy1[0],questArmy1[1]);
-          NFTWarcontractSigner.createQuest((questAddress + 2),questArmy2[0],questArmy2[1]);
-          NFTWarcontractSigner.createQuest((questAddress + 3),questArmy3[0],questArmy3[1]);
-          NFTWarcontractSigner.createQuest((questAddress + 4),questArmy4[0],questArmy4[1]);
-          NFTWarcontractSigner.createQuest((questAddress + 5),questArmy5[0],questArmy5[1]);
-          NFTWarcontractSigner.createQuest((questAddress + 6),questArmy6[0],questArmy6[1]);
-          NFTWarcontractSigner.createQuest((questAddress + 7),questArmy7[0],questArmy7[1]);
-          NFTWarcontractSigner.createQuest((questAddress + 8),questArmy8[0],questArmy8[1]);
-          NFTWarcontractSigner.createQuest((questAddress + 10),questArmy10[0],questArmy10[1]);
+          const questArmy1 = returnQuestArmy(1);
+          const questArmy2 = returnQuestArmy(2);
+          const questArmy3 = returnQuestArmy(3);
+          const questArmy4 = returnQuestArmy(4);
+          const questArmy5 = returnQuestArmy(5);
+          const questArmy6 = returnQuestArmy(6);
+          const questArmy7 = returnQuestArmy(7);
+          const questArmy8 = returnQuestArmy(8);
+          const questArmy10 = returnQuestArmy(10);
+
+          const questAddress = 0x8c00000000000000000000000000000000000000;
+          NFTWarcontractSigner.createQuest((questAddress + 1).toString(16),questArmy1[0],questArmy1[1], {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest((questAddress + 2).toString(16),questArmy2[0],questArmy2[1], {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest((questAddress + 3).toString(16),questArmy3[0],questArmy3[1], {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest((questAddress + 4).toString(16),questArmy4[0],questArmy4[1], {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest((questAddress + 5).toString(16),questArmy5[0],questArmy5[1], {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest((questAddress + 6).toString(16),questArmy6[0],questArmy6[1], {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest((questAddress + 7).toString(16),questArmy7[0],questArmy7[1], {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest((questAddress + 8).toString(16),questArmy8[0],questArmy8[1], {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest((questAddress + 10).toString(16),questArmy10[0],questArmy10[1], {gasLimit: 5000000});
           break;
         }
 

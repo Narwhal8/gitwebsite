@@ -845,11 +845,11 @@ let recipe5074 = [[1500,0,0,0,0,0], [Damascus_Steel,0,0,0,0,0], [1,0,0], [Damasc
 let recipe5200 = [[2500,0,0,0,0,0], [Wood,0,0,0,0,0], [1,0,0], [Bow,0,0], 2, 10, [Carpenter_T1,Carpenter_T2,0,0]];
 let recipe5201 = [[2500,0,0,0,0,0], [Wood,0,0,0,0,0], [1,0,0], [Longbow,0,0], 4, 10, [Carpenter_T1,Carpenter_T2,0,0]];
 let recipe5202 = [[5000,0,0,0,0,0], [Wood,0,0,0,0,0], [1,0,0], [Greatbow,0,0], 8, 20, [Carpenter_T2,0,0,0]];
-let recipe5210 = [[NaN,0,0,0,0,0], [Wood,Iron_Plate,0,0,0,0], [1,0,0], [Crossbow,0,0], 2, 10, [Carpenter_T1,Carpenter_T2,0,0]];
+let recipe5210 = [[5000,2,0,0,0,0], [Wood,Iron_Plate,0,0,0,0], [1,0,0], [Crossbow,0,0], 2, 10, [Carpenter_T1,Carpenter_T2,0,0]];
 let recipe5211 = [[50,0,0,0,0,0], [Fabric,0,0,0,0,0], [1,0,0], [Sling,0,0], 1, 5, [Weaver_T1,Weaver_T2,0,0]];
 let recipe5212 = [[6,0,0,0,0,0], [Iron_Plate,0,0,0,0,0], [1,0,0], [Flamer,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,0,0]];
 let recipe5213 = [[5000,0,0,0,0,0], [Stone,0,0,0,0,0], [1,0,0], [Flame_Grenade,0,0], 1, 10, [19,0,0,0]];
-let recipe5214 = [[NaN,0,0,0,0,0], [Sling, Gold,0,0,0,0,0], [1,0,0], [Golden_Sling,0,0], 6, 10, [Blacksmith_T2,0,0,0]];
+let recipe5214 = [[1,900,0,0,0,0], [Sling, Gold,0,0,0,0,0], [1,0,0], [Golden_Sling,0,0], 6, 10, [Blacksmith_T2,0,0,0]];
 let recipe5580 = [[1000,0,0,0,0,0], [Leather,0,0,0,0,0], [1,0,0], [Leather_Armor,0,0], 5, 1, [Weaver_T1,Weaver_T2,0,0]];
 let recipe5581 = [[1000,0,0,0,0,0], [Thick_Leather,0,0,0,0,0], [1,0,0], [Thick_Leather_Armor,0,0], 10, 1, [Weaver_T2,0,0,0]];
 let recipe5582 = [[500,0,0,0,0,0], [Fabric,0,0,0,0,0], [1,0,0], [Gambeson,0,0], 2, 1, [Weaver_T1,Weaver_T2,0,0]];
@@ -3721,6 +3721,49 @@ const questArmy7 = [[Mercenary_Maceman,Pikeman,Mercenary_Maceman,Veteran_Mercena
 const questArmy8 = [[Mercenary_Axeman,Pikeman,Veteran_Mercenary_Swordman,Mounted_Palace_Guard,0,0,Veteran_Horse_Archer,Horse_Archer,0,Mounted_Palace_Guard,0,0],[1000,2000,1000,200,0,0,500,1000,0,100,0,0]];
 const questArmy10 = [[Palace_Guard,Mounted_Palace_Guard,Palace_Guard,T7_Elephant,Palace_Guard,Mounted_Palace_Guard,Golden_Slinger,Imperial_Flamer,Palace_Archer,Mounted_Palace_Guard,0,0],[2000,1000,2000,500,2000,1000,2000,500,2000,500,0,0]];
 
+//Null
+const mixedItemData0 = [0];
+//Grain
+const mixedItemData1 = [Wheat,Rye,Corn,Sorghum,Oats,Barley,Rice];
+//Meat
+const mixedItemData2 = [Beef,Chicken_Meat,Fish_Meat,Mutton];
+//Fruit
+const mixedItemData3 = [Grapes,Peaches,Plums,Apples,Cherries];
+//Vegetables
+const mixedItemData4 = [Potato,Onion,Carrots,Casava];
+//Sides
+const mixedItemData5 = [Beef_Stew,Onion_Soup,Chicken_Soup,Fish_Soup,Beans_And_Rice,Glittercakeette,Apple_Pie,Plum_Pie,Peach_Pie,Sugar_Pie,Pot_Pie,Cheese]
+//T2 Metal
+const mixedItemData6 = [Iron,Bronze];
+//T1 Drink
+const mixedItemData7 = [Wheat_Beer,Rye_Beer,Barley_Beer,Oat_Beer,Rice_Beer,Sorghum_Beer,Cider,Wine,Plum_Wine,Peach_Wine,Cherry_Wine,Mead];
+//Exotic Berries
+const mixedItemData8 = [Winterberries,Jungleberries];
+//Bread
+const mixedItemData9 = [Wheat_Bread,Rye_Bread,Corn_Bread,Rice_Bread,Sorghum_Bread,Barley_Bread,Oat_Bread];
+//T2 Drink
+const mixedItemData10 = [Vodka,Kumis,Rum,Grain_Whiskey];
+//T3 Drink
+const mixedItemData11 = [Brandy,Jungle_Wine,Winter_Wine,Aged_Rum];
+//T4 Drink
+const mixedItemData12 = [Ginseng_Wine,Spiced_Vodka];
+//T5 Drink
+const mixedItemData13 = [Double_Brandy,Auric_Mead];
+//Pie
+const mixedItemData14 = [Apple_Pie,Plum_Pie,Peach_Pie,Sugar_Pie,Pot_Pie];
+//Soup
+const mixedItemData15 = [Beef_Stew,Onion_Soup,Chicken_Soup,Fish_Soup];
+//Crops
+const mixedItemData16 = [Wheat,Rye,Corn,Sorghum,Oats,Barley,Rice,Apples,Plums,Beans];
+//Polished Common Gemstones
+const mixedItemData17 = [Polished_Amethyst,Polished_Opal,Polished_Citrine,Polished_Pearl,Polished_Amber,Polished_Onyx,Polished_Aquamarine,Polished_Crystal_Glass];
+//Polished Rare Gemstones
+const mixedItemData18 = [Polished_Ruby,Polished_Emerald,Polished_Sapphire];
+//Common Gemstones
+const mixedItemData19 = [Amethyst,Opal,Citrine,Pearl,Amber,Onyx,Aquamarine,Crystal_Glass];
+//Rare Gemstones
+const mixedItemData20 = [Ruby,Emerald,Sapphire];
+
 
           
 let cropdata501 = [500, 0, [50, 100, 75], [50, 150], 25, 150, 10, 0, false, Wheat, 0];
@@ -3810,3 +3853,19 @@ function returnCropData(_value) {
     _value = eval(_value);
     return _value;
 }
+function returnQuestRewards(_value) {
+    _value = "questRewards" + _value;
+    _value = eval(_value);
+    return _value;
+}
+function returnQuestArmy(_value) {
+    _value = "questArmy" + _value;
+    _value = eval(_value);
+    return _value;
+}
+function returnMixedItemData(_value) {
+    _value = "mixedItemData" + _value;
+    _value = eval(_value);
+    return _value;
+}
+
