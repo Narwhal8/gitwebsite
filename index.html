@@ -189,7 +189,7 @@
 
 
           document.getElementById("peasentPop").style.display = "block";
-          if (document.getElementById("peasentPop").textContent != "Pesants:") { document.getElementById("peasentPop").textContent = "Pesants:"; }
+          document.getElementById("peasentPop").textContent = "Pesants:";
           document.getElementById("peasentPop").textContent += _population[0];
           document.getElementById("peasentPop").textContent += ", Jobless:";
           document.getElementById("peasentPop").textContent += _jobless_population[0];
@@ -198,7 +198,7 @@
           document.getElementById("peasentPop").style.display = "block";
 
           document.getElementById("lowNobelPop").style.display = "block";
-          if (document.getElementById("lowNobelPop").textContent != "Low Nobles:") { document.getElementById("lowNobelPop").textContent = "Low Nobles:"; }
+          document.getElementById("lowNobelPop").textContent = "Low Nobles:";
           document.getElementById("lowNobelPop").textContent += _population[1];
           document.getElementById("lowNobelPop").textContent += ", Jobless:";
           document.getElementById("lowNobelPop").textContent += _jobless_population[1];
@@ -206,7 +206,7 @@
           document.getElementById("lowNobelPop").textContent += _max_population[1];
 
           document.getElementById("highNobelPop").style.display = "block";
-          if (document.getElementById("highNobelPop").textContent != "High Nobles:") { document.getElementById("highNobelPop").textContent = "High Nobles:"; }
+          document.getElementById("highNobelPop").textContent = "High Nobles:";
           document.getElementById("highNobelPop").textContent += _population[2];
           document.getElementById("highNobelPop").textContent += ", Jobless:";
           document.getElementById("highNobelPop").textContent += _jobless_population[2];
@@ -215,12 +215,11 @@
 
 
 
-          if (document.getElementsByClassName("Population")[12].textContent != "Housing Count: ") { document.getElementById("housing").textContent = "Housing Count: "; }
 
           for (let i = 12; i < 21; i++) {
             document.getElementsByClassName("Population")[i].style.display = "block";
           }
-          document.getElementById("housing").textContent += "Land Permits: ";
+          document.getElementById("housing").textContent = "Housing Count: Land Permits: ";
           document.getElementById("housing").textContent += _buildingAmount[0];
           document.getElementById("housing").textContent += ", Tier 1: ";
           document.getElementById("housing").textContent += _buildingAmount[1];
@@ -238,7 +237,7 @@
           document.getElementById("housing").textContent += _buildingAmount[7];
 
 
-          document.getElementById("cookery").textContent += "Tier 1: ";
+          document.getElementById("cookery").textContent = "Cookery Count: Tier 1: ";
           document.getElementById("cookery").textContent += _buildingAmount[8];
           document.getElementById("cookery").textContent += ", Tier 2: ";
           document.getElementById("cookery").textContent += _buildingAmount[9];
@@ -248,7 +247,7 @@
           document.getElementById("cookery").textContent += _buildingAmount[11];
 
 
-          document.getElementById("brewery").textContent += "Tier 1: ";
+          document.getElementById("brewery").textContent = "Brewery Count: Tier 1: ";
           document.getElementById("brewery").textContent += _buildingAmount[12];
           document.getElementById("brewery").textContent += ", Tier 2: ";
           document.getElementById("brewery").textContent += _buildingAmount[13];
@@ -258,7 +257,7 @@
           document.getElementById("brewery").textContent += _buildingAmount[15];
 
 
-          document.getElementById("smeltery").textContent += "Tier 1: ";
+          document.getElementById("smeltery").textContent = "Smeltery Count: Tier 1: ";
           document.getElementById("smeltery").textContent += _buildingAmount[16];
           document.getElementById("smeltery").textContent += ", Tier 2: ";
           document.getElementById("smeltery").textContent += _buildingAmount[17];
@@ -266,29 +265,30 @@
           document.getElementById("smeltery").textContent += _buildingAmount[18];
 
 
-
+          document.getElementById("mason").textContent = "Mason Count: ";
           document.getElementById("mason").textContent += _buildingAmount[19];
 
 
 
-          document.getElementById("blacksmith").textContent += "Tier 1: ";
+          document.getElementById("blacksmith").textContent = "Blacksmith Count: Tier 1: ";
           document.getElementById("blacksmith").textContent += _buildingAmount[20];
           document.getElementById("blacksmith").textContent += ", Tier 2: ";
           document.getElementById("blacksmith").textContent += _buildingAmount[21];
 
+          document.getElementById("agingFacility").textContent = "Aging Facility Count: ";
           document.getElementById("agingFacility").textContent += _buildingAmount[22];
 
-          document.getElementById("jeweler").textContent += "Tier 1: ";
+          document.getElementById("jeweler").textContent = "Jeweler Count: Tier 1: ";
           document.getElementById("jeweler").textContent += _buildingAmount[26];
           document.getElementById("jeweler").textContent += ", Tier 2: ";
           document.getElementById("jeweler").textContent += _buildingAmount[27];
 
-          document.getElementById("weaver").textContent += "Tier 1: ";
+          document.getElementById("weaver").textContent = "Weaver Count: Tier 1: ";
           document.getElementById("weaver").textContent += _buildingAmount[28];
           document.getElementById("weaver").textContent += ", Tier 2: ";
           document.getElementById("weaver").textContent += _buildingAmount[29];
 
-          document.getElementById("carpenter").textContent += "Tier 1: ";
+          document.getElementById("carpenter").textContent = "Carpenter Count: Tier 1: ";
           document.getElementById("carpenter").textContent += _buildingAmount[30];
           document.getElementById("carpenter").textContent += ", Tier 2: ";
           document.getElementById("carpenter").textContent += _buildingAmount[31];
@@ -318,7 +318,7 @@
 
             if (Kingdom_Lands[_kingdomType][i] != 0) { document.getElementById(_name).style.display = "block"; }
             else { break; }
-            if (document.getElementById(_name).textContent != "Land Balance:") { document.getElementById(_name).textContent = "Land Balance:" }
+            document.getElementById(_name).textContent = "Land Balance:"
 
             document.getElementsByClassName("Population")[i + 3].style.display = "block";
 
@@ -657,7 +657,7 @@
       var item_output = whyJS[3];
       var time = whyJS[5];
       var _recipeText;
-      if (document.getElementById("Cost").textContent != "Cost:") { document.getElementById("Cost").textContent = "Cost:" }
+      if (document.getElementById("Cost").textContent != "Cost: ") { document.getElementById("Cost").textContent = "Cost:" }
       for (let i = 0; i < 6; i++) {
         if (items[i] == 0) { break; }
         document.getElementById("Cost").textContent += (item_amount[i]);
@@ -667,24 +667,19 @@
           document.getElementById("Cost").textContent += ", ";
         }
       }
-      document.getElementById("Cost").textContent += " For ";
-
-      document.getElementById("Cost").textContent += item_output_amount[0];
-
-      document.getElementById("Cost").textContent += " ";
-
-      document.getElementById("Cost").textContent += itemName(item_output[0]);
+      document.getElementById("Cost").textContent += " For " + item_output_amount[0] + " " + itemName(item_output[0]);
 
       if (item_output[1] != 0) {
 
-        document.getElementById("Cost").textContent += " & ";
+        document.getElementById("Cost").textContent += " & " + item_output_amount[1] + " " + itemName(item_output[1]);
 
-        document.getElementById("Cost").textContent += item_output_amount[1];
+}
+      if (item_output[2] != 0) {
 
-        document.getElementById("Cost").textContent += " ";
+        document.getElementById("Cost").textContent += " & " + item_output_amount[2] + " " + itemName(item_output[2]);
 
-        document.getElementById("Cost").textContent += itemName(item_output[1]);
       }
+
       document.getElementById("Cost").style.display = "block";
     }
 
@@ -745,6 +740,7 @@
           document.getElementById("landLabel").style.display = "inline";
           document.getElementById("landSelection").style.display = "block";
           showLandMenu();
+          hideAmount();
           break;
         case "6":
           document.getElementById("landLabel").style.display = "inline";
@@ -877,11 +873,14 @@
     async function totalCostCalc() {
       document.getElementById("totalCostID").textContent = "Total Cost:";
       document.getElementById("totalCostID").style.display = "block";
+
+      const Amount = document.getElementById("Amount").value;
+
       if (actionSelect.value == "1") {
         setTTC(TimeAmount.value * 10);
         if(cropSelect.value > 100){await farmYieldApproximator(TimeAmount.value);}
       }
-      else if(actionSelect.value == "2") {
+      else if(actionSelect.value == "2" || actionSelect.value == "3") {
         let whyJS = returnRecipe(Number(selector()));
         var items = whyJS[1];
         var item_amount = whyJS[0];
@@ -896,15 +895,18 @@
         const NFTcontractSigner = new ethers.Contract(address, abi, signer);
         const myAddress = await signer.getAddress()
 
+        document.getElementById("totalCostID").textContent = "Total Cost: ";
+
+
         if (items[0] != 0) {
           var _recipeText;
           var _foodcost;
-          var _foodMultiplier = (document.getElementById("Amount").value * Math.ceil((document.getElementById("BatchAmount").value * recipe_size) / maxAllowableOrders[document.getElementById("CID").value]));
+          var _foodMultiplier = (Math.ceil((document.getElementById("BatchAmount").value * recipe_size) / maxAllowableOrders[document.getElementById("CID").value]));
           console.log(document.getElementById("BatchAmount").value, "a")
-          console.log(document.getElementById("Amount").value, "b")
-          _foodcost = Workers[document.getElementById("CID").value] * (_foodMultiplier);
+          console.log(Amount, "b")
+          _foodcost = Workers[document.getElementById("CID").value] * (_foodMultiplier) * Math.ceil((time * Amount)/10);
           var _outputText;
-          _outputText = item_output_amount[0] * document.getElementById("Amount").value;
+          _outputText = item_output_amount[0] * Amount;
           if (time != 0) {
             const _buildingCount = await NFTcontract.getBuildingCount(myAddress);
             console.log("is this running?");
@@ -912,9 +914,7 @@
             document.getElementById("BatchAmountLabel").textContent += (maxAllowableOrders[document.getElementById("CID").value] * _buildingCount[document.getElementById("CID").value] / recipe_size)
             for (var i = 0; i < 6; i++) {
               if (items[i] == 0) { break; }
-              document.getElementById("totalCostID").textContent += ((item_amount[i]) * document.getElementById("Amount").value * document.getElementById("BatchAmount").value);
-              document.getElementById("totalCostID").textContent += " ";
-              document.getElementById("totalCostID").textContent += itemName(items[i]);
+              document.getElementById("totalCostID").textContent += ((item_amount[i]) * Amount * document.getElementById("BatchAmount").value) + " " + itemName(items[i]);
             }
           }
           else {
@@ -922,43 +922,32 @@
             document.getElementById("BatchAmount").value = 1;
             for (var i = 0; i < 6; i++) {
               if (items[i] == 0) { break; }
-              document.getElementById("totalCostID").textContent += ((item_amount[i]) * document.getElementById("Amount").value * document.getElementById("BatchAmount").value);
-              document.getElementById("totalCostID").textContent += " ";
-              document.getElementById("totalCostID").textContent += itemName(items[i]);
-              document.getElementById("totalCostID").textContent += " ";
+              document.getElementById("totalCostID").textContent += ((item_amount[i]) * Amount * document.getElementById("BatchAmount").value) + " " +  itemName(items[i]) + " ";
             }
           }
 
           if (time != 0) {
-            document.getElementById("totalCostID").textContent += " & ";
-
-            document.getElementById("totalCostID").textContent += _foodcost;
-            document.getElementById("totalCostID").textContent += " ";
-            document.getElementById("totalCostID").textContent += "Food";
+            document.getElementById("totalCostID").textContent += " & " + _foodcost + " Food";
           }
           document.getElementById("totalCostID").textContent += " For ";
 
 
           if (document.getElementById("actionSelect").value == 2) { _outputText = _outputText * Number(document.getElementById("BatchAmount").value); }
-          document.getElementById("totalCostID").textContent += (_outputText);
+          document.getElementById("totalCostID").textContent += (_outputText) + " " + itemName(item_output[0]);
 
-          document.getElementById("totalCostID").textContent += " ";
-
-          document.getElementById("totalCostID").textContent += itemName(item_output[0]);
           document.getElementById("totalCostID").style.display = "block";
 
 
           if (item_output[1] != 0) {
+              document.getElementById("totalCostID").textContent += " & " + ((item_output_amount[1]) * Amount * document.getElementById("BatchAmount").value) + " " + itemName(item_output[1]);
+            }
 
-            document.getElementById("totalCostID").textContent += " & ";
-
-            document.getElementById("totalCostID").textContent += ((item_output_amount[1]) * document.getElementById("Amount").value * document.getElementById("BatchAmount").value);
-
-            document.getElementById("totalCostID").textContent += " ";
-
-            document.getElementById("totalCostID").textContent += itemName(item_output[1]);
-          }
+          if (item_output[2] != 0) {
+              document.getElementById("totalCostID").textContent += " & " + ((item_output_amount[2]) * Amount * document.getElementById("BatchAmount").value) + " " + itemName(item_output[2]);
+            }
         }
+
+            
 
         if (time == 0 || document.getElementById("actionSelect").value == "7" ||
           document.getElementById("actionSelect").value == "8" ||
@@ -970,9 +959,23 @@
             var _time_multi = await _buildTimeBasedOnFood(itemValue(Number(document.getElementById("FoodInputID").value)),false);
             console.log("time multiplier", _time_multi);
 
-            setTTC((Number(document.getElementById("Amount").value) * time * 200 / _time_multi));
+            setTTC((Number(Amount) * time * 200 / _time_multi));
           }
-          else { setTTC(Number(document.getElementById("Amount").value) * time); }
+          else { setTTC(Number(Amount) * time); }
+        }
+
+      }
+      else if(actionSelect.value == "9") {
+        switch (RecruitID.value) {
+          case "0":
+            document.getElementById("totalCostID").textContent += 10000 * Amount + " Copper";
+            break;
+          case "1":
+            document.getElementById("totalCostID").textContent += 10000 * Amount + " Silver";
+            break;
+          case "2":
+            document.getElementById("totalCostID").textContent += 30000 * Amount + " Gold";
+            break;
         }
 
       }
@@ -1003,37 +1006,31 @@
     function showMultiItemMenu(_value) {
 
       document.getElementById("itemSelection").style.display = "inline";
+      document.getElementsByClassName("itemSelection")[_value * -1].style.display = "inline";
 
 
 
       switch (_value) {
         case -1:
           document.getElementById("Grain").style.display = "inline";
-          document.getElementById("GrainLabel").style.display = "inline";
           break;
         case -2:
-          document.getElementById("Meat").style.display = "block";
-          document.getElementById("MeatLabel").style.display = "inline";
+          document.getElementById("MeatMultiSelect").style.display = "block";
           break;
         case -3:
-          document.getElementById("Fruit").style.display = "block";
-          document.getElementById("FruitLabel").style.display = "inline";
+        document.getElementById("FruitMultiSelect").style.display = "block";
           break;
         case -4:
           document.getElementById("Veggie").style.display = "block";
-          document.getElementById("VeggieLabel").style.display = "inline";
           break;
         case -5:
           document.getElementById("Sweetner").style.display = "block";
-          document.getElementById("SweetnerLabel").style.display = "inline";
           break;
         case -6:
           document.getElementById("Tier2Metal").style.display = "block";
-          document.getElementById("Tier2MetalLabel").style.display = "inline";
           break;
         case -7:
           document.getElementById("BasicDrink").style.display = "block";
-          document.getElementById("BasicDrinkLabel").style.display = "inline";
           break;
 
         default:
@@ -1045,18 +1042,14 @@
     function setTTC(_time) {
       console.log("SetTTC is run");
       document.getElementById("timeToCompletion").style.display = "block";
-
-      if (document.getElementById("timeToCompletion").textContent != "Time To Completion: ") { document.getElementById("timeToCompletion").textContent = "Time To Completion: "; }
-
       const _new_Time = Math.trunc(Time_Multiplier * _time);
 
 
-      document.getElementById("timeToCompletion").textContent += Math.trunc(_new_Time / 3600);
-      document.getElementById("timeToCompletion").textContent += " Hours "
-      document.getElementById("timeToCompletion").textContent += Math.trunc(_new_Time / 60) % 60;
-      document.getElementById("timeToCompletion").textContent += " Minutes ";
-      document.getElementById("timeToCompletion").textContent += Math.trunc(_new_Time % 60);
-      document.getElementById("timeToCompletion").textContent += " Seconds "
+      document.getElementById("timeToCompletion").textContent = 
+      "Time To Completion: " + Math.trunc(_new_Time / 3600) +  " Hours " +  (Math.trunc(_new_Time / 60) % 60) +  " Minutes " +  Math.trunc(_new_Time % 60) +  " Seconds ";
+
+
+
 
 
 
@@ -1211,22 +1204,16 @@
         if(secondary_yield_check < 0 ) {secondary_yield_check = 0}
         if(_value * 10 - crop_info[6] < 0) {primary_yield = 0}
 
-        document.getElementById("SecondaryCropYieldAmount").textContent += secondary_yield_check;
-        document.getElementById("SecondaryCropYieldAmount").textContent += " ";
-        document.getElementById("SecondaryCropYieldAmount").textContent += itemName(crop_info[10]);
+        document.getElementById("SecondaryCropYieldAmount").textContent += secondary_yield_check + " " + itemName(crop_info[10]);
       }
 
       document.getElementById("CropYieldAmount").style.display = "block";
 
-      document.getElementById("totalCostID").textContent = "Total Cost: ";
-      document.getElementById("totalCostID").textContent += Amount.value * _value;
-      document.getElementById("totalCostID").textContent += " Food";
+      document.getElementById("totalCostID").textContent = "Total Cost: " + Amount.value * _value + " Food";
 
 
-      document.getElementById("CropYieldAmount").textContent = "Estimated Primary Yield: ";
-      document.getElementById("CropYieldAmount").textContent += primary_yield;
-      document.getElementById("CropYieldAmount").textContent += " ";
-      document.getElementById("CropYieldAmount").textContent += itemName(crop_info[9]);
+
+      document.getElementById("CropYieldAmount").textContent = "Estimated Primary Yield: " + primary_yield + " " + itemName(crop_info[9]);
       document.getElementById("CropYieldAmount").textContent += " NOTE: Estimates do not currently include effects based on land conditions or season";
 
 
@@ -1410,11 +1397,11 @@
       <option value="_"></option>
       <option value="0">--Natural Reasources</option>
       <option value="_"></option>
-      <option value="0">Natural Reasources</option>
+      <option value="1">Natural Reasources</option>
       <option value="2">Low Noble Hunt</option>
-      <option value="2">High Noble Hunt</option>
+      <option value="3">High Noble Hunt</option>
       <option value="_"></option>
-      <option value="0">--Plants</option>
+      <option value="_">--Plants</option>
       <option value="_"></option>
       <option value=501>Wheat</option>
       <option value=502>Rye</option>
@@ -1438,7 +1425,7 @@
       <option value=542>Cotton</option>
 
       <option value="_"></option>
-      <option value="0">--Tree Crops</option>
+      <option value="_">--Tree Crops</option>
       <option value="_"></option>
       <option value=506>Apple</option>
       <option value=507>Plum</option>
@@ -1458,7 +1445,7 @@
 
     <label class="landSelection" for="landSelection" id="landLabel">Which Land?</label>
     <select class="AridKingdom Lands Dropdown" id="Arid">
-      <option value="-1"></option>
+      <option value="0"></option>
       <option value="1">Badlands</option>
       <option value="2">Steppes</option>
       <option value="3">Oasis</option>
@@ -1466,7 +1453,7 @@
       <option value="44">Desolate Ocean</option>
     </select>
     <select class="NorthernKingdom Lands Dropdown" id="Northern">
-      <option value="-1"></option>
+      <option value="0"></option>
       <option value="11">Rocky Wastes</option>
       </option value="12">Tundra</option>
       <option value="13">Northern Forest</option>
@@ -1474,14 +1461,14 @@
       <option value="41">Northern Ocean</option>
     </select>
     <select class="HeartlandKingdom Lands Dropdown" id="Heartland">
-      <option value="-1"></option>
+      <option value="0"></option>
       <option value="21">Rocky Heartland</option>
       <option value="22">Heartland</option>
       <option value="23">Heart River</option>
       <option value="42">Central Ocean</option>
     </select>
     <select class="SouthernKingdom Lands Dropdown" id="Southern">
-      <option value="-1"></option>
+      <option value="0"></option>
       <option value="31">Southern Rocky Wastes</option>
       <option value="32">Southern Forest</option>
       <option value="33">Southern Jungle</option>
@@ -1489,20 +1476,20 @@
       <option value="43">Rainforest Ocean</option>
     </select>
     <select class="OceanKingdom Lands Dropdown" id="Ocean">
-      <option value="-1"></option>
+      <option value="0"></option>
       <option value="41">Northern Ocean</option>
       <option value="42">Heartland Ocean</option>
       <option value="43">Southern Ocean</option>
       <option value="44">Desolate Ocean</option>
     </select>
     <select class="SwampKingdom Lands Dropdown" id="Swamp">
-      <option value="-1"></option>
+      <option value="0"></option>
       <option value="51">Brackish Swamp</option>
       <option value="52">Swamp</option>
       <option value="53">Lush Swamp</option>
     </select>
     <select class="MountainKingdom Lands Dropdown" id="Mountain">
-      <option value="-1"></option>
+      <option value="0"></option>
       <option value="61">Red Mountain</option>
       <option value="62">Blue Mountain</option>
       <option value="63">Green Mountain</option>
@@ -1510,13 +1497,13 @@
     </select>
 
     <select class="SilverKingdom Lands Dropdown" id="Silver">
-      <option value="-1"></option>
+      <option value="0"></option>
       <option value="70">Rocky Wastes</option>
       <option value="71">Tundra</option>
       <option value="72">Northern Forest</option>
     </select>
     <select class="GuildedKingdom Lands Dropdown" id="Gold">
-      <option value="-1"></option>
+      <option value="0"></option>
       <option value="80">Rocky Wastes</option>
       <option value="81">Tundra</option>
       <option value="82">Northern Forest</option>
@@ -1712,6 +1699,25 @@
       <option value="4017">Turn Polar Bear Hide Into Decor</option>
       <option value="4018">Turn Tiger Hide Into Decor</option>
 
+
+      <option value="4500">Fur Clothes</option>
+      <option value="4501">Fabric Clothes</option>
+      <option value="4502">Leather Clothes</option>
+      <option value="4503">Tailored Fur Clothes</option>
+      <option value="4504">Tailored Fabric Clothes</option>
+      <option value="4505">Clothes</option>
+      <option value="4520">Basic Furniture</option>
+      <option value="4521">Ornate Furniture</option>
+      <option value="4522">Oppulant Furniture</option>
+      <option value="4540">Basic Tool</option>
+      <option value="4541">Artisan Tool</option>
+      <option value="4542">Oppulant Tool</option>
+      <option value="4560">Copper Jewelery</option>
+      <option value="4561">Silver Jewelery</option>
+      <option value="4562">Gold Jewelery</option>
+      <option value="4580">Fur Bedding</option>
+      <option value="4581">Enhanced Bedding</option>
+      <option value="4582">Down Beeding</option>
 
       <option value="-1"></option>
       <option value="0">--Refining Process</option>
@@ -2219,7 +2225,7 @@
       <option value="509">Beans</option>
       <option value="510">Mushroom</option>
       <option value="511">Beets</option>
-      <option value="512">Cassava</option>
+      <option value="512">Casava</option>
       <option value="513">Peanut</option>
       <option value="514">Cherry</option>
       <option value="515">Peach</option>
@@ -2240,6 +2246,7 @@
       <option value="531">Fish</option>
       <option value="532">Beef</option>
       <option value="533">Chicken</option>
+      <option value="541">Exotic Meat</option>
       <option value="534">Eggs</option>
       <option value="535">Potato</option>
       <option value="536">Silver Sap</option>
@@ -2247,14 +2254,17 @@
       <option value="538">Oats</option>
       <option value="539">Milk</option>
       <option value="540">Barley</option>
+
       <option value="-1"></option>
       <option value="0">--Food & Drinks</option>
       <option value="-1"></option>
+
       <option value="1000">Wheat Beer</option>
       <option value="1001">Rye Beer</option>
       <option value="1002">Barley Beer</option>
       <option value="1003">Oat Beer</option>
       <option value="1004">Rice Beer</option>
+      <option value="1005">Sorghum Beer</option>
       <option value="1010">Cider</option>
       <option value="1011">Wine</option>
       <option value="1012">Plum Wine</option>
@@ -2262,8 +2272,9 @@
       <option value="1014">Cherry Wine</option>
       <option value="1020">Mead</option>
       <option value="1030">Vodka</option>
-      <option value="1031">Rum</option>
-      <option value="1032">Kumis</option>
+      <option value="1031">Kumis</option>
+      <option value="1032">Rum</option>
+      <option value="1033">Grain Whiskey</option>
       <option value="1040">Brandy</option>
       <option value="1041">Silver Wine</option>
       <option value="1042">Jungle Wine</option>
@@ -2280,8 +2291,11 @@
       <option value="1204">Sorghum Bread</option>
       <option value="1205">Barley Bread</option>
       <option value="1206">Oat Bread</option>
-      <option value="1207">Pastries</option>
-      <option value="1208">Fruit Pastries</option>
+      <option value="1207">Pastry</option>
+      <option value="1208">Fruit Pastry</option>
+      <option value="1209">Glittercake</option>
+      <option value="1210">Fruit Glittercake</option>
+      <option value="1211">Glittercakeette</option>
       <option value="1220">Apple Pie</option>
       <option value="1221">Plum Pie</option>
       <option value="1222">Peach Pie</option>
@@ -2292,6 +2306,7 @@
       <option value="1232">Imperial Cheese</option>
       <option value="1240">Dried Vegetables</option>
       <option value="1241">Pickled Vegetables</option>
+      <option value="1242">Hearty Dried Vegetables</option>
       <option value="1250">Dried Fruit</option>
       <option value="1251">Brandied Fruit</option>
       <option value="1260">Sausage</option>
@@ -2300,15 +2315,17 @@
       <option value="1263">Cured Meat</option>
       <option value="1264">Salted Meat</option>
       <option value="1265">Preserved Eggs</option>
+      <option value="1266">Exotic Cured Meat</option>
+      <option value="1267">Boiled Meat</option>
+      <option value="1268">Noble Roast</option>
       <option value="1270">Beef Stew</option>
-      <option value="1271">King's Stew</option>
-      <option value="1272">Glittercake</option>
-      <option value="1273">Cheesy Bread</option>
-      <option value="1274">Fancy Cheese Bread</option>
-      <option value="1275">Beans And Rice</option>
-      <option value="1276">Morning Plate</option>
-      <option value="1277">Spice Fish</option>
-      <option value="1278">Charcutery</option>
+      <option value="1271">Kings Soup</option>
+      <option value="1272">Onion Soup</option>
+      <option value="1273">Huntsmans Soup</option>
+      <option value="1274">Chicken Soup</option>
+      <option value="1275">Fish Soup</option>
+      <option value="1280">Baked Beans</option>
+      <option value="1281">Beans And Rice</option>
       <option value="1300">Vinegar</option>
       <option value="1301">Sugar</option>
       <option value="1302">Olive Oil</option>
@@ -2317,10 +2334,27 @@
       <option value="1305">Basic Spice Pack</option>
       <option value="1306">Royal Spice Pack</option>
       <option value="1307">Confectioners Dough</option>
-      <option value="1308">Fruit Preserves</option>
+      <option value="1308">Fruit Preserve</option>
+      <option value="1309">Exotic Fruit Preserve</option>
+      <option value="1310">Mushroom Stock</option>
+      <option value="1311">Meat Stock</option>
+      <option value="1312">Vegetable Stock</option>
+      <option value="1400">Bread Combo</option>
+      <option value="1401">Deluxe Bread</option>
+      <option value="1420">Basic Soup</option>
+      <option value="1430">Deluxe Soup</option>
+      <option value="1440">Sausage Combo</option>
+      <option value="1450">Roast Combo</option>
+      <option value="1460">Deluxe Roast</option>
+      <option value="1470">Charcutery</option>
+      <option value="1471">Deluxe Charcutery</option>
+      <option value="1480">Pie Combo</option> 
+      <option value="1990">Pufgiauaiugfouy</option> 
       <option value="-1"></option>
       <option value="0">--Raw Materials</option>
       <option value="-1"></option>
+      <option value="542">Wool</option>
+      <option value="543">Cotton</option>
       <option value="2001">Stone</option>
       <option value="2002">Wood</option>
       <option value="2003">Salt</option>
@@ -2329,6 +2363,7 @@
       <option value="2023">Silver Ore</option>
       <option value="2024">Copper Ore</option>
       <option value="2025">Tin Ore</option>
+    
       <option value="-1"></option>
       <option value="0">--Industrial Goods</option>
       <option value="-1"></option>
@@ -2428,8 +2463,45 @@
       <option value="28800">Coins</option>
 
       <option value="-1"></option>
-      <option value="0">--Soliders</option>
+      <option value="0">--Animals</option>
       <option value="-1"></option>
+
+
+        <option value="7000">Rabbit</option>
+        <option value="7001">Deer</option>
+        <option value="7002">Turkey</option>
+        <option value="7003">Mink</option>
+        <option value="7004">Cyote</option>
+        <option value="7005">Snake</option>
+        <option value="7100">Fox</option>
+        <option value="7101">Boar</option>
+        <option value="7102">Zebra</option>
+        <option value="7103">Reindeer</option>
+        <option value="7104">Leopard</option>
+        <option value="7105">Crocodile</option>
+        <option value="7106">Otter</option>
+        <option value="7107">Wolf</option>
+        <option value="7108">Seal</option>
+        <option value="7109">Ostridge</option>
+        <option value="7200">Elk</option>
+        <option value="7201">Aurochs</option>
+        <option value="7202">Black Leopard</option>
+        <option value="7203">Bear</option>
+        <option value="7204">Sea Mink</option>
+        <option value="7205">Whalrus</option>
+        <option value="7206">Poison Snake</option>
+        <option value="7300">Elephant</option>
+        <option value="7301">Rhino</option>
+        <option value="7302">Polar Bear</option>
+        <option value="7303">Tiger</option>
+        <option value="7304">Titan Snake</option>
+        <option value="7400">Cow</option>
+        <option value="7401">Chicken</option>
+        <option value="7402">Sheep</option>
+
+        <option value="-1"></option>
+        <option value="0">--Soliders</option>
+        <option value="-1"></option>
 
         <option value="10001">T1_Spearman</option>
         <option value="10002">T2_Spearman</option>
@@ -2676,14 +2748,19 @@
 
   <RecruitPeople class="RecruitInput " id="RecruitInput">
     <label for="RecruitID">What Type of citizen are you recruiting?</label><br>
-    <input type="text" id="RecruitID">
+    <select id="RecruitID" class="Dropdown">
+      <option value="-1"></option>
+      <option value="0">Peasents</option>
+      <option value="1">Low Nobles</option>
+      <option value="2">High Nobles</option>
+    </select>
 
   </RecruitPeople>
   <br>
   <ItemSelection class="itemSelection Items " id="itemSelection">
     <br>
     <label class="itemSelection Grains" id="GrainLabel">What Kind of Grain would you like to use?</label>
-    <select class="Grains Items Dropdown" id="Grain">
+    <select class="Grains Items Dropdown InvisableOnStart" id="GrainMultiSelect">
       <option value="-1"></option>
       <option value="501">Wheat</option>
       <option value="502">Rye</option>
@@ -2693,15 +2770,15 @@
       <option value="538">Oats</option>
       <option value="540">Barley</option>
     </select>
-    <label class="itemSelection Meats" id="MeatLabel">What Kind of Meat would you like to use?</label>
-    <select class="Meats Items Dropdown" id="Meat">
+    <label class="itemSelection" for="MeatMultiSelect">What Kind of Meat would you like to use?</label>
+    <select class="Meats Items Dropdown InvisableOnStart" id="MeatMultiSelect">
       <option value="-1"></option>
       <option value="531">Fish</option>
       <option value="532">Beef</option>
       <option value="533">Chicken</option>
     </select>
-    <label class="itemSelection Fruits" id="FruitLabel">What Kind of Fruit would you like to use?</label>
-    <select class="Fruits Items Dropdown" id="Fruit">
+    <label class="itemSelection" for="FruitMultiSelect">What Kind of Fruit would you like to use?</label>
+    <select class="Fruits Items Dropdown InvisableOnStart" id="FruitMultiSelect">
       <option value="-1"></option>
       <option value="522">Grapes</option>
       <option value="515">Peaches</option>
@@ -2710,26 +2787,34 @@
       <option value="514">Cherries</option>
     </select>
     <label class="itemSelection Veggies" id="VeggieLabel">What Kind of Vegetables would you like to use?</label>
-    <select class="Veggies Items Dropdown" id="Veggie">
+    <select class="Veggies Items Dropdown InvisableOnStart" id="VeggieMultiSelect">
       <option value="-1"></option>
       <option value="517">Potatoes</option>
       <option value="518">Onions</option>
       <option value="520">Carrots</option>
     </select>
-    <label class="itemSelection Sweetners" id="SweetnerLabel">What Kind of Sweetner would you like to use?</label>
-    <select class="Sweetners Items Dropdown" id="Sweetner">
+    <label class="itemSelection Sides" id="SidesLabel">What Kind of Side would you like to use?</label>
+    <select class="Sides Items Dropdown" id="SidesMultiSelect">
       <option value="-1"></option>
-      <option value="1307">Sugar</option>
-      <option value="537">Honey</option>
+      <option value="1211">Glittercakeette</option>
+      <option value="1230">Cheese</option>
+      <option value="1280">Baked Beans</option>
+      <option value="1281">Beans And Rice</option>
+      <option value="1220">Apple Pie</option>
+      <option value="1221">Plum Pie</option>
+      <option value="1222">Peach Pie</option>
+      <option value="1223">Sugar Pie</option>
+      <option value="1224">Pot Pie</option>
     </select>
+
     <label class="itemSelection Tier2Metals" id="Tier2MetalsLabel">What Kind of Metal would you like to use?</label>
-    <select class="Tier2Metals Items Dropdown" id="Tier2Metal">
+    <select class="Tier2Metals Items Dropdown" id="T2MetalMultiSelect">
       <option value="-1"></option>
       <option value="2121">Iron</option>
       <option value="2181">Bronze</option>
     </select>
     <label class="itemSelection BasicDrinks" id="BasicDrinkLabel">What Kind of Drink would you like to use?</label>
-    <select class="BasicDrinks Items Dropdown" id="BasicDrink">
+    <select class="BasicDrinks Items Dropdown InvisableOnStart" id="T1DrinkMultiSelect">
       <option value="-1"></option>
       <option value="1000">Wheat Beer</option>
       <option value="1001">Rye Beer</option>
@@ -2743,6 +2828,122 @@
       <option value="1014">Cherry Wine</option>
       <option value="1020">Mead</option>
     </select>
+    <label class="itemSelection ExoticBerry" id="ExoticBerryLabel">What Kind of Berries would you like to use?</label>
+    <select class="ExoticBerry Items Dropdown InvisableOnStart" id="ExoticBerryMultiSelect">
+      <option value="524">Winter Berry</option>
+      <option value="525">Jungle Berry</option>
+    </select>
+    <label class="itemSelection Breads" id="BreadsLabel">What Kind of Bread would you like to use?</label>
+    <select class="Breads InvisableOnStart Dropdown" id="BreadsMultiSelect">
+      
+      <option value="1200">Wheat Bread</option>
+      <option value="1201">Rye Bread</option>
+      <option value="1202">Corn Bread</option>
+      <option value="1203">Rice Bread</option>
+      <option value="1204">Sorghum Bread</option>
+      <option value="1205">Barley Bread</option>
+      <option value="1206">Oat Bread</option>
+    </select>
+    <label class="itemSelection T2Drinks" id="T2DrinksLabel">What Kind of Drink would you like to use?</label>
+    <select class="T2Drinks Items Dropdown InvisableOnStart" id="T2DrinksMultiSelect">
+      <option value="1030">Vodka</option>
+      <option value="1031">Rum</option>
+      <option value="1032">Kumis</option>
+    </select>
+
+    <label class="itemSelection T3Drinks" id="T3DrinksLabel">What Kind of Drink would you like to use?</label>
+    <select class="T3Drinks Items Dropdown InvisableOnStart" id="T3DrinksMultiSelect">
+      <option value="1040">Brandy</option>
+      <option value="1041">Silver Wine</option>
+      <option value="1042">Jungle Wine</option>
+      <option value="1043">Winter Wine</option>
+      <option value="1044">Aged Rum</option>
+    </select>
+
+    <label class="itemSelection T4Drinks" id="T4DrinksLabel">What Kind of Drink would you like to use?</label>
+    <select class="T4Drinks Items Dropdown InvisableOnStart" id="T4DrinksMultiSelect">
+      <option value="1050">Ginseng Wine</option>
+      <option value="1051">Spiced Vodka</option>
+    </select>
+
+    <label class="itemSelection T5Drinks" id="T5DrinksLabel">What Kind of Drink would you like to use?</label>
+    <select class="T5Drinks Items Dropdown InvisableOnStart" id="T5DrinksMultiSelect">
+      <option value="1060">Double Brandy</option>
+      <option value="1061">Auric Mead</option>
+    </select>
+
+    <label class="itemSelection Pies" id="PiesLabel">What Kind of Pie would you like to use?</label>
+    <select class="Pies Items Dropdown InvisableOnStart" id="PiesMultiSelect">
+      <option value="1220">Apple Pie</option>
+      <option value="1221">Plum Pie</option>
+      <option value="1222">Peach Pie</option>
+      <option value="1223">Sugar Pie</option>
+      <option value="1224">Pot Pie</option>
+    </select>
+    <label class="itemSelection Soups" id="SoupsLabel">What Kind of Soup would you like to use?</label>
+    <select class="Soups Items Dropdown InvisableOnStart" id="SoupskMultiSelect">
+      <option value="1270">Beef Stew</option>
+      <option value="1272">Onion Soup</option>
+      <option value="1274">Chicken Soup</option>
+      <option value="1275">Fish Soup</option>
+    </select>
+    <label class="itemSelection Fodder" id="FodderLabel">What Kind of Fodder would you like to use?</label>
+    <select class="Fodder Items Dropdown InvisableOnStart" id="FodderMultiSelect">
+      <option value="-1"></option>
+      <option value="501">Wheat</option>
+      <option value="502">Rye</option>
+      <option value="504">Corn</option>
+      <option value="503">Rice</option>
+      <option value="505">Sorghum</option>
+      <option value="538">Oats</option>
+      <option value="540">Barley</option>
+      <option value=512>Casava</option>
+      <option value=506>Apple</option>
+      <option value=507>Plum</option>
+      <option value=509>Beans</option>
+    </select>
+
+    <label class="PCGemstone itemSelection" id="PCGemstoneLabel">What Kind of Gemstone would you like to use?</label>
+    <select class="PCGemstone Items Dropdown InvisableOnStart" id="PCGemstoneMultiSelect">
+      <option value="2304">Polished Amethyst</option>
+      <option value="2305">Polished Opal</option>
+      <option value="2306">Polished Citrine</option>
+      <option value="2307">Polished Pearls</option>
+      <option value="2309">Polished Amber</option>
+      <option value="2310">Polished Onyx</option>
+      <option value="2311">Polished Aquamarine</option>
+      <option value="2312">Polished Crystal Glass</option>
+    </select>
+    <label class="PRGemstone itemSelection" id="PRGemstoneLabel">What Kind of Gemstone would you like to use?</label>
+    <select class="PRGemstone Items Dropdown InvisableOnStart" id="PRGemstoneMultiSelect">Polished Rare Gemstone
+      <option value="2300">Polished Ruby</option>
+      <option value="2301">Polished Emerald</option>
+      <option value="2302">Polished Sapphire</option>
+      <option value="2303">Polished Diamond</option>
+      <option value="2308">Polished Moonstone</option>
+    </select>
+
+    <label class="CGemstone itemSelection" id="CGemstoneLabel">What Kind of Gemstone would you like to use?</label>
+    <select class="CGemstone Items Dropdown InvisableOnStart" id="CGemstoneMultiSelect">Common Gemstone
+      <option value="2204">Amethyst</option>
+      <option value="2205">Opal</option>
+      <option value="2206">Citrine</option>
+      <option value="2207">Pearls</option>
+      <option value="2209">Amber</option>
+      <option value="2210">Onyx</option>
+      <option value="2211">Aquamarine</option>
+      <option value="2212">Crystal Glass</option>
+    </select>
+
+    <label class="RGemstone itemSelection" id="PCGemstoneLabel">What Kind of Gemstone would you like to use?</label>
+    <select class="RGemstone Items Dropdown InvisableOnStart" id="RGemstoneMultiSelect">Rare Gemstone
+      <option value="2200">Ruby</option>
+      <option value="2201">Emerald</option>
+      <option value="2202">Sapphire</option>
+      <option value="2203">Diamond</option>
+      <option value="2208">Moonstone</option>
+    </select>
+
   </ItemSelection>
   <br>
   <TXamount class="Amount " id="AmountID">
