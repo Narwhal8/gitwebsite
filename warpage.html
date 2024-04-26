@@ -63,9 +63,6 @@
             hideAll();
             switch (_value) {
                 case "1":
-                document.getElementById("SoliderSlotList").style.display = "block";
-                document.getElementById("SoliderInfo").style.display = "block";
-
                     break;
                 case "2":
                     document.getElementById("TroopList").style.display = "block";
@@ -135,108 +132,31 @@
             const _value = document.getElementById("actionSelector").value;
             console.log(_value)
             switch (_value) {
-                case "0":
-                    console.log(_armyData);
-                    document.getElementById("TroopCount").style.display = "block";
-
-                    document.getElementById("Frontline1").textContent = "Frontline 1:";
-                    document.getElementById("Frontline1").textContent += " Unit Type: ";
-                    document.getElementById("Frontline1").textContent += itemName(_armyData[3][0]);
-                    document.getElementById("Frontline1").textContent += " Amount: ";
-                    document.getElementById("Frontline1").textContent += _armyData[2][0];
-
-                    document.getElementById("Frontline1").textContent += " Unit Type: ";
-                    document.getElementById("Frontline1").textContent += itemName(_armyData[3][5]);
-                    document.getElementById("Frontline1").textContent += " Amount: ";
-                    document.getElementById("Frontline1").textContent += _armyData[2][1];
-
-                    document.getElementById("Frontline1").textContent += " Unit Type: ";
-                    document.getElementById("Frontline1").textContent += itemName(_armyData[3][10]);
-                    document.getElementById("Frontline1").textContent += " Amount: ";
-                    document.getElementById("Frontline1").textContent += _armyData[2][2];
-
-
-
-                    document.getElementById("Frontline2").textContent = "Frontline 2:";
-                    document.getElementById("Frontline2").textContent += " Unit Type: ";
-                    document.getElementById("Frontline2").textContent += itemName(_armyData[3][15]);
-                    document.getElementById("Frontline2").textContent += " Amount: ";
-                    document.getElementById("Frontline2").textContent += _armyData[2][3];
-
-                    document.getElementById("Frontline2").textContent += " Unit Type: ";
-                    document.getElementById("Frontline2").textContent += itemName(_armyData[3][20]);
-                    document.getElementById("Frontline2").textContent += " Amount: ";
-                    document.getElementById("Frontline2").textContent += _armyData[2][4];
-
-                    document.getElementById("Frontline2").textContent += " Unit Type: ";
-                    document.getElementById("Frontline2").textContent += itemName(_armyData[3][25]);
-                    document.getElementById("Frontline2").textContent += " Amount: ";
-                    document.getElementById("Frontline2").textContent += _armyData[2][5];
-
-
-                    document.getElementById("Ranged").textContent = "Ranged:";
-                    document.getElementById("Ranged").textContent += " Unit Type: ";
-                    document.getElementById("Ranged").textContent += itemName(_armyData[3][30]);
-                    document.getElementById("Ranged").textContent += " Amount: ";
-                    document.getElementById("Ranged").textContent += _armyData[2][6];
-
-                    document.getElementById("Ranged").textContent += " Unit Type: ";
-                    document.getElementById("Ranged").textContent += itemName(_armyData[3][35]);
-                    document.getElementById("Ranged").textContent += " Amount: ";
-                    document.getElementById("Ranged").textContent += _armyData[2][7];
-
-                    document.getElementById("Ranged").textContent += " Unit Type: ";
-                    document.getElementById("Ranged").textContent += itemName(_armyData[3][40]);
-                    document.getElementById("Ranged").textContent += " Amount: ";
-                    document.getElementById("Ranged").textContent += _armyData[2][8];
-
-
-                    document.getElementById("Skirmishers").textContent = "Skirmishers:";
-                    document.getElementById("Skirmishers").textContent += " Unit Type: ";
-                    document.getElementById("Skirmishers").textContent += itemName(_armyData[3][45]);
-                    document.getElementById("Skirmishers").textContent += " Amount: ";
-                    document.getElementById("Skirmishers").textContent += _armyData[2][9];
-
-                    document.getElementById("Skirmishers").textContent += " Unit Type: ";
-                    document.getElementById("Skirmishers").textContent += itemName(_armyData[3][50]);
-                    document.getElementById("Skirmishers").textContent += " Amount: ";
-                    document.getElementById("Skirmishers").textContent += _armyData[2][10];
-
-                    document.getElementById("Skirmishers").textContent += " Unit Type: ";
-                    document.getElementById("Skirmishers").textContent += itemName(_armyData[3][55]);
-                    document.getElementById("Skirmishers").textContent += " Amount: ";
-                    document.getElementById("Skirmishers").textContent += _armyData[2][11];
-                    break;
                 case "1":
-                document.getElementById("SoliderDetailView").style.display = "block";
+                    document.getElementById("SuperSoliderGridContainer").style.display = "grid";
 
-                document.getElementById("SoliderType").textContent = "Solider Name:";
-                document.getElementById("SoliderType").textContent += itemName(_armyData[3][(5 *(SoliderSlotSelector.value))]);
-                
-                document.getElementById("SoliderWeapon").textContent = "Solider Weapon:";
-                document.getElementById("SoliderWeapon").textContent += itemName(_armyData[3][(5 *(SoliderSlotSelector.value)) + 1]);
+                    for(let i = 0; i <= 12; ++i) {
+                        document.getElementById(("SoliderGridSlot" + (i + 1) + "-1")).textContent = "Name: " + itemName(_armyData[3][5 * i]);
+                        document.getElementById(("SoliderGridSlot" + (i + 1) + "-3")).textContent = "Weapon: " + itemName(_armyData[3][5 * i + 1]);
+                        document.getElementById(("SoliderGridSlot" + (i + 1) + "-4")).textContent = "Offhand: " + itemName(_armyData[3][5 * i + 2]);
+                        document.getElementById(("SoliderGridSlot" + (i + 1) + "-5")).textContent = "Armor: " + itemName(_armyData[3][5 * i + 3]);
+                        document.getElementById(("SoliderGridSlot" + (i + 1) + "-6")).textContent = "Other: " + itemName(_armyData[3][5 * i + 4]);
+                        document.getElementById(("SoliderGridSlot" + (i + 1) + "-2")).textContent = "Amount: " + _armyData[2][i];
 
-                document.getElementById("SoliderOffhand").textContent = "Solider Offhand:";
-                document.getElementById("SoliderOffhand").textContent += itemName(_armyData[3][(5 *(SoliderSlotSelector.value)) + 2]);
+                    }
 
-
-                document.getElementById("SoliderArmor").textContent = "Solider Armor:";
-                document.getElementById("SoliderArmor").textContent += itemName(_armyData[3][(5 *(SoliderSlotSelector.value)) + 3]);
-
-
-                document.getElementById("SoliderOther").textContent = "Solider Other:";
-                document.getElementById("SoliderOther").textContent += itemName(_armyData[3][(5 *(SoliderSlotSelector.value)) + 4]);
+                        console.log("fiusd")
                     break;
                 case "2":
                     NFTBaseContractSigner.sendToWar(
                         false,
-                        document.getElementById("TroopSlot").value,
-                        document.getElementById("WeaponInput").value,
-                        document.getElementById("OffhandInput").value,
-                        document.getElementById("ArmorInput").value,
-                        document.getElementById("OtherInput").value,
-                        document.getElementById("TroopCost").value,
-                        document.getElementById("TroopAmount").value
+                        4,//document.getElementById("SoliderSlotSelector").value,
+                        10003,//document.getElementById("TroopUpgrade").value,
+                        5001,//document.getElementById("WeaponInput").value,
+                        0,//document.getElementById("OffhandInput").value,
+                        5510,//document.getElementById("ArmorInput").value,
+                        0,//document.getElementById("OtherInput").value,
+                        25//document.getElementById("TroopAmount").value
                     )
                     break;
                 case "3":
@@ -285,7 +205,7 @@
                 console.log(document.getElementById("WeaponInput").options[1].classList.contains(_value));
                 for(let i = 0; i < document.getElementById("WeaponInput").options.length; ++i) {
                     if(document.getElementById("WeaponInput").options[i].classList.contains(_value) == true) 
-                    {document.getElementById("WeaponInput").options[i].style.display = "inital"}
+                    {document.getElementById("WeaponInput").options[i].style.display = "block"}
                     else {document.getElementById("WeaponInput").options[i].style.display = "none"}
                 }
                 break;
@@ -330,6 +250,7 @@
             }
         }
         function hideAll() {
+            document.getElementById("SuperSoliderGridContainer").style.display = "none";
             document.getElementById("WeaponInput").style.display = "none";
             document.getElementById("WeaponInputLabel").style.display = "none";
             document.getElementById("OffhandInput").style.display = "none";
@@ -347,6 +268,7 @@
             document.getElementById("SoliderDetailView").style.display = "none";
             document.getElementById("SoliderSlotList").style.display = "none";
         }
+
     </script>
 </head>
 
@@ -356,8 +278,7 @@
         <text>What would you like to do?</text>
         <select class="Dropdown" id="actionSelector" onchange="selectAction(this.value)">
             <option value="-1"></option>
-            <option value="0">Army Overview</option>
-            <option value="1">Individual Solider Overview</option>
+            <option value="1">Army Overview</option>
             <option value="2">Add Soliders To Army</option>
             <option value="3">Add Mercenaries To Army</option>
             <option value="4">Remove Troop From Army</option>
@@ -500,6 +421,7 @@
             <label for="OffhanInput" class="InvisableOnStart" id="OffhandInputLabel">What Offhand would you like to give?</label>
             <select class="Dropdown InvisableOnStart" id="OffhandInput">
                 <option value="0"></option>
+                <option value="0" class="200">None</option>
                 <option value="5900" class= "200">Wooden Shield</option>
                 <option value="5901" class= "200">Banded Shield</option>
                 <option value="5902" class= "200">Standard Shield</option>
@@ -572,6 +494,118 @@
             <label for="TroopAmount" class="InvisableOnStart">How many would you like to add?</label>
             <input class="NumericInput InvisableOnStart" id="TroopAmount"></input>
         </SoliderItemAdder>
+        <SoliderViewGrid class="SuperSoliderGridContainer InvisableOnStart" id="SuperSoliderGridContainer">
+            <div class="SoliderGridContainer">
+                <div class="SoliderInfoGrid" id="SoliderInfoGrid1">
+                    <div id="SoliderGridSlot1-1">Name:</div>
+                    <div id="SoliderGridSlot1-2">Amount:</div>
+                    <div id="SoliderGridSlot1-3">Weapon:</div>
+                    <div id="SoliderGridSlot1-4">Offhand:</div>
+                    <div id="SoliderGridSlot1-5">Armor:</div>
+                    <div id="SoliderGridSlot1-6">Other:</div>
+                </div>                </div>
+            <div class="SoliderGridContainer">
+                <div class="SoliderInfoGrid" id="SoliderInfoGrid2">
+                    <div id="SoliderGridSlot2-1">Name:</div>
+                    <div id="SoliderGridSlot2-2">Amount:</div>
+                    <div id="SoliderGridSlot2-3">Weapon:</div>
+                    <div id="SoliderGridSlot2-4">Offhand:</div>
+                    <div id="SoliderGridSlot2-5">Armor:</div>
+                    <div id="SoliderGridSlot2-6">Other:</div>
+                </div>                </div>
+            <div class="SoliderGridContainer">
+                <div class="SoliderInfoGrid" id="SoliderInfoGrid3">
+                    <div id="SoliderGridSlot3-1">Name:</div>
+                    <div id="SoliderGridSlot3-2">Amount:</div>
+                    <div id="SoliderGridSlot3-3">Weapon:</div>
+                    <div id="SoliderGridSlot3-4">Offhand:</div>
+                    <div id="SoliderGridSlot3-5">Armor:</div>
+                    <div id="SoliderGridSlot3-6">Other:</div>
+                </div>                </div>
+            <div class="SoliderGridContainer">
+                <div class="SoliderInfoGrid" id="SoliderInfoGrid4">
+                    <div id="SoliderGridSlot4-1">Name:</div>
+                    <div id="SoliderGridSlot4-2">Amount:</div>
+                    <div id="SoliderGridSlot4-3">Weapon:</div>
+                    <div id="SoliderGridSlot4-4">Offhand:</div>
+                    <div id="SoliderGridSlot4-5">Armor:</div>
+                    <div id="SoliderGridSlot4-6">Other:</div>
+                </div>                </div>
+            <div class="SoliderGridContainer">
+                <div class="SoliderInfoGrid" id="SoliderInfoGrid5">
+                    <div id="SoliderGridSlot5-1">Name:</div>
+                    <div id="SoliderGridSlot5-2">Amount:</div>
+                    <div id="SoliderGridSlot5-3">Weapon:</div>
+                    <div id="SoliderGridSlot5-4">Offhand:</div>
+                    <div id="SoliderGridSlot5-5">Armor:</div>
+                    <div id="SoliderGridSlot5-6">Other:</div>
+                </div>                </div>
+            <div class="SoliderGridContainer">
+                <div class="SoliderInfoGrid" id="SoliderInfoGrid6">
+                    <div id="SoliderGridSlot6-1">Name:</div>
+                    <div id="SoliderGridSlot6-2">Amount:</div>
+                    <div id="SoliderGridSlot6-3">Weapon:</div>
+                    <div id="SoliderGridSlot6-4">Offhand:</div>
+                    <div id="SoliderGridSlot6-5">Armor:</div>
+                    <div id="SoliderGridSlot6-6">Other:</div>
+                </div>                </div>
+            <div class="SoliderGridContainer">
+                <div class="SoliderInfoGrid" id="SoliderInfoGrid7">
+                    <div id="SoliderGridSlot7-1">Name:</div>
+                    <div id="SoliderGridSlot7-2">Amount:</div>
+                    <div id="SoliderGridSlot7-3">Weapon:</div>
+                    <div id="SoliderGridSlot7-4">Offhand:</div>
+                    <div id="SoliderGridSlot7-5">Armor:</div>
+                    <div id="SoliderGridSlot7-6">Other:</div>
+                </div>                </div>
+            <div class="SoliderGridContainer">
+                <div class="SoliderInfoGrid" id="SoliderInfoGrid8">
+                    <div id="SoliderGridSlot8-1">Name:</div>
+                    <div id="SoliderGridSlot8-2">Amount:</div>
+                    <div id="SoliderGridSlot8-3">Weapon:</div>
+                    <div id="SoliderGridSlot8-4">Offhand:</div>
+                    <div id="SoliderGridSlot8-5">Armor:</div>
+                    <div id="SoliderGridSlot8-6">Other:</div>
+                </div>                </div>
+            <div class="SoliderGridContainer">
+                <div class="SoliderInfoGrid" id="SoliderInfoGrid9">
+                    <div id="SoliderGridSlot9-1">Name:</div>
+                    <div id="SoliderGridSlot9-2">Amount:</div>
+                    <div id="SoliderGridSlot9-3">Weapon:</div>
+                    <div id="SoliderGridSlot9-4">Offhand:</div>
+                    <div id="SoliderGridSlot9-5">Armor:</div>
+                    <div id="SoliderGridSlot9-6">Other:</div>
+                </div>                </div>
+            <div class="SoliderGridContainer">
+                <div class="SoliderInfoGrid" id="SoliderInfoGrid10">
+                    <div id="SoliderGridSlot10-1">Name:</div>
+                    <div id="SoliderGridSlot10-2">Amount:</div>
+                    <div id="SoliderGridSlot10-3">Weapon:</div>
+                    <div id="SoliderGridSlot10-4">Offhand:</div>
+                    <div id="SoliderGridSlot10-5">Armor:</div>
+                    <div id="SoliderGridSlot10-6">Other:</div>
+                </div>                </div>
+            <div class="SoliderGridContainer">
+                <div class="SoliderInfoGrid" id="SoliderInfoGrid11">
+                    <div id="SoliderGridSlot11-1">Name:</div>
+                    <div id="SoliderGridSlot11-2">Amount:</div>
+                    <div id="SoliderGridSlot11-3">Weapon:</div>
+                    <div id="SoliderGridSlot11-4">Offhand:</div>
+                    <div id="SoliderGridSlot11-5">Armor:</div>
+                    <div id="SoliderGridSlot11-6">Other:</div>
+                </div>                </div>
+            <div class="SoliderGridContainer">
+                <div class="SoliderInfoGrid" id="SoliderInfoGrid12">
+                    <div id="SoliderGridSlot12-1">Name:</div>
+                    <div id="SoliderGridSlot12-2">Amount:</div>
+                    <div id="SoliderGridSlot12-3">Weapon:</div>
+                    <div id="SoliderGridSlot12-4">Offhand:</div>
+                    <div id="SoliderGridSlot12-5">Armor:</div>
+                    <div id="SoliderGridSlot12-6">Other:</div>
+                </div>
+
+            </div>
+        </SoliderViewGrid>
         <QuestMenu>
             <text class="InvisableOnStart" id="QuestSelectorText">Which Quest Would you like to do?</text>
             <select class="Dropdown InvisableOnStart" id="QuestSelector" onchange="questText(this.value)">
@@ -700,7 +734,7 @@
         </a>
 
     </MenuButtons>
-    <button class="sendTX" id="sendTX" onclick="submitTX()">Confirm
+    <button class="sticky sendTX" id="sendTX" onclick="submitTX()">Confirm
         Transaction</button>
 
 </body>
@@ -710,10 +744,6 @@
         background-color: rgb(216, 71, 71);
     }
 
-
-    .InvisableOnStart {
-        display: none;
-    }
     .WeaponOption {
         display: inherit;
     }
@@ -733,13 +763,34 @@
         border-radius: 12px;
         font-size: 16px;
     }
-
+    .SuperSoliderGridContainer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+       background-color: aqua;
+    }
+    .SoliderGridContainer {
+        display: block;
+        width: 1fr;
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        background-color: green;
+    }
+    .SoliderInfoGrid {
+        display: inline-block;
+    }
     .menuButtons {
         position: absolute;
         top: 5px;
         right: 20px;
     }
+    .sticky {
+        position: fixed;
+    }
 
+
+    .InvisableOnStart {
+        display: none;
+    }
     .indexButton:hover {
         background-color: rgb(179, 165, 165);
     }
