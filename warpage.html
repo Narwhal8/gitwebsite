@@ -135,7 +135,7 @@
                 case "1":
                     document.getElementById("SuperSoliderGridContainer").style.display = "grid";
 
-                    for(let i = 0; i <= 12; ++i) {
+                    for(let i = 0; i < 12; ++i) {
                         document.getElementById(("SoliderGridSlot" + (i + 1) + "-1")).textContent = "Name: " + itemName(_armyData[3][5 * i]);
                         document.getElementById(("SoliderGridSlot" + (i + 1) + "-3")).textContent = "Weapon: " + itemName(_armyData[3][5 * i + 1]);
                         document.getElementById(("SoliderGridSlot" + (i + 1) + "-4")).textContent = "Offhand: " + itemName(_armyData[3][5 * i + 2]);
@@ -263,9 +263,7 @@
             document.getElementById("QuestSelectorText").style.display = "none";
             document.getElementById("QuestSelector").style.display = "none";
             document.getElementById("QuestDescriptionText").style.display = "none";
-            document.getElementById("TroopCount").style.display = "none";
             document.getElementById("TroopList").style.display = "none";
-            document.getElementById("SoliderDetailView").style.display = "none";
             document.getElementById("SoliderSlotList").style.display = "none";
         }
 
@@ -286,16 +284,6 @@
             <option value="6">Promote Solider</option>
 
         </select>
-        <ArmyViewer id="TroopCount" class="InvisableOnStart">
-            <text id="Frontline1">Frontline 1:</text>
-            <br>
-            <text id="Frontline2">Frontline 2:</text>
-            <br>
-            <text id="Ranged">Ranged Units:</text>
-            <br>
-            <text id="Skirmishers">Skirmish Line:</text>
-
-        </ArmyViewer>
         <SoliderSlotList id="SoliderSlotList" class="InvisableOnStart">
             <label id="SSSLabel" for="SoliderSlotSelector">Which Slot does this operation involve?</label>
             <select class="Dropdown" id="SoliderSlotSelector">
@@ -351,19 +339,7 @@
         <Questing id="QuestMenu" class="InvisableOnStart"> 
             <input type="number" class="NumericInput">Which Quest would you like to do?</input>
         </Questing>
-        <SoliderDetailView id="SoliderDetailView" class="InvisableOnStart">
-            <text id="SoliderType">Solider Name:</text>
-            <br>
-            <text id="SoliderWeapon">Solider Weapon:</text>
-            <br>
-            <text id="SoliderOffhand">Solider Offhand:</text>
-            <br>
-            <text id="SoliderArmor">Solider Armor:</text>
-            <br>
-            <text id="SoliderOther">Solider Other:</text>
-        </SoliderDetailView>
-        <SoliderItemAdder id="SoliderItemAdder">
-            <br>
+        <SoliderItemAdder id="SoliderItemAdder InvisableOnStart">
             <label for="WeaponInput" class="InvisableOnStart" id="WeaponInputLabel">What Weapon would you like to give?</label>
             <select class="InvisableOnStart Dropdown" id="WeaponInput">
                 <option value="0"></option>
@@ -417,7 +393,6 @@
                 <option value="5214" class=" 105">Golden Sling</option>
                 
             </select>
-            <br>
             <label for="OffhanInput" class="InvisableOnStart" id="OffhandInputLabel">What Offhand would you like to give?</label>
             <select class="Dropdown InvisableOnStart" id="OffhandInput">
                 <option value="0"></option>
@@ -432,7 +407,6 @@
                 <option value="5911" class= "200">Advanced Wall Shield</option>
                 
             </select>
-            <br>
             <label for="ArmorInput" class="InvisableOnStart" id="ArmorInputLabel"  class="300">What Armor would you like to give?</label>
             <select class="Dropdown InvisableOnStart" id="ArmorInput"  class="300">
                 <option value="0"></option>

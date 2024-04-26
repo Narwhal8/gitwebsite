@@ -121,13 +121,13 @@
           const Trade = Number(document.getElementById("ItemMenuID").value) + Number(document.getElementById("BuyorSellID").value)
           let array2 = returnRecipe(Trade)
           console.log(array2);
-          if (array2[0] < 0) {
-            array2[0] = document.querySelectorAll(".Items")[(-1 * array2[0])].value
+          if (array2[0][0] < 0) {
+            array2[0][0] = document.querySelectorAll(".Items")[(-1 * array2[0])].value
           }
           NFTcontractSigner.cook(
             Trade,
             document.getElementById("Amount").value,
-            array2,
+            array2[0],
             0,
             document.getElementById("FoodInputID").value
           )
@@ -283,263 +283,11 @@
 
       if (actionSelect.value == "4") {
 
-        switch (_value) {
-          case "0":
-            document.getElementsByClassName("B0")[0].style.display = "block";
-            document.getElementsByClassName("B0")[1].style.display = "block";
-            break;
-          case "1":
-            document.getElementsByClassName("B1")[0].style.display = "block";
-            document.getElementsByClassName("B1")[1].style.display = "block";
-            break;
-          case "2":
-            document.getElementsByClassName("B2")[0].style.display = "block";
-            document.getElementsByClassName("B2")[1].style.display = "block";
-            document.getElementsByClassName("B2")[2].style.display = "block";
-            document.getElementsByClassName("B2")[3].style.display = "block";
-            break;
-          case "3":
-            document.getElementsByClassName("B3")[0].style.display = "block";
-            document.getElementsByClassName("B3")[1].style.display = "block";
-            document.getElementsByClassName("B3")[2].style.display = "block";
-            document.getElementsByClassName("B3")[3].style.display = "block";
-            break;
-          case "4":
-            document.getElementsByClassName("B4")[0].style.display = "block";
-            document.getElementsByClassName("B4")[1].style.display = "block";
-            document.getElementsByClassName("B4")[2].style.display = "block";
-            document.getElementsByClassName("B4")[3].style.display = "block";
-            break;
-          case "5":
-            document.getElementsByClassName("B5")[0].style.display = "block";
-            document.getElementsByClassName("B5")[1].style.display = "block";
-            document.getElementsByClassName("B5")[2].style.display = "block";
-            document.getElementsByClassName("B5")[3].style.display = "block";
-            break;
-          case "6":
-            document.getElementsByClassName("B6")[0].style.display = "block";
-            document.getElementsByClassName("B6")[1].style.display = "block";
-            document.getElementsByClassName("B6")[2].style.display = "block";
-            document.getElementsByClassName("B6")[3].style.display = "block";
-            break;
-          case "7":
-            document.getElementsByClassName("B7")[0].style.display = "block";
-            document.getElementsByClassName("B7")[1].style.display = "block";
-            document.getElementsByClassName("B7")[2].style.display = "block";
-            document.getElementsByClassName("B7")[3].style.display = "block";
-            break;
-          case "8":
-            document.getElementsByClassName("B8")[0].style.display = "block";
-            document.getElementsByClassName("B8")[1].style.display = "block";
-            document.getElementsByClassName("B8")[2].style.display = "block";
-            document.getElementsByClassName("B8")[3].style.display = "block";
-            document.getElementsByClassName("B8")[4].style.display = "block";
+        for(let i = 0; i < document.getElementsByClassName("B" + _value).length ; ++i) {
+          document.getElementsByClassName("B" + _value)[i].style.display = "block";
 
-            break;
-          case "9":
-            document.getElementsByClassName("B9")[0].style.display = "block";
-            document.getElementsByClassName("B9")[1].style.display = "block";
-            document.getElementsByClassName("B9")[2].style.display = "block";
-            document.getElementsByClassName("B9")[3].style.display = "block";
-            document.getElementsByClassName("B9")[4].style.display = "block";
-            document.getElementsByClassName("B9")[5].style.display = "block";
-            document.getElementsByClassName("B9")[6].style.display = "block";
-            break;
+        }}
 
-          case "10":
-            document.getElementsByClassName("B10")[0].style.display = "block";
-            document.getElementsByClassName("B10")[1].style.display = "block";
-            document.getElementsByClassName("B10")[2].style.display = "block";
-            document.getElementsByClassName("B10")[3].style.display = "block";
-            document.getElementsByClassName("B10")[4].style.display = "block";
-            document.getElementsByClassName("B10")[5].style.display = "block";
-            document.getElementsByClassName("B10")[6].style.display = "block";
-            break;
-
-          case "11":
-            document.getElementsByClassName("B11")[0].style.display = "block";
-            document.getElementsByClassName("B11")[1].style.display = "block";
-            document.getElementsByClassName("B11")[2].style.display = "block";
-            document.getElementsByClassName("B11")[3].style.display = "block";
-            document.getElementsByClassName("B11")[4].style.display = "block";
-            document.getElementsByClassName("B11")[5].style.display = "block";
-            document.getElementsByClassName("B11")[6].style.display = "block";
-            break;
-
-          case "12":
-            document.getElementsByClassName("B12")[0].style.display = "block";
-            document.getElementsByClassName("B12")[1].style.display = "block";
-            document.getElementsByClassName("B12")[2].style.display = "block";
-            document.getElementsByClassName("B12")[3].style.display = "block";
-            document.getElementsByClassName("B12")[4].style.display = "block";
-            document.getElementsByClassName("B12")[5].style.display = "block";
-            break;
-
-          case "13":
-            document.getElementsByClassName("B13")[0].style.display = "block";
-            document.getElementsByClassName("B13")[1].style.display = "block";
-            document.getElementsByClassName("B13")[2].style.display = "block";
-            document.getElementsByClassName("B13")[3].style.display = "block";
-            document.getElementsByClassName("B13")[4].style.display = "block";
-            document.getElementsByClassName("B13")[5].style.display = "block";
-            document.getElementsByClassName("B13")[6].style.display = "block";
-            document.getElementsByClassName("B13")[7].style.display = "block";
-            break;
-
-          case "14":
-            document.getElementsByClassName("B14")[0].style.display = "block";
-            document.getElementsByClassName("B14")[1].style.display = "block";
-            document.getElementsByClassName("B14")[2].style.display = "block";
-            document.getElementsByClassName("B14")[3].style.display = "block";
-            document.getElementsByClassName("B14")[4].style.display = "block";
-            document.getElementsByClassName("B14")[5].style.display = "block";
-            document.getElementsByClassName("B14")[6].style.display = "block";
-            break;
-
-          case "15":
-            document.getElementsByClassName("B15")[0].style.display = "block";
-            document.getElementsByClassName("B15")[1].style.display = "block";
-            document.getElementsByClassName("B15")[2].style.display = "block";
-            document.getElementsByClassName("B15")[3].style.display = "block";
-            document.getElementsByClassName("B15")[4].style.display = "block";
-            document.getElementsByClassName("B15")[5].style.display = "block";
-            document.getElementsByClassName("B15")[6].style.display = "block";
-            document.getElementsByClassName("B15")[7].style.display = "block";
-            break;
-
-          case "16":
-            document.getElementsByClassName("B16")[0].style.display = "block";
-            document.getElementsByClassName("B16")[1].style.display = "block";
-            document.getElementsByClassName("B16")[2].style.display = "block";
-            document.getElementsByClassName("B16")[3].style.display = "block";
-            document.getElementsByClassName("B16")[4].style.display = "block";
-            document.getElementsByClassName("B16")[5].style.display = "block";
-            break;
-
-          case "17":
-            document.getElementsByClassName("B17")[0].style.display = "block";
-            document.getElementsByClassName("B17")[1].style.display = "block";
-            document.getElementsByClassName("B17")[2].style.display = "block";
-            document.getElementsByClassName("B17")[3].style.display = "block";
-            document.getElementsByClassName("B17")[4].style.display = "block";
-            document.getElementsByClassName("B17")[5].style.display = "block";
-            break;
-
-          case "18":
-            document.getElementsByClassName("B18")[0].style.display = "block";
-            document.getElementsByClassName("B18")[1].style.display = "block";
-            document.getElementsByClassName("B18")[2].style.display = "block";
-            document.getElementsByClassName("B18")[3].style.display = "block";
-            document.getElementsByClassName("B18")[4].style.display = "block";
-            document.getElementsByClassName("B18")[5].style.display = "block";
-            break;
-
-          case "19":
-            document.getElementsByClassName("B19")[0].style.display = "block";
-            document.getElementsByClassName("B19")[1].style.display = "block";
-            document.getElementsByClassName("B19")[2].style.display = "block";
-            document.getElementsByClassName("B19")[3].style.display = "block";
-            document.getElementsByClassName("B19")[4].style.display = "block";
-            break;
-
-          case "20":
-            document.getElementsByClassName("B20")[0].style.display = "block";
-            document.getElementsByClassName("B20")[1].style.display = "block";
-            document.getElementsByClassName("B20")[2].style.display = "block";
-            document.getElementsByClassName("B20")[3].style.display = "block";
-            document.getElementsByClassName("B20")[4].style.display = "block";
-            document.getElementsByClassName("B20")[5].style.display = "block";
-            document.getElementsByClassName("B20")[6].style.display = "block";
-            document.getElementsByClassName("B20")[7].style.display = "block";
-            document.getElementsByClassName("B20")[8].style.display = "block";
-            break;
-
-          case "21":
-            document.getElementsByClassName("B21")[0].style.display = "block";
-            document.getElementsByClassName("B21")[1].style.display = "block";
-            document.getElementsByClassName("B21")[2].style.display = "block";
-            document.getElementsByClassName("B21")[3].style.display = "block";
-            document.getElementsByClassName("B21")[4].style.display = "block";
-            document.getElementsByClassName("B21")[5].style.display = "block";
-            document.getElementsByClassName("B21")[6].style.display = "block";
-            break;
-
-          case "22":
-            document.getElementsByClassName("B22")[0].style.display = "block";
-            document.getElementsByClassName("B22")[1].style.display = "block";
-            document.getElementsByClassName("B22")[2].style.display = "block";
-            document.getElementsByClassName("B22")[3].style.display = "block";
-            document.getElementsByClassName("B22")[4].style.display = "block";
-            break;
-
-          case "26":
-            document.getElementsByClassName("B26")[0].style.display = "block";
-            document.getElementsByClassName("B26")[1].style.display = "block";
-            document.getElementsByClassName("B26")[2].style.display = "block";
-            document.getElementsByClassName("B26")[3].style.display = "block";
-            document.getElementsByClassName("B26")[4].style.display = "block";
-            document.getElementsByClassName("B26")[5].style.display = "block";
-            document.getElementsByClassName("B26")[6].style.display = "block";
-            break;
-
-          case "27":
-            document.getElementsByClassName("B27")[0].style.display = "block";
-            document.getElementsByClassName("B27")[1].style.display = "block";
-            document.getElementsByClassName("B27")[2].style.display = "block";
-            document.getElementsByClassName("B27")[3].style.display = "block";
-            document.getElementsByClassName("B27")[4].style.display = "block";
-            document.getElementsByClassName("B27")[5].style.display = "block";
-            document.getElementsByClassName("B27")[6].style.display = "block";
-            break;
-
-          case "28":
-            document.getElementsByClassName("B28")[0].style.display = "block";
-            document.getElementsByClassName("B28")[1].style.display = "block";
-            document.getElementsByClassName("B28")[2].style.display = "block";
-            document.getElementsByClassName("B28")[3].style.display = "block";
-            document.getElementsByClassName("B28")[4].style.display = "block";
-            document.getElementsByClassName("B28")[5].style.display = "block";
-            document.getElementsByClassName("B28")[6].style.display = "block";
-            document.getElementsByClassName("B28")[7].style.display = "block";
-            break;
-
-          case "29":
-            document.getElementsByClassName("B29")[0].style.display = "block";
-            document.getElementsByClassName("B29")[1].style.display = "block";
-            document.getElementsByClassName("B29")[2].style.display = "block";
-            document.getElementsByClassName("B29")[3].style.display = "block";
-            document.getElementsByClassName("B29")[4].style.display = "block";
-            document.getElementsByClassName("B29")[5].style.display = "block";
-            document.getElementsByClassName("B29")[6].style.display = "block";
-            document.getElementsByClassName("B29")[7].style.display = "block";
-            break;
-
-          case "30":
-            document.getElementsByClassName("B30")[0].style.display = "block";
-            document.getElementsByClassName("B30")[1].style.display = "block";
-            document.getElementsByClassName("B30")[2].style.display = "block";
-            document.getElementsByClassName("B30")[3].style.display = "block";
-            document.getElementsByClassName("B30")[4].style.display = "block";
-            document.getElementsByClassName("B30")[5].style.display = "block";
-            document.getElementsByClassName("B30")[6].style.display = "block";
-            document.getElementsByClassName("B30")[7].style.display = "block";
-            break;
-
-          case "31":
-            document.getElementsByClassName("B31")[0].style.display = "block";
-            document.getElementsByClassName("B31")[1].style.display = "block";
-            document.getElementsByClassName("B31")[2].style.display = "block";
-            document.getElementsByClassName("B31")[3].style.display = "block";
-            document.getElementsByClassName("B31")[4].style.display = "block";
-            document.getElementsByClassName("B31")[5].style.display = "block";
-            document.getElementsByClassName("B31")[6].style.display = "block";
-            document.getElementsByClassName("B31")[7].style.display = "block";
-            break;
-          default:
-            console.log("error! Recipe Cost not found")
-
-        }
-      }
     }
 
     function Stuff(_value) {
@@ -652,6 +400,8 @@
           break;
         case "3":
 
+          document.getElementById("ItemMenuSelector").style.display = "block";
+          document.getElementById("ItemMenuSelectorLabel").style.display = "block";
           document.getElementById("ItemMenuID").style.display = "block";
           document.getElementById("ItemMenuLabelID").style.display = "block";
           document.getElementsByClassName("BuyorSell")[0].style.display = "block";
@@ -985,12 +735,6 @@
       document.getElementById("timeToCompletion").textContent = 
       "Time To Completion: " + Math.trunc(_new_Time / 3600) +  " Hours " +  (Math.trunc(_new_Time / 60) % 60) +  " Minutes " +  Math.trunc(_new_Time % 60) +  " Seconds ";
 
-
-
-
-
-
-
     }
 
     function showRelevantItems(_value) {
@@ -1000,6 +744,7 @@
                     else {document.getElementById("ItemMenuID").options[i].style.display = "none"}
       }
     }
+    
     function selector() {
       if (document.getElementById("actionSelect").value == 2) {
         return document.getElementById("RecipeID").value;
@@ -2120,6 +1865,8 @@
   <ItemMenu class="">
     <label id="ItemMenuSelectorLabel" class="InvisableOnStart" for="ItemMenuSelector"> What class of item are you looking for?</label>
     <select id="ItemMenuSelector" class="InvisableOnStart Dropdown" onchange="showRelevantItems(this.value)">
+      <option value="_"></option>
+      <option value="0">Common Items</option>
       <option value="1">Land</option>
       <option value="2">Basic Crop Items</option>
       <option value="3">Food & Drink</option>
@@ -2458,7 +2205,7 @@
       <option value="4581" class="8">Enhanced_Bedding</option>
       <option value="4582" class="8">Down_Beeding</option>
 
-      <option value="28800">Coins</option>
+      <option value="28800" class="0">Coins</option>
 
 
       
