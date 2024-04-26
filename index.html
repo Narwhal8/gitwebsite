@@ -206,12 +206,7 @@
           document.getElementById("lowNobelPop").textContent += _max_population[1];
 
           document.getElementById("highNobelPop").style.display = "block";
-          document.getElementById("highNobelPop").textContent = "High Nobles:";
-          document.getElementById("highNobelPop").textContent += _population[2];
-          document.getElementById("highNobelPop").textContent += ", Jobless:";
-          document.getElementById("highNobelPop").textContent += _jobless_population[2];
-          document.getElementById("highNobelPop").textContent += ", Max:";
-          document.getElementById("highNobelPop").textContent += _max_population[2];
+          document.getElementById("highNobelPop").textContent = "High Nobles:" + _population[2] + ", Jobless:" + _jobless_population[2] + ", Max:" + _max_population[2];
 
 
 
@@ -219,94 +214,38 @@
           for (let i = 12; i < 21; i++) {
             document.getElementsByClassName("Population")[i].style.display = "block";
           }
-          document.getElementById("housing").textContent = "Housing Count: Land Permits: ";
-          document.getElementById("housing").textContent += _buildingAmount[0];
-          document.getElementById("housing").textContent += ", Tier 1: ";
-          document.getElementById("housing").textContent += _buildingAmount[1];
-          document.getElementById("housing").textContent += ", Tier 2: ";
-          document.getElementById("housing").textContent += _buildingAmount[2];
-          document.getElementById("housing").textContent += ", Tier 3: ";
-          document.getElementById("housing").textContent += _buildingAmount[3];
-          document.getElementById("housing").textContent += ", Tier 4: ";
-          document.getElementById("housing").textContent += _buildingAmount[4];
-          document.getElementById("housing").textContent += ", Tier 5: ";
-          document.getElementById("housing").textContent += _buildingAmount[5];
-          document.getElementById("housing").textContent += ", Tier 6: ";
-          document.getElementById("housing").textContent += _buildingAmount[6];
-          document.getElementById("housing").textContent += ", Tier 7: ";
-          document.getElementById("housing").textContent += _buildingAmount[7];
-
-
-          document.getElementById("cookery").textContent = "Cookery Count: Tier 1: ";
-          document.getElementById("cookery").textContent += _buildingAmount[8];
-          document.getElementById("cookery").textContent += ", Tier 2: ";
-          document.getElementById("cookery").textContent += _buildingAmount[9];
-          document.getElementById("cookery").textContent += ", Tier 3: ";
-          document.getElementById("cookery").textContent += _buildingAmount[10];
-          document.getElementById("cookery").textContent += ", Tier 4: ";
-          document.getElementById("cookery").textContent += _buildingAmount[11];
-
-
-          document.getElementById("brewery").textContent = "Brewery Count: Tier 1: ";
-          document.getElementById("brewery").textContent += _buildingAmount[12];
-          document.getElementById("brewery").textContent += ", Tier 2: ";
-          document.getElementById("brewery").textContent += _buildingAmount[13];
-          document.getElementById("brewery").textContent += ", Tier 3: ";
-          document.getElementById("brewery").textContent += _buildingAmount[14];
-          document.getElementById("brewery").textContent += ", Tier 4: ";
-          document.getElementById("brewery").textContent += _buildingAmount[15];
-
-
-          document.getElementById("smeltery").textContent = "Smeltery Count: Tier 1: ";
-          document.getElementById("smeltery").textContent += _buildingAmount[16];
-          document.getElementById("smeltery").textContent += ", Tier 2: ";
-          document.getElementById("smeltery").textContent += _buildingAmount[17];
-          document.getElementById("smeltery").textContent += ", Tier 3: ";
-          document.getElementById("smeltery").textContent += _buildingAmount[18];
-
-
-          document.getElementById("mason").textContent = "Mason Count: ";
-          document.getElementById("mason").textContent += _buildingAmount[19];
+          document.getElementById("housing").textContent = "Housing Count: Land Permits: " + _buildingAmount[0] + ", Tier 1: " + _buildingAmount[1] + ", Tier 2: " + _buildingAmount[2] + ", Tier 3: " + _buildingAmount[3] + ", Tier 4: " + _buildingAmount[4] + ", Tier 5: " + _buildingAmount[5] + ", Tier 6: " + _buildingAmount[6] + ", Tier 7: " + _buildingAmount[7];
 
 
 
-          document.getElementById("blacksmith").textContent = "Blacksmith Count: Tier 1: ";
-          document.getElementById("blacksmith").textContent += _buildingAmount[20];
-          document.getElementById("blacksmith").textContent += ", Tier 2: ";
-          document.getElementById("blacksmith").textContent += _buildingAmount[21];
+          document.getElementById("cookery").textContent = "Cookery Count: Tier 1: " + _buildingAmount[8] + ", Tier 2: " + _buildingAmount[9] +", Tier 3: " + _buildingAmount[10] + ", Tier 4: " + _buildingAmount[11];
 
-          document.getElementById("agingFacility").textContent = "Aging Facility Count: ";
-          document.getElementById("agingFacility").textContent += _buildingAmount[22];
 
-          document.getElementById("jeweler").textContent = "Jeweler Count: Tier 1: ";
-          document.getElementById("jeweler").textContent += _buildingAmount[26];
-          document.getElementById("jeweler").textContent += ", Tier 2: ";
-          document.getElementById("jeweler").textContent += _buildingAmount[27];
 
-          document.getElementById("weaver").textContent = "Weaver Count: Tier 1: ";
-          document.getElementById("weaver").textContent += _buildingAmount[28];
-          document.getElementById("weaver").textContent += ", Tier 2: ";
-          document.getElementById("weaver").textContent += _buildingAmount[29];
+          document.getElementById("brewery").textContent = "Brewery Count: Tier 1: "+_buildingAmount[12]+ ", Tier 2: "+ _buildingAmount[13]+", Tier 3: "+_buildingAmount[14]+", Tier 4: "+_buildingAmount[15];
 
-          document.getElementById("carpenter").textContent = "Carpenter Count: Tier 1: ";
-          document.getElementById("carpenter").textContent += _buildingAmount[30];
-          document.getElementById("carpenter").textContent += ", Tier 2: ";
-          document.getElementById("carpenter").textContent += _buildingAmount[31];
+
+          document.getElementById("smeltery").textContent = "Smeltery Count: Tier 1: "+_buildingAmount[16]+", Tier 2: "+ _buildingAmount[17]+", Tier 3: "+_buildingAmount[18];
+
+
+          document.getElementById("mason").textContent = "Mason Count: "+_buildingAmount[19];
+
+
+
+          document.getElementById("blacksmith").textContent = "Blacksmith Count: Tier 1: "+_buildingAmount[20]+", Tier 2: "+_buildingAmount[21];
+
+          document.getElementById("agingFacility").textContent = "Aging Facility Count: "+_buildingAmount[22];
+
+          document.getElementById("jeweler").textContent = "Jeweler Count: Tier 1: "+_buildingAmount[26]+", Tier 2: "+_buildingAmount[27];
+
+          document.getElementById("weaver").textContent = "Weaver Count: Tier 1: "+_buildingAmount[28]+", Tier 2: "+_buildingAmount[29];
+
+          document.getElementById("carpenter").textContent = "Carpenter Count: Tier 1: "+ _buildingAmount[30]+", Tier 2: "+_buildingAmount[31];
 
           document.getElementsByClassName("Population")[3].style.display = "block";
 
 
-          document.getElementById("titheData").textContent = "Tithe Item Stockpiles:";
-          document.getElementById("titheData").textContent += " Clothes: ";
-          document.getElementById("titheData").textContent += _tithe_items[0];
-          document.getElementById("titheData").textContent += " Tools: ";
-          document.getElementById("titheData").textContent += _tithe_items[1];
-          document.getElementById("titheData").textContent += " Furniture: ";
-          document.getElementById("titheData").textContent += _tithe_items[2];
-          document.getElementById("titheData").textContent += " Bedding: ";
-          document.getElementById("titheData").textContent += _tithe_items[3];
-          document.getElementById("titheData").textContent += " Jewelery: ";
-          document.getElementById("titheData").textContent += _tithe_items[4];
+          document.getElementById("titheData").textContent = "Tithe Item Stockpiles:"+" Clothes: "+_tithe_items[0]+" Tools: "+_tithe_items[1]+" Furniture: "+ _tithe_items[2]+" Bedding: "+_tithe_items[3]+" Jewelery: "+_tithe_items[4];
 
 
           document.getElementById("titheData").style.display = "block";
@@ -318,14 +257,9 @@
 
             if (Kingdom_Lands[_kingdomType][i] != 0) { document.getElementById(_name).style.display = "block"; }
             else { break; }
-            document.getElementById(_name).textContent = "Land Balance:"
 
             document.getElementsByClassName("Population")[i + 3].style.display = "block";
-
-            document.getElementById(_name).textContent += _land[i];
-            document.getElementById(_name).textContent += " ";
-            document.getElementById(_name).textContent += itemName(Kingdom_Lands[_kingdomType][i]);
-            document.getElementById(_name).textContent += "________";
+            document.getElementById(_name).textContent = "Land Balance:"+_land[i]+" "+itemName(Kingdom_Lands[_kingdomType][i])+"________";
             if (_land_available[i] == false) { document.getElementById(_name).textContent += "Land is available"; }
             else { document.getElementById(_name).textContent += "Land NOT available"; }
 
