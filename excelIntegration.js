@@ -556,7 +556,7 @@ const Imperial_Flamer = 11241;
 const Free_Lance = 11300;
 const Knight = 11301;
 const Mounted_Levy = 11310;
-const Mounted_Palace_Guard = 11320;
+const Mounted_Palace_Guard = 11311;
 const Horse_Archer = 11600;
 const Veteran_Horse_Archer = 11601;
 const Palace_Archer = 11602;
@@ -1772,7 +1772,7 @@ let recipe207400 = [[1000,0,0,0,0,0], [Coins,0,0,0,0,0], [1,0,0], [Cow,0,0], 0, 
 let recipe107401 = [[1,0,0,0,0,0], [Chicken,0,0,0,0,0], [100,0,0], [Coins,0,0], 0, 0, [0,0,0,0]];
 let recipe207401 = [[400,0,0,0,0,0], [Coins,0,0,0,0,0], [1,0,0], [Chicken,0,0], 0, 0, [0,0,0,0]];
 let recipe107402 = [[1,0,0,0,0,0], [Sheep,0,0,0,0,0], [150,0,0], [Coins,0,0], 0, 0, [0,0,0,0]];
-let recipe207402 = [[600,0,0,0,0,0], [Coins,0,0,0,0,0], [1,0,0], [Sheep,0,0], 0, 0, [0,0,0,0]];const soliderID = [10001,10002,10003,10004,10005,10006,10007,10008,10011,10012,10013,10014,10015,10016,10017,10018,10021,10022,10023,10024,10025,10026,10027,10028,10201,10202,10203,10204,10205,10206,10207,10208,10211,10212,10213,10214,10215,10216,10217,10218,10225,10226,10227,10228,10231,10232,10233,10234,10235,10236,10237,10238,10301,10302,10303,10304,10305,10306,10307,10308,10311,10312,10313,10314,10315,10316,10317,10318,10321,10322,10323,10324,10325,10326,10327,10328,10505,10506,10507,10508,10601,10602,10603,10604,10605,10606,10607,10608,11000,11010,11011,11020,11021,11030,11031,11040,11041,11042,11050,11060,11070,11200,11210,11211,11220,11230,11241,11300,11301,11310,11311,11600,11601,11602,11231];
+let recipe207402 = [[600,0,0,0,0,0], [Coins,0,0,0,0,0], [1,0,0], [Sheep,0,0], 0, 0, [0,0,0,0]];const soldierID = [10001,10002,10003,10004,10005,10006,10007,10008,10011,10012,10013,10014,10015,10016,10017,10018,10021,10022,10023,10024,10025,10026,10027,10028,10201,10202,10203,10204,10205,10206,10207,10208,10211,10212,10213,10214,10215,10216,10217,10218,10225,10226,10227,10228,10231,10232,10233,10234,10235,10236,10237,10238,10301,10302,10303,10304,10305,10306,10307,10308,10311,10312,10313,10314,10315,10316,10317,10318,10321,10322,10323,10324,10325,10326,10327,10328,10505,10506,10507,10508,10601,10602,10603,10604,10605,10606,10607,10608,11000,11010,11011,11020,11021,11030,11031,11040,11041,11042,11050,11060,11070,11200,11210,11211,11220,11230,11241,11300,11301,11310,11311,11600,11601,11602,11231];
 const weaponID = [5000,5001,5002,5003,5004,5010,5011,5012,5013,5014,5020,5021,5022,5023,5024,5025,5030,5031,5032,5033,5034,5040,5041,5042,5043,5044,5050,5051,5052,5053,5054,5060,5061,5062,5063,5064,5070,5071,5072,5073,5074,5200,5201,5202,5210,5211,5212,5213,5214,5400,5401,5402,5403,5500,5501,5502,5503,5504,5510,5511,5512,5513,5514,5520,5521,5522,5523,5524,5530,5531,5532,5533,5534,5540,5541,5542,5543,5544,5550,5551,5552,5553,5554,5560,5561,5562,5563,5564,5570,5571,5572,5573,5574,5580,5581,5582,5900,5901,5902,5903,5904,5905,5910,7300];
 let weapon5000 = [Spear,false,10,10,0,0,50,0];
 let weapon5001 = [Spear,false,13,10,0,0,75,0];
@@ -3670,7 +3670,7 @@ function itemName(_value) {
   case 11310:
     _name = "Mounted Levy";
     break;
-  case 11320:
+  case 11311:
     _name = "Mounted Palace Guard";
     break;
   case 11600:
@@ -3767,7 +3767,7 @@ const mixedItemData14 = [Apple_Pie,Plum_Pie,Peach_Pie,Sugar_Pie,Pot_Pie];
 //Soup
 const mixedItemData15 = [Beef_Stew,Onion_Soup,Chicken_Soup,Fish_Soup];
 //Crops
-const mixedItemData16 = [Wheat,Rye,Corn,Sorghum,Oats,Barley,Rice,Casava,Apples,Plums,Beans];
+const mixedItemData16 = [Wheat,Rye,Corn,Sorghum,Oats,Barley,Rice,Apples,Plums,Beans];
 //Polished Common Gemstones
 const mixedItemData17 = [Polished_Amethyst,Polished_Opal,Polished_Citrine,Polished_Pearl,Polished_Amber,Polished_Onyx,Polished_Aquamarine,Polished_Crystal_Glass];
 //Polished Rare Gemstones
@@ -3813,15 +3813,15 @@ let cropdata516 = [500, 0, [50, 120, 75], [50, 150], 25, 200, 10, 0, false, Garl
 
 let cropdata517 = [500, 0, [50, 120, 75], [50, 150], 25, 200, 10, 0, false, Onion, 0];
 
-let cropdata518 = [500, 0, [50, 120, 75], [50, 150], 25, 200, 10, 0, false, 200, Carrots, 0];
+let cropdata518 = [500, 0, [50, 120, 75], [50, 150], 25, 200, 10, 0, false, Carrots, 0];
 
 let cropdata519 = [500, 0, [75, 150, 90], [80, 170], 25,100 , 10, 0, false, Sugarcane, 0];
 
-let cropdata511 = [400, 0, [20, 100, 60], [50, 150], 0, 1, 10, 0, false, 200, Beets, 0];
+let cropdata511 = [400, 0, [20, 100, 60], [50, 150], 0, 200, 10, 0, false, Beets, 0];
 
-let cropdata521 = [500, 0, [60, 120, 85], [50, 150], 25, 200, 1, 10, false, 100, Allspice, 0];
+let cropdata521 = [500, 0, [60, 120, 85], [50, 150], 25, 100, 10, 0, false, Allspice, 0];
 
-let cropdata522 = [500, 0, [50, 120, 75], [50, 150], 25, 1, 10, 0, false, 150, Grapes, 0];
+let cropdata522 = [500, 0, [50, 120, 75], [50, 150], 25, 150, 10, 0, false, Grapes, 0];
 
 let cropdata538 = [500, 0, [30, 80, 60], [50, 150], 0, 200, 10, 0, false, Oats, 0];
 
@@ -3842,7 +3842,7 @@ function returnRecipe(_value) {
 }
 
 function returnArmyInfo(_value) {
-    _value = "solider" + _value;
+    _value = "soldier" + _value;
     _value = eval(_value);
     return _value;
   }
@@ -3850,8 +3850,8 @@ function returnArmyInfo(_value) {
   function returnItemID(_value) {
     return itemID;
 }
-function returnsoliderID(_value) {
-    return soliderID;
+function returnsoldierID(_value) {
+    return soldierID;
 }
 function returnweaponID(_value) {
     return weaponID;
@@ -3882,3 +3882,1723 @@ function returnMixedItemData(_value) {
     return _value;
 }
 
+
+function itemValue(_itemID) {
+    switch (_itemID) {
+  case -21:
+    _name = "2";
+    break;
+  case -20:
+    _name = "50";
+    break;
+  case -19:
+    _name = "20";
+    break;
+  case -18:
+    _name = "175";
+    break;
+  case -17:
+    _name = "150";
+    break;
+  case -16:
+    _name = "2";
+    break;
+  case -15:
+    _name = "200";
+    break;
+  case -14:
+    _name = "200";
+    break;
+  case -13:
+    _name = "5000";
+    break;
+  case -12:
+    _name = "2000";
+    break;
+  case -11:
+    _name = "500";
+    break;
+  case -10:
+    _name = "200";
+    break;
+  case -9:
+    _name = "50";
+    break;
+  case -8:
+    _name = "40";
+    break;
+  case -7:
+    _name = "50";
+    break;
+  case -6:
+    _name = "50";
+    break;
+  case -5:
+    _name = "200";
+    break;
+  case -4:
+    _name = "2";
+    break;
+  case -3:
+    _name = "2";
+    break;
+  case -2:
+    _name = "10";
+    break;
+  case -1:
+    _name = "2";
+    break;
+  case 0:
+    _name = "0";
+    break;
+  case 1:
+    _name = "1500000";
+    break;
+  case 2:
+    _name = "1500000";
+    break;
+  case 3:
+    _name = "1500000";
+    break;
+  case 4:
+    _name = "1500000";
+    break;
+  case 11:
+    _name = "1500000";
+    break;
+  case 12:
+    _name = "1500000";
+    break;
+  case 13:
+    _name = "1500000";
+    break;
+  case 14:
+    _name = "1500000";
+    break;
+  case 21:
+    _name = "1500000";
+    break;
+  case 22:
+    _name = "1500000";
+    break;
+  case 23:
+    _name = "1500000";
+    break;
+  case 31:
+    _name = "1500000";
+    break;
+  case 32:
+    _name = "1500000";
+    break;
+  case 33:
+    _name = "1500000";
+    break;
+  case 34:
+    _name = "1500000";
+    break;
+  case 41:
+    _name = "1500000";
+    break;
+  case 42:
+    _name = "1500000";
+    break;
+  case 43:
+    _name = "1500000";
+    break;
+  case 44:
+    _name = "1500000";
+    break;
+  case 51:
+    _name = "1500000";
+    break;
+  case 52:
+    _name = "1500000";
+    break;
+  case 53:
+    _name = "1500000";
+    break;
+  case 61:
+    _name = "1500000";
+    break;
+  case 62:
+    _name = "1500000";
+    break;
+  case 63:
+    _name = "1500000";
+    break;
+  case 64:
+    _name = "1500000";
+    break;
+  case 70:
+    _name = "1500000";
+    break;
+  case 71:
+    _name = "1500000";
+    break;
+  case 72:
+    _name = "1500000";
+    break;
+  case 80:
+    _name = "1500000";
+    break;
+  case 81:
+    _name = "1500000";
+    break;
+  case 82:
+    _name = "1500000";
+    break;
+  case 501:
+    _name = "2";
+    break;
+  case 502:
+    _name = "2";
+    break;
+  case 503:
+    _name = "2";
+    break;
+  case 504:
+    _name = "2";
+    break;
+  case 505:
+    _name = "2";
+    break;
+  case 506:
+    _name = "2";
+    break;
+  case 507:
+    _name = "2";
+    break;
+  case 508:
+    _name = "2";
+    break;
+  case 509:
+    _name = "2";
+    break;
+  case 510:
+    _name = "2";
+    break;
+  case 511:
+    _name = "2";
+    break;
+  case 512:
+    _name = "2";
+    break;
+  case 513:
+    _name = "2";
+    break;
+  case 514:
+    _name = "2";
+    break;
+  case 515:
+    _name = "2";
+    break;
+  case 516:
+    _name = "2";
+    break;
+  case 517:
+    _name = "2";
+    break;
+  case 518:
+    _name = "2";
+    break;
+  case 519:
+    _name = "4";
+    break;
+  case 520:
+    _name = "2";
+    break;
+  case 521:
+    _name = "2";
+    break;
+  case 522:
+    _name = "2";
+    break;
+  case 523:
+    _name = "50";
+    break;
+  case 524:
+    _name = "40";
+    break;
+  case 525:
+    _name = "40";
+    break;
+  case 526:
+    _name = "100";
+    break;
+  case 527:
+    _name = "50";
+    break;
+  case 528:
+    _name = "50";
+    break;
+  case 529:
+    _name = "1000";
+    break;
+  case 530:
+    _name = "25";
+    break;
+  case 531:
+    _name = "10";
+    break;
+  case 532:
+    _name = "10";
+    break;
+  case 533:
+    _name = "10";
+    break;
+  case 534:
+    _name = "10";
+    break;
+  case 535:
+    _name = "2";
+    break;
+  case 536:
+    _name = "20";
+    break;
+  case 537:
+    _name = "10";
+    break;
+  case 538:
+    _name = "2";
+    break;
+  case 539:
+    _name = "10";
+    break;
+  case 540:
+    _name = "2";
+    break;
+  case 541:
+    _name = "50";
+    break;
+  case 542:
+    _name = "2";
+    break;
+  case 543:
+    _name = "2";
+    break;
+  case 544:
+    _name = "10";
+    break;
+  case 545:
+    _name = "10";
+    break;
+  case 1000:
+    _name = "50";
+    break;
+  case 1001:
+    _name = "50";
+    break;
+  case 1002:
+    _name = "50";
+    break;
+  case 1003:
+    _name = "50";
+    break;
+  case 1004:
+    _name = "50";
+    break;
+  case 1005:
+    _name = "50";
+    break;
+  case 1010:
+    _name = "50";
+    break;
+  case 1011:
+    _name = "50";
+    break;
+  case 1012:
+    _name = "50";
+    break;
+  case 1013:
+    _name = "50";
+    break;
+  case 1014:
+    _name = "50";
+    break;
+  case 1020:
+    _name = "50";
+    break;
+  case 1030:
+    _name = "200";
+    break;
+  case 1031:
+    _name = "200";
+    break;
+  case 1032:
+    _name = "200";
+    break;
+  case 1033:
+    _name = "200";
+    break;
+  case 1040:
+    _name = "500";
+    break;
+  case 1041:
+    _name = "500";
+    break;
+  case 1042:
+    _name = "500";
+    break;
+  case 1043:
+    _name = "500";
+    break;
+  case 1044:
+    _name = "500";
+    break;
+  case 1050:
+    _name = "1000";
+    break;
+  case 1051:
+    _name = "1000";
+    break;
+  case 1060:
+    _name = "2500";
+    break;
+  case 1061:
+    _name = "2500";
+    break;
+  case 1200:
+    _name = "50";
+    break;
+  case 1201:
+    _name = "50";
+    break;
+  case 1202:
+    _name = "50";
+    break;
+  case 1203:
+    _name = "50";
+    break;
+  case 1204:
+    _name = "50";
+    break;
+  case 1205:
+    _name = "50";
+    break;
+  case 1206:
+    _name = "50";
+    break;
+  case 1207:
+    _name = "250";
+    break;
+  case 1208:
+    _name = "400";
+    break;
+  case 1209:
+    _name = "3000";
+    break;
+  case 1210:
+    _name = "5000";
+    break;
+  case 1211:
+    _name = "200";
+    break;
+  case 1220:
+    _name = "200";
+    break;
+  case 1221:
+    _name = "200";
+    break;
+  case 1222:
+    _name = "200";
+    break;
+  case 1223:
+    _name = "200";
+    break;
+  case 1224:
+    _name = "200";
+    break;
+  case 1230:
+    _name = "200";
+    break;
+  case 1231:
+    _name = "600";
+    break;
+  case 1232:
+    _name = "4000";
+    break;
+  case 1240:
+    _name = "100";
+    break;
+  case 1241:
+    _name = "500";
+    break;
+  case 1242:
+    _name = "100";
+    break;
+  case 1250:
+    _name = "100";
+    break;
+  case 1251:
+    _name = "800";
+    break;
+  case 1260:
+    _name = "400";
+    break;
+  case 1261:
+    _name = "200";
+    break;
+  case 1262:
+    _name = "300";
+    break;
+  case 1263:
+    _name = "1500";
+    break;
+  case 1264:
+    _name = "200";
+    break;
+  case 1265:
+    _name = "500";
+    break;
+  case 1266:
+    _name = "7500";
+    break;
+  case 1267:
+    _name = "10";
+    break;
+  case 1268:
+    _name = "1100";
+    break;
+  case 1270:
+    _name = "200";
+    break;
+  case 1271:
+    _name = "2000";
+    break;
+  case 1272:
+    _name = "200";
+    break;
+  case 1273:
+    _name = "2000";
+    break;
+  case 1274:
+    _name = "200";
+    break;
+  case 1275:
+    _name = "200";
+    break;
+  case 1280:
+    _name = "200";
+    break;
+  case 1281:
+    _name = "200";
+    break;
+  case 1300:
+    _name = "100";
+    break;
+  case 1301:
+    _name = "50";
+    break;
+  case 1302:
+    _name = "100";
+    break;
+  case 1303:
+    _name = "50";
+    break;
+  case 1304:
+    _name = "100";
+    break;
+  case 1305:
+    _name = "500";
+    break;
+  case 1306:
+    _name = "4000";
+    break;
+  case 1307:
+    _name = "200";
+    break;
+  case 1308:
+    _name = "200";
+    break;
+  case 1309:
+    _name = "3000";
+    break;
+  case 1310:
+    _name = "50";
+    break;
+  case 1311:
+    _name = "50";
+    break;
+  case 1312:
+    _name = "50";
+    break;
+  case 1400:
+    _name = "50";
+    break;
+  case 1401:
+    _name = "200";
+    break;
+  case 1420:
+    _name = "250";
+    break;
+  case 1430:
+    _name = "1600";
+    break;
+  case 1440:
+    _name = "500";
+    break;
+  case 1450:
+    _name = "350";
+    break;
+  case 1460:
+    _name = "1150";
+    break;
+  case 1470:
+    _name = "2500";
+    break;
+  case 1471:
+    _name = "19000";
+    break;
+  case 1480:
+    _name = "125";
+    break;
+  case 1900:
+    _name = "25";
+    break;
+  case 1901:
+    _name = "1000";
+    break;
+  case 1902:
+    _name = "2000";
+    break;
+  case 1903:
+    _name = "4000";
+    break;
+  case 1904:
+    _name = "8000";
+    break;
+  case 1905:
+    _name = "16000";
+    break;
+  case 1906:
+    _name = "32000";
+    break;
+  case 1907:
+    _name = "64000";
+    break;
+  case 1908:
+    _name = "128000";
+    break;
+  case 1909:
+    _name = "256000";
+    break;
+  case 1911:
+    _name = "250";
+    break;
+  case 1912:
+    _name = "500";
+    break;
+  case 1913:
+    _name = "1000";
+    break;
+  case 1914:
+    _name = "2100";
+    break;
+  case 1915:
+    _name = "4000";
+    break;
+  case 1916:
+    _name = "8000";
+    break;
+  case 1917:
+    _name = "16000";
+    break;
+  case 1918:
+    _name = "32000";
+    break;
+  case 1919:
+    _name = "64000";
+    break;
+  case 1921:
+    _name = "250";
+    break;
+  case 1922:
+    _name = "500";
+    break;
+  case 1923:
+    _name = "1000";
+    break;
+  case 1924:
+    _name = "2000";
+    break;
+  case 1925:
+    _name = "4000";
+    break;
+  case 1926:
+    _name = "8000";
+    break;
+  case 1927:
+    _name = "16000";
+    break;
+  case 1928:
+    _name = "32000";
+    break;
+  case 1929:
+    _name = "60000";
+    break;
+  case 1990:
+    _name = "4000";
+    break;
+  case 1991:
+    _name = "45000";
+    break;
+  case 2001:
+    _name = "2";
+    break;
+  case 2002:
+    _name = "2";
+    break;
+  case 2003:
+    _name = "20";
+    break;
+  case 2021:
+    _name = "20";
+    break;
+  case 2022:
+    _name = "200";
+    break;
+  case 2023:
+    _name = "100";
+    break;
+  case 2024:
+    _name = "20";
+    break;
+  case 2025:
+    _name = "20";
+    break;
+  case 2101:
+    _name = "200";
+    break;
+  case 2102:
+    _name = "200";
+    break;
+  case 2121:
+    _name = "50";
+    break;
+  case 2122:
+    _name = "1000";
+    break;
+  case 2123:
+    _name = "200";
+    break;
+  case 2124:
+    _name = "25";
+    break;
+  case 2125:
+    _name = "80";
+    break;
+  case 2180:
+    _name = "450";
+    break;
+  case 2181:
+    _name = "50";
+    break;
+  case 2182:
+    _name = "150";
+    break;
+  case 2183:
+    _name = "2000";
+    break;
+  case 2200:
+    _name = "50";
+    break;
+  case 2201:
+    _name = "50";
+    break;
+  case 2202:
+    _name = "50";
+    break;
+  case 2203:
+    _name = "200";
+    break;
+  case 2204:
+    _name = "20";
+    break;
+  case 2205:
+    _name = "20";
+    break;
+  case 2206:
+    _name = "20";
+    break;
+  case 2207:
+    _name = "20";
+    break;
+  case 2208:
+    _name = "100";
+    break;
+  case 2209:
+    _name = "20";
+    break;
+  case 2210:
+    _name = "20";
+    break;
+  case 2211:
+    _name = "20";
+    break;
+  case 2212:
+    _name = "20";
+    break;
+  case 2213:
+    _name = "100";
+    break;
+  case 2300:
+    _name = "175";
+    break;
+  case 2301:
+    _name = "175";
+    break;
+  case 2302:
+    _name = "175";
+    break;
+  case 2303:
+    _name = "300";
+    break;
+  case 2304:
+    _name = "150";
+    break;
+  case 2305:
+    _name = "150";
+    break;
+  case 2306:
+    _name = "150";
+    break;
+  case 2307:
+    _name = "150";
+    break;
+  case 2308:
+    _name = "225";
+    break;
+  case 2309:
+    _name = "150";
+    break;
+  case 2310:
+    _name = "150";
+    break;
+  case 2311:
+    _name = "150";
+    break;
+  case 2312:
+    _name = "150";
+    break;
+  case 4000:
+    _name = "100";
+    break;
+  case 4001:
+    _name = "100";
+    break;
+  case 4002:
+    _name = "100";
+    break;
+  case 4003:
+    _name = "2000";
+    break;
+  case 4004:
+    _name = "100";
+    break;
+  case 4005:
+    _name = "500";
+    break;
+  case 4006:
+    _name = "100";
+    break;
+  case 4007:
+    _name = "1000";
+    break;
+  case 4008:
+    _name = "20";
+    break;
+  case 4009:
+    _name = "200";
+    break;
+  case 4010:
+    _name = "50";
+    break;
+  case 4011:
+    _name = "2500";
+    break;
+  case 4012:
+    _name = "2000";
+    break;
+  case 4013:
+    _name = "50000";
+    break;
+  case 4014:
+    _name = "100000";
+    break;
+  case 4015:
+    _name = "100000";
+    break;
+  case 4016:
+    _name = "500000";
+    break;
+  case 4017:
+    _name = "500000";
+    break;
+  case 4018:
+    _name = "500000";
+    break;
+  case 4019:
+    _name = "2500";
+    break;
+  case 4100:
+    _name = "60000";
+    break;
+  case 4101:
+    _name = "75000";
+    break;
+  case 4102:
+    _name = "175000";
+    break;
+  case 4103:
+    _name = "475000";
+    break;
+  case 4104:
+    _name = "2025000";
+    break;
+  case 4105:
+    _name = "37500";
+    break;
+  case 4106:
+    _name = "75000";
+    break;
+  case 4107:
+    _name = "125000";
+    break;
+  case 4108:
+    _name = "275000";
+    break;
+  case 4109:
+    _name = "1050000";
+    break;
+  case 4500:
+    _name = "2500";
+    break;
+  case 4501:
+    _name = "2000";
+    break;
+  case 4502:
+    _name = "2500";
+    break;
+  case 4503:
+    _name = "25000";
+    break;
+  case 4504:
+    _name = "20000";
+    break;
+  case 4505:
+    _name = "2000";
+    break;
+  case 4520:
+    _name = "3500";
+    break;
+  case 4521:
+    _name = "9000";
+    break;
+  case 4522:
+    _name = "50000";
+    break;
+  case 4540:
+    _name = "2500";
+    break;
+  case 4541:
+    _name = "7000";
+    break;
+  case 4542:
+    _name = "25000";
+    break;
+  case 4560:
+    _name = "5000";
+    break;
+  case 4561:
+    _name = "27500";
+    break;
+  case 4562:
+    _name = "500000";
+    break;
+  case 4580:
+    _name = "4500";
+    break;
+  case 4581:
+    _name = "23000";
+    break;
+  case 4582:
+    _name = "410,000";
+    break;
+  case 5000:
+    _name = "25000";
+    break;
+  case 5001:
+    _name = "30000";
+    break;
+  case 5002:
+    _name = "70000";
+    break;
+  case 5003:
+    _name = "190000";
+    break;
+  case 5004:
+    _name = "810000";
+    break;
+  case 5010:
+    _name = "62500";
+    break;
+  case 5011:
+    _name = "100000";
+    break;
+  case 5012:
+    _name = "200000";
+    break;
+  case 5013:
+    _name = "500000";
+    break;
+  case 5014:
+    _name = "2050000";
+    break;
+  case 5020:
+    _name = "62500";
+    break;
+  case 5021:
+    _name = "100000";
+    break;
+  case 5022:
+    _name = "200000";
+    break;
+  case 5023:
+    _name = "500000";
+    break;
+  case 5024:
+    _name = "2050000";
+    break;
+  case 5030:
+    _name = "62500";
+    break;
+  case 5031:
+    _name = "100000";
+    break;
+  case 5032:
+    _name = "200000";
+    break;
+  case 5033:
+    _name = "500000";
+    break;
+  case 5034:
+    _name = "2050000";
+    break;
+  case 5040:
+    _name = "112500";
+    break;
+  case 5041:
+    _name = "150000";
+    break;
+  case 5042:
+    _name = "300000";
+    break;
+  case 5043:
+    _name = "750000";
+    break;
+  case 5044:
+    _name = "3075000";
+    break;
+  case 5050:
+    _name = "112500";
+    break;
+  case 5051:
+    _name = "150000";
+    break;
+  case 5052:
+    _name = "300000";
+    break;
+  case 5053:
+    _name = "750000";
+    break;
+  case 5054:
+    _name = "3075000";
+    break;
+  case 5060:
+    _name = "137500";
+    break;
+  case 5061:
+    _name = "175000";
+    break;
+  case 5062:
+    _name = "375000";
+    break;
+  case 5063:
+    _name = "975000";
+    break;
+  case 5064:
+    _name = "4075000";
+    break;
+  case 5070:
+    _name = "112500";
+    break;
+  case 5071:
+    _name = "150000";
+    break;
+  case 5072:
+    _name = "300000";
+    break;
+  case 5073:
+    _name = "750000";
+    break;
+  case 5074:
+    _name = "3075000";
+    break;
+  case 5200:
+    _name = "25000";
+    break;
+  case 5201:
+    _name = "45000";
+    break;
+  case 5202:
+    _name = "170000";
+    break;
+  case 5210:
+    _name = "180000";
+    break;
+  case 5211:
+    _name = "10000";
+    break;
+  case 5212:
+    _name = "500000";
+    break;
+  case 5213:
+    _name = "15000";
+    break;
+  case 5214:
+    _name = "1000000";
+    break;
+  case 5400:
+    _name = "150000";
+    break;
+  case 5401:
+    _name = "500000";
+    break;
+  case 5402:
+    _name = "1500000";
+    break;
+  case 5403:
+    _name = "1500000";
+    break;
+  case 5500:
+    _name = "100000";
+    break;
+  case 5501:
+    _name = "200000";
+    break;
+  case 5502:
+    _name = "300000";
+    break;
+  case 5503:
+    _name = "600000";
+    break;
+  case 5504:
+    _name = "2175000";
+    break;
+  case 5510:
+    _name = "145000";
+    break;
+  case 5511:
+    _name = "200000";
+    break;
+  case 5512:
+    _name = "400000";
+    break;
+  case 5513:
+    _name = "1000000";
+    break;
+  case 5514:
+    _name = "4100000";
+    break;
+  case 5520:
+    _name = "150000";
+    break;
+  case 5521:
+    _name = "350000";
+    break;
+  case 5522:
+    _name = "550000";
+    break;
+  case 5523:
+    _name = "1150000";
+    break;
+  case 5524:
+    _name = "4250000";
+    break;
+  case 5530:
+    _name = "240000";
+    break;
+  case 5531:
+    _name = "350000";
+    break;
+  case 5532:
+    _name = "750000";
+    break;
+  case 5533:
+    _name = "1950000";
+    break;
+  case 5534:
+    _name = "8150000";
+    break;
+  case 5540:
+    _name = "340000";
+    break;
+  case 5541:
+    _name = "650000";
+    break;
+  case 5542:
+    _name = "1250000";
+    break;
+  case 5543:
+    _name = "2950000";
+    break;
+  case 5544:
+    _name = "12350000";
+    break;
+  case 5550:
+    _name = "385000";
+    break;
+  case 5551:
+    _name = "500000";
+    break;
+  case 5552:
+    _name = "1100000";
+    break;
+  case 5553:
+    _name = "2900000";
+    break;
+  case 5554:
+    _name = "12200000";
+    break;
+  case 5560:
+    _name = "745000";
+    break;
+  case 5561:
+    _name = "950000";
+    break;
+  case 5562:
+    _name = "2150000";
+    break;
+  case 5563:
+    _name = "5750000";
+    break;
+  case 5564:
+    _name = "24350000";
+    break;
+  case 5570:
+    _name = "1330000";
+    break;
+  case 5571:
+    _name = "1850000";
+    break;
+  case 5572:
+    _name = "3950000";
+    break;
+  case 5573:
+    _name = "10250000";
+    break;
+  case 5574:
+    _name = "42800000";
+    break;
+  case 5580:
+    _name = "125000";
+    break;
+  case 5581:
+    _name = "250000";
+    break;
+  case 5582:
+    _name = "60000";
+    break;
+  case 5900:
+    _name = "50000";
+    break;
+  case 5901:
+    _name = "125000";
+    break;
+  case 5902:
+    _name = "200000";
+    break;
+  case 5903:
+    _name = "425000";
+    break;
+  case 5904:
+    _name = "1100000";
+    break;
+  case 5905:
+    _name = "4800000";
+    break;
+  case 5910:
+    _name = "400000";
+    break;
+  case 5911:
+    _name = "1000000";
+    break;
+  case 7000:
+    _name = "6500";
+    break;
+  case 7001:
+    _name = "12000";
+    break;
+  case 7002:
+    _name = "6500";
+    break;
+  case 7003:
+    _name = "10000";
+    break;
+  case 7004:
+    _name = "11000";
+    break;
+  case 7005:
+    _name = "10000";
+    break;
+  case 7100:
+    _name = "19000";
+    break;
+  case 7101:
+    _name = "26500";
+    break;
+  case 7102:
+    _name = "33000";
+    break;
+  case 7103:
+    _name = "54000";
+    break;
+  case 7104:
+    _name = "68000";
+    break;
+  case 7105:
+    _name = "107500";
+    break;
+  case 7106:
+    _name = "62500";
+    break;
+  case 7107:
+    _name = "40000";
+    break;
+  case 7108:
+    _name = "54000";
+    break;
+  case 7109:
+    _name = "62500";
+    break;
+  case 7200:
+    _name = "49000";
+    break;
+  case 7201:
+    _name = "65000";
+    break;
+  case 7202:
+    _name = "125000";
+    break;
+  case 7203:
+    _name = "115000";
+    break;
+  case 7204:
+    _name = "100000";
+    break;
+  case 7205:
+    _name = "210000";
+    break;
+  case 7206:
+    _name = "127000";
+    break;
+  case 7300:
+    _name = "1650000";
+    break;
+  case 7301:
+    _name = "1155000";
+    break;
+  case 7302:
+    _name = "1090000";
+    break;
+  case 7303:
+    _name = "590000";
+    break;
+  case 7304:
+    _name = "1090000";
+    break;
+  case 7400:
+    _name = "500";
+    break;
+  case 7401:
+    _name = "200";
+    break;
+  case 7402:
+    _name = "300";
+    break;
+  case 10001:
+    _name = "0";
+    break;
+  case 10002:
+    _name = "0";
+    break;
+  case 10003:
+    _name = "0";
+    break;
+  case 10004:
+    _name = "0";
+    break;
+  case 10005:
+    _name = "0";
+    break;
+  case 10006:
+    _name = "0";
+    break;
+  case 10007:
+    _name = "0";
+    break;
+  case 10008:
+    _name = "0";
+    break;
+  case 10011:
+    _name = "0";
+    break;
+  case 10012:
+    _name = "0";
+    break;
+  case 10013:
+    _name = "0";
+    break;
+  case 10014:
+    _name = "0";
+    break;
+  case 10015:
+    _name = "0";
+    break;
+  case 10016:
+    _name = "0";
+    break;
+  case 10017:
+    _name = "0";
+    break;
+  case 10018:
+    _name = "0";
+    break;
+  case 10021:
+    _name = "0";
+    break;
+  case 10022:
+    _name = "0";
+    break;
+  case 10023:
+    _name = "0";
+    break;
+  case 10024:
+    _name = "0";
+    break;
+  case 10025:
+    _name = "0";
+    break;
+  case 10026:
+    _name = "0";
+    break;
+  case 10027:
+    _name = "0";
+    break;
+  case 10028:
+    _name = "0";
+    break;
+  case 10201:
+    _name = "0";
+    break;
+  case 10202:
+    _name = "0";
+    break;
+  case 10203:
+    _name = "0";
+    break;
+  case 10204:
+    _name = "0";
+    break;
+  case 10205:
+    _name = "0";
+    break;
+  case 10206:
+    _name = "0";
+    break;
+  case 10207:
+    _name = "0";
+    break;
+  case 10208:
+    _name = "0";
+    break;
+  case 10211:
+    _name = "0";
+    break;
+  case 10212:
+    _name = "0";
+    break;
+  case 10213:
+    _name = "0";
+    break;
+  case 10214:
+    _name = "0";
+    break;
+  case 10215:
+    _name = "0";
+    break;
+  case 10216:
+    _name = "0";
+    break;
+  case 10217:
+    _name = "0";
+    break;
+  case 10218:
+    _name = "0";
+    break;
+  case 10225:
+    _name = "0";
+    break;
+  case 10226:
+    _name = "0";
+    break;
+  case 10227:
+    _name = "0";
+    break;
+  case 10228:
+    _name = "0";
+    break;
+  case 10231:
+    _name = "0";
+    break;
+  case 10232:
+    _name = "0";
+    break;
+  case 10233:
+    _name = "0";
+    break;
+  case 10234:
+    _name = "0";
+    break;
+  case 10235:
+    _name = "0";
+    break;
+  case 10236:
+    _name = "0";
+    break;
+  case 10237:
+    _name = "0";
+    break;
+  case 10238:
+    _name = "0";
+    break;
+  case 10301:
+    _name = "0";
+    break;
+  case 10302:
+    _name = "0";
+    break;
+  case 10303:
+    _name = "0";
+    break;
+  case 10304:
+    _name = "0";
+    break;
+  case 10305:
+    _name = "0";
+    break;
+  case 10306:
+    _name = "0";
+    break;
+  case 10307:
+    _name = "0";
+    break;
+  case 10308:
+    _name = "0";
+    break;
+  case 10311:
+    _name = "0";
+    break;
+  case 10312:
+    _name = "0";
+    break;
+  case 10313:
+    _name = "0";
+    break;
+  case 10314:
+    _name = "0";
+    break;
+  case 10315:
+    _name = "0";
+    break;
+  case 10316:
+    _name = "0";
+    break;
+  case 10317:
+    _name = "0";
+    break;
+  case 10318:
+    _name = "0";
+    break;
+  case 10321:
+    _name = "0";
+    break;
+  case 10322:
+    _name = "0";
+    break;
+  case 10323:
+    _name = "0";
+    break;
+  case 10324:
+    _name = "0";
+    break;
+  case 10325:
+    _name = "0";
+    break;
+  case 10326:
+    _name = "0";
+    break;
+  case 10327:
+    _name = "0";
+    break;
+  case 10328:
+    _name = "0";
+    break;
+  case 10505:
+    _name = "0";
+    break;
+  case 10506:
+    _name = "0";
+    break;
+  case 10507:
+    _name = "0";
+    break;
+  case 10508:
+    _name = "0";
+    break;
+  case 10601:
+    _name = "0";
+    break;
+  case 10602:
+    _name = "0";
+    break;
+  case 10603:
+    _name = "0";
+    break;
+  case 10604:
+    _name = "0";
+    break;
+  case 10605:
+    _name = "0";
+    break;
+  case 10606:
+    _name = "0";
+    break;
+  case 10607:
+    _name = "0";
+    break;
+  case 10608:
+    _name = "0";
+    break;
+  case 11000:
+    _name = "0";
+    break;
+  case 11010:
+    _name = "0";
+    break;
+  case 11011:
+    _name = "0";
+    break;
+  case 11020:
+    _name = "0";
+    break;
+  case 11021:
+    _name = "0";
+    break;
+  case 11030:
+    _name = "0";
+    break;
+  case 11031:
+    _name = "0";
+    break;
+  case 11040:
+    _name = "0";
+    break;
+  case 11041:
+    _name = "0";
+    break;
+  case 11042:
+    _name = "0";
+    break;
+  case 11050:
+    _name = "0";
+    break;
+  case 11060:
+    _name = "0";
+    break;
+  case 11070:
+    _name = "0";
+    break;
+  case 11200:
+    _name = "0";
+    break;
+  case 11210:
+    _name = "0";
+    break;
+  case 11211:
+    _name = "0";
+    break;
+  case 11220:
+    _name = "0";
+    break;
+  case 11230:
+    _name = "0";
+    break;
+  case 11231:
+    _name = "0";
+    break;
+  case 11241:
+    _name = "0";
+    break;
+  case 11300:
+    _name = "0";
+    break;
+  case 11301:
+    _name = "0";
+    break;
+  case 11310:
+    _name = "0";
+    break;
+  case 11311:
+    _name = "0";
+    break;
+  case 11600:
+    _name = "0";
+    break;
+  case 11601:
+    _name = "0";
+    break;
+  case 11602:
+    _name = "0";
+    break;
+  case 28501:
+    _name = "0";
+    break;
+  case 28502:
+    _name = "0";
+    break;
+  case 28503:
+    _name = "0";
+    break;
+  case 28504:
+    _name = "0";
+    break;
+  case 28505:
+    _name = "0";
+    break;
+  case 28506:
+    _name = "0";
+    break;
+  case 28507:
+    _name = "0";
+    break;
+  case 28508:
+    _name = "0";
+    break;
+  case 28800:
+    _name = "1";
+    break;
+
+}
+return (_itemID);
+}

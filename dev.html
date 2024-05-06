@@ -72,8 +72,9 @@
               }
 
           }
+          
           console.log("passed giant loop mess");
-
+          
           // I hate this, but idc
           const Arid_Badlands = 1;
           const Arid_Steppe = 2;
@@ -272,19 +273,31 @@
           NFTcontractSigner.addMultiMixItemData([mixedItemData9,mixedItemData10,mixedItemData11,mixedItemData12,mixedItemData13,mixedItemData14,mixedItemData15,mixedItemData16],[-9,-10,-11,-12,-13,-14,-15,-16], {gasLimit: 5000000});
           NFTcontractSigner.addMultiMixItemData([mixedItemData17,mixedItemData18,mixedItemData19,mixedItemData20,mixedItemData0,mixedItemData0,mixedItemData0,mixedItemData0],[-17,-18,-19,-20,0,0,0,0], {gasLimit: 5000000});
 
+          NFTcontractSigner.addFoodData([1400,50,0,0]);
+          NFTcontractSigner.addFoodData([1401,200,0,0]);
+          NFTcontractSigner.addFoodData([1400,50,0,0]);
+          NFTcontractSigner.addFoodData([1420,250,0,0]);
+          NFTcontractSigner.addFoodData([1430,1600,0,0]);
+          NFTcontractSigner.addFoodData([1440,500,0,0]);
+          NFTcontractSigner.addFoodData([1450,350,0,0]);
+          NFTcontractSigner.addFoodData([1460,1150,0,0]);
+          NFTcontractSigner.addFoodData([1470,2500,0,0]);
+          NFTcontractSigner.addFoodData([1471,19000,0,0]);
+          NFTcontractSigner.addFoodData([1480,125,0,0]);
+
 
           break;
 
         case "4":
 
-const SoliderID = returnsoliderID();
+const SoldierID = returnsoldierID();
   var j = 0;
   var temp_solider_array = [];
   var temp_solider_array_data = [];
   var max_war_val = 113 ;
   for (var i = 0; i <= max_war_val; ++i) {
 
-      temp_solider_array.push(SoliderID[i]);
+      temp_solider_array.push(SoldierID[i]);
       ++j;
       if (j == 32 || i == (max_war_val)) {
         console.log(temp_solider_array_data,temp_solider_array);
@@ -298,7 +311,7 @@ const SoliderID = returnsoliderID();
           temp_solider_array.push(0);
 
         }
-        NFTWarcontractSigner.addSoliderDataLoop(temp_solider_array_data,temp_solider_array, {gasLimit: 5000000});
+        NFTWarcontractSigner.addSoldierDataLoop(temp_solider_array_data,temp_solider_array, {gasLimit: 5000000});
         temp_solider_array = [];
         temp_solider_array_data = [];
         j = 0;
@@ -336,10 +349,22 @@ const SoliderID = returnsoliderID();
             }
 
   }
+        NFTcontractSigner.changeWarCA(waraddress);
+        NFTWarcontractSigner.changeBaseCA(address);
+
           break;
         case "5":
                       
-          NFTWarcontractSigner.addMercADMIN(11320,1,50,myAddress, {gasLimit: 5000000});
+          NFTWarcontractSigner.addMerc(11311,1,60,myAddress);
+          NFTcontractSigner.adminMint(10003,100);
+          NFTcontractSigner.adminMint(5510,100);
+          NFTcontractSigner.adminMint(5001,100);
+          NFTcontractSigner.adminMint(11030,100);
+          NFTcontractSigner.adminMint(1904,1000);
+          NFTcontractSigner.adminMint(1914,1000);
+          NFTcontractSigner.adminMint(1924,1000);
+          NFTcontractSigner.adminMint(1900,100000);
+
           break;
         case "6":
           
@@ -364,16 +389,15 @@ const SoliderID = returnsoliderID();
           const questArmy8 = returnQuestArmy(8);
           const questArmy10 = returnQuestArmy(10);
 
-          const questAddress = 0x8c00000000000000000000000000000000000000;
-          NFTWarcontractSigner.createQuest((questAddress + 1).toString(16),questArmy1[0],questArmy1[1], {gasLimit: 5000000});
-          NFTWarcontractSigner.createQuest((questAddress + 2).toString(16),questArmy2[0],questArmy2[1], {gasLimit: 5000000});
-          NFTWarcontractSigner.createQuest((questAddress + 3).toString(16),questArmy3[0],questArmy3[1], {gasLimit: 5000000});
-          NFTWarcontractSigner.createQuest((questAddress + 4).toString(16),questArmy4[0],questArmy4[1], {gasLimit: 5000000});
-          NFTWarcontractSigner.createQuest((questAddress + 5).toString(16),questArmy5[0],questArmy5[1], {gasLimit: 5000000});
-          NFTWarcontractSigner.createQuest((questAddress + 6).toString(16),questArmy6[0],questArmy6[1], {gasLimit: 5000000});
-          NFTWarcontractSigner.createQuest((questAddress + 7).toString(16),questArmy7[0],questArmy7[1], {gasLimit: 5000000});
-          NFTWarcontractSigner.createQuest((questAddress + 8).toString(16),questArmy8[0],questArmy8[1], {gasLimit: 5000000});
-          NFTWarcontractSigner.createQuest((questAddress + 10).toString(16),questArmy10[0],questArmy10[1], {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000001",questArmy1[0],questArmy1[1], {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000002",questArmy2[0],questArmy2[1], {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000003",questArmy3[0],questArmy3[1], {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000004",questArmy4[0],questArmy4[1], {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000005",questArmy5[0],questArmy5[1], {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000006",questArmy6[0],questArmy6[1], {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000007",questArmy7[0],questArmy7[1], {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000008",questArmy8[0],questArmy8[1], {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest("0x8c0000000000000000000000000000000000000a",questArmy10[0],questArmy10[1], {gasLimit: 5000000});
           break;
         }
 

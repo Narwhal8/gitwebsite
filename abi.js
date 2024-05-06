@@ -325,9 +325,9 @@ abi = [
 						"type": "uint8"
 					},
 					{
-						"internalType": "uint8",
+						"internalType": "uint16",
 						"name": "soilQuality",
-						"type": "uint8"
+						"type": "uint16"
 					},
 					{
 						"internalType": "uint16[5]",
@@ -499,13 +499,6 @@ abi = [
 			}
 		],
 		"name": "addMultiMixItemData",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "addQuestReward",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -723,6 +716,11 @@ abi = [
 			{
 				"internalType": "uint256",
 				"name": "_fooditem",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_runs",
 				"type": "uint256"
 			}
 		],
@@ -1087,7 +1085,7 @@ abi = [
 			},
 			{
 				"internalType": "uint16",
-				"name": "_soliderType",
+				"name": "_soldierType",
 				"type": "uint16"
 			},
 			{
@@ -1160,7 +1158,7 @@ abi = [
 				"type": "uint160"
 			}
 		],
-		"name": "startquest",
+		"name": "startQuest",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"

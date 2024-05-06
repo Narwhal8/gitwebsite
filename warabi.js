@@ -1,4 +1,4 @@
-const warabi = [
+ warabi = [
 	{
 		"inputs": [
 			{
@@ -142,34 +142,6 @@ const warabi = [
 	{
 		"inputs": [
 			{
-				"internalType": "uint16",
-				"name": "_mercType",
-				"type": "uint16"
-			},
-			{
-				"internalType": "uint8",
-				"name": "_armySlot",
-				"type": "uint8"
-			},
-			{
-				"internalType": "uint32",
-				"name": "_amount",
-				"type": "uint32"
-			},
-			{
-				"internalType": "address",
-				"name": "_recipiant",
-				"type": "address"
-			}
-		],
-		"name": "addMercADMIN",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
 				"components": [
 					{
 						"internalType": "int16",
@@ -267,7 +239,7 @@ const warabi = [
 						"type": "uint16[2]"
 					}
 				],
-				"internalType": "struct NewCombat.BaseSolider",
+				"internalType": "struct NewCombat.BaseSoldier",
 				"name": "_troop",
 				"type": "tuple"
 			},
@@ -277,7 +249,7 @@ const warabi = [
 				"type": "uint256"
 			}
 		],
-		"name": "addSoliderData",
+		"name": "addSoldierData",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -342,7 +314,7 @@ const warabi = [
 						"type": "uint16[2]"
 					}
 				],
-				"internalType": "struct NewCombat.BaseSolider[32]",
+				"internalType": "struct NewCombat.BaseSoldier[32]",
 				"name": "_troop",
 				"type": "tuple[32]"
 			},
@@ -352,55 +324,7 @@ const warabi = [
 				"type": "uint256[32]"
 			}
 		],
-		"name": "addSoliderDataLoop",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint8",
-				"name": "_armySlot",
-				"type": "uint8"
-			},
-			{
-				"internalType": "uint16",
-				"name": "_soliderType",
-				"type": "uint16"
-			},
-			{
-				"internalType": "uint16",
-				"name": "_weapon",
-				"type": "uint16"
-			},
-			{
-				"internalType": "uint16",
-				"name": "_offhand",
-				"type": "uint16"
-			},
-			{
-				"internalType": "uint16",
-				"name": "_armor",
-				"type": "uint16"
-			},
-			{
-				"internalType": "uint16",
-				"name": "_other",
-				"type": "uint16"
-			},
-			{
-				"internalType": "uint32",
-				"name": "_amount",
-				"type": "uint32"
-			},
-			{
-				"internalType": "address",
-				"name": "_sender",
-				"type": "address"
-			}
-		],
-		"name": "addTroopType",
+		"name": "addSoldierDataLoop",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -574,8 +498,8 @@ const warabi = [
 								"type": "uint16[2]"
 							}
 						],
-						"internalType": "struct NewCombat.Solider[12]",
-						"name": "solidertype",
+						"internalType": "struct NewCombat.soldier[12]",
+						"name": "soldiertype",
 						"type": "tuple[12]"
 					},
 					{
@@ -585,7 +509,7 @@ const warabi = [
 					},
 					{
 						"internalType": "uint32[12]",
-						"name": "solideramount",
+						"name": "soldieramount",
 						"type": "uint32[12]"
 					},
 					{
@@ -621,7 +545,7 @@ const warabi = [
 			},
 			{
 				"internalType": "uint16",
-				"name": "_soliderType",
+				"name": "_soldierType",
 				"type": "uint16"
 			},
 			{
@@ -686,7 +610,7 @@ const warabi = [
 				"type": "address"
 			}
 		],
-		"name": "removeSolider",
+		"name": "removeSoldier",
 		"outputs": [
 			{
 				"internalType": "uint16[5]",
@@ -705,93 +629,6 @@ const warabi = [
 	{
 		"inputs": [],
 		"name": "renounceOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"components": [
-					{
-						"components": [
-							{
-								"internalType": "int16",
-								"name": "attack",
-								"type": "int16"
-							},
-							{
-								"internalType": "int16",
-								"name": "defence",
-								"type": "int16"
-							},
-							{
-								"internalType": "int16",
-								"name": "armor",
-								"type": "int16"
-							},
-							{
-								"internalType": "int16",
-								"name": "speed",
-								"type": "int16"
-							},
-							{
-								"internalType": "uint8",
-								"name": "range",
-								"type": "uint8"
-							},
-							{
-								"internalType": "int16",
-								"name": "piercing",
-								"type": "int16"
-							},
-							{
-								"internalType": "int16",
-								"name": "morale",
-								"type": "int16"
-							},
-							{
-								"internalType": "bool",
-								"name": "hasShield",
-								"type": "bool"
-							},
-							{
-								"internalType": "uint16[2]",
-								"name": "additionalDeployCost",
-								"type": "uint16[2]"
-							}
-						],
-						"internalType": "struct NewCombat.Solider[12]",
-						"name": "solidertype",
-						"type": "tuple[12]"
-					},
-					{
-						"internalType": "bool[12]",
-						"name": "isActive",
-						"type": "bool[12]"
-					},
-					{
-						"internalType": "uint32[12]",
-						"name": "solideramount",
-						"type": "uint32[12]"
-					},
-					{
-						"internalType": "uint16[60]",
-						"name": "currentequipment",
-						"type": "uint16[60]"
-					},
-					{
-						"internalType": "uint16[3]",
-						"name": "rations",
-						"type": "uint16[3]"
-					}
-				],
-				"internalType": "struct NewCombat.CurrentArmyComposition",
-				"name": "_cAC",
-				"type": "tuple"
-			}
-		],
-		"name": "set",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -823,6 +660,19 @@ const warabi = [
 			}
 		],
 		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint16[3]",
+				"name": "_rations",
+				"type": "uint16[3]"
+			}
+		],
+		"name": "userSetRation",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"

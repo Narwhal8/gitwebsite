@@ -5,7 +5,6 @@
 <head>
   <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
   <script src="./abi.js" type="application/javascript"></script>
-  <script src="./itemvalue.js" type="application/javascript"></script>
   <script src="./excelIntegration.js" type="application/javascript"></script>
 
   <script>
@@ -57,7 +56,7 @@
       await provider.send("eth_requestAccounts", []);
 
       const signer = provider.getSigner()
-      NFTcontract = new ethers.Contract(address, abi, provider)
+      const NFTcontract = new ethers.Contract(address, abi, provider)
       myAddress = await signer.getAddress()
 
 
@@ -86,14 +85,14 @@
       switch (actionSelect.value) {
 
         case "1":
-          var _fooditems = document.getElementById("FoodInputID").value;
           NFTcontractSigner.plant(
 
             document.querySelectorAll(".Lands")[_kingdomType - 1].value,
             document.getElementById("Amount").value,
             document.getElementById("cropSelect").value,
-            _fooditems,
-            document.getElementById("TimeAmount").value)
+            document.getElementById("foodInputID").value,
+            document.getElementById("TimeAmount").value
+          )
           break;
 
         case "2":
@@ -104,16 +103,17 @@
           var item_output_amount = whyJS[2];
           var item_output = whyJS[3];
           var time = whyJS[5];
-          console.log(item_amount);
+          console.log(items);
           if (items[0] < 0) {
             items[0] = document.querySelectorAll(".Items")[(-1 * items[0])].value
           }
           NFTcontractSigner.cook(
             document.getElementById("RecipeID").value,
-            document.getElementById("Amount").value,
+            document.getElementById("BatchAmount").value,
             items,
             document.getElementById("CID").value,
-            document.getElementById("FoodInputID").value
+            document.getElementById("foodInputID").value,
+            document.getElementById("Amount").value
           )
           break;
 
@@ -129,7 +129,7 @@
             document.getElementById("Amount").value,
             array2[0],
             0,
-            document.getElementById("FoodInputID").value
+            document.getElementById("foodInputID").value,
           )
           break;
 
@@ -286,8 +286,8 @@
         for(let i = 0; i < document.getElementsByClassName("B" + _value).length ; ++i) {
           document.getElementsByClassName("B" + _value)[i].style.display = "block";
 
-        }}
-
+        }
+      }
     }
 
     function Stuff(_value) {
@@ -429,6 +429,7 @@
         case "6":
           document.getElementById("landLabel").style.display = "inline";
           document.getElementById("landSelection").style.display = "block";
+          document.getElementById("landAdderNotice").style.display = "block";
           showLandMenu();
           break;
 
@@ -469,7 +470,8 @@
         case "13":
           document.getElementsByClassName("ItemMenu")[0].style.display = "block";
           document.getElementsByClassName("ItemMenu")[1].style.display = "block";
-          document.getElementById("Amount").style.display = "block";
+          document.getElementById("ItemMenuSelector").style.display = "block";
+          document.getElementById("ItemMenuSelectorLabel").style.display = "block";
           document.getElementById("Amount").style.display = "block";
           document.getElementById("Address").style.display = "block";
           document.getElementById("AddressLabel").style.display = "block";
@@ -643,7 +645,7 @@
         //Why is this here? Because I cant figure out how to make it work right in the if statement and its not worth the time to fix when this works
         else {
           if (document.getElementById("CID").value != 22) {
-            var _time_multi = await _buildTimeBasedOnFood(itemValue(Number(document.getElementById("FoodInputID").value)),false);
+            var _time_multi = await _buildTimeBasedOnFood(itemValue(Number(document.getElementById("foodInputID").value)),false);
             console.log("time multiplier", _time_multi);
 
             setTTC((Number(Amount) * time * 200 / _time_multi));
@@ -775,8 +777,12 @@
       document.getElementById("Address").style.display = "none";
       document.getElementById("AddressLabel").style.display = "none";
 
+      document.getElementById("ItemMenuSelector").style.display = "none";
+      document.getElementById("ItemMenuSelectorLabel").style.display = "none";
 
       document.getElementById("landSelection").style.display = "none";
+
+      document.getElementById("landAdderNotice").style.display = "none";
 
       document.getElementById("timeToCompletion").style.display = "none";
 
@@ -878,7 +884,7 @@
       var secondary_crop_yield_times = crop_info[7];
 
 
-      var yield_mod = await _buildTimeBasedOnFood(itemValue(Number(FoodInputID.value)),true)/100;  
+      var yield_mod = await _buildTimeBasedOnFood(itemValue(Number(foodInputID.value)),true)/100;  
 
       var primary_yield = (crop_info[0] * _value * Amount.value * yield_mod);
 
@@ -910,8 +916,15 @@
     function selectLand(_value) {
 
       showLandMenu();
-      document.getElementsByClassName("foodInput")[0].style.display = "block";
-      document.getElementsByClassName("foodInput")[1].style.display = "inline-block";
+      if(_value > 500 || _value == 1) {
+        document.getElementById("foodInputLabel").style.display = "block";
+        document.getElementById("foodInputID").style.display = "inline-block";
+
+      }
+      else if(_value == 2 || _value == 3) {
+        document.getElementById("foodInputLabel").style.display = "none";
+        document.getElementById("foodInputID").style.display = "none";
+      }
     }
 
     function hideBuildingInfo() {
@@ -1084,7 +1097,7 @@
     <label class="Farming" id="FarmLabel">What would you like to farm?</label>
     <select class="Farming Dropdown" id="cropSelect" onchange="selectLand(this.value);">
       <option value="_"></option>
-      <option value="0">--Natural Reasources</option>
+      <option value="0">--Extract From Land</option>
       <option value="_"></option>
       <option value="1">Natural Reasources</option>
       <option value="2">Low Noble Hunt</option>
@@ -1285,7 +1298,7 @@
       <option value="1460">Deluxe Roast Combo</option>
       <option value="1470">Charcutery Combo</option>
       <option value="1471">Deluxe Charcutery Combo</option>
-      <option value="1480">Basic Soup Combo</option>
+      <option value="1480">Basic Pie Combo</option>
 
       <option value="1901">Main Ration 1</option>
       <option value="1902">Main Ration 2</option>
@@ -1878,7 +1891,7 @@
       <option value="9">War Goods</option>
       <option value="10">Animals</option>
       <option value="11">Soliders</option>
-      <option value="11">Mercenaries</option>
+      <option value="12">Mercenaries</option>
     </select>
     <label id="ItemMenuLabelID" class="ItemMenu" for="ItemMenuID">What Item are you looking for?</label><br>
     <select class="ItemMenu Dropdown" id="ItemMenuID">
@@ -1959,6 +1972,8 @@
       <option value="538" class="2">Oats</option>
       <option value="539" class="2">Milk</option>
       <option value="540" class="2">Barley</option>
+      <option value="545" class="2">Exotic Meat</option>
+      <option value="546" class="2">Heartland Herb</option>
 
       <option value="-1"></option>
       <option value="0">--Food & Drinks</option>
@@ -2317,6 +2332,13 @@
       <option value="5910" class="9">Wall Shield</option>
       <option value="5911" class="9">Advanced Wall Shield</option>
 
+      <option value="28502" class="9">Tier 2 XP</option>
+      <option value="28503" class="9">Tier 3 XP</option>
+      <option value="28504" class="9">Tier 4 XP</option>
+      <option value="28505" class="9">Tier 5 XP</option>
+      <option value="28506" class="9">Tier 6 XP</option>
+      <option value="28507" class="9">Tier 7 XP</option>
+      <option value="28508" class="9">Tier 8 XP</option>
       <option value="-1"></option>
       <option value="0">--Animals</option>
       <option value="-1"></option>
@@ -2521,7 +2543,7 @@
     <br>
     <text class="foodInput" id="foodInputLabel">What would you like to feed the workers?</text>
 
-    <select class="foodInput Dropdown" id="FoodInputID">
+    <select class="foodInput Dropdown" id="foodInputID">
       <option value="0"></option>
       <option value="0">None</option>
       <option value="0"></option>
@@ -2801,6 +2823,9 @@
 
   </ItemSelection>
   <br>
+  <Notices class="Notice">
+    <text class="InvisableOnStart"id="landAdderNotice">NOTICE: Land added can't EVER be removed</text>
+  </Notices>
   <TXamount class="Amount " id="AmountID">
     <text class="" id="BatchAmountLabel">How many batches would you like to make?</text>
     <input class=" NumericInput" type="number" id="BatchAmount" onchange="totalCostCalc();"></input>

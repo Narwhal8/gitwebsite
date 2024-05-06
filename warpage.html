@@ -66,14 +66,16 @@
                     break;
                 case "2":
                     document.getElementById("TroopList").style.display = "block";
-                    document.getElementById("Cost").style.display = "none";
+                    document.getElementById("TroopAmount").style.display = "block";
+                    document.getElementById("TroopUpgrade").style.display = "none";
+                    document.getElementById("TroopUpgradeLabel").style.display = "none";
                     break;
                 case "3":
                     document.getElementById("MercAdder").style.display = "block";
-                    document.getElementById("SoliderSlotList").style.display = "block";
+                    document.getElementById("SoldierSlotList").style.display = "block";
                     break;
                 case "4":
-                document.getElementById("SoliderSlotList").style.display = "block";
+                    document.getElementById("SoldierSlotList").style.display = "block";
                     break;
                 case "5":
                     document.getElementById("QuestSelector").style.display = "inline";
@@ -82,6 +84,9 @@
                 case "6":
                     document.getElementById("TroopList").style.display = "block";
                     break;
+                case "7":
+                    document.getElementById("RationSelector").style.display = "block";
+                    break;
             }
 
             console.log("test");
@@ -89,8 +94,8 @@
         function TroopListDropdownHelper() {
             switch(actionSelector.value) {
                 case "2":
-                    document.getElementById("SoliderSlotList").style.display = "block";
-                    document.getElementById("SoliderItemAdder").style.display = "block";
+                    document.getElementById("SoldierSlotList").style.display = "block";
+                    document.getElementById("SoldierItemAdder").style.display = "block";
                     var _solider_data = eval("soldier" + TroopListDropdown.value);
                     console.log(_solider_data);
                     if (_solider_data[7][0] != 0) {
@@ -129,19 +134,22 @@
 
             const myAddress = await signer.getAddress();
             var _armyData = await NFTWarContractSigner.currentArmy(myAddress);
+            console.log(_armyData);
             const _value = document.getElementById("actionSelector").value;
             console.log(_value)
             switch (_value) {
                 case "1":
-                    document.getElementById("SuperSoliderGridContainer").style.display = "grid";
+                    //_armyData = await NFTWarContractSigner.currentArmy("0x8c00000000000000000000000000000000000008");
+                    document.getElementById("SuperSoldierGridContainer").style.display = "grid";
+                    //console.log(_armyData);
 
                     for(let i = 0; i < 12; ++i) {
-                        document.getElementById(("SoliderGridSlot" + (i + 1) + "-1")).textContent = "Name: " + itemName(_armyData[3][5 * i]);
-                        document.getElementById(("SoliderGridSlot" + (i + 1) + "-3")).textContent = "Weapon: " + itemName(_armyData[3][5 * i + 1]);
-                        document.getElementById(("SoliderGridSlot" + (i + 1) + "-4")).textContent = "Offhand: " + itemName(_armyData[3][5 * i + 2]);
-                        document.getElementById(("SoliderGridSlot" + (i + 1) + "-5")).textContent = "Armor: " + itemName(_armyData[3][5 * i + 3]);
-                        document.getElementById(("SoliderGridSlot" + (i + 1) + "-6")).textContent = "Other: " + itemName(_armyData[3][5 * i + 4]);
-                        document.getElementById(("SoliderGridSlot" + (i + 1) + "-2")).textContent = "Amount: " + _armyData[2][i];
+                        document.getElementById(("SoldierGridSlot" + (i + 1) + "-1")).textContent = "Name: " + itemName(_armyData[3][5 * i]);
+                        document.getElementById(("SoldierGridSlot" + (i + 1) + "-3")).textContent = "Weapon: " + itemName(_armyData[3][5 * i + 1]);
+                        document.getElementById(("SoldierGridSlot" + (i + 1) + "-4")).textContent = "Offhand: " + itemName(_armyData[3][5 * i + 2]);
+                        document.getElementById(("SoldierGridSlot" + (i + 1) + "-5")).textContent = "Armor: " + itemName(_armyData[3][5 * i + 3]);
+                        document.getElementById(("SoldierGridSlot" + (i + 1) + "-6")).textContent = "Other: " + itemName(_armyData[3][5 * i + 4]);
+                        document.getElementById(("SoldierGridSlot" + (i + 1) + "-2")).textContent = "Amount: " + _armyData[2][i];
 
                     }
 
@@ -150,31 +158,31 @@
                 case "2":
                     NFTBaseContractSigner.sendToWar(
                         false,
-                        4,//document.getElementById("SoliderSlotSelector").value,
-                        10003,//document.getElementById("TroopUpgrade").value,
-                        5001,//document.getElementById("WeaponInput").value,
-                        0,//document.getElementById("OffhandInput").value,
-                        5510,//document.getElementById("ArmorInput").value,
-                        0,//document.getElementById("OtherInput").value,
-                        25//document.getElementById("TroopAmount").value
+                        document.getElementById("SoldierSlotSelector").value,
+                        document.getElementById("TroopListDropdown").value,
+                        document.getElementById("WeaponInput").value,
+                        document.getElementById("OffhandInput").value,
+                        document.getElementById("ArmorInput").value,
+                        document.getElementById("OtherInput").value,
+                        document.getElementById("TroopAmount").value
+                        
                     )
                     break;
                 case "3":
                     NFTBaseContractSigner.sendToWar(
                         true,
-                        9,//document.getElementById("MercSlot").value,
-                        11320,//document.getElementById("TroopList").value,
+                        document.getElementById("SoldierSlotSelector").value,
+                        document.getElementById("MercList").value,
                         0,
                         0,
                         0,
                         0,
-                        10//document.getElementById("MercAmount").value
+                        document.getElementById("MercAmount").value
+                        , {gasLimit: 5000000}
                     )
                     break;
                 case "4":
-                    NFTBaseContractSigner.returnHome(
-                        document.getElementById("SoliderSlotList").value,
-                    )
+                    NFTBaseContractSigner.returnHome(document.getElementById("SoldierSlotSelector").value, {gasLimit: 5000000});
                     break;
                 case "5":
                     NFTBaseContractSigner.startQuest(
@@ -192,6 +200,9 @@
                         0,
                         0
                     )
+                    break;
+                case "7":
+                    NFTWarContractSigner.userSetRation([document.getElementById("MainRationSelector").value,document.getElementById("ExtraRationSelector").value,document.getElementById("DrinkRationSelector").value])
                     break;
             }
 
@@ -250,7 +261,7 @@
             }
         }
         function hideAll() {
-            document.getElementById("SuperSoliderGridContainer").style.display = "none";
+            document.getElementById("SuperSoldierGridContainer").style.display = "none";
             document.getElementById("WeaponInput").style.display = "none";
             document.getElementById("WeaponInputLabel").style.display = "none";
             document.getElementById("OffhandInput").style.display = "none";
@@ -264,7 +275,8 @@
             document.getElementById("QuestSelector").style.display = "none";
             document.getElementById("QuestDescriptionText").style.display = "none";
             document.getElementById("TroopList").style.display = "none";
-            document.getElementById("SoliderSlotList").style.display = "none";
+            document.getElementById("SoldierSlotList").style.display = "none";
+            document.getElementById("RationSelector").style.display = "none";
         }
 
     </script>
@@ -277,16 +289,61 @@
         <select class="Dropdown" id="actionSelector" onchange="selectAction(this.value)">
             <option value="-1"></option>
             <option value="1">Army Overview</option>
-            <option value="2">Add Soliders To Army</option>
+            <option value="2">Add Soldiers To Army</option>
             <option value="3">Add Mercenaries To Army</option>
             <option value="4">Remove Troop From Army</option>
             <option value="5">Start Quest</option>
-            <option value="6">Promote Solider</option>
+            <option value="6">Promote Soldier</option>
+            <option value="7">Configure Rations</option>
 
         </select>
-        <SoliderSlotList id="SoliderSlotList" class="InvisableOnStart">
-            <label id="SSSLabel" for="SoliderSlotSelector">Which Slot does this operation involve?</label>
-            <select class="Dropdown" id="SoliderSlotSelector">
+        <RationSelector id="RationSelector" class="InvisableOnStart">
+            <br>
+            <label for="MainRationSelector">Which Ration would you like to use?</label>
+            <select id="MainRationSelector" class="Dropdown">
+                <option value="-1"></option>
+                <option value="1901">Ration 1</option>
+                <option value="1902">Ration 2</option>
+                <option value="1903">Ration 3</option>
+                <option value="1904">Ration 4</option>
+                <option value="1905">Ration 5</option>
+                <option value="1906">Ration 6</option>
+                <option value="1907">Ration 7</option>
+                <option value="1908">Ration 8</option>
+                <option value="1909">Ration 9</option>
+            </select>
+            <br>
+            <label for="ExtraRationSelector">Which Extra Pack would you like to use?</label>
+            <select id="ExtraRationSelector" class="Dropdown">
+                <option value="-1"></option>
+                <option value="1911">Extras 1</option>
+                <option value="1912">Extras 2</option>
+                <option value="1913">Extras 3</option>
+                <option value="1914">Extras 4</option>
+                <option value="1915">Extras 5</option>
+                <option value="1916">Extras 6</option>
+                <option value="1917">Extras 7</option>
+                <option value="1918">Extras 8</option>
+                <option value="1919">Extras 9</option>
+            </select>
+            <br>
+            <label for="DrinkRationSelector">Which Drink Pack would you like to use?</label>
+            <select id="DrinkRationSelector" class="Dropdown">
+                <option value="-1"></option>
+                <option value="1921">Drink Pack 1</option>
+                <option value="1922">Drink Pack 2</option>
+                <option value="1923">Drink Pack 3</option>
+                <option value="1924">Drink Pack 4</option>
+                <option value="1925">Drink Pack 5</option>
+                <option value="1926">Drink Pack 6</option>
+                <option value="1927">Drink Pack 7</option>
+                <option value="1928">Drink Pack 8</option>
+                <option value="1929">Drink Pack 9</option>
+            </select>
+        </RationSelector>
+        <SoldierSlotList id="SoldierSlotList" class="InvisableOnStart">
+            <label id="SSSLabel" for="SoldierSlotSelector">Which Slot does this operation involve?</label>
+            <select class="Dropdown" id="SoldierSlotSelector">
                 <option value="-1"></option>
                 <option value="0">Frontline Slot 1</option>
                 <option value="1">Frontline Slot 2</option>
@@ -301,11 +358,11 @@
                 <option value="10">Skirmish Slot 2</option>
                 <option value="11">Skirmish Slot 3</option>
             </select>
-        </SoliderSlotList>
+        </SoldierSlotList>
         <AddMercs id="MercAdder" class="InvisableOnStart">
             <input class="NumericInput" type="number" id="MercAmount">How many would you like to add?</input>
             <br>
-            <select class="Dropdown" id="Trooplist">
+            <select class="Dropdown" id="MercList">
                 <option value="0"></option>
                 <option value="11000">Bandits</option>
                 <option value="11010">Peasent_Levy</option>
@@ -329,7 +386,7 @@
                 <option value="11300">Free lance</option>
                 <option value="11301">Knight</option>
                 <option value="11310">Mounted Levy</option>
-                <option value="11320">Mounted Palace Guard</option>
+                <option value="11311">Mounted Palace Guard</option>
                 <option value="11600">Horse_Archer</option>
                 <option value="11601">Veteran_Horse_Archer</option>
                 <option value="11602">Palace_Archer</option>
@@ -339,10 +396,10 @@
         <Questing id="QuestMenu" class="InvisableOnStart"> 
             <input type="number" class="NumericInput">Which Quest would you like to do?</input>
         </Questing>
-        <SoliderItemAdder id="SoliderItemAdder InvisableOnStart">
-            <label for="WeaponInput" class="InvisableOnStart" id="WeaponInputLabel">What Weapon would you like to give?</label>
+        <SoldierItemAdder id="SoldierItemAdder" class="InvisableOnStart">
+            <label for="WeaponInput" id="WeaponInputLabel">What Weapon would you like to give?</label>
             <select class="InvisableOnStart Dropdown" id="WeaponInput">
-                <option value="0"></option>
+                <option value="0" selected></option>
                 <option value="5000" class=" 100">Bronze Spear</option>
                 <option value="5001" class=" 100">Iron Spear</option>
                 <option value="5002" class=" 100">Steel Spear</option>
@@ -393,9 +450,9 @@
                 <option value="5214" class=" 105">Golden Sling</option>
                 
             </select>
-            <label for="OffhanInput" class="InvisableOnStart" id="OffhandInputLabel">What Offhand would you like to give?</label>
+            <label for="OffhandInput" class="InvisableOnStart" id="OffhandInputLabel">What Offhand would you like to give?</label>
             <select class="Dropdown InvisableOnStart" id="OffhandInput">
-                <option value="0"></option>
+                <option value="0" selected></option>
                 <option value="0" class="200">None</option>
                 <option value="5900" class= "200">Wooden Shield</option>
                 <option value="5901" class= "200">Banded Shield</option>
@@ -409,7 +466,7 @@
             </select>
             <label for="ArmorInput" class="InvisableOnStart" id="ArmorInputLabel"  class="300">What Armor would you like to give?</label>
             <select class="Dropdown InvisableOnStart" id="ArmorInput"  class="300">
-                <option value="0"></option>
+                <option value="0" selected></option>
                 <option value="5500"  class="300">Light Bronze Mail</option>
                 <option value="5501"  class="300">Light Iron Mail</option>
                 <option value="5502"  class="300">Light Steel Mail</option>
@@ -457,7 +514,7 @@
             <br>
             <label for="OtherInput" class="InvisableOnStart" id="OtherInputLabel">What Other Item would you like to give?</label>
             <select class="Dropdown InvisableOnStart" id="OtherInput">
-                <option value="0"></option>
+                <option value="0" selected></option>
                 <option value="5400" class="400">Farm Horse</option>
                 <option value="5401" class="400">Horse</option>
                 <option value="5402" class="400">Charge Horse</option>
@@ -467,119 +524,119 @@
             <br>
             <label for="TroopAmount" class="InvisableOnStart">How many would you like to add?</label>
             <input class="NumericInput InvisableOnStart" id="TroopAmount"></input>
-        </SoliderItemAdder>
-        <SoliderViewGrid class="SuperSoliderGridContainer InvisableOnStart" id="SuperSoliderGridContainer">
-            <div class="SoliderGridContainer">
-                <div class="SoliderInfoGrid" id="SoliderInfoGrid1">
-                    <div id="SoliderGridSlot1-1">Name:</div>
-                    <div id="SoliderGridSlot1-2">Amount:</div>
-                    <div id="SoliderGridSlot1-3">Weapon:</div>
-                    <div id="SoliderGridSlot1-4">Offhand:</div>
-                    <div id="SoliderGridSlot1-5">Armor:</div>
-                    <div id="SoliderGridSlot1-6">Other:</div>
+        </SoldierItemAdder>
+        <SoldierViewGrid class="SuperSoldierGridContainer InvisableOnStart" id="SuperSoldierGridContainer">
+            <div class="SoldierGridContainer">
+                <div class="SoldierInfoGrid" id="SoldierInfoGrid1">
+                    <div id="SoldierGridSlot1-1">Name:</div>
+                    <div id="SoldierGridSlot1-2">Amount:</div>
+                    <div id="SoldierGridSlot1-3">Weapon:</div>
+                    <div id="SoldierGridSlot1-4">Offhand:</div>
+                    <div id="SoldierGridSlot1-5">Armor:</div>
+                    <div id="SoldierGridSlot1-6">Other:</div>
                 </div>                </div>
-            <div class="SoliderGridContainer">
-                <div class="SoliderInfoGrid" id="SoliderInfoGrid2">
-                    <div id="SoliderGridSlot2-1">Name:</div>
-                    <div id="SoliderGridSlot2-2">Amount:</div>
-                    <div id="SoliderGridSlot2-3">Weapon:</div>
-                    <div id="SoliderGridSlot2-4">Offhand:</div>
-                    <div id="SoliderGridSlot2-5">Armor:</div>
-                    <div id="SoliderGridSlot2-6">Other:</div>
+            <div class="SoldierGridContainer">
+                <div class="SoldierInfoGrid" id="SoldierInfoGrid2">
+                    <div id="SoldierGridSlot2-1">Name:</div>
+                    <div id="SoldierGridSlot2-2">Amount:</div>
+                    <div id="SoldierGridSlot2-3">Weapon:</div>
+                    <div id="SoldierGridSlot2-4">Offhand:</div>
+                    <div id="SoldierGridSlot2-5">Armor:</div>
+                    <div id="SoldierGridSlot2-6">Other:</div>
                 </div>                </div>
-            <div class="SoliderGridContainer">
-                <div class="SoliderInfoGrid" id="SoliderInfoGrid3">
-                    <div id="SoliderGridSlot3-1">Name:</div>
-                    <div id="SoliderGridSlot3-2">Amount:</div>
-                    <div id="SoliderGridSlot3-3">Weapon:</div>
-                    <div id="SoliderGridSlot3-4">Offhand:</div>
-                    <div id="SoliderGridSlot3-5">Armor:</div>
-                    <div id="SoliderGridSlot3-6">Other:</div>
+            <div class="SoldierGridContainer">
+                <div class="SoldierInfoGrid" id="SoldierInfoGrid3">
+                    <div id="SoldierGridSlot3-1">Name:</div>
+                    <div id="SoldierGridSlot3-2">Amount:</div>
+                    <div id="SoldierGridSlot3-3">Weapon:</div>
+                    <div id="SoldierGridSlot3-4">Offhand:</div>
+                    <div id="SoldierGridSlot3-5">Armor:</div>
+                    <div id="SoldierGridSlot3-6">Other:</div>
                 </div>                </div>
-            <div class="SoliderGridContainer">
-                <div class="SoliderInfoGrid" id="SoliderInfoGrid4">
-                    <div id="SoliderGridSlot4-1">Name:</div>
-                    <div id="SoliderGridSlot4-2">Amount:</div>
-                    <div id="SoliderGridSlot4-3">Weapon:</div>
-                    <div id="SoliderGridSlot4-4">Offhand:</div>
-                    <div id="SoliderGridSlot4-5">Armor:</div>
-                    <div id="SoliderGridSlot4-6">Other:</div>
+            <div class="SoldierGridContainer">
+                <div class="SoldierInfoGrid" id="SoldierInfoGrid4">
+                    <div id="SoldierGridSlot4-1">Name:</div>
+                    <div id="SoldierGridSlot4-2">Amount:</div>
+                    <div id="SoldierGridSlot4-3">Weapon:</div>
+                    <div id="SoldierGridSlot4-4">Offhand:</div>
+                    <div id="SoldierGridSlot4-5">Armor:</div>
+                    <div id="SoldierGridSlot4-6">Other:</div>
                 </div>                </div>
-            <div class="SoliderGridContainer">
-                <div class="SoliderInfoGrid" id="SoliderInfoGrid5">
-                    <div id="SoliderGridSlot5-1">Name:</div>
-                    <div id="SoliderGridSlot5-2">Amount:</div>
-                    <div id="SoliderGridSlot5-3">Weapon:</div>
-                    <div id="SoliderGridSlot5-4">Offhand:</div>
-                    <div id="SoliderGridSlot5-5">Armor:</div>
-                    <div id="SoliderGridSlot5-6">Other:</div>
+            <div class="SoldierGridContainer">
+                <div class="SoldierInfoGrid" id="SoldierInfoGrid5">
+                    <div id="SoldierGridSlot5-1">Name:</div>
+                    <div id="SoldierGridSlot5-2">Amount:</div>
+                    <div id="SoldierGridSlot5-3">Weapon:</div>
+                    <div id="SoldierGridSlot5-4">Offhand:</div>
+                    <div id="SoldierGridSlot5-5">Armor:</div>
+                    <div id="SoldierGridSlot5-6">Other:</div>
                 </div>                </div>
-            <div class="SoliderGridContainer">
-                <div class="SoliderInfoGrid" id="SoliderInfoGrid6">
-                    <div id="SoliderGridSlot6-1">Name:</div>
-                    <div id="SoliderGridSlot6-2">Amount:</div>
-                    <div id="SoliderGridSlot6-3">Weapon:</div>
-                    <div id="SoliderGridSlot6-4">Offhand:</div>
-                    <div id="SoliderGridSlot6-5">Armor:</div>
-                    <div id="SoliderGridSlot6-6">Other:</div>
+            <div class="SoldierGridContainer">
+                <div class="SoldierInfoGrid" id="SoldierInfoGrid6">
+                    <div id="SoldierGridSlot6-1">Name:</div>
+                    <div id="SoldierGridSlot6-2">Amount:</div>
+                    <div id="SoldierGridSlot6-3">Weapon:</div>
+                    <div id="SoldierGridSlot6-4">Offhand:</div>
+                    <div id="SoldierGridSlot6-5">Armor:</div>
+                    <div id="SoldierGridSlot6-6">Other:</div>
                 </div>                </div>
-            <div class="SoliderGridContainer">
-                <div class="SoliderInfoGrid" id="SoliderInfoGrid7">
-                    <div id="SoliderGridSlot7-1">Name:</div>
-                    <div id="SoliderGridSlot7-2">Amount:</div>
-                    <div id="SoliderGridSlot7-3">Weapon:</div>
-                    <div id="SoliderGridSlot7-4">Offhand:</div>
-                    <div id="SoliderGridSlot7-5">Armor:</div>
-                    <div id="SoliderGridSlot7-6">Other:</div>
+            <div class="SoldierGridContainer">
+                <div class="SoldierInfoGrid" id="SoldierInfoGrid7">
+                    <div id="SoldierGridSlot7-1">Name:</div>
+                    <div id="SoldierGridSlot7-2">Amount:</div>
+                    <div id="SoldierGridSlot7-3">Weapon:</div>
+                    <div id="SoldierGridSlot7-4">Offhand:</div>
+                    <div id="SoldierGridSlot7-5">Armor:</div>
+                    <div id="SoldierGridSlot7-6">Other:</div>
                 </div>                </div>
-            <div class="SoliderGridContainer">
-                <div class="SoliderInfoGrid" id="SoliderInfoGrid8">
-                    <div id="SoliderGridSlot8-1">Name:</div>
-                    <div id="SoliderGridSlot8-2">Amount:</div>
-                    <div id="SoliderGridSlot8-3">Weapon:</div>
-                    <div id="SoliderGridSlot8-4">Offhand:</div>
-                    <div id="SoliderGridSlot8-5">Armor:</div>
-                    <div id="SoliderGridSlot8-6">Other:</div>
+            <div class="SoldierGridContainer">
+                <div class="SoldierInfoGrid" id="SoldierInfoGrid8">
+                    <div id="SoldierGridSlot8-1">Name:</div>
+                    <div id="SoldierGridSlot8-2">Amount:</div>
+                    <div id="SoldierGridSlot8-3">Weapon:</div>
+                    <div id="SoldierGridSlot8-4">Offhand:</div>
+                    <div id="SoldierGridSlot8-5">Armor:</div>
+                    <div id="SoldierGridSlot8-6">Other:</div>
                 </div>                </div>
-            <div class="SoliderGridContainer">
-                <div class="SoliderInfoGrid" id="SoliderInfoGrid9">
-                    <div id="SoliderGridSlot9-1">Name:</div>
-                    <div id="SoliderGridSlot9-2">Amount:</div>
-                    <div id="SoliderGridSlot9-3">Weapon:</div>
-                    <div id="SoliderGridSlot9-4">Offhand:</div>
-                    <div id="SoliderGridSlot9-5">Armor:</div>
-                    <div id="SoliderGridSlot9-6">Other:</div>
+            <div class="SoldierGridContainer">
+                <div class="SoldierInfoGrid" id="SoldierInfoGrid9">
+                    <div id="SoldierGridSlot9-1">Name:</div>
+                    <div id="SoldierGridSlot9-2">Amount:</div>
+                    <div id="SoldierGridSlot9-3">Weapon:</div>
+                    <div id="SoldierGridSlot9-4">Offhand:</div>
+                    <div id="SoldierGridSlot9-5">Armor:</div>
+                    <div id="SoldierGridSlot9-6">Other:</div>
                 </div>                </div>
-            <div class="SoliderGridContainer">
-                <div class="SoliderInfoGrid" id="SoliderInfoGrid10">
-                    <div id="SoliderGridSlot10-1">Name:</div>
-                    <div id="SoliderGridSlot10-2">Amount:</div>
-                    <div id="SoliderGridSlot10-3">Weapon:</div>
-                    <div id="SoliderGridSlot10-4">Offhand:</div>
-                    <div id="SoliderGridSlot10-5">Armor:</div>
-                    <div id="SoliderGridSlot10-6">Other:</div>
+            <div class="SoldierGridContainer">
+                <div class="SoldierInfoGrid" id="SoldierInfoGrid10">
+                    <div id="SoldierGridSlot10-1">Name:</div>
+                    <div id="SoldierGridSlot10-2">Amount:</div>
+                    <div id="SoldierGridSlot10-3">Weapon:</div>
+                    <div id="SoldierGridSlot10-4">Offhand:</div>
+                    <div id="SoldierGridSlot10-5">Armor:</div>
+                    <div id="SoldierGridSlot10-6">Other:</div>
                 </div>                </div>
-            <div class="SoliderGridContainer">
-                <div class="SoliderInfoGrid" id="SoliderInfoGrid11">
-                    <div id="SoliderGridSlot11-1">Name:</div>
-                    <div id="SoliderGridSlot11-2">Amount:</div>
-                    <div id="SoliderGridSlot11-3">Weapon:</div>
-                    <div id="SoliderGridSlot11-4">Offhand:</div>
-                    <div id="SoliderGridSlot11-5">Armor:</div>
-                    <div id="SoliderGridSlot11-6">Other:</div>
+            <div class="SoldierGridContainer">
+                <div class="SoldierInfoGrid" id="SoldierInfoGrid11">
+                    <div id="SoldierGridSlot11-1">Name:</div>
+                    <div id="SoldierGridSlot11-2">Amount:</div>
+                    <div id="SoldierGridSlot11-3">Weapon:</div>
+                    <div id="SoldierGridSlot11-4">Offhand:</div>
+                    <div id="SoldierGridSlot11-5">Armor:</div>
+                    <div id="SoldierGridSlot11-6">Other:</div>
                 </div>                </div>
-            <div class="SoliderGridContainer">
-                <div class="SoliderInfoGrid" id="SoliderInfoGrid12">
-                    <div id="SoliderGridSlot12-1">Name:</div>
-                    <div id="SoliderGridSlot12-2">Amount:</div>
-                    <div id="SoliderGridSlot12-3">Weapon:</div>
-                    <div id="SoliderGridSlot12-4">Offhand:</div>
-                    <div id="SoliderGridSlot12-5">Armor:</div>
-                    <div id="SoliderGridSlot12-6">Other:</div>
+            <div class="SoldierGridContainer">
+                <div class="SoldierInfoGrid" id="SoldierInfoGrid12">
+                    <div id="SoldierGridSlot12-1">Name:</div>
+                    <div id="SoldierGridSlot12-2">Amount:</div>
+                    <div id="SoldierGridSlot12-3">Weapon:</div>
+                    <div id="SoldierGridSlot12-4">Offhand:</div>
+                    <div id="SoldierGridSlot12-5">Armor:</div>
+                    <div id="SoldierGridSlot12-6">Other:</div>
                 </div>
 
             </div>
-        </SoliderViewGrid>
+        </SoldierViewGrid>
         <QuestMenu>
             <text class="InvisableOnStart" id="QuestSelectorText">Which Quest Would you like to do?</text>
             <select class="Dropdown InvisableOnStart" id="QuestSelector" onchange="questText(this.value)">
@@ -693,10 +750,10 @@
                 <option value="10607">T7_Horse_Archer</option>
                 <option value="10608">T8_Horse_Archer</option>
             </select>
-            <text class="Recipe RecipeText BigText" id="Cost">Cost:</text>
+            <text class="Recipe RecipeText BigText" id="Cost"></text>
             <br>
-            <input type="number" class="NumericInput" id="TroopUpgrade">How many troops would you like to
-            upgrade?</input>
+            <label for="TroopUpgrade" id="TroopUpgradeLabel">How many troops would you like to upgrade?</label>
+            <input type="number" class="NumericInput" id="TroopUpgrade"></input>
 
         </TroopList>
     </MainSelector>
@@ -737,19 +794,19 @@
         border-radius: 12px;
         font-size: 16px;
     }
-    .SuperSoliderGridContainer {
+    .SuperSoldierGridContainer {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(4, 1fr);
        background-color: aqua;
     }
-    .SoliderGridContainer {
+    .SoldierGridContainer {
         display: block;
         width: 1fr;
         border: 1px solid rgba(0, 0, 0, 0.8);
         background-color: green;
     }
-    .SoliderInfoGrid {
+    .SoldierInfoGrid {
         display: inline-block;
     }
     .menuButtons {
