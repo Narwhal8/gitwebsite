@@ -2890,9 +2890,9 @@
   <Time class="">
     <text class="Time" id="timeToCompletion">Time To Completion:</text>
   </Time>
+    <button class="sendTX" id="sendTX" onclick="submitTX()">Confirm Transaction</button>
 
   <NotesButton class="MenuButtons">
-    <button class="sendTX" id="sendTX" onclick="submitTX()">Confirm Transaction</button>
 
     <a href="faq.html">
       <button class="notesButton notebutton1">Project FAQ</button>
@@ -2901,10 +2901,10 @@
       <button class="notesButton notebutton2">See Game Notes!</button>
     </a>
     <a href="warpage.html">
-      <button class="notesButton notebutton2">Manage Army</button>
+      <button class="notesButton notebutton3">Manage Army</button>
     </a>
-    <a href="dev.html">
-      <button class="debugButton">Debug</button>
+    <a href="wiki.html">
+      <button class="notesButton notebutton4">Game Encylopedia</button>
     </a>
   </NotesButton>
 
@@ -2968,7 +2968,13 @@
     display: none;
   }
 
-
+  .MenuButtons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        left:25%;
+        bottom: 15px;
+    }
   .walletConnect {
     background-color: darkred;
     position: absolute;
@@ -2990,12 +2996,13 @@
   .sendTX {
     background-color: darkred;
     color: black;
-    position: relative;
+    position: absolute;
     width: 150px;
     height: 80px;
     text-align: center;
     font-size: 16px;
     border-radius: 12px;
+    bottom:10px;
   }
 
   .Notice {
@@ -3015,22 +3022,10 @@
     position: relative;
     border-radius: 12px;
     font-size: 16px;
-    left: 25%;
-    bottom: 15px;
   }
 
   .notesButton:hover {
     background-color: rgb(179, 165, 165);
-  }
-
-  .notebutton2 {
-    top: 30px;
-    left: -40px;
-  }
-
-  .notebutton1 {
-    top: -10px;
-    left: 114px;
   }
 
   .debugButton {

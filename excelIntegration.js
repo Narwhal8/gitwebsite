@@ -912,15 +912,15 @@ let recipe7003 = [[1,0,0,0,0,0], [Mink,0,0,0,0,0], [10,10,0], [Exotic_Meat,Exoti
 let recipe7004 = [[1,0,0,0,0,0], [Cyote,0,0,0,0,0], [100,100,0], [Exotic_Meat,Fur,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
 let recipe7005 = [[1,0,0,0,0,0], [Snake,0,0,0,0,0], [10,20,0], [Exotic_Meat,Exotic_Leather,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
 let recipe7100 = [[1,0,0,0,0,0], [Fox,0,0,0,0,0], [100,150,0], [Exotic_Meat,Fur,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7101 = [[1,0,0,0,0,0], [Boar,0,0,0,0,0], [5,200,100], [Ivory,Exotic_Meat,Leather], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7101 = [[1,0,0,0,0,0], [Boar,0,0,0,0,0], [5,1000,100], [Ivory,Game_Meat,Leather], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
 let recipe7102 = [[1,0,0,0,0,0], [Zebra,0,0,0,0,0], [400,300,0], [Exotic_Meat,Leather,0], 1, 4, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7103 = [[1,0,0,0,0,0], [Reindeer,0,0,0,0,0], [800,200,100], [Exotic_Meat,Leather,Antler], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7103 = [[1,0,0,0,0,0], [Reindeer,0,0,0,0,0], [800,1000,100], [Game_Meat,Leather,Antler], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
 let recipe7104 = [[1,0,0,0,0,0], [Leopard,0,0,0,0,0], [300,1,0], [Exotic_Meat,Leopard_Skin,0], 1, 4, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
 let recipe7105 = [[1,0,0,0,0,0], [Crocodile,0,0,0,0,0], [200,200,0], [Exotic_Meat,Exotic_Leather,0], 1, 5, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
 let recipe7106 = [[1,0,0,0,0,0], [Otter,0,0,0,0,0], [20,40,0], [Exotic_Meat,Exotic_Fur,0], 1, 5, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
 let recipe7107 = [[1,0,0,0,0,0], [Wolf,0,0,0,0,0], [100,500,0], [Exotic_Meat,Fur,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
 let recipe7108 = [[1,0,0,0,0,0], [Seal,0,0,0,0,0], [200,400,0], [Exotic_Meat,Fur,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7200 = [[1,0,0,0,0,0], [Elk,0,0,0,0,0], [2000,500,500], [Exotic_Meat,Leather,Antler], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
+let recipe7200 = [[1,0,0,0,0,0], [Elk,0,0,0,0,0], [10000,500,500], [Game_Meat,Leather,Antler], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
 let recipe7201 = [[1,0,0,0,0,0], [Aurochs,0,0,0,0,0], [3000,1,0], [Beef,Aurochs_Hide,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
 let recipe7202 = [[1,0,0,0,0,0], [Black_Leopard,0,0,0,0,0], [400,1,0], [Exotic_Meat,Black_Leopard_Skin,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
 let recipe7203 = [[1,0,0,0,0,0], [Bear,0,0,0,0,0], [1000,1,0], [Exotic_Meat,Bear_Hide,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
@@ -3883,6 +3883,42 @@ let cropdata0 = [0, 0, [0, 0, 0], [0, 0], 0, 0, 0, 0, false, 0, 0, 0];
 
 const BuildingName = ["Land Permit", "Tier 1 Housing", "Tier 2 Housing", "Tier 3 Housing", "Tier 4 Housing", "Tier 5 Housing", "Tier 6 Housing", "Tier 7 Housing", "Tier 1 Cookery", "Tier 2 Cookery", "Tier 3 Cookery", "Tier 4 Cookery", "Tier 1 Brewery", "Tier 2 Brewery", "Tier 3 Brewery", "Tier 4 Brewery", "Tier 1 Smeltery", "Tier 3 Smeltery", "Tier 3 Smeltery", "Masonry", "Tier 1 Blacksmith", "Tier 2 Blacksmith", "Aging Facility","None","None","None", "Tier 1 Jeweler", "Tier 2 Jeweler", "Tier 1 Weaver", "Tier 2 Weaver", "Tier 1 Carpenter", "Tier 2 Carpenter" ];
 
+
+const landData1 = [90,25,50,5];
+const landData2 = [80,25,50,15];
+const landData3 = [80,75,50,25];
+const landData4 = [80,100,50,50];
+const landData11 = [30,25,50,0];
+const landData12 = [40,100,50,15];
+const landData13 = [50,110,50,25];
+const landData14 = [40,110,50,50];
+const landData21 = [60,25,50,0];
+const landData22 = [60,100,50,25];
+const landData23 = [60,100,50,50];
+const landData31 = [80,25,50,0];
+const landData32 = [80,75,50,0];
+const landData33 = [85,100,50,0];
+const landData34 = [80,110,50,0];
+const landData41 = [45,120,0,0];
+const landData42 = [55,120,0,0];
+const landData43 = [65,120,0,0];
+const landData44 = [75,120,0,0];
+const landData51 = [70,200,50,15];
+const landData52 = [70,175,50,35];
+const landData53 = [70,150,50,50];
+const landData61 = [55,100,175,25];
+const landData62 = [55,100,175,25];
+const landData63 = [60,100,150,25];
+const landData64 = [45,100,200,25];
+const landData70 = [65,100,50,100];
+const landData71 = [55,110,50,175];
+const landData72 = [65,100,50,150];
+const landData80 = [70,100,50,200];
+const landData81 = [60,100,100,225];
+const landData82 = [70,100,50,250];
+
+
+
 function returnRecipe(_value) {
     _value = "recipe" + _value;
     _value = eval(_value);
@@ -3909,6 +3945,11 @@ function returnBuildingName(_value) {
 }
 function returnWeaponData(_value) {
     _value = "weapon" + _value;
+    _value = eval(_value);
+    return _value;
+}
+function returnlandData(_value) {
+    _value = "landData" + _value;
     _value = eval(_value);
     return _value;
 }

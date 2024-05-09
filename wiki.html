@@ -6,8 +6,32 @@
         var _lastLength;
         var _additionalCraftingMethods = [];
 
+        //Exotic Meat
+        _additionalCraftingMethods[541] = [7003,7004,7005,7100,7102,7104,7105,7106,7107,7108,7202,7203,7204,7205,7206,7300,7301,7302,7303,7304];
+        //Game Meat
+        _additionalCraftingMethods[545] = [7000,7001,7002,7101,7103,7200];
+        //Sugar
         _additionalCraftingMethods[1301] = [536,519];
+        //Silver
+        _additionalCraftingMethods[2123] = [536];
+        //Oppulant Furniture
         _additionalCraftingMethods[4522] = [4013,4014,4015,4016,4017,4018];
+        //Leather
+        _additionalCraftingMethods[4004] = [7400,7001,7102,7103,7200,7205];
+        //Feather
+        _additionalCraftingMethods[4008] = [7402,7002];
+        //Fur
+        _additionalCraftingMethods[4006] = [7000,7004,7100,7107,7108,74013,74015];
+        //Exotic Fur
+        _additionalCraftingMethods[4007] = [7003,7002,7106,7204,74016,74017,74018];
+        //Exotic Leather
+        _additionalCraftingMethods[4005] = [7005,7105,7206,7304];
+        //Antler
+        _additionalCraftingMethods[4010] = [7001,7103,7200];
+        //Ivory
+        _additionalCraftingMethods[4011] = [7101,7205,7300];
+        //Thick Leather
+        _additionalCraftingMethods[4009] = [7300,7301];
 
         if(typeof _additionalCraftingMethods[1301] !== "undefined"){console.log(_additionalCraftingMethods[1301]);}
 
@@ -23,45 +47,81 @@
             document.getElementById("GeneralInfo").style.display = "block";
             document.getElementById("ItemValueInfo").textContent = "Item Value: " + itemValue(Number(ItemMenuDropdown.value));
 
-            if(document.getElementById("ItemMenuDropdown").value > 400 && document.getElementById("ItemMenuDropdown").value < 600)
-                {
-                    const _cropdata = returnCropData(_value);
-                    document.getElementById("TempratureRangeInfo").textContent = "Temprature Range: Min:" + _cropdata[2][0] + " Max: " + _cropdata[2][1] + " Ideal: "+ _cropdata[2][2]; 
-                    document.getElementById("WaterRangeInfo").textContent = "Water Range: Min:" + _cropdata[3][0] + " Max: " + _cropdata[2][1];
-                    document.getElementById("FarmTimeInfo").textContent = "Growth Time: ";
-                    document.getElementById("PrimaryYieldInfo").textContent = "Standard Yield: ";
-                    //If there is a secondary product
-                    if(_cropdata[1] != 0)
-                        {document.getElementById("ByproductYieldInfo").textContent = "Byproduct:" + _cropdata[0] +" "+ itemName(_cropdata[9]);
-                        document.getElementById("PrimaryYieldInfo").textContent += _cropdata[1];
-                        document.getElementById("FarmTimeInfo").textContent += _cropdata[7];
+            if(_value < 100) 
+            {
+                document.getElementById("LandInfo").style.display = "block";
+                var _landInfo = returnlandData(ItemMenuDropdown.value);
+                document.getElementById("LandTemperatureInfo").textContent = "Land Temp: " + _landInfo[0];
+                document.getElementById("WaterInfo").textContent = "Water Quantity: " + _landInfo[1];
+                document.getElementById("AltitudeInfo").textContent = "Altitude: " + _landInfo[2];
+                document.getElementById("SoilInfo").textContent = "Soil Quality: " + _landInfo[3];
+            }
+            if(_value > 400 && _value < 600)
+                { let _error = false                   
+                    try{returnCropData(_value);}
+                    catch (error){_error = true} 
+                    if(_error == true){
+                        document.getElementById("TempratureRangeInfo").textContent = "Gained From:";
+                        document.getElementById("WaterRangeInfo").style.display = "none";
+                        document.getElementById("FarmTimeInfo").style.display = "none";
+                        document.getElementById("PrimaryYieldInfo").style.display = "none";
+                        document.getElementById("ByproductYieldInfo").style.display = "none";
+                    }
+                    else{const _cropdata = returnCropData(_value);
+                        document.getElementById("TempratureRangeInfo").textContent = "Temprature Range: Min:" + _cropdata[2][0] + " Max: " + _cropdata[2][1] + " Ideal: "+ _cropdata[2][2]; 
+                        document.getElementById("WaterRangeInfo").textContent = "Water Range: Min:" + _cropdata[3][0] + " Max: " + _cropdata[2][1];
+                        document.getElementById("FarmTimeInfo").textContent = "Growth Time: ";
+                        document.getElementById("PrimaryYieldInfo").textContent = "Standard Yield: ";
+                        //If there is a secondary product
+                        if(_cropdata[1] != 0)
+                            {document.getElementById("ByproductYieldInfo").textContent = "Byproduct:" + _cropdata[0] +" "+ itemName(_cropdata[9]);
+                            document.getElementById("PrimaryYieldInfo").textContent += _cropdata[1];
+                            document.getElementById("FarmTimeInfo").textContent += _cropdata[7];
 
 
-                        }
-                    else{document.getElementById("ByproductYieldInfo").style.display = "none";
-                    document.getElementById("PrimaryYieldInfo").textContent += _cropdata[0];
-                    document.getElementById("FarmTimeInfo").textContent += _cropdata[6];
+                            }
+                        else{document.getElementById("ByproductYieldInfo").style.display = "none";
+                        document.getElementById("PrimaryYieldInfo").textContent += _cropdata[0];
+                        document.getElementById("FarmTimeInfo").textContent += _cropdata[6];
 
 
                     }
                     document.getElementById("GrowingInfo").style.display = "block";
+
                 }
-            if((document.getElementById("ItemMenuDropdown").value > 1000 && document.getElementById("ItemMenuDropdown").value < 2000)
-            ||(document.getElementById("ItemMenuDropdown").value > 2100 && document.getElementById("ItemMenuDropdown").value < 2200)
-            ||(document.getElementById("ItemMenuDropdown").value > 2300 && document.getElementById("ItemMenuDropdown").value < 7000))
+
+            }
+            if((_value > 1000 && _value < 2000)||(_value > 2100 && _value < 2200)||(_value > 2300 && _value < 7000)|| _value == 541)
                 {
+                    var _newValue = _value;
+                   try{returnRecipe(_value);}
+                   catch (error){_value = _additionalCraftingMethods[_value][0];} 
+                   finally{
+                    
                     const _recipe = returnRecipe(_value);
                     _value = Number(_value);
-                    document.getElementById("CraftingInputInfo").textContent = "Required Input: " + _recipe[0][0] + " " + itemName(_recipe[1][0]);
+                    CraftingInputInfo.textContent = "Required Input: " + _recipe[0][0] + " " + itemName(_recipe[1][0]);
                     for(let i = 1; i < 6; ++i) {
                         if(_recipe[0][i] == 0) {break;}
                         else{document.getElementById("CraftingInputInfo").textContent += " & "+ _recipe[0][i] + " " + itemName(_recipe[1][i]);}
                     }
-                    document.getElementById("CraftingAmountInfo").textContent = "Amount Yielded: " + _recipe[2][0];
+                    var q;
+                    for(let i = 0; i < 8;) {
+                        if(_recipe[3][i] == _newValue){q = i; break;}
+                        if(i == 7){q = 0; console.log("err: q should not run");}
+                        ++i
+                    }
+                    document.getElementById("CraftingAmountInfo").textContent = "Amount Yielded: " + _recipe[2][q];
                     document.getElementById("CraftingInfo").style.display = "block";
                     if(_recipe[2][1] != 0) 
                     {
-                        document.getElementById("CraftingOutputInfo").textContent = "Other Outputs: " + _recipe[2][1] + " " + itemName(_recipe[3][1]);
+                        for(let i = 0; i < 6; ++i){
+                            //Skips the value if already listed as primary
+                            if(_recipe[1][i] == _newValue){++i;}
+                            if(_recipe[1][i] == 0){break}
+                            document.getElementById("CraftingOutputInfo").textContent = "Other Outputs: " + _recipe[2][i] + " " + itemName(_recipe[3][i]);
+                        }
+
                     }
                     else{document.getElementById("CraftingOutputInfo").textContent = "Other Outputs: None";}
                     if(_recipe[6][0] != 0) {
@@ -70,14 +130,24 @@
                         { document.getElementById("CraftingBuildingInfo").textContent += " Or Higher";}
                     }
                     else {document.getElementById("CraftingBuildingInfo").textContent = "Building Requirements: None";}
-                    if(typeof _additionalCraftingMethods[_value] !== "undefined")
+                    if(typeof _additionalCraftingMethods[_newValue] !== "undefined")
                     {
                         document.getElementById("CraftingAlternateInfo").style.display = "inline";
 
-                        for(let i = 0; i < 7; ++i)
-                            {   if(i < _additionalCraftingMethods[_value].length) {
-                                var _otherRecipe = returnRecipe(_additionalCraftingMethods[_value][i]);
-                                var _testText = "-" + _otherRecipe[0][0] + " " + itemName(_otherRecipe[1][0]) + " For " + _otherRecipe[2][0] + " " + itemName(_otherRecipe[3][0]);
+                        for(let i = 0; i < _additionalCraftingMethods[_newValue].length; ++i)
+                            {   
+                                if(i < _additionalCraftingMethods[_newValue].length) {
+                                if(_recipe[1][i] == _value){++i;}
+                                var _otherRecipe = returnRecipe(_additionalCraftingMethods[_newValue][i]);
+                                var _outputText = "";
+                                 for(let j = 0; j < 3; ++j){
+                                    if(typeof _otherRecipe[3][j] == "undefined" || _otherRecipe[3][j] == 0){break;}
+                                    _outputText += _otherRecipe[2][j] + " " + itemName(_otherRecipe[3][j]);
+                                    if(typeof _otherRecipe[3][j + 1] !== "undefined" && _otherRecipe[3][j + 1] !== 0){_outputText += " & "}
+
+                                 }
+                                var _testText = "-" + _otherRecipe[0][0] + " " + itemName(_otherRecipe[1][0]) + " For " + _outputText;
+
                                 document.getElementById("CraftingAlternateInfo" + i).textContent = _testText;
                                 }
                                 else{document.getElementById("CraftingAlternateInfo" + i).textContent = "";}
@@ -85,8 +155,8 @@
                     }
                     else{document.getElementById("CraftingAlternateInfo").style.display = "none";}
 
-                }
-        }
+                }}
+            }   
         
         function hideAll() {
             document.getElementById("GeneralInfo").style.display = "none";
@@ -772,13 +842,50 @@
                 <text id="CraftingAlternateInfo5"></text>
                 <br>
                 <text id="CraftingAlternateInfo6"></text>
+                <br>
+                <text id="CraftingAlternateInfo7"></text>
+                <br>
+                <text id="CraftingAlternateInfo8"></text>
+                <br>
+                <text id="CraftingAlternateInfo9"></text>
+                <br>
+                <text id="CraftingAlternateInfo10"></text>
+                <br>
+                <text id="CraftingAlternateInfo11"></text>
+                <br>
+                <text id="CraftingAlternateInfo12"></text>
+                <br>
+                <text id="CraftingAlternateInfo13"></text>
+                <br>
+                <text id="CraftingAlternateInfo14"></text>
+                <br>
+                <text id="CraftingAlternateInfo15"></text>
+                <br>
+                <text id="CraftingAlternateInfo16"></text>
+                <br>
+                <text id="CraftingAlternateInfo17"></text>
+                <br>
+                <text id="CraftingAlternateInfo18"></text>
+                <br>
+                <text id="CraftingAlternateInfo19"></text>
+                <br>
+                <text id="CraftingAlternateInfo20"></text>
             </text>
         </CraftingInfo>
         <MilitaryInfo class="InvisableOnStart" id="MilitaryInfo">
             <h3>Military Info:</h3>
+            
         </MilitaryInfo>
         <LandInfo class="InvisableOnStart" id="LandInfo">
             <h3>Land Info:</h3>
+            <text id="LandTemperatureInfo">Land Temp:</text>
+            <br>
+            <text id="WaterInfo">Water Quantity:</text>
+            <br>
+            <text id="AltitudeInfo">Altitude:</text>
+            <br>
+            <text id="SoilInfo">Soil Quality:</text>
+
         </LandInfo>
     </Info>
 </body>
