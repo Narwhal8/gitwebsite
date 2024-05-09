@@ -179,7 +179,8 @@
           let _jobless_population = _cityData[1];
           let _max_population = _cityData[2];
           let _land_available = _cityData[3];
-          let _land = _cityData[5];
+          var _land = await NFTcontract.getLand(myAddress);
+
 
           var _civilian_stockpiles = await NFTcontract.getStockedGoods(myAddress);
           let _tithe_items = _civilian_stockpiles[1];
@@ -257,7 +258,7 @@
 
             if (Kingdom_Lands[_kingdomType][i] != 0) { document.getElementById(_name).style.display = "block"; }
             else { break; }
-
+            console.log(i);
             document.getElementsByClassName("Population")[i + 3].style.display = "block";
             document.getElementById(_name).textContent = "Land Balance:"+_land[i]+" "+itemName(Kingdom_Lands[_kingdomType][i])+"________";
             if (_land_available[i] == false) { document.getElementById(_name).textContent += "Land is available"; }

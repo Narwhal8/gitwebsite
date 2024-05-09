@@ -838,6 +838,25 @@ abi = [
 				"type": "address"
 			}
 		],
+		"name": "getLand",
+		"outputs": [
+			{
+				"internalType": "uint24[8]",
+				"name": "",
+				"type": "uint24[8]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_who",
+				"type": "address"
+			}
+		],
 		"name": "getStockedGoods",
 		"outputs": [
 			{
