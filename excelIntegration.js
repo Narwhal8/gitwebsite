@@ -3822,6 +3822,8 @@ const mixedItemData18 = [Polished_Ruby,Polished_Emerald,Polished_Sapphire];
 const mixedItemData19 = [Amethyst,Opal,Citrine,Pearl,Amber,Onyx,Aquamarine,Crystal_Glass];
 //Rare Gemstones
 const mixedItemData20 = [Ruby,Emerald,Sapphire];
+//Fiber
+const mixedItemData21 = [Cotton,Wool];
 
 
           
