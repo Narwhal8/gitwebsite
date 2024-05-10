@@ -416,6 +416,7 @@
           document.getElementById("CDInput").style.display = "block";
           document.getElementById("CDLabel").style.display = "inline";
           document.getElementById("CID").style.display = "inline";
+          document.getElementById("totalCostID").style.display = "none";
 
           for (let i = 0; i < 28; i++) {
             document.getElementsByClassName("buildingSelector")[i].style.display = "initial";
@@ -424,6 +425,7 @@
         case "5":
           document.getElementById("landLabel").style.display = "inline";
           document.getElementById("landSelection").style.display = "block";
+          
           showLandMenu();
           hideAmount();
           break;
@@ -431,6 +433,8 @@
           document.getElementById("landLabel").style.display = "inline";
           document.getElementById("landSelection").style.display = "block";
           document.getElementById("landAdderNotice").style.display = "block";
+          document.getElementById("totalCostID").style.display = "none";
+
           showLandMenu();
           break;
 
@@ -775,6 +779,10 @@
       document.getElementById("BatchAmount").style.display = "none";
       document.getElementById("BatchAmountLabel").style.display = "none";
 
+
+      document.getElementById("CropYieldAmount").style.display = "none";
+      document.getElementById("SecondaryCropYieldAmount").style.display = "none";
+
       document.getElementById("Address").style.display = "none";
       document.getElementById("AddressLabel").style.display = "none";
 
@@ -845,37 +853,6 @@
       document.getElementById("AmountID").style.display = "none";
       document.getElementById("AmountLabel").style.display = "none";
       document.getElementById("ShopingNotice").style.display = "none";
-    }
-
-    function showWarInput() {
-
-      document.getElementById("WLabel1").style.display = "block";
-      document.getElementById("WID1").style.display = "block";
-      document.getElementById("WBR1").style.display = "block";
-
-      document.getElementById("WLabel2").style.display = "block";
-      document.getElementById("WID2").style.display = "block";
-      document.getElementById("WBR2").style.display = "block";
-
-      document.getElementById("WLabel3").style.display = "block";
-      document.getElementById("WID3").style.display = "block";
-      document.getElementById("WBR3").style.display = "block";
-
-      document.getElementById("WLabel4").style.display = "block";
-      document.getElementById("WID4").style.display = "block";
-      document.getElementById("WBR4").style.display = "block";
-
-      document.getElementById("WLabel5").style.display = "block";
-      document.getElementById("WID5").style.display = "block";
-      document.getElementById("WBR5").style.display = "block";
-
-      document.getElementById("WLabel6").style.display = "block";
-      document.getElementById("WID6").style.display = "block";
-      document.getElementById("WBR6").style.display = "block";
-
-      document.getElementById("WarInput").style.display = "block";
-
-
     }
 
     async function farmYieldApproximator(_value) {
@@ -1973,7 +1950,7 @@
       <option value="538" class="2">Oats</option>
       <option value="539" class="2">Milk</option>
       <option value="540" class="2">Barley</option>
-      <option value="545" class="2">Exotic Meat</option>
+      <option value="545" class="2">Game Meat</option>
       <option value="546" class="2">Heartland Herb</option>
 
       <option value="-1"></option>
@@ -2510,30 +2487,7 @@
       <option value="200000">Buy</option>
       <option value="100000">Sell</option>
     </select>
-
-
-
-
   </BuyorSell>
-
-
-
-
-  <ItemTypes class="">
-
-    <label for="ItemTypesID" class="ItemTypes" id="ItemTypesLabel">What kind of item are you trying to trade?</label>
-
-    <select class="ItemTypes Dropdown" id="ItemTypesID">
-      <option value="-1"></option>
-      <option value="0">Land</option>
-      <option value="1">Raw Foods</option>
-      <option value="2">Food/Drinks</option>
-      <option value="3">Raw Materials</option>
-      <option value="4">Refined Materials</option>
-      <option value="5">Gemstones</option>
-      <option value="6">Finished Goods</option>
-      <option value="7">Military Goods</option>
-    </select>
 
 
 
@@ -2563,34 +2517,6 @@
     </select>
   </FoodAmounts>
 
-  <WarInput class="WarInput " id="WarInput">
-
-    <text class="WarInput" id="WLabel1">Which slot do troops go in?</text>
-    <input type="text" class="WarInput" id="WID1">
-    <br class="WarInput" id="WBR1">
-
-
-    <text class="MercWarInput WarInput" id="WLabel2">what type of solider?</text>
-    <input type="text" class="WarInput MercWarInput" id="WID2">
-    <br class="WarInput MercWarInput" id="WBR2">
-
-    <text class="WarInput" id="WLabel3">what weapon?</text>
-    <input type="text" class="WarInput" id="WID3">
-    <br class="WarInput" id="WBR3">
-
-    <text class="WarInput" id="WLabel4">what offhand?</text>
-    <input type="text" class="WarInput" id="WID4">
-    <br class="WarInput" id="WBR4">
-
-    <text class="WarInput" id="WLabel5">what armor?</text>
-    <input type="text" class="WarInput" id="WID5">
-    <br class="WarInput" id="WBR5">
-
-    <text class="WarInput" id="WLabel6">what other item?</text>
-    <input type="text" class="WarInput" id="WID6">
-    <br class="WarInput" id="WBR6">
-
-  </WarInput>
 
 
   <KingdomInput class="KingdomInput " id="KIDInfo">
