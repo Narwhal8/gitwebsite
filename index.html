@@ -12,8 +12,18 @@
   </script>
   <script id="ethersScript">
 
-    const address = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-    const waraddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
+    let _address = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+    let _warAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
+
+    const provider = new ethers.providers.Web3Provider(window.ethereum)
+    if(provider.getNetwork().chainID == 11155111) {
+      _address = "";
+      _warAddress = "";
+      console.log("Testnet Chain");
+    }
+
+    const address = _address;
+    const waraddress = _warAddress;
     var _kingdomType;
 
 
@@ -585,8 +595,8 @@
         setTTC(TimeAmount.value * 10);
         if(cropSelect.value > 100){await farmYieldApproximator(TimeAmount.value);}
         else if(cropSelect.value == 1) {await landYieldApproximator(TimeAmount.value)}
-        else if(cropSelect.value == 2) {document.getElementById("totalCostID").textContent = "Total Cost: " + (Amount * TimeAmount.value) + " Low Noble Hunting Ration. Will require " + (5 *(Amount * TimeAmount.value)) + " land.";}
-        else if(cropSelect.value == 3) {document.getElementById("totalCostID").textContent = "Total Cost: " + (Amount * TimeAmount.value) + " High Noble Hunting Ration. Will require " + (20 *(Amount * TimeAmount.value)) + " land.";}
+        else if(cropSelect.value == 2) {document.getElementById("totalCostID").textContent = "Total Cost: " + (Amount * TimeAmount.value) + " Low Noble Hunting Ration. Will require " + (5 * Amount) + " land.";}
+        else if(cropSelect.value == 3) {document.getElementById("totalCostID").textContent = "Total Cost: " + (Amount * TimeAmount.value) + " High Noble Hunting Ration. Will require " + (20 * Amount) + " land.";}
       }
       else if(actionSelect.value == "2" || actionSelect.value == "3") {
         let whyJS = returnRecipe(Number(selector()));
@@ -908,7 +918,7 @@
 
       document.getElementById("BuyorSellLabel").style.display = "none";
 
-      for (let i = 0; i < 23; i++) {
+      for (let i = 0; i < 24; i++) {
         document.getElementsByClassName("Population")[i].style.display = "none"
       }
 
