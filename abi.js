@@ -1,4 +1,4 @@
-abi = [
+abi =[
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
@@ -730,19 +730,6 @@ abi = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "deploytime",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -1022,6 +1009,19 @@ abi = [
 		"name": "returnHome",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "returnSeason",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{

@@ -186,6 +186,12 @@
           let _tithe_items = _civilian_stockpiles[1];
 
           var _buildingAmount = await NFTcontract.getBuildingCount(myAddress);
+          var _season = await NFTcontract.returnSeason();
+
+          if(_season == 0) {_season = "Winter";}
+          if(_season == 1) {_season = "Spring";}
+          if(_season == 2) {_season = "Summer";}
+          if(_season == 3) {_season = "Fall";}
 
 
 
@@ -212,7 +218,7 @@
 
 
 
-          for (let i = 12; i < 21; i++) {
+          for (let i = 12; i < 22; i++) {
             document.getElementsByClassName("Population")[i].style.display = "block";
           }
           document.getElementById("housing").textContent = "Housing Count: Land Permits: " + _buildingAmount[0] + ", Tier 1: " + _buildingAmount[1] + ", Tier 2: " + _buildingAmount[2] + ", Tier 3: " + _buildingAmount[3] + ", Tier 4: " + _buildingAmount[4] + ", Tier 5: " + _buildingAmount[5] + ", Tier 6: " + _buildingAmount[6] + ", Tier 7: " + _buildingAmount[7];
@@ -250,6 +256,10 @@
 
 
           document.getElementById("titheData").style.display = "block";
+          document.getElementById("seasonData").style.display = "block";
+
+          document.getElementById("seasonData").textContent = "Season: " + _season;
+
           for (let i = 0; i < 10; i++) {
 
             var _name = "land";
@@ -571,8 +581,12 @@
       const Amount = document.getElementById("Amount").value;
 
       if (actionSelect.value == "1") {
+        hideFarmYield();
         setTTC(TimeAmount.value * 10);
         if(cropSelect.value > 100){await farmYieldApproximator(TimeAmount.value);}
+        else if(cropSelect.value == 1) {await landYieldApproximator(TimeAmount.value)}
+        else if(cropSelect.value == 2) {document.getElementById("totalCostID").textContent = "Total Cost: " + (Amount * TimeAmount.value) + " Low Noble Hunting Ration. Will require " + (5 *(Amount * TimeAmount.value)) + " land.";}
+        else if(cropSelect.value == 3) {document.getElementById("totalCostID").textContent = "Total Cost: " + (Amount * TimeAmount.value) + " High Noble Hunting Ration. Will require " + (20 *(Amount * TimeAmount.value)) + " land.";}
       }
       else if(actionSelect.value == "2" || actionSelect.value == "3") {
         let whyJS = returnRecipe(Number(selector()));
@@ -961,7 +975,12 @@
       document.getElementById("AmountLabel").style.display = "none";
       document.getElementById("ShopingNotice").style.display = "none";
     }
-
+    
+    function hideFarmYield() {
+      document.getElementById("CropYieldAmount").style.display = "none";
+      document.getElementById("SecondaryCropYieldAmount").style.display = "none";
+    }
+    
     async function farmYieldApproximator(_value) {
       var crop_info = returnCropData(cropSelect.value);
 
@@ -998,6 +1017,41 @@
 
 
     }
+    
+    async function landYieldApproximator(_value) {
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner()
+      const NFTcontract = new ethers.Contract(address, abi, provider)
+      const myAddress = await signer.getAddress()
+
+
+      const _cityData = await NFTcontract.getKingdomInfo(myAddress);
+      const _kingdomType = _cityData[4];
+      const _land_info = returnlandData(document.querySelectorAll(".Lands")[_kingdomType - 1].value);
+      var temp_name = "Estimated Yield: ";
+
+      
+      for(let i = 0; i < 5; ++i) {
+        if(_land_info[4][i] == 0){break;}
+        var yield_mod = await _buildTimeBasedOnFood(itemValue(Number(foodInputID.value)),true)/100;
+        var _primaryYield = Math.floor(_land_info[5][i] * _value * Amount.value * yield_mod);
+        temp_name += _primaryYield +" "+ itemName(_land_info[4][i]);
+        if(_land_info[4][i + 1] == 0){break;}
+        temp_name += " & ";
+
+      }
+
+      document.getElementById("CropYieldAmount").style.display = "block";
+
+      document.getElementById("totalCostID").textContent = "Total Cost: " + Amount.value * _value + " Food";
+
+
+
+      document.getElementById("CropYieldAmount").textContent = temp_name
+
+
+    }
+    
     function selectLand(_value) {
 
       showLandMenu();
@@ -2879,7 +2933,7 @@
     <text class="Amount" id="AmountLabel">How many times would you like to do this?</text>
     <text class="Amount Notice" id="ShopingNotice">Note: Items of less then 20 value are traded in increments of
       100</text>
-    <text class="Amount" id="LandAmountLabel">How many land would you like to use?</text>
+    <text class="Amount" id="LandAmountLabel">How many people would you like to assign to this task?</text>
     <input class="Amount NumericInput" type="number" id="Amount" onchange="totalCostCalc();"></input>
     <text class="Amount" id="TimeAmountLabel" onchange="totalCostCalc();">How many units of time would you like to run
       this for?</text>
@@ -2903,7 +2957,7 @@
 
   </TotalCost>
 
-  <KingdomInfo class="">
+  <KingdomInfo class="" id="KingdomInfo">
     <text id="peasentPop" class="Population">Pesants:</text>
     <text id="lowNobelPop" class="Population">Low Nobles:</text>
     <text id="highNobelPop" class="Population">High Nobles:</text>
@@ -2929,6 +2983,7 @@
     <text id="carpenter" class="Population">Carpenter Count:</text>
 
     <text id="titheData" class="Population">Tithe Item Stockpiles:</text>
+    <text id="seasonData" class="Population">Current Season:</text>
 
   </KingdomInfo>
 
