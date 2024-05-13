@@ -1033,7 +1033,8 @@
 
       var temp_bonus = 1 - (0.02 * (crop_info[2][2] - _temp_mod));
       if( temp_bonus < 0){temp_bonus = 0;}
-      var primary_yield = Math.round(crop_info[0] * _value * Amount.value * yield_mod * temp_bonus);
+      var fertility_bonus = (75 + _land_info[3])/100
+      var primary_yield = Math.round(crop_info[0] * _value * Amount.value * yield_mod * temp_bonus * fertility_bonus);
 
       if(secondary_crop_yield_times != 0) {
         document.getElementById("SecondaryCropYieldAmount").style.display = "block";
