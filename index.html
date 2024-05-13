@@ -12,19 +12,7 @@
   </script>
   <script id="ethersScript">
 
-    let _address = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-    let _warAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
 
-    const provider = new ethers.providers.Web3Provider(window.ethereum)
-    if(provider.getNetwork().chainID == 11155111) {
-      _address = "";
-      _warAddress = "";
-      console.log("Testnet Chain");
-    }
-    else{console.log(provider.getNetwork().chainID);}
-
-    const address = _address;
-    const waraddress = _warAddress;
     var _kingdomType;
 
 
@@ -60,15 +48,48 @@
       [70, 71, 72, 0, 0, 0, 0, 0],
       [80, 81, 82, 0, 0, 0, 0, 0]];
 
+    async function _address() {
 
+        
+      let _address = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+      let _warAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
+      
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+            
+      const network = await provider.getNetwork();
+      console.log(network);
+      if(network.chainId == 11155111) {
+        _address = "0x0000000000000000000000000000000000000001";
+        _warAddress = "0x0000000000000000000000000000000000000001";
+        console.log("Testnet Chain");
+      }
+      if(network.chainId == 31337) {
+        _address = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+        _warAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
+        console.log("Local Host Chain");
+      }
+      else{console.log}
+
+        const address = _address;
+        const waraddress = _warAddress;
+
+        const _IHATEJAVASCRIPT = [address,waraddress];
+
+        return(_IHATEJAVASCRIPT);
+    }
     async function signon() {
+
+      var addies = await _address();
+      const address = addies[0];
+      const waraddress = addies[1];
       const provider = new ethers.providers.Web3Provider(window.ethereum)
 
       await provider.send("eth_requestAccounts", []);
 
+            
       const signer = provider.getSigner()
       const NFTcontract = new ethers.Contract(address, abi, provider)
-      myAddress = await signer.getAddress()
+      const myAddress = await signer.getAddress()
 
 
       _cityData = await NFTcontract.getKingdomInfo(myAddress);
@@ -80,6 +101,10 @@
     }
 
     async function submitTX() {
+
+      var addies = await _address();
+      const address = addies[0];
+      const waraddress = addies[1];
 
       const provider = new ethers.providers.Web3Provider(window.ethereum)
       const signer = provider.getSigner()
@@ -511,6 +536,9 @@
     }
 
     async function showLandMenu() {
+      var addies = await _address();
+      const address = addies[0];
+      const waraddress = addies[1];
       const provider = new ethers.providers.Web3Provider(window.ethereum)
       const signer = provider.getSigner()
       const NFTcontract = new ethers.Contract(address, abi, provider)
@@ -586,6 +614,11 @@
     }
 
     async function totalCostCalc() {
+
+      var addies = await _address();
+      const address = addies[0];
+      const waraddress = addies[1];
+
       document.getElementById("totalCostID").textContent = "Total Cost:";
       document.getElementById("totalCostID").style.display = "block";
 
@@ -701,6 +734,9 @@
       }
     
     async function _buildTimeBasedOnFood(_value,_isFarming) {
+      var addies = await _address();
+      const address = addies[0];
+      const waraddress = addies[1];
       const provider = new ethers.providers.Web3Provider(window.ethereum)
       const signer = provider.getSigner()
       const NFTcontract = new ethers.Contract(address, abi, provider)
@@ -1030,6 +1066,9 @@
     }
     
     async function landYieldApproximator(_value) {
+      var address;
+      var waraddress;
+      [address,waraddress] = _address();
       const provider = new ethers.providers.Web3Provider(window.ethereum)
       const signer = provider.getSigner()
       const NFTcontract = new ethers.Contract(address, abi, provider)
