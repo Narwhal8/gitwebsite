@@ -5,15 +5,17 @@
 <head>
   <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
   <script src="./abi.js" type="application/javascript"></script>
+  <script src="./address.js" type="application/javascript"></script>
   <script src="./warabi.js" type="application/javascript"></script>
   <script src="./excelIntegration.js" type="application/javascript"></script>
 
 
   <script>
-    const address = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-    const waraddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
-
     async function submitTX() {
+      var addies = await _address();
+      const address = addies[0];
+      const waraddress = addies[1];
+      
       const provider = new ethers.providers.Web3Provider(window.ethereum)
       const signer = provider.getSigner();
       const NFTcontract = new ethers.Contract(address, abi, provider)

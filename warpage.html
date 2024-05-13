@@ -4,6 +4,7 @@
     <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
     <script src="./warabi.js" type="application/javascript"></script>
     <script src="./abi.js" type="application/javascript"></script>
+    <script src="./address.js" type="application/javascript"></script>
     <script src="./excelIntegration.js" type="application/javascript"></script>
 
     <script>
@@ -54,6 +55,9 @@
         async function selectAction(_value) {
             const provider = new ethers.providers.Web3Provider(window.ethereum)
 
+            var addies = await _address();
+            const address = addies[0];
+            const waraddress = addies[1];
 
             const signer = provider.getSigner()
             const NFTcontract = new ethers.Contract(waraddress, warabi, provider)
@@ -121,6 +125,11 @@
             }
         }
         async function submitTX() {
+            
+
+            var addies = await _address();
+            const address = addies[0];
+            const waraddress = addies[1];
             
             const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner();
