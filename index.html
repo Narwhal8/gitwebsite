@@ -49,35 +49,6 @@
       [70, 71, 72, 0, 0, 0, 0, 0],
       [80, 81, 82, 0, 0, 0, 0, 0]];
 
-    async function _address() {
-
-        
-      let _address = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-      let _warAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
-      
-      const provider = new ethers.providers.Web3Provider(window.ethereum)
-            
-      const network = await provider.getNetwork();
-      console.log(network);
-      if(network.chainId == 11155111) {
-        _address = "0x0102a5b47EBCa79e7AbAAe884184F4Dc7d1653e9";
-        _warAddress = "0x0c5A2E0bbD09cDe624b00e6b8E158Da3612EE47C";
-        console.log("Testnet Chain");
-      }
-      if(network.chainId == 31337) {
-        _address = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-        _warAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
-        console.log("Local Host Chain");
-      }
-      else{console.log}
-
-        const address = _address;
-        const waraddress = _warAddress;
-
-        const _IHATEJAVASCRIPT = [address,waraddress];
-
-        return(_IHATEJAVASCRIPT);
-    }
     async function signon() {
 
       var addies = await _address();
@@ -545,7 +516,7 @@
       const NFTcontract = new ethers.Contract(address, abi, provider)
       const myAddress = await signer.getAddress()
       var _cityData = await NFTcontract.getKingdomInfo(myAddress);
-      const _kingdomType = _cityData[4]
+      const _kingdomType = _cityData[4];
 
       switch (_kingdomType) {
 
@@ -1030,7 +1001,21 @@
     }
     
     async function farmYieldApproximator(_value) {
-      var crop_info = returnCropData(cropSelect.value);
+
+      var addies = await _address();
+      const address = addies[0];
+      const waraddress = addies[1];
+
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner()
+      const NFTcontract = new ethers.Contract(address, abi, provider)
+      const myAddress = await signer.getAddress()
+      var _cityData = await NFTcontract.getKingdomInfo(myAddress);
+      const _kingdomType = _cityData[4];
+
+      const crop_info = returnCropData(cropSelect.value);
+
+      const _land_info = returnlandData(document.querySelectorAll(".Lands")[_kingdomType - 1].value);
 
       var crop_yield_times = crop_info[6];
       var secondary_crop_yield_times = crop_info[7];
@@ -1038,7 +1023,17 @@
 
       var yield_mod = await _buildTimeBasedOnFood(itemValue(Number(foodInputID.value)),true)/100;  
 
-      var primary_yield = (crop_info[0] * _value * Amount.value * yield_mod);
+      var _temp_mod = _land_info[0];
+
+      const _season = await NFTcontract.returnSeason();
+
+      if(_season == 0) {_temp_mod -= 20;}
+      else if(_season == 2) {_temp_mod += 20;}
+      else if(_season == 3) {_temp_mod += 10;}
+
+      var temp_bonus = 1 - (0.02 * (crop_info[2][2] - _temp_mod));
+      if( temp_bonus < 0){temp_bonus = 0;}
+      var primary_yield = Math.round(crop_info[0] * _value * Amount.value * yield_mod * temp_bonus);
 
       if(secondary_crop_yield_times != 0) {
         document.getElementById("SecondaryCropYieldAmount").style.display = "block";
@@ -1061,7 +1056,25 @@
 
 
       document.getElementById("CropYieldAmount").textContent = "Estimated Primary Yield: " + primary_yield + " " + itemName(crop_info[9]);
-      document.getElementById("CropYieldAmount").textContent += " NOTE: Estimates do not currently include effects based on land conditions or season";
+      if(_land_info[1] < crop_info[3][0]){
+        document.getElementById("CropYieldAmount").textContent = "Land is too dry to grow this";
+      }
+      else if(_land_info[1] > crop_info[3][1]){
+        document.getElementById("CropYieldAmount").textContent = "Land is too wet to grow this";
+      }
+      else if(crop_info[5] < _land_info[2]) {
+        document.getElementById("CropYieldAmount").textContent = "Land is too high up for cultivation of this crop";
+      }
+      else if(crop_info[4] > _land_info[3]) {
+        document.getElementById("CropYieldAmount").textContent = "Land is too barren up for cultivation of this crop";
+      }
+      else if(crop_info[2][0] > _land_info[0]) {
+        document.getElementById("CropYieldAmount").textContent = "Land is too cold for cultivation";
+      }
+      else if(crop_info[2][1] < _land_info[0]) {
+        document.getElementById("CropYieldAmount").textContent = "Land is too hot for cultication";
+      }
+
 
 
     }
