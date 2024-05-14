@@ -8,9 +8,9 @@ async function _address() {
           
     const network = await provider.getNetwork();
     console.log(network);
-    if(network.chainId == 11155111) {
+    if(network.chainId == 84532) {
       _address = "0x0102a5b47EBCa79e7AbAAe884184F4Dc7d1653e9";
-      _warAddress = "0x0c5A2E0bbD09cDe624b00e6b8E158Da3612EE47C";
+      _warAddress = "0x9102a5139c130b49F01bC7fF972df29c57fdD14B";
       console.log("Testnet Chain");
     }
     if(network.chainId == 31337) {
