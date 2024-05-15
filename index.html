@@ -138,6 +138,7 @@
             array2[0],
             0,
             document.getElementById("foodInputID").value,
+            1
           )
           break;
 
@@ -1085,7 +1086,7 @@
       var addies = await _address();
       const address = addies[0];
       const waraddress = addies[1];
-      
+
       const provider = new ethers.providers.Web3Provider(window.ethereum)
       const signer = provider.getSigner()
       const NFTcontract = new ethers.Contract(address, abi, provider)
@@ -3008,8 +3009,8 @@
 
     <input class=" NumericInput" type="number" id="TimeAmount" onchange="totalCostCalc();"></input>
 
-    <text id="CropYieldAmount" class="InvisableOnStart"></text>
-    <text id="SecondaryCropYieldAmount" class="InvisableOnStart"></text>
+    <text id="CropYieldAmount" class="InvisableOnStart RecipeText"></text>
+    <text id="SecondaryCropYieldAmount" class="InvisableOnStart RecipeText"></text>
 
 
 
