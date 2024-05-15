@@ -1081,9 +1081,11 @@
     }
     
     async function landYieldApproximator(_value) {
-      var address;
-      var waraddress;
-      [address,waraddress] = _address();
+
+      var addies = await _address();
+      const address = addies[0];
+      const waraddress = addies[1];
+      
       const provider = new ethers.providers.Web3Provider(window.ethereum)
       const signer = provider.getSigner()
       const NFTcontract = new ethers.Contract(address, abi, provider)
