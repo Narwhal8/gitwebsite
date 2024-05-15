@@ -127,17 +127,13 @@
 
         case "3":
           const Trade = Number(document.getElementById("ItemMenuID").value) + Number(document.getElementById("BuyorSellID").value)
-          let array2 = returnRecipe(Trade)
-          console.log(array2);
-          if (array2[0][0] < 0) {
-            array2[0][0] = document.querySelectorAll(".Items")[(-1 * array2[0])].value
-          }
+
           NFTcontractSigner.cook(
             Trade,
             document.getElementById("Amount").value,
-            array2[0],
+            [document.getElementById("ItemMenuID").value,0,0,0,0,0],
             0,
-            document.getElementById("foodInputID").value,
+            0,
             1
           )
           break;
