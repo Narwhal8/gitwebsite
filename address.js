@@ -1,16 +1,16 @@
 async function _address() {
 
         
-    let _address = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-    let _warAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
+    let _address = "0x71F733bAdF73bEfBBB1fC745387D27B9e5001463";
+    let _warAddress = "0xb61d0316F09191C45b8b4Ff9dBFA50b7ecDAdf23";
     
     const provider = new ethers.providers.Web3Provider(window.ethereum)
           
     const network = await provider.getNetwork();
     console.log(network);
     if(network.chainId == 84532) {
-      _address = "0xb5E0e5d1E8A8970150052F2C637c2471a41d5D61";
-      _warAddress = "0x4F3a2Dba97946cB5e9a8920844e705135b9E1e38";
+      _address = "0x71F733bAdF73bEfBBB1fC745387D27B9e5001463";
+      _warAddress = "0xb61d0316F09191C45b8b4Ff9dBFA50b7ecDAdf23";
       console.log("Testnet Chain");
     }
     if(network.chainId == 31337) {
