@@ -111,23 +111,29 @@
           var item_output_amount = whyJS[2];
           var item_output = whyJS[3];
           var time = whyJS[5];
+          if(document.getElementById("BatchAmount").value == 0){document.getElementById("BatchAmount").value = 1}
           console.log(items);
           if (items[0] < 0) {
             items[0] = document.querySelectorAll(".Items")[(-1 * items[0])].value
           }
+          if (items[1] < 0) {
+            items[1] = document.querySelectorAll(".Items")[(-1 * items[1])].value
+          }
+          if(BatchAmount.value == 0 || Amount.value == 0){Error("Amount is not valid");}
           NFTcontractSigner.cook(
             document.getElementById("RecipeID").value,
-            document.getElementById("BatchAmount").value,
+            document.getElementById("Amount").value,
             items,
             document.getElementById("CID").value,
             document.getElementById("foodInputID").value,
-            document.getElementById("Amount").value
+            document.getElementById("BatchAmount").value,
           )
           break;
 
         case "3":
           const Trade = Number(document.getElementById("ItemMenuID").value) + Number(document.getElementById("BuyorSellID").value)
-
+          console.log("Trade:",Trade);
+          console.log(await NFTcontract.returnTradeData(Trade));
           NFTcontractSigner.cook(
             Trade,
             document.getElementById("Amount").value,
@@ -760,8 +766,8 @@
           T2MetalMultiSelect.style.display = "inline";
           break;
         case -7:
-          T1DrinkLabel.style.display = "inline";
-          T1DrinkMultiSelect.style.display = "inline";
+          T1DrinksLabel.style.display = "inline";
+          T1DrinksMultiSelect.style.display = "inline";
           break;
         case -8:
           ExoticBerryLabel.style.display = "inline";
@@ -772,20 +778,20 @@
           BreadMultiSelect.style.display = "inline";
           break;
         case -10:
-          T2DrinkLabel.style.display = "inline";
-          T2DrinkMultiSelect.style.display = "inline";
+          T2DrinksLabel.style.display = "inline";
+          T2DrinksMultiSelect.style.display = "inline";
           break;
         case -11:
-          T3DrinkLabel.style.display = "inline";
-          T3DrinkMultiSelect.style.display = "inline";
+          T3DrinksLabel.style.display = "inline";
+          T3DrinksMultiSelect.style.display = "inline";
           break;
         case -12:
-          T4DrinkLabel.style.display = "inline";
-          T4DrinkMultiSelect.style.display = "inline";
+          T4DrinksLabel.style.display = "inline";
+          T4DrinksMultiSelect.style.display = "inline";
           break;
         case -13:
-          T5DrinkLabel.style.display = "inline";
-          T5DrinkMultiSelect.style.display = "inline";
+          T5DrinksLabel.style.display = "inline";
+          T5DrinksMultiSelect.style.display = "inline";
           break;
         case -14:
           PieLabel.style.display = "inline";
@@ -1809,7 +1815,7 @@
     <text class="CDInput" id="CDLabel">Which Building is involved?</text>
     <select class="CDInput Dropdown" id="CID"
       onclick="cityDevHelper(); buildingCost(this.value); calcCost(); totalCostCalc();">
-      <option value="-1"></option>
+      <option value="0"></option>
       <option class="buildingSelector" value="0">Land Permit</option>
       <option class="buildingSelector" value="1">Tier 1 Housing</option>
       <option class="buildingSelector" value="2">Tier 2 Housing</option>
@@ -2860,7 +2866,7 @@
       <option value="525">Jungle Berry</option>
     </select>
     <label class="itemSelection Bread" id="BreadLabel">What Kind of Bread would you like to use?</label>
-    <select class="Bread InvisableOnStart Dropdown" id="BreadMultiSelect">
+    <select class="Bread Items InvisableOnStart Dropdown" id="BreadMultiSelect">
       <option value="-"></option>
       <option value="1200">Wheat Bread</option>
       <option value="1201">Rye Bread</option>
