@@ -133,7 +133,6 @@
         case "3":
           const Trade = Number(document.getElementById("ItemMenuID").value) + Number(document.getElementById("BuyorSellID").value)
           console.log("Trade:",Trade);
-          console.log(await NFTcontract.returnTradeData(Trade));
           NFTcontractSigner.cook(
             Trade,
             document.getElementById("Amount").value,
