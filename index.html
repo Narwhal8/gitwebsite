@@ -311,6 +311,29 @@
       }
     }
 
+    async function bonusCalc(){
+      
+      var addies = await _address();
+      const address = addies[0];
+      const waraddress = addies[1];
+
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner()
+      const NFTcontract = new ethers.Contract(address, abi, provider)
+      const myAddress = await signer.getAddress()
+      const _stockpiles = await NFTcontract.getStockedGoods(myAddress);
+      var _civilian_stockpiles = _stockpiles[1];
+      console.log(_civilian_stockpiles);
+      var _bonus = 100;
+      for(let i = 0; i < 5; ++i){
+        _amount = Math.ceil((_civilian_stockpiles[i])/4);
+        if(_amount > 5){_amount = 4}
+        _bonus += 5 * _amount;
+      }
+      return(_bonus/100);
+
+    }
+
     function Stuff(_value) {
 
       showRecipe(_value);
@@ -686,8 +709,12 @@
           if (document.getElementById("CID").value != 22) {
             var _time_multi = await _buildTimeBasedOnFood(itemValue(Number(document.getElementById("foodInputID").value)),false);
             console.log("time multiplier", _time_multi);
+            var _civ_bonus = await bonusCalc();
+            _civ_bonus = _civ_bonus/2;
+            _civ_bonus += 0.5;
+            console.log("Nerfed Civ Bonus:",_civ_bonus);
 
-            setTTC((Number(Amount) * time * 200 / _time_multi));
+            setTTC((Number(Amount) * time * 100 / (_time_multi * _civ_bonus)));
           }
           else { setTTC(Number(Amount) * time); }
         }
@@ -709,28 +736,11 @@
       }
       }
     
-    async function _buildTimeBasedOnFood(_value,_isFarming) {
-      var addies = await _address();
-      const address = addies[0];
-      const waraddress = addies[1];
-      const provider = new ethers.providers.Web3Provider(window.ethereum)
-      const signer = provider.getSigner()
-      const NFTcontract = new ethers.Contract(address, abi, provider)
-      const myAddress = await signer.getAddress()
-      var _civilian_stockpiles = await NFTcontract.getStockedGoods(myAddress);
-      let _item_stocks = _civilian_stockpiles[1];
+    function _buildTimeBasedOnFood(_value,_isFarming) {
 
       let _value2 = (65 + (Math.sqrt((_value * 2))));
       _value2 = Math.trunc(_value2);
       console.log("first value check", _value2);
-      var _civGoodsBonus = (1 / (1 + (0.025 * (_item_stocks[0] + _item_stocks[1] + _item_stocks[2] + _item_stocks[3] + _item_stocks[4]))));
-      if(_isFarming == false) {
-        _value2 += 50 + (0.5 * _civGoodsBonus)
-      }
-      else {_value2 = _value2 * (100 + _civGoodsBonus)/100}
-      console.log("second value check", _value2);
-      _value2 = Math.trunc(_value2);
-      console.log("final value check", _value2);
       return (_value2);
     }
 
@@ -1045,8 +1055,10 @@
 
       var temp_bonus = 1 - (0.02 * (crop_info[2][2] - _temp_mod));
       if( temp_bonus < 0){temp_bonus = 0;}
-      var fertility_bonus = (75 + _land_info[3])/100
-      var primary_yield = Math.round(crop_info[0] * _value * Amount.value * yield_mod * temp_bonus * fertility_bonus);
+      const fertility_bonus = (75 + _land_info[3])/100
+      const civ_good_bonus = await bonusCalc();
+      console.log(civ_good_bonus);
+      var primary_yield = Math.round(crop_info[0] * _value * Amount.value * yield_mod * temp_bonus * fertility_bonus * civ_good_bonus);
 
       if(secondary_crop_yield_times != 0) {
         document.getElementById("SecondaryCropYieldAmount").style.display = "block";
@@ -1109,11 +1121,12 @@
       const _land_info = returnlandData(document.querySelectorAll(".Lands")[_kingdomType - 1].value);
       var temp_name = "Estimated Yield: ";
 
-      
+      const civilian_bonus = await bonusCalc();
+      console.log(civilian_bonus);
       for(let i = 0; i < 5; ++i) {
         if(_land_info[4][i] == 0){break;}
         var yield_mod = await _buildTimeBasedOnFood(itemValue(Number(foodInputID.value)),true)/100;
-        var _primaryYield = Math.floor(_land_info[5][i] * _value * Amount.value * yield_mod);
+        var _primaryYield = Math.floor(_land_info[5][i] * _value * Amount.value * yield_mod * civilian_bonus);
         temp_name += _primaryYield +" "+ itemName(_land_info[4][i]);
         if(_land_info[4][i + 1] == 0){break;}
         temp_name += " & ";
@@ -2833,6 +2846,11 @@
       <option value="-"></option>
       <option value="1211">Glittercakeette</option>
       <option value="1230">Cheese</option>
+      <option value="1261">Fried Meat</option>
+      <option value="1270">Beef Stew</option>
+      <option value="1272">Onion Stew</option>
+      <option value="1274">Chicken Soup</option>
+      <option value="1275">Fish Stew</option>
       <option value="1280">Baked Beans</option>
       <option value="1281">Beans And Rice</option>
       <option value="1220">Apple Pie</option>
