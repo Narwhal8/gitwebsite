@@ -1023,7 +1023,7 @@
 
       const crop_info = returnCropData(cropSelect.value);
 
-      const _land_info = returnlandData(document.querySelectorAll(".Lands")[_kingdomType - 1].value);
+      const _land_info = returnLandData(document.querySelectorAll(".Lands")[_kingdomType - 1].value);
 
       var crop_yield_times = crop_info[6];
       var secondary_crop_yield_times = crop_info[7];
@@ -1120,17 +1120,17 @@
 
       const _cityData = await NFTcontract.getKingdomInfo(myAddress);
       const _kingdomType = _cityData[4];
-      const _land_info = returnlandData(document.querySelectorAll(".Lands")[_kingdomType - 1].value);
+      const _land_info = returnLandData(document.querySelectorAll(".Lands")[_kingdomType - 1].value);
       var temp_name = "Estimated Yield: ";
 
       const civilian_bonus = await bonusCalc();
       console.log(civilian_bonus);
       for(let i = 0; i < 5; ++i) {
-        if(_land_info[4][i] == 0){break;}
+        if(_land_info[5][i] == 0){break;}
         var yield_mod = await _buildTimeBasedOnFood(itemValue(Number(foodInputID.value)),true)/100;
-        var _primaryYield = Math.floor(_land_info[5][i] * _value * Amount.value * yield_mod * civilian_bonus);
-        temp_name += _primaryYield +" "+ itemName(_land_info[4][i]);
-        if(_land_info[4][i + 1] == 0){break;}
+        var _primaryYield = Math.floor(_land_info[4][i] * _value * Amount.value * yield_mod * civilian_bonus);
+        temp_name += _primaryYield +" "+ itemName(_land_info[5][i]);
+        if(_land_info[5][i + 1] == 0){break;}
         temp_name += " & ";
 
       }

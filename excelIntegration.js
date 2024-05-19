@@ -3785,13 +3785,13 @@ const mixedItemData0 = [0];
 //Grain
 const mixedItemData1 = [Wheat,Rye,Corn,Sorghum,Oats,Barley,Rice];
 //Meat
-const mixedItemData2 = [Beef,Chicken_Meat,Fish_Meat,Mutton];
+const mixedItemData2 = [Beef,Chicken_Meat,Fish_Meat,Mutton,Game_Meat];
 //Fruit
 const mixedItemData3 = [Grapes,Peaches,Plums,Apples,Cherries];
 //Vegetables
 const mixedItemData4 = [Potato,Onion,Carrots,Casava];
 //Sides
-const mixedItemData5 = [Beef_Stew,Onion_Soup,Chicken_Soup,Fish_Soup,Beans_And_Rice,Glittercakeette,Apple_Pie,Plum_Pie,Peach_Pie,Sugar_Pie,Pot_Pie,Cheese]
+const mixedItemData5 = [Beef_Stew,Onion_Soup,Chicken_Soup,Fish_Soup,Beans_And_Rice,Glittercakeette,Apple_Pie,Plum_Pie,Peach_Pie,Sugar_Pie,Pot_Pie,Cheese,Fried_Meat]
 //T2 Metal
 const mixedItemData6 = [Iron,Bronze];
 //T1 Drink
@@ -3884,46 +3884,46 @@ let cropdata0 = [0, 0, [0, 0, 0], [0, 0], 0, 0, 0, 0, false, 0, 0, 0];
 const BuildingName = ["Land Permit", "Tier 1 Housing", "Tier 2 Housing", "Tier 3 Housing", "Tier 4 Housing", "Tier 5 Housing", "Tier 6 Housing", "Tier 7 Housing", "Tier 1 Cookery", "Tier 2 Cookery", "Tier 3 Cookery", "Tier 4 Cookery", "Tier 1 Brewery", "Tier 2 Brewery", "Tier 3 Brewery", "Tier 4 Brewery", "Tier 1 Smeltery", "Tier 3 Smeltery", "Tier 3 Smeltery", "Masonry", "Tier 1 Blacksmith", "Tier 2 Blacksmith", "Aging Facility","None","None","None", "Tier 1 Jeweler", "Tier 2 Jeweler", "Tier 1 Weaver", "Tier 2 Weaver", "Tier 1 Carpenter", "Tier 2 Carpenter" ];
 
 //Land Info
-const landData1 = [ 90,  25,  50,  5,  [2001, 2204, 2024, 2023, 0],  [100, 10, 20, 2, 0]];
-const landData2 = [ 80,  25,  50,  15,  [2001, 2204, 528, 0, 0],  [150, 10, 10, 0, 0]];
-const landData3 = [ 80,  75,  50,  25,  [2002, 530, 528, 0, 0],  [100, 12, 10, 0, 0]];
-const landData4 = [ 80,  100,  50,  50,  [528, 2024, 2022, 530, 0],  [10, 10, 1, 4, 0]];
+const landData1 = [ 90,  25,  50,  5,   [100, 10, 20, 2, 0], [2001, 2204, 2024, 2023, 0]];
+const landData2 = [ 80,  25,  50,  15,   [150, 10, 10, 0, 0],[2001, 2204, 528, 0, 0]];
+const landData3 = [ 80,  75,  50,  25,   [100, 12, 10, 0, 0],[2002, 530, 528, 0, 0]];
+const landData4 = [ 80,  100,  50,  50,   [10, 10, 1, 4, 0],[528, 2024, 2022, 530, 0]];
 
-const landData11 = [ 30,  25,  50,  0,  [2001, 524, 2024, 2211, 0],  [200, 5, 10, 10, 0]];
-const landData12 = [ 40,  100,  50,  15,  [524, 0, 0, 0, 0],  [25, 0, 0, 0, 0]];
-const landData13 = [ 50,  100,  50,  25,  [2002, 524, 0, 0, 0],  [300, 10, 0, 0, 0]];
-const landData14 = [ 40,  110,  50,  50,  [2002, 530, 524, 0, 0],  [150, 20, 5, 0, 0]];
+const landData11 = [ 30,  25,  50,  0,  [200, 5, 10, 10, 0],[2001, 524, 2024, 2211, 0]];
+const landData12 = [ 40,  100,  50,  15,  [25, 0, 0, 0, 0], [524, 0, 0, 0, 0]];
+const landData13 = [ 50,  100,  50,  25,  [300, 10, 0, 0, 0],[2002, 524, 0, 0, 0]];
+const landData14 = [ 40,  110,  50,  50,   [150, 20, 5, 0, 0],[2002, 530, 524, 0, 0]];
 
-const landData21 = [ 60,  25,  50,  0,  [2001, 2021, 2210, 0, 0],  [200, 10, 20, 0, 0]];
-const landData22 = [ 60,  100,  50,  25,  [2002, 546, 537, 0, 0],  [300, 10, 20, 0, 0]];
-const landData23 = [ 60,  100,  50,  50,  [530, 546, 537, 2022, 0],  [20, 10, 20, 1, 0]];
+const landData21 = [ 60,  25,  50,  0,   [200, 10, 20, 0, 0],[2001, 2021, 2210, 0, 0]];
+const landData22 = [ 60,  100,  50,  25,  [300, 10, 20, 0, 0],[2002, 546, 537, 0, 0]];
+const landData23 = [ 60,  100,  50,  50,  [20, 10, 20, 1, 0],[530, 546, 537, 2022, 0]];
 
-const landData31 = [ 80,  25,  50,  0,  [2001, 2024, 2206, 0, 0],  [200, 20, 20, 0, 0]];
-const landData32 = [ 80,  75,  50,  25,  [2002, 525, 537, 0, 0],  [200, 10, 20, 0, 0]];
-const landData33 = [ 85,  100,  50,  35,  [2002, 525, 0, 0, 0],  [200, 15, 0, 0, 0]];
-const landData34 = [ 80,  110,  50,  50,  [2002, 525, 2021, 2022, 0],  [100, 10, 5, 1, 0]];
+const landData31 = [ 80,  25,  50,  0,  [200, 20, 20, 0, 0],  [2001, 2024, 2206, 0, 0]];
+const landData32 = [ 80,  75,  50,  25,  [200, 10, 20, 0, 0],[2002, 525, 537, 0, 0]];
+const landData33 = [ 85,  100,  50,  35, [200, 15, 0, 0, 0],[2002, 525, 0, 0, 0]];
+const landData34 = [ 80,  110,  50,  50,  [100, 10, 5, 1, 0],[2002, 525, 2021, 2022, 0]];
 
-const landData41 = [ 45,  120,  0,  0,  [2002, 2103, 531, 524, 2209],  [100, 10, 20, 5, 10]];
-const landData42 = [ 55,  120,  0,  0,  [2002, 2103, 531, 530, 0],  [125, 20, 10, 10, 0]];
-const landData43 = [ 65,  120,  0,  0,  [2002, 2103, 531, 525, 0],  [150, 30, 10, 5, 0]];
-const landData44 = [ 75,  120,  0,  0,  [2001, 2103, 0, 0, 0],  [100, 40, 0, 0, 0]];
+const landData41 = [ 45,  120,  0,  0,  [100, 10, 20, 5, 10],[2002, 2003, 531, 524, 2209]];
+const landData42 = [ 55,  120,  0,  0,  [125, 20, 10, 10, 0],[2002, 2003, 531, 530, 0]];
+const landData43 = [ 65,  120,  0,  0,  [150, 30, 10, 5, 0],[2002, 2003, 531, 525, 0]];
+const landData44 = [ 75,  120,  0,  0,  [100, 40, 0, 0, 0],  [2001, 2003, 0, 0, 0]];
 
-const landData51 = [ 70,  200,  50,  15,  [531, 2103, 2002, 2209, 0],  [20, 10, 200, 10, 0]];
-const landData52 = [ 70,  175,  50,  35,  [531, 2209, 2002, 2021, 0],  [30, 10, 150, 10, 0]];
-const landData53 = [ 70,  150,  50,  50,  [531, 2209, 0, 0, 0],  [40, 20, 0, 0, 0]];
+const landData51 = [ 70,  200,  50,  15,  [20, 10, 200, 10, 0], [531, 2003, 2002, 2209, 0]];
+const landData52 = [ 70,  175,  50,  35,  [30, 10, 150, 10, 0],  [531, 2209, 2002, 2021, 0]];
+const landData53 = [ 70,  150,  50,  50,  [40, 20, 0, 0, 0],  [531, 2209, 0, 0, 0]];
 
-const landData61 = [ 55,  100,  175,  25,  [2001, 523, 2024, 2200, 0],  [200, 2, 10, 2, 0]];
-const landData62 = [ 55,  100,  175,  25,  [2001, 527, 2021, 2102, 0],  [200, 2, 10, 2, 0]];
-const landData63 = [ 60,  100,  150,  25,  [2001, 527, 2021, 2101, 0],  [200, 2, 10, 2, 0]];
-const landData64 = [ 45,  100,  200,  25,  [2001, 523, 2025, 2212, 0],  [200, 2, 10, 5, 0]];
+const landData61 = [ 55,  100,  175,  25,  [200, 2, 10, 2, 0],  [2001, 523, 2024, 2200, 0]];
+const landData62 = [ 55,  100,  175,  25,  [200, 2, 10, 2, 0],  [2001, 527, 2021, 2102, 0]];
+const landData63 = [ 60,  100,  150,  25,  [200, 2, 10, 2, 0],  [2001, 527, 2021, 2101, 0]];
+const landData64 = [ 45,  100,  200,  25,  [200, 2, 10, 5, 0],  [2001, 523, 2025, 2212, 0]];
 
-const landData70 = [ 65,  100,  50,  100,  [2208, 2023, 2001, 2021, 0],  [10, 5, 150, 10, 0]];
-const landData71 = [ 55,  110,  50,  175,  [530, 536, 2208, 2002, 0],  [40, 20, 5, 50, 0]];
-const landData72 = [ 65,  100,  50,  150,  [536, 2002, 0, 0, 0],  [80, 200, 0, 0, 0]];
+const landData70 = [ 65,  100,  50,  100,  [10, 5, 150, 10, 0],  [2208, 2023, 2001, 2021, 0]];
+const landData71 = [ 55,  110,  50,  175,  [40, 20, 5, 50, 0],  [530, 536, 2208, 2002, 0]];
+const landData72 = [ 65,  100,  50,  150,  [80, 200, 0, 0, 0],  [536, 2002, 0, 0, 0]];
 
-const landData80 = [ 70,  100,  50,  200,  [2203, 2122, 2001, 0, 0],  [8, 1, 200, 0, 0]];
-const landData81 = [ 60,  100,  100,  225,  [2203, 526, 2122, 2001, 2002],  [4, 8, 1, 100, 100]];
-const landData82 = [ 70,  100,  50,  250,  [2001, 2002, 2122, 526, 2203],  [100, 100, 1, 8, 4]];
+const landData80 = [ 70,  100,  50,  200,  [8, 1, 200, 0, 0],  [2203, 2122, 2001, 0, 0]];
+const landData81 = [ 60,  100,  100,  225,  [4, 8, 1, 100, 100],  [2203, 526, 2122, 2001, 2002]];
+const landData82 = [ 70,  100,  50,  250,  [100, 100, 1, 8, 4],  [2001, 2002, 2122, 526, 2203]];
 
 function returnRecipe(_value) {
     _value = "recipe" + _value;
@@ -3954,7 +3954,7 @@ function returnWeaponData(_value) {
     _value = eval(_value);
     return _value;
 }
-function returnlandData(_value) {
+function returnLandData(_value) {
     _value = "landData" + _value;
     _value = eval(_value);
     return _value;
