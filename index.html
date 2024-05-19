@@ -903,6 +903,8 @@
 
       document.getElementById("Farming").style.display = "none";
 
+      document.getElementById("itemBalance").style.display = "none";
+
       document.getElementById("RecipeMenus").style.display = "none";
 
       document.getElementById("Cost").style.display = "none";
@@ -1087,7 +1089,23 @@
 
 
     }
-    
+    async function balanceOfItem(_value) {
+      
+      var addies = await _address();
+      const address = addies[0];
+      const waraddress = addies[1];
+
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner()
+      const NFTcontract = new ethers.Contract(address, abi, provider)
+      const myAddress = await signer.getAddress()
+
+      const _item = await NFTcontract.balanceOf(myAddress, _value);
+      console.log(_item);
+
+      itemBalance.textContent = "Balance Of Item:" + _item;
+      itemBalance.style.display = "block";
+    }
     async function landYieldApproximator(_value) {
 
       var addies = await _address();
@@ -1585,7 +1603,7 @@
 
 
       <option value="2101" class="5">Refined Stone Blocks</option>
-      <option value="2102" class="5">Carved Wood</option>
+      <option value="2102" class="5">Refined Wood</option>
       <option value="2121" class="5">Iron</option>
       <option value="2122" class="5">Gold</option>
       <option value="2123" class="5">Silver</option>
@@ -2105,7 +2123,7 @@
       <option value="12">Mercenaries</option>
     </select>
     <label id="ItemMenuLabelID" class="ItemMenu" for="ItemMenuID">What Item are you looking for?</label><br>
-    <select class="ItemMenu Dropdown" id="ItemMenuID">
+    <select class="ItemMenu Dropdown" id="ItemMenuID" onchange="balanceOfItem(this.value)">
 
       <option value="-1"></option>
       <option value="0">--Land</option>
@@ -2709,6 +2727,8 @@
 
 
     </select>
+    <text class="InvisableOnStart" id="itemBalance"></text>
+
   </ItemMenu>
 
 
