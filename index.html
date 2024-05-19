@@ -1079,10 +1079,10 @@
       else if(crop_info[4] > _land_info[3]) {
         document.getElementById("CropYieldAmount").textContent = "Land is too barren up for cultivation of this crop";
       }
-      else if(crop_info[2][0] > _land_info[0]) {
+      else if(crop_info[2][0] > _temp_mod) {
         document.getElementById("CropYieldAmount").textContent = "Land is too cold for cultivation";
       }
-      else if(crop_info[2][1] < _land_info[0]) {
+      else if(crop_info[2][1] < _temp_mod) {
         document.getElementById("CropYieldAmount").textContent = "Land is too hot for cultication";
       }
 
