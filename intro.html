@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<head>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+    <script src="./abi.js" type="application/javascript"></script>
+    <script src="./address.js" type="application/javascript"></script>
+    <script src="./excelIntegration.js" type="application/javascript"></script>
+    <script>
+        
+        const Kingdom_Lands =
+            [[0],
+            [1, 2, 3, 4, 44, 0, 0, 0],
+            [11, 12, 13, 14, 41, 0, 0, 0],
+            [21, 22, 23, 42, 0, 0, 0, 0],
+            [31, 32, 33, 34, 43, 0, 0, 0],
+            [41, 42, 43, 44, 0, 0, 0, 0],
+            [51, 52, 53, 0, 0, 0, 0, 0],
+            [61, 62, 63, 64, 0, 0, 0, 0],
+            [70, 71, 72, 0, 0, 0, 0, 0],
+            [80, 81, 82, 0, 0, 0, 0, 0]];
+
+        async function checkLand(_value) {
+            var addies = await _address();
+            const address = addies[0];
+            const waraddress = addies[1];
+
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
+            const signer = provider.getSigner()
+            console.log(signer);
+
+            const NFTcontractSigner = new ethers.Contract(address, abi, signer);
+            const myAddress = await signer.getAddress();
+            var _totalLandBalance = 0;
+
+            for(let i = 0; i < 8; ++i){
+                if(Kingdom_Lands[_value][i] != 0) {
+                    _balance = await NFTcontractSigner.balanceOf(myAddress, Kingdom_Lands[_value][i]);
+                    console.log(_balance);
+                    document.getElementById("LandBalance" + i).textContent = itemName(Kingdom_Lands[_value][i]) + " Balance: "+ _balance;
+                    document.getElementById("LandBalance" + i).style.display = "block";
+                    _totalLandBalance += _balance;
+                    }
+                else{document.getElementById("LandBalance" + i).style.display = "none";}
+            }
+            if(_totalLandBalance == 0){NoLandWarning.style.display = "block"}
+            else{NoLandWarning.style.display = "none"}
+
+        }
+        async function submitTX() {
+            var addies = await _address();
+            const address = addies[0];
+            const waraddress = addies[1];
+
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
+            const signer = provider.getSigner()
+            console.log(signer);
+
+            const NFTcontractSigner = new ethers.Contract(address, abi, signer);
+
+            NFTcontractSigner.setKingdomType(KingdomID.value);
+        }
+    </script>
+</head>
+
+<body>
+    
+    <IntroText>
+        <br>
+        <br>
+        <br>
+        Welcome to the game! To start, you will have to select which kind of Kingdom you would like. Your choice of Kingdom is permanent, so it is recomended you do a little research before picking.
+        <br>
+        <br>
+        Questions about the game as a whole? Check the FAQ in the top right! Curious about the specific properties of an item? See the encylopedia in the main menu.
+        <br>
+        <br>
+    </IntroText>
+
+  <KingdomInput class="KingdomInput " id="KIDInfo">
+    <label id="KIDInfo" for="KingdomID">What kind of Kingdom would you like?</label><br>
+    <select class="KingdomInput Dropdown" id="KingdomID" onchange="checkLand(this.value)">
+      <option value="-1"></option>
+      <option value="1">Arid</option>
+      <option value="2">Northern</option>
+      <option value="3">Heartland</option>
+      <option value="4">Southern</option>
+      <option value="5">Ocean</option>
+      <option value="6">Swamp</option>
+      <option value="7">Mountain</option>
+      <option value="8">Silver</option>
+      <option value="9">Gold</option>
+    </select>
+  </KingdomInput>
+  <Balences>
+    <text id="LandBalance0" class="InvisableOnStart"></text>
+    <text id="LandBalance1" class="InvisableOnStart"></text>
+    <text id="LandBalance2" class="InvisableOnStart"></text>
+    <text id="LandBalance3" class="InvisableOnStart"></text>
+    <text id="LandBalance4" class="InvisableOnStart"></text>
+    <text id="LandBalance5" class="InvisableOnStart"></text>
+    <text id="LandBalance6" class="InvisableOnStart"></text>
+    <text id="LandBalance7" class="InvisableOnStart"></text>
+    <text id="NoLandWarning" class="InvisableOnStart Notice">WARNING: You do not have any valid land tiles for this type of Kingdom. If you have some other land, please locate a kingdom for which it may be used.</text>
+  </Balences>
+
+  <MenuButtons class="menuButtons">
+    <a href="index.html">
+        <button class="indexButton">Return to Main Menu</button>
+      </a>
+      <a href="faq.html">
+          <button class="indexButton">Game FAQ</button>
+        </a>
+  </MenuButtons>
+    <button class="sendTX" id="sendTX" onclick="submitTX()">Confirm Kingdom Choice</button>
+
+</body>
+
+<style>
+body {background-color: mediumseagreen;}
+
+
+.Dropdown {
+    background-color: wheat;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+
+.Notice {
+    font-size: 16px;
+    font-weight: bold;
+  }
+.InvisableOnStart{
+    display: none;
+}
+.indexButton{
+  background-color: gray;
+  width: 150px;
+  height:40px;
+  position: relative;
+  text-align: center;
+  border-radius: 12px;
+  font-size: 16px;
+}
+.menuButtons{
+    position: absolute;
+    top: 5px;
+    right:20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+.indexButton:hover {
+    background-color: rgb(179, 165, 165);
+}
+
+.sendTX {
+    background-color: darkred;
+    color: black;
+    position: relative;
+    display: block;
+    width: 150px;
+    height: 80px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 12px;
+    top:20px;
+  }
+.sendTX:hover {
+    background-color: brown;
+    font-size: 17px;
+  }
+
+</style>

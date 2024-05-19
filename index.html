@@ -51,11 +51,6 @@
 
     async function signon() {
 
-      var addies = await _address();
-      const address = addies[0];
-      const waraddress = addies[1];
-      const provider = new ethers.providers.Web3Provider(window.ethereum)
-
       await provider.send("eth_requestAccounts", []);
 
             
@@ -164,9 +159,6 @@
           NFTcontractSigner.payTithe(
             document.getElementById("CivGM").value,
             document.getElementById("Amount").value)
-          break;
-        case "8":
-          NFTcontractSigner.setKingdomType(KingdomID.value)
           break;
 
         case "9":
@@ -487,12 +479,6 @@
           document.getElementsByClassName("CivG")[1].style.display = "block";
 
 
-          break;
-        case "8":
-
-          document.getElementById("KIDInfo").style.display = "block";
-          document.getElementById("KingdomID").style.display = "block";
-          hideAmount();
           break;
         case "9":
           document.getElementById("RecruitInput").style.display = "block";
@@ -931,8 +917,6 @@
       document.getElementById("CDInput").style.display = "none";
       document.getElementById("CID").style.display = "none";
 
-      document.getElementById("KingdomID").style.display = "none";
-      document.getElementById("KIDInfo").style.display = "none";
 
       hideBuildingInfo();
 
@@ -1314,7 +1298,6 @@
     <option value="5">Claim Farming Rewards</option>
     <option value="6">Add Land To Kingdom</option>
     <option value="7">Give Civilians Goods</option>
-    <option value="8">Set Kingdom Type</option>
     <option value="9">Recruit Pops</option>
     <option value="10">Claim Crafting Items</option>
     <option value="11">Check Balance</option>
@@ -2765,23 +2748,6 @@
   </FoodAmounts>
 
 
-
-  <KingdomInput class="KingdomInput " id="KIDInfo">
-    <label id="KIDInfo" for="KingdomID">What kind of Kingdom would you like? WARNING: CAN ONLY BE DONE ONCE</label><br>
-    <select class="KingdomInput Dropdown" id="KingdomID">
-      <option value="-1"></option>
-      <option value="1">Arid</option>
-      <option value="2">Northern</option>
-      <option value="3">Heartland</option>
-      <option value="4">Southern</option>
-      <option value="5">Ocean</option>
-      <option value="6">Swamp</option>
-      <option value="7">Mountain</option>
-      <option value="8">Silver</option>
-      <option value="9">Gold</option>
-    </select>
-  </KingdomInput>
-
   <CivGoods class="CivG ">
     <label id="CivGInfo">What Item Would you like to contribute</label>
     <select class="Dropdown CivG" id="CivGM">
@@ -3092,8 +3058,8 @@
     <a href="faq.html">
       <button class="notesButton notebutton1">Project FAQ</button>
     </a>
-    <a href="notes.html">
-      <button class="notesButton notebutton2">See Game Notes!</button>
+    <a href="intro.html">
+      <button class="notesButton notebutton2">Ready to Start? Click here!</button>
     </a>
     <a href="warpage.html">
       <button class="notesButton notebutton3">Manage Army</button>
@@ -3151,7 +3117,9 @@
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
         left:25%;
-        bottom: 15px;
+        position: absolute;
+        bottom: 10px;
+  
     }
   .walletConnect {
     background-color: darkred;
@@ -3247,8 +3215,4 @@
     font-size: 24px;
   }
 
-  .MenuButtons {
-    position: absolute;
-    bottom: 10px;
-  }
 </style>
