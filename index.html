@@ -1093,6 +1093,9 @@
       else if(crop_info[2][1] < _temp_mod) {
         document.getElementById("CropYieldAmount").textContent = "Land is too hot for cultication";
       }
+      else if(document.getElementById("TimeAmount").value > 25) {
+        document.getElementById("CropYieldAmount").textContent = "This Is Too Long! Maximum number of repeats allowed is 25";
+      }
       console.log(_temp_mod);
 
     }
@@ -1143,13 +1146,14 @@
       }
 
       document.getElementById("CropYieldAmount").style.display = "block";
-
       document.getElementById("totalCostID").textContent = "Total Cost: " + Amount.value * _value + " Food";
 
 
 
-      document.getElementById("CropYieldAmount").textContent = temp_name
-
+      if(document.getElementById("TimeAmount").value > 25) {
+        document.getElementById("CropYieldAmount").textContent = "This Is Too Long! Maximum number of repeats allowed is 25";
+      }
+      else{document.getElementById("CropYieldAmount").textContent = temp_name}
 
     }
     
