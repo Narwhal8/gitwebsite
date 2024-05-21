@@ -1140,7 +1140,7 @@
         var yield_mod = await _buildTimeBasedOnFood(itemValue(Number(foodInputID.value)),true)/100;
         var _primaryYield = Math.floor(_land_info[4][i] * _value * Amount.value * yield_mod * civilian_bonus);
         temp_name += _primaryYield +" "+ itemName(_land_info[5][i]);
-        if(_land_info[5][i + 1] == 0){break;}
+        if(_land_info[5][i + 1] == 0 || typeof(_land_info[5][i + 1]) == "undefined"){break;}
         temp_name += " & ";
 
       }
