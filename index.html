@@ -50,7 +50,11 @@
       [80, 81, 82, 0, 0, 0, 0, 0]];
 
     async function signon() {
+      var addies = await _address();
+      const address = addies[0];
+      const waraddress = addies[1];
 
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
       await provider.send("eth_requestAccounts", []);
 
             
@@ -1033,14 +1037,18 @@
 
       var _temp_mod = _land_info[0];
 
-      const _season = await NFTcontract.returnSeason();
+      var _season = await NFTcontract.returnSeason();
+
+      _season = Number(_season);
+
+      console.log(_season);
 
       if(_season == 0) {_temp_mod -= 20;}
       else if(_season == 2) {_temp_mod += 20;}
       else if(_season == 3) {_temp_mod -= 10;}
 
-      var temp_bonus = 1 - (0.02 * (crop_info[2][2] - _temp_mod));
-      if( temp_bonus < 0){temp_bonus = 0;}
+
+      var temp_bonus = 1 - Math.abs(0.02 * (crop_info[2][2] - _temp_mod));
       const fertility_bonus = (75 + _land_info[3])/100
       const civ_good_bonus = await bonusCalc();
       console.log(civ_good_bonus);
@@ -1085,8 +1093,7 @@
       else if(crop_info[2][1] < _temp_mod) {
         document.getElementById("CropYieldAmount").textContent = "Land is too hot for cultication";
       }
-
-
+      console.log(_temp_mod);
 
     }
     async function balanceOfItem(_value) {
@@ -1384,7 +1391,7 @@
       <option value="1">Badlands</option>
       <option value="2">Steppes</option>
       <option value="3">Oasis</option>
-      <option value="4">River</option>
+      <option value="4">Arid River</option>
       <option value="44">Desolate Ocean</option>
     </select>
     <select class="NorthernKingdom Lands Dropdown InvisableOnStart" id="Northern">
@@ -3137,7 +3144,7 @@
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
         left:25%;
-        position: absolute;
+        position: fixed;
         bottom: 10px;
   
     }
@@ -3162,7 +3169,7 @@
   .sendTX {
     background-color: darkred;
     color: black;
-    position: absolute;
+    position: fixed;
     width: 150px;
     height: 80px;
     text-align: center;

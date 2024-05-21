@@ -51,8 +51,8 @@
             const address = addies[0];
             const waraddress = addies[1];
 
-            const provider = new ethers.providers.Web3Provider(window.ethereum)
-            const signer = provider.getSigner()
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
             console.log(signer);
 
             const NFTcontractSigner = new ethers.Contract(address, abi, signer);
