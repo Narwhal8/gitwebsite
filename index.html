@@ -202,7 +202,7 @@
 
 
           document.getElementById("peasentPop").style.display = "block";
-          document.getElementById("peasentPop").textContent = "Pesants:";
+          document.getElementById("peasentPop").textContent = "Peasents:";
           document.getElementById("peasentPop").textContent += _population[0];
           document.getElementById("peasentPop").textContent += ", Jobless:";
           document.getElementById("peasentPop").textContent += _jobless_population[0];
@@ -278,7 +278,15 @@
             document.getElementsByClassName("Population")[i + 3].style.display = "block";
             document.getElementById(_name).textContent = "Land Balance:"+_land[i]+" "+itemName(Kingdom_Lands[_kingdomType][i])+"________";
             if (_land_available[i] == false) { document.getElementById(_name).textContent += "Land is available"; }
-            else { document.getElementById(_name).textContent += "Land NOT available"; }
+            else {
+              const available_time_data = await NFTcontract.farmProgress(myAddress,i);
+              const available_time = Number(available_time_data[0]) + Number(available_time_data[5]);
+              console.log(available_time, "Available Time");
+              console.log(Date.now()/1000, "Current Time");
+              var time_to_available;
+              if(available_time < (Date.now()/1000)){time_to_available = "NOW";}
+              else{time_to_available = secondsToHMS(Math.ceil(available_time - (Date.now()/1000)))}
+              document.getElementById(_name).textContent += "Land NOT available, will be available " + time_to_available; }
 
 
           }
@@ -840,8 +848,12 @@
 
 
       document.getElementById("timeToCompletion").textContent = 
-      "Time To Completion: " + Math.trunc(_new_Time / 3600) +  " Hours " +  (Math.trunc(_new_Time / 60) % 60) +  " Minutes " +  Math.trunc(_new_Time % 60) +  " Seconds ";
+      "Time To Completion: " + secondsToHMS(_new_Time);
 
+    }
+    function secondsToHMS(_new_Time) {
+      _new_Time = Math.trunc(_new_Time / 3600) +  " Hours " +  (Math.trunc(_new_Time / 60) % 60) +  " Minutes " +  Math.trunc(_new_Time % 60) +  " Seconds ";
+      return(_new_Time)
     }
 
     function showRelevantItems(_value) {
@@ -3048,7 +3060,7 @@
   </TotalCost>
 
   <KingdomInfo class="" id="KingdomInfo">
-    <text id="peasentPop" class="Population">Pesants:</text>
+    <text id="peasentPop" class="Population">Peasents:</text>
     <text id="lowNobelPop" class="Population">Low Nobles:</text>
     <text id="highNobelPop" class="Population">High Nobles:</text>
     <br class="Population">
