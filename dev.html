@@ -250,27 +250,37 @@
           NFTcontractSigner.addMultiCropData([returnCropData(538),returnCropData(540),returnCropData(542),returnCropData(544),returnCropData(0),returnCropData(0),returnCropData(0),returnCropData(0)],[538,540,542,544,0,0,0,0], {gasLimit: 5000000});
           
 
-          const mixedItemData0 = returnMixedItemData(0);
-          const mixedItemData1 = returnMixedItemData(1);
-          const mixedItemData2 = returnMixedItemData(2);
-          const mixedItemData3 = returnMixedItemData(3);
-          const mixedItemData4 = returnMixedItemData(4);
-          const mixedItemData5 = returnMixedItemData(5);
-          const mixedItemData6 = returnMixedItemData(6);
-          const mixedItemData7 = returnMixedItemData(7);
-          const mixedItemData8 = returnMixedItemData(8);
-          const mixedItemData9 = returnMixedItemData(9);
-          const mixedItemData10 = returnMixedItemData(10);
-          const mixedItemData11 = returnMixedItemData(11);
-          const mixedItemData12 = returnMixedItemData(12);
-          const mixedItemData13 = returnMixedItemData(13);
-          const mixedItemData14 = returnMixedItemData(14);
-          const mixedItemData15 = returnMixedItemData(15);
-          const mixedItemData16 = returnMixedItemData(16);
-          const mixedItemData17 = returnMixedItemData(17);
-          const mixedItemData18 = returnMixedItemData(18);
-          const mixedItemData19 = returnMixedItemData(19);
-          const mixedItemData20 = returnMixedItemData(20);
+          var mixedItemData0 = returnMixedItemData(0);
+          var mixedItemData1 = returnMixedItemData(1);
+          var mixedItemData2 = returnMixedItemData(2);
+          var mixedItemData3 = returnMixedItemData(3);
+          var mixedItemData4 = returnMixedItemData(4);
+          var mixedItemData5 = returnMixedItemData(5);
+          var mixedItemData6 = returnMixedItemData(6);
+          var mixedItemData7 = returnMixedItemData(7);
+          var mixedItemData8 = returnMixedItemData(8);
+          var mixedItemData9 = returnMixedItemData(9);
+          var mixedItemData10 = returnMixedItemData(10);
+          var mixedItemData11 = returnMixedItemData(11);
+          var mixedItemData12 = returnMixedItemData(12);
+          var mixedItemData13 = returnMixedItemData(13);
+          var mixedItemData14 = returnMixedItemData(14);
+          var mixedItemData15 = returnMixedItemData(15);
+          var mixedItemData16 = returnMixedItemData(16);
+          var mixedItemData17 = returnMixedItemData(17);
+          var mixedItemData18 = returnMixedItemData(18);
+          var mixedItemData19 = returnMixedItemData(19);
+          var mixedItemData20 = returnMixedItemData(20);
+
+          console.log("you got here");
+
+          for(let i = 0; i < 21; ++i) {
+            while(eval("mixedItemData" + i).length < 64){
+              eval("mixedItemData" + i).push(0);
+            }
+
+          }
+          console.log(mixedItemData1);
           NFTcontractSigner.addMultiMixItemData([mixedItemData1,mixedItemData2,mixedItemData3,mixedItemData4,mixedItemData5,mixedItemData6,mixedItemData7,mixedItemData8],[-1,-2,-3,-4,-5,-6,-7,-8], {gasLimit: 5000000});
           NFTcontractSigner.addMultiMixItemData([mixedItemData9,mixedItemData10,mixedItemData11,mixedItemData12,mixedItemData13,mixedItemData14,mixedItemData15,mixedItemData16],[-9,-10,-11,-12,-13,-14,-15,-16], {gasLimit: 5000000});
           NFTcontractSigner.addMultiMixItemData([mixedItemData17,mixedItemData18,mixedItemData19,mixedItemData20,mixedItemData0,mixedItemData0,mixedItemData0,mixedItemData0],[-17,-18,-19,-20,0,0,0,0], {gasLimit: 5000000});

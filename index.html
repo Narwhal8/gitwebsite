@@ -718,6 +718,16 @@
         }
 
       }
+      else if(actionSelect.value == "7") {
+
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+        const signer = provider.getSigner()
+        const NFTcontract = new ethers.Contract(address, abi, provider)
+        const NFTcontractSigner = new ethers.Contract(address, abi, signer);
+        const myAddress = await signer.getAddress();
+      //  document.getElementById("totalCostID").textContent += 
+
+      }
       else if(actionSelect.value == "9") {
         switch (RecruitID.value) {
           case "0":

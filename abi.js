@@ -488,9 +488,9 @@ abi =[
 	{
 		"inputs": [
 			{
-				"internalType": "uint256[][8]",
+				"internalType": "uint16[64][8]",
 				"name": "_data",
-				"type": "uint256[][8]"
+				"type": "uint16[64][8]"
 			},
 			{
 				"internalType": "int256[8]",
@@ -1079,6 +1079,133 @@ abi =[
 		"inputs": [
 			{
 				"internalType": "uint256",
+				"name": "_crop",
+				"type": "uint256"
+			}
+		],
+		"name": "readCropData",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint16",
+						"name": "yield",
+						"type": "uint16"
+					},
+					{
+						"internalType": "uint16",
+						"name": "secondaryYield",
+						"type": "uint16"
+					},
+					{
+						"internalType": "uint8[3]",
+						"name": "temperature",
+						"type": "uint8[3]"
+					},
+					{
+						"internalType": "uint8[2]",
+						"name": "water",
+						"type": "uint8[2]"
+					},
+					{
+						"internalType": "uint8",
+						"name": "minsoil",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "maxheight",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint16",
+						"name": "growthTime",
+						"type": "uint16"
+					},
+					{
+						"internalType": "uint16",
+						"name": "secondaryGrowthTime",
+						"type": "uint16"
+					},
+					{
+						"internalType": "bool",
+						"name": "isAnimal",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint16",
+						"name": "primaryOutput",
+						"type": "uint16"
+					},
+					{
+						"internalType": "uint16",
+						"name": "secondaryOutput",
+						"type": "uint16"
+					}
+				],
+				"internalType": "struct City.Cropdata",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_land",
+				"type": "uint256"
+			}
+		],
+		"name": "readLandData",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint8",
+						"name": "temperature",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "waterQuantity",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "altitude",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint16",
+						"name": "soilQuality",
+						"type": "uint16"
+					},
+					{
+						"internalType": "uint16[5]",
+						"name": "yieldAmount",
+						"type": "uint16[5]"
+					},
+					{
+						"internalType": "uint16[5]",
+						"name": "yieldType",
+						"type": "uint16[5]"
+					}
+				],
+				"internalType": "struct City.LandData",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
 				"name": "_popDesired",
 				"type": "uint256"
 			},
@@ -1261,12 +1388,48 @@ abi =[
 	{
 		"inputs": [
 			{
+				"internalType": "uint16[6]",
+				"name": "_tithes",
+				"type": "uint16[6]"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "setKingdomTitheCost",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "uint8",
 				"name": "_kingdomType",
 				"type": "uint8"
 			}
 		],
 		"name": "setKingdomType",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint16[5]",
+				"name": "_tithes",
+				"type": "uint16[5]"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_kingdom",
+				"type": "uint256"
+			}
+		],
+		"name": "setKingdomTypeTitheCost",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
