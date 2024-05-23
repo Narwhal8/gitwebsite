@@ -224,6 +224,51 @@ abi =[
 			{
 				"components": [
 					{
+						"internalType": "uint8",
+						"name": "baseBuilding",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint16[5]",
+						"name": "reasourceType",
+						"type": "uint16[5]"
+					},
+					{
+						"internalType": "uint32[6]",
+						"name": "reasourceAmount",
+						"type": "uint32[6]"
+					},
+					{
+						"internalType": "int24[3]",
+						"name": "popChanges",
+						"type": "int24[3]"
+					},
+					{
+						"internalType": "uint8",
+						"name": "employees",
+						"type": "uint8"
+					}
+				],
+				"internalType": "struct City.Buildingcost",
+				"name": "_buildingInfo",
+				"type": "tuple"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_building",
+				"type": "uint256"
+			}
+		],
+		"name": "addBuildingData",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
 						"internalType": "uint32[8]",
 						"name": "amount",
 						"type": "uint32[8]"
@@ -1259,6 +1304,19 @@ abi =[
 			}
 		],
 		"name": "setApprovalForAll",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256[2]",
+				"name": "_itemData",
+				"type": "uint256[2]"
+			}
+		],
+		"name": "setItemLevel",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
