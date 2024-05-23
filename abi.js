@@ -224,24 +224,24 @@ abi =[
 			{
 				"components": [
 					{
-						"internalType": "uint32[6]",
+						"internalType": "uint32[8]",
 						"name": "amount",
+						"type": "uint32[8]"
+					},
+					{
+						"internalType": "int16[8]",
+						"name": "ingrediant",
+						"type": "int16[8]"
+					},
+					{
+						"internalType": "uint32[6]",
+						"name": "outputAmount",
 						"type": "uint32[6]"
 					},
 					{
-						"internalType": "int16[6]",
-						"name": "ingrediant",
-						"type": "int16[6]"
-					},
-					{
-						"internalType": "uint32[3]",
-						"name": "outputAmount",
-						"type": "uint32[3]"
-					},
-					{
-						"internalType": "uint16[3]",
+						"internalType": "uint16[6]",
 						"name": "output",
-						"type": "uint16[3]"
+						"type": "uint16[6]"
 					},
 					{
 						"internalType": "uint8",
@@ -360,24 +360,24 @@ abi =[
 			{
 				"components": [
 					{
-						"internalType": "uint32[6]",
+						"internalType": "uint32[8]",
 						"name": "amount",
+						"type": "uint32[8]"
+					},
+					{
+						"internalType": "int16[8]",
+						"name": "ingrediant",
+						"type": "int16[8]"
+					},
+					{
+						"internalType": "uint32[6]",
+						"name": "outputAmount",
 						"type": "uint32[6]"
 					},
 					{
-						"internalType": "int16[6]",
-						"name": "ingrediant",
-						"type": "int16[6]"
-					},
-					{
-						"internalType": "uint32[3]",
-						"name": "outputAmount",
-						"type": "uint32[3]"
-					},
-					{
-						"internalType": "uint16[3]",
+						"internalType": "uint16[6]",
 						"name": "output",
-						"type": "uint16[3]"
+						"type": "uint16[6]"
 					},
 					{
 						"internalType": "uint8",
@@ -704,9 +704,9 @@ abi =[
 				"type": "uint256"
 			},
 			{
-				"internalType": "uint16[6]",
+				"internalType": "uint16[8]",
 				"name": "mixedgoods",
-				"type": "uint16[6]"
+				"type": "uint16[8]"
 			},
 			{
 				"internalType": "uint256",
@@ -1047,6 +1047,11 @@ abi =[
 				"type": "uint256"
 			},
 			{
+				"internalType": "uint256",
+				"name": "_fertilizer",
+				"type": "uint256"
+			},
+			{
 				"internalType": "uint16",
 				"name": "_runs",
 				"type": "uint16"
@@ -1073,133 +1078,6 @@ abi =[
 		"name": "publicSafeBurn",
 		"outputs": [],
 		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_crop",
-				"type": "uint256"
-			}
-		],
-		"name": "readCropData",
-		"outputs": [
-			{
-				"components": [
-					{
-						"internalType": "uint16",
-						"name": "yield",
-						"type": "uint16"
-					},
-					{
-						"internalType": "uint16",
-						"name": "secondaryYield",
-						"type": "uint16"
-					},
-					{
-						"internalType": "uint8[3]",
-						"name": "temperature",
-						"type": "uint8[3]"
-					},
-					{
-						"internalType": "uint8[2]",
-						"name": "water",
-						"type": "uint8[2]"
-					},
-					{
-						"internalType": "uint8",
-						"name": "minsoil",
-						"type": "uint8"
-					},
-					{
-						"internalType": "uint8",
-						"name": "maxheight",
-						"type": "uint8"
-					},
-					{
-						"internalType": "uint16",
-						"name": "growthTime",
-						"type": "uint16"
-					},
-					{
-						"internalType": "uint16",
-						"name": "secondaryGrowthTime",
-						"type": "uint16"
-					},
-					{
-						"internalType": "bool",
-						"name": "isAnimal",
-						"type": "bool"
-					},
-					{
-						"internalType": "uint16",
-						"name": "primaryOutput",
-						"type": "uint16"
-					},
-					{
-						"internalType": "uint16",
-						"name": "secondaryOutput",
-						"type": "uint16"
-					}
-				],
-				"internalType": "struct City.Cropdata",
-				"name": "",
-				"type": "tuple"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_land",
-				"type": "uint256"
-			}
-		],
-		"name": "readLandData",
-		"outputs": [
-			{
-				"components": [
-					{
-						"internalType": "uint8",
-						"name": "temperature",
-						"type": "uint8"
-					},
-					{
-						"internalType": "uint8",
-						"name": "waterQuantity",
-						"type": "uint8"
-					},
-					{
-						"internalType": "uint8",
-						"name": "altitude",
-						"type": "uint8"
-					},
-					{
-						"internalType": "uint16",
-						"name": "soilQuality",
-						"type": "uint16"
-					},
-					{
-						"internalType": "uint16[5]",
-						"name": "yieldAmount",
-						"type": "uint16[5]"
-					},
-					{
-						"internalType": "uint16[5]",
-						"name": "yieldType",
-						"type": "uint16[5]"
-					}
-				],
-				"internalType": "struct City.LandData",
-				"name": "",
-				"type": "tuple"
-			}
-		],
-		"stateMutability": "view",
 		"type": "function"
 	},
 	{

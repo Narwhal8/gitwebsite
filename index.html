@@ -98,6 +98,7 @@
             document.getElementById("Amount").value,
             document.getElementById("cropSelect").value,
             document.getElementById("foodInputID").value,
+            0,
             document.getElementById("TimeAmount").value
           )
           break;
@@ -135,7 +136,7 @@
           NFTcontractSigner.cook(
             Trade,
             document.getElementById("Amount").value,
-            [document.getElementById("ItemMenuID").value,0,0,0,0,0],
+            [document.getElementById("ItemMenuID").value,0,0,0,0,0,0,0],
             0,
             0,
             1
@@ -1071,7 +1072,7 @@
 
 
       var temp_bonus = 1 - Math.abs(0.02 * (crop_info[2][2] - _temp_mod));
-      const fertility_bonus = (75 + _land_info[3])/100
+      const fertility_bonus = (60 + _land_info[3])/100
       const civ_good_bonus = await bonusCalc();
       console.log(civ_good_bonus);
       var primary_yield = Math.round(crop_info[0] * _value * Amount.value * yield_mod * temp_bonus * fertility_bonus * civ_good_bonus);
