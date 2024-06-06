@@ -7,9 +7,11 @@
   <script src="./abi.js" type="application/javascript"></script>
   <script src="./address.js" type="application/javascript"></script>
   <script src="./excelIntegration.js" type="application/javascript"></script>
+  
 
   <script>
     console.log(ethers);
+    if(typeof ethers == "undefined") {}
   </script>
   <script id="ethersScript">
 
@@ -48,6 +50,29 @@
       [61, 62, 63, 64, 0, 0, 0, 0],
       [70, 71, 72, 0, 0, 0, 0, 0],
       [80, 81, 82, 0, 0, 0, 0, 0]];
+
+    const Kingdom_Civilian_Items = 
+    [[0],
+    [1,11,21,31,41],
+    [1,11,21,31,41],
+    [1,11,21,31,41],
+    [1,11,21,31,41],
+    [1,11,21,31,41],
+    [1,11,21,31,41],
+    [1,11,21,31,41],
+    [1,11,21,31,41]];
+    var TitheDetails = [];
+    //Clothes
+    TitheDetails[1] = [4500,1,4500,5,4503,10];
+    TitheDetails[2] = [4505,1,4505,5,4504,10];
+    //Tools
+    TitheDetails[11] = [4540,1,4541,2,4542,10];
+    //Furniture
+    TitheDetails[21] = [4520,1,4521,2,4522,7];
+    //Bedding
+    TitheDetails[31] = [4580,1,4581,1,4582,1];
+    //Jewelery
+    TitheDetails[41] = [4560,1,4561,1,4562,1];
 
     async function signon() {
       var addies = await _address();
@@ -726,8 +751,24 @@
         const NFTcontract = new ethers.Contract(address, abi, provider)
         const NFTcontractSigner = new ethers.Contract(address, abi, signer);
         const myAddress = await signer.getAddress();
-      //  document.getElementById("totalCostID").textContent += 
 
+        _cityData = await NFTcontract.getKingdomInfo(myAddress);
+        let _kingdomType = _cityData[4];
+        let _popData = _cityData[0];
+        
+        const _stockedGoods = await NFTcontract.getStockedGoods(myAddress);
+        const _goods = _stockedGoods[1][CivGM.value];
+        console.log((_goods + (Amount * 4)));
+        if((_goods + (Amount * 4)) > 25){document.getElementById("totalCostID").textContent = "Error: You are trying to stock too many goods at once. The maximum amount your storage can currently handle is " + Math.floor((24 - _goods)/4)}
+
+        else{
+        document.getElementById("totalCostID").textContent = "Total Cost: "
+        for(let i = 0; i < 3; ++i) {
+          document.getElementById("totalCostID").textContent += (Amount * _popData[i] *  TitheDetails[Kingdom_Civilian_Items[_kingdomType][CivGM.value]][2*i + 1]);
+          document.getElementById("totalCostID").textContent += " " + itemName(TitheDetails[Kingdom_Civilian_Items[_kingdomType][CivGM.value]][2*i]);
+          if(i != 2){document.getElementById("totalCostID").textContent += " & "}
+          
+        }}
       }
       else if(actionSelect.value == "9") {
         switch (RecruitID.value) {
