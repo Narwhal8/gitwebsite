@@ -15,7 +15,6 @@
   </script>
   <script id="ethersScript">
 
-
     var _kingdomType;
 
 
@@ -95,8 +94,41 @@
 
 
     }
-
+    
     async function submitTX() {
+
+      console.log("TXLogic in action")
+      try{TXLogic()}
+      catch (err) {
+        console.log("ERROR DETECTED:");
+        document.getElementById("ErrorTextbox").style.display = "block";
+        document.getElementById("ErrorTextbox").textContent = "Error: TX can not be submitted";
+      }
+      console.log("TXLogic Ran");
+    }    
+    async function OnscreenTXConfirm() {
+
+            var showToast = false;
+            switch (actionSelect.value) {
+              case "1":
+                ErrorText.innerHTML = "Work successfully started!"
+                showToast = true;
+                break;
+              case "5":
+                ErrorText.innerHTML = "Items successfully claimed!"
+                showToast = true;
+                break;
+              default:
+                document.getElementById("ErrorText").style.display = "none"
+                document.getElementById("ErrorToast").style.display = "none"
+                break;
+            }
+            if(showToast == true){
+              document.getElementById("ErrorText").style.display = "block"
+              document.getElementById("ErrorToast").style.display = "block"
+            }
+    }
+    async function TXLogic() {
 
       var addies = await _address();
       const address = addies[0];
@@ -113,11 +145,14 @@
       console.log(_cityData);
       const _kingdomType = _cityData[4];
 
+      var txWaiter = false;
+
 
       switch (actionSelect.value) {
 
         case "1":
-          NFTcontractSigner.plant(
+          txWaiter = true;
+          var tx = await NFTcontractSigner.plant(
 
             document.querySelectorAll(".Lands")[_kingdomType - 1].value,
             document.getElementById("Amount").value,
@@ -125,6 +160,12 @@
             document.getElementById("foodInputID").value,
             0,
             document.getElementById("TimeAmount").value
+          );
+          tx.wait().then(
+            async (receipt) => {console.log("Really worked",receipt);
+            OnscreenTXConfirm();
+            }
+
           )
           break;
 
@@ -145,7 +186,8 @@
             items[1] = document.querySelectorAll(".Items")[(-1 * items[1])].value
           }
           if(BatchAmount.value == 0 || Amount.value == 0){Error("Amount is not valid");}
-          NFTcontractSigner.cook(
+          txWaiter = true;
+          var tx = await NFTcontractSigner.cook(
             document.getElementById("RecipeID").value,
             document.getElementById("Amount").value,
             items,
@@ -156,9 +198,10 @@
           break;
 
         case "3":
+        txWaiter = true;
           const Trade = Number(document.getElementById("ItemMenuID").value) + Number(document.getElementById("BuyorSellID").value)
           console.log("Trade:",Trade);
-          NFTcontractSigner.cook(
+          var tx = await NFTcontractSigner.cook(
             Trade,
             document.getElementById("Amount").value,
             [document.getElementById("ItemMenuID").value,0,0,0,0,0,0,0],
@@ -169,43 +212,98 @@
           break;
 
         case "4":
-          NFTcontractSigner.developCity(
+        txWaiter = true;
+          var tx = await NFTcontractSigner.developCity(
             document.getElementById("CID").value,
             document.getElementById("Amount").value,
             document.querySelectorAll(".Lands")[_kingdomType - 1].value
           )
           break;
         case "5":
-          NFTcontractSigner.claim(
+        txWaiter = true;
+          var tx = await NFTcontractSigner.claim(
             document.querySelectorAll(".Lands")[_kingdomType - 1].value
           )
           break;
         case "6":
-          NFTcontractSigner.allocateLand(
+        txWaiter = true;
+          var tx = await NFTcontractSigner.allocateLand(
             document.querySelectorAll(".Lands")[_kingdomType - 1].value,
             document.getElementById("Amount").value)
           break;
         case "7":
-          NFTcontractSigner.payTithe(
+        txWaiter = true;
+          var tx = await NFTcontractSigner.payTithe(
             document.getElementById("CivGM").value,
             document.getElementById("Amount").value)
           break;
 
         case "9":
-          NFTcontractSigner.recruitNewPeople(RecruitID.value, Amount.value)
+        txWaiter = true;
+          var tx = await NFTcontractSigner.recruitNewPeople(RecruitID.value, Amount.value)
           break;
         case "10":
-          NFTcontractSigner.collect(document.getElementById("CID").value)
+        txWaiter = true;
+          var tx = await NFTcontractSigner.collect(document.getElementById("CID").value)
           break;
         case "11":
-          var num = document.getElementById("ItemMenuID").value;
-          const balance1 = await NFTcontractSigner.balanceOf(myAddress, num)
-          console.log(balance)
-          if (document.getElementById("balance").textContent != "Balance of Item:") { document.getElementById("balance").textContent = "Balance of Item:"; }
-          document.getElementById("balance").textContent += balance1;
-          document.getElementById("balance").style.display = "block";
+          var allItems = returnItemID();
+          var you_cubed = []
+          for(let i = 0; i < allItems.length; ++i) {
+            you_cubed.push(myAddress);
+          }
+          const total_inventory = await NFTcontract.balanceOfBatch(you_cubed,allItems);
+          console.log(total_inventory);
+          
+          let thirdArray = [];
+
+          let backupInv = [];
+
+          let finalarray = [];
+
+          let item_tracker = [];
+
+          for(let i = 0; i < allItems.length; ++i){
+              thirdArray.push([0,0]);
+              thirdArray[i][0] = (Number(total_inventory[i] * itemValue(allItems[i])));
+              //NaN check
+              if(thirdArray[i][0] !== thirdArray[i][0]){thirdArray[i][0] = total_inventory[i]}
+              thirdArray[i][1] = allItems[i];
+              backupInv[i] = Number(total_inventory[i]) * itemValue(allItems[i]);
+            }
+            backupInv.sort(function(a, b) {return b - a;});
+            console.log("uhf",backupInv);
+             
+            for(let i = 0; i < allItems.length; ++i){
+              
+                for(let j = 0; j < allItems.length; ++j){
+                  if(thirdArray[j][0] == backupInv[i]){
+                    if (item_tracker[j] == true){break;}
+                    if(backupInv[i] != 0)
+                      {finalarray.push([thirdArray[j][1],Number(total_inventory[j])])}
+                      item_tracker[j] = true;  
+                }
+              }
+              if(backupInv[i][0] == 0){break}
+            }
+            console.log("Final Array;",finalarray);
+            InventoryPanel.innerHTML = "";
+          for(let i = 0; i < finalarray.length; ++i){
+            const newDiv = document.createElement("InventorySubpanel"+i);
+            InventoryPanel.appendChild(newDiv);
+            newDiv.innerHTML = itemName(finalarray[i][0]) + ": " + finalarray[i][1];
+            
+            if(i % 2 == 0){newDiv.classList.add("InventoryItem")}
+            else{newDiv.classList.add("InventoryItem2")}
+          }
+          InventoryPanel.style.display = "grid";
+          InventoryPanel.style.gridTemplateRows = Math.ceil(finalarray.length/3);
+          console.log("Test Inventory Finished");
           break;
+      
         case "12":
+
+          KingdomInfo.style.display = "block";
 
           let _population = _cityData[0];
           let _jobless_population = _cityData[1];
@@ -319,13 +417,25 @@
           break;
 
         case "13":
-          NFTcontractSigner.safeTransferFrom(myAddress,
+            txWaiter = true;
+            var tx = await NFTcontractSigner.safeTransferFrom(myAddress,
             document.getElementById("Address").value,
             document.getElementById("ItemMenuID").value,
             document.getElementById("Amount").value,
             "0x")
           break;
-      }
+        default:
+          console.log("Error: Invalid action selected in action select menu")
+          break;
+        }
+        if(txWaiter == true){
+            tx.wait().then(
+            async (receipt) => {console.log("Claiming Really worked",receipt);
+            OnscreenTXConfirm();
+            }
+
+          )}
+
 
     }
 
@@ -405,6 +515,10 @@
       document.getElementsByClassName("CDInput")[2].style.display = "none";
     }
 
+    function getAllBals() {
+
+    }
+    
     function showRecipe(_value) {
       let whyJS = returnRecipe(Number(document.getElementById("RecipeID").value));
       var items = whyJS[1];
@@ -456,7 +570,7 @@
 
           hideAmount();
 
-          document.getElementsByClassName("Amount")[0].style.display = "block";
+          document.getElementById("AmountID").style.display = "block";
 
           document.getElementById("FarmLabel").style.display = "block";
           document.getElementById("cropSelect").style.display = "block";
@@ -474,11 +588,12 @@
           break;
         case "3":
 
+          document.getElementById("ItemMenu").style.display = "block";
           document.getElementById("ItemMenuSelector").style.display = "block";
           document.getElementById("ItemMenuSelectorLabel").style.display = "block";
           document.getElementById("ItemMenuID").style.display = "block";
           document.getElementById("ItemMenuLabelID").style.display = "block";
-          document.getElementsByClassName("BuyorSell")[0].style.display = "block";
+          document.getElementById("BuyorSellLabel").style.display = "block";
           document.getElementById("BuyorSellID").style.display = "block";
           document.getElementById("totalCostID").style.display = "block";
           document.getElementById("ShopingNotice").style.display = "block";
@@ -486,6 +601,9 @@
 
           break;
         case "4":
+          
+          document.getElementById("ItemMenu").style.display = "block";
+
           document.getElementById("CDInput").style.display = "block";
           document.getElementById("CDLabel").style.display = "inline";
           document.getElementById("CID").style.display = "inline";
@@ -529,10 +647,6 @@
           hideAmount();
           break;
         case "11":
-          document.getElementById("ItemMenuSelector").style.display = "block";
-          document.getElementById("ItemMenuSelectorLabel").style.display = "block";
-          document.getElementsByClassName("ItemMenu")[0].style.display = "block";
-          document.getElementsByClassName("ItemMenu")[1].style.display = "block";
           hideAmount();
           break;
         case "12":
@@ -641,6 +755,9 @@
       var addies = await _address();
       const address = addies[0];
       const waraddress = addies[1];
+
+      document.getElementById("totalCost").style.display = "block";
+      document.getElementById("totalCostID").style.display = "block";
 
       document.getElementById("totalCostID").textContent = "Total Cost:";
       document.getElementById("totalCostID").style.display = "block";
@@ -895,7 +1012,9 @@
 
     function setTTC(_time) {
       console.log("SetTTC is run");
+
       document.getElementById("timeToCompletion").style.display = "block";
+      document.getElementById("Time").style.display = "block";
       const _new_Time = Math.trunc(Time_Multiplier * _time);
 
 
@@ -903,6 +1022,7 @@
       "Time To Completion: " + secondsToHMS(_new_Time);
 
     }
+    
     function secondsToHMS(_new_Time) {
       _new_Time = Math.trunc(_new_Time / 3600) +  " Hours " +  (Math.trunc(_new_Time / 60) % 60) +  " Minutes " +  Math.trunc(_new_Time % 60) +  " Seconds ";
       return(_new_Time)
@@ -917,6 +1037,10 @@
     }
 
     function showRelevantCraftingRecipies(_value) {
+      document.getElementById("RecipeMenus").style.display = "block";
+      document.getElementById("FoodAmounts").style.display = "block";
+      document.getElementById("FoodInput").style.display = "block";
+        
       for(let i = 0; i < document.getElementById("RecipeID").options.length; ++i) {
                     if(document.getElementById("RecipeID").options[i].classList.contains(_value) == true) 
                     {document.getElementById("RecipeID").options[i].style.display = "block"}
@@ -952,6 +1076,14 @@
       document.getElementById("BatchAmountLabel").style.display = "none";
 
 
+      document.getElementById("ErrorText").style.display = "none"
+      document.getElementById("ErrorToast").style.display = "none"
+
+      document.getElementById("totalCost").style.display = "none";
+      document.getElementById("totalCostID").style.display = "none";
+
+      document.getElementById("InventoryPanel").style.display = "none";
+
       document.getElementById("CropYieldAmount").style.display = "none";
       document.getElementById("SecondaryCropYieldAmount").style.display = "none";
 
@@ -966,6 +1098,7 @@
       document.getElementById("landAdderNotice").style.display = "none";
 
       document.getElementById("timeToCompletion").style.display = "none";
+      document.getElementById("Time").style.display = "none";
 
       document.getElementById("totalCostID").style.display = "none";
 
@@ -1223,18 +1356,48 @@
     
     function selectLand(_value) {
 
+          document.getElementById("totalCost").style.display = "block";
+          document.getElementById("totalCostID").style.display = "block";
       showLandMenu();
       if(_value > 500 || _value == 1) {
         document.getElementById("foodInputLabel").style.display = "block";
         document.getElementById("foodInputID").style.display = "inline-block";
+        document.getElementById("FoodAmounts").style.display = "block";
 
       }
       else if(_value == 2 || _value == 3) {
+        
+        document.getElementById("FoodAmounts").style.display = "none";
         document.getElementById("foodInputLabel").style.display = "none";
         document.getElementById("foodInputID").style.display = "none";
       }
     }
+    async function CivGoodStock() {
+      CivGBalance.style.display = "block";
+      CivGBalance.innerHTML = "Balance of Items:";
+            
+      var addies = await _address();
+      const address = addies[0];
+      const waraddress = addies[1];
 
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner()
+      const NFTcontract = new ethers.Contract(address, abi, provider)
+      const myAddress = await signer.getAddress()
+      var _cityData = await NFTcontract.getKingdomInfo(myAddress);
+      const _kingdomType = _cityData[4];
+      const _itemRationType = TitheDetails[Kingdom_Civilian_Items[_kingdomType][CivGM.value]]
+      var allItems = [_itemRationType[0],_itemRationType[2],_itemRationType[4]];
+          var you_cubed = []
+          for(let i = 0; i < allItems.length; ++i) {
+            you_cubed.push(myAddress);
+          }
+          const total_inventory = await NFTcontract.balanceOfBatch(you_cubed,allItems);
+
+          for(let i = 0; i < 3; ++i){
+            CivGBalance.innerHTML += itemName(allItems[i]) + ": " + total_inventory[i] + " "
+          }
+    }
     function hideBuildingInfo() {
 
       for (let i = 0; i < 2; ++i) {
@@ -1451,7 +1614,7 @@
     </select>
   </WorkingLand>
 
-  <landSelection class="landSelection" id="landSelection">
+  <landSelection class="landSelection InvisableOnStart" id="landSelection">
 
     <label class="landSelection" for="landSelection" id="landLabel">Which Land?</label>
     <select class="AridKingdom Lands Dropdown InvisableOnStart" id="Arid">
@@ -2179,7 +2342,7 @@
   </CityDevelopment>
 
 
-  <ItemMenu class="">
+  <ItemMenu class="InvisableOnStart" id="ItemMenu">
     <label id="ItemMenuSelectorLabel" class="InvisableOnStart" for="ItemMenuSelector"> What class of item are you looking for?</label>
     <select id="ItemMenuSelector" class="InvisableOnStart Dropdown" onchange="showRelevantItems(this.value)">
       <option value="_"></option>
@@ -2807,7 +2970,7 @@
   </ItemMenu>
 
 
-  <BuyorSell class="">
+  <BuyorSell class="InvisableOnStart">
     <label for="BuyorSellID" class="BuyorSell" id="BuyorSellLabel">Are you Buying or Selling?</label>
 
     <select class="BuyorSell Dropdown" id="BuyorSellID">
@@ -2818,12 +2981,12 @@
   </BuyorSell>
 
 
-  <FoodAmounts class="" id="FoodAmounts">
+  <FoodAmounts class="InvisableOnStart" id="FoodAmounts">
 
     <br>
-    <text class="foodInput" id="foodInputLabel">What would you like to feed the workers?</text>
+    <text class="foodInput InvisableOnStart" id="foodInputLabel">What would you like to feed the workers?</text>
 
-    <select class="foodInput Dropdown" id="foodInputID">
+    <select class="foodInput Dropdown InvisableOnStart" id="foodInputID" onchange="totalCostCalc()">
       <option value="0"></option>
       <option value="0">None</option>
       <option value="0"></option>
@@ -2843,9 +3006,9 @@
   </FoodAmounts>
 
 
-  <CivGoods class="CivG ">
+  <CivGoods class="CivG InvisableOnStart">
     <label id="CivGInfo">What Item Would you like to contribute</label>
-    <select class="Dropdown CivG" id="CivGM">
+    <select class="Dropdown CivG" id="CivGM" onchange="CivGoodStock()">
       <option value="-1"></option>
       <option value="0">Clothes</option>
       <option value="1">Tools</option>
@@ -2853,9 +3016,10 @@
       <option value="3">Bedding</option>
       <option value="4">Jewelery</option>
     </select>
+    <div id="CivGBalance"></div>
   </CivGoods>
 
-  <RecruitPeople class="RecruitInput " id="RecruitInput">
+  <RecruitPeople class="RecruitInput InvisableOnStart" id="RecruitInput">
     <label for="RecruitID">What Type of citizen are you recruiting?</label><br>
     <select id="RecruitID" class="Dropdown">
       <option value="-1"></option>
@@ -2866,7 +3030,7 @@
 
   </RecruitPeople>
   <br>
-  <ItemSelection class="itemSelection Items " id="itemSelection">
+  <ItemSelection class="itemSelection Items InvisableOnStart" id="itemSelection">
     <br>
     <label class="itemSelection Grains" id="GrainLabel">What Kind of Grain would you like to use?</label>
     <select class="Grains Items Dropdown InvisableOnStart" id="GrainMultiSelect">
@@ -3081,7 +3245,7 @@
   <Notices class="Notice">
     <text class="InvisableOnStart"id="landAdderNotice">NOTICE: Land added can't EVER be removed</text>
   </Notices>
-  <TXamount class="Amount " id="AmountID">
+  <TXamount class="Amount InvisableOnStart" id="AmountID">
     <text class="" id="BatchAmountLabel">How many batches would you like to make?</text>
     <input class=" NumericInput" type="number" id="BatchAmount" onchange="totalCostCalc();"></input>
     <text class="Amount" id="AmountLabel">How many times would you like to do this?</text>
@@ -3105,13 +3269,13 @@
 
   </TXamount>
 
-  <TotalCost class="">
+  <TotalCost class="InvisableOnStart" id="totalCost">
 
     <text id="totalCostID" class="TotalCost">Total Cost:</text>
 
   </TotalCost>
 
-  <KingdomInfo class="" id="KingdomInfo">
+  <KingdomInfo class="InvisableOnStart" id="KingdomInfo">
     <text id="peasentPop" class="Population">Peasents:</text>
     <text id="lowNobelPop" class="Population">Low Nobles:</text>
     <text id="highNobelPop" class="Population">High Nobles:</text>
@@ -3141,13 +3305,18 @@
 
   </KingdomInfo>
 
-  <text id="balance" class="Balance ">Balance of Item:</text>
+  <text id="balance" class="Balance InvisableOnStart">Balance of Item:</text>
 
-  <Time class="">
+  <Time class="InvisableOnStart" id="Time">
     <text class="Time" id="timeToCompletion">Time To Completion:</text>
   </Time>
     <button class="sendTX" id="sendTX" onclick="submitTX()">Confirm Transaction</button>
 
+  <ErrorToast class="InvisableOnStart" id="ErrorToast">
+    <text class="ErrorTextbox" id="ErrorText"></text>
+  </ErrorToast>
+  <NewIneventory class="InventoryPanel" id="InventoryPanel">
+  </NewIneventory>
   <NotesButton class="MenuButtons">
 
     <a href="faq.html">
@@ -3163,9 +3332,9 @@
       <button class="notesButton notebutton4">Game Encylopedia</button>
     </a>
   </NotesButton>
-
+  
 </body>
-
+  <Bottombox class="BottomBox"></Bottombox>
 </html>
 
 
@@ -3173,49 +3342,60 @@
 
 <style>
   body {
-
     background-color: mediumseagreen;
-  }
-
-
-  .landAmount,
-  .landSelection,
-  .Recipe,
-  .CraftingInput,
-  .BuildingInput,
-  .KingdomInput,
-  .WarInput,
-  .RecruitInput,
-  .MercWarInput,
-  .itemSelection,
-  .RecipeText,
-  .BuyorSell,
-  .ItemTypes,
-  .BuyorSell,
-  .Balance,
-  .ItemMenu,
-  .Amount,
-  .foodInput,
-  .TotalCost,
-  .Population,
-  .Time,
-  .CivG {
-    display: none;
   }
 
   .InvisableOnStart {
     display: none;
   }
-
+  .InventoryPanel {
+    display: inline-flex;
+    justify-content: space-around;
+    width: 500px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .BottomBox {
+    display: block;
+    width: 100%;
+    height: 150px;
+    background-color: mediumseagreen;
+    bottom: 0px
+  }
+  .InventoryItem {
+    display: inline-block;
+    background-color: rgb(19, 125, 65);
+    align-self: flex-start;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    height: 100px;
+    width: 1fr;
+    height: 1fr;
+  }
+  .InventoryItem2 {
+    display: inline-block;
+    background-color: green;
+    align-self: flex-start;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    height: 100px;
+    width: 1fr;
+  }
+  .ErrorTextbox {
+    display: block;
+    position: fixed;
+    background-color: chartreuse;
+    width: 200px;
+    height: 100px;
+    right:10px;
+    bottom: 10px;
+  }
   .MenuButtons {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        left:25%;
-        position: fixed;
-        bottom: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-template-rows: repeat(2, 2fr);
+    left:25%;
+    position: fixed;
+    bottom: 10px;
   
-    }
+  }
   .walletConnect {
     background-color: darkred;
     position: absolute;
@@ -3227,11 +3407,6 @@
 
   .walletConnect:hover {
     background-color: brown;
-  }
-
-  .CraftingInput {
-    width: 60px;
-
   }
 
   .sendTX {

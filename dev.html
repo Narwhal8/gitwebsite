@@ -38,18 +38,18 @@
           NFTcontractSigner.adjustTime(document.getElementById("Input1").value);
           break;
         case "3": // Initiator
-          const ItemID = returnItemID();
-          console.log(ItemID);
+          const recipeID = returnRecipeID();
+          console.log(recipeID);
           var j = 0;
           let temp_array = [];
           let temp_array_data = [];
-          let max_val = ItemID.length;//893; 
+          let max_val = recipeID.length;//893; 
           for (var i = 0; i < max_val; ++i) {
 
             
             //var _recipe = returnRecipe(ItemID[i]);
               //temp_array.push(_recipe); 
-              temp_array.push(ItemID[i]);
+              temp_array.push(recipeID[i]);
               ++j;
               if (j == 32 || i == (max_val)) {
                 console.log("thid do dun");
@@ -249,7 +249,6 @@
           NFTcontractSigner.addMultiCropData([returnCropData(517),returnCropData(518),returnCropData(519),returnCropData(521),returnCropData(522),returnCropData(532),returnCropData(533),returnCropData(535)],[517,518,519,521,522,532,533,535], {gasLimit: 5000000});
           NFTcontractSigner.addMultiCropData([returnCropData(538),returnCropData(540),returnCropData(542),returnCropData(544),returnCropData(0),returnCropData(0),returnCropData(0),returnCropData(0)],[538,540,542,544,0,0,0,0], {gasLimit: 5000000});
           
-
           var mixedItemData0 = returnMixedItemData(0);
           var mixedItemData1 = returnMixedItemData(1);
           var mixedItemData2 = returnMixedItemData(2);
@@ -271,10 +270,18 @@
           var mixedItemData18 = returnMixedItemData(18);
           var mixedItemData19 = returnMixedItemData(19);
           var mixedItemData20 = returnMixedItemData(20);
+          var mixedItemData21 = returnMixedItemData(21);
+          var mixedItemData22 = returnMixedItemData(22);
+          var mixedItemData23 = returnMixedItemData(23);
+          var mixedItemData24 = returnMixedItemData(24);
+          var mixedItemData25 = returnMixedItemData(25);
+          var mixedItemData26 = returnMixedItemData(26);
+          var mixedItemData27 = returnMixedItemData(27);
+          var mixedItemData27 = returnMixedItemData(28);
 
           console.log("you got here");
 
-          for(let i = 0; i < 21; ++i) {
+          for(let i = 0; i < 29; ++i) {
             while(eval("mixedItemData" + i).length < 64){
               eval("mixedItemData" + i).push(0);
             }

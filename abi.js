@@ -1,4 +1,4 @@
-abi =[
+abi = [
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
@@ -871,9 +871,9 @@ abi =[
 						"type": "uint8"
 					},
 					{
-						"internalType": "uint8",
+						"internalType": "uint32",
 						"name": "landcount",
-						"type": "uint8"
+						"type": "uint32"
 					},
 					{
 						"internalType": "uint16",
@@ -975,9 +975,9 @@ abi =[
 		"name": "getLand",
 		"outputs": [
 			{
-				"internalType": "uint24[8]",
+				"internalType": "uint32[8]",
 				"name": "",
-				"type": "uint24[8]"
+				"type": "uint32[8]"
 			}
 		],
 		"stateMutability": "view",
@@ -1077,9 +1077,9 @@ abi =[
 				"type": "uint8"
 			},
 			{
-				"internalType": "uint8",
+				"internalType": "uint32",
 				"name": "_landcount",
-				"type": "uint8"
+				"type": "uint32"
 			},
 			{
 				"internalType": "uint16",
@@ -1097,9 +1097,9 @@ abi =[
 				"type": "uint256"
 			},
 			{
-				"internalType": "uint16",
+				"internalType": "uint256",
 				"name": "_runs",
-				"type": "uint16"
+				"type": "uint256"
 			}
 		],
 		"name": "plant",
