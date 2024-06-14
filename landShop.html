@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+        <script src="./abi.js" type="application/javascript"></script>
+        <script src="./address.js" type="application/javascript"></script>
+
+        <script>
+            async function signon() {
+                var addies = await _address();
+                const address = addies[0];
+                const waraddress = addies[1];
+                const freelandaddress = addies[2];
+
+                const provider = new ethers.providers.Web3Provider(window.ethereum)
+                await provider.send("eth_requestAccounts", []);
+
+                    
+                const signer = provider.getSigner()
+                const NFTcontract = new ethers.Contract(address, abi, provider)
+                const LandSaleContract = new ethers.Contract(freelandaddress, landGiveaway_abi, provider)
+                const myAddress = await signer.getAddress()
+
+
+                _cityData = await NFTcontract.getKingdomInfo(myAddress);
+                let _kingdomType = _cityData[4]
+                console.log();
+                console.log("KingdomID:", _kingdomType);
+                if(await LandSaleContract.alreadyUsed(myAddress) == false){
+                    ClaimText.style.display = "block";
+                }
+                showLandMenu();
+
+            }
+            
+    async function showLandMenu() {
+      var addies = await _address();
+      const address = addies[0];
+      const waraddress = addies[1];
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner()
+      const NFTcontract = new ethers.Contract(address, abi, provider)
+      const myAddress = await signer.getAddress()
+      var _cityData = await NFTcontract.getKingdomInfo(myAddress);
+      const _kingdomType = _cityData[4];
+
+
+      for(let i = 0; i < LandMenu.options.length; ++i) {
+                    if(LandMenu.options[i].classList.contains(_kingdomType) == true || _kingdomType == 0) 
+                    {LandMenu.options[i].style.display = "block"}
+                    else if(typeof _kingdomType !== "undefined"){LandMenu.options[i].style.display = "none"}
+      }
+
+      document.getElementById("landSelection").style.display = "block";
+    }
+    async function totalCost() {
+        _Landvalue = Number(LandMenu.value);
+        console.log(_Landvalue)
+
+        const _adjLand = await landShopCost();
+
+
+
+        TotalCostText.textContent = "Total Cost: " + _adjLand + " Testnet Ether";
+
+        TotalCostText.style.display = "block";
+    }
+    async function submitTX() {
+        var addies = await _address();
+                const address = addies[0];
+                const waraddress = addies[1];
+                const freelandaddress = addies[2];
+                const paidlandaddress = addies[3];
+
+                const provider = new ethers.providers.Web3Provider(window.ethereum)
+
+                    
+                const signer = provider.getSigner()
+                const NFTcontract = new ethers.Contract(address, abi, provider)
+                const FreeLandContract = new ethers.Contract(freelandaddress, landGiveaway_abi, provider)
+                const FreeLandContractSigner = new ethers.Contract(freelandaddress, landGiveaway_abi, signer)
+                const LandSaleContract = new ethers.Contract(paidlandaddress, landMerchant_abi, provider)
+                const LandSaleContractSigner = new ethers.Contract(paidlandaddress, landMerchant_abi, signer)
+                const myAddress = await signer.getAddress()
+        if(await FreeLandContract.alreadyUsed(myAddress) == false){
+            FreeLandContractSigner.getFreeLand();
+        }
+        else{
+          const _adjLand = await landShopCost();
+          _landCost = ethers.utils.parseEther(String(_adjLand));
+          console.log(_adjLand);
+          LandSaleContractSigner.SellLand(LandMenu.value,AmountInput.value,{value: _landCost})}
+    }
+    async function landShopCost() {
+      
+      var addies = await _address();
+                const paidlandaddress = addies[3];
+
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+
+                    
+        const LandSaleContract = new ethers.Contract(paidlandaddress, landMerchant_abi, provider)
+
+        var _amount = 1;
+          if((_Landvalue >= 70 &&  _Landvalue < 80)){_amount = 2;}
+          else if((_Landvalue >= 80 && _Landvalue < 90)){_amount = 3;}
+          const _soldAmount = await LandSaleContract.currentLandPrice(LandMenu.value)
+          var _landCost = (((((100 + Number(_soldAmount)) + Math.floor((AmountInput.value - 1) / 2))) * AmountInput.value * _amount)/100);
+          return(_landCost);
+    }
+        </script>
+    </head>
+    <body onload="signon()">
+      <text>Welcome to the Land Shop! Here you be able to buy more land, or for the purposes of beta testing each wallet will be able to claim some randomly chosen land to start out with.</text>
+      <br>
+      <br>
+        <h2 class="InvisableOnStart" id="ClaimText">Welcome to the Test Game. To get started, Click "Confirm Transaction" to recieve your free randomized land allocation</h2>
+  <landSelection class="landSelection InvisableOnStart" id="landSelection">
+    <label for="LandMenu">What Land would you like to buy?</label>
+    <select class="Dropdown" id="LandMenu">
+        <option value="-1"></option>
+        <option value="0">--Land</option>
+        <option value="-1"></option>
+        <option value="1" class="1">Arid Badlands</option>
+        <option value="2" class="1">Arid Steppes</option>
+        <option value="3" class="1">Arid Oasis</option>
+        <option value="4" class="1">Arid River</option>
+        <option value="11" class="2">Northern Rocky Wastes</option>
+        <option value="12" class="2">Northern Tundra</option>
+        <option value="13" class="2">Northern Forest</option>
+        <option value="14" class="2">Northern River</option>
+        <option value="21" class="3">Rocky Heartland</option>
+        <option value="22" class="3">Heartland</option>
+        <option value="23" class="3">River Heartland</option>
+        <option value="31" class="4">Southern Rocky</option>
+        <option value="32" class="4">Southern Forest</option>
+        <option value="33" class="4">Southern Jungle</option>
+        <option value="34" class="4">Southern River</option>
+        <option value="41" class="2 5">Northern Ocean</option>
+        <option value="42" class="3 5">Central Ocean</option>
+        <option value="43" class="4 5">Southern Ocean</option>
+        <option value="44" class="1 5">Desolate Ocean</option>
+        <option value="51" class="6">Brackish Swamp</option>
+        <option value="52" class="6">Swamp</option>
+        <option value="53" class="6">Lush Swamp</option>
+        <option value="61" class="7">Red Mountain</option>
+        <option value="62" class="7">Blue Mountain</option>
+        <option value="63" class="7">Green Mountain</option>
+        <option value="64" class="7">White Mountain</option>
+        <option value="70" class="8">Ochre Plains</option>
+        <option value="71" class="8">Lustrous River</option>
+        <option value="72" class="8">Silver Forest</option>
+        <option value="80" class="9">Golden Plains</option>
+        <option value="81" class="9">Golden Hills</option>
+        <option value="82" class="9">Golden Forest</option>
+    </select>
+
+
+
+  </landSelection>
+  <landAmount>
+    <br>
+    <label id="LandAmountLabel" for="AmountInput">How much Land would you like to buy?</label>
+    <input id="AmountInput" class="NumericInput" type="number" onchange="totalCost()">
+    <text class="InvisableOnStart" id="TotalCostText">Total Cost:</text>
+  </landAmount>
+  <landList class="InvisableOnStart">
+
+  </landList>
+  <button class="sendTX" id="sendTX" onclick="submitTX()">Confirm Transaction</button>
+
+  <NotesButton class="MenuButtons">
+
+    <a href="faq.html">
+      <button class="notesButton">Project FAQ</button>
+    </a>
+    <a href="intro.html">
+      <button class="notesButton">Ready to Start? Click here!</button>
+    </a>
+    <a href="index.html">
+      <button class="notesButton">Return Home</button>
+    </a>
+    <a href="wiki.html">
+      <button class="notesButton">Game Encylopedia</button>
+    </a>
+  </NotesButton>
+    </body>
+</html>
+<style>
+
+    body {background-color: mediumseagreen;}
+
+.InvisableOnStart{
+    display: none;
+}
+.indexButton{
+  background-color: gray;
+  width: 150px;
+  height:40px;
+  position: relative;
+  border-radius: 12px;
+  font-size: 16px;
+}
+.menuButtons{
+    position: absolute;
+    top: 5px;
+    right:20px;
+}
+.Dropdown {
+    background-color: wheat;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+.indexButton:hover {
+    background-color: rgb(179, 165, 165);
+}
+
+  .NumericInput {
+    border-radius: 2px;
+    background-color: aqua;
+    border: none;
+  }
+
+.sendTX {
+    background-color: darkred;
+    color: black;
+    position: fixed;
+    width: 150px;
+    height: 80px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 12px;
+    bottom:10px;
+    left:10px;
+  }
+  
+  .MenuButtons {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-template-rows: repeat(2, 2fr);
+    left:25%;
+    position: fixed;
+    bottom: 10px;
+  
+  }
+  
+  .notesButton {
+    background-color: gray;
+    width: 150px;
+    height: 40px;
+    position: relative;
+    border-radius: 12px;
+    font-size: 16px;
+  }
+
+  .notesButton:hover {
+    background-color: rgb(179, 165, 165);
+  }
+
+  .sendTX {
+    background-color: darkred;
+    color: black;
+    position: fixed;
+    width: 150px;
+    height: 80px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 12px;
+    bottom:10px;
+  }
+
+  .sendTX:hover {
+    background-color: brown;
+    font-size: 18px;
+  }
+
+</style>

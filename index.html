@@ -114,8 +114,32 @@
                 ErrorText.innerHTML = "Work successfully started!"
                 showToast = true;
                 break;
+              case "2":
+                ErrorText.innerHTML = "Crafting started!"
+                showToast = true;
+                break;
+              case "3":
+                ErrorText.innerHTML = "Transaction Confirmed!"
+                showToast = true;
+                break;
+              case "4":
+                ErrorText.innerHTML = "Building successfully built!"
+                showToast = true;
+                break;
               case "5":
                 ErrorText.innerHTML = "Items successfully claimed!"
+                showToast = true;
+                break;
+              case "6":
+                ErrorText.innerHTML = "Land added!"
+                showToast = true;
+                break;
+              case "7":
+                ErrorText.innerHTML = "Civilian Goods Given!"
+                showToast = true;
+                break;
+              case "8":
+                ErrorText.innerHTML = "Pops Recruited!"
                 showToast = true;
                 break;
               default:
@@ -154,7 +178,7 @@
           txWaiter = true;
           var tx = await NFTcontractSigner.plant(
 
-            document.querySelectorAll(".Lands")[_kingdomType - 1].value,
+            LandMenu.value,
             document.getElementById("Amount").value,
             document.getElementById("cropSelect").value,
             document.getElementById("foodInputID").value,
@@ -179,11 +203,10 @@
           var time = whyJS[5];
           if(document.getElementById("BatchAmount").value == 0){document.getElementById("BatchAmount").value = 1}
           console.log(items);
-          if (items[0] < 0) {
-            items[0] = document.querySelectorAll(".Items")[(-1 * items[0])].value
-          }
-          if (items[1] < 0) {
-            items[1] = document.querySelectorAll(".Items")[(-1 * items[1])].value
+          for(let i = 0; i < 8; ++i) {
+            if (items[i] < 0) {
+              items[i] = document.querySelectorAll(".Items")[(-1 * items[0])].value
+            }
           }
           if(BatchAmount.value == 0 || Amount.value == 0){Error("Amount is not valid");}
           txWaiter = true;
@@ -216,19 +239,19 @@
           var tx = await NFTcontractSigner.developCity(
             document.getElementById("CID").value,
             document.getElementById("Amount").value,
-            document.querySelectorAll(".Lands")[_kingdomType - 1].value
+            LandMenu.value
           )
           break;
         case "5":
         txWaiter = true;
           var tx = await NFTcontractSigner.claim(
-            document.querySelectorAll(".Lands")[_kingdomType - 1].value
+            LandMenu.value
           )
           break;
         case "6":
         txWaiter = true;
           var tx = await NFTcontractSigner.allocateLand(
-            document.querySelectorAll(".Lands")[_kingdomType - 1].value,
+            LandMenu.value,
             document.getElementById("Amount").value)
           break;
         case "7":
@@ -631,10 +654,8 @@
 
         case "7":
 
-          document.getElementsByClassName("CivG")[0].style.display = "block";
-          document.getElementsByClassName("CivG")[1].style.display = "block";
-
-
+          document.getElementById("CivGoods").style.display = "block";
+          document.getElementById("CivGM").style.display = "block";
           break;
         case "9":
           document.getElementById("RecruitInput").style.display = "block";
@@ -681,43 +702,16 @@
       var _cityData = await NFTcontract.getKingdomInfo(myAddress);
       const _kingdomType = _cityData[4];
 
-      switch (_kingdomType) {
 
-        case 1:
-          document.getElementById("Arid").style.display = "inline";
-          break;
-        case 2:
-          document.getElementById("Northern").style.display = "inline";
-          break;
-        case 3:
-          document.getElementById("Heartland").style.display = "inline";
-          break;
-        case 4:
-          document.getElementById("Southern").style.display = "inline";
-          break;
-        case 5:
-          document.getElementById("Ocean").style.display = "inline";
-          break;
-        case 6:
-          document.getElementById("Swamp").style.display = "inline";
-          break;
-        case 7:
-          document.getElementById("Mountain").style.display = "inline";
-          break;
-        case 8:
-          document.getElementById("Silver").style.display = "inline";
-          break;
-        case 9:
-          document.getElementById("Guilded").style.display = "inline";
-          break;
-        default:
-          console.log("kingdom undefined");
-
+      for(let i = 0; i < LandMenu.options.length; ++i) {
+                    if(LandMenu.options[i].classList.contains(_kingdomType) == true || _kingdomType == 0) 
+                    {LandMenu.options[i].style.display = "block"}
+                    else if(typeof _kingdomType !== "undefined"){LandMenu.options[i].style.display = "none"}
       }
 
 
       document.getElementById("landLabel").style.display = "inline";
-      document.getElementById("landSelection").style.display = "block";
+      landSelection.style.display = "block";
     }
 
     function hideLandMenu() {
@@ -972,16 +966,16 @@
           T5DrinksMultiSelect.style.display = "inline";
           break;
         case -14:
-          PieLabel.style.display = "inline";
-          PieMultiSelect.style.display = "inline";
+          PiesLabel.style.display = "inline";
+          PiesMultiSelect.style.display = "inline";
           break;
         case -15:
-          SoupLabel.style.display = "inline";
-          SoupMultiSelect.style.display = "inline";
+          SoupsLabel.style.display = "inline";
+          SoupsMultiSelect.style.display = "inline";
           break;
         case -16:
-          CropLabel.style.display = "inline";
-          CropMultiSelect.style.display = "inline";
+          CropsLabel.style.display = "inline";
+          CropsMultiSelect.style.display = "inline";
           break;
         case -17:
           PolishedCommonGemstoneLabel.style.display = "inline";
@@ -1000,10 +994,49 @@
           RareGemstoneMultiSelect.style.display = "inline";
           break;
         case -21:
-          FiberLabel.style.display = "inline";
-          FiberMultiSelect.style.display = "inline";
+          FibersLabel.style.display = "inline";
+          FibersMultiSelect.style.display = "inline";
           break;
-
+        case -22:
+          FlatbreadsLabel.style.display = "inline";
+          FlatbreadsMultiSelect.style.display = "inline";
+          break;
+        case -23:
+          SandwichesLabel.style.display = "inline";
+          SandwichesMultiSelect.style.display = "inline";
+          break;
+        case -24:
+          BonesLabel.style.display = "inline";
+          BonesMultiSelect.style.display = "inline";
+          break;
+        case -25:
+          SaucesLabel.style.display = "inline";
+          SaucesMultiSelect.style.display = "inline";
+          break;
+        case -26:
+          FuelssLabel.style.display = "inline";
+          FuelssMultiSelect.style.display = "inline";
+          break;
+        case -27:
+          UnboiledMeatsLabel.style.display = "inline";
+          UnboiledMeatsMultiSelect.style.display = "inline";
+          break;
+        case -28:
+          FancyBreadsLabel.style.display = "inline";
+          FancyBreadsMultiSelect.style.display = "inline";
+          break;
+        case -29:
+          StocksLabel.style.display = "inline";
+          StocksMultiSelect.style.display = "inline";
+          break;
+        case -30:
+          FloursLabel.style.display = "inline";
+          FlourssMultiSelect.style.display = "inline";
+          break;
+        case -31:
+          FancyPasteriesLabel.style.display = "inline";
+          FancyPasteriesMultiSelect.style.display = "inline";
+          break;
         default:
           console.log("did NOT work");
 
@@ -1039,7 +1072,7 @@
     function showRelevantCraftingRecipies(_value) {
       document.getElementById("RecipeMenus").style.display = "block";
       document.getElementById("FoodAmounts").style.display = "block";
-      document.getElementById("FoodInput").style.display = "block";
+      //document.getElementById("FoodInput").style.display = "block";
         
       for(let i = 0; i < document.getElementById("RecipeID").options.length; ++i) {
                     if(document.getElementById("RecipeID").options[i].classList.contains(_value) == true) 
@@ -1060,11 +1093,7 @@
 
     function hideAll() {
 
-
-      for (let i = 0; i < 7; i++) {
-        document.getElementsByClassName("Items")[i].style.display = "none"
-        document.getElementsByClassName("itemSelection")[i].style.display = "none"
-      }
+      hideMultiSelector();
 
       document.getElementById("LandAmountLabel").style.display = "none";
       document.getElementById("Amount").style.display = "none";
@@ -1110,9 +1139,8 @@
 
       document.getElementById("Cost").style.display = "none";
 
-
-      document.getElementsByClassName("CivG")[0].style.display = "none";
-      document.getElementsByClassName("CivG")[1].style.display = "none";
+      document.getElementById("CivGoods").style.display = "none";
+      document.getElementById("CivGM").style.display = "none";
 
       document.getElementById("RecruitInput").style.display = "none";
       document.getElementById("RecruitID").style.display = "none";
@@ -1145,48 +1173,12 @@
 
     function hideMultiSelector() {
 
-      MeatLabel.style.display = "none"
-      MeatMultiSelect.style.display = "none"
-      GrainLabel.style.display = "none"
-      GrainMultiSelect.style.display = "none"
-      FruitLabel.style.display = "none"
-      FruitMultiSelect.style.display = "none"
-      VegetableLabel.style.display = "none"
-      VegetableMultiSelect.style.display = "none"
-      SideLabel.style.display = "none"
-      SideMultiSelect.style.display = "none"
-      T2MetalLabel.style.display = "none"
-      T2MetalMultiSelect.style.display = "none"
-      T1DrinksLabel.style.display = "none"
-      T1DrinksMultiSelect.style.display = "none"
-      ExoticBerryLabel.style.display = "none"
-      ExoticBerryMultiSelect.style.display = "none"
-      BreadLabel.style.display = "none"
-      BreadMultiSelect.style.display = "none"
-      T2DrinksLabel.style.display = "none"
-      T2DrinksMultiSelect.style.display = "none"
-      T3DrinksLabel.style.display = "none"
-      T3DrinksMultiSelect.style.display = "none"
-      T4DrinksLabel.style.display = "none"
-      T4DrinksMultiSelect.style.display = "none"
-      T5DrinksLabel.style.display = "none"
-      T5DrinksMultiSelect.style.display = "none"
-      PiesLabel.style.display = "none"
-      PiesMultiSelect.style.display = "none"
-      SoupsLabel.style.display = "none"
-      SoupsMultiSelect.style.display = "none"
-      FodderLabel.style.display = "none"
-      FodderMultiSelect.style.display = "none"
-      PolishedCommonGemstoneLabel.style.display = "none"
-      PolishedCommonGemstoneMultiSelect.style.display = "none"
-      PolishedRareGemstoneLabel.style.display = "none"
-      PolishedRareGemstoneMultiSelect.style.display = "none"
-      CommonGemstoneLabel.style.display = "none"
-      CommonGemstoneMultiSelect.style.display = "none"
-      RareGemstoneLabel.style.display = "none"
-      RareGemstoneMultiSelect.style.display = "none"
-      FibersLabel.style.display = "none"
-      FibersMultiSelect.style.display = "none"
+
+      for(let i = 0; i < 32; ++i) {
+        document.getElementsByClassName("Items")[i].style.display = "none";
+        document.getElementsByClassName("itemSelection")[i].style.display = "none";
+      }
+
     }
     
     function showAmount() {
@@ -1224,7 +1216,7 @@
 
       const crop_info = returnCropData(cropSelect.value);
 
-      const _land_info = returnLandData(document.querySelectorAll(".Lands")[_kingdomType - 1].value);
+      const _land_info = returnLandData(LandMenu.value);
 
       var crop_yield_times = crop_info[6];
       var secondary_crop_yield_times = crop_info[7];
@@ -1327,7 +1319,7 @@
 
       const _cityData = await NFTcontract.getKingdomInfo(myAddress);
       const _kingdomType = _cityData[4];
-      const _land_info = returnLandData(document.querySelectorAll(".Lands")[_kingdomType - 1].value);
+      const _land_info = returnLandData(LandMenu.value);
       var temp_name = "Estimated Yield: ";
 
       const civilian_bonus = await bonusCalc();
@@ -1615,72 +1607,43 @@
   </WorkingLand>
 
   <landSelection class="landSelection InvisableOnStart" id="landSelection">
-
-    <label class="landSelection" for="landSelection" id="landLabel">Which Land?</label>
-    <select class="AridKingdom Lands Dropdown InvisableOnStart" id="Arid">
-      <option value="0"></option>
-      <option value="1">Badlands</option>
-      <option value="2">Steppes</option>
-      <option value="3">Oasis</option>
-      <option value="4">Arid River</option>
-      <option value="44">Desolate Ocean</option>
-    </select>
-    <select class="NorthernKingdom Lands Dropdown InvisableOnStart" id="Northern">
-      <option value="0"></option>
-      <option value="11">Rocky Wastes</option>
-      <option value="12">Tundra</option>
-      <option value="13">Northern Forest</option>
-      <option value="14">Icey River</option>
-      <option value="41">Northern Ocean</option>
-    </select>
-    <select class="HeartlandKingdom Lands Dropdown InvisableOnStart" id="Heartland">
-      <option value="0"></option>
-      <option value="21">Rocky Heartland</option>
-      <option value="22">Heartland</option>
-      <option value="23">Heart River</option>
-      <option value="42">Central Ocean</option>
-    </select>
-    <select class="SouthernKingdom Lands Dropdown InvisableOnStart" id="Southern">
-      <option value="0"></option>
-      <option value="31">Southern Rocky Wastes</option>
-      <option value="32">Southern Forest</option>
-      <option value="33">Southern Jungle</option>
-      <option value="34">Rainforest River</option>
-      <option value="43">Rainforest Ocean</option>
-    </select>
-    <select class="OceanKingdom Lands Dropdown InvisableOnStart" id="Ocean">
-      <option value="0"></option>
-      <option value="41">Northern Ocean</option>
-      <option value="42">Heartland Ocean</option>
-      <option value="43">Southern Ocean</option>
-      <option value="44">Desolate Ocean</option>
-    </select>
-    <select class="SwampKingdom Lands Dropdown InvisableOnStart" id="Swamp">
-      <option value="0"></option>
-      <option value="51">Brackish Swamp</option>
-      <option value="52">Swamp</option>
-      <option value="53">Lush Swamp</option>
-    </select>
-    <select class="MountainKingdom Lands Dropdown InvisableOnStart" id="Mountain">
-      <option value="0"></option>
-      <option value="61">Red Mountain</option>
-      <option value="62">Blue Mountain</option>
-      <option value="63">Green Mountain</option>
-      <option value="64">White Mountain</option>
+    <label for="LandMenu" id="landLabel">What Land would you like to use?</label>
+    <select class="Dropdown" id="LandMenu">
+        <option value="-1"></option>
+        <option value="1" class="1">Arid Badlands</option>
+        <option value="2" class="1">Arid Steppes</option>
+        <option value="3" class="1">Arid Oasis</option>
+        <option value="4" class="1">Arid River</option>
+        <option value="11" class="2">Northern Rocky Wastes</option>
+        <option value="12" class="2">Northern Tundra</option>
+        <option value="13" class="2">Northern Forest</option>
+        <option value="14" class="2">Northern River</option>
+        <option value="21" class="3">Rocky Heartland</option>
+        <option value="22" class="3">Heartland</option>
+        <option value="23" class="3">River Heartland</option>
+        <option value="31" class="4">Southern Rocky</option>
+        <option value="32" class="4">Southern Forest</option>
+        <option value="33" class="4">Southern Jungle</option>
+        <option value="34" class="4">Southern River</option>
+        <option value="41" class="2 5">Northern Ocean</option>
+        <option value="42" class="3 5">Central Ocean</option>
+        <option value="43" class="4 5">Southern Ocean</option>
+        <option value="44" class="1 5">Desolate Ocean</option>
+        <option value="51" class="6">Brackish Swamp</option>
+        <option value="52" class="6">Swamp</option>
+        <option value="53" class="6">Lush Swamp</option>
+        <option value="61" class="7">Red Mountain</option>
+        <option value="62" class="7">Blue Mountain</option>
+        <option value="63" class="7">Green Mountain</option>
+        <option value="64" class="7">White Mountain</option>
+        <option value="70" class="8">Ochre Plains</option>
+        <option value="71" class="8">Lustrous River</option>
+        <option value="72" class="8">Silver Forest</option>
+        <option value="80" class="9">Golden Plains</option>
+        <option value="81" class="9">Golden Hills</option>
+        <option value="82" class="9">Golden Forest</option>
     </select>
 
-    <select class="SilverKingdom Lands Dropdown InvisableOnStart" id="Silver">
-      <option value="0"></option>
-      <option value="70">Rocky Wastes</option>
-      <option value="71">Tundra</option>
-      <option value="72">Northern Forest</option>
-    </select>
-    <select class="GuildedKingdom Lands Dropdown InvisableOnStart" id="Gold">
-      <option value="0"></option>
-      <option value="80">Rocky Wastes</option>
-      <option value="81">Tundra</option>
-      <option value="82">Northern Forest</option>
-    </select>
 
 
   </landSelection>
@@ -1697,6 +1660,7 @@
       <option value="6">Civilian Goods</option>
       <option value="7">War Materials</option>
       <option value="8">Butcher Animals</option>
+      <option value="9">Building Materials</option>
 
     </select>
     <label class="Recipe" for="RecipeID" id="RecipeIDLabel">What Would You Like To Make:</label>
@@ -1717,6 +1681,7 @@
       <option value="1013" class="1">Peach Wine</option>
       <option value="1014" class="1">Cherry Wine</option>
       <option value="1020" class="1">Mead</option>
+      <option value="1020" class="1">Grog</option>
       <option value="1030" class="1">Vodka</option>
       <option value="1031" class="1">Rum</option>
       <option value="1032" class="1">Kumis</option>
@@ -1734,18 +1699,29 @@
       <option value="0">--Food Production
       <option value="-1"></option>
 
-      <option value="1200" class="2">Wheat Bread</option>
-      <option value="1201" class="2">Rye Bread</option>
-      <option value="1202" class="2">Corn Bread</option>
-      <option value="1203" class="2">Rice Bread</option>
-      <option value="1204" class="2">Sorghum Bread</option>
-      <option value="1205" class="2">Barley Bread</option>
-      <option value="1206" class="2">Oat Bread</option>
+      <option value="1200" class="2">Bread (Generic Recipe)</option>
+      <option value="301200" class="2">Bread w/ Potatoes </option>
+      <option value="1201" class="2">Wheat Bread</option>
+      <option value="1202" class="2">Rye Bread</option>
+      <option value="1203" class="2">Corn Bread</option>
+      <option value="701200" class="2">Quick Bread (Generic Recipe)</option>
+      <option value="701201" class="2">Quick Wheat Bread</option>
+      <option value="701202" class="2">Quick Rye Bread</option>
+      <option value="701203" class="2">Quick Corn Bread</option>
+
+      <option value="1204" class="2">Corn FlatBread</option>
+      <option value="1205" class="2">Basic FlatBread</option>
+
+
+      <option value="1206" class="2">Pumpernickle Bread</option>
+
       <option value="1207" class="2">Pastries</option>
       <option value="1208" class="2">Fruit Pastries</option>
       <option value="1220" class="2">Apple Pie</option>
       <option value="1221" class="2">Plum Pie</option>
       <option value="1222" class="2">Peach Pie</option>
+      <option value="1225" class="2">Cherry Pie</option>
+      <option value="1226" class="2">Mixed Fruit Pie</option>
       <option value="1223" class="2">Sugar Pie</option>
       <option value="1224" class="2">Pot Pie</option>
       <option value="1230" class="2">Cheese</option>
@@ -1764,7 +1740,7 @@
       <option value="1270" class="2">Beef Stew</option>
       <option value="1271" class="2">King's Stew</option>
       <option value="1272" class="2">Onion Soup</option>
-      <option value="1273" class="2">Huntsman's Ster</option>
+      <option value="1273" class="2">Huntsman's Stew</option>
       <option value="1274" class="2">Chicken Soup</option>
       <option value="1275" class="2">Fish Soup</option>
       <option value="1280" class="2">Baked Beans</option>
@@ -1774,16 +1750,36 @@
       <option value="0">--Food Combos</option>
       <option value="-1"></option>
 
-      <option value="1400" class="3">Bread Combo</option>
-      <option value="1401" class="3">Deluxe Bread Combo</option>
-      <option value="1420" class="3">Basic Soup Combo</option>
-      <option value="1430" class="3">Deluxe Soup Combo</option>
+      <option value="1400" class="3">Scraps</option>
+      <option value="1401" class="3">Basic Meal</option>
+      <option value="1402" class="3">Bread Bowl</option>
+      <option value="1403" class="3">Deluxe Soup</option>
+      <option value="1404" class="3">Standard Lunch</option>
+      <option value="1405" class="3">Subsistance Meal</option>
+      <option value="1406" class="3">Soup Meal</option>
+      <option value="1421" class="3">Lighthouse Meal</option>
+      <option value="1422" class="3">Soup Mix</option>
+      <option value="1423" class="3">Soup And Beans Meal</option>
+      <option value="1424" class="3">Fish And Beans</option>
       <option value="1440" class="3">Sausage Combo</option>
+      <option value="1441" class="3">Barbeque Plate</option>
+      <option value="1442" class="3">Winter Plate</option>
       <option value="1450" class="3">Roast Combo</option>
-      <option value="1460" class="3">Deluxe Roast Combo</option>
-      <option value="1470" class="3">Charcutery Combo</option>
-      <option value="1471" class="3">Deluxe Charcutery Combo</option>
-      <option value="1480" class="3">Basic Pie Combo</option>
+      <option value="1451" class="3">Roast Platter</option>
+      <option value="1452" class="3">Apple Roast</option>
+      <option value="1460" class="3">Deluxe Roast</option>
+      <option value="1470" class="3">Charcutery</option>
+      <option value="1471" class="3">Deluxe Charcutery</option>
+      <option value="1472" class="3">Fruit Delight</option>
+      <option value="1473" class="3">Deluxe Fruit Delight</option>
+      <option value="1490" class="3">Soup And Sandwich</option>
+      <option value="1491" class="3">Cheeseburger Meal</option>
+      <option value="1492" class="3">PB And J Meal</option>
+      <option value="1493" class="3">Spicy Chicken Meal</option>
+      <option value="1494" class="3">Egg Sandwich Meal</option>
+      <option value="1500" class="3">Mixed Meat Meal</option>
+      <option value="1510" class="3">Basic Pirates Feast</option>
+      <option value="1511" class="3">Pirate Captains Feast</option>
 
       <option value="1901" class="3">Main Ration 1</option>
       <option value="1902" class="3">Main Ration 2</option>
@@ -1822,6 +1818,7 @@
       <option value="1300" class="4">Vinegar</option>
       <option value="1301" class="4">Sugar From Honey</option>
       <option value="519" class="4">Sugar From Sugarcane</option>
+      <option value="1315" class="4">Molasses From Sugarcane</option>
       <option value="536" class="4">Sugar From Silver Sap</option>
       <option value="1302" class="4">Olive Oil</option>
       <option value="1303" class="4">Flour</option>
@@ -1834,14 +1831,16 @@
       <option value="1310" class="4">Mushroom Stock</option>
       <option value="1311" class="4">Meat Stock</option>
       <option value="1312" class="4">Vegetable Stock</option>
+      <option value="1313" class="4">Bone Stock</option>
+
+      <option value="1320" class="4">Cider Sauce</option>
+      <option value="1321" class="4">Wine Sauce</option>
+      <option value="1322" class="4">Hot Sauce</option>
 
       <option value="-1"></option>
       <option value="0">--Industrial Goods</option>
       <option value="-1"></option>
 
-
-      <option value="2101" class="5">Refined Stone Blocks</option>
-      <option value="2102" class="5">Refined Wood</option>
       <option value="2121" class="5">Iron</option>
       <option value="2122" class="5">Gold</option>
       <option value="2123" class="5">Silver</option>
@@ -1851,6 +1850,11 @@
       <option value="2181" class="5">Bronze</option>
       <option value="2182" class="5">Steel</option>
       <option value="2183" class="5">Damascus Steel</option>
+
+      <option value="302103" class="5">Simple Charcoal Production</option>
+      <option value="312103" class="5">Intermediate Charcoal Production</option>
+      <option value="322103" class="5">Advanced Charcoal Production</option>
+      <option value="332103" class="5">Advanced Slow Charcoal Production</option>
 
 
       <option value="2300" class="5">Polished Ruby</option>
@@ -1868,6 +1872,11 @@
       <option value="2312" class="5">Polished Crystal Glass</option>
 
 
+      <option value="4030" class="5">Level 1 Fertilizer</option>
+      <option value="4031" class="5">Level 2 Fertilizer</option>
+      <option value="4032" class="5">Level 3 Fertilizer</option>
+
+
 
       <option value="-1"></option>
       <option value="0">--Finished Goods</option>
@@ -1877,7 +1886,7 @@
 
       <option value="4000" class="6">Forge Nails</option>
       <option value="4001" class="6">Craft Diamond Blades</option>
-      <option value="4001" class="6">Weave Fabric</option>
+      <option value="4002" class="6">Weave Fabric</option>
 
       <option value="4013" class="6">Turn Leopard Hide Into Decor</option>
       <option value="4014" class="6">Turn Aurochs Hide Into Decor</option>
@@ -1894,12 +1903,16 @@
       <option value="4504" class="6">Tailored Fabric Clothes</option>
       <option value="4505" class="6">Clothes</option>
       <option value="4520" class="6">Basic Furniture</option>
+      <option value="304520" class="6">Pottery (Basic Furniture)</option>
       <option value="4521" class="6">Ornate Furniture</option>
+      <option value="304521" class="6">Pottery (Ornate Furniture)</option>
       <option value="4522" class="6">Oppulant Furniture</option>
+      <option value="304522" class="6">Pottery (Oppulant Furniture)</option>
       <option value="4540" class="6">Basic Tool</option>
       <option value="4541" class="6">Artisan Tool</option>
       <option value="4542" class="6">Oppulant Tool</option>
-      <option value="4560" class="6">Copper Jewelery</option>
+      <option value="4560" class="6">Copper (Basic) Jewelery</option>
+      <option value="304560" class="6">Ceramic (Basic) Jewelery</option>
       <option value="4561" class="6">Silver Jewelery</option>
       <option value="4562" class="6">Gold Jewelery</option>
       <option value="4580" class="6">Fur Bedding</option>
@@ -2026,6 +2039,12 @@
       <option value="-1"></option>
 
 
+      <option value="7400" class="8">Butcher Cow</option>
+      <option value="7401" class="8">Butcher Chicken</option>
+      <option value="7402" class="8">Butcher Sheep</option>
+      <option value="77400" class="8">Advanced Butcher Cow</option>
+      <option value="77401" class="8">Advanced Butcher Chicken</option>
+      <option value="77402" class="8">Advanced Butcher Sheep</option>
       <option value="7000" class="8">Butcher Rabbit</option>
       <option value="7001" class="8">Butcher Deer</option>
       <option value="7002" class="8">Butcher Turkey</option>
@@ -2053,11 +2072,19 @@
       <option value="7302" class="8">Butcher Polar Bear</option>
       <option value="7303" class="8">Butcher Tiger</option>
       <option value="7304" class="8">Butcher Titan Snake</option>
-      <option value="7400" class="8">Butcher Cow</option>
-      <option value="7401" class="8">Butcher Chicken</option>
-      <option value="7402" class="8">Butcher Sheep</option>
 
 
+      <option value="-1"></option>
+      <option value="0">--Building Materials</option>
+      <option value="-1"></option>
+
+      <option value="2150" class="9">Wooden Building Materials</option>
+      <option value="2151" class="9">Stone Building Materials</option>
+      <option value="302151" class="9">Basic Bricks</option>
+      <option value="2004" class="9">Mud Bricks</option>
+      <option value="302155" class="9">Advanced Bricks</option>
+      <option value="2153" class="9">Advanced Stone Materials</option>
+      <option value="2152" class="9">Advanced Wood Materials</option>
     </select>
 
     <text class="Recipe RecipeText" id="Cost">Cost:</text>
@@ -3006,7 +3033,7 @@
   </FoodAmounts>
 
 
-  <CivGoods class="CivG InvisableOnStart">
+  <CivGoods class="CivG InvisableOnStart" id="CivGoods">
     <label id="CivGInfo">What Item Would you like to contribute</label>
     <select class="Dropdown CivG" id="CivGM" onchange="CivGoodStock()">
       <option value="-1"></option>
@@ -3049,6 +3076,10 @@
       <option value="531">Fish</option>
       <option value="532">Beef</option>
       <option value="533">Chicken</option>
+      <option value="544">Mutton</option>
+      <option value="545">Game_Meat</option>
+      <option value="1267">Boiled_Meat</option>
+
     </select>
     <label class="itemSelection" for="FruitMultiSelect" id="FruitLabel">What Kind of Fruit would you like to use?</label>
     <select class="Fruits Items Dropdown InvisableOnStart" id="FruitMultiSelect">
@@ -3064,25 +3095,35 @@
       <option value="-"></option>
       <option value="517">Potatoes</option>
       <option value="518">Onions</option>
+      <option value="519">Peppers</option>
       <option value="520">Carrots</option>
     </select>
     <label class="itemSelection Side" id="SideLabel">What Kind of Side would you like to use?</label>
     <select class="Side Items Dropdown" id="SideMultiSelect">
       <option value="-"></option>
-      <option value="1211">Glittercakeette</option>
-      <option value="1230">Cheese</option>
-      <option value="1261">Fried Meat</option>
+      
+      <option value="1180">Basic Sandwich</option>
+      <option value="1181">Rye Sandwich</option>
+      <option value="1182">Chicken Sandwich</option>
+      <option value="1183">Roast Sandwich</option>
+      <option value="1184">Egg Sandwich</option>
+      <option value="1185">Peanut Sandwich</option>
+      <option value="1186">Cheesebuger</option>
+      <option value="1187">Spicy Chicken Sandwich</option>
       <option value="1270">Beef Stew</option>
-      <option value="1272">Onion Stew</option>
+      <option value="1272">Onion Soup</option>
       <option value="1274">Chicken Soup</option>
-      <option value="1275">Fish Stew</option>
-      <option value="1280">Baked Beans</option>
-      <option value="1281">Beans And Rice</option>
+      <option value="1275">Fish Soup</option>
+      <option value="1276">Vegetable Soup</option>
       <option value="1220">Apple Pie</option>
       <option value="1221">Plum Pie</option>
       <option value="1222">Peach Pie</option>
+      <option value="1225">Cherry Pie</option>
+      <option value="1226">Mixed Fruit Pie</option>
       <option value="1223">Sugar Pie</option>
       <option value="1224">Pot Pie</option>
+      <option value="1230">Cheese</option>
+      <option value="1261">Fried Meat</option>
     </select>
 
     <label class="itemSelection Tier2Metals" id="T2MetalLabel">What Kind of Metal would you like to use?</label>
@@ -3105,6 +3146,7 @@
       <option value="1013">Peach Wine</option>
       <option value="1014">Cherry Wine</option>
       <option value="1020">Mead</option>
+      <option value="1021">Grog</option>
     </select>
     <label class="itemSelection ExoticBerry" id="ExoticBerryLabel">What Kind of Berries would you like to use?</label>
     <select class="ExoticBerry Items Dropdown InvisableOnStart" id="ExoticBerryMultiSelect">
@@ -3115,13 +3157,11 @@
     <label class="itemSelection Bread" id="BreadLabel">What Kind of Bread would you like to use?</label>
     <select class="Bread Items InvisableOnStart Dropdown" id="BreadMultiSelect">
       <option value="-"></option>
-      <option value="1200">Wheat Bread</option>
-      <option value="1201">Rye Bread</option>
-      <option value="1202">Corn Bread</option>
-      <option value="1203">Rice Bread</option>
-      <option value="1204">Sorghum Bread</option>
-      <option value="1205">Barley Bread</option>
-      <option value="1206">Oat Bread</option>
+      <option value="1200">Basic Bread</option>
+      <option value="1201">Wheat Bread</option>
+      <option value="1202">Rye Bread</option>
+      <option value="1203">Corn Bread</option>
+
     </select>
     <label class="itemSelection T2Drinks" id="T2DrinksLabel">What Kind of Drink would you like to use?</label>
     <select class="T2Drinks Items Dropdown InvisableOnStart" id="T2DrinksMultiSelect">
@@ -3161,6 +3201,8 @@
       <option value="1220">Apple Pie</option>
       <option value="1221">Plum Pie</option>
       <option value="1222">Peach Pie</option>
+      <option value="1225">Cherry Pie</option>
+      <option value="1226">Mixed Fruit Pie</option>
       <option value="1223">Sugar Pie</option>
       <option value="1224">Pot Pie</option>
     </select>
@@ -3171,6 +3213,7 @@
       <option value="1272">Onion Soup</option>
       <option value="1274">Chicken Soup</option>
       <option value="1275">Fish Soup</option>
+      <option value="1276">Vegetable Soup</option>
     </select>
     <label class="itemSelection Fodder" id="FodderLabel">What Kind of Fodder would you like to use?</label>
     <select class="Fodder Items Dropdown InvisableOnStart" id="FodderMultiSelect">
@@ -3238,6 +3281,93 @@
       <option value="-"></option>
       <option value="543">Cotton</option>
       <option value="542">Wool</option>
+    </select>
+
+    <label class="Flatbreads itemSelection" id="FlatbreadsLabel">What Kind of Flatbread would you like to use?</label>
+    <select class="FlatbreadsItems Items Dropdown InvisableOnStart" id="FlatbreadsMultiSelect">Rare Gemstone
+      <option value="-"></option>
+      <option value="1204">Flatbread</option>
+      <option value="1215">Corn Flatbread</option>
+    </select>
+
+    <label class="Sandwiches itemSelection" id="SandwichLabel">What Kind of Sandwich would you like to use?</label>
+    <select class="SandwichesItems Items Dropdown InvisableOnStart" id="SandwichesMultiSelect">Rare Gemstone
+      <option value="-"></option>
+      <option value="1180">Basic Sandwich</option>
+      <option value="1181">Rye Sandwich</option>
+      <option value="1182">Chicken Sandwich</option>
+      <option value="1183">Roast Sandwich</option>
+      <option value="1184">Egg Sandwich</option>
+      <option value="1185">Peanut Sandwich</option>
+      <option value="1186">Cheesebuger</option>
+      <option value="1187">Spicy Chicken Sandwich</option>
+    </select>
+
+    <label class="Bones itemSelection" id="BonesLabel">What Kind of Bone would you like to use?</label>
+    <select class="Bones Items Dropdown InvisableOnStart" id="BonesMultiSelect">Rare Gemstone
+      <option value="-"></option>
+      <option value="551">Bone</option>
+      <option value="4020">Cooked Bone</option>
+    </select>
+
+    <label class="Sauces itemSelection" id="SaucesLabel">What Kind of Sauce would you like to use?</label>
+    <select class="Sauces Items Dropdown InvisableOnStart" id="SaucesMultiSelect">Rare Gemstone
+      <option value="-"></option>
+      <option value="1320">Cider Sauce</option>
+      <option value="1321">Wine Sauce</option>
+      <option value="1322">Spicy Sauce</option>
+      <option value="1304">Ketchup</option>
+    </select>
+
+    <label class="Fuels itemSelection" id="FuelsLabel">What Kind of Fuel would you like to use?</label>
+    <select class="Fuels Items Dropdown InvisableOnStart" id="FuelsMultiSelect">Rare Gemstone
+      <option value="-"></option>
+      <option value="2002">Wood</option>
+      <option value="2103">Charcoal</option>
+    </select>
+
+    <label class="UnboiledMeats itemSelection" id="UnboiledMeatsLabel">What Kind of Meat would you like to use?</label>
+    <select class="UnboiledMeats Items Dropdown InvisableOnStart" id="UnboiledMeatsMultiSelect">Rare Gemstone
+      <option value="-"></option>
+      <option value="531">Fish</option>
+      <option value="532">Beef</option>
+      <option value="533">Chicken</option>
+      <option value="544">Mutton</option>
+      <option value="545">Game_Meat</option>
+
+    </select>
+
+    <label class="FancyBreads itemSelection" id="FancyBreadsLabel">What Kind of Bread would you like to use?</label>
+    <select class="FancyBreads Items Dropdown InvisableOnStart" id="FancyBreadsMultiSelect">Rare Gemstone
+      <option value="-"></option>
+      <option value="1211">Cheese Bread</option>
+      <option value="1210">Fruit Bread</option>
+      <option value="1206">Pumpernickle</option>
+    </select>
+
+    <label class="Stocks itemSelection" id="StocksLabel">What Kind of Stock would you like to use?</label>
+    <select class="Stocks Items Dropdown InvisableOnStart" id="StocksMultiSelect">Rare Gemstone
+      <option value="-"></option>
+      <option value="1310">Mushroom Stock</option>
+      <option value="1311">Meat Stock</option>
+      <option value="1312">Vegetable Stock</option>
+      <option value="1313">Bone Stock</option>
+    </select>
+
+    <label class="Flours itemSelection" id="FloursLabel">What Kind of Flour would you like to use?</label>
+    <select class="Flours Items Dropdown InvisableOnStart" id="FloursMultiSelect">Rare Gemstone
+      <option value="-"></option>
+      <option value="1330">Basic Flour</option>
+      <option value="1331">Wheat Flour</option>
+      <option value="1332">Rye Flour</option>
+      <option value="1333">Corn Flour</option>
+    </select>
+
+    <label class="FancyPasteries itemSelection" id="FancyPasteriesLabel">What Kind of Pastery would you like to use?</label>
+    <select class="FancyPasteries Items Dropdown InvisableOnStart" id="FancyPasteriesMultiSelect">Rare Gemstone
+      <option value="-"></option>
+      <option value="1208">Fruit Pastry</option>
+      <option value="1209">Cheese Pastry</option>
     </select>
 
   </ItemSelection>
@@ -3320,16 +3450,19 @@
   <NotesButton class="MenuButtons">
 
     <a href="faq.html">
-      <button class="notesButton notebutton1">Project FAQ</button>
+      <button class="notesButton">Project FAQ</button>
     </a>
     <a href="intro.html">
-      <button class="notesButton notebutton2">Ready to Start? Click here!</button>
+      <button class="notesButton">Ready to Start? Click here!</button>
     </a>
     <a href="warpage.html">
-      <button class="notesButton notebutton3">Manage Army</button>
+      <button class="notesButton">Manage Army</button>
     </a>
     <a href="wiki.html">
-      <button class="notesButton notebutton4">Game Encylopedia</button>
+      <button class="notesButton">Game Encylopedia</button>
+    </a>
+    <a href="landShop.html">
+      <button class="notesButton">Land Shop</button>
     </a>
   </NotesButton>
   
@@ -3389,7 +3522,7 @@
   }
   .MenuButtons {
     display: grid;
-    grid-template-columns: repeat(2, 2fr);
+    grid-template-columns: repeat(3, 2fr);
     grid-template-rows: repeat(2, 2fr);
     left:25%;
     position: fixed;
@@ -3476,7 +3609,9 @@
     font-size: 20px;
 
   }
-
+  .Bold {
+    font-weight: bold;
+  }
   .Indented {
     text-indent: 20px;
   }

@@ -2,7 +2,6 @@
 
 <head>
     <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
-    <script src="./warabi.js" type="application/javascript"></script>
     <script src="./abi.js" type="application/javascript"></script>
     <script src="./address.js" type="application/javascript"></script>
     <script src="./excelIntegration.js" type="application/javascript"></script>
@@ -60,7 +59,7 @@
             const waraddress = addies[1];
 
             const signer = provider.getSigner()
-            const NFTcontract = new ethers.Contract(waraddress, warabi, provider)
+            const NFTcontract = new ethers.Contract(waraddress, war_abi, provider)
             myAddress = await signer.getAddress()
 
             hideAll();
