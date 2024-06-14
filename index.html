@@ -270,58 +270,6 @@
           var tx = await NFTcontractSigner.collect(document.getElementById("CID").value)
           break;
         case "11":
-          var allItems = returnItemID();
-          var you_cubed = []
-          for(let i = 0; i < allItems.length; ++i) {
-            you_cubed.push(myAddress);
-          }
-          const total_inventory = await NFTcontract.balanceOfBatch(you_cubed,allItems);
-          console.log(total_inventory);
-          
-          let thirdArray = [];
-
-          let backupInv = [];
-
-          let finalarray = [];
-
-          let item_tracker = [];
-
-          for(let i = 0; i < allItems.length; ++i){
-              thirdArray.push([0,0]);
-              thirdArray[i][0] = (Number(total_inventory[i] * itemValue(allItems[i])));
-              //NaN check
-              if(thirdArray[i][0] !== thirdArray[i][0]){thirdArray[i][0] = total_inventory[i]}
-              thirdArray[i][1] = allItems[i];
-              backupInv[i] = Number(total_inventory[i]) * itemValue(allItems[i]);
-            }
-            backupInv.sort(function(a, b) {return b - a;});
-            console.log("uhf",backupInv);
-             
-            for(let i = 0; i < allItems.length; ++i){
-              
-                for(let j = 0; j < allItems.length; ++j){
-                  if(thirdArray[j][0] == backupInv[i]){
-                    if (item_tracker[j] == true){break;}
-                    if(backupInv[i] != 0)
-                      {finalarray.push([thirdArray[j][1],Number(total_inventory[j])])}
-                      item_tracker[j] = true;  
-                }
-              }
-              if(backupInv[i][0] == 0){break}
-            }
-            console.log("Final Array;",finalarray);
-            InventoryPanel.innerHTML = "";
-          for(let i = 0; i < finalarray.length; ++i){
-            const newDiv = document.createElement("InventorySubpanel"+i);
-            InventoryPanel.appendChild(newDiv);
-            newDiv.innerHTML = itemName(finalarray[i][0]) + ": " + finalarray[i][1];
-            
-            if(i % 2 == 0){newDiv.classList.add("InventoryItem")}
-            else{newDiv.classList.add("InventoryItem2")}
-          }
-          InventoryPanel.style.display = "grid";
-          InventoryPanel.style.gridTemplateRows = Math.ceil(finalarray.length/3);
-          console.log("Test Inventory Finished");
           break;
       
         case "12":
@@ -583,11 +531,23 @@
       console.log(_orderSize)
     }
 
-    function selectTask(_value) {
+    async function selectTask(_value) {
       hideAll();
-      showAmount();
 
-      switch (_value) {
+          var addies = await _address();
+          const address = addies[0];
+          const waraddress = addies[1];
+
+          const provider = new ethers.providers.Web3Provider(window.ethereum)
+          const signer = provider.getSigner()
+          console.log(signer);
+
+          const NFTcontract = new ethers.Contract(address, abi, provider)
+          const NFTcontractSigner = new ethers.Contract(address, abi, signer);
+          const myAddress = await signer.getAddress();
+
+          showAmount();
+          switch (_value) {
 
         case "1":
 
@@ -669,6 +629,58 @@
           break;
         case "11":
           hideAmount();
+          var allItems = returnItemID();
+          var you_cubed = []
+          for(let i = 0; i < allItems.length; ++i) {
+            you_cubed.push(myAddress);
+          }
+          const total_inventory = await NFTcontract.balanceOfBatch(you_cubed,allItems);
+          console.log(total_inventory);
+          
+          let thirdArray = [];
+
+          let backupInv = [];
+
+          let finalarray = [];
+
+          let item_tracker = [];
+
+          for(let i = 0; i < allItems.length; ++i){
+              thirdArray.push([0,0]);
+              thirdArray[i][0] = (Number(total_inventory[i] * itemValue(allItems[i])));
+              //NaN check
+              if(thirdArray[i][0] !== thirdArray[i][0]){thirdArray[i][0] = total_inventory[i]}
+              thirdArray[i][1] = allItems[i];
+              backupInv[i] = Number(total_inventory[i]) * itemValue(allItems[i]);
+            }
+            backupInv.sort(function(a, b) {return b - a;});
+            console.log("uhf",backupInv);
+             
+            for(let i = 0; i < allItems.length; ++i){
+              
+                for(let j = 0; j < allItems.length; ++j){
+                  if(thirdArray[j][0] == backupInv[i]){
+                    if (item_tracker[j] == true){break;}
+                    if(backupInv[i] != 0)
+                      {finalarray.push([thirdArray[j][1],Number(total_inventory[j])])}
+                      item_tracker[j] = true;  
+                }
+              }
+              if(backupInv[i][0] == 0){break}
+            }
+            console.log("Final Array;",finalarray);
+            InventoryPanel.innerHTML = "";
+          for(let i = 0; i < finalarray.length; ++i){
+            const newDiv = document.createElement("InventorySubpanel"+i);
+            InventoryPanel.appendChild(newDiv);
+            newDiv.innerHTML = itemName(finalarray[i][0]) + ": " + finalarray[i][1];
+            
+            if(i % 2 == 0){newDiv.classList.add("InventoryItem")}
+            else{newDiv.classList.add("InventoryItem2")}
+          }
+          InventoryPanel.style.display = "grid";
+          InventoryPanel.style.gridTemplateRows = Math.ceil(finalarray.length/3);
+          console.log("Test Inventory Finished");
           break;
         case "12":
           hideAmount();
@@ -1548,7 +1560,7 @@
     <option value="7">Give Civilians Goods</option>
     <option value="9">Recruit Pops</option>
     <option value="10">Claim Crafting Items</option>
-    <option value="11">Check Balance</option>
+    <option value="11">Inventory</option>
     <option value="12">City Info</option>
     <option value="13">Transfer</option>
 
