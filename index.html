@@ -73,6 +73,14 @@
     //Jewelery
     TitheDetails[41] = [4560,1,4561,1,4562,1];
 
+    const FertilizerLevel = [];
+    
+    FertilizerLevel[0] = 0;
+    FertilizerLevel[4030] = 1;
+    FertilizerLevel[4031] = 2;
+    FertilizerLevel[4032] = 3;
+    FertilizerLevel[4040] = 10;
+
     async function signon() {
       var addies = await _address();
       const address = addies[0];
@@ -91,6 +99,10 @@
       let _kingdomType = _cityData[4]
       console.log();
       console.log("KingdomID:", _kingdomType);
+
+      ErrorText.style.display = "block";
+      ErrorToast.style.display = "block";
+      ErrorText.innerHTML = "Wallet Connected!";
 
 
     }
@@ -182,7 +194,7 @@
             document.getElementById("Amount").value,
             document.getElementById("cropSelect").value,
             document.getElementById("foodInputID").value,
-            0,
+            FertilizerSelector.value,
             document.getElementById("TimeAmount").value
           );
           tx.wait().then(
@@ -273,118 +285,6 @@
           break;
       
         case "12":
-
-          KingdomInfo.style.display = "block";
-
-          let _population = _cityData[0];
-          let _jobless_population = _cityData[1];
-          let _max_population = _cityData[2];
-          let _land_available = _cityData[3];
-          var _land = await NFTcontract.getLand(myAddress);
-
-
-          var _civilian_stockpiles = await NFTcontract.getStockedGoods(myAddress);
-          let _tithe_items = _civilian_stockpiles[1];
-
-          var _buildingAmount = await NFTcontract.getBuildingCount(myAddress);
-          var _season = await NFTcontract.returnSeason();
-
-          if(_season == 0) {_season = "Winter";}
-          if(_season == 1) {_season = "Spring";}
-          if(_season == 2) {_season = "Summer";}
-          if(_season == 3) {_season = "Fall";}
-
-
-
-          document.getElementById("peasentPop").style.display = "block";
-          document.getElementById("peasentPop").textContent = "Peasents:";
-          document.getElementById("peasentPop").textContent += _population[0];
-          document.getElementById("peasentPop").textContent += ", Jobless:";
-          document.getElementById("peasentPop").textContent += _jobless_population[0];
-          document.getElementById("peasentPop").textContent += ", Max:";
-          document.getElementById("peasentPop").textContent += _max_population[0];
-          document.getElementById("peasentPop").style.display = "block";
-
-          document.getElementById("lowNobelPop").style.display = "block";
-          document.getElementById("lowNobelPop").textContent = "Low Nobles:";
-          document.getElementById("lowNobelPop").textContent += _population[1];
-          document.getElementById("lowNobelPop").textContent += ", Jobless:";
-          document.getElementById("lowNobelPop").textContent += _jobless_population[1];
-          document.getElementById("lowNobelPop").textContent += ", Max:";
-          document.getElementById("lowNobelPop").textContent += _max_population[1];
-
-          document.getElementById("highNobelPop").style.display = "block";
-          document.getElementById("highNobelPop").textContent = "High Nobles:" + _population[2] + ", Jobless:" + _jobless_population[2] + ", Max:" + _max_population[2];
-
-
-
-
-          for (let i = 12; i < 22; i++) {
-            document.getElementsByClassName("Population")[i].style.display = "block";
-          }
-          document.getElementById("housing").textContent = "Housing Count: Land Permits: " + _buildingAmount[0] + ", Tier 1: " + _buildingAmount[1] + ", Tier 2: " + _buildingAmount[2] + ", Tier 3: " + _buildingAmount[3] + ", Tier 4: " + _buildingAmount[4] + ", Tier 5: " + _buildingAmount[5] + ", Tier 6: " + _buildingAmount[6] + ", Tier 7: " + _buildingAmount[7];
-
-
-
-          document.getElementById("cookery").textContent = "Cookery Count: Tier 1: " + _buildingAmount[8] + ", Tier 2: " + _buildingAmount[9] +", Tier 3: " + _buildingAmount[10] + ", Tier 4: " + _buildingAmount[11];
-
-
-
-          document.getElementById("brewery").textContent = "Brewery Count: Tier 1: "+_buildingAmount[12]+ ", Tier 2: "+ _buildingAmount[13]+", Tier 3: "+_buildingAmount[14]+", Tier 4: "+_buildingAmount[15];
-
-
-          document.getElementById("smeltery").textContent = "Smeltery Count: Tier 1: "+_buildingAmount[16]+", Tier 2: "+ _buildingAmount[17]+", Tier 3: "+_buildingAmount[18];
-
-
-          document.getElementById("mason").textContent = "Mason Count: "+_buildingAmount[19];
-
-
-
-          document.getElementById("blacksmith").textContent = "Blacksmith Count: Tier 1: "+_buildingAmount[20]+", Tier 2: "+_buildingAmount[21];
-
-          document.getElementById("agingFacility").textContent = "Aging Facility Count: "+_buildingAmount[22];
-
-          document.getElementById("jeweler").textContent = "Jeweler Count: Tier 1: "+_buildingAmount[26]+", Tier 2: "+_buildingAmount[27];
-
-          document.getElementById("weaver").textContent = "Weaver Count: Tier 1: "+_buildingAmount[28]+", Tier 2: "+_buildingAmount[29];
-
-          document.getElementById("carpenter").textContent = "Carpenter Count: Tier 1: "+ _buildingAmount[30]+", Tier 2: "+_buildingAmount[31];
-
-          document.getElementsByClassName("Population")[3].style.display = "block";
-
-
-          document.getElementById("titheData").textContent = "Tithe Item Stockpiles:"+" Clothes: "+_tithe_items[0]+" Tools: "+_tithe_items[1]+" Furniture: "+ _tithe_items[2]+" Bedding: "+_tithe_items[3]+" Jewelery: "+_tithe_items[4];
-
-
-          document.getElementById("titheData").style.display = "block";
-          document.getElementById("seasonData").style.display = "block";
-
-          document.getElementById("seasonData").textContent = "Season: " + _season;
-
-          for (let i = 0; i < 10; i++) {
-
-            var _name = "land";
-            _name += (i + 1);
-
-
-            if (Kingdom_Lands[_kingdomType][i] != 0) { document.getElementById(_name).style.display = "block"; }
-            else { break; }
-            console.log(i);
-            document.getElementsByClassName("Population")[i + 3].style.display = "block";
-            document.getElementById(_name).textContent = "Land Balance:"+_land[i]+" "+itemName(Kingdom_Lands[_kingdomType][i])+"________";
-            if (_land_available[i] == false) { document.getElementById(_name).textContent += "Land is available"; }
-            else {
-              const available_time_data = await NFTcontract.farmProgress(myAddress,i);
-              const available_time = Number(available_time_data[0]) + Number(available_time_data[5]);
-              console.log(available_time, "Available Time");
-              console.log(Date.now()/1000, "Current Time");
-              var time_to_available;
-              if(available_time < (Date.now()/1000)){time_to_available = "NOW";}
-              else{time_to_available = secondsToHMS(Math.ceil(available_time - (Date.now()/1000)))}
-              document.getElementById(_name).textContent += "Land NOT available, will be available " + time_to_available; }
-
-
-          }
           break;
 
         case "13":
@@ -486,10 +386,6 @@
       document.getElementsByClassName("CDInput")[2].style.display = "none";
     }
 
-    function getAllBals() {
-
-    }
-    
     function showRecipe(_value) {
       let whyJS = returnRecipe(Number(document.getElementById("RecipeID").value));
       var items = whyJS[1];
@@ -685,6 +581,119 @@
         case "12":
           hideAmount();
 
+          KingdomInfo.style.display = "block";
+          
+          _cityData = await NFTcontract.getKingdomInfo(myAddress);
+          let _population = _cityData[0];
+          let _jobless_population = _cityData[1];
+          let _max_population = _cityData[2];
+          let _land_available = _cityData[3];
+          let _kingdomType = _cityData[4];
+          var _land = await NFTcontract.getLand(myAddress);
+
+
+          var _civilian_stockpiles = await NFTcontract.getStockedGoods(myAddress);
+          let _tithe_items = _civilian_stockpiles[1];
+
+          var _buildingAmount = await NFTcontract.getBuildingCount(myAddress);
+          var _season = await NFTcontract.returnSeason();
+
+          if(_season == 0) {_season = "Winter";}
+          if(_season == 1) {_season = "Spring";}
+          if(_season == 2) {_season = "Summer";}
+          if(_season == 3) {_season = "Fall";}
+
+
+
+          document.getElementById("peasentPop").style.display = "block";
+          document.getElementById("peasentPop").textContent = "Peasents:";
+          document.getElementById("peasentPop").textContent += _population[0];
+          document.getElementById("peasentPop").textContent += ", Jobless:";
+          document.getElementById("peasentPop").textContent += _jobless_population[0];
+          document.getElementById("peasentPop").textContent += ", Max:";
+          document.getElementById("peasentPop").textContent += _max_population[0];
+          document.getElementById("peasentPop").style.display = "block";
+
+          document.getElementById("lowNobelPop").style.display = "block";
+          document.getElementById("lowNobelPop").textContent = "Low Nobles:";
+          document.getElementById("lowNobelPop").textContent += _population[1];
+          document.getElementById("lowNobelPop").textContent += ", Jobless:";
+          document.getElementById("lowNobelPop").textContent += _jobless_population[1];
+          document.getElementById("lowNobelPop").textContent += ", Max:";
+          document.getElementById("lowNobelPop").textContent += _max_population[1];
+
+          document.getElementById("highNobelPop").style.display = "block";
+          document.getElementById("highNobelPop").textContent = "High Nobles:" + _population[2] + ", Jobless:" + _jobless_population[2] + ", Max:" + _max_population[2];
+
+
+
+
+          for (let i = 12; i < 22; i++) {
+            document.getElementsByClassName("Population")[i].style.display = "block";
+          }
+          document.getElementById("housing").textContent = "Housing Count: Land Permits: " + _buildingAmount[0] + ", Tier 1: " + _buildingAmount[1] + ", Tier 2: " + _buildingAmount[2] + ", Tier 3: " + _buildingAmount[3] + ", Tier 4: " + _buildingAmount[4] + ", Tier 5: " + _buildingAmount[5] + ", Tier 6: " + _buildingAmount[6] + ", Tier 7: " + _buildingAmount[7];
+
+
+
+          document.getElementById("cookery").textContent = "Cookery Count: Tier 1: " + _buildingAmount[8] + ", Tier 2: " + _buildingAmount[9] +", Tier 3: " + _buildingAmount[10] + ", Tier 4: " + _buildingAmount[11];
+
+
+
+          document.getElementById("brewery").textContent = "Brewery Count: Tier 1: "+_buildingAmount[12]+ ", Tier 2: "+ _buildingAmount[13]+", Tier 3: "+_buildingAmount[14]+", Tier 4: "+_buildingAmount[15];
+
+
+          document.getElementById("smeltery").textContent = "Smeltery Count: Tier 1: "+_buildingAmount[16]+", Tier 2: "+ _buildingAmount[17]+", Tier 3: "+_buildingAmount[18];
+
+
+          document.getElementById("mason").textContent = "Mason Count: "+_buildingAmount[19];
+
+
+
+          document.getElementById("blacksmith").textContent = "Blacksmith Count: Tier 1: "+_buildingAmount[20]+", Tier 2: "+_buildingAmount[21];
+
+          document.getElementById("agingFacility").textContent = "Aging Facility Count: "+_buildingAmount[22];
+
+          document.getElementById("jeweler").textContent = "Jeweler Count: Tier 1: "+_buildingAmount[26]+", Tier 2: "+_buildingAmount[27];
+
+          document.getElementById("weaver").textContent = "Weaver Count: Tier 1: "+_buildingAmount[28]+", Tier 2: "+_buildingAmount[29];
+
+          document.getElementById("carpenter").textContent = "Carpenter Count: Tier 1: "+ _buildingAmount[30]+", Tier 2: "+_buildingAmount[31];
+
+          document.getElementsByClassName("Population")[3].style.display = "block";
+
+
+          document.getElementById("titheData").textContent = "Tithe Item Stockpiles:"+" Clothes: "+_tithe_items[0]+" Tools: "+_tithe_items[1]+" Furniture: "+ _tithe_items[2]+" Bedding: "+_tithe_items[3]+" Jewelery: "+_tithe_items[4];
+
+
+          document.getElementById("titheData").style.display = "block";
+          document.getElementById("seasonData").style.display = "block";
+
+          document.getElementById("seasonData").textContent = "Season: " + _season;
+
+          for (let i = 0; i < 10; i++) {
+
+            var _name = "land";
+            _name += (i + 1);
+
+            console.log("count")
+            if (Kingdom_Lands[_kingdomType][i] != 0) { document.getElementById(_name).style.display = "block"; }
+            else { break; }
+            console.log(i);
+            document.getElementsByClassName("Population")[i + 3].style.display = "block";
+            document.getElementById(_name).textContent = "Land Balance:"+_land[i]+" "+itemName(Kingdom_Lands[_kingdomType][i])+"________";
+            if (_land_available[i] == false) { document.getElementById(_name).textContent += "Land is available"; }
+            else {
+              const available_time_data = await NFTcontract.farmProgress(myAddress,i);
+              const available_time = Number(available_time_data[0]) + Number(available_time_data[5]);
+              console.log(available_time, "Available Time");
+              console.log(Date.now()/1000, "Current Time");
+              var time_to_available;
+              if(available_time < (Date.now()/1000)){time_to_available = "NOW";}
+              else{time_to_available = secondsToHMS(Math.ceil(available_time - (Date.now()/1000)))}
+              document.getElementById(_name).textContent += "Land NOT available, will be available " + time_to_available; }
+
+
+          }
           break;
         case "13":
           document.getElementsByClassName("ItemMenu")[0].style.display = "block";
@@ -1117,6 +1126,9 @@
       document.getElementById("BatchAmountLabel").style.display = "none";
 
 
+      FertilizerSelector.style.display = "none";
+      FertilizerMenu.style.display = "none";
+
       document.getElementById("ErrorText").style.display = "none"
       document.getElementById("ErrorToast").style.display = "none"
 
@@ -1250,7 +1262,7 @@
 
 
       var temp_bonus = 1 - Math.abs(0.02 * (crop_info[2][2] - _temp_mod));
-      const fertility_bonus = (60 + _land_info[3])/100
+      const fertility_bonus = (60 + _land_info[3] + (5 * FertilizerLevel[FertilizerSelector.value]))/100
       const civ_good_bonus = await bonusCalc();
       console.log(civ_good_bonus);
       var primary_yield = Math.round(crop_info[0] * _value * Amount.value * yield_mod * temp_bonus * fertility_bonus * civ_good_bonus);
@@ -1285,7 +1297,7 @@
       else if(crop_info[5] < _land_info[2]) {
         document.getElementById("CropYieldAmount").textContent = "Land is too high up for cultivation of this crop";
       }
-      else if(crop_info[4] > _land_info[3]) {
+      else if(crop_info[4] > _land_info[3] + (5 * FertilizerLevel[FertilizerSelector.value])) {
         document.getElementById("CropYieldAmount").textContent = "Land is too barren up for cultivation of this crop";
       }
       else if(crop_info[2][0] > _temp_mod) {
@@ -1367,7 +1379,11 @@
         document.getElementById("foodInputLabel").style.display = "block";
         document.getElementById("foodInputID").style.display = "inline-block";
         document.getElementById("FoodAmounts").style.display = "block";
-
+        if(_value > 500){
+          console.log("test");
+          FertilizerSelector.style.display = "block";
+          FertilizerMenu.style.display = "block";
+        }
       }
       else if(_value == 2 || _value == 3) {
         
@@ -1571,7 +1587,7 @@
   <WorkingLand class="Farming InvisableOnStart" id="Farming">
     <label class="Farming" id="FarmLabel">What would you like to farm?</label>
     <select class="Farming Dropdown" id="cropSelect" onchange="selectLand(this.value);">
-      <option value="_"></option>
+      <option value="0" selected></option>
       <option value="0">--Extract From Land</option>
       <option value="_"></option>
       <option value="1">Natural Reasources</option>
@@ -2380,7 +2396,18 @@
 
   </CityDevelopment>
 
+  <FertilizerMenu class="InvisableOnStart" id="FertilizerMenu">
+    <label id="FertilizerLabel" for="FertilizerSelector">Which fertilizer would you like to use?</label>
+    <select class="Dropdown" id="FertilizerSelector">
+      <option value="0"></option>
+      <option value="0">None</option>
+      <option value="4030">Level 1 Fertilizer</option>
+      <option value="4031">Level 2 Fertilizer</option>
+      <option value="4032">Level 3 Fertilizer</option>
+      <option value="4040">Level 10 Fertilizer</option>
 
+    </select>
+  </FertilizerMenu>
   <ItemMenu class="InvisableOnStart" id="ItemMenu">
     <label id="ItemMenuSelectorLabel" class="InvisableOnStart" for="ItemMenuSelector"> What class of item are you looking for?</label>
     <select id="ItemMenuSelector" class="InvisableOnStart Dropdown" onchange="showRelevantItems(this.value)">
@@ -3430,7 +3457,7 @@
     <text id="land6" class="Population">Land Balance:</text>
     <text id="land7" class="Population">Land Balance:</text>
     <text id="land8" class="Population">Land Balance:</text>
-
+    <br>
     <text id="housing" class="Population">Housing Count: <br></text>
     <text id="cookery" class="Population">Cookery Count:</text>
     <text id="brewery" class="Population">Brewery Count:</text>
@@ -3441,7 +3468,7 @@
     <text id="jeweler" class="Population">Jeweler Count:</text>
     <text id="weaver" class="Population">Weaver Count:</text>
     <text id="carpenter" class="Population">Carpenter Count:</text>
-
+    <br>
     <text id="titheData" class="Population">Tithe Item Stockpiles:</text>
     <text id="seasonData" class="Population">Current Season:</text>
 

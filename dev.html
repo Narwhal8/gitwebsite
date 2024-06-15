@@ -244,12 +244,6 @@
 
           //let recipe0 = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0], [0, 0], 0, [0, 0, 0, 0]];
 
-          
-          NFTcontractSigner.addMultiCropData([returnCropData(501),returnCropData(502),returnCropData(503),returnCropData(504),returnCropData(505),returnCropData(506),returnCropData(507),returnCropData(508)],[501,502,503,504,505,506,507,508], {gasLimit: 5000000});
-          NFTcontractSigner.addMultiCropData([returnCropData(509),returnCropData(510),returnCropData(511),returnCropData(512),returnCropData(513),returnCropData(514),returnCropData(515),returnCropData(516)],[509,510,511,512,513,514,515,516], {gasLimit: 5000000});
-          NFTcontractSigner.addMultiCropData([returnCropData(517),returnCropData(518),returnCropData(519),returnCropData(521),returnCropData(522),returnCropData(532),returnCropData(533),returnCropData(535)],[517,518,519,521,522,532,533,535], {gasLimit: 5000000});
-          NFTcontractSigner.addMultiCropData([returnCropData(538),returnCropData(540),returnCropData(542),returnCropData(544),returnCropData(0),returnCropData(0),returnCropData(0),returnCropData(0)],[538,540,542,544,0,0,0,0], {gasLimit: 5000000});
-          
           var mixedItemData0 = returnMixedItemData(0);
           var mixedItemData1 = returnMixedItemData(1);
           var mixedItemData2 = returnMixedItemData(2);
@@ -527,7 +521,22 @@ const SoldierID = returnsoldierID();
           NFTcontractSigner.safeBatchTransferFrom(myAddress,landMerchant,_id,_amount,"0x");
 
           break;
-            }
+        case "10":
+        NFTcontractSigner.setItemLevel([4030,1]);
+        NFTcontractSigner.setItemLevel([4031,2]);
+        NFTcontractSigner.setItemLevel([4032,3]);
+        NFTcontractSigner.setItemLevel([4040,10]);
+        break;    
+        case "11":
+
+          NFTcontractSigner.addMultiCropData([cropdata501,cropdata502,cropdata503,cropdata504,cropdata505,cropdata506,cropdata507,cropdata508],[501,502,503,504,505,506,507,508]);
+          NFTcontractSigner.addMultiCropData([cropdata509,cropdata510,cropdata511,cropdata512,cropdata513,cropdata514,cropdata515,cropdata516],[509,510,511,512,513,514,515,516], {gasLimit: 5000000});
+          NFTcontractSigner.addMultiCropData([cropdata517,cropdata518,cropdata519,cropdata520,cropdata521,cropdata522,cropdata532,cropdata533],[517,518,519,520,521,522,532,533], {gasLimit: 5000000});
+          NFTcontractSigner.addMultiCropData([cropdata535,cropdata538,cropdata540,cropdata542,cropdata544,returnCropData(0),returnCropData(0),returnCropData(0)],[535,538,540,542,544,0,0,0], {gasLimit: 5000000});
+          
+          break;
+        }
+
     }
   </script>
 </head>
@@ -547,6 +556,9 @@ const SoldierID = returnsoldierID();
     <option value="7">Land Initiator</option>
     <option value="8">Mint Land Shop</option>
     <option value="9">Stock Land Shop</option>
+    <option value="10">Set Up Fertilizer</option>
+    <option value="11">Crop Data</option>
+    
 
   </select>
   <text>Mint Items:</text>

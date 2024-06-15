@@ -4294,7 +4294,7 @@ const mixedItemData3 = [Grapes,Peaches,Plums,Apples,Cherries];
 //Vegetables
 const mixedItemData4 = [Potato,Onion,Carrots,Casava,Peppers];
 //Sides
-const mixedItemData5 = [Beef_Stew,Onion_Soup,Chicken_Soup,Fish_Soup,Beans_And_Rice,Glittercakeette,Apple_Pie,Plum_Pie,Peach_Pie,Sugar_Pie,Pot_Pie,Cheese,Fried_Meat]
+const mixedItemData5 = [Basic_Sandwich,Rye_Special,Chicken_Sandwich,Spicy_Chicken_Sandwich,Roast_Sandwich,Egg_Sandwich,Beef_Stew,Onion_Soup,Chicken_Soup,Fish_Soup,Vegetable_Soup,Apple_Pie,Plum_Pie,Peach_Pie,Sugar_Pie,Pot_Pie,Cherry_Pie,Mixed_Fruit_Pie,Cheese,Fried_Meat]
 //T2 Metal
 const mixedItemData6 = [Iron,Bronze];
 //T1 Drink
@@ -4340,61 +4340,63 @@ const mixedItemData31 = [Cheese_Pastry,Fruit_Pastry];
 
 
           
-let cropdata501 = [500, 0, [50, 100, 75], [50, 150], 25, 150, 10, 0, false, Wheat, 0];
+cropdata501 = [500, 0, [50, 100, 75], [50, 150], 50, 150, 10, 0, false, Wheat, 0];
 
-let cropdata502 = [500, 0, [0, 80, 60], [50, 150], 10, 150, 10, 0, false, Rye, 0];
+cropdata502 = [500, 0, [0, 80, 50], [50, 150], 0, 150, 10, 0, false, Rye, 0];
 
-let cropdata503 = [500, 0, [50, 120, 80], [110, 200], 25, 150, 10, 0, false, Rice, 0];
+cropdata503 = [500, 0, [50, 120, 80], [110, 200], 25, 150, 10, 0, false, Rice, 0];
 
-let cropdata504 = [500, 0, [50, 100, 75], [50, 150], 25, 150, 10, 0, false, Corn, 0];
+cropdata504 = [500, 0, [50, 100, 75], [50, 150], 25, 150, 10, 0, false, Corn, 0];
 
-let cropdata505 = [500, 0, [50, 120, 90], [20, 150], 25, 150, 10, 0, false, Sorghum, 0];
+cropdata505 = [500, 0, [30, 120, 90], [25, 150], 20, 150, 10, 0, false, Sorghum, 0];
 
-let cropdata535 = [600, 0, [30, 110, 60], [50, 150], 0, 200, 10, 0, false, Potato, 0];
+cropdata535 = [600, 0, [30, 110, 60], [50, 150], 25, 200, 10, 0, false, Potato, 0];
 
-let cropdata506 = [2500, 500, [60, 110, 80], [50, 150], 25, 100, 50, 10, false, Wood, Apples];
+cropdata506 = [2500, 500, [60, 110, 80], [50, 150], 25, 100, 50, 10, false, Wood, Apples];
 
-let cropdata507 = [2500, 500, [30, 110, 70], [50, 150], 25, 100, 50, 10,false, Wood, Plums];
+cropdata507 = [2500, 500, [30, 110, 70], [50, 150], 25, 100, 50, 10,false, Wood, Plums];
 
-let cropdata508 = [2500, 500, [50, 120, 80], [25, 150], 25, 100, 50, 10, false, Wood, Olives];
+cropdata508 = [2500, 500, [50, 120, 80], [25, 150], 0, 100, 50, 10, false, Wood, Olives];
 
-let cropdata509 = [500, 0, [50, 120, 75], [50, 150], 25, 150, 10, 0, false,  Beans, 0];
+cropdata509 = [500, 0, [50, 120, 75], [50, 150], 25, 150, 10, 0, false,  Beans, 0];
 
-let cropdata510 = [400, 0, [30, 120, 60], [50, 100], 0, 150, 10, 0, false, Mushrooms, 0];
+cropdata510 = [400, 0, [30, 120, 60], [50, 100], 0, 150, 10, 0, false, Mushrooms, 0];
 
-let cropdata514 = [2500, 500, [50, 110, 70], [50, 150], 25,100, 50, 10, false, Wood, Cherries];
+cropdata514 = [2500, 500, [50, 110, 70], [50, 150], 25,100, 50, 10, false, Wood, Cherries];
 
-let cropdata512 = [600, 0, [70, 120, 80], [50, 150], 25, 150, 10, 0, false, Casava, 0];
+cropdata512 = [600, 0, [70, 120, 80], [50, 150], 25, 150, 10, 0, false, Casava, 0];
 
-let cropdata513 = [500, 0, [50, 100, 75], [50, 150], 25, 150, 10, 0, false, Peanuts, 0];
+cropdata513 = [500, 0, [50, 100, 75], [50, 150], 25, 150, 10, 0, false, Peanuts, 0];
 
-let cropdata515 = [2500, 500, [60, 110, 80], [50, 150], 0, 100, 50, 10, false, Wood, Peaches];
+cropdata515 = [2500, 500, [60, 110, 80], [50, 150], 0, 100, 50, 10, false, Wood, Peaches];
 
-let cropdata516 = [500, 0, [50, 120, 75], [50, 150], 25, 200, 10, 0, false, Garlic, 0];
+cropdata516 = [500, 0, [50, 120, 75], [50, 150], 25, 200, 10, 0, false, Garlic, 0];
 
-let cropdata517 = [500, 0, [50, 120, 75], [50, 150], 25, 200, 10, 0, false, Onion, 0];
+cropdata517 = [500, 0, [50, 120, 75], [50, 150], 25, 200, 10, 0, false, Onion, 0];
 
-let cropdata518 = [500, 0, [50, 120, 75], [50, 150], 25, 200, 10, 0, false, Carrots, 0];
+cropdata518 = [500, 0, [50, 120, 75], [50, 150], 25, 200, 10, 0, false, Carrots, 0];
 
-let cropdata519 = [500, 0, [75, 150, 90], [80, 170], 25,100 , 10, 0, false, Sugarcane, 0];
+cropdata519 = [500, 0, [75, 150, 90], [80, 170], 40, 100 , 20, 0, false, Sugarcane, 0];
 
-let cropdata511 = [500, 0, [20, 100, 60], [50, 150], 0, 200, 10, 0, false, Beets, 0];
+cropdata520 = [500, 0, [45, 110, 70], [50, 100], 25, 250 , 10, 0, false, Peppers, 0];
 
-let cropdata521 = [500, 0, [60, 120, 85], [50, 150], 25, 100, 10, 0, false, Allspice, 0];
+cropdata511 = [500, 0, [20, 100, 60], [50, 150], 0, 200, 10, 0, false, Beets, 0];
 
-let cropdata522 = [500, 0, [50, 120, 75], [50, 150], 25, 150, 10, 0, false, Grapes, 0];
+cropdata521 = [500, 0, [60, 120, 85], [50, 150], 25, 100, 10, 0, false, Allspice, 0];
 
-let cropdata538 = [500, 0, [30, 80, 60], [50, 150], 0, 200, 10, 0, false, Oats, 0];
+cropdata522 = [500, 0, [50, 120, 75], [50, 150], 25, 150, 10, 0, false, Grapes, 0];
 
-let cropdata540 = [500, 0, [30, 80, 60], [25, 125], 0, 200, 10, 0, false, Barley, 0];
+cropdata538 = [500, 0, [30, 80, 60], [60, 175], 15, 200, 10, 0, false, Oats, 0];
 
-let cropdata542 = [500, 0, [70, 120, 85], [75, 150], 0, 150, 10, 0, false, Cotton, 0];
+cropdata540 = [500, 0, [30, 80, 60], [25, 125], 0, 200, 10, 0, false, Barley, 0];
 
-let cropdata532 = [10, 100, [30, 80, 60], [50, 150], 0, 250, 50, 10, true, Cow, Milk];
-let cropdata533 = [10, 100, [30, 80, 60], [0, 200], 0, 250, 20, 10, true, Chicken, Eggs];
-let cropdata544 = [10, 500, [30, 80, 60], [25, 200], 0, 250, 30, 10, true, Sheep, Wool];
+cropdata542 = [500, 0, [70, 120, 85], [75, 150], 30, 150, 10, 0, false, Cotton, 0];
 
-let cropdata0 = [0, 0, [0, 0, 0], [0, 0], 0, 0, 0, 0, false, 0, 0, 0];
+cropdata532 = [10, 100, [30, 80, 60], [50, 150], 0, 250, 50, 10, true, Cow, Milk];
+cropdata533 = [10, 100, [30, 80, 60], [0, 200], 0, 250, 20, 10, true, Chicken, Eggs];
+cropdata544 = [10, 500, [30, 80, 60], [25, 200], 0, 250, 30, 10, true, Sheep, Wool];
+
+cropdata0 = [0, 0, [0, 0, 0], [0, 0], 0, 0, 0, 0, false, 0, 0, 0];
 
 const BuildingName = ["Land Permit", "Tier 1 Housing", "Tier 2 Housing", "Tier 3 Housing", "Tier 4 Housing", "Tier 5 Housing", "Tier 6 Housing", "Tier 7 Housing", "Tier 1 Cookery", "Tier 2 Cookery", "Tier 3 Cookery", "Tier 4 Cookery", "Tier 1 Brewery", "Tier 2 Brewery", "Tier 3 Brewery", "Tier 4 Brewery", "Tier 1 Smeltery", "Tier 3 Smeltery", "Tier 3 Smeltery", "Masonry", "Tier 1 Blacksmith", "Tier 2 Blacksmith", "Aging Facility","None","None","None", "Tier 1 Jeweler", "Tier 2 Jeweler", "Tier 1 Weaver", "Tier 2 Weaver", "Tier 1 Carpenter", "Tier 2 Carpenter" ];
 
