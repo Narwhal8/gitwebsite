@@ -89,12 +89,17 @@
       const provider = new ethers.providers.Web3Provider(window.ethereum)
       await provider.send("eth_requestAccounts", []);
 
-            
+      const network = await provider.getNetwork();
+
       const signer = provider.getSigner()
       const NFTcontract = new ethers.Contract(address, abi, provider)
       const myAddress = await signer.getAddress()
 
-
+      if(network.chainId !== 421614 && network.chainId !== 31337){
+        ErrorToast.style.display = "block";
+        ErrorText.style.display = "block";
+        ErrorText.innerHTML = "ERROR: You are connected to the wrong chain. Your current chain is " + network.chainId + ". Please change it to Arbitrum Sepolia, ID 421614";
+      }
       _cityData = await NFTcontract.getKingdomInfo(myAddress);
       let _kingdomType = _cityData[4]
       console.log();

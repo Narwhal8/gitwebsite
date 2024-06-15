@@ -1,7 +1,10 @@
 async function _address() {
 
-
-    const provider = new ethers.providers.Web3Provider(window.ethereum)
+  _mainaddress = 0;
+  _warAddress = 0;
+  _landGiveaway = 0;
+  _landSales = 0;
+  const provider = new ethers.providers.Web3Provider(window.ethereum)
           
     const network = await provider.getNetwork();
     console.log(network);
