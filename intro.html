@@ -30,15 +30,15 @@
 
             const NFTcontractSigner = new ethers.Contract(address, abi, signer);
             const myAddress = await signer.getAddress();
+            _add = [myAddress,myAddress,myAddress,myAddress,myAddress,myAddress,myAddress,myAddress];
             var _totalLandBalance = 0;
-
+            _balance = await NFTcontractSigner.balanceOfBatch(_add, Kingdom_Lands[_value]);
             for(let i = 0; i < 8; ++i){
                 if(Kingdom_Lands[_value][i] != 0) {
-                    _balance = await NFTcontractSigner.balanceOf(myAddress, Kingdom_Lands[_value][i]);
-                    console.log(_balance);
-                    document.getElementById("LandBalance" + i).textContent = itemName(Kingdom_Lands[_value][i]) + " Balance: "+ _balance;
+                    console.log(_balance[i]);
+                    document.getElementById("LandBalance" + i).textContent = itemName(Kingdom_Lands[_value][i]) + " Balance: "+ _balance[i];
                     document.getElementById("LandBalance" + i).style.display = "block";
-                    _totalLandBalance += _balance;
+                    _totalLandBalance += _balance[i];
                     }
                 else{document.getElementById("LandBalance" + i).style.display = "none";}
             }
