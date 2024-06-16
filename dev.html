@@ -533,7 +533,48 @@ const SoldierID = returnsoldierID();
           NFTcontractSigner.addMultiCropData([cropdata509,cropdata510,cropdata511,cropdata512,cropdata513,cropdata514,cropdata515,cropdata516],[509,510,511,512,513,514,515,516], {gasLimit: 5000000});
           NFTcontractSigner.addMultiCropData([cropdata517,cropdata518,cropdata519,cropdata520,cropdata521,cropdata522,cropdata532,cropdata533],[517,518,519,520,521,522,532,533], {gasLimit: 5000000});
           NFTcontractSigner.addMultiCropData([cropdata535,cropdata538,cropdata540,cropdata542,cropdata544,returnCropData(0),returnCropData(0),returnCropData(0)],[535,538,540,542,544,0,0,0], {gasLimit: 5000000});
-          
+      
+          break;
+        case "12":
+        NFTcontractSigner.addBuildingData(building0,0);
+        NFTcontractSigner.addBuildingData(building1,1);
+        NFTcontractSigner.addBuildingData(building2,2);
+        NFTcontractSigner.addBuildingData(building3,3);
+        NFTcontractSigner.addBuildingData(building4,4);
+        NFTcontractSigner.addBuildingData(building5,5);
+        NFTcontractSigner.addBuildingData(building6,6);
+        NFTcontractSigner.addBuildingData(building7,7);
+        NFTcontractSigner.addBuildingData(building8,8);
+        NFTcontractSigner.addBuildingData(building9,9);
+        NFTcontractSigner.addBuildingData(building10,10);
+        NFTcontractSigner.addBuildingData(building11,11);
+        NFTcontractSigner.addBuildingData(building12,12);
+        NFTcontractSigner.addBuildingData(building13,13);
+        NFTcontractSigner.addBuildingData(building14,14);
+        NFTcontractSigner.addBuildingData(building15,15);
+        NFTcontractSigner.addBuildingData(building16,16);
+        NFTcontractSigner.addBuildingData(building17,17);
+        NFTcontractSigner.addBuildingData(building18,18);
+        NFTcontractSigner.addBuildingData(building19,19);
+        NFTcontractSigner.addBuildingData(building21,21);
+        NFTcontractSigner.addBuildingData(building22,22);
+        NFTcontractSigner.addBuildingData(building23,23);
+        NFTcontractSigner.addBuildingData(building26,26);
+        NFTcontractSigner.addBuildingData(building27,27);
+        NFTcontractSigner.addBuildingData(building28,28);
+        NFTcontractSigner.addBuildingData(building29,29);
+        NFTcontractSigner.addBuildingData(building30,30);
+        NFTcontractSigner.addBuildingData(building31,31);
+
+        NFTcontractSigner.setMaxOrders(
+                [0,0,0,0 //housing, ignore
+                ,0,0,0,0, //same
+                1,4,9,32, //cookery
+                2,4,6,14, // brewery
+                1,2,6,2, // Smeltery/Mason
+                0,5,10,1, // Blacksmith/Aging
+                0,0,3,7, // Jeweler/Battle order
+                4,22,4,20]); //Carpenter/Weaver)
           break;
         }
 
@@ -558,6 +599,7 @@ const SoldierID = returnsoldierID();
     <option value="9">Stock Land Shop</option>
     <option value="10">Set Up Fertilizer</option>
     <option value="11">Crop Data</option>
+    <option value="12">Building Set Up</option>
     
 
   </select>

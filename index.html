@@ -315,15 +315,58 @@
 
     }
 
-    function buildingCost(_value) {
-      hideBuildingInfo();
+    async function buildingCost(_value) {
 
+      hideBuildingCost();
+
+      var addies = await _address();
+      const address = addies[0];
+      const waraddress = addies[1];
+
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+
+      const signer = provider.getSigner()
+      const NFTcontract = new ethers.Contract(address, abi, provider)
+      const myAddress = await signer.getAddress()
       if (actionSelect.value == "4") {
+        const building_info = eval("building" + CID.value);
+        const addyArray = [myAddress,myAddress,myAddress,myAddress,myAddress];
+        const itemBal = await NFTcontract.balanceOfBatch(addyArray,building_info[1]);
+        console.log("building info",building_info);
+        document.getElementById("B-Cost").style.display = "block";
 
-        for(let i = 0; i < document.getElementsByClassName("B" + _value).length ; ++i) {
-          document.getElementsByClassName("B" + _value)[i].style.display = "block";
-
+        for(let i = 0; i < 5 ; ++i) {
+          document.getElementById("B-" + i).style.display = "block";
+          document.getElementById("H-" + i).style.display = "block";
+          if(i < 5){
+            document.getElementById("B-" + i).textContent = simpleDigit(building_info[2][i]) + " " + itemName(building_info[1][i])
+            document.getElementById("H-" + i).textContent = "You have: " + itemBal[i];
+          }
+          if(building_info[1][i] == 0){
+            document.getElementById("B-" + i).style.display = "none";
+            document.getElementById("H-" + i).style.display = "none";
+          }
         }
+        if(building_info[2][5] != 0){
+          document.getElementById("B-6").style.display = "block";
+          document.getElementById("B-6").textContent = building_info[2][5] + " Land";
+        }
+        document.getElementById("B-" + 7).style.display = "block";
+        document.getElementById("B-" + 7).textContent = "Manpower Requirements";
+
+        if(building_info[3][0] < 0){
+          document.getElementById("B-" + 8).style.display = "block";
+          document.getElementById("B-" + 8).textContent = (building_info[3][0] * -1) + " Peasents";
+        }
+        if(building_info[3][1] < 0){
+          document.getElementById("B-" + 9).style.display = "block";
+          document.getElementById("B-" + 9).textContent = (building_info[3][1] * -1) + " Low Nobility";
+        }
+        if(building_info[3][2] < 0){
+          document.getElementById("B-" + 10).style.display = "block";
+          document.getElementById("B-" + 10).textContent = (building_info[3][2] * -1) + " High Nobility";
+        }
+
       }
     }
 
@@ -373,6 +416,10 @@
 
     }
 
+    function simpleDigit(_value) {
+      if(_value >= 10_000){return((_value / 1000) + "K")}
+      else if(_value >= 10_000_000){return((_value / 1_000_000) + "M")}
+    }
     function showTimedCraftingMenu() {
       document.getElementsByClassName("foodInput")[0].style.display = "block";
       document.getElementsByClassName("foodInput")[1].style.display = "inline-block";
@@ -762,6 +809,13 @@
       }
     }
 
+    function hideBuildingCost() {
+      document.getElementById("B-Cost").style.display = "none";
+      for(let i = 0; i < 12; ++i) {
+        document.getElementById("B-" + i).style.display = "none";
+        document.getElementById("H-" + i).style.display = "none";
+      }
+    }
     function showCraftingFields() {
       document.getElementById("RecipeMenus").style.display = "block";
       document.getElementById("RecipeMenuSelectorLabel").style.display = "block";
@@ -1130,9 +1184,11 @@
       document.getElementById("BatchAmount").style.display = "none";
       document.getElementById("BatchAmountLabel").style.display = "none";
 
+      hideBuildingCost();
 
       FertilizerSelector.style.display = "none";
       FertilizerMenu.style.display = "none";
+      FertilizerBalance.style.display = "none";
 
       document.getElementById("ErrorText").style.display = "none"
       document.getElementById("ErrorToast").style.display = "none"
@@ -1178,7 +1234,6 @@
       document.getElementById("CID").style.display = "none";
 
 
-      hideBuildingInfo();
 
       document.getElementById("BuyorSellID").style.display = "none";
       hideAmount();
@@ -1334,6 +1389,7 @@
       itemBalance.textContent = "Balance Of Item:" + _item;
       itemBalance.style.display = "block";
     }
+    
     async function landYieldApproximator(_value) {
 
       var addies = await _address();
@@ -1397,6 +1453,7 @@
         document.getElementById("foodInputID").style.display = "none";
       }
     }
+    
     async function CivGoodStock() {
       CivGBalance.style.display = "block";
       CivGBalance.innerHTML = "Balance of Items:";
@@ -1423,119 +1480,25 @@
             CivGBalance.innerHTML += itemName(allItems[i]) + ": " + total_inventory[i] + " "
           }
     }
-    function hideBuildingInfo() {
+    
+   
+    async function ShowFertilizer(_value) {
+      
+      var addies = await _address();
+      const address = addies[0];
+      const waraddress = addies[1];
 
-      for (let i = 0; i < 2; ++i) {
-        document.getElementsByClassName("B0")[i].style.display = "none";
-      }
-      for (let i = 0; i < 2; ++i) {
-        document.getElementsByClassName("B1")[i].style.display = "none";
-      }
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner()
+      const NFTcontract = new ethers.Contract(address, abi, provider)
+      const myAddress = await signer.getAddress()
 
-      for (let i = 0; i < 3; ++i) {
-        document.getElementsByClassName("B2")[i].style.display = "none";
-      }
-      for (let i = 0; i < 4; ++i) {
-        document.getElementsByClassName("B3")[i].style.display = "none";
-      }
-      for (let i = 0; i < 4; ++i) {
-        document.getElementsByClassName("B4")[i].style.display = "none";
-      }
-      for (let i = 0; i < 4; ++i) {
-        document.getElementsByClassName("B5")[i].style.display = "none";
-      }
-      for (let i = 0; i < 4; ++i) {
-        document.getElementsByClassName("B6")[i].style.display = "none";
-      }
+      const _item = await NFTcontract.balanceOf(myAddress, _value);
 
-      for (let i = 0; i < 4; ++i) {
-        document.getElementsByClassName("B7")[i].style.display = "none";
-      }
+      FertilizerBalance.style.display = "block";
+      FertilizerBalance.innerHTML = "You Have: " + _item;
 
-      for (let i = 0; i < 5; ++i) {
-        document.getElementsByClassName("B8")[i].style.display = "none";
-      }
-
-      for (let i = 0; i < 8; ++i) {
-        document.getElementsByClassName("B9")[i].style.display = "none";
-      }
-
-      for (let i = 0; i < 8; ++i) {
-        document.getElementsByClassName("B10")[i].style.display = "none";
-      }
-
-      for (let i = 0; i < 8; ++i) {
-        document.getElementsByClassName("B11")[i].style.display = "none";
-      }
-
-      for (let i = 0; i < 6; ++i) {
-        document.getElementsByClassName("B12")[i].style.display = "none";
-      }
-
-      for (let i = 0; i < 8; ++i) {
-        document.getElementsByClassName("B13")[i].style.display = "none";
-      }
-
-      for (let i = 0; i < 7; ++i) {
-        document.getElementsByClassName("B14")[i].style.display = "none";
-      }
-      for (let i = 0; i < 8; ++i) {
-        document.getElementsByClassName("B15")[i].style.display = "none";
-      }
-
-      for (let i = 0; i < 7; ++i) {
-        document.getElementsByClassName("B16")[i].style.display = "none";
-      }
-
-      for (let i = 0; i < 6; ++i) {
-        document.getElementsByClassName("B17")[i].style.display = "none";
-      }
-
-      for (let i = 0; i < 7; ++i) {
-        document.getElementsByClassName("B18")[i].style.display = "none";
-      }
-
-      for (let i = 0; i < 6; ++i) {
-        document.getElementsByClassName("B19")[i].style.display = "none";
-      }
-
-      for (let i = 0; i < 9; ++i) {
-        document.getElementsByClassName("B20")[i].style.display = "none";
-      }
-
-      for (let i = 0; i < 7; ++i) {
-        document.getElementsByClassName("B21")[i].style.display = "none";
-      }
-
-      for (let i = 0; i < 5; ++i) {
-        document.getElementsByClassName("B22")[i].style.display = "none";
-      }
-
-      for (let i = 0; i < 8; ++i) {
-        document.getElementsByClassName("B26")[i].style.display = "none";
-      }
-
-      for (let i = 0; i < 7; ++i) {
-        document.getElementsByClassName("B27")[i].style.display = "none";
-      }
-
-      for (let i = 0; i < 8; ++i) {
-        document.getElementsByClassName("B28")[i].style.display = "none";
-      }
-
-      for (let i = 0; i < 8; ++i) {
-        document.getElementsByClassName("B29")[i].style.display = "none";
-      }
-
-      for (let i = 0; i < 8; ++i) {
-        document.getElementsByClassName("B30")[i].style.display = "none";
-      }
-
-      for (let i = 0; i < 8; ++i) {
-        document.getElementsByClassName("B31")[i].style.display = "none";
-      }
     }
-
     function cityDevHelper() {
       hideLandMenu();
 
@@ -1699,7 +1662,7 @@
     <label class="Recipe" for="RecipeID" id="RecipeIDLabel">What Would You Like To Make:</label>
 
     <select class="Recipe Dropdown" id="RecipeID"
-      onchange=" hideMultiSelector(); ('2');  Stuff(this.value); totalCostCalc(); hideInvalidBuildings(); showRelevantCraftingRecipies() ">
+      onchange=" hideMultiSelector();  Stuff(this.value); totalCostCalc(); hideInvalidBuildings(); showRelevantCraftingRecipies() ">
       <option value="-1"></option>
       <option value="0">--Drinks</option>
       <option value="-1"></option>
@@ -2130,7 +2093,7 @@
     <br>
     <text class="CDInput" id="CDLabel">Which Building is involved?</text>
     <select class="CDInput Dropdown" id="CID"
-      onclick="cityDevHelper(); buildingCost(this.value); calcCost(); totalCostCalc();">
+      onclick=" cityDevHelper(); buildingCost(this.value); calcCost(); totalCostCalc();">
       <option value="0"></option>
       <option class="buildingSelector" value="0">Land Permit</option>
       <option class="buildingSelector" value="1">Tier 1 Housing</option>
@@ -2179,217 +2142,33 @@
 
 
 
-    <text class="RecipeText B0 Indented" id="B0-0">Cost:</text>
-    <text class="RecipeText B0" id="B0-1">20 Land </text>
-
-    <text class="RecipeText B1" id="B1-0">Cost:</text>
-    <text class="RecipeText B1 Indented" id="B1-1">18 Million Wood</text>
-
-    <text class="RecipeText B2" id="B2-0">Cost:</text>
-    <text class="RecipeText B2 Indented" id="B2-1">20 Million Wood</text>
-    <text class="RecipeText B2 Indented" id="B2-2">10 Million Stone</text>
-
-    <text class="RecipeText B3" id="B3-0">Cost:</text>
-    <text class="RecipeText B3 Indented" id="B3-1">15 Million Wood</text>
-    <text class="RecipeText B3 Indented" id="B3-2">25 Million Stone</text>
-    <text class="RecipeText B3 Indented" id="B3-3">800,000 Pearls</text>
-
-    <text class="RecipeText B4" id="B4-0">Cost:</text>
-    <text class="RecipeText B4 Indented" id="B4-1">200,000 Refined Wood</text>
-    <text class="RecipeText B4 Indented" id="B4-2">20 Million Stone</text>
-    <text class="RecipeText B4 Indented" id="B4-3">2 Million Pearls</text>
-
-    <text class="RecipeText B5" id="B5-0">Cost:</text>
-    <text class="RecipeText B5 Indented" id="B5-1">500,000 Refined Wood</text>
-    <text class="RecipeText B5 Indented" id="B5-2">30 Million Stone</text>
-    <text class="RecipeText B5 Indented" id="B5-3">4 Million Pearls</text>
-
-    <text class="RecipeText B6" id="B6-0">Cost:</text>
-    <text class="RecipeText B6 Indented" id="B6-1">1 Million Refined Wood</text>
-    <text class="RecipeText B6 Indented" id="B6-2">700,000 Refined Stone</text>
-    <text class="RecipeText B6 Indented" id="B6-3">5 Million Moonstone</text>
-
-    <text class="RecipeText B7" id="B7-0">Cost:</text>
-    <text class="RecipeText B7 Indented" id="B7-1">1 Million Refined Wood</text>
-    <text class="RecipeText B7 Indented" id="B7-2">500,000 Refined Stone</text>
-    <text class="RecipeText B7 Indented" id="B7-3">8 Million Refined Moonstone</text>
-
-
-    <text class="RecipeText B8" id="B8-0">Cost:</text>
-    <text class="RecipeText B8 Indented" id="B8-1">4 Million Wood</text>
-    <text class="RecipeText B8 Indented" id="B8-2">6 Land</text>
-    <text class="RecipeText B8" id="B8-3">Staffing Needs:</text>
-    <text class="RecipeText B8 Indented" id="B8-4">3 Peasents</text>
-
-    <text class="RecipeText B9" id="B9-0">Cost:</text>
-    <text class="RecipeText B9 Indented" id="B9-1">4 Million Wood</text>
-    <text class="RecipeText B9 Indented" id="B9-2">8 Million Stone</text>
-    <text class="RecipeText B9 Indented" id="B9-3">4,000 Basic Tools</text>
-    <text class="RecipeText B9 Indented" id="B19-4">1 Million Aquamarine</text>
-    <text class="RecipeText B9 " id="B9-5">Staffing Needs:</text>
-    <text class="RecipeText B9 Indented" id="B9-6">3 Peasents</text>
-    <text class="RecipeText B9 Indented" id="B9-7">2 Low-BornNobles</text>
-
-    <text class="RecipeText B10" id="B10-0">Cost:</text>
-    <text class="RecipeText B10 Indented" id="B10-1">30,000 Refined Wood</text>
-    <text class="RecipeText B10 Indented" id="B10-2">70,000 Refined Stone</text>
-    <text class="RecipeText B10 Indented" id="B10-3">3,750 Artisan Tools</text>
-    <text class="RecipeText B10 Indented" id="B10-4">200,000 Polished Aquamarine</text>
-    <text class="RecipeText B10 " id="B10-5">Staffing Needs:</text>
-    <text class="RecipeText B10 Indented" id="B10-6">5 Peasents</text>
-    <text class="RecipeText B10 Indented" id="B10-7">3 Low-Born Nobles</text>
-
-
-    <text class="RecipeText B11" id="B11-0">Cost:</text>
-    <text class="RecipeText B11 Indented" id="B11-1">100,000 Refined Wood</text>
-    <text class="RecipeText B11 Indented" id="B11-2">100,000 Refined Stone</text>
-    <text class="RecipeText B11 Indented" id="B11-3">3,700 Oppulant Tools</text>
-    <text class="RecipeText B11 Indented" id="B11-4">400,000 Polished Aquamarine</text>
-    <text class="RecipeText B11 " id="B11-5">Staffing Needs:</text>
-    <text class="RecipeText B11 Indented" id="B11-6">5 Low-Born Nobles</text>
-    <text class="RecipeText B11 Indented" id="B11-7">2 High-Born Nobles</text>
-
-    <text class="RecipeText B12" id="B12-0">Cost:</text>
-    <text class="RecipeText B12 Indented" id="B12-1">5 Million Wood</text>
-    <text class="RecipeText B12 Indented" id="B12-2">500,000 Copper</text>
-    <text class="RecipeText B12 Indented" id="B12-3">10 Land</text>
-    <text class="RecipeText B12 " id="B12-4">Staffing Needs:</text>
-    <text class="RecipeText B12 Indented" id="B12-5">8 Peasents</text>
-
-    <text class="RecipeText B13" id="B13-0">Cost:</text>
-    <text class="RecipeText B13 Indented" id="B13-1">5 Million Stone</text>
-    <text class="RecipeText B13 Indented" id="B13-2">5 Million Wood</text>
-    <text class="RecipeText B13 Indented" id="B13-3">1 Million Copper</text>
-    <text class="RecipeText B13 Indented" id="B13-4">1 Million Citrine</text>
-    <text class="RecipeText B13 " id="B13-5">Staffing Needs:</text>
-    <text class="RecipeText B13 Indented" id="B13-6">5 Peasents</text>
-    <text class="RecipeText B13 Indented" id="B13-7">1 Low-Born Noble</text>
-
-
-    <text class="RecipeText B14" id="B14-0">Cost:</text>
-    <text class="RecipeText B14 Indented" id="B14-1">5 Million Stone</text>
-    <text class="RecipeText B14 Indented" id="B14-2">1 Million Copper</text>
-    <text class="RecipeText B14 Indented" id="B14-3">200,000 Polished Citrine</text>
-    <text class="RecipeText B14 " id="B14-4">Staffing Needs:</text>
-    <text class="RecipeText B14 Indented" id="B14-5">5 Peasents</text>
-    <text class="RecipeText B14 Indented" id="B14-6">1 Low-Born Noble</text>
-
-    <text class="RecipeText B15" id="B15-0">Cost:</text>
-    <text class="RecipeText B15 Indented" id="B15-1">100,000 Refined Wood</text>
-    <text class="RecipeText B15 Indented" id="B15-2">400,000 Refined Stone</text>
-    <text class="RecipeText B15 Indented" id="B15-3">2 Million Copper</text>
-    <text class="RecipeText B15 Indented" id="B15-4">500,000 Polished Citrine</text>
-    <text class="RecipeText B15 " id="B15-5">Staffing Needs:</text>
-    <text class="RecipeText B15 Indented" id="B15-6">1 Low-Born Noble</text>
-    <text class="RecipeText B15 Indented" id="B15-7">1 High-Born Noble</text>
-
-    <text class="RecipeText B16" id="B16-0">Cost:</text>
-    <text class="RecipeText B16 Indented" id="B16-1">2.5 Million Wood</text>
-    <text class="RecipeText B16 Indented" id="B16-2">4 Million Stone</text>
-    <text class="RecipeText B16 Indented" id="B16-3">10 Land</text>
-    <text class="RecipeText B16 " id="B16-4">Staffing Needs:</text>
-    <text class="RecipeText B16 Indented" id="B16-5">5 Peasents</text>
-    <text class="RecipeText B16 Indented" id="B16-6">1 Low-Born Noble</text>
-
-    <text class="RecipeText B17" id="B17-0">Cost:</text>
-    <text class="RecipeText B17 Indented" id="B17-1">5 Million Stone</text>
-    <text class="RecipeText B17 Indented" id="B17-2">1 Million Bronze</text>
-    <text class="RecipeText B17 " id="B17-3">Staffing Needs:</text>
-    <text class="RecipeText B17 Indented" id="B17-4">5 Peasents</text>
-    <text class="RecipeText B17 Indented" id="B17-5">1 Low-Born Noble</text>
-
-    <text class="RecipeText B18" id="B18-0">Cost:</text>
-    <text class="RecipeText B18 Indented" id="B18-1">10 Million Stone</text>
-    <text class="RecipeText B18 Indented" id="B18-2">1 Million Iron</text>
-    <text class="RecipeText B18 Indented" id="B18-3">1 Million Polished Onyx</text>
-    <text class="RecipeText B18 " id="B18-4">Staffing Needs:</text>
-    <text class="RecipeText B18 Indented" id="B18-5">1 Low-Born Noble</text>
-    <text class="RecipeText B18 Indented" id="B18-6">1 High-Born Noble</text>
-
-    <text class="RecipeText B19" id="B19-0">Cost:</text>
-    <text class="RecipeText B19 Indented" id="B19-1">10 Million Wood</text>
-    <text class="RecipeText B19 Indented" id="B19-2">10 Million Stone</text>
-    <text class="RecipeText B19 Indented" id="B19-3">10 Land</text>
-    <text class="RecipeText B19 " id="B19-4">Staffing Needs:</text>
-    <text class="RecipeText B19 Indented" id="B19-5">5 Low-Born Nobles</text>
-
-    <text class="RecipeText B20" id="B20-0">Cost:</text>
-    <text class="RecipeText B20 Indented" id="B20-1">8 Million Wood</text>
-    <text class="RecipeText B20 Indented" id="B20-2">12 Million Stone</text>
-    <text class="RecipeText B20 Indented" id="B20-3">2 Million Iron</text>
-    <text class="RecipeText B20 Indented" id="B20-4">1.5 Million Onyx</text>
-    <text class="RecipeText B20 Indented" id="B20-5">6 Land</text>
-    <text class="RecipeText B20 " id="B20-6">Staffing Needs:</text>
-    <text class="RecipeText B20 Indented" id="B20-7">4 Peasents</text>
-    <text class="RecipeText B20 Indented" id="B20-8">6 Low-Born Nobles</text>
-
-    <text class="RecipeText B21" id="B21-0">Cost:</text>
-    <text class="RecipeText B21 Indented" id="B21-1">300,000 Refined Stone</text>
-    <text class="RecipeText B21 Indented" id="B21-2">300,000 Refined Wood</text>
-    <text class="RecipeText B21 Indented" id="B21-3">1 Million Polished Onyx</text>
-    <text class="RecipeText B21 " id="B21-4">Staffing Needs:</text>
-    <text class="RecipeText B21 Indented" id="B21-5">3 Low-Born Nobles</text>
-    <text class="RecipeText B21 Indented" id="B21-6">1 High-Born Noble</text>
-
-    <text class="RecipeText B22" id="B22-0">Cost:</text>
-    <text class="RecipeText B22 Indented" id="B22-1">7 Million Wood</text>
-    <text class="RecipeText B22 Indented" id="B22-2">4 Land</text>
-    <text class="RecipeText B22" id="B22-3">Staffing Needs:</text>
-    <text class="RecipeText B22 Indented" id="B22-4">1 Peasent</text>
-
-    <text class="RecipeText B26" id="B26-0">Cost:</text>
-    <text class="RecipeText B26 Indented" id="B26-1">400,000 Refined Stone</text>
-    <text class="RecipeText B26 Indented" id="B26-2">200,000 Refined Wood</text>
-    <text class="RecipeText B26 Indented" id="B26-3">1 Million Amethyst</text>
-    <text class="RecipeText B26 Indented" id="B26-3">4 Land</text>
-    <text class="RecipeText B26 " id="B26-4">Staffing Needs:</text>
-    <text class="RecipeText B26 Indented" id="B26-5">3 Low-Born Nobles</text>
-    <text class="RecipeText B26 Indented" id="B26-6">1 High-Born Noble</text>
-
-
-    <text class="RecipeText B27" id="B27-0">Cost:</text>
-    <text class="RecipeText B27 Indented" id="B27-1">300,000 Refined Stone</text>
-    <text class="RecipeText B27 Indented" id="B27-2">150,000 Refined Wood</text>
-    <text class="RecipeText B27 Indented" id="B27-3">1 Million Polished Amethyst</text>
-    <text class="RecipeText B27 " id="B27-4">Staffing Needs:</text>
-    <text class="RecipeText B27 Indented" id="B27-5">5 Low-Born Nobles</text>
-    <text class="RecipeText B27 Indented" id="B27-6">1 High-Born Noble</text>
-
-    <text class="RecipeText B28" id="B28-0">Cost:</text>
-    <text class="RecipeText B28 Indented" id="B28-1">100,000 Refined Stone</text>
-    <text class="RecipeText B28 Indented" id="B28-2">100,000 Refined Wood</text>
-    <text class="RecipeText B28 Indented" id="B28-3">1 Million Amber</text>
-    <text class="RecipeText B28 Indented" id="B28-4">4 Land</text>
-    <text class="RecipeText B28 " id="B28-5">Staffing Needs:</text>
-    <text class="RecipeText B28 Indented" id="B28-6">5 Peasents</text>
-    <text class="RecipeText B28 Indented" id="B28-7">1 Low-Born Noble</text>
-
-    <text class="RecipeText B29" id="B29-0">Cost:</text>
-    <text class="RecipeText B29 Indented" id="B29-1">300,000 Refined Stone</text>
-    <text class="RecipeText B29 Indented" id="B29-2">200,000 Refined Wood</text>
-    <text class="RecipeText B29 Indented" id="B29-3">1 Million Amber</text>
-    <text class="RecipeText B29 " id="B29-4">Staffing Needs:</text>
-    <text class="RecipeText B29 Indented" id="B29-5">2 Peasents</text>
-    <text class="RecipeText B29 Indented" id="B29-6">1 Low-Born Noble</text>
-    <text class="RecipeText B29 Indented" id="B29-7">1 High-Born Noble</text>
-
-    <text class="RecipeText B30" id="B30-0">Cost:</text>
-    <text class="RecipeText B30 Indented" id="B30-1">250,000 Refined Stone</text>
-    <text class="RecipeText B30 Indented" id="B30-2">250,000 Refined Wood</text>
-    <text class="RecipeText B30 Indented" id="B30-3">2 Million Amber</text>
-    <text class="RecipeText B30 Indented" id="B30-4">4 Land</text>
-    <text class="RecipeText B30 " id="B30-5">Staffing Needs:</text>
-    <text class="RecipeText B30 Indented" id="B30-6">5 Peasents</text>
-    <text class="RecipeText B30 Indented" id="B30-7">1 Low-Born Noble</text>
-
-    <text class="RecipeText B31" id="B31-0">Cost:</text>
-    <text class="RecipeText B31 Indented" id="B31-1">600,000 Refined Stone</text>
-    <text class="RecipeText B31 Indented" id="B31-2">400,000 Refined Wood</text>
-    <text class="RecipeText B31 Indented" id="B31-3">2 Million Amber</text>
-    <text class="RecipeText B31 " id="B31-4">Staffing Needs:</text>
-    <text class="RecipeText B31 Indented" id="B31-5">2 Peasents</text>
-    <text class="RecipeText B31 Indented" id="B31-6">1 Low-Born Noble</text>
-    <text class="RecipeText B31 Indented" id="B31-7">1 High-Born Noble</text>
+    <text class="RecipeText InvisableOnStart Indented" id="B-Cost">Cost:</text>
+    <text class="RecipeText InvisableOnStart" id="B-0"></text>
+    <text class="InvisableOnStart" id="H-0"></text>
+    <text class="RecipeText InvisableOnStart" id="B-1"></text>
+    <text class="InvisableOnStart" id="H-1"></text>
+    <text class="RecipeText InvisableOnStart" id="B-2"></text>
+    <text class="InvisableOnStart" id="H-2"></text>
+    <text class="RecipeText InvisableOnStart" id="B-3"></text>
+    <text class="InvisableOnStart" id="H-3"></text>
+    <text class="RecipeText InvisableOnStart" id="B-4"></text>
+    <text class="InvisableOnStart" id="H-4"></text>
+    <text class="RecipeText InvisableOnStart" id="B-5"></text>
+    <text class="InvisableOnStart" id="H-5"></text>
+    <text class="RecipeText InvisableOnStart" id="B-6"></text>
+    <text class="InvisableOnStart" id="H-6"></text>
+    <text class="RecipeText InvisableOnStart" id="B-7"></text>
+    <text class="InvisableOnStart" id="H-7"></text>
+    <text class="RecipeText InvisableOnStart" id="B-8"></text>
+    <text class="InvisableOnStart" id="H-8"></text>
+    <text class="RecipeText InvisableOnStart" id="B-9"></text>
+    <text class="InvisableOnStart" id="H-9"></text>
+    <text class="RecipeText InvisableOnStart" id="B-10"></text>
+    <text class="InvisableOnStart" id="H-10"></text>
+    <text class="RecipeText InvisableOnStart" id="B-11"></text>
+    <text class="InvisableOnStart" id="H-11"></text>
+    <text class="RecipeText InvisableOnStart" id="B-12"></text>
+    <text class="InvisableOnStart" id="H-12"></text>
 
 
 
@@ -2403,15 +2182,15 @@
 
   <FertilizerMenu class="InvisableOnStart" id="FertilizerMenu">
     <label id="FertilizerLabel" for="FertilizerSelector">Which fertilizer would you like to use?</label>
-    <select class="Dropdown" id="FertilizerSelector">
+    <select class="Dropdown" id="FertilizerSelector" onchange="ShowFertilizer(this.value)">
       <option value="0"></option>
       <option value="0">None</option>
       <option value="4030">Level 1 Fertilizer</option>
       <option value="4031">Level 2 Fertilizer</option>
       <option value="4032">Level 3 Fertilizer</option>
       <option value="4040">Level 10 Fertilizer</option>
-
     </select>
+    <text id="FertilizerBalance" class="InvisableOnStart">You Have: </text>
   </FertilizerMenu>
   <ItemMenu class="InvisableOnStart" id="ItemMenu">
     <label id="ItemMenuSelectorLabel" class="InvisableOnStart" for="ItemMenuSelector"> What class of item are you looking for?</label>

@@ -1373,6 +1373,19 @@ abi = [
 	{
 		"inputs": [
 			{
+				"internalType": "uint8[32]",
+				"name": "_data",
+				"type": "uint8[32]"
+			}
+		],
+		"name": "setMaxOrders",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "uint160",
 				"name": "_quest",
 				"type": "uint160"
