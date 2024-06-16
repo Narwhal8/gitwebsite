@@ -526,6 +526,7 @@
           document.getElementById("ItemMenuLabelID").style.display = "block";
           document.getElementById("BuyorSellLabel").style.display = "block";
           document.getElementById("BuyorSellID").style.display = "block";
+          document.getElementById("BuyorSell").style.display = "block";
           document.getElementById("totalCostID").style.display = "block";
           document.getElementById("ShopingNotice").style.display = "block";
 
@@ -1236,6 +1237,7 @@
 
 
       document.getElementById("BuyorSellID").style.display = "none";
+      document.getElementById("BuyorSell").style.display = "none";
       hideAmount();
 
 
@@ -2820,7 +2822,7 @@
   </ItemMenu>
 
 
-  <BuyorSell class="InvisableOnStart">
+  <BuyorSell class="InvisableOnStart" id="BuyorSell">
     <label for="BuyorSellID" class="BuyorSell" id="BuyorSellLabel">Are you Buying or Selling?</label>
 
     <select class="BuyorSell Dropdown" id="BuyorSellID">
