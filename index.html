@@ -494,12 +494,10 @@
           const NFTcontractSigner = new ethers.Contract(address, abi, signer);
           const myAddress = await signer.getAddress();
 
-          showAmount();
           switch (_value) {
 
         case "1":
 
-          hideAmount();
 
           document.getElementById("AmountID").style.display = "block";
 
@@ -513,11 +511,14 @@
           document.getElementById("LandAmountLabel").style.display = "block";
           break;
         case "2":
+          showAmount();
+
           showCraftingFields();
           document.getElementById("totalCostID").style.display = "block";
 
           break;
         case "3":
+          showAmount();
 
           document.getElementById("ItemMenu").style.display = "block";
           document.getElementById("ItemMenuSelector").style.display = "block";
@@ -533,7 +534,8 @@
 
           break;
         case "4":
-          
+          showAmount();
+
           document.getElementById("ItemMenu").style.display = "block";
 
           document.getElementById("CDInput").style.display = "block";
@@ -546,6 +548,8 @@
           }
           break;
         case "5":
+          showAmount();
+
           document.getElementById("landLabel").style.display = "inline";
           document.getElementById("landSelection").style.display = "block";
           
@@ -553,20 +557,27 @@
           hideAmount();
           break;
         case "6":
+          const housing = await kingdomHousingCheck();
+          if(housing == true){
+
           document.getElementById("landLabel").style.display = "inline";
           document.getElementById("landSelection").style.display = "block";
           document.getElementById("landAdderNotice").style.display = "block";
           document.getElementById("totalCostID").style.display = "none";
+          showAmount();
 
-          showLandMenu();
+          showLandMenu();}
           break;
 
         case "7":
+          showAmount();
 
           document.getElementById("CivGoods").style.display = "block";
           document.getElementById("CivGM").style.display = "block";
           break;
         case "9":
+          showAmount();
+
           document.getElementById("RecruitInput").style.display = "block";
           document.getElementById("RecruitID").style.display = "inline";
           break;
@@ -574,10 +585,8 @@
           document.getElementById("CDInput").style.display = "block";
           document.getElementById("CDLabel").style.display = "inline";
           document.getElementById("CID").style.display = "inline";
-          hideAmount();
           break;
         case "11":
-          hideAmount();
           var allItems = returnItemID();
           var you_cubed = []
           for(let i = 0; i < allItems.length; ++i) {
@@ -632,7 +641,6 @@
           console.log("Test Inventory Finished");
           break;
         case "12":
-          hideAmount();
 
           KingdomInfo.style.display = "block";
           
@@ -749,6 +757,7 @@
           }
           break;
         case "13":
+          showAmount();
           document.getElementsByClassName("ItemMenu")[0].style.display = "block";
           document.getElementsByClassName("ItemMenu")[1].style.display = "block";
           document.getElementById("ItemMenuSelector").style.display = "block";
@@ -1186,6 +1195,9 @@
       document.getElementById("BatchAmountLabel").style.display = "none";
 
       hideBuildingCost();
+      noHousingNotice.style.display = "none";
+
+      sendTX.style.display = "block";
 
       FertilizerSelector.style.display = "none";
       FertilizerMenu.style.display = "none";
@@ -1257,6 +1269,39 @@
 
     }
 
+    async function kingdomHousingCheck() {
+      var addies = await _address();
+      const address = addies[0];
+      const waraddress = addies[1];
+
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+
+      const network = await provider.getNetwork();
+
+      const signer = provider.getSigner()
+      const NFTcontract = new ethers.Contract(address, abi, provider)
+      const myAddress = await signer.getAddress()
+
+      _cityData = await NFTcontract.getKingdomInfo(myAddress);
+      _buildings = await NFTcontract.getBuildingCount(myAddress);
+      console.log(_buildings);
+      var _totalHousing = 0;
+      var housingValid = true;
+      for(let i = 0; i < 8; ++i){
+        _totalHousing += _buildings[i];
+      }
+      console.log("Housing Amount;",_totalHousing);
+      if(_totalHousing == 0){
+        sendTX.style.display = "none";
+        noHousingNotice.style.display = "block";
+        housingValid = false;
+      }
+
+      return(housingValid)
+      
+
+    }
+    
     function hideMultiSelector() {
 
 
@@ -3199,6 +3244,7 @@
   <br>
   <Notices class="Notice">
     <text class="InvisableOnStart"id="landAdderNotice">NOTICE: Land added can't EVER be removed</text>
+    <text class="InvisableOnStart" id="noHousingNotice"><br>To prevent players from accidently Soft-Locking, You must build housing before adding land to this kingdom</text>
   </Notices>
   <TXamount class="Amount InvisableOnStart" id="AmountID">
     <text class="" id="BatchAmountLabel">How many batches would you like to make?</text>
