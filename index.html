@@ -341,6 +341,10 @@
           if(i < 5){
             document.getElementById("B-" + i).textContent = simpleDigit(building_info[2][i]) + " " + itemName(building_info[1][i])
             document.getElementById("H-" + i).textContent = "You have: " + itemBal[i];
+            if(building_info[2][i] != 0 && building_info[2][i] >= itemBal[i]){
+              sendTX.style.display = "none";
+              lackItemsNotice.style.display = "block";
+            }
           }
           if(building_info[1][i] == 0){
             document.getElementById("B-" + i).style.display = "none";
@@ -1196,6 +1200,7 @@
 
       hideBuildingCost();
       noHousingNotice.style.display = "none";
+      lackItemsNotice.style.display = "none";
 
       sendTX.style.display = "block";
 
@@ -1344,6 +1349,7 @@
       const myAddress = await signer.getAddress()
       var _cityData = await NFTcontract.getKingdomInfo(myAddress);
       const _kingdomType = _cityData[4];
+      const _availableLabor = _cityData[1];
 
       const crop_info = returnCropData(cropSelect.value);
 
@@ -1395,7 +1401,21 @@
 
 
       document.getElementById("CropYieldAmount").textContent = "Estimated Primary Yield: " + primary_yield + " " + itemName(crop_info[9]);
-      if(_land_info[1] < crop_info[3][0]){
+
+      var _selectedLand;
+      for(let i = 0; i < 8; ++i){
+        if(Kingdom_Lands[_kingdomType][i] == Number(LandMenu.value)){_selectedLand = i}
+      }
+      _myLandArray= await NFTcontract.getLand(myAddress);
+      console.log("My Land Array",_myLandArray)
+      console.log("Amount Of Selected Land:",_myLandArray[_selectedLand]);
+      if(_availableLabor[0] < Amount.value){
+        document.getElementById("CropYieldAmount").textContent = "You don't have enough people to do this! Max: " + _availableLabor[0];
+      }
+      if(_myLandArray[_selectedLand] < Amount.value){
+        document.getElementById("CropYieldAmount").textContent = "You don't have enough land to do this! Max: " + _myLandArray[_selectedLand];
+      }
+      else if(_land_info[1] < crop_info[3][0]){
         document.getElementById("CropYieldAmount").textContent = "Land is too dry to grow this";
       }
       else if(_land_info[1] > crop_info[3][1]){
@@ -1416,6 +1436,11 @@
       else if(document.getElementById("TimeAmount").value > 25) {
         document.getElementById("CropYieldAmount").textContent = "This Is Too Long! Maximum number of repeats allowed is 25";
       }
+      if (document.getElementById("CropYieldAmount").textContent != "Estimated Primary Yield: " + primary_yield + " " + itemName(crop_info[9]))
+      {
+        sendTX.style.display = "none";
+      }
+      else{sendTX.style.display = "block";}
       console.log(_temp_mod);
 
     }
@@ -3245,6 +3270,7 @@
   <Notices class="Notice">
     <text class="InvisableOnStart"id="landAdderNotice">NOTICE: Land added can't EVER be removed</text>
     <text class="InvisableOnStart" id="noHousingNotice"><br>To prevent players from accidently Soft-Locking, You must build housing before adding land to this kingdom</text>
+    <text class="InvisableOnStart" id="lackItemsNotice"><br>You do not have enough Items to do this transaction</text>
   </Notices>
   <TXamount class="Amount InvisableOnStart" id="AmountID">
     <text class="" id="BatchAmountLabel">How many batches would you like to make?</text>
