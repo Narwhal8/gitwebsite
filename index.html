@@ -81,27 +81,45 @@
     FertilizerLevel[4032] = 3;
     FertilizerLevel[4040] = 10;
 
-    async function signon() {
-      var addies = await _address();
-      const address = addies[0];
-      const waraddress = addies[1];
+    var address;
+    var waraddress;
+    var provider;
+    var network;
+    var signer;
+    var NFTcontract;
+    var NFTcontractSigner;
+    var myAddress;
+    var cityData;
 
-      const provider = new ethers.providers.Web3Provider(window.ethereum)
+    async function welcome() {
+      
+      const addies = await _address();
+      address = addies[0];
+      waraddress = addies[1];
+
+      provider = new ethers.providers.Web3Provider(window.ethereum)
+
+      network = await provider.getNetwork();
+
+      signer = provider.getSigner()
+      NFTcontract = new ethers.Contract(address, abi, provider);
+      NFTcontractSigner = new ethers.Contract(address, abi, signer);
+
+      myAddress = await signer.getAddress();
+      cityData = await NFTcontract.getKingdomInfo(myAddress);
+
+    }
+
+    async function signon() {
       await provider.send("eth_requestAccounts", []);
 
-      const network = await provider.getNetwork();
-
-      const signer = provider.getSigner()
-      const NFTcontract = new ethers.Contract(address, abi, provider)
-      const myAddress = await signer.getAddress()
 
       if(network.chainId !== 421614 && network.chainId !== 31337){
         ErrorToast.style.display = "block";
         ErrorText.style.display = "block";
         ErrorText.innerHTML = "ERROR: You are connected to the wrong chain. Your current chain is " + network.chainId + ". Please change it to Arbitrum Sepolia, ID 421614";
       }
-      _cityData = await NFTcontract.getKingdomInfo(myAddress);
-      let _kingdomType = _cityData[4]
+      let _kingdomType = cityData[4]
       console.log();
       console.log("KingdomID:", _kingdomType);
 
@@ -171,20 +189,8 @@
     }
     async function TXLogic() {
 
-      var addies = await _address();
-      const address = addies[0];
-      const waraddress = addies[1];
-
-      const provider = new ethers.providers.Web3Provider(window.ethereum)
-      const signer = provider.getSigner()
-      console.log(signer);
-
-      const NFTcontract = new ethers.Contract(address, abi, provider)
-      const NFTcontractSigner = new ethers.Contract(address, abi, signer);
-      const myAddress = await signer.getAddress();
-      var _cityData = await NFTcontract.getKingdomInfo(myAddress);
-      console.log(_cityData);
-      const _kingdomType = _cityData[4];
+      console.log(cityData);
+      const _kingdomType = cityData[4];
 
       var txWaiter = false;
 
@@ -239,13 +245,14 @@
 
         case "3":
         txWaiter = true;
+
           const Trade = Number(document.getElementById("ItemMenuID").value) + Number(document.getElementById("BuyorSellID").value)
           console.log("Trade:",Trade);
           var tx = await NFTcontractSigner.cook(
             Trade,
             document.getElementById("Amount").value,
             [document.getElementById("ItemMenuID").value,0,0,0,0,0,0,0],
-            0,
+            200,
             0,
             1
           )
@@ -424,6 +431,7 @@
       if(_value >= 10_000){return((_value / 1000) + "K")}
       else if(_value >= 10_000_000){return((_value / 1_000_000) + "M")}
     }
+    
     function showTimedCraftingMenu() {
       document.getElementsByClassName("foodInput")[0].style.display = "block";
       document.getElementsByClassName("foodInput")[1].style.display = "inline-block";
@@ -433,7 +441,9 @@
       document.getElementById("BatchAmountLabel").style.display = "block";
       document.getElementById("BatchAmount").style.display = "block";
     }
+    function itemMax() {
 
+    }
     function hideTimedCraftingMenu() {
       document.getElementsByClassName("foodInput")[0].style.display = "none";
       document.getElementsByClassName("foodInput")[1].style.display = "none";
@@ -486,17 +496,6 @@
     async function selectTask(_value) {
       hideAll();
 
-          var addies = await _address();
-          const address = addies[0];
-          const waraddress = addies[1];
-
-          const provider = new ethers.providers.Web3Provider(window.ethereum)
-          const signer = provider.getSigner()
-          console.log(signer);
-
-          const NFTcontract = new ethers.Contract(address, abi, provider)
-          const NFTcontractSigner = new ethers.Contract(address, abi, signer);
-          const myAddress = await signer.getAddress();
 
           switch (_value) {
 
@@ -648,12 +647,11 @@
 
           KingdomInfo.style.display = "block";
           
-          _cityData = await NFTcontract.getKingdomInfo(myAddress);
-          let _population = _cityData[0];
-          let _jobless_population = _cityData[1];
-          let _max_population = _cityData[2];
-          let _land_available = _cityData[3];
-          let _kingdomType = _cityData[4];
+          let _population = cityData[0];
+          let _jobless_population = cityData[1];
+          let _max_population = cityData[2];
+          let _land_available = cityData[3];
+          let _kingdomType = cityData[4];
           var _land = await NFTcontract.getLand(myAddress);
 
 
@@ -780,15 +778,8 @@
     }
 
     async function showLandMenu() {
-      var addies = await _address();
-      const address = addies[0];
-      const waraddress = addies[1];
-      const provider = new ethers.providers.Web3Provider(window.ethereum)
-      const signer = provider.getSigner()
-      const NFTcontract = new ethers.Contract(address, abi, provider)
-      const myAddress = await signer.getAddress()
-      var _cityData = await NFTcontract.getKingdomInfo(myAddress);
-      const _kingdomType = _cityData[4];
+
+      const _kingdomType = cityData[4];
 
 
       for(let i = 0; i < LandMenu.options.length; ++i) {
@@ -831,6 +822,7 @@
         document.getElementById("H-" + i).style.display = "none";
       }
     }
+    
     function showCraftingFields() {
       document.getElementById("RecipeMenus").style.display = "block";
       document.getElementById("RecipeMenuSelectorLabel").style.display = "block";
@@ -841,17 +833,11 @@
 
     async function totalCostCalc() {
 
-      var addies = await _address();
-      const address = addies[0];
-      const waraddress = addies[1];
-
       document.getElementById("totalCost").style.display = "block";
       document.getElementById("totalCostID").style.display = "block";
 
       document.getElementById("totalCostID").textContent = "Total Cost:";
       document.getElementById("totalCostID").style.display = "block";
-
-      const Amount = document.getElementById("Amount").value;
 
       if (actionSelect.value == "1") {
         hideFarmYield();
@@ -870,12 +856,6 @@
         var recipe_size = whyJS[4];
         var time = whyJS[5];
 
-        const provider = new ethers.providers.Web3Provider(window.ethereum)
-        const signer = provider.getSigner()
-        const NFTcontract = new ethers.Contract(address, abi, provider)
-        const NFTcontractSigner = new ethers.Contract(address, abi, signer);
-        const myAddress = await signer.getAddress()
-
         document.getElementById("totalCostID").textContent = "Total Cost: ";
 
 
@@ -884,10 +864,10 @@
           var _foodcost;
           var _foodMultiplier = (Math.ceil((document.getElementById("BatchAmount").value * recipe_size) / maxAllowableOrders[document.getElementById("CID").value]));
           console.log(document.getElementById("BatchAmount").value, "a")
-          console.log(Amount, "b")
-          _foodcost = Workers[document.getElementById("CID").value] * (_foodMultiplier) * Math.ceil((time * Amount)/10);
+          console.log(Amount.value, "b")
+          _foodcost = Workers[document.getElementById("CID").value] * (_foodMultiplier) * Math.ceil((time * Amount.value)/10);
           var _outputText;
-          _outputText = item_output_amount[0] * Amount;
+          _outputText = item_output_amount[0] * Amount.value;
           if (time != 0) {
             const _buildingCount = await NFTcontract.getBuildingCount(myAddress);
             console.log("is this running?");
@@ -895,7 +875,7 @@
             document.getElementById("BatchAmountLabel").textContent += (maxAllowableOrders[document.getElementById("CID").value] * _buildingCount[document.getElementById("CID").value] / recipe_size)
             for (var i = 0; i < 6; i++) {
               if (items[i] == 0) { break; }
-              document.getElementById("totalCostID").textContent += ((item_amount[i]) * Amount * document.getElementById("BatchAmount").value) + " " + itemName(items[i]);
+              document.getElementById("totalCostID").textContent += ((item_amount[i]) * Amount.value * document.getElementById("BatchAmount").value) + " " + itemName(items[i]);
             }
           }
           else {
@@ -903,7 +883,7 @@
             document.getElementById("BatchAmount").value = 1;
             for (var i = 0; i < 6; i++) {
               if (items[i] == 0) { break; }
-              document.getElementById("totalCostID").textContent += ((item_amount[i]) * Amount * document.getElementById("BatchAmount").value) + " " +  itemName(items[i]) + " ";
+              document.getElementById("totalCostID").textContent += ((item_amount[i]) * Amount.value * document.getElementById("BatchAmount").value) + " " +  itemName(items[i]) + " ";
             }
           }
 
@@ -920,11 +900,11 @@
 
 
           if (item_output[1] != 0) {
-              document.getElementById("totalCostID").textContent += " & " + ((item_output_amount[1]) * Amount * document.getElementById("BatchAmount").value) + " " + itemName(item_output[1]);
+              document.getElementById("totalCostID").textContent += " & " + ((item_output_amount[1]) * Amount.value * document.getElementById("BatchAmount").value) + " " + itemName(item_output[1]);
             }
 
           if (item_output[2] != 0) {
-              document.getElementById("totalCostID").textContent += " & " + ((item_output_amount[2]) * Amount * document.getElementById("BatchAmount").value) + " " + itemName(item_output[2]);
+              document.getElementById("totalCostID").textContent += " & " + ((item_output_amount[2]) * Amount.value * document.getElementById("BatchAmount").value) + " " + itemName(item_output[2]);
             }
         }
 
@@ -944,7 +924,7 @@
             _civ_bonus += 0.5;
             console.log("Nerfed Civ Bonus:",_civ_bonus);
 
-            setTTC((Number(Amount) * time * 100 / (_time_multi * _civ_bonus)));
+            setTTC((Number(Amount.value) * time * 100 / (_time_multi * _civ_bonus)));
           }
           else { setTTC(Number(Amount) * time); }
         }
@@ -952,25 +932,18 @@
       }
       else if(actionSelect.value == "7") {
 
-        const provider = new ethers.providers.Web3Provider(window.ethereum)
-        const signer = provider.getSigner()
-        const NFTcontract = new ethers.Contract(address, abi, provider)
-        const NFTcontractSigner = new ethers.Contract(address, abi, signer);
-        const myAddress = await signer.getAddress();
-
-        _cityData = await NFTcontract.getKingdomInfo(myAddress);
-        let _kingdomType = _cityData[4];
-        let _popData = _cityData[0];
+        let _kingdomType = cityData[4];
+        let _popData = cityData[0];
         
         const _stockedGoods = await NFTcontract.getStockedGoods(myAddress);
         const _goods = _stockedGoods[1][CivGM.value];
-        console.log((_goods + (Amount * 4)));
-        if((_goods + (Amount * 4)) > 25){document.getElementById("totalCostID").textContent = "Error: You are trying to stock too many goods at once. The maximum amount your storage can currently handle is " + Math.floor((24 - _goods)/4)}
+        console.log((_goods + (Amount.value * 4)));
+        if((_goods + (Amount.value * 4)) > 25){document.getElementById("totalCostID").textContent = "Error: You are trying to stock too many goods at once. The maximum amount your storage can currently handle is " + Math.floor((24 - _goods)/4)}
 
         else{
         document.getElementById("totalCostID").textContent = "Total Cost: "
         for(let i = 0; i < 3; ++i) {
-          document.getElementById("totalCostID").textContent += (Amount * _popData[i] *  TitheDetails[Kingdom_Civilian_Items[_kingdomType][CivGM.value]][2*i + 1]);
+          document.getElementById("totalCostID").textContent += (Amount.value * _popData[i] *  TitheDetails[Kingdom_Civilian_Items[_kingdomType][CivGM.value]][2*i + 1]);
           document.getElementById("totalCostID").textContent += " " + itemName(TitheDetails[Kingdom_Civilian_Items[_kingdomType][CivGM.value]][2*i]);
           if(i != 2){document.getElementById("totalCostID").textContent += " & "}
           
@@ -979,13 +952,13 @@
       else if(actionSelect.value == "9") {
         switch (RecruitID.value) {
           case "0":
-            document.getElementById("totalCostID").textContent += 10000 * Amount + " Copper";
+            document.getElementById("totalCostID").textContent += 10000 * Amount.value + " Copper";
             break;
           case "1":
-            document.getElementById("totalCostID").textContent += 10000 * Amount + " Silver";
+            document.getElementById("totalCostID").textContent += 10000 * Amount.value + " Silver";
             break;
           case "2":
-            document.getElementById("totalCostID").textContent += 30000 * Amount + " Gold";
+            document.getElementById("totalCostID").textContent += 30000 * Amount.value + " Gold";
             break;
         }
 
@@ -1164,6 +1137,26 @@
       }
     }
 
+    async function sellCheck() {
+
+      if(BuyorSellID.value == "100000"){
+        sellAllCheckbox.style.display = "inline-block";
+        sellAllText.style.display = "inline";
+      }
+    }
+    async function sellAll() {
+
+      var _item = await NFTcontract.balanceOf(myAddress, ItemMenuID.value);
+      if(Number(itemValue(Number(ItemMenuID.value))) < 20){_item = (Math.floor(_item/100));}
+      Amount.value = _item;
+      AmountID.style.display = "none";
+      ShopingNotice.style.display = "none";
+      console.log("amount:",Amount.value);
+      totalCostCalc();
+
+
+    }
+    
     function showRelevantCraftingRecipies(_value) {
       document.getElementById("RecipeMenus").style.display = "block";
       document.getElementById("FoodAmounts").style.display = "block";
@@ -1208,6 +1201,10 @@
       FertilizerSelector.style.display = "none";
       FertilizerMenu.style.display = "none";
       FertilizerBalance.style.display = "none";
+
+      
+      sellAllCheckbox.style.display = "none";
+      sellAllText.style.display = "none";
 
       document.getElementById("ErrorText").style.display = "none"
       document.getElementById("ErrorToast").style.display = "none"
@@ -1276,19 +1273,7 @@
     }
 
     async function kingdomHousingCheck() {
-      var addies = await _address();
-      const address = addies[0];
-      const waraddress = addies[1];
 
-      const provider = new ethers.providers.Web3Provider(window.ethereum)
-
-      const network = await provider.getNetwork();
-
-      const signer = provider.getSigner()
-      const NFTcontract = new ethers.Contract(address, abi, provider)
-      const myAddress = await signer.getAddress()
-
-      _cityData = await NFTcontract.getKingdomInfo(myAddress);
       _buildings = await NFTcontract.getBuildingCount(myAddress);
       console.log(_buildings);
       var _totalHousing = 0;
@@ -1340,17 +1325,8 @@
     
     async function farmYieldApproximator(_value) {
 
-      var addies = await _address();
-      const address = addies[0];
-      const waraddress = addies[1];
-
-      const provider = new ethers.providers.Web3Provider(window.ethereum)
-      const signer = provider.getSigner()
-      const NFTcontract = new ethers.Contract(address, abi, provider)
-      const myAddress = await signer.getAddress()
-      var _cityData = await NFTcontract.getKingdomInfo(myAddress);
-      const _kingdomType = _cityData[4];
-      const _availableLabor = _cityData[1];
+      const _kingdomType = cityData[4];
+      const _availableLabor = cityData[1];
 
       const crop_info = returnCropData(cropSelect.value);
 
@@ -1445,16 +1421,8 @@
       console.log(_temp_mod);
 
     }
+    
     async function balanceOfItem(_value) {
-      
-      var addies = await _address();
-      const address = addies[0];
-      const waraddress = addies[1];
-
-      const provider = new ethers.providers.Web3Provider(window.ethereum)
-      const signer = provider.getSigner()
-      const NFTcontract = new ethers.Contract(address, abi, provider)
-      const myAddress = await signer.getAddress()
 
       const _item = await NFTcontract.balanceOf(myAddress, _value);
       console.log(_item);
@@ -1465,18 +1433,7 @@
     
     async function landYieldApproximator(_value) {
 
-      var addies = await _address();
-      const address = addies[0];
-      const waraddress = addies[1];
-
-      const provider = new ethers.providers.Web3Provider(window.ethereum)
-      const signer = provider.getSigner()
-      const NFTcontract = new ethers.Contract(address, abi, provider)
-      const myAddress = await signer.getAddress()
-
-
-      const _cityData = await NFTcontract.getKingdomInfo(myAddress);
-      const _kingdomType = _cityData[4];
+      const _kingdomType = cityData[4];
       const _land_info = returnLandData(LandMenu.value);
       var temp_name = "Estimated Yield: ";
 
@@ -1530,17 +1487,8 @@
     async function CivGoodStock() {
       CivGBalance.style.display = "block";
       CivGBalance.innerHTML = "Balance of Items:";
-            
-      var addies = await _address();
-      const address = addies[0];
-      const waraddress = addies[1];
 
-      const provider = new ethers.providers.Web3Provider(window.ethereum)
-      const signer = provider.getSigner()
-      const NFTcontract = new ethers.Contract(address, abi, provider)
-      const myAddress = await signer.getAddress()
-      var _cityData = await NFTcontract.getKingdomInfo(myAddress);
-      const _kingdomType = _cityData[4];
+      const _kingdomType = cityData[4];
       const _itemRationType = TitheDetails[Kingdom_Civilian_Items[_kingdomType][CivGM.value]]
       var allItems = [_itemRationType[0],_itemRationType[2],_itemRationType[4]];
           var you_cubed = []
@@ -1556,15 +1504,6 @@
     
    
     async function ShowFertilizer(_value) {
-      
-      var addies = await _address();
-      const address = addies[0];
-      const waraddress = addies[1];
-
-      const provider = new ethers.providers.Web3Provider(window.ethereum)
-      const signer = provider.getSigner()
-      const NFTcontract = new ethers.Contract(address, abi, provider)
-      const myAddress = await signer.getAddress()
 
       const _item = await NFTcontract.balanceOf(myAddress, _value);
 
@@ -1599,7 +1538,7 @@
 
 </head>
 
-<body>
+<body onload="welcome()">
 
   <h3>Attention: This website is very WIP. If something doesn't work try connecting your wallet. If that doesn't work refresh the page. If it still doesnt work contact me with the details.</h3>
   <h3>For anyone who needs the clarification, USE AT YOUR OWN RISK</h3>
@@ -2888,15 +2827,16 @@
 
 
     </select>
-    <text class="InvisableOnStart" id="itemBalance"></text>
-
+    <text class="InvisableOnStart" id="itemBalance">Balance Of Item:</text>
+    <input class="InvisableOnStart" type="checkbox" id="sellAllCheckbox" onclick="sellAll()"></input>
+    <text class="InvisableOnStart" id="sellAllText">Sell All?</text>
   </ItemMenu>
 
 
   <BuyorSell class="InvisableOnStart" id="BuyorSell">
     <label for="BuyorSellID" class="BuyorSell" id="BuyorSellLabel">Are you Buying or Selling?</label>
 
-    <select class="BuyorSell Dropdown" id="BuyorSellID">
+    <select class="BuyorSell Dropdown" id="BuyorSellID" onchange="sellCheck()">
       <option value="-1"></option>
       <option value="200000">Buy</option>
       <option value="100000">Sell</option>
@@ -3272,13 +3212,12 @@
     <text class="InvisableOnStart"id="landAdderNotice">NOTICE: Land added can't EVER be removed</text>
     <text class="InvisableOnStart" id="noHousingNotice"><br>To prevent players from accidently Soft-Locking, You must build housing before adding land to this kingdom</text>
     <text class="InvisableOnStart" id="lackItemsNotice"><br>You do not have enough Items to do this transaction</text>
+    <text class="InvisableOnStart" id="ShopingNotice">Note: Items of less then 20 value are traded in increments of 100</text>
   </Notices>
   <TXamount class="Amount InvisableOnStart" id="AmountID">
     <text class="" id="BatchAmountLabel">How many batches would you like to make?</text>
     <input class=" NumericInput" type="number" id="BatchAmount" onchange="totalCostCalc();"></input>
     <text class="Amount" id="AmountLabel">How many times would you like to do this?</text>
-    <text class="Amount Notice" id="ShopingNotice">Note: Items of less then 20 value are traded in increments of
-      100</text>
     <text class="Amount" id="LandAmountLabel">How many people would you like to assign to this task?</text>
     <input class="Amount NumericInput" type="number" id="Amount" onchange="totalCostCalc();"></input>
     <text class="Amount" id="TimeAmountLabel" onchange="totalCostCalc();">How many units of time would you like to run
