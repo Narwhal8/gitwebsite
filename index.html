@@ -81,6 +81,8 @@
     FertilizerLevel[4032] = 3;
     FertilizerLevel[4040] = 10;
 
+    var SellAllCheck = false;
+
     var address;
     var waraddress;
     var provider;
@@ -441,9 +443,7 @@
       document.getElementById("BatchAmountLabel").style.display = "block";
       document.getElementById("BatchAmount").style.display = "block";
     }
-    function itemMax() {
 
-    }
     function hideTimedCraftingMenu() {
       document.getElementsByClassName("foodInput")[0].style.display = "none";
       document.getElementsByClassName("foodInput")[1].style.display = "none";
@@ -1137,22 +1137,35 @@
       }
     }
 
+    function sellAllCheck() {
+      if(SellAllCheck == false){SellAllCheck = true}
+      else{SellAllCheck = false}
+    }
     async function sellCheck() {
 
       if(BuyorSellID.value == "100000"){
         sellAllCheckbox.style.display = "inline-block";
         sellAllText.style.display = "inline";
       }
+
     }
+    
     async function sellAll() {
 
-      var _item = await NFTcontract.balanceOf(myAddress, ItemMenuID.value);
-      if(Number(itemValue(Number(ItemMenuID.value))) < 20){_item = (Math.floor(_item/100));}
-      Amount.value = _item;
-      AmountID.style.display = "none";
-      ShopingNotice.style.display = "none";
-      console.log("amount:",Amount.value);
-      totalCostCalc();
+      if(BuyorSellID.value == "100000" && SellAllCheck == true){       
+        var _item = await NFTcontract.balanceOf(myAddress, ItemMenuID.value);
+        if(Number(itemValue(Number(ItemMenuID.value))) < 20){_item = (Math.floor(_item/100));}
+        Amount.value = _item;
+        AmountID.style.display = "none";
+        ShopingNotice.style.display = "none";
+        console.log("amount:",Amount.value);
+        totalCostCalc();
+        console.log(SellAllCheck);
+      }
+      else if(SellAllCheck == false){
+        AmountID.style.display = "block";
+        ShopingNotice.style.display = "block";
+      }
 
 
     }
@@ -2223,7 +2236,7 @@
       <option value="12">Mercenaries</option>
     </select>
     <label id="ItemMenuLabelID" class="ItemMenu" for="ItemMenuID">What Item are you looking for?</label><br>
-    <select class="ItemMenu Dropdown" id="ItemMenuID" onchange="balanceOfItem(this.value)">
+    <select class="ItemMenu Dropdown" id="ItemMenuID" onchange="balanceOfItem(this.value); sellAll();">
 
       <option value="-1"></option>
       <option value="0">--Land</option>
@@ -2828,7 +2841,7 @@
 
     </select>
     <text class="InvisableOnStart" id="itemBalance">Balance Of Item:</text>
-    <input class="InvisableOnStart" type="checkbox" id="sellAllCheckbox" onclick="sellAll()"></input>
+    <input class="InvisableOnStart" type="checkbox" id="sellAllCheckbox" onchange=" sellAllCheck(); sellAll();"></input>
     <text class="InvisableOnStart" id="sellAllText">Sell All?</text>
   </ItemMenu>
 
