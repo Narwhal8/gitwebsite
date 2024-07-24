@@ -16,6 +16,7 @@
       const waraddress = addies[1];
       const landGiveaway = addies[2];
       const landMerchant = addies[3];
+      const eventAddress = addies[4];
       
       const provider = new ethers.providers.Web3Provider(window.ethereum)
       const signer = provider.getSigner();
@@ -272,11 +273,10 @@
           var mixedItemData25 = returnMixedItemData(25);
           var mixedItemData26 = returnMixedItemData(26);
           var mixedItemData27 = returnMixedItemData(27);
-          var mixedItemData27 = returnMixedItemData(28);
 
           console.log("you got here");
 
-          for(let i = 0; i < 29; ++i) {
+          for(let i = 0; i < 28; ++i) {
             while(eval("mixedItemData" + i).length < 64){
               eval("mixedItemData" + i).push(0);
             }
@@ -287,66 +287,296 @@
           NFTcontractSigner.addMultiMixItemData([mixedItemData9,mixedItemData10,mixedItemData11,mixedItemData12,mixedItemData13,mixedItemData14,mixedItemData15,mixedItemData16],[-9,-10,-11,-12,-13,-14,-15,-16], {gasLimit: 5000000});
           NFTcontractSigner.addMultiMixItemData([mixedItemData17,mixedItemData18,mixedItemData19,mixedItemData20,mixedItemData0,mixedItemData0,mixedItemData0,mixedItemData0],[-17,-18,-19,-20,0,0,0,0], {gasLimit: 5000000});
 
-          NFTcontractSigner.addFoodData([1400,50,0,0]);
-          NFTcontractSigner.addFoodData([1401,150,0,0]);
-          NFTcontractSigner.addFoodData([1402,350,0,0]);
-          NFTcontractSigner.addFoodData([1403,3500,0,0]);
-          NFTcontractSigner.addFoodData([1404,450,0,0]);
-          NFTcontractSigner.addFoodData([1405,100,0,0]);
-          NFTcontractSigner.addFoodData([1406,400,0,0]);
-          NFTcontractSigner.addFoodData([1421,500,0,0]);
-          NFTcontractSigner.addFoodData([1422,900,3,5]);
-          NFTcontractSigner.addFoodData([1423,650,4,7]);
-          NFTcontractSigner.addFoodData([1424,500,0,0]);
-          NFTcontractSigner.addFoodData([1440,1000,0,0]);
-          NFTcontractSigner.addFoodData([1441,1000,6,7]);
-          NFTcontractSigner.addFoodData([1442,1000,6,3]);
-          NFTcontractSigner.addFoodData([1450,950,0,0]);
-          NFTcontractSigner.addFoodData([1451,1500,6,0]);
-          NFTcontractSigner.addFoodData([1452,425,2,7]);
-          NFTcontractSigner.addFoodData([1460,2800,0,0]);
-          NFTcontractSigner.addFoodData([1470,2800,0,0]);
-          NFTcontractSigner.addFoodData([1471,19000,0,0]);
-          NFTcontractSigner.addFoodData([1472,1500,8,9]);
-          NFTcontractSigner.addFoodData([1473,8500,8,9]);
-          NFTcontractSigner.addFoodData([1490,450,0,0]);
-          NFTcontractSigner.addFoodData([1491,450,3,0]);
-          NFTcontractSigner.addFoodData([1492,450,4,0]);
-          NFTcontractSigner.addFoodData([1493,450,2,0]);
-          NFTcontractSigner.addFoodData([1494,450,1,0]);
-          NFTcontractSigner.addFoodData([1500,950,1,0]);
-          NFTcontractSigner.addFoodData([1510,800,5,0]);
-          NFTcontractSigner.addFoodData([1511,2800,5,0]);
+            
+          NFTcontractSigner.setItemLevel([4030,1]);
+          NFTcontractSigner.setItemLevel([4031,2]);
+          NFTcontractSigner.setItemLevel([4032,3]);
+          NFTcontractSigner.setItemLevel([4040,10]);
+          NFTcontractSigner.changeEventCA(eventAddress);
+          
+        NFTcontractSigner.addBuildingData(building0,0);
+        NFTcontractSigner.addBuildingData(building1,1);
+        NFTcontractSigner.addBuildingData(building2,2);
+        NFTcontractSigner.addBuildingData(building3,3);
+        NFTcontractSigner.addBuildingData(building4,4);
+        NFTcontractSigner.addBuildingData(building5,5);
+        NFTcontractSigner.addBuildingData(building6,6);
+        NFTcontractSigner.addBuildingData(building7,7);
+        NFTcontractSigner.addBuildingData(building8,8);
+        NFTcontractSigner.addBuildingData(building9,9);
+        NFTcontractSigner.addBuildingData(building10,10);
+        NFTcontractSigner.addBuildingData(building11,11);
+        NFTcontractSigner.addBuildingData(building12,12);
+        NFTcontractSigner.addBuildingData(building13,13);
+        NFTcontractSigner.addBuildingData(building14,14);
+        NFTcontractSigner.addBuildingData(building15,15);
+        NFTcontractSigner.addBuildingData(building16,16);
+        NFTcontractSigner.addBuildingData(building17,17);
+        NFTcontractSigner.addBuildingData(building18,18);
+        NFTcontractSigner.addBuildingData(building19,19);
+        NFTcontractSigner.addBuildingData(building21,21);
+        NFTcontractSigner.addBuildingData(building22,22);
+        NFTcontractSigner.addBuildingData(building23,23);
+        NFTcontractSigner.addBuildingData(building24,24);
+        NFTcontractSigner.addBuildingData(building25,25);
+        NFTcontractSigner.addBuildingData(building26,26);
+        NFTcontractSigner.addBuildingData(building27,27);
+        NFTcontractSigner.addBuildingData(building28,28);
+        NFTcontractSigner.addBuildingData(building29,29);
+        NFTcontractSigner.addBuildingData(building30,30);
+        NFTcontractSigner.addBuildingData(building31,31);
+
+        NFTcontractSigner.setMaxOrders(
+          [0, 0, 0, 0, //housing, ignore
+          0, 0, 0, 0, //same
+          1, 4, 9, 32, //cookery
+          2, 4, 6, 14, // brewery
+          1, 2, 6, 4, // Smeltery/Mason
+          5, 10, 1, 0, // Blacksmith/Aging
+          0, 1, 3, 7, // Infra/Harbor/Jeweler
+          4, 22, 4, 20]); // Weaver/Carpenter
+          
+        NFTcontractSigner.addFoodData([
+          1000,5,8,9,
+          1001,5,5,0,
+          1002,5,5,0,
+          1003,5,6,0,
+
+          1004,5,1,0,
+          1005,5,2,0,
+          1010,5,3,0,
+          1011,5,8,9,
+
+          1012,5,1,0,
+          1013,5,4,0,
+          1014,5,8,0,
+          1020,5,5,0,
+
+          1021,5,5,0,
+          1030,20,2,0,
+          1031,20,1,0,
+          1032,20,5,0]
+        );
+        NFTcontractSigner.addFoodData([
+          1033,20,7,0,
+          1040,50,8,9,
+          1041,50,9,0,
+          1042,50,2,6,
+
+          1043,50,1,4,
+          1044,50,3,5,
+          1050,100,6,0,
+          1051,100,2,0,
+
+          1060,250,3,0,
+          1061,250,8,9,
+          1200,10,0,0,
+          1201,10,8,9,
+
+          1202,10,5,0,
+          1203,10,7,0,
+          1204,5,7,0,
+          1205,5,0,0
+        ]);
+        NFTcontractSigner.addFoodData([
+          1206,20,5,0,
+          1207,20,4,0,
+          1208,20,4,0,
+          1209,40,1,0,
+
+          1210,20,4,0,
+          1211,20,1,4,
+          1212,300,8,0,
+          1213,500,9,0,
+          
+          1220,20,3,0,
+          1221,20,1,0,
+          1222,20,4,0,
+          1223,20,7,0,
+
+          1224,20,6,0,
+          1225,20,8,0,
+          1230,20,5,0,
+          1231,60,5,0
+
+        ]);
+        NFTcontractSigner.addFoodData([
+
+          1232,400,5,0,
+          1240,10,0,0,
+          1241,50,0,0,
+          1242,10,0,0,
+
+          1251,80,9,5,
+          1260,40,6,0,
+          1261,20,6,0,
+          1262,20,6,3,
+
+          1263,150,5,0,
+          1264,20,5,0,
+          1265,50,0,0,
+          1266,750,6,8,
+
+          1267,10,0,0,
+          1268,100,3,6,
+          1270,30,5,0,
+          1271,200,8,9
+
+        ]);
+        NFTcontractSigner.addFoodData([
+
+          1272,20,4,0,
+          1273,200,3,0,
+          1274,20,5,3,
+          1275,20,7,0,
+
+          1276,20,4,0,
+          1277,30,2,7,
+          1280,10,7,0,
+          1281,10,5,0,
+
+          1282,10,5,0,
+          0,0,0,0,
+          0,0,0,0,
+          0,0,0,0,
+
+          0,0,0,0,
+          0,0,0,0,
+          0,0,0,0,
+          0,0,0,0
+        ]);
+        NFTcontractSigner.addFoodData([
+          501,2,0,0,
+          502,2,0,0,
+          503,2,0,0,
+          504,2,0,0,
+
+          505,2,0,0,
+          506,2,0,0,
+          507,2,0,0,
+          508,2,0,0,
+
+          509,2,0,0,
+          510,2,0,0,
+          511,2,0,0,
+          512,2,0,0,
+
+          513,2,0,0,
+          514,2,0,0,
+          515,2,0,0,
+          516,2,0,0
+        ]);
+
+        NFTcontractSigner.addFoodData([
+          517,2,0,0,
+          518,2,0,0,
+          519,4,0,0,
+          520,2,0,0,
+
+          521,2,0,0,
+          522,2,0,0,
+          530,20,0,0,
+          531,10,0,0,
+
+          532,20,0,0,
+          533,10,0,0,
+          534,10,0,0,
+          535,2,0,0,
+
+          538,2,0,0,
+          539,10,0,0,
+          540,2,0,0,
+          541,50,0,0
+        ]);
+
+        NFTcontractSigner.addFoodData([
+          542,2,0,0,
+          543,2,0,0,
+          544,10,0,0,
+          545,10,0,0,
+
+          550,5,0,0,
+          553,50,0,0,
+          554,20,0,0,
+          555,20,0,0,
+          
+          0,0,0,0,
+          0,0,0,0,
+          0,0,0,0,
+          0,0,0,0,
+          
+          0,0,0,0,
+          0,0,0,0,
+          0,0,0,0,
+          0,0,0,0
+        ]);
+
+        
+        NFTcontractSigner.addLandData(landData1,1);
+        NFTcontractSigner.addLandData(landData2,2);
+        NFTcontractSigner.addLandData(landData3,3);
+        NFTcontractSigner.addLandData(landData4,4);
+        NFTcontractSigner.addLandData(landData11,11);
+        NFTcontractSigner.addLandData(landData12,12);
+        NFTcontractSigner.addLandData(landData13,13);
+        NFTcontractSigner.addLandData(landData14,14);
+        NFTcontractSigner.addLandData(landData21,21);
+        NFTcontractSigner.addLandData(landData22,22);
+        NFTcontractSigner.addLandData(landData23,23);
+        NFTcontractSigner.addLandData(landData31,31);
+        NFTcontractSigner.addLandData(landData32,32);
+        NFTcontractSigner.addLandData(landData33,33);
+        NFTcontractSigner.addLandData(landData34,34);
+        NFTcontractSigner.addLandData(landData41,41);
+        NFTcontractSigner.addLandData(landData42,42);
+        NFTcontractSigner.addLandData(landData43,43);
+        NFTcontractSigner.addLandData(landData44,44);
+        NFTcontractSigner.addLandData(landData51,51);
+        NFTcontractSigner.addLandData(landData52,52);
+        NFTcontractSigner.addLandData(landData53,53);
+        NFTcontractSigner.addLandData(landData61,61);
+        NFTcontractSigner.addLandData(landData62,62);
+        NFTcontractSigner.addLandData(landData63,63);
+        NFTcontractSigner.addLandData(landData64,64);
+        NFTcontractSigner.addLandData(landData70,70);
+        NFTcontractSigner.addLandData(landData71,71);
+        NFTcontractSigner.addLandData(landData72,72);
+        NFTcontractSigner.addLandData(landData80,80);
+        NFTcontractSigner.addLandData(landData81,81);
+        NFTcontractSigner.addLandData(landData82,82);
+
+        NFTcontractSigner.addMultiCropData([cropdata501,cropdata502,cropdata503,cropdata504,cropdata505,cropdata506,cropdata507,cropdata508],[501,502,503,504,505,506,507,508]);
+        NFTcontractSigner.addMultiCropData([cropdata509,cropdata510,cropdata511,cropdata512,cropdata513,cropdata514,cropdata515,cropdata516],[509,510,511,512,513,514,515,516], {gasLimit: 5000000});
+        NFTcontractSigner.addMultiCropData([cropdata517,cropdata518,cropdata519,cropdata520,cropdata521,cropdata522,cropdata532,cropdata533],[517,518,519,520,521,522,532,533], {gasLimit: 5000000});
+        NFTcontractSigner.addMultiCropData([cropdata535,cropdata538,cropdata540,cropdata542,cropdata544,returnCropData(0),returnCropData(0),returnCropData(0)],[535,538,540,542,544,0,0,0], {gasLimit: 5000000});
 
           break;
-
         case "4":
 
-const SoldierID = returnsoldierID();
-  var j = 0;
-  var temp_solider_array = [];
-  var temp_solider_array_data = [];
-  var max_war_val = 113 ;
-  for (var i = 0; i <= max_war_val; ++i) {
+        const SoldierID = returnsoldierID();
+        var j = 0;
+        var temp_solider_array = [];
+        var temp_solider_array_data = [];
+        var max_war_val = SoldierID.length ;
+        for (var i = 0; i < max_war_val; ++i) {
 
-      temp_solider_array.push(SoldierID[i]);
-      ++j;
-      if (j == 32 || i == (max_war_val)) {
-        console.log(temp_solider_array_data,temp_solider_array);
-        var _variable_val = 31;
-        if( i == (max_war_val)) {_variable_val = max_war_val % 32}
-        for(var k = 0; k <= _variable_val; ++k) {
-          temp_solider_array_data.push(eval("soldier" + temp_solider_array[k]));
-        }
-        while(temp_solider_array.length < 32) {
-          temp_solider_array_data.push([0, 0, 0, 0, 0, 0, false, [0, 0, 0, 0], [false, false, false, false], 0, [0, 0] ]);
-          temp_solider_array.push(0);
-
-        }
-        NFTWarcontractSigner.addSoldierDataLoop(temp_solider_array_data,temp_solider_array, {gasLimit: 5000000});
-        temp_solider_array = [];
-        temp_solider_array_data = [];
-        j = 0;
+        temp_solider_array.push(SoldierID[i]);
+        ++j;
+        if (j == 32 || i == (max_war_val)) {
+          console.log(temp_solider_array_data,temp_solider_array);
+          var _variable_val = 31;
+          if( i == (max_war_val)) {_variable_val = max_war_val % 32}
+          for(var k = 0; k <= _variable_val; ++k) {
+            temp_solider_array_data.push(eval("soldier" + temp_solider_array[k]));
+          }
+          while(temp_solider_array.length < 32) {
+            temp_solider_array_data.push([[0, 0, 0, 0, 0, 0, 0, 0, false, [0, 0] ,0], [0, 0, 0, 0], [false, false, false, false]]);
+            temp_solider_array.push(0);
+          }
+          NFTWarcontractSigner.addSoldierDataLoop(temp_solider_array_data,temp_solider_array, {gasLimit: 5000000});
+          temp_solider_array = [];
+          temp_solider_array_data = [];
+          j = 0;
       
       }
 
@@ -356,8 +586,8 @@ const SoldierID = returnsoldierID();
         var j = 0;
         var temp_weapon_array = [];
         var temp_weapon_array_data = [];
-        var max_war_val = 103 ;
-        for (var i = 0; i <= max_war_val; ++i) {
+        var max_war_val = WeaponID.length ;
+        for (var i = 0; i < max_war_val; ++i) {
 
             temp_weapon_array.push(WeaponID[i]);
             ++j;
@@ -369,7 +599,7 @@ const SoldierID = returnsoldierID();
                 temp_weapon_array_data.push(eval("weapon" + temp_weapon_array[k]));
               }
               while(temp_weapon_array.length < 32) {
-                temp_weapon_array_data.push([0,false,0,0,0,0,0,0]);
+                temp_weapon_array_data.push([0,false,0,0,0,0,0,0,0,0]);
                 temp_weapon_array.push(0);
 
               }
@@ -421,82 +651,15 @@ const SoldierID = returnsoldierID();
           const questArmy8 = returnQuestArmy(8);
           const questArmy10 = returnQuestArmy(10);
 
-          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000001",questArmy1[0],questArmy1[1], {gasLimit: 5000000});
-          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000002",questArmy2[0],questArmy2[1], {gasLimit: 5000000});
-          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000003",questArmy3[0],questArmy3[1], {gasLimit: 5000000});
-          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000004",questArmy4[0],questArmy4[1], {gasLimit: 5000000});
-          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000005",questArmy5[0],questArmy5[1], {gasLimit: 5000000});
-          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000006",questArmy6[0],questArmy6[1], {gasLimit: 5000000});
-          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000007",questArmy7[0],questArmy7[1], {gasLimit: 5000000});
-          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000008",questArmy8[0],questArmy8[1], {gasLimit: 5000000});
-          NFTWarcontractSigner.createQuest("0x8c0000000000000000000000000000000000000a",questArmy10[0],questArmy10[1], {gasLimit: 5000000});
-          break;
-        case "7":
-        const LandData1 = returnLandData(1)
-        NFTcontractSigner.addLandData(LandData1,1);
-        const LandData2 = returnLandData(2)
-        NFTcontractSigner.addLandData(LandData2,2);
-        const LandData3 = returnLandData(3)
-        NFTcontractSigner.addLandData(LandData3,3);
-        const LandData4 = returnLandData(4)
-        NFTcontractSigner.addLandData(LandData4,4);
-        const LandData11 = returnLandData(11)
-        NFTcontractSigner.addLandData(LandData11,11);
-        const LandData12 = returnLandData(12)
-        NFTcontractSigner.addLandData(LandData12,12);
-        const LandData13 = returnLandData(13)
-        NFTcontractSigner.addLandData(LandData13,13);
-        const LandData14 = returnLandData(14)
-        NFTcontractSigner.addLandData(LandData14,14);
-        const LandData21 = returnLandData(21)
-        NFTcontractSigner.addLandData(LandData21,21);
-        const LandData22 = returnLandData(22)
-        NFTcontractSigner.addLandData(LandData22,22);
-        const LandData23 = returnLandData(23)
-        NFTcontractSigner.addLandData(LandData23,23);
-        const LandData31 = returnLandData(31)
-        NFTcontractSigner.addLandData(LandData31,31);
-        const LandData32 = returnLandData(32)
-        NFTcontractSigner.addLandData(LandData32,32);
-        const LandData33 = returnLandData(33)
-        NFTcontractSigner.addLandData(LandData33,33);
-        const LandData34 = returnLandData(34)
-        NFTcontractSigner.addLandData(LandData34,34);
-        const LandData41 = returnLandData(41)
-        NFTcontractSigner.addLandData(LandData41,41);
-        const LandData42 = returnLandData(42)
-        NFTcontractSigner.addLandData(LandData42,42);
-        const LandData43 = returnLandData(43)
-        NFTcontractSigner.addLandData(LandData43,43);
-        const LandData44 = returnLandData(44)
-        NFTcontractSigner.addLandData(LandData44,44);
-        const LandData51 = returnLandData(51)
-        NFTcontractSigner.addLandData(LandData51,51);
-        const LandData52 = returnLandData(52)
-        NFTcontractSigner.addLandData(LandData52,52);
-        const LandData53 = returnLandData(53)
-        NFTcontractSigner.addLandData(LandData53,53);
-        const LandData61 = returnLandData(61)
-        NFTcontractSigner.addLandData(LandData61,61);
-        const LandData62 = returnLandData(62)
-        NFTcontractSigner.addLandData(LandData62,62);
-        const LandData63 = returnLandData(63)
-        NFTcontractSigner.addLandData(LandData63,63);
-        const LandData64 = returnLandData(64)
-        NFTcontractSigner.addLandData(LandData64,64);
-        const LandData70 = returnLandData(70)
-        NFTcontractSigner.addLandData(LandData70,70);
-        const LandData71 = returnLandData(71)
-        NFTcontractSigner.addLandData(LandData71,71);
-        const LandData72 = returnLandData(72)
-        NFTcontractSigner.addLandData(LandData72,72);
-        const LandData80 = returnLandData(80)
-        NFTcontractSigner.addLandData(LandData80,80);
-        const LandData81 = returnLandData(81)
-        NFTcontractSigner.addLandData(LandData81,81);
-        const LandData82 = returnLandData(82)
-        NFTcontractSigner.addLandData(LandData82,82);
-
+          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000001",questArmy1[0],questArmy1[1], 1, {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000002",questArmy2[0],questArmy2[1], 1, {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000003",questArmy3[0],questArmy3[1], 4, {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000004",questArmy4[0],questArmy4[1], 4, {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000005",questArmy5[0],questArmy5[1], 2, {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000006",questArmy6[0],questArmy6[1], 2, {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000007",questArmy7[0],questArmy7[1], 3, {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest("0x8c00000000000000000000000000000000000008",questArmy8[0],questArmy8[1], 3, {gasLimit: 5000000});
+          NFTWarcontractSigner.createQuest("0x8c0000000000000000000000000000000000000a",questArmy10[0],questArmy10[1], 3, {gasLimit: 5000000});
           break;
         case "8":
           var _id = [1,2,3,4,11,12,13,14,21,22,23,31,32,33,34,41,42,43,44,51,52,53,61,62,63,64,70,71,72,80,81,82];
@@ -505,77 +668,25 @@ const SoldierID = returnsoldierID();
           for(let i = 0; i < _id.length; ++i){
             NFTcontractSigner.adminMint(_id[i],singleAmount);
           }
+          NFTcontractSigner.adminMint(28800,1e15);
 
           console.log("Done");
           break;
-
         case "9":
           
           var _id = [1,2,3,4,11,12,13,14,21,22,23,31,32,33,34,41,42,43,44,51,52,53,61,62,63,64,70,71,72,80,81,82];
           var _amount = [];
           var singleAmount = 1000000;
+          
           for(let i = 0; i < _id.length; ++i){
             _amount.push(singleAmount);
           }
+          NFTcontractSigner.safeTransferFrom(myAddress,landMerchant,28800,1e15,"0x");
           NFTcontractSigner.safeBatchTransferFrom(myAddress,landGiveaway,_id,_amount,"0x");
           NFTcontractSigner.safeBatchTransferFrom(myAddress,landMerchant,_id,_amount,"0x");
+          
 
-          break;
-        case "10":
-        NFTcontractSigner.setItemLevel([4030,1]);
-        NFTcontractSigner.setItemLevel([4031,2]);
-        NFTcontractSigner.setItemLevel([4032,3]);
-        NFTcontractSigner.setItemLevel([4040,10]);
-        break;    
-        case "11":
-
-          NFTcontractSigner.addMultiCropData([cropdata501,cropdata502,cropdata503,cropdata504,cropdata505,cropdata506,cropdata507,cropdata508],[501,502,503,504,505,506,507,508]);
-          NFTcontractSigner.addMultiCropData([cropdata509,cropdata510,cropdata511,cropdata512,cropdata513,cropdata514,cropdata515,cropdata516],[509,510,511,512,513,514,515,516], {gasLimit: 5000000});
-          NFTcontractSigner.addMultiCropData([cropdata517,cropdata518,cropdata519,cropdata520,cropdata521,cropdata522,cropdata532,cropdata533],[517,518,519,520,521,522,532,533], {gasLimit: 5000000});
-          NFTcontractSigner.addMultiCropData([cropdata535,cropdata538,cropdata540,cropdata542,cropdata544,returnCropData(0),returnCropData(0),returnCropData(0)],[535,538,540,542,544,0,0,0], {gasLimit: 5000000});
-      
-          break;
-        case "12":
-        NFTcontractSigner.addBuildingData(building0,0);
-        NFTcontractSigner.addBuildingData(building1,1);
-        NFTcontractSigner.addBuildingData(building2,2);
-        NFTcontractSigner.addBuildingData(building3,3);
-        NFTcontractSigner.addBuildingData(building4,4);
-        NFTcontractSigner.addBuildingData(building5,5);
-        NFTcontractSigner.addBuildingData(building6,6);
-        NFTcontractSigner.addBuildingData(building7,7);
-        NFTcontractSigner.addBuildingData(building8,8);
-        NFTcontractSigner.addBuildingData(building9,9);
-        NFTcontractSigner.addBuildingData(building10,10);
-        NFTcontractSigner.addBuildingData(building11,11);
-        NFTcontractSigner.addBuildingData(building12,12);
-        NFTcontractSigner.addBuildingData(building13,13);
-        NFTcontractSigner.addBuildingData(building14,14);
-        NFTcontractSigner.addBuildingData(building15,15);
-        NFTcontractSigner.addBuildingData(building16,16);
-        NFTcontractSigner.addBuildingData(building17,17);
-        NFTcontractSigner.addBuildingData(building18,18);
-        NFTcontractSigner.addBuildingData(building19,19);
-        NFTcontractSigner.addBuildingData(building21,21);
-        NFTcontractSigner.addBuildingData(building22,22);
-        NFTcontractSigner.addBuildingData(building23,23);
-        NFTcontractSigner.addBuildingData(building26,26);
-        NFTcontractSigner.addBuildingData(building27,27);
-        NFTcontractSigner.addBuildingData(building28,28);
-        NFTcontractSigner.addBuildingData(building29,29);
-        NFTcontractSigner.addBuildingData(building30,30);
-        NFTcontractSigner.addBuildingData(building31,31);
-
-        NFTcontractSigner.setMaxOrders(
-                [0,0,0,0 //housing, ignore
-                ,0,0,0,0, //same
-                1,4,9,32, //cookery
-                2,4,6,14, // brewery
-                1,2,6,2, // Smeltery/Mason
-                0,5,10,1, // Blacksmith/Aging
-                0,0,3,7, // Jeweler/Battle order
-                4,22,4,20]); //Carpenter/Weaver)
-          break;
+          break;  
         }
 
     }
@@ -594,12 +705,8 @@ const SoldierID = returnsoldierID();
     <option value="4">War Initiator</option>
     <option value="5">Test Army</option>
     <option value="6">Quest Initiator</option>
-    <option value="7">Land Initiator</option>
     <option value="8">Mint Land Shop</option>
     <option value="9">Stock Land Shop</option>
-    <option value="10">Set Up Fertilizer</option>
-    <option value="11">Crop Data</option>
-    <option value="12">Building Set Up</option>
     
 
   </select>

@@ -222,6 +222,25 @@ abi = [
 	{
 		"inputs": [
 			{
+				"internalType": "int256",
+				"name": "_temp",
+				"type": "int256"
+			}
+		],
+		"name": "_seasonalTemp",
+		"outputs": [
+			{
+				"internalType": "int256",
+				"name": "",
+				"type": "int256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"components": [
 					{
 						"internalType": "uint8",
@@ -322,9 +341,27 @@ abi = [
 	{
 		"inputs": [
 			{
-				"internalType": "uint16[4]",
+				"internalType": "uint256",
+				"name": "_food",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "addFood",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256[64]",
 				"name": "_foodInfo",
-				"type": "uint16[4]"
+				"type": "uint256[64]"
 			}
 		],
 		"name": "addFoodData",
@@ -335,9 +372,9 @@ abi = [
 	{
 		"inputs": [
 			{
-				"internalType": "uint16[16][2]",
+				"internalType": "uint256[16][2]",
 				"name": "_data",
-				"type": "uint16[16][2]"
+				"type": "uint256[16][2]"
 			},
 			{
 				"internalType": "uint256[8]",
@@ -582,9 +619,9 @@ abi = [
 	{
 		"inputs": [
 			{
-				"internalType": "uint8",
+				"internalType": "uint256",
 				"name": "_landAdded",
-				"type": "uint8"
+				"type": "uint256"
 			},
 			{
 				"internalType": "uint24",
@@ -662,7 +699,7 @@ abi = [
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "amount",
+				"name": "_amount",
 				"type": "uint256"
 			}
 		],
@@ -675,11 +712,24 @@ abi = [
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "amount",
+				"name": "_amount",
 				"type": "uint256"
 			}
 		],
 		"name": "bridgefrom20",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_newCA",
+				"type": "address"
+			}
+		],
+		"name": "changeEventCA",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -756,11 +806,6 @@ abi = [
 			{
 				"internalType": "uint256",
 				"name": "_buildingType",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_fooditem",
 				"type": "uint256"
 			},
 			{
@@ -844,6 +889,65 @@ abi = [
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "eventCA",
+		"outputs": [
+			{
+				"internalType": "contract eventcontract",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "externalburn",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "externalmint",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -871,9 +975,9 @@ abi = [
 						"type": "uint8"
 					},
 					{
-						"internalType": "uint32",
+						"internalType": "uint64",
 						"name": "landcount",
-						"type": "uint32"
+						"type": "uint64"
 					},
 					{
 						"internalType": "uint16",
@@ -910,9 +1014,50 @@ abi = [
 		"name": "getBuildingCount",
 		"outputs": [
 			{
-				"internalType": "uint16[32]",
+				"internalType": "uint256[32]",
 				"name": "",
-				"type": "uint16[32]"
+				"type": "uint256[32]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_who",
+				"type": "address"
+			}
+		],
+		"name": "getGeneralStockpile",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "foodItemCount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "foodItemValue",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "drinkItemCount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "drinkItemValue",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct City.GeneralStockpiles",
+				"name": "",
+				"type": "tuple"
 			}
 		],
 		"stateMutability": "view",
@@ -946,6 +1091,11 @@ abi = [
 						"type": "uint64[3]"
 					},
 					{
+						"internalType": "uint64",
+						"name": "industrySize",
+						"type": "uint64"
+					},
+					{
 						"internalType": "bool[8]",
 						"name": "isWorking",
 						"type": "bool[8]"
@@ -975,9 +1125,9 @@ abi = [
 		"name": "getLand",
 		"outputs": [
 			{
-				"internalType": "uint32[8]",
+				"internalType": "uint256[8]",
 				"name": "",
-				"type": "uint32[8]"
+				"type": "uint256[8]"
 			}
 		],
 		"stateMutability": "view",
@@ -1003,6 +1153,11 @@ abi = [
 					{
 						"internalType": "uint8[5]",
 						"name": "stockpiles",
+						"type": "uint8[5]"
+					},
+					{
+						"internalType": "uint8[5]",
+						"name": "stockpileLevels",
 						"type": "uint8[5]"
 					}
 				],
@@ -1072,23 +1227,18 @@ abi = [
 	{
 		"inputs": [
 			{
-				"internalType": "uint8",
+				"internalType": "uint256",
 				"name": "_land",
-				"type": "uint8"
-			},
-			{
-				"internalType": "uint32",
-				"name": "_landcount",
-				"type": "uint32"
-			},
-			{
-				"internalType": "uint16",
-				"name": "_cropfarm",
-				"type": "uint16"
+				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "_fooditem",
+				"name": "_landcount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_cropfarm",
 				"type": "uint256"
 			},
 			{
@@ -1168,9 +1318,9 @@ abi = [
 		"name": "returnSeason",
 		"outputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "int256",
 				"name": "",
-				"type": "uint256"
+				"type": "int256"
 			}
 		],
 		"stateMutability": "view",
@@ -1255,34 +1405,34 @@ abi = [
 				"type": "uint8"
 			},
 			{
-				"internalType": "uint16",
+				"internalType": "uint256",
 				"name": "_soldierType",
-				"type": "uint16"
+				"type": "uint256"
 			},
 			{
-				"internalType": "uint16",
+				"internalType": "uint256",
 				"name": "_weapon",
-				"type": "uint16"
+				"type": "uint256"
 			},
 			{
-				"internalType": "uint16",
+				"internalType": "uint256",
 				"name": "_offhand",
-				"type": "uint16"
+				"type": "uint256"
 			},
 			{
-				"internalType": "uint16",
+				"internalType": "uint256",
 				"name": "_armor",
-				"type": "uint16"
+				"type": "uint256"
 			},
 			{
-				"internalType": "uint16",
+				"internalType": "uint256",
 				"name": "_other",
-				"type": "uint16"
+				"type": "uint256"
 			},
 			{
-				"internalType": "uint32",
+				"internalType": "uint256",
 				"name": "_amount",
-				"type": "uint32"
+				"type": "uint256"
 			}
 		],
 		"name": "sendToWar",
@@ -1311,9 +1461,9 @@ abi = [
 	{
 		"inputs": [
 			{
-				"internalType": "uint256[2]",
+				"internalType": "int256[2]",
 				"name": "_itemData",
-				"type": "uint256[2]"
+				"type": "int256[2]"
 			}
 		],
 		"name": "setItemLevel",
@@ -1324,9 +1474,9 @@ abi = [
 	{
 		"inputs": [
 			{
-				"internalType": "uint16[6]",
+				"internalType": "uint256[6]",
 				"name": "_tithes",
-				"type": "uint16[6]"
+				"type": "uint256[6]"
 			},
 			{
 				"internalType": "uint256",
@@ -1355,9 +1505,9 @@ abi = [
 	{
 		"inputs": [
 			{
-				"internalType": "uint16[5]",
+				"internalType": "uint256[5]",
 				"name": "_tithes",
-				"type": "uint16[5]"
+				"type": "uint256[5]"
 			},
 			{
 				"internalType": "uint256",
@@ -1458,29 +1608,6 @@ abi = [
 			}
 		],
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_user",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_id",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_amount",
-				"type": "uint256"
-			}
-		],
-		"name": "warburn",
-		"outputs": [],
-		"stateMutability": "nonpayable",
 		"type": "function"
 	}
 ]
@@ -1803,6 +1930,16 @@ war_abi = [
 						"internalType": "uint8",
 						"name": "range",
 						"type": "uint8"
+					},
+					{
+						"internalType": "uint16",
+						"name": "mass",
+						"type": "uint16"
+					},
+					{
+						"internalType": "uint8",
+						"name": "safeTemp",
+						"type": "uint8"
 					}
 				],
 				"internalType": "struct NewCombat.Equipment[32]",
@@ -1893,39 +2030,66 @@ war_abi = [
 			{
 				"components": [
 					{
-						"internalType": "int16",
-						"name": "attack",
-						"type": "int16"
-					},
-					{
-						"internalType": "int16",
-						"name": "defence",
-						"type": "int16"
-					},
-					{
-						"internalType": "int16",
-						"name": "baseArmor",
-						"type": "int16"
-					},
-					{
-						"internalType": "int16",
-						"name": "baseSpeed",
-						"type": "int16"
-					},
-					{
-						"internalType": "int16",
-						"name": "basePiercing",
-						"type": "int16"
-					},
-					{
-						"internalType": "uint8",
-						"name": "range",
-						"type": "uint8"
-					},
-					{
-						"internalType": "bool",
-						"name": "hasShield",
-						"type": "bool"
+						"components": [
+							{
+								"internalType": "int16",
+								"name": "attack",
+								"type": "int16"
+							},
+							{
+								"internalType": "int16",
+								"name": "defence",
+								"type": "int16"
+							},
+							{
+								"internalType": "int16",
+								"name": "armor",
+								"type": "int16"
+							},
+							{
+								"internalType": "int16",
+								"name": "speed",
+								"type": "int16"
+							},
+							{
+								"internalType": "uint8",
+								"name": "range",
+								"type": "uint8"
+							},
+							{
+								"internalType": "int16",
+								"name": "piercing",
+								"type": "int16"
+							},
+							{
+								"internalType": "int16",
+								"name": "morale",
+								"type": "int16"
+							},
+							{
+								"internalType": "uint16",
+								"name": "mass",
+								"type": "uint16"
+							},
+							{
+								"internalType": "bool",
+								"name": "hasShield",
+								"type": "bool"
+							},
+							{
+								"internalType": "uint16[2]",
+								"name": "additionalDeployCost",
+								"type": "uint16[2]"
+							},
+							{
+								"internalType": "uint8",
+								"name": "safeTemp",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct NewCombat.soldier",
+						"name": "soldierData",
+						"type": "tuple"
 					},
 					{
 						"internalType": "uint16[4]",
@@ -1936,16 +2100,6 @@ war_abi = [
 						"internalType": "bool[4]",
 						"name": "isGearMandatory",
 						"type": "bool[4]"
-					},
-					{
-						"internalType": "int16",
-						"name": "baseMorale",
-						"type": "int16"
-					},
-					{
-						"internalType": "uint16[2]",
-						"name": "additionalDeployCost",
-						"type": "uint16[2]"
 					}
 				],
 				"internalType": "struct NewCombat.BaseSoldier",
@@ -1968,39 +2122,66 @@ war_abi = [
 			{
 				"components": [
 					{
-						"internalType": "int16",
-						"name": "attack",
-						"type": "int16"
-					},
-					{
-						"internalType": "int16",
-						"name": "defence",
-						"type": "int16"
-					},
-					{
-						"internalType": "int16",
-						"name": "baseArmor",
-						"type": "int16"
-					},
-					{
-						"internalType": "int16",
-						"name": "baseSpeed",
-						"type": "int16"
-					},
-					{
-						"internalType": "int16",
-						"name": "basePiercing",
-						"type": "int16"
-					},
-					{
-						"internalType": "uint8",
-						"name": "range",
-						"type": "uint8"
-					},
-					{
-						"internalType": "bool",
-						"name": "hasShield",
-						"type": "bool"
+						"components": [
+							{
+								"internalType": "int16",
+								"name": "attack",
+								"type": "int16"
+							},
+							{
+								"internalType": "int16",
+								"name": "defence",
+								"type": "int16"
+							},
+							{
+								"internalType": "int16",
+								"name": "armor",
+								"type": "int16"
+							},
+							{
+								"internalType": "int16",
+								"name": "speed",
+								"type": "int16"
+							},
+							{
+								"internalType": "uint8",
+								"name": "range",
+								"type": "uint8"
+							},
+							{
+								"internalType": "int16",
+								"name": "piercing",
+								"type": "int16"
+							},
+							{
+								"internalType": "int16",
+								"name": "morale",
+								"type": "int16"
+							},
+							{
+								"internalType": "uint16",
+								"name": "mass",
+								"type": "uint16"
+							},
+							{
+								"internalType": "bool",
+								"name": "hasShield",
+								"type": "bool"
+							},
+							{
+								"internalType": "uint16[2]",
+								"name": "additionalDeployCost",
+								"type": "uint16[2]"
+							},
+							{
+								"internalType": "uint8",
+								"name": "safeTemp",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct NewCombat.soldier",
+						"name": "soldierData",
+						"type": "tuple"
 					},
 					{
 						"internalType": "uint16[4]",
@@ -2011,16 +2192,6 @@ war_abi = [
 						"internalType": "bool[4]",
 						"name": "isGearMandatory",
 						"type": "bool[4]"
-					},
-					{
-						"internalType": "int16",
-						"name": "baseMorale",
-						"type": "int16"
-					},
-					{
-						"internalType": "uint16[2]",
-						"name": "additionalDeployCost",
-						"type": "uint16[2]"
 					}
 				],
 				"internalType": "struct NewCombat.BaseSoldier[32]",
@@ -2140,6 +2311,11 @@ war_abi = [
 				"internalType": "uint256[12]",
 				"name": "_unitAmount",
 				"type": "uint256[12]"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_battlefield",
+				"type": "uint256"
 			}
 		],
 		"name": "createQuest",
@@ -2197,6 +2373,11 @@ war_abi = [
 								"type": "int16"
 							},
 							{
+								"internalType": "uint16",
+								"name": "mass",
+								"type": "uint16"
+							},
+							{
 								"internalType": "bool",
 								"name": "hasShield",
 								"type": "bool"
@@ -2205,6 +2386,11 @@ war_abi = [
 								"internalType": "uint16[2]",
 								"name": "additionalDeployCost",
 								"type": "uint16[2]"
+							},
+							{
+								"internalType": "uint8",
+								"name": "safeTemp",
+								"type": "uint8"
 							}
 						],
 						"internalType": "struct NewCombat.soldier[12]",
@@ -2230,6 +2416,11 @@ war_abi = [
 						"internalType": "uint16[3]",
 						"name": "rations",
 						"type": "uint16[3]"
+					},
+					{
+						"internalType": "bool",
+						"name": "hasMeds",
+						"type": "bool"
 					}
 				],
 				"internalType": "struct NewCombat.CurrentArmyComposition",
@@ -2254,7 +2445,7 @@ war_abi = [
 			},
 			{
 				"internalType": "uint16",
-				"name": "_soldierType",
+				"name": "_soldier",
 				"type": "uint16"
 			},
 			{
@@ -2350,6 +2541,11 @@ war_abi = [
 				"type": "uint16[3]"
 			},
 			{
+				"internalType": "bool",
+				"name": "setMeds",
+				"type": "bool"
+			},
+			{
 				"internalType": "address",
 				"name": "_who",
 				"type": "address"
@@ -2379,6 +2575,11 @@ war_abi = [
 				"internalType": "uint16[3]",
 				"name": "_rations",
 				"type": "uint16[3]"
+			},
+			{
+				"internalType": "bool",
+				"name": "setMeds",
+				"type": "bool"
 			}
 		],
 		"name": "userSetRation",
@@ -2709,6 +2910,361 @@ landMerchant_abi = [
 		"name": "transferOwnership",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+]
+tradingEvent_abi = [
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_game",
+				"type": "address"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			}
+		],
+		"name": "OwnableInvalidOwner",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "OwnableUnauthorizedAccount",
+		"type": "error"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "claimEventRewards",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "currentEvent",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "eventCounter",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getCurrentEventData",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256[4][4]",
+						"name": "thresholds",
+						"type": "uint256[4][4]"
+					},
+					{
+						"internalType": "uint256[2][4][4]",
+						"name": "rewards",
+						"type": "uint256[2][4][4]"
+					},
+					{
+						"internalType": "uint256[4]",
+						"name": "popRequirement",
+						"type": "uint256[4]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "endTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "item",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "incrementalReward",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "incrementalRewardCost",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct TradingEvent.EventData",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_who",
+				"type": "address"
+			}
+		],
+		"name": "getPlayerData",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "kingdomLevel",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amountContributed",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastEventContributedTo",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct TradingEvent.PlayerData",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "mainGame",
+		"outputs": [
+			{
+				"internalType": "contract IC1155",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "bytes",
+				"name": "",
+				"type": "bytes"
+			}
+		],
+		"name": "onERC1155BatchReceived",
+		"outputs": [
+			{
+				"internalType": "bytes4",
+				"name": "",
+				"type": "bytes4"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bytes",
+				"name": "",
+				"type": "bytes"
+			}
+		],
+		"name": "onERC1155Received",
+		"outputs": [
+			{
+				"internalType": "bytes4",
+				"name": "",
+				"type": "bytes4"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "payEvent",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "standardEventDuration",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes4",
+				"name": "interfaceId",
+				"type": "bytes4"
+			}
+		],
+		"name": "supportsInterface",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "validEventNumbers",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	}
 ]

@@ -41,11 +41,8 @@
                 if (item_output[1] != 0) {
 
                     document.getElementById("Cost").textContent += " & ";
-
                     document.getElementById("Cost").textContent += item_output_amount[1];
-
                     document.getElementById("Cost").textContent += " ";
-
                     document.getElementById("Cost").textContent += itemName(item_output[1]);
                 }
                 document.getElementById("Cost").style.display = "block";
@@ -65,6 +62,7 @@
             hideAll();
             switch (_value) {
                 case "1":
+                    submitTX();
                     break;
                 case "2":
                     document.getElementById("TroopList").style.display = "block";
@@ -133,10 +131,10 @@
             const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner();
 
-            const NFTWarContract = new ethers.Contract(waraddress, warabi, provider);
+            const NFTWarContract = new ethers.Contract(waraddress, war_abi, provider);
             const NFTBaseContract = new ethers.Contract(baseaddress, abi, provider)
 
-            const NFTWarContractSigner = new ethers.Contract(waraddress, warabi, signer);
+            const NFTWarContractSigner = new ethers.Contract(waraddress, war_abi, signer);
             const NFTBaseContractSigner = new ethers.Contract(baseaddress, abi, signer);
 
             const myAddress = await signer.getAddress();
@@ -209,7 +207,7 @@
                     )
                     break;
                 case "7":
-                    NFTWarContractSigner.userSetRation([document.getElementById("MainRationSelector").value,document.getElementById("ExtraRationSelector").value,document.getElementById("DrinkRationSelector").value])
+                    NFTWarContractSigner.userSetRation([document.getElementById("MainRationSelector").value,document.getElementById("ExtraRationSelector").value,document.getElementById("DrinkRationSelector").value],false)
                     break;
             }
 
@@ -776,12 +774,19 @@
         Transaction</button>
 
 </body>
+<footer>
+    <div class="Footnote"></div>
+</footer>
 
 <style>
     body {
         background-color: rgb(216, 71, 71);
     }
-
+    .Footnote{
+        background-color: rgb(216, 71, 71);;
+        height: 150px;
+        width: 100%;
+    }
     .WeaponOption {
         display: inherit;
     }
@@ -853,7 +858,7 @@
     .sendTX {
         background-color: darkred;
         color: black;
-        position: absolute;
+        position: fixed;
         width: 150px;
         height: 80px;
         text-align: center;

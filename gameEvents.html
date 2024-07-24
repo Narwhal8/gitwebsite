@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+
+<head>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+    <script src="./abi.js" type="application/javascript"></script>
+    <script src="./address.js" type="application/javascript"></script>
+    <script src="./excelIntegration.js" type="application/javascript"></script>
+    <script>
+        async function initEvent() {
+            var addies = await _address();
+            const address = addies[0];
+            const eventAddress = addies[4];
+            
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
+            const signer = provider.getSigner();
+            const NFTcontract = new ethers.Contract(address, abi, provider)
+            const Eventcontract = new ethers.Contract(eventAddress, tradingEvent_abi, provider)
+            const NFTcontractSigner = new ethers.Contract(address, abi, signer);
+            const myAddress = await signer.getAddress();
+
+            const eventNumber = await Eventcontract.eventCounter();
+            const eventData = await Eventcontract.getCurrentEventData();
+            const playerData = await Eventcontract.getPlayerData(myAddress);
+
+            const kingdomData = await NFTcontract.getKingdomInfo(myAddress);
+
+            const population =  Number(kingdomData[0][0]) + Number(kingdomData[0][1]) + Number(kingdomData[0][2]);
+
+            console.log(playerData);
+
+            if( Number(playerData[1]) != 0 && Number(playerData[2]) != Number(eventNumber))
+            {
+                ClaimOldReward.style.display = "block";
+                EventContribute.style.display = "none";
+
+            }
+            else
+            {
+                EventNumber.innerHTML = "Current Event:" + eventNumber;
+                console.log("End Date:" + Number(eventData[3] * 1000))
+                EventEndTime.innerHTML = "Event End Date:" + new Date(Number(eventData[3] * 1000));
+                EventPlayerContributions.innerHTML = "You have given to this event so far: " + Number(playerData[1]);
+                console.log(playerData[1]);
+
+                const itemAmount = await NFTcontract.balanceOf(myAddress,eventData[4]);
+                EventContributeText.innerHTML += "<br>" + " You Have: " + itemAmount + " " + itemName(Number(eventData[4]));
+
+                var eventTier = _offChainEventTierCalc(eventData,population);
+
+                if(eventTier == -1){
+                    eventTier = 0;
+                    EventContributeInput.style.display = "none";
+                    MaxFillGrid.style.display = "none";
+                    EventContributeButton.innerHTML = "Minimum population required for event: " + eventData[2][0] + " You Have: " + population;
+                }
+                
+                    EventMilestoneItem1.innerHTML = "Milestone 1: " + eventData[0][eventTier][0] + "<br>" + "Reward: " + eventData[1][eventTier][0][1] + " " + itemName(Number(eventData[1][eventTier][0][0]));
+                    EventMilestoneItem2.innerHTML = "Milestone 2: " + eventData[0][eventTier][1] + "<br>" + "Reward: " + eventData[1][eventTier][1][1] + " " + itemName(Number(eventData[1][eventTier][1][0]));
+                    EventMilestoneItem3.innerHTML = "Milestone 3: " + eventData[0][eventTier][2] + "<br>" + "Reward: " + eventData[1][eventTier][2][1] + " " + itemName(Number(eventData[1][eventTier][2][0]));
+                    EventMilestoneItem4.innerHTML = "Milestone 4: " + eventData[0][eventTier][3] + "<br>" + "Reward: " + eventData[1][eventTier][3][1] + " " + itemName(Number(eventData[1][eventTier][3][0]));
+                    EventBaseItem.innerHTML = "Base Reward: 1 " + itemName(Number(eventData[5])) + " Per "+ Number(eventData[6]) + " " + itemName(Number(eventData[4])) + " Contributed";
+                
+            }
+            console.log("Init successful!");
+        }
+        async function submitTX() {
+            var addies = await _address();
+            const eventAddress = addies[4];
+
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
+            const signer = provider.getSigner();
+            const EventcontractSigner = new ethers.Contract(eventAddress, tradingEvent_abi, signer)
+
+            const myAddress = await signer.getAddress();
+
+            EventcontractSigner.payEvent(EventContributeInput.value);
+            console.log("TX submitted")
+        }
+        function _offChainEventTierCalc(eventData,population) {
+            for(let i = 0; i < 4; ++i){
+                if(eventData[2][i] > population){return(i - 1)}
+                if(eventData[2][i] == population){return(i)}
+                if(i == 3){console.log("ERROR: YOU DONT NOT HAVE ENOUGH PEOPLE");return(-1)}
+            }
+
+        }
+        async function claimReward() {
+            
+            var addies = await _address();
+            const eventAddress = addies[4];
+
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
+            const signer = provider.getSigner();
+            const EventcontractSigner = new ethers.Contract(eventAddress, tradingEvent_abi, signer)
+
+            const myAddress = await signer.getAddress();
+
+            EventcontractSigner.claimEventRewards();
+        }
+        async function eventContributionAmount(_value){
+            var addies = await _address();
+            const address = addies[0];
+            const eventAddress = addies[4];
+            
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
+            const signer = provider.getSigner();
+            const Eventcontract = new ethers.Contract(eventAddress, tradingEvent_abi, provider)
+
+            const NFTcontract = new ethers.Contract(address, abi, provider)
+            const myAddress = await signer.getAddress();
+
+            const kingdomData = await NFTcontract.getKingdomInfo(myAddress);
+            const population = kingdomData[0][0] +kingdomData[0][1] +kingdomData[0][2];
+
+            const eventData = await Eventcontract.getCurrentEventData();
+            const eventTier = _offChainEventTierCalc(eventData,population);
+            const playerData = await Eventcontract.getPlayerData(myAddress);
+
+            var _cost = Number(eventData[0][eventTier][_value]);
+            _cost -= Number(playerData[1]);
+            if(_cost < 0){_cost = 0;}
+
+            EventContributeInput.value =  _cost;
+            console.log("Ran")
+        }
+
+    </script>
+</head>
+
+<body onload="initEvent()">
+    <NotesButton class="MenuButtons">
+
+        <a href="index.html">
+          <button class="indexButton">Return Home</button>
+        </a>
+
+    </NotesButton>
+    <EventInfo class="EventInfo">
+        <text id="EventNumber"></text><br>
+        <text id="EventEndTime"></text><br>
+        <text id="EventPlayerContributions"></text>
+    </EventInfo>
+    <EventContribute class="EventContribute" id="EventContribute">
+        <text class="EventContributeItem EventContributeText" id="EventContributeText">Contribute To Event</text>
+        <div class="MaxFillGrid" id ="MaxFillGrid">
+            <button class="EventFillButton" id="EventFillButton1" onclick="eventContributionAmount(0)">Finish Milestone 1</button>
+            <button class="EventFillButton" id="EventFillButton2" onclick="eventContributionAmount(1)">Finish Milestone 2</button>
+            <button class="EventFillButton" id="EventFillButton3" onclick="eventContributionAmount(2)">Finish Milestone 3</button>
+            <button class="EventFillButton" id="EventFillButton4" onclick="eventContributionAmount(3)">Finish Milestone 4</button>
+        </div>
+        <input class="EventContributeItem EventContributeInput" id="EventContributeInput"></input>
+        <button class="EventContributeItem EventContributeButton" id="EventContributeButton" onclick="submitTX()">Contribute Item!</button>
+        <div class="EventMilestoneGrid" id="EventMilestoneGrid">
+            <div class="EventMilestoneItem" id="EventMilestoneItem1">1</div>
+            <div class="EventMilestoneItem" id="EventMilestoneItem2">2</div>
+            <div class="EventMilestoneItem" id="EventMilestoneItem3">3</div>
+            <div class="EventMilestoneItem" id="EventMilestoneItem4">4</div>
+            <div class="EventBaseItem" id="EventBaseItem">5</div>
+        </div>
+
+    </EventContribute>
+    <ClaimOldReward class="InvisableOnStart" id="ClaimOldReward">
+        <Button class="ClaimButton " onclick="claimReward()">Claim Pending Event Reward</Button>
+    </ClaimOldReward>
+</body>
+<style>
+    body {background-color: mediumseagreen;}
+    
+    .EventContribute{
+        display: flex;
+        position: absolute;
+        bottom: 50px;
+        width: 200px;
+        flex-wrap: wrap;
+    }
+    .EventMilestoneGrid{
+
+        display: flex;
+        flex-wrap: wrap;
+        position: absolute;
+        width: 400px;
+        bottom: 75%;
+        left:150%;
+
+    }
+    .ClaimButton{
+        width: 100px;
+        border: 0;
+        height:100px;
+        font-size: larger;
+        top: 20%;
+        border-radius: 8px;
+        background-color: brown;
+    }
+    .MaxFillGrid{
+
+        display: grid;
+        position: relative;
+        grid-template-columns: repeat(2, 2fr);
+        grid-template-rows: repeat(2, 2fr);
+    }
+    .EventFillButton{
+        width: 100px;
+        height: 20px;
+        font-size: 10px;
+        border: none;
+        background-color: skyblue;
+        border: 1px solid rgba(0, 0, 0, 0.8);
+
+    }
+    .EventMilestoneItem{
+        display: inline;
+        width:198.5px;
+        height: 60px;
+        background-color: forestgreen;
+        border: 1px solid rgba(0, 0, 0, 0.8);
+    }
+    .EventBaseItem{
+        
+        display: inline;
+        flex-basis: 100%;
+        height: 40px;
+        background-color: forestgreen;
+        border: 1px solid rgba(0, 0, 0, 0.8);
+    }
+    .EventContributeButton{
+        flex-basis: 100%;
+        border: 0;
+        height:100px;
+        font-size: larger;
+        background-color: brown;
+    }
+    .EventContributeButton:hover{
+        background-color: crimson;
+    }
+    .EventContributeText{
+        flex-basis: 100%;
+        border: 0;
+        height:60px;
+        background-color: skyblue;
+    }
+    .EventContributeInput{
+        flex-basis: 100%;
+        width: 190px;
+        height:40px;
+        font-size: 40px;
+        border: 0;
+        background-color: skyblue;
+        border: 1px solid rgba(0, 0, 0, 0.8);
+
+    }
+    .EventInfo{
+        position: absolute;
+        top: 50px;
+        left:10px;
+    }
+    .Dropdown {
+        background-color: wheat;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+      
+    
+    .Notice {
+        font-size: 16px;
+        font-weight: bold;
+      }
+    .InvisableOnStart{
+        display: none;
+    }
+    .indexButton{
+      background-color: gray;
+      width: 150px;
+      height:40px;
+      position: relative;
+      text-align: center;
+      border-radius: 12px;
+      font-size: 16px;
+    }
+    .menuButtons{
+        position: absolute;
+        top: 5px;
+        right:20px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+    }
+    .indexButton:hover {
+        background-color: rgb(179, 165, 165);
+    }
+    
+    .sendTX {
+        background-color: darkred;
+        color: black;
+        position: relative;
+        display: block;
+        width: 150px;
+        height: 80px;
+        text-align: center;
+        font-size: 16px;
+        border-radius: 12px;
+        top:20px;
+      }
+    .sendTX:hover {
+        background-color: brown;
+        font-size: 17px;
+      }
+    
+    </style>
