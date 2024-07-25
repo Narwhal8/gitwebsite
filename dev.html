@@ -687,6 +687,9 @@
           
 
           break;  
+        case "10":
+          const landMerchantContractSigner = new ethers.Contract(address, landMerchant_abi, signer);
+          landMerchantContractSigner.devIsSelling();
         }
 
     }
@@ -707,6 +710,7 @@
     <option value="6">Quest Initiator</option>
     <option value="8">Mint Land Shop</option>
     <option value="9">Stock Land Shop</option>
+    <option value="10">Claim ETH</option>
     
 
   </select>

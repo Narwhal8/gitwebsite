@@ -1,14 +1,8 @@
-const Cooking_Oil = -33;
-const Any_Seafood = -32;
-const Fancy_Pastry = -31;
-const Any_Flour = -30;
-const Stock = -29;
-const Fancy_Bread = -28;
 const Unboiled_Meat = -27;
 const Fuel = -26;
 const Sauce = -25;
 const Any_Bone = -24;
-const Sandwich = -23;
+const Stock = -23;
 const Flatbread = -22;
 const Fiber = -21;
 const Rare_Gemstone = -20;
@@ -16,6 +10,8 @@ const Common_Gemstone = -19;
 const Polished_Rare_Gemstone = -18;
 const Polished_Common_Gemstone = -17;
 const Fodder = -16;
+const Any_Flour = -15;
+const Any_Seafood = -14;
 const T5_Drink = -13;
 const T4_Drink = -12;
 const T3_Drink = -11;
@@ -24,6 +20,7 @@ const Bread = -9;
 const Exotic_Berry = -8;
 const T1_Drink = -7;
 const T2_Metal = -6;
+const Cooking_Oil = -5;
 const Vegetables = -4;
 const Fruit = -3;
 const Meat = -2;
@@ -56,7 +53,7 @@ const Blue_Mountain = 62;
 const Green_Mountain = 63;
 const White_Mountain = 64;
 const Ochre_Plains = 70;
-const Lusterous_River = 71;
+const Lustrous_River = 71;
 const Silver_Forest = 72;
 const Golden_Plains = 80;
 const Golden_Forest = 81;
@@ -2444,25 +2441,7 @@ building31 = [30,[Advanced_Building_Materials,Polished_Amber,0,0,0],[2_500_000,2
 function itemName(_value) {
     var _name;
     switch (_value) {
-          case -33:
-    _name = "Cooking Oil";
-    break;
-  case -32:
-    _name = "Any Seafood";
-    break;
-  case -31:
-    _name = "Fancy Pastry";
-    break;
-  case -30:
-    _name = "Any Flour";
-    break;
-  case -29:
-    _name = "Stock";
-    break;
-  case -28:
-    _name = "Fancy Bread";
-    break;
-  case -27:
+          case -27:
     _name = "Unboiled Meat";
     break;
   case -26:
@@ -2475,7 +2454,7 @@ function itemName(_value) {
     _name = "Any Bone";
     break;
   case -23:
-    _name = "Sandwich";
+    _name = "Stock";
     break;
   case -22:
     _name = "Flatbread";
@@ -2497,6 +2476,12 @@ function itemName(_value) {
     break;
   case -16:
     _name = "Fodder";
+    break;
+  case -15:
+    _name = "Any Flour";
+    break;
+  case -14:
+    _name = "Any Seafood";
     break;
   case -13:
     _name = "T5 Drink";
@@ -2521,6 +2506,9 @@ function itemName(_value) {
     break;
   case -6:
     _name = "T2 Metal";
+    break;
+  case -5:
+    _name = "Cooking Oil";
     break;
   case -4:
     _name = "Vegetables";
@@ -2619,7 +2607,7 @@ function itemName(_value) {
     _name = "Ochre Plains";
     break;
   case 71:
-    _name = "Lusterous River";
+    _name = "Lustrous River";
     break;
   case 72:
     _name = "Silver Forest";
@@ -4675,18 +4663,6 @@ function returnMixedItemData(_value) {
 
 function itemValue(_recipeID) {
     switch (_recipeID) {
-  case -33:
-    return("10");
-  case -32:
-    return("20");
-  case -31:
-    return("400");
-  case -30:
-    return("5");
-  case -29:
-    return("50");
-  case -28:
-    return("200");
   case -27:
     return("10");
   case -26:
@@ -4696,7 +4672,7 @@ function itemValue(_recipeID) {
   case -24:
     return("5");
   case -23:
-    return("200");
+    return("50");
   case -22:
     return("50");
   case -21:
@@ -4711,6 +4687,10 @@ function itemValue(_recipeID) {
     return("150");
   case -16:
     return("2");
+  case -15:
+    return("5");
+  case -14:
+    return("20");
   case -13:
     return("500");
   case -12:
@@ -4727,6 +4707,8 @@ function itemValue(_recipeID) {
     return("5");
   case -6:
     return("50");
+  case -5:
+    return("10");
   case -4:
     return("2");
   case -3:
