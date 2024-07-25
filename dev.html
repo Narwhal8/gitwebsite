@@ -68,7 +68,7 @@
                   temp_array_data.push(([[0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0 ,0, 0, 0, 0], [0, 0, 0, 0, 0, 0], 0, 0, [0,0,0,0]]));
 
                 } 
-                NFTcontractSigner.addMultiCraftingData(temp_array_data,temp_array, {gasLimit: 6000000});
+                NFTcontractSigner.addMultiCraftingData(temp_array_data,temp_array, {gasLimit: 9000000});
                 temp_array = [];
                 temp_array_data = [];
                 j = 0;
@@ -283,9 +283,9 @@
 
           }
           console.log(mixedItemData1);
-          NFTcontractSigner.addMultiMixItemData([mixedItemData1,mixedItemData2,mixedItemData3,mixedItemData4,mixedItemData5,mixedItemData6,mixedItemData7,mixedItemData8],[-1,-2,-3,-4,-5,-6,-7,-8], {gasLimit: 5000000});
-          NFTcontractSigner.addMultiMixItemData([mixedItemData9,mixedItemData10,mixedItemData11,mixedItemData12,mixedItemData13,mixedItemData14,mixedItemData15,mixedItemData16],[-9,-10,-11,-12,-13,-14,-15,-16], {gasLimit: 5000000});
-          NFTcontractSigner.addMultiMixItemData([mixedItemData17,mixedItemData18,mixedItemData19,mixedItemData20,mixedItemData0,mixedItemData0,mixedItemData0,mixedItemData0],[-17,-18,-19,-20,0,0,0,0], {gasLimit: 5000000});
+          NFTcontractSigner.addMultiMixItemData([mixedItemData1,mixedItemData2,mixedItemData3,mixedItemData4,mixedItemData5,mixedItemData6,mixedItemData7,mixedItemData8],[-1,-2,-3,-4,-5,-6,-7,-8], {gasLimit: 8000000});
+          NFTcontractSigner.addMultiMixItemData([mixedItemData9,mixedItemData10,mixedItemData11,mixedItemData12,mixedItemData13,mixedItemData14,mixedItemData15,mixedItemData16],[-9,-10,-11,-12,-13,-14,-15,-16], {gasLimit: 8000000});
+          NFTcontractSigner.addMultiMixItemData([mixedItemData17,mixedItemData18,mixedItemData19,mixedItemData20,mixedItemData0,mixedItemData0,mixedItemData0,mixedItemData0],[-17,-18,-19,-20,0,0,0,0], {gasLimit: 8000000});
 
             
           NFTcontractSigner.setItemLevel([4030,1]);
@@ -545,10 +545,10 @@
         NFTcontractSigner.addLandData(landData81,81);
         NFTcontractSigner.addLandData(landData82,82);
 
-        NFTcontractSigner.addMultiCropData([cropdata501,cropdata502,cropdata503,cropdata504,cropdata505,cropdata506,cropdata507,cropdata508],[501,502,503,504,505,506,507,508]);
-        NFTcontractSigner.addMultiCropData([cropdata509,cropdata510,cropdata511,cropdata512,cropdata513,cropdata514,cropdata515,cropdata516],[509,510,511,512,513,514,515,516], {gasLimit: 5000000});
-        NFTcontractSigner.addMultiCropData([cropdata517,cropdata518,cropdata519,cropdata520,cropdata521,cropdata522,cropdata532,cropdata533],[517,518,519,520,521,522,532,533], {gasLimit: 5000000});
-        NFTcontractSigner.addMultiCropData([cropdata535,cropdata538,cropdata540,cropdata542,cropdata544,returnCropData(0),returnCropData(0),returnCropData(0)],[535,538,540,542,544,0,0,0], {gasLimit: 5000000});
+        NFTcontractSigner.addMultiCropData([cropdata501,cropdata502,cropdata503,cropdata504,cropdata505,cropdata506,cropdata507,cropdata508],[501,502,503,504,505,506,507,508], {gasLimit: 8000000});
+        NFTcontractSigner.addMultiCropData([cropdata509,cropdata510,cropdata511,cropdata512,cropdata513,cropdata514,cropdata515,cropdata516],[509,510,511,512,513,514,515,516], {gasLimit: 8000000});
+        NFTcontractSigner.addMultiCropData([cropdata517,cropdata518,cropdata519,cropdata520,cropdata521,cropdata522,cropdata532,cropdata533],[517,518,519,520,521,522,532,533], {gasLimit: 8000000});
+        NFTcontractSigner.addMultiCropData([cropdata535,cropdata538,cropdata540,cropdata542,cropdata544,returnCropData(0),returnCropData(0),returnCropData(0)],[535,538,540,542,544,0,0,0], {gasLimit: 8000000});
 
           break;
         case "4":
@@ -573,7 +573,7 @@
             temp_solider_array_data.push([[0, 0, 0, 0, 0, 0, 0, 0, false, [0, 0] ,0], [0, 0, 0, 0], [false, false, false, false]]);
             temp_solider_array.push(0);
           }
-          NFTWarcontractSigner.addSoldierDataLoop(temp_solider_array_data,temp_solider_array, {gasLimit: 5000000});
+          NFTWarcontractSigner.addSoldierDataLoop(temp_solider_array_data,temp_solider_array, {gasLimit: 12000000});
           temp_solider_array = [];
           temp_solider_array_data = [];
           j = 0;

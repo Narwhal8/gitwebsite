@@ -4563,17 +4563,17 @@ const BuildingName = ["Land Permit", "Tier 1 Housing", "Tier 2 Housing", "Tier 3
 //Land Info
 landData1 = [ 90,  25,  50,  5,   [100, 10, 20, 2, 0], [Stone, Amethyst, Copper_Ore, Silver_Ore, 0]];
 landData2 = [ 80,  25,  50,  15,   [150, 10, 10, 0, 0],[Stone, Amethyst, Rushseed, 0, 0]];
-landData3 = [ 80,  75,  50,  25,   [100, 250, 12, 0, 0],[Wood, Clay, Oyster, 0, 0]];
-landData4 = [ 80,  100,  50,  50,   [250, 10, 1, 4, 0],[Clay,Copper_Ore,Gold_Ore,Oyster, 0]];
+landData3 = [ 80,  75,  50,  25,   [100, 250, 15, 0, 0],[Wood, Clay, Oyster, 0, 0]];
+landData4 = [ 80,  100,  50,  50,   [250, 10, 1, 5, 0],[Clay,Copper_Ore,Gold_Ore,Oyster, 0]];
 
 landData11 = [ 30,  25,  50,  0,  [200, 5, 10, 10, 0],[Stone, Winterberries, Copper_Ore, Aquamarine, 0]];
 landData12 = [ 40,  100,  50,  15,  [25, 0, 0, 0, 0], [Winterberries, 0, 0, 0, 0]];
 landData13 = [ 50,  100,  50,  25,  [300, 10, 0, 0, 0],[Wood, Winterberries, 0, 0, 0]];
-landData14 = [ 40,  110,  50,  50,   [100, 50, 20, 5, 0],[Wood, Clay, Oyster, Winterberries, 0]];
+landData14 = [ 40,  110,  50,  50,   [100, 50, 25, 5, 0],[Wood, Clay, Oyster, Winterberries, 0]];
 
 landData21 = [ 60,  25,  50,  0,   [200, 10, 20, 0, 0],[Stone, Iron_Ore, Onyx, 0, 0]];
 landData22 = [ 60,  100,  50,  25,  [300, 10, 20, 0, 0],[Wood, Heartland_Herbs, Honey, 0, 0]];
-landData23 = [ 60,  100,  50,  50,  [20, 10, 20, 1, 0],[Oyster, Heartland_Herbs, Honey, Gold_Ore, 0]];
+landData23 = [ 60,  100,  50,  50,  [10, 20, 20, 1, 0],[Oyster, Heartland_Herbs, Honey, Gold_Ore, 0]];
 
 landData31 = [ 80,  25,  50,  0,  [200, 20, 20, 0, 0],  [Stone, Citrine, Copper_Ore, 0, 0]];
 landData32 = [ 80,  75,  50,  25,  [200, 10, 20, 0, 0],[Wood, Jungleberries, Honey, 0, 0]];
@@ -4581,7 +4581,7 @@ landData33 = [ 85,  100,  50,  35, [200, 15, 0, 0, 0],[Wood, Jungleberries, 0, 0
 landData34 = [ 80,  110,  50,  50,  [100, 10, 5, 1, 0],[Wood, Jungleberries, Iron_Ore, Gold_Ore, 0]];
 
 landData41 = [ 45,  120,  0,  0,  [100, 10, 20, 5, 10],[Wood, Salt, Fish_Meat, Winterberries, Amber]];
-landData42 = [ 55,  120,  0,  0,  [125, 20, 10, 10, 0],[Wood, Salt, Fish_Meat, Oyster, 0]];
+landData42 = [ 55,  120,  0,  0,  [100, 20, 20, 10, 0],[Wood, Salt, Fish_Meat, Oyster, 0]];
 landData43 = [ 65,  120,  0,  0,  [150, 30, 10, 5, 0],[Wood, Salt, Fish_Meat, Jungleberries, 0]];
 landData44 = [ 75,  120,  0,  0,  [100, 40, 0, 0, 0],  [Stone, Salt, 0, 0, 0]];
 

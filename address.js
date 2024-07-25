@@ -10,13 +10,13 @@ async function _address() {
     const network = await provider.getNetwork();
     console.log(network);
     if(network.chainId == 421614) {
-      _mainaddress = "0x6be4b4B728f8F78B005ff8B44De5ECEc46aCA8E4";
-      _warAddress = "0x658bd24E41D3249FAcA833fb80303366111BE4C5";
-      _landGiveaway = "0x8749Cee1Eb5BEDFE5d77F9ae82aA0698B85FB0bc";
-      _landSales = "0x92360983601EFD66EB6470867F12b31F1a5aC473";
-      _tradingEvent = "0xFD5c5ED20F4017d7E248A6f7c3B9573fcc8A53e1";
+      _mainaddress = "0xE45483fcF4Cce2E255B085F732f5655f74333463";
+      _warAddress = "0xaeC0FC9788482d7A1e43AdAD153a9D0aB4DDe692";
+      _landGiveaway = "0x596A046ec7488692cb7FE45E899d53A369605a55";
+      _landSales = "0x3c28327eB3533E2387EB2CDDb7f52331BBBdF163";
+      _tradingEvent = "0xe3fD50C94Fc5b1dFe0E809b22b645092210D6afb";
 
-      console.log("Testnet Arbitrum Chain: Last Updated 7/23/2024 - 1");
+      console.log("Testnet Arbitrum Chain: Last Updated 7/25/2024 - 1");
     }
     if(network.chainId == 31337) {
       _mainaddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
