@@ -6,35 +6,43 @@
         <script src="./address.js" type="application/javascript"></script>
 
         <script>
-            async function signon() {
-              var addies = await _address();
 
-                address = addies[0];
-                waraddress = addies[1];
-                freelandaddress = addies[2];
-                landMerchant = addies[3];
+
+
+          var FreeLandContractSigner;
+          var FreeLandContract;
+          var LandSaleContractSigner;
+          var LandSaleContract;
+          var cityContract;
+          var baseContract;
+
+            async function signon() {
+
+                _address();
+
 
                 provider = new ethers.providers.Web3Provider(window.ethereum)
                 await provider.send("eth_requestAccounts", []);
                 signer = provider.getSigner()
 
-                FreeLandContract = new ethers.Contract(freelandaddress, landGiveaway_abi, provider)
-                FreeLandContractSigner = new ethers.Contract(freelandaddress, landGiveaway_abi, signer)
-                LandSaleContract = new ethers.Contract(landMerchant, landMerchant_abi, provider)
-                LandSaleContractSigner = new ethers.Contract(landMerchant, landMerchant_abi, signer)
+                FreeLandContract = new ethers.Contract(landGiveawayAddress, giveaway_abi, provider)
+                FreeLandContractSigner = new ethers.Contract(landGiveawayAddress, giveaway_abi, signer)
+                LandSaleContract = new ethers.Contract(merchantAddress, merchant_abi, provider)
+                LandSaleContractSigner = new ethers.Contract(merchantAddress, merchant_abi, signer)
 
 
                     
-                NFTcontract = new ethers.Contract(address, abi, provider)
-                LandSaleContract = new ethers.Contract(freelandaddress, landGiveaway_abi, provider)
+                cityContract = new ethers.Contract(cityAddress, city_abi, provider)
+                baseContract = new ethers.Contract(baseAddress, base_abi, provider)
                 myAddress = await signer.getAddress()
+                console.log(myAddress);
 
 
-                _cityData = await NFTcontract.getKingdomInfo(myAddress);
+                _cityData = await cityContract.getKingdomInfo(myAddress);
                 let _kingdomType = _cityData[5]
                 console.log();
                 console.log("KingdomID:", _kingdomType);
-                if(await LandSaleContract.alreadyUsed(myAddress) == false){
+                if(await FreeLandContract.alreadyUsed(myAddress) == false){
                     ClaimText.style.display = "block";
                 }
                 showLandMenu();
@@ -43,7 +51,7 @@
             
     async function showLandMenu() {
 
-      var _cityData = await NFTcontract.getKingdomInfo(myAddress);
+      var _cityData = await cityContract.getKingdomInfo(myAddress);
       const _kingdomType = _cityData[5];
 
 
@@ -81,14 +89,8 @@
     }
     async function landShopCost() {
 
-
-        const provider = new ethers.providers.Web3Provider(window.ethereum)
-
-                    
-        const LandSaleContract = new ethers.Contract(landMerchant, landMerchant_abi, provider)
-
-        console.log("Coin Balance: ",await NFTcontract.balanceOf(landMerchant,28800))
-        console.log("Land Balance: ",await NFTcontract.balanceOf(landMerchant,LandMenu.value))
+        console.log("Coin Balance: ",await baseContract.balanceOf(landMerchant,28800))
+        console.log("Land Balance: ",await baseContract.balanceOf(landMerchant,LandMenu.value))
         var _amount = 1;
         LandMenu.value = Number(LandMenu.value);
           if((LandMenu.value >= 70 &&  LandMenu.value < 80)){_amount = 2;}

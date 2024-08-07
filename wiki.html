@@ -69,7 +69,7 @@
             if(_value < 100) 
             {
                 document.getElementById("LandInfo").style.display = "block";
-                var _landInfo = returnlandData(ItemMenuDropdown.value);
+                var _landInfo = returnLandData(ItemMenuDropdown.value);
                 document.getElementById("LandTemperatureInfo").textContent = "Land Temp: " + _landInfo[0];
                 document.getElementById("WaterInfo").textContent = "Water Quantity: " + _landInfo[1];
                 document.getElementById("AltitudeInfo").textContent = "Altitude: " + _landInfo[2];
@@ -252,596 +252,684 @@
         </select>
         <label id="ItemMenuLabelID" class="ItemMenu" for="ItemMenuID">What Item are you looking to learn about?</label><br>
         <select class="ItemMenu Dropdown" id="ItemMenuDropdown" onchange="displayRelevantInfo(this.value)">
-    
-          <option value="-1"></option>
-          <option value="0">--Land</option>
-          <option value="-1"></option>
-          <option value="1" class="1">Arid Badlands</option>
-          <option value="2" class="1">Arid Steppes</option>
-          <option value="3" class="1">Arid Oasis</option>
-          <option value="4" class="1">Arid River</option>
-          <option value="11" class="1">Northern Rocky Wastes</option>
-          <option value="12" class="1">Northern Tundra</option>
-          <option value="13" class="1">Northern Forest</option>
-          <option value="14" class="1">Northern River</option>
-          <option value="21" class="1">Rocky Heartland</option>
-          <option value="22" class="1">Heartland</option>
-          <option value="23" class="1">River Heartland</option>
-          <option value="31" class="1">Southern Rocky</option>
-          <option value="32" class="1">Southern Forest</option>
-          <option value="33" class="1">Southern Jungle</option>
-          <option value="34" class="1">Southern River</option>
-          <option value="41" class="1">Northern Ocean</option>
-          <option value="42" class="1">Central Ocean</option>
-          <option value="43" class="1">Southern Ocean</option>
-          <option value="44" class="1">Desolate Ocean</option>
-          <option value="51" class="1">Brackish Swamp</option>
-          <option value="52" class="1">Swamp</option>
-          <option value="53" class="1">Lush Swamp</option>
-          <option value="61" class="1">Red Mountain</option>
-          <option value="62" class="1">Blue Mountain</option>
-          <option value="63" class="1">Green Mountain</option>
-          <option value="64" class="1">White Mountain</option>
-          <option value="70" class="1">Ochre Plains</option>
-          <option value="71" class="1">Lustrous River</option>
-          <option value="72" class="1">Silver Forest</option>
-          <option value="80" class="1">Golden Plains</option>
-          <option value="81" class="1">Golden Hills</option>
-          <option value="82" class="1">Golden Forest</option>
-    
-          <option value="501" class="2">Wheat</option>
-          <option value="502" class="2">Rye</option>
-          <option value="503" class="2">Rice</option>
-          <option value="504" class="2">Corn</option>
-          <option value="505" class="2">Sorghum</option>
-          <option value="506" class="2">Apple</option>
-          <option value="507" class="2">Plum</option>
-          <option value="508" class="2">Olives</option>
-          <option value="509" class="2">Beans</option>
-          <option value="510" class="2">Mushroom</option>
-          <option value="511" class="2">Beets</option>
-          <option value="512" class="2">Casava</option>
-          <option value="513" class="2">Peanut</option>
-          <option value="514" class="2">Cherry</option>
-          <option value="515" class="2">Peach</option>
-          <option value="516" class="2">Garlic</option>
-          <option value="517" class="2">Onion</option>
-          <option value="518" class="2">Carrot</option>
-          <option value="519" class="2">Sugarcane</option>
-          <option value="521" class="2">Herbs</option>
-          <option value="522" class="2">Grapes</option>
-          <option value="523" class="2">Ginseng</option>
-          <option value="524" class="2">Winter Berry</option>
-          <option value="525" class="2">Jungle Berry</option>
-          <option value="526" class="2">Auric Honey</option>
-          <option value="527" class="2">Wasabi</option>
-          <option value="528" class="2">Rushseed</option>
-          <option value="529" class="2">Rare Herbs</option>
-          <option value="530" class="2">Oysters</option>
-          <option value="531" class="2">Fish</option>
-          <option value="532" class="2">Beef</option>
-          <option value="533" class="2">Chicken</option>
-          <option value="541" class="2">Exotic Meat</option>
-          <option value="534" class="2">Eggs</option>
-          <option value="535" class="2">Potato</option>
-          <option value="536" class="2">Silver Sap</option>
-          <option value="537" class="2">Honey</option>
-          <option value="538" class="2">Oats</option>
-          <option value="539" class="2">Milk</option>
-          <option value="540" class="2">Barley</option>
-          <option value="545" class="2">Exotic Meat</option>
-          <option value="546" class="2">Heartland Herb</option>
-    
-          <option value="-1"></option>
-          <option value="0">--Food & Drinks</option>
-          <option value="-1"></option>
-    
-          <option value="1000" class="3">Wheat Beer</option>
-          <option value="1001" class="3">Rye Beer</option>
-          <option value="1002" class="3">Barley Beer</option>
-          <option value="1003" class="3">Oat Beer</option>
-          <option value="1004" class="3">Rice Beer</option>
-          <option value="1005" class="3">Sorghum Beer</option>
-          <option value="1010" class="3">Cider</option>
-          <option value="1011" class="3">Wine</option>
-          <option value="1012" class="3">Plum Wine</option>
-          <option value="1013" class="3">Peach Wine</option>
-          <option value="1014" class="3">Cherry Wine</option>
-          <option value="1020" class="3">Mead</option>
-          <option value="1030" class="3">Vodka</option>
-          <option value="1031" class="3">Kumis</option>
-          <option value="1032" class="3">Rum</option>
-          <option value="1033" class="3">Grain Whiskey</option>
-          <option value="1040" class="3">Brandy</option>
-          <option value="1041" class="3">Silver Wine</option>
-          <option value="1042" class="3">Jungle Wine</option>
-          <option value="1043" class="3">Winter Wine</option>
-          <option value="1044" class="3">Aged Rum</option>
-          <option value="1050" class="3">Ginseng Wine</option>
-          <option value="1051" class="3">Spiced Vodka</option>
-          <option value="1060" class="3">Double Brandy</option>
-          <option value="1061" class="3">Auric Mead</option>
-          <option value="1200" class="3">Wheat Bread</option>
-          <option value="1201" class="3">Rye Bread</option>
-          <option value="1202" class="3">Corn Bread</option>
-          <option value="1203" class="3">Rice Bread</option>
-          <option value="1204" class="3">Sorghum Bread</option>
-          <option value="1205" class="3">Barley Bread</option>
-          <option value="1206" class="3">Oat Bread</option>
-          <option value="1207" class="3">Pastry</option>
-          <option value="1208" class="3">Fruit Pastry</option>
-          <option value="1209" class="3">Glittercake</option>
-          <option value="1210" class="3">Fruit Glittercake</option>
-          <option value="1211" class="3">Glittercakeette</option>
-          <option value="1220" class="3">Apple Pie</option>
-          <option value="1221" class="3">Plum Pie</option>
-          <option value="1222" class="3">Peach Pie</option>
-          <option value="1223" class="3">Sugar Pie</option>
-          <option value="1224" class="3">Pot Pie</option>
-          <option value="1230" class="3">Cheese</option>
-          <option value="1231" class="3">Aged Cheese</option>
-          <option value="1232" class="3">Imperial Cheese</option>
-          <option value="1240" class="3">Dried Vegetables</option>
-          <option value="1241" class="3">Pickled Vegetables</option>
-          <option value="1242" class="3">Hearty Dried Vegetables</option>
-          <option value="1250" class="3">Dried Fruit</option>
-          <option value="1251" class="3">Brandied Fruit</option>
-          <option value="1260" class="3">Sausage</option>
-          <option value="1261" class="3">Fried Meat</option>
-          <option value="1262" class="3">Roast</option>
-          <option value="1263" class="3">Cured Meat</option>
-          <option value="1264" class="3">Salted Meat</option>
-          <option value="1265" class="3">Preserved Eggs</option>
-          <option value="1266" class="3">Exotic Cured Meat</option>
-          <option value="1267" class="3">Boiled Meat</option>
-          <option value="1268" class="3">Noble Roast</option>
-          <option value="1270" class="3">Beef Stew</option>
-          <option value="1271" class="3">Kings Soup</option>
-          <option value="1272" class="3">Onion Soup</option>
-          <option value="1273" class="3">Huntsmans Soup</option>
-          <option value="1274" class="3">Chicken Soup</option>
-          <option value="1275" class="3">Fish Soup</option>
-          <option value="1280" class="3">Baked Beans</option>
-          <option value="1281" class="3">Beans And Rice</option>
-          <option value="1300" class="3">Vinegar</option>
-          <option value="1301" class="3">Sugar</option>
-          <option value="1302" class="3">Olive Oil</option>
-          <option value="1303" class="3">Flour</option>
-          <option value="1304" class="3">Ketchup</option>
-          <option value="1305" class="3">Basic Spice Pack</option>
-          <option value="1306" class="3">Royal Spice Pack</option>
-          <option value="1307" class="3">Confectioners Dough</option>
-          <option value="1308" class="3">Fruit Preserve</option>
-          <option value="1309" class="3">Exotic Fruit Preserve</option>
-          <option value="1310" class="3">Mushroom Stock</option>
-          <option value="1311" class="3">Meat Stock</option>
-          <option value="1312" class="3">Vegetable Stock</option>
-    
-    
-          <option value="1900" class="4">Fodder Bread</option>
-          <option value="1901" class="4">Main Ration 1</option>
-          <option value="1902" class="4">Main Ration 2</option>
-          <option value="1903" class="4">Main Ration 3</option>
-          <option value="1904" class="4">Main Ration 4</option>
-          <option value="1905" class="4">Main Ration 5</option>
-          <option value="1906" class="4">Main Ration 6</option>
-          <option value="1907" class="4">Main Ration 7</option>
-          <option value="1908" class="4">Main Ration 8</option>
-          <option value="1909" class="4">Main Ration 9</option>
-          <option value="1911" class="4">Extras 1</option>
-          <option value="1912" class="4">Extras 2</option>
-          <option value="1913" class="4">Extras 3</option>
-          <option value="1914" class="4">Extras 4</option>
-          <option value="1915" class="4">Extras 5</option>
-          <option value="1916" class="4">Extras 6</option>
-          <option value="1917" class="4">Extras 7</option>
-          <option value="1918" class="4">Extras 8</option>
-          <option value="1919" class="4">Extras 9</option>
-          <option value="1921" class="4">Drink Pack 1</option>
-          <option value="1922" class="4">Drink Pack 2</option>
-          <option value="1923" class="4">Drink Pack 3</option>
-          <option value="1924" class="4">Drink Pack 4</option>
-          <option value="1925" class="4">Drink Pack 5</option>
-          <option value="1926" class="4">Drink Pack 6</option>
-          <option value="1927" class="4">Drink Pack 7</option>
-          <option value="1928" class="4">Drink Pack 8</option>
-          <option value="1929" class="4">Drink Pack 9</option>
-          <option value="1990" class="4">Low Noble Hunting Supplies</option>
-          <option value="1991" class="4">High Noble Hunting Supplies</option>
-    
-          <option value="-1"></option>
-          <option value="0">--Raw Materials</option>
-          <option value="-1"></option>
-          <option value="542" class="5">Wool</option>
-          <option value="543" class="5">Cotton</option>
-          <option value="2001" class="5">Stone</option>
-          <option value="2002" class="5">Wood</option>
-          <option value="2003" class="5">Salt</option>
-          <option value="2021" class="5">Iron Ore</option>
-          <option value="2022" class="5">Gold Ore</option>
-          <option value="2023" class="5">Silver Ore</option>
-          <option value="2024" class="5">Copper Ore</option>
-          <option value="2025" class="5">Tin Ore</option>
-    
-    
-          <option value="4012">Poison</option>
-          <option value="4013">Leopard_Skin</option>
-          <option value="4014">Aurochs_Hide</option>
-          <option value="4015">Black_Leopard_Skin</option>
-          <option value="4016">Bear_Hide</option>
-          <option value="4017">Polar_Bear_Hide</option>
-          <option value="4018">Tiger_Hide</option>
-        
-          <option value="-1"></option>
-          <option value="0">--Industrial Goods</option>
-          <option value="-1"></option>
-          <option value="2101" class="6">Refined Stone Blocks</option>
-          <option value="2102" class="6">Carved Wood</option>
-          <option value="4000" class="6">Nails</option>
-          <option value="4001" class="6">Diamond_Blade</option>
-          <option value="4002" class="6">Fabric</option>
-          <option value="4003" class="6">Down</option>
-          <option value="4004" class="6">Leather</option>
-          <option value="4005" class="6">Exotic Leather</option>
-          <option value="4006" class="6">Fur</option>
-          <option value="4019">Rushseed Oil</option>
-    
-          <option value="2121" class="6">Iron</option>
-          <option value="2122" class="6">Gold</option>
-          <option value="2123" class="6">Silver</option>
-          <option value="2124" class="6">Copper</option>
-          <option value="2125" class="6">Tin</option>
-          <option value="2180" class="6">Emerald Bronze</option>
-          <option value="2181" class="6">Bronze</option>
-          <option value="2182" class="6">Steel</option>
-          <option value="2183" class="6">Damascus Steel</option>
-    
-          <option value="4100" class="6">Bronze_Plate</option>
-          <option value="4101" class="6">Iron_Plate</option>
-          <option value="4102" class="6">Steel_Plate</option>
-          <option value="4103" class="6">Emerald_Bronze_Plate</option>
-          <option value="4104" class="6">Damascus_Steel_Plate</option>
-          <option value="4105" class="6">Bronze_Chainmail</option>
-          <option value="4106" class="6">Iron_Chainmail</option>
-          <option value="4107" class="6">Steel_Chainmail</option>
-          <option value="4108" class="6">Emerald_Bronze_Chainmail</option>
-          <option value="4109" class="6">Damascus_Steel_Chainmail</option>
-          <option value="4007" class="6">Exotic_Fur</option>
-          <option value="4008" class="6">Feather</option>
-          <option value="4009" class="6">Thick_Leather</option>
-          <option value="4010" class="6">Antler</option>
-          <option value="4011" class="6">Ivory</option>
-          
-          <option value="-1"></option>
-          <option value="0">--Gemstones</option>
-          <option value="-1"></option>
-          <option value="2200" class="7">Ruby</option>
-          <option value="2201" class="7">Emerald</option>
-          <option value="2202" class="7">Sapphire</option>
-          <option value="2203" class="7">Diamond</option>
-          <option value="2204" class="7">Amethyst</option>
-          <option value="2205" class="7">Opal</option>
-          <option value="2206" class="7">Citrine</option>
-          <option value="2207" class="7">Pearls</option>
-          <option value="2208" class="7">Moonstone</option>
-          <option value="2209" class="7">Amber</option>
-          <option value="2210" class="7">Onyx</option>
-          <option value="2211" class="7">Aquamarine</option>
-          <option value="2212" class="7">Crystal Glass</option>
-          <option value="2213" class="7">Bloodstone</option>
-          <option value="2300" class="7">Polished Ruby</option>
-          <option value="2301" class="7">Polished Emerald</option>
-          <option value="2302" class="7">Polished Sapphire</option>
-          <option value="2303" class="7">Polished Diamond</option>
-          <option value="2304" class="7">Polished Amethyst</option>
-          <option value="2305" class="7">Polished Opal</option>
-          <option value="2306" class="7">Polished Citrine</option>
-          <option value="2307" class="7">Polished Pearls</option>
-          <option value="2308" class="7">Polished Moonstone</option>
-          <option value="2309" class="7">Polished Amber</option>
-          <option value="2310" class="7">Polished Onyx</option>
-          <option value="2311" class="7">Polished Aquamarine</option>
-          <option value="2312" class="7">Polished Crystal Glass</option>
-    
-          <option value="-1"></option>
-          <option value="0">--Civilian Goods</option>
-          <option value="-1"></option>
-    
-          <option value="4500" class="8">Fur_Clothes</option>
-          <option value="4501" class="8">Fabric_Clothes</option>
-          <option value="4502" class="8">Leather_Clothes</option>
-          <option value="4503" class="8">Tailored_Fur_Clothes</option>
-          <option value="4504" class="8">Tailored_Fabric_Clothes</option>
-          <option value="4505" class="8">Clothes</option>
-          <option value="4520" class="8">Basic_Furniture</option>
-          <option value="4521" class="8">Ornate_Furniture</option>
-          <option value="4522" class="8">Oppulant_Furniture</option>
-          <option value="4540" class="8">Basic_Tool</option>
-          <option value="4541" class="8">Artisan_Tool</option>
-          <option value="4542" class="8">Oppulant_Tool</option>
-          <option value="4560" class="8">Copper_Jewelery</option>
-          <option value="4561" class="8">Silver_Jewelery</option>
-          <option value="4562" class="8">Gold_Jewelery</option>
-          <option value="4580" class="8">Fur_Bedding</option>
-          <option value="4581" class="8">Enhanced_Bedding</option>
-          <option value="4582" class="8">Down_Beeding</option>
-    
-          <option value="28800" class="0">Coins</option>
-    
-    
-          
-          <option value="-1"></option>
-          <option value="0">--War Stuff</option>
-          <option value="-1"></option>
-    
-          <option value="5000" class="9">Bronze Spear</option>
-          <option value="5001" class="9">Iron Spear</option>
-          <option value="5002" class="9">Steel Spear</option>
-          <option value="5003" class="9">Emerald Bronze Spear</option>
-          <option value="5004" class="9">Damascus Steel Spear</option>
-          <option value="5010" class="9">Bronze Axe</option>
-          <option value="5011" class="9">Iron Axe</option>
-          <option value="5012" class="9">Steel Axe</option>
-          <option value="5013" class="9">Emerald Bronze Axe</option>
-          <option value="5014" class="9">Damascus Steel Axe</option>
-          <option value="5020" class="9">Bronze Sword</option>
-          <option value="5021" class="9">Iron Sword</option>
-          <option value="5022" class="9">Steel Sword</option>
-          <option value="5023" class="9">Emerald Bronze Sword</option>
-          <option value="5024" class="9">Damascus Steel Sword</option>
-          <option value="5030" class="9">Bronze Mace</option>
-          <option value="5031" class="9">Iron Mace</option>
-          <option value="5032" class="9">Steel Mace</option>
-          <option value="5033" class="9">Emerald Bronze Mace</option>
-          <option value="5034" class="9">Damascus Steel Mace</option>
-          <option value="5040" class="9">Bronze Lance</option>
-          <option value="5041" class="9">Iron Lance</option>
-          <option value="5042" class="9">Steel Lance</option>
-          <option value="5043" class="9">Emerald Bronze Lance</option>
-          <option value="5044" class="9">Damascus Steel Lance</option>
-          <option value="5050" class="9">Bronze Poleaxe</option>
-          <option value="5051" class="9">Iron Poleaxe</option>
-          <option value="5052" class="9">Steel Poleaxe</option>
-          <option value="5053" class="9">Emerald Bronze Poleaxe</option>
-          <option value="5054" class="9">Damascus Steel Poleaxe</option>
-          <option value="5060" class="9">Bronze Greatsword</option>
-          <option value="5061" class="9">Iron Greatsword</option>
-          <option value="5062" class="9">Steel Greatsword</option>
-          <option value="5063" class="9">Emerald Bronze Greatsword</option>
-          <option value="5064" class="9">Damascus Steel Greatsword</option>
-          <option value="5070" class="9">Bronze Warhammer</option>
-          <option value="5071" class="9">Iron Warhammer</option>
-          <option value="5072" class="9">Steel Warhammer</option>
-          <option value="5073" class="9">Emerald Bronze Warhammer</option>
-          <option value="5074" class="9">Damascus Steel Warhammer</option>
-          <option value="5200" class="9">BasicBow</option>
-          <option value="5201" class="9">Longbow</option>
-          <option value="5202" class="9">Greatbow</option>
-          <option value="5210" class="9">Simple Crossbow</option>
-          <option value="5211" class="9">Basic Sling</option>
-          <option value="5212" class="9">Heavy Flamer</option>
-          <option value="5213" class="9">Flame Grenade</option>
-          <option value="5214" class="9">Golden Sling</option>
-          <option value="5400" class="9">Farm Horse</option>
-          <option value="5401" class="9">Horse</option>
-          <option value="5402" class="9">Charge Horse</option>
-          <option value="5403" class="9">War Horse</option>
-          <option value="5500" class="9">Light Bronze Mail</option>
-          <option value="5501" class="9">Light Iron Mail</option>
-          <option value="5502" class="9">Light Steel Mail</option>
-          <option value="5503" class="9">Light Emerald Bronze Mail</option>
-          <option value="5504" class="9">Light Damascus Steel Mail</option>
-          <option value="5510" class="9">Light Bronze Plate</option>
-          <option value="5511" class="9">Light Iron Plate</option>
-          <option value="5512" class="9">Light Steel Plate</option>
-          <option value="5513" class="9">Light Emerald Bronze Plate</option>
-          <option value="5514" class="9">Light Damascus Steel Plate</option>
-          <option value="5520" class="9">Medium Bronze Mail</option>
-          <option value="5521" class="9">Medium Iron Mail</option>
-          <option value="5522" class="9">Medium Steel Mail</option>
-          <option value="5523" class="9">Medium Emerald Bronze Mail</option>
-          <option value="5524" class="9">Medium Damascus Steel Mail</option>
-          <option value="5530" class="9">Medium Bronze Plate</option>
-          <option value="5531" class="9">Medium Iron Plate</option>
-          <option value="5532" class="9">Medium Steel Plate</option>
-          <option value="5533" class="9">Medium Emerald Bronze Plate</option>
-          <option value="5534" class="9">Medium Damascus Steel Plate</option>
-          <option value="5540" class="9">Bronze Heavy Armor</option>
-          <option value="5541" class="9">Iron Heavy Armor</option>
-          <option value="5542" class="9">Steel Heavy Armor</option>
-          <option value="5543" class="9">Emerald Bronze Heavy Armor</option>
-          <option value="5544" class="9">Damascus Steel Heavy Armor</option>
-          <option value="5550" class="9">Light Bronze Horse Armor</option>
-          <option value="5551" class="9">Light Iron Horse Armor</option>
-          <option value="5552" class="9">Light Steel Horse Armor</option>
-          <option value="5553" class="9">Light Emerald Bronze Horse Armor</option>
-          <option value="5554" class="9">Light Damascus Steel Horse Armor</option>
-          <option value="5560" class="9">Medium Bronze Horse Armor</option>
-          <option value="5561" class="9">Medium Iron Horse Armor</option>
-          <option value="5562" class="9">Medium Steel Horse Armor</option>
-          <option value="5563" class="9">Medium Emerald Bronze Horse Armor</option>
-          <option value="5564" class="9">Medium Damascus Steel Horse Armor</option>
-          <option value="5570" class="9">Heavy Bronze Horse Armor</option>
-          <option value="5571" class="9">Heavy Iron Horse Armor</option>
-          <option value="5572" class="9">Heavy Steel Horse Armor</option>
-          <option value="5573" class="9">Heavy Emerald Bronze Horse Armor</option>
-          <option value="5574" class="9">Heavy Damascus Steel Horse Armor</option>
-          <option value="5580" class="9">Leather Armor</option>
-          <option value="5581" class="9">Thick Leather Armor</option>
-          <option value="5582" class="9">Gambeson</option>
-          <option value="5900" class="9">Wooden Shield</option>
-          <option value="5901" class="9">Banded Shield</option>
-          <option value="5902" class="9">Standard Shield</option>
-          <option value="5903" class="9">Metal Shield</option>
-          <option value="5904" class="9">Gong Shield</option>
-          <option value="5905" class="9">Heirloom Shield</option>
-          <option value="5910" class="9">Wall Shield</option>
-          <option value="5911" class="9">Advanced Wall Shield</option>
-    
-          <option value="28502" class="9">Tier 2 XP</option>
-          <option value="28503" class="9">Tier 3 XP</option>
-          <option value="28504" class="9">Tier 4 XP</option>
-          <option value="28505" class="9">Tier 5 XP</option>
-          <option value="28506" class="9">Tier 6 XP</option>
-          <option value="28507" class="9">Tier 7 XP</option>
-          <option value="28508" class="9">Tier 8 XP</option>
-          <option value="-1"></option>
-          <option value="0">--Animals</option>
-          <option value="-1"></option>
-    
-    
-            <option value="7000" class="10">Rabbit</option>
-            <option value="7001" class="10">Deer</option>
-            <option value="7002" class="10">Turkey</option>
-            <option value="7003" class="10">Mink</option>
-            <option value="7004" class="10">Cyote</option>
-            <option value="7005" class="10">Snake</option>
-            <option value="7100" class="10">Fox</option>
-            <option value="7101" class="10">Boar</option>
-            <option value="7102" class="10">Zebra</option>
-            <option value="7103" class="10">Reindeer</option>
-            <option value="7104" class="10">Leopard</option>
-            <option value="7105" class="10">Crocodile</option>
-            <option value="7106" class="10">Otter</option>
-            <option value="7107" class="10">Wolf</option>
-            <option value="7108" class="10">Seal</option>
-            <option value="7109" class="10">Ostridge</option>
-            <option value="7200" class="10">Elk</option>
-            <option value="7201" class="10">Aurochs</option>
-            <option value="7202" class="10">Black Leopard</option>
-            <option value="7203" class="10">Bear</option>
-            <option value="7204" class="10">Sea Mink</option>
-            <option value="7205" class="10">Whalrus</option>
-            <option value="7206" class="10">Poison Snake</option>
-            <option value="7300" class="10">Elephant</option>
-            <option value="7301" class="10">Rhino</option>
-            <option value="7302" class="10">Polar Bear</option>
-            <option value="7303" class="10">Tiger</option>
-            <option value="7304" class="10">Titan Snake</option>
-            <option value="7400" class="10">Cow</option>
-            <option value="7401" class="10">Chicken</option>
-            <option value="7402" class="10">Sheep</option>
-    
+
             <option value="-1"></option>
-            <option value="0">--Soliders</option>
+            <option value="0">--Land</option>
             <option value="-1"></option>
-    
-            <option value="10001" class="11">T1_Spearman</option>
-            <option value="10002" class="11">T2_Spearman</option>
-            <option value="10003" class="11">T3_Spearman</option>
-            <option value="10004" class="11">T4_Spearman</option>
-            <option value="10005" class="11">T5_Spearman</option>
-            <option value="10006" class="11">T6_Spearman</option>
-            <option value="10007" class="11">T7_Spearman</option>
-            <option value="10008" class="11">T8_Spearman</option>
-            <option value="10011" class="11">T1_Swordman</option>
-            <option value="10012" class="11">T2_Swordman</option>
-            <option value="10013" class="11">T3_Swordman</option>
-            <option value="10014" class="11">T4_Swordman</option>
-            <option value="10015" class="11">T5_Swordman</option>
-            <option value="10016" class="11">T6_Swordman</option>
-            <option value="10017" class="11">T7_Swordman</option>
-            <option value="10018" class="11">T8_Swordman</option>
-            <option value="10021" class="11">T1_Axeman</option>
-            <option value="10022" class="11">T2_Axeman</option>
-            <option value="10023" class="11">T3_Axeman</option>
-            <option value="10024" class="11">T4_Axeman</option>
-            <option value="10025" class="11">T5_Axeman</option>
-            <option value="10026" class="11">T6_Axeman</option>
-            <option value="10027" class="11">T7_Axeman</option>
-            <option value="10028" class="11">T8_Axeman</option>
-            <option value="10201" class="11">T1_Archer</option>
-            <option value="10202" class="11">T2_Archer</option>
-            <option value="10203" class="11">T3_Archer</option>
-            <option value="10204" class="11">T4_Archer</option>
-            <option value="10205" class="11">T5_Archer</option>
-            <option value="10206" class="11">T6_Archer</option>
-            <option value="10207" class="11">T7_Archer</option>
-            <option value="10208" class="11">T8_Archer</option>
-            <option value="10211" class="11">T1_Slinger</option>
-            <option value="10212" class="11">T2_Slinger</option>
-            <option value="10213" class="11">T3_Slinger</option>
-            <option value="10214" class="11">T4_Slinger</option>
-            <option value="10215" class="11">T5_Slinger</option>
-            <option value="10216" class="11">T6_Slimger</option>
-            <option value="10217" class="11">T7_Slinger</option>
-            <option value="10218" class="11">T8_Slinger</option>
-            <option value="10225" class="11">T5_Flamer</option>
-            <option value="10226" class="11">T6_Flamer</option>
-            <option value="10227" class="11">T7_Flamer</option>
-            <option value="10228" class="11">T8_Flamer</option>
-            <option value="10231" class="11">T1_Crossbowman</option>
-            <option value="10232" class="11">T2_Crossbowman</option>
-            <option value="10233" class="11">T3_Crossbowman</option>
-            <option value="10234" class="11">T4_Crossbowman</option>
-            <option value="10235" class="11">T5_Crossbowman</option>
-            <option value="10236" class="11">T6_Crossbowman</option>
-            <option value="10237" class="11">T7_Crossbowman</option>
-            <option value="10238" class="11">T8_Crossbowman</option>
-            <option value="10301" class="11">T1_Lancer</option>
-            <option value="10302" class="11">T2_Lancer</option>
-            <option value="10303" class="11">T3_Lancer</option>
-            <option value="10304" class="11">T4_Lancer</option>
-            <option value="10305" class="11">T5_Lancer</option>
-            <option value="10306" class="11">T6_Lancer</option>
-            <option value="10307" class="11">T7_Lancer</option>
-            <option value="10308" class="11">T8_Lancer</option>
-            <option value="10311" class="11">T1_Mounted_Sword</option>
-            <option value="10312" class="11">T2_Mounted_Sword</option>
-            <option value="10313" class="11">T3_Mounted_Sword</option>
-            <option value="10314" class="11">T4_Mounted_Sword</option>
-            <option value="10315" class="11">T5_Mounted_Sword</option>
-            <option value="10316" class="11">T6_Mounted_Sword</option>
-            <option value="10317" class="11">T7_Mounted_Sword</option>
-            <option value="10318" class="11">T8_Mounted_Sword</option>
-            <option value="10321" class="11">T1_Mounted_Axeman</option>
-            <option value="10322" class="11">T2_Mounted_Axeman</option>
-            <option value="10323" class="11">T3_Mounted_Axeman</option>
-            <option value="10324" class="11">T4_Mounted_Axeman</option>
-            <option value="10325" class="11">T5_Mounted_Axeman</option>
-            <option value="10326" class="11">T6_Mounted_Axeman</option>
-            <option value="10327" class="11">T7_Mounted_Axeman</option>
-            <option value="10328" class="11">T8_Mounted_Axeman</option>
-            <option value="10505" class="11">T5_Elephant</option>
-            <option value="10506" class="11">T6_Elephant</option>
-            <option value="10507" class="11">T7_Elephant</option>
-            <option value="10508" class="11">T8_Elephant</option>
-            <option value="10601" class="11">T1_Horse_Archer</option>
-            <option value="10602" class="11">T2_Horse_Archer</option>
-            <option value="10603" class="11">T3_Horse_Archer</option>
-            <option value="10604" class="11">T4_Horse_Archer</option>
-            <option value="10605" class="11">T5_Horse_Archer</option>
-            <option value="10606" class="11">T6_Horse_Archer</option>
-            <option value="10607" class="11">T7_Horse_Archer</option>
-            <option value="10608" class="11">T8_Horse_Archer</option>
-    
-            <option value="11000" class="12">Bandits</option>
-            <option value="11010" class="12">Peasent_Levy</option>
-            <option value="11011" class="12">Veteran_Peasent_Levy</option>
-            <option value="11020" class="12">Levy_Spear</option>
-            <option value="11021" class="12">Veteran_Levy_Spear</option>
-            <option value="11030" class="12">Mountain_Levy</option>
-            <option value="11031" class="12">Veteran_Mountain_Levy</option>
-            <option value="11040" class="12">Mercenary Swordsman</option>
-            <option value="11041" class="12">Veteran_Mercenary_Swordsman</option>
-            <option value="11042" class="12">Palace Guard</option>
-            <option value="11050" class="12">Mercenary Axeman</option>
-            <option value="11060" class="12">Mercenary Maceman</option>
-            <option value="11070" class="12">Pikeman</option>
-            <option value="11200" class="12">Peasent_Bowman</option>
-            <option value="11210" class="12">Levy Archer</option>
-            <option value="11211" class="12">Veteran_Levy_Archer</option>
-            <option value="11220" class="12">Huntsman</option>
-            <option value="11230" class="12">Slinger</option>
-            <option value="11241" class="12">Imperial Flamer</option>
-            <option value="11300" class="12">Free lance</option>
-            <option value="11301" class="12">Knight</option>
-            <option value="11310" class="12">Mounted Levy</option>
-            <option value="11320" class="12">Mounted Palace Guard</option>
-            <option value="11600" class="12">Horse_Archer</option>
-            <option value="11601" class="12">Veteran_Horse_Archer</option>
-            <option value="11602" class="12">Palace_Archer</option>
-    
+            <option value="1" class="1">Arid Badlands</option>
+            <option value="2" class="1">Arid Steppes</option>
+            <option value="3" class="1">Arid Oasis</option>
+            <option value="4" class="1">Arid River</option>
+            <option value="11" class="1">Northern Rocky Wastes</option>
+            <option value="12" class="1">Northern Tundra</option>
+            <option value="13" class="1">Northern Forest</option>
+            <option value="14" class="1">Northern River</option>
+            <option value="21" class="1">Rocky Heartland</option>
+            <option value="22" class="1">Heartland</option>
+            <option value="23" class="1">River Heartland</option>
+            <option value="31" class="1">Southern Rocky</option>
+            <option value="32" class="1">Southern Forest</option>
+            <option value="33" class="1">Southern Jungle</option>
+            <option value="34" class="1">Southern River</option>
+            <option value="41" class="1">Northern Ocean</option>
+            <option value="42" class="1">Central Ocean</option>
+            <option value="43" class="1">Southern Ocean</option>
+            <option value="44" class="1">Desolate Ocean</option>
+            <option value="51" class="1">Brackish Swamp</option>
+            <option value="52" class="1">Swamp</option>
+            <option value="53" class="1">Lush Swamp</option>
+            <option value="61" class="1">Red Mountain</option>
+            <option value="62" class="1">Blue Mountain</option>
+            <option value="63" class="1">Green Mountain</option>
+            <option value="64" class="1">White Mountain</option>
+            <option value="70" class="1">Ochre Plains</option>
+            <option value="71" class="1">Lustrous River</option>
+            <option value="72" class="1">Silver Forest</option>
+            <option value="80" class="1">Golden Plains</option>
+            <option value="81" class="1">Golden Hills</option>
+            <option value="82" class="1">Golden Forest</option>
+      
+            <option value="501"class="2">Wheat</option>
+            <option value="502"class="2">Rye</option>
+            <option value="503"class="2">Rice</option>
+            <option value="504"class="2">Corn</option>
+            <option value="505"class="2">Sorghum</option>
+            <option value="506"class="2">Apples</option>
+            <option value="507"class="2">Plums</option>
+            <option value="508"class="2">Olives</option>
+            <option value="509"class="2">Beans</option>
+            <option value="510"class="2">Mushrooms</option>
+            <option value="511"class="2">Beets</option>
+            <option value="512"class="2">Casava</option>
+            <option value="513"class="2">Peanuts</option>
+            <option value="514"class="2">Cherries</option>
+            <option value="515"class="2">Peaches</option>
+            <option value="516"class="2">Garlic</option>
+            <option value="517"class="2">Onion</option>
+            <option value="518"class="2">Carrots</option>
+            <option value="519"class="2">Sugarcane</option>
+            <option value="520"class="2">Peppers</option>
+            <option value="521"class="2">Allspice</option>
+            <option value="522"class="2">Grapes</option>
+            <option value="523"class="2">Ginseng</option>
+            <option value="524"class="2">Winterberries</option>
+            <option value="525"class="2">Jungleberries</option>
+            <option value="526"class="2">Auric Honey</option>
+            <option value="527"class="2">Wasabi</option>
+            <option value="528"class="2">Rushseed</option>
+            <option value="529"class="2">Exotic Herb</option>
+            <option value="530"class="2">Oyster</option>
+            <option value="531"class="2">Fish Meat</option>
+            <option value="532"class="2">Beef</option>
+            <option value="533"class="2">Chicken Meat</option>
+            <option value="534"class="2">Eggs</option>
+            <option value="535"class="2">Potato</option>
+            <option value="536"class="2">Silver Sap</option>
+            <option value="537"class="2">Honey</option>
+            <option value="538"class="2">Oats</option>
+            <option value="539"class="2">Milk</option>
+            <option value="540"class="2">Barley</option>
+            <option value="541"class="2">Exotic Meat</option>
+            <option value="542"class="2">Wool</option>
+            <option value="543"class="2">Cotton</option>
+            <option value="544"class="2">Mutton</option>
+            <option value="545"class="2">Game Meat</option>
+            <option value="546"class="2">Heartland Herbs</option>
+            <option value="550"class="2">Organ Meat</option>
+            <option value="551"class="2">Bone</option>
+            <option value="552"class="2">Fat</option>
+            <option value="553"class="2">Tender Meat</option>
+            <option value="554"class="2">Oyster Meat</option>
+            <option value="555"class="2">Crab</option>
+            
+            <option value="-1"></option>
+            <option value="0">--Food & Drinks</option>
+            <option value="-1"></option>
+      
+            <option value="1000"class="3">Wheat Beer</option>
+            <option value="1001"class="3">Rye Beer</option>
+            <option value="1002"class="3">Barley Beer</option>
+            <option value="1003"class="3">Oat Beer</option>
+            <option value="1004"class="3">Rice Beer</option>
+            <option value="1005"class="3">Sorghum Beer</option>
+            <option value="1010"class="3">Cider</option>
+            <option value="1011"class="3">Wine</option>
+            <option value="1012"class="3">Plum Wine</option>
+            <option value="1013"class="3">Peach Wine</option>
+            <option value="1014"class="3">Cherry Wine</option>
+            <option value="1020"class="3">Mead</option>
+            <option value="1021"class="3">Grog</option>
+            <option value="1030"class="3">Vodka</option>
+            <option value="1031"class="3">Kumis</option>
+            <option value="1032"class="3">Rum</option>
+            <option value="1033"class="3">Grain Whiskey</option>
+            <option value="1040"class="3">Brandy</option>
+            <option value="1041"class="3">Silver Wine</option>
+            <option value="1042"class="3">Jungle Wine</option>
+            <option value="1043"class="3">Winter Wine</option>
+            <option value="1044"class="3">Aged Rum</option>
+            <option value="1050"class="3">Ginseng Wine</option>
+            <option value="1051"class="3">Spiced Vodka</option>
+            <option value="1060"class="3">Double Brandy</option>
+            <option value="1061"class="3">Auric Mead</option>
+            <option value="1200"class="3">Basic Bread</option>
+            <option value="1201"class="3">Wheat Bread</option>
+            <option value="1202"class="3">Rye Bread</option>
+            <option value="1203"class="3">Corn Bread</option>
+            <option value="1204"class="3">Corn Flatbread</option>
+            <option value="1205"class="3">Basic Flatbread</option>
+            <option value="1206"class="3">Pumpernickle</option>
+            <option value="1207"class="3">Pastry</option>
+            <option value="1208"class="3">Fruit Pastry</option>
+            <option value="1209"class="3">Cheese Pastry</option>
+            <option value="1210"class="3">Fruit Bread</option>
+            <option value="1211"class="3">Cheese Bread</option>
+            <option value="1212"class="3">Glittercake</option>
+            <option value="1213"class="3">Fruit Glittercake</option>
+            <option value="1220"class="3">Apple Pie</option>
+            <option value="1221"class="3">Plum Pie</option>
+            <option value="1222"class="3">Peach Pie</option>
+            <option value="1223"class="3">Sugar Pie</option>
+            <option value="1224"class="3">Pot Pie</option>
+            <option value="1225"class="3">Cherry Pie</option>
+            <option value="1230"class="3">Cheese</option>
+            <option value="1231"class="3">Aged Cheese</option>
+            <option value="1232"class="3">Imperial Cheese</option>
+            <option value="1240"class="3">Dried Vegetables</option>
+            <option value="1241"class="3">Pickled Vegetables</option>
+            <option value="1242"class="3">Hearty Dried Vegetables</option>
+            <option value="1250"class="3">Dried Fruit</option>
+            <option value="1251"class="3">Brandied Fruit</option>
+            <option value="1260"class="3">Sausage</option>
+            <option value="1261"class="3">Fried Meat</option>
+            <option value="1262"class="3">Roast</option>
+            <option value="1263"class="3">Cured Meat</option>
+            <option value="1264"class="3">Salted Meat</option>
+            <option value="1265"class="3">Preserved Eggs</option>
+            <option value="1266"class="3">Exotic Cured Meat</option>
+            <option value="1267"class="3">Boiled Meat</option>
+            <option value="1268"class="3">Noble Roast</option>
+            <option value="1269"class="3">Pemmican</option>
+            <option value="1270"class="3">Beef Stew</option>
+            <option value="1271"class="3">Kings Soup</option>
+            <option value="1272"class="3">Onion Soup</option>
+            <option value="1273"class="3">Huntsmans Soup</option>
+            <option value="1274"class="3">Chicken Soup</option>
+            <option value="1275"class="3">Fish Soup</option>
+            <option value="1276"class="3">Vegetable Soup</option>
+            <option value="1277"class="3">Seafood Soup</option>
+            <option value="1280"class="3">Baked Beans</option>
+            <option value="1281"class="3">Beans And Rice</option>
+            <option value="1282"class="3">Hash</option>
+            <option value="1283"class="3">Fried Crab</option>
+            <option value="1300"class="3">Vinegar</option>
+            <option value="1301"class="3">Sugar</option>
+            <option value="1302"class="3">Olive Oil</option>
+            <option value="1304"class="3">Ketchup</option>
+            <option value="1305"class="3">Basic Spice Pack</option>
+            <option value="1306"class="3">Royal Spice Pack</option>
+            <option value="1307"class="3">Pastry Dough</option>
+            <option value="1308"class="3">Fruit Preserve</option>
+            <option value="1309"class="3">Exotic Fruit Preserve</option>
+            <option value="1310"class="3">Mushroom Stock</option>
+            <option value="1311"class="3">Meat Stock</option>
+            <option value="1312"class="3">Vegetable Stock</option>
+            <option value="1313"class="3">Bone Stock</option>
+            <option value="1314"class="3">Barm</option>
+            <option value="1315"class="3">Molasses</option>
+            <option value="1320"class="3">Cider Sauce</option>
+            <option value="1321"class="3">Wine Sauce</option>
+            <option value="1322"class="3">Spicy Sauce</option>
+            <option value="1330"class="3">Flour</option>
+            <option value="1331"class="3">Wheat Flour</option>
+            <option value="1332"class="3">Rye Flour</option>
+            <option value="1333"class="3">Corn Flour</option>
+      
+      
+            <option value="1900" class="4">Fodder Bread</option>
+            <option value="1901" class="4">Main Ration 1</option>
+            <option value="1902" class="4">Main Ration 2</option>
+            <option value="1903" class="4">Main Ration 3</option>
+            <option value="1904" class="4">Main Ration 4</option>
+            <option value="1905" class="4">Main Ration 5</option>
+            <option value="1906" class="4">Main Ration 6</option>
+            <option value="1907" class="4">Main Ration 7</option>
+            <option value="1908" class="4">Main Ration 8</option>
+            <option value="1909" class="4">Main Ration 9</option>
+            <option value="1911" class="4">Extras 1</option>
+            <option value="1912" class="4">Extras 2</option>
+            <option value="1913" class="4">Extras 3</option>
+            <option value="1914" class="4">Extras 4</option>
+            <option value="1915" class="4">Extras 5</option>
+            <option value="1916" class="4">Extras 6</option>
+            <option value="1917" class="4">Extras 7</option>
+            <option value="1918" class="4">Extras 8</option>
+            <option value="1919" class="4">Extras 9</option>
+            <option value="1921" class="4">Drink Pack 1</option>
+            <option value="1922" class="4">Drink Pack 2</option>
+            <option value="1923" class="4">Drink Pack 3</option>
+            <option value="1924" class="4">Drink Pack 4</option>
+            <option value="1925" class="4">Drink Pack 5</option>
+            <option value="1926" class="4">Drink Pack 6</option>
+            <option value="1927" class="4">Drink Pack 7</option>
+            <option value="1928" class="4">Drink Pack 8</option>
+            <option value="1929" class="4">Drink Pack 9</option>
+            <option value="1990" class="4">Peasent Hunting Supplies</option>
+            <option value="1991" class="4">Low Noble Hunting Supplies</option>
+            <option value="1992" class="4">High Noble Hunting Supplies</option>
+      
+            <option value="-1"></option>
+            <option value="0">--Raw Materials</option>
+            <option value="-1"></option>
+            <option value="542" class="5">Wool</option>
+            <option value="543" class="5">Cotton</option>
+            <option value="2001" class="5">Stone</option>
+            <option value="2002" class="5">Wood</option>
+            <option value="2003" class="5">Salt</option>
+            <option value="2021" class="5">Iron Ore</option>
+            <option value="2022" class="5">Gold Ore</option>
+            <option value="2023" class="5">Silver Ore</option>
+            <option value="2024" class="5">Copper Ore</option>
+            <option value="2025" class="5">Tin Ore</option>
+      
+          
+            <option value="-1"></option>
+            <option value="0">--Industrial Goods</option>
+            <option value="-1"></option>
+      
+            <option value="2101" class="6">Refined Stone Blocks</option>
+            <option value="2102" class="6">Carved Wood</option>
+            <option value="4000"class="6">Nails</option>
+            <option value="4001"class="6">Diamond Blade</option>
+            <option value="4002"class="6">Fabric</option>
+            <option value="4003"class="6">Down</option>
+            <option value="4004"class="6">Leather</option>
+            <option value="4005"class="6">Exotic Leather</option>
+            <option value="4006"class="6">Fur</option>
+            <option value="4007"class="6">Exotic Fur</option>
+            <option value="4008"class="6">Feather</option>
+            <option value="4009"class="6">Thick Leather</option>
+            <option value="4010"class="6">Antler</option>
+            <option value="4011"class="6">Ivory</option>
+            <option value="4012"class="6">Poison</option>
+            <option value="4013"class="6">Leopard Skin</option>
+            <option value="4014"class="6">Aurochs Hide</option>
+            <option value="4015"class="6">Black Leopard Skin</option>
+            <option value="4016"class="6">Bear Hide</option>
+            <option value="4017"class="6">Polar Bear Hide</option>
+            <option value="4018"class="6">Tiger Hide</option>
+            <option value="4019"class="6">Rushseed Oil</option>
+            <option value="4020"class="6">Cooked Bone</option>
+            <option value="4021"class="6">Sugarcane Pulp</option>
+            <option value="4022"class="6">Organic Pulp</option>
+            <option value="4023"class="6">Ash</option>
+            <option value="4024"class="6">Clay Beads</option>
+            <option value="4025"class="6">Hay</option>
+            <option value="4026"class="6">Antiseptic</option>
+            <option value="4027"class="6">Soap</option>
+            <option value="4028"class="6">Tar</option>
+            <option value="4030"class="6">Level 1 Fertilizer</option>
+            <option value="4031"class="6">Level 2 Fertilizer</option>
+            <option value="4032"class="6">Level 3 Fertilizer</option>
+            <option value="4040"class="6">Rare Fertilizer</option>
+      
+            <option value="2121" class="6">Iron</option>
+            <option value="2122" class="6">Gold</option>
+            <option value="2123" class="6">Silver</option>
+            <option value="2124" class="6">Copper</option>
+            <option value="2125" class="6">Tin</option>
+            <option value="2180" class="6">Emerald Bronze</option>
+            <option value="2181" class="6">Bronze</option>
+            <option value="2182" class="6">Steel</option>
+            <option value="2183" class="6">Damascus Steel</option>
+      
+            <option value="4100" class="6">Bronze_Plate</option>
+            <option value="4101" class="6">Iron_Plate</option>
+            <option value="4102" class="6">Steel_Plate</option>
+            <option value="4103" class="6">Emerald_Bronze_Plate</option>
+            <option value="4104" class="6">Damascus_Steel_Plate</option>
+            <option value="4105" class="6">Bronze_Chainmail</option>
+            <option value="4106" class="6">Iron_Chainmail</option>
+            <option value="4107" class="6">Steel_Chainmail</option>
+            <option value="4108" class="6">Emerald_Bronze_Chainmail</option>
+            <option value="4109" class="6">Damascus_Steel_Chainmail</option>
+      
+            
+            <option value="-1"></option>
+            <option value="0">--Gemstones</option>
+            <option value="-1"></option>
+            <option value="2200" class="7">Ruby</option>
+            <option value="2201" class="7">Emerald</option>
+            <option value="2202" class="7">Sapphire</option>
+            <option value="2203" class="7">Diamond</option>
+            <option value="2204" class="7">Amethyst</option>
+            <option value="2205" class="7">Opal</option>
+            <option value="2206" class="7">Citrine</option>
+            <option value="2207" class="7">Pearls</option>
+            <option value="2208" class="7">Moonstone</option>
+            <option value="2209" class="7">Amber</option>
+            <option value="2210" class="7">Onyx</option>
+            <option value="2211" class="7">Aquamarine</option>
+            <option value="2212" class="7">Crystal Glass</option>
+            <option value="2213" class="7">Bloodstone</option>
+            <option value="2300" class="7">Polished Ruby</option>
+            <option value="2301" class="7">Polished Emerald</option>
+            <option value="2302" class="7">Polished Sapphire</option>
+            <option value="2303" class="7">Polished Diamond</option>
+            <option value="2304" class="7">Polished Amethyst</option>
+            <option value="2305" class="7">Polished Opal</option>
+            <option value="2306" class="7">Polished Citrine</option>
+            <option value="2307" class="7">Polished Pearls</option>
+            <option value="2308" class="7">Polished Moonstone</option>
+            <option value="2309" class="7">Polished Amber</option>
+            <option value="2310" class="7">Polished Onyx</option>
+            <option value="2311" class="7">Polished Aquamarine</option>
+            <option value="2312" class="7">Polished Crystal Glass</option>
+      
+            <option value="-1"></option>
+            <option value="0">--Civilian Goods</option>
+            <option value="-1"></option>
+      
+            <option value="4500" class="8">Fur_Clothes</option>
+            <option value="4501" class="8">Fabric_Clothes</option>
+            <option value="4502" class="8">Leather_Clothes</option>
+            <option value="4503" class="8">Tailored_Fur_Clothes</option>
+            <option value="4504" class="8">Tailored_Fabric_Clothes</option>
+            <option value="4505" class="8">Clothes</option>
+            <option value="4520" class="8">Basic_Furniture</option>
+            <option value="4521" class="8">Ornate_Furniture</option>
+            <option value="4522" class="8">Oppulant_Furniture</option>
+            <option value="4540" class="8">Basic_Tool</option>
+            <option value="4541" class="8">Artisan_Tool</option>
+            <option value="4542" class="8">Oppulant_Tool</option>
+            <option value="4560" class="8">Copper_Jewelery</option>
+            <option value="4561" class="8">Silver_Jewelery</option>
+            <option value="4562" class="8">Gold_Jewelery</option>
+            <option value="4580" class="8">Fur_Bedding</option>
+            <option value="4581" class="8">Enhanced_Bedding</option>
+            <option value="4582" class="8">Down_Beeding</option>
+      
+            <option value="28800" class="0">Coins</option>
+      
+      
+            
+            <option value="-1"></option>
+            <option value="0">--War Stuff</option>
+            <option value="-1"></option>
+      
+            <option value="5000"class="9">Bronze Spear</option>
+            <option value="5001"class="9">Iron Spear</option>
+            <option value="5002"class="9">Steel Spear</option>
+            <option value="5003"class="9">Emerald Bronze Spear</option>
+            <option value="5004"class="9">Damascus Steel Spear</option>
+            <option value="5010"class="9">Bronze Axe</option>
+            <option value="5011"class="9">Iron Axe</option>
+            <option value="5012"class="9">Steel Axe</option>
+            <option value="5013"class="9">Emerald Bronze Axe</option>
+            <option value="5014"class="9">Damascus Steel Axe</option>
+            <option value="5020"class="9">Bronze Sword</option>
+            <option value="5021"class="9">Iron Sword</option>
+            <option value="5022"class="9">Steel Sword</option>
+            <option value="5023"class="9">Emerald Bronze Sword</option>
+            <option value="5024"class="9">Damascus Steel Sword</option>
+            <option value="5025"class="9">Diamond Sword</option>
+            <option value="5030"class="9">Bronze Mace</option>
+            <option value="5031"class="9">Iron Mace</option>
+            <option value="5032"class="9">Steel Mace</option>
+            <option value="5033"class="9">Emerald Bronze Mace</option>
+            <option value="5034"class="9">Damascus Steel Mace</option>
+            <option value="5040"class="9">Bronze Lance</option>
+            <option value="5041"class="9">Iron Lance</option>
+            <option value="5042"class="9">Steel Lance</option>
+            <option value="5043"class="9">Emerald Bronze Lance</option>
+            <option value="5044"class="9">Damascus Steel Lance</option>
+            <option value="5050"class="9">Bronze Poleaxe</option>
+            <option value="5051"class="9">Iron Poleaxe</option>
+            <option value="5052"class="9">Steel Poleaxe</option>
+            <option value="5053"class="9">Emerald Bronze Poleaxe</option>
+            <option value="5054"class="9">Damascus Steel Poleaxe</option>
+            <option value="5060"class="9">Bronze Greatsword</option>
+            <option value="5061"class="9">Iron Greatsword</option>
+            <option value="5062"class="9">Steel Greatsword</option>
+            <option value="5063"class="9">Emerald Bronze Greatsword</option>
+            <option value="5064"class="9">Damascus Steel Greatsword</option>
+            <option value="5070"class="9">Bronze Warhammer</option>
+            <option value="5071"class="9">Iron Warhammer</option>
+            <option value="5072"class="9">Steel Warhammer</option>
+            <option value="5073"class="9">Emerald Bronze Warhammer</option>
+            <option value="5074"class="9">Damascus Steel Warhammer</option>
+            <option value="5080"class="9">Bronze Elephant Tusk Cap</option>
+            <option value="5081"class="9">Iron Elephant Tusk Cap</option>
+            <option value="5082"class="9">Steel Elephant Tusk Cap</option>
+            <option value="5083"class="9">Beryl Bronze Elephant Tusk Cap</option>
+            <option value="5084"class="9">Damascus Elephant Tusk Cap</option>
+            <option value="5090"class="9">Bronze Rhino Tusk Cap</option>
+            <option value="5091"class="9">Iron Rhino Tusk Cap</option>
+            <option value="5092"class="9">Steel Rhino Tusk Cap</option>
+            <option value="5093"class="9">Beryl Bronze Rhino Tusk Cap</option>
+            <option value="5094"class="9">Damascus Rhino Tusk Cap</option>
+            <option value="5200"class="9">BasicBow</option>
+            <option value="5201"class="9">Longbow</option>
+            <option value="5202"class="9">Greatbow</option>
+            <option value="5210"class="9">Simple Crossbow</option>
+            <option value="5211"class="9">Basic Sling</option>
+            <option value="5212"class="9">Heavy Flamer</option>
+            <option value="5213"class="9">Flame Grenade</option>
+            <option value="5214"class="9">Golden Sling</option>
+            <option value="5400"class="9">Farm Horse</option>
+            <option value="5401"class="9">Horse</option>
+            <option value="5402"class="9">Charge Horse</option>
+            <option value="5403"class="9">War Horse</option>
+            <option value="5420"class="9">Trained Elephant</option>
+            <option value="5430"class="9">Trained Rhino</option>
+            <option value="5500"class="9">Light Bronze Mail</option>
+            <option value="5501"class="9">Light Iron Mail</option>
+            <option value="5502"class="9">Light Steel Mail</option>
+            <option value="5503"class="9">Light Emerald Bronze Mail</option>
+            <option value="5504"class="9">Light Damascus Steel Mail</option>
+            <option value="5510"class="9">Light Bronze Plate</option>
+            <option value="5511"class="9">Light Iron Plate</option>
+            <option value="5512"class="9">Light Steel Plate</option>
+            <option value="5513"class="9">Light Emerald Bronze Plate</option>
+            <option value="5514"class="9">Light Damascus Steel Plate</option>
+            <option value="5520"class="9">Medium Bronze Mail</option>
+            <option value="5521"class="9">Medium Iron Mail</option>
+            <option value="5522"class="9">Medium Steel Mail</option>
+            <option value="5523"class="9">Medium Emerald Bronze Mail</option>
+            <option value="5524"class="9">Medium Damascus Steel Mail</option>
+            <option value="5530"class="9">Medium Bronze Plate</option>
+            <option value="5531"class="9">Medium Iron Plate</option>
+            <option value="5532"class="9">Medium Steel Plate</option>
+            <option value="5533"class="9">Medium Emerald Bronze Plate</option>
+            <option value="5534"class="9">Medium Damascus Steel Plate</option>
+            <option value="5540"class="9">Bronze Heavy Armor</option>
+            <option value="5541"class="9">Iron Heavy Armor</option>
+            <option value="5542"class="9">Steel Heavy Armor</option>
+            <option value="5543"class="9">Emerald Bronze Heavy Armor</option>
+            <option value="5544"class="9">Damascus Steel Heavy Armor</option>
+            <option value="5550"class="9">Light Bronze Horse Armor</option>
+            <option value="5551"class="9">Light Iron Horse Armor</option>
+            <option value="5552"class="9">Light Steel Horse Armor</option>
+            <option value="5553"class="9">Light Emerald Bronze Horse Armor</option>
+            <option value="5554"class="9">Light Damascus Steel Horse Armor</option>
+            <option value="5560"class="9">Medium Bronze Horse Armor</option>
+            <option value="5561"class="9">Medium Iron Horse Armor</option>
+            <option value="5562"class="9">Medium Steel Horse Armor</option>
+            <option value="5563"class="9">Medium Emerald Bronze Horse Armor</option>
+            <option value="5564"class="9">Medium Damascus Steel Horse Armor</option>
+            <option value="5570"class="9">Heavy Bronze Horse Armor</option>
+            <option value="5571"class="9">Heavy Iron Horse Armor</option>
+            <option value="5572"class="9">Heavy Steel Horse Armor</option>
+            <option value="5573"class="9">Heavy Emerald Bronze Horse Armor</option>
+            <option value="5574"class="9">Heavy Damascus Steel Horse Armor</option>
+            <option value="5580"class="9">Leather Armor</option>
+            <option value="5581"class="9">Thick Leather Armor</option>
+            <option value="5582"class="9">Gambeson</option>
+            <option value="5800"class="9">Bronze Rhino Armor</option>
+            <option value="5801"class="9">Iron Rhino Armor</option>
+            <option value="5802"class="9">Steel Rhino Armor</option>
+            <option value="5803"class="9">Emerald Bronze Rhino Armor</option>
+            <option value="5804"class="9">Damascus Steel Rhino Armor</option>
+            <option value="5810"class="9">Heavy Bronze Rhino Armor</option>
+            <option value="5811"class="9">Heavy Iron Rhino Armor</option>
+            <option value="5812"class="9">Heavy Steel Rhino Armor</option>
+            <option value="5813"class="9">Heavy Emerald Bronze Rhino Armor</option>
+            <option value="5814"class="9">Heavy Damascus Steel Rhino Armor</option>
+            <option value="5820"class="9">Bronze Elephant Armor</option>
+            <option value="5821"class="9">Iron Elephant Armor</option>
+            <option value="5822"class="9">Steel Elephant Armor</option>
+            <option value="5823"class="9">Emerald Bronze Elephant Armor</option>
+            <option value="5824"class="9">Damascus Steel Elephant Armor</option>
+            <option value="5830"class="9">Heavy Bronze Elephant Armor</option>
+            <option value="5831"class="9">Heavy Iron Elephant Armor</option>
+            <option value="5832"class="9">Heavy Steel Elephant Armor</option>
+            <option value="5833"class="9">Heavy Emerald Bronze Elephant Armor</option>
+            <option value="5834"class="9">Heavy Damascus Steel Elephant Armor</option>
+            <option value="5900"class="9">Wooden Shield</option>
+            <option value="5901"class="9">Banded Shield</option>
+            <option value="5902"class="9">Standard Shield</option>
+            <option value="5903"class="9">Metal Shield</option>
+            <option value="5904"class="9">Gong Shield</option>
+            <option value="5905"class="9">Heirloom Shield</option>
+            <option value="5910"class="9">Wall Shield</option>
+            <option value="5911"class="9">Advanced Wall Shield</option>
+            
+      
+            <option value="28502" class="9">Tier 2 XP</option>
+            <option value="28503" class="9">Tier 3 XP</option>
+            <option value="28504" class="9">Tier 4 XP</option>
+            <option value="28505" class="9">Tier 5 XP</option>
+            <option value="28506" class="9">Tier 6 XP</option>
+            <option value="28507" class="9">Tier 7 XP</option>
+            <option value="28508" class="9">Tier 8 XP</option>
+            <option value="-1"></option>
+            <option value="0">--Animals</option>
+            <option value="-1"></option>
+      
+      
+              <option value="7000" class="10">Rabbit</option>
+              <option value="7001" class="10">Deer</option>
+              <option value="7002" class="10">Turkey</option>
+              <option value="7003" class="10">Mink</option>
+              <option value="7004" class="10">Cyote</option>
+              <option value="7005" class="10">Snake</option>
+              <option value="7100" class="10">Fox</option>
+              <option value="7101" class="10">Boar</option>
+              <option value="7102" class="10">Zebra</option>
+              <option value="7103" class="10">Reindeer</option>
+              <option value="7104" class="10">Leopard</option>
+              <option value="7105" class="10">Crocodile</option>
+              <option value="7106" class="10">Otter</option>
+              <option value="7107" class="10">Wolf</option>
+              <option value="7108" class="10">Seal</option>
+              <option value="7109" class="10">Ostridge</option>
+              <option value="7200" class="10">Elk</option>
+              <option value="7201" class="10">Aurochs</option>
+              <option value="7202" class="10">Black Leopard</option>
+              <option value="7203" class="10">Bear</option>
+              <option value="7204" class="10">Sea Mink</option>
+              <option value="7205" class="10">Whalrus</option>
+              <option value="7206" class="10">Poison Snake</option>
+              <option value="7300" class="10">Elephant</option>
+              <option value="7301" class="10">Rhino</option>
+              <option value="7302" class="10">Polar Bear</option>
+              <option value="7303" class="10">Tiger</option>
+              <option value="7304" class="10">Titan Snake</option>
+              <option value="7400" class="10">Cow</option>
+              <option value="7401" class="10">Chicken</option>
+              <option value="7402" class="10">Sheep</option>
+      
+              <option value="-1"></option>
+              <option value="0">--Soliders</option>
+              <option value="-1"></option>
+      
+              <option value="10001"class="11">T1 Spearman</option>
+              <option value="10002"class="11">T2 Spearman</option>
+              <option value="10003"class="11">T3 Spearman</option>
+              <option value="10004"class="11">T4 Spearman</option>
+              <option value="10005"class="11">T5 Spearman</option>
+              <option value="10006"class="11">T6 Spearman</option>
+              <option value="10007"class="11">T7 Spearman</option>
+              <option value="10008"class="11">T8 Spearman</option>
+              <option value="10011"class="11">T1 Swordman</option>
+              <option value="10012"class="11">T2 Swordman</option>
+              <option value="10013"class="11">T3 Swordman</option>
+              <option value="10014"class="11">T4 Swordman</option>
+              <option value="10015"class="11">T5 Swordman</option>
+              <option value="10016"class="11">T6 Swordman</option>
+              <option value="10017"class="11">T7 Swordman</option>
+              <option value="10018"class="11">T8 Swordman</option>
+              <option value="10021"class="11">T1 Axeman</option>
+              <option value="10022"class="11">T2 Axeman</option>
+              <option value="10023"class="11">T3 Axeman</option>
+              <option value="10024"class="11">T4 Axeman</option>
+              <option value="10025"class="11">T5 Axeman</option>
+              <option value="10026"class="11">T6 Axeman</option>
+              <option value="10027"class="11">T7 Axeman</option>
+              <option value="10028"class="11">T8 Axeman</option>
+              <option value="10201"class="11">T1 Archer</option>
+              <option value="10202"class="11">T2 Archer</option>
+              <option value="10203"class="11">T3 Archer</option>
+              <option value="10204"class="11">T4 Archer</option>
+              <option value="10205"class="11">T5 Archer</option>
+              <option value="10206"class="11">T6 Archer</option>
+              <option value="10207"class="11">T7 Archer</option>
+              <option value="10208"class="11">T8 Archer</option>
+              <option value="10211"class="11">T1 Slinger</option>
+              <option value="10212"class="11">T2 Slinger</option>
+              <option value="10213"class="11">T3 Slinger</option>
+              <option value="10214"class="11">T4 Slinger</option>
+              <option value="10215"class="11">T5 Slinger</option>
+              <option value="10216"class="11">T6 Slinger</option>
+              <option value="10217"class="11">T7 Slinger</option>
+              <option value="10218"class="11">T8 Slinger</option>
+              <option value="10225"class="11">T5 Flamer</option>
+              <option value="10226"class="11">T6 Flamer</option>
+              <option value="10227"class="11">T7 Flamer</option>
+              <option value="10228"class="11">T8 Flamer</option>
+              <option value="10231"class="11">T1 Crossbowman</option>
+              <option value="10232"class="11">T2 Crossbowman</option>
+              <option value="10233"class="11">T3 Crossbowman</option>
+              <option value="10234"class="11">T4 Crossbowman</option>
+              <option value="10235"class="11">T5 Crossbowman</option>
+              <option value="10236"class="11">T6 Crossbowman</option>
+              <option value="10237"class="11">T7 Crossbowman</option>
+              <option value="10238"class="11">T8 Crossbowman</option>
+              <option value="10301"class="11">T1 Lancer</option>
+              <option value="10302"class="11">T2 Lancer</option>
+              <option value="10303"class="11">T3 Lancer</option>
+              <option value="10304"class="11">T4 Lancer</option>
+              <option value="10305"class="11">T5 Lancer</option>
+              <option value="10306"class="11">T6 Lancer</option>
+              <option value="10307"class="11">T7 Lancer</option>
+              <option value="10308"class="11">T8 Lancer</option>
+              <option value="10311"class="11">T1 Mounted Swordman</option>
+              <option value="10312"class="11">T2 Mounted Swordman</option>
+              <option value="10313"class="11">T3 Mounted Swordman</option>
+              <option value="10314"class="11">T4 Mounted Swordman</option>
+              <option value="10315"class="11">T5 Mounted Swordman</option>
+              <option value="10316"class="11">T6 Mounted Swordman</option>
+              <option value="10317"class="11">T7 Mounted Swordman</option>
+              <option value="10318"class="11">T8 Mounted Swordman</option>
+              <option value="10321"class="11">T1 Mounted Axeman</option>
+              <option value="10322"class="11">T2 Mounted Axeman</option>
+              <option value="10323"class="11">T3 Mounted Axeman</option>
+              <option value="10324"class="11">T4 Mounted Axeman</option>
+              <option value="10325"class="11">T5 Mounted Axeman</option>
+              <option value="10326"class="11">T6 Mounted Axeman</option>
+              <option value="10327"class="11">T7 Mounted Axeman</option>
+              <option value="10328"class="11">T8 Mounted Axeman</option>
+              <option value="10505"class="11">T5 Elephant</option>
+              <option value="10506"class="11">T6 Elephant</option>
+              <option value="10507"class="11">T7 Elephant</option>
+              <option value="10508"class="11">T8 Elephant</option>
+              <option value="10525"class="11">T5 Rhino</option>
+              <option value="10526"class="11">T6 Rhino</option>
+              <option value="10527"class="11">T7 Rhino</option>
+              <option value="10528"class="11">T8 Rhino</option>
+              <option value="10601"class="11">T1 Horse Archer</option>
+              <option value="10602"class="11">T2 Horse Archer</option>
+              <option value="10603"class="11">T3 Horse Archer</option>
+              <option value="10604"class="11">T4 Horse Archer</option>
+              <option value="10605"class="11">T5 Horse Archer</option>
+              <option value="10606"class="11">T6 Horse Archer</option>
+              <option value="10607"class="11">T7 Horse Archer</option>
+              <option value="10608"class="11">T8 Horse Archer</option>
+      
+              <option value="11000"class="12">Bandits</option>
+              <option value="11010"class="12">Peasent Levy</option>
+              <option value="11011"class="12">Veteran Peasent Levy</option>
+              <option value="11020"class="12">Levy Spear</option>
+              <option value="11021"class="12">Veteran Levy Spear</option>
+              <option value="11030"class="12">Mountain Levy</option>
+              <option value="11031"class="12">Veteran Mountain Levy</option>
+              <option value="11040"class="12">Mercenary Swordman</option>
+              <option value="11041"class="12">Veteran Mercenary Swordman</option>
+              <option value="11042"class="12">Palace Guard</option>
+              <option value="11050"class="12">Mercenary Axeman</option>
+              <option value="11060"class="12">Mercenary Maceman</option>
+              <option value="11070"class="12">Pikeman</option>
+              <option value="11200"class="12">Peasent Bowman</option>
+              <option value="11210"class="12">Levy Archer</option>
+              <option value="11211"class="12">Veteran Levy Archer</option>
+              <option value="11220"class="12">Huntsman</option>
+              <option value="11230"class="12">Slinger</option>
+              <option value="11231"class="12">Golden Slinger</option>
+              <option value="11241"class="12">Imperial Flamer</option>
+              <option value="11300"class="12">Free Lance</option>
+              <option value="11301"class="12">Knight</option>
+              <option value="11310"class="12">Mounted Levy</option>
+              <option value="11311"class="12">Mounted Palace Guard</option>
+              <option value="11501"class="12">War Elephant</option>
+              <option value="11502"class="12">Elite War Elephant</option>
+              <option value="11520"class="12">War Rhino</option>
+              <option value="11521"class="12">Elite War Elephant</option>
+              <option value="11600"class="12">Horse Archer</option>
+              <option value="11601"class="12">Veteran Horse Archer</option>
+              <option value="11602"class="12">Palace Archer</option>
+      
+      
+      
     
         </select>
       </ItemMenu>

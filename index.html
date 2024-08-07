@@ -86,42 +86,39 @@
 
     var SellAllCheck = false;
 
-    var address;
-    var waraddress;
-    var landGiveaway;
-    var landMerchant;
-    var tradingEvent;
     var provider;
     var network;
     var signer;
-    var NFTcontract;
-    var NFTcontractSigner;
+    var cityContract
+    var cityContractSigner;
+    var merchantContract;
+    var merchantContractSigner;
+    var baseContract;
+    var baseContractSigner;
     var myAddress;
     var cityData;
 
     async function welcome() {
-      
-      const addies = await _address();
-      address = addies[0];
-      waraddress = addies[1];
-      landGiveaway = addies[2];
-      landMerchant = addies[3];
-      tradingEvent = addies[4];
+
 
       provider = new ethers.providers.Web3Provider(window.ethereum)
 
       network = await provider.getNetwork();
 
       signer = provider.getSigner()
-      NFTcontract = new ethers.Contract(address, abi, provider);
-      NFTcontractSigner = new ethers.Contract(address, abi, signer);
+      cityContract = new ethers.Contract(cityAddress, city_abi, provider);
+      cityContractSigner = new ethers.Contract(cityAddress, city_abi, signer);
+      baseContract = new ethers.Contract(baseAddress, base_abi, provider);
+      baseContractSigner = new ethers.Contract(baseAddress, base_abi, signer);
+      merchantContract = new ethers.Contract(merchantAddress, merchant_abi, provider);
+      merchantContractSigner = new ethers.Contract(merchantAddress, merchant_abi, signer);
 
       myAddress = await signer.getAddress();
-      cityData = await NFTcontract.getKingdomInfo(myAddress);
+      cityData = await cityContract.getKingdomInfo(myAddress);
 
-      buildingData = await NFTcontract.getBuildingCount(myAddress);
+      buildingData = await cityContract.getBuildingCount(myAddress);
 
-      stockAmounts = await NFTcontract.getGeneralStockpile(myAddress);
+      stockAmounts = await cityContract.getGeneralStockpile(myAddress);
 
     }
 
@@ -214,7 +211,7 @@
 
         case "1":
           txWaiter = true;
-          var tx = await NFTcontractSigner.plant(
+          var tx = await cityContractSigner.plant(
 
             LandMenu.value,
             document.getElementById("Amount").value,
@@ -247,32 +244,42 @@
           }
           if(BatchAmount.value == 0 || Amount.value == 0){Error("Amount is not valid");}
           txWaiter = true;
-          var tx = await NFTcontractSigner.cook(
+          var tx = await cityContractSigner.cook(
             document.getElementById("RecipeID").value,
-            document.getElementById("Amount").value,
+            document.getElementById("BatchAmount").value,
             items,
             document.getElementById("CID").value,
-            document.getElementById("BatchAmount").value,
+            document.getElementById("Amount").value,
           )
           break;
 
         case "3":
-        txWaiter = true;
+          var minTradePrice;
+          var BuyorSell;
+          minTradePrice = await calcTradeCost();
+          if(BuyorSellID.value == "true"){
+            minTradePrice *= 2;
+            BuyorSell = true;
+          }
+          else{
+            minTradePrice /= 2;
+            BuyorSell = false;
+          }
+          txWaiter = true;
 
-          const Trade = Number(document.getElementById("ItemMenuID").value) + Number(document.getElementById("BuyorSellID").value)
+          const Trade = Number(document.getElementById("ItemMenuID").value)
           console.log("Trade:",Trade);
-          var tx = await NFTcontractSigner.cook(
-            Trade,
+          var tx = await merchantContractSigner.tradeItem(
+            document.getElementById("ItemMenuID").value,
             document.getElementById("Amount").value,
-            [document.getElementById("ItemMenuID").value,0,0,0,0,0,0,0],
-            200,
-            1
+            minTradePrice,
+            BuyorSell
           )
           break;
 
         case "4":
         txWaiter = true;
-          var tx = await NFTcontractSigner.developCity(
+          var tx = await cityContractSigner.developCity(
             document.getElementById("CID").value,
             document.getElementById("Amount").value,
             LandMenu.value
@@ -280,36 +287,36 @@
           break;
         case "5":
         txWaiter = true;
-          var tx = await NFTcontractSigner.claim(
+          var tx = await cityContractSigner.claim(
             LandMenu.value
           )
           break;
         case "6":
         txWaiter = true;
-          var tx = await NFTcontractSigner.allocateLand(
+          var tx = await cityContractSigner.allocateLand(
             LandMenu.value,
             document.getElementById("Amount").value)
           break;
         case "7":
         txWaiter = true;
-          var tx = await NFTcontractSigner.payTithe(
+          var tx = await cityContractSigner.payTithe(
             document.getElementById("CivGM").value,
             document.getElementById("Amount").value)
           break;
         case "8":
           txWaiter = true;
-          var tx = await NFTcontractSigner.addFood(
+          var tx = await cityContractSigner.addFood(
             document.getElementById("foodInputID").value,
             document.getElementById("Amount").value
           ) 
           break;
         case "9":
         txWaiter = true;
-          var tx = await NFTcontractSigner.recruitNewPeople(RecruitID.value, Amount.value)
+          var tx = await cityContractSigner.recruitNewPeople(RecruitID.value, Amount.value)
           break;
         case "10":
         txWaiter = true;
-          var tx = await NFTcontractSigner.collect(document.getElementById("CID").value)
+          var tx = await cityContractSigner.collect(document.getElementById("CID").value)
           break;
         case "11":
           break;
@@ -318,8 +325,10 @@
           break;
 
         case "13":
+            erc1155ContractSigner = new ethers.Contract(erc1155Address, erc1155_abi, signer);
+
             txWaiter = true;
-            var tx = await NFTcontractSigner.safeTransferFrom(myAddress,
+            var tx = await baseContractSigner.safeTransferFrom(myAddress,
             document.getElementById("Address").value,
             document.getElementById("ItemMenuID").value,
             document.getElementById("Amount").value,
@@ -344,15 +353,10 @@
 
       hideBuildingCost();
 
-      const provider = new ethers.providers.Web3Provider(window.ethereum)
-
-      const signer = provider.getSigner()
-      const NFTcontract = new ethers.Contract(address, abi, provider)
-      const myAddress = await signer.getAddress()
       if (actionSelect.value == "4") {
         const building_info = eval("building" + CID.value);
         const addyArray = [myAddress,myAddress,myAddress,myAddress,myAddress];
-        const itemBal = await NFTcontract.balanceOfBatch(addyArray,building_info[1]);
+        const itemBal = await baseContract.balanceOfBatch(addyArray,building_info[1]);
         console.log("building info",building_info);
         document.getElementById("B-Cost").style.display = "block";
 
@@ -402,7 +406,7 @@
 
       _baseYield = Math.round(_baseYield);
 
-      const _stockpiles = await NFTcontract.getStockedGoods(myAddress);
+      const _stockpiles = await cityContract.getStockedGoods(myAddress);
       var _civ_stocks = _stockpiles[2];
       var _kingdomType = cityData[5];
       console.log(_civ_stocks);
@@ -424,7 +428,7 @@
       var _temp = KingdomTemp[_kingdomType];
 
       
-      var _season = await NFTcontract.returnSeason();
+      var _season = await cityContract.returnSeason();
 
       _season = Number(_season);
 
@@ -651,7 +655,7 @@
           for(let i = 0; i < allItems.length; ++i) {
             you_cubed.push(myAddress);
           }
-          const total_inventory = await NFTcontract.balanceOfBatch(you_cubed,allItems);
+          const total_inventory = await baseContract.balanceOfBatch(you_cubed,allItems);
           console.log(total_inventory);
           
           let thirdArray = [];
@@ -713,15 +717,15 @@
           let _max_population = cityData[2];
           let _land_available = cityData[4];
           let _kingdomType = cityData[5];
-          var _land = await NFTcontract.getLand(myAddress);
+          var _land = await cityContract.getLand(myAddress);
 
 
-          var _civilian_stockpiles = await NFTcontract.getStockedGoods(myAddress);
-          var _food_stockpiles = await NFTcontract.getGeneralStockpile(myAddress);
+          var _civilian_stockpiles = await cityContract.getStockedGoods(myAddress);
+          var _food_stockpiles = await cityContract.getGeneralStockpile(myAddress);
           let _tithe_items = _civilian_stockpiles[1];
 
-          var _buildingAmount = await NFTcontract.getBuildingCount(myAddress);
-          var _season = await NFTcontract.returnSeason();
+          var _buildingAmount = await cityContract.getBuildingCount(myAddress);
+          var _season = await cityContract.returnSeason();
 
           if(_season == 0) {_season = "Winter";}
           if(_season == 1) {_season = "Spring";}
@@ -817,7 +821,7 @@
             document.getElementById(_name).textContent = "Land Balance:"+_land[i]+" "+itemName(Kingdom_Lands[_kingdomType][i])+"________";
             if (_land_available[i] == false) { document.getElementById(_name).textContent += "Land is available"; }
             else {
-              const available_time_data = await NFTcontract.farmProgress(myAddress,i);
+              const available_time_data = await cityContract.farmProgress(myAddress,i);
               const available_time = Number(available_time_data[0]) + Number(available_time_data[5]);
               console.log(available_time, "Available Time");
               console.log(Date.now()/1000, "Current Time");
@@ -918,7 +922,7 @@
         else if(cropSelect.value == 2) {document.getElementById("totalCostID").textContent = "Total Cost: " + (Amount * TimeAmount.value) + " Low Noble Hunting Ration. Will require " + (5 * Amount) + " land.";}
         else if(cropSelect.value == 3) {document.getElementById("totalCostID").textContent = "Total Cost: " + (Amount * TimeAmount.value) + " High Noble Hunting Ration. Will require " + (100 * Amount) + " land.";}
       }
-      else if(actionSelect.value == "2" || actionSelect.value == "3") {
+      else if(actionSelect.value == "2") {
         let whyJS = returnRecipe(Number(selector()));
         var items = whyJS[1];
         var item_amount = whyJS[0];
@@ -940,7 +944,7 @@
           var _outputText;
           _outputText = item_output_amount[0] * Amount.value;
           if (time != 0) {
-            const _buildingCount = await NFTcontract.getBuildingCount(myAddress);
+            const _buildingCount = await cityContract.getBuildingCount(myAddress);
             console.log("is this running?");
             document.getElementById("BatchAmountLabel").textContent = "How many batches would you like to make? Max: ";
             document.getElementById("BatchAmountLabel").textContent += (maxAllowableOrders[document.getElementById("CID").value] * _buildingCount[document.getElementById("CID").value] / recipe_size)
@@ -992,10 +996,18 @@
             var _civ_bonus = await bonusCalc(1,0);
             console.log("Civ Bonus:",_civ_bonus);
 
-            setTTC((Number(Amount.value) * time * 100 / (_civ_bonus)));
+            setTTC((Number(Amount.value) * time * 100) / (_civ_bonus));
           }
           else { setTTC(Number(Amount) * time); }
         }
+
+      }
+      else if(actionSelect.value == "3") {
+        totalCostID.textContent = "Total Cost: ";
+        var tradeCost = await calcTradeCost();
+        totalCostID.textContent += tradeCost;
+        totalCostID.textContent += " Coins";
+
 
       }
       else if(actionSelect.value == "7") {
@@ -1003,7 +1015,7 @@
         let _kingdomType = cityData[5];
         let _popData = cityData[0];
         
-        const _stockedGoods = await NFTcontract.getStockedGoods(myAddress);
+        const _stockedGoods = await cityContract.getStockedGoods(myAddress);
         const _goods = _stockedGoods[1][CivGM.value];
         console.log((_goods + (Amount.value * 4)));
         if((_goods + (Amount.value * 4)) > 25){document.getElementById("totalCostID").textContent = "Error: You are trying to stock too many goods at once. The maximum amount your storage can currently handle is " + Math.floor((24 - _goods)/4)}
@@ -1030,6 +1042,9 @@
             break;
         }
 
+      }
+      else{
+        document.getElementById("totalCostID").style.display = "none";
       }
       }
     
@@ -1193,18 +1208,11 @@
       if(SellAllCheck == false){SellAllCheck = true}
       else{SellAllCheck = false}
     }
-    async function sellCheck() {
-
-      if(BuyorSellID.value == "100000"){
-        sellAllCheckbox.style.display = "inline-block";
-        sellAllText.style.display = "inline";
-      }
-    }
     
     async function sellAll() {
 
-      if(BuyorSellID.value == "100000" && SellAllCheck == true){       
-        var _item = await NFTcontract.balanceOf(myAddress, ItemMenuID.value);
+      if(BuyorSellID.value && SellAllCheck == true){       
+        var _item = await baseContract.balanceOf(myAddress, ItemMenuID.value);
         if(Number(itemValue(Number(ItemMenuID.value))) < 20){_item = (Math.floor(_item/100));}
         Amount.value = _item;
         AmountID.style.display = "none";
@@ -1218,6 +1226,51 @@
         ShopingNotice.style.display = "block";
       }
 
+
+    }
+    async function calcTradeCost() {
+      var MarketSize = await merchantContract.returnMarketSize(Number(ItemMenuID.value));
+      var TotalMarketSize = await merchantContract.returnMarketSizeMultiplier();
+      var LandSold = await merchantContract.returnTotalLandSales();
+      var ItemValue = itemValue(Number(ItemMenuID.value));
+      var marketFee = await merchantContract.returnMarketFee();
+      var AmountSold = await merchantContract.returnAmountSold(Number(ItemMenuID.value));
+      LandSold = Number(LandSold);
+      AmountSold = Number(AmountSold);
+      MarketSize = Number(MarketSize);
+      MarketSize = 10;
+      marketFee = Number(marketFee);
+
+      console.log(MarketSize);
+      var tradeCost
+      var finalTradeCost
+
+      if(BuyorSellID.value == "true"){
+        AmountSold += Math.floor(Number(Amount.value)/2);
+        console.log(AmountSold);
+      }
+      else{
+        AmountSold -= Math.floor(Number(Amount.value)/2);
+        console.log(AmountSold,"e");
+      }
+      if(AmountSold > 0){
+        tradeCost = Math.floor((Number(TotalMarketSize) * Math.floor(Math.floor(Number(AmountSold)/Number(MarketSize)) + LandSold))/LandSold);
+        console.log(tradeCost);
+      }
+      else{
+        AmountSold = Math.abs(AmountSold);
+        tradeCost = Math.floor((Number(TotalMarketSize) * LandSold) / (Math.floor(AmountSold/MarketSize) + LandSold));
+        console.log(tradeCost, "e");
+      }
+      finalTradeCost = Math.floor((Amount.value * Number(ItemValue)) * Math.floor((tradeCost/Math.floor(Number(TotalMarketSize)/100)))/100);
+      console.log(finalTradeCost, "f");
+      if(BuyorSellID.value == "true"){
+        finalTradeCost = Math.floor(finalTradeCost * 10000 / marketFee);
+      }
+      else{
+        finalTradeCost = Math.floor(finalTradeCost * marketFee / 10000);
+      }
+      return(finalTradeCost)
 
     }
     
@@ -1240,7 +1293,11 @@
       return _r;
 
     }
-
+    
+    function setBuyString(){
+      console.log(BuyorSellID.value)
+    }
+    
     function hideAll() {
 
       hideMultiSelector();
@@ -1336,7 +1393,7 @@
 
     async function kingdomHousingCheck() {
 
-      _buildings = await NFTcontract.getBuildingCount(myAddress);
+      _buildings = await cityContract.getBuildingCount(myAddress);
       console.log(_buildings);
       var _totalHousing = 0;
       var housingValid = true;
@@ -1357,18 +1414,15 @@
         document.getElementsByClassName("Items")[i].style.display = "none";
         document.getElementsByClassName("itemSelection")[i].style.display = "none";
       }
-
     }
     
     function showAmount() {
-
       document.getElementById("Amount").style.display = "block";
       document.getElementById("AmountID").style.display = "block";
       document.getElementById("AmountLabel").style.display = "block";
     }
 
     function hideAmount() {
-
       document.getElementById("Amount").style.display = "none";
       document.getElementById("AmountID").style.display = "none";
       document.getElementById("AmountLabel").style.display = "none";
@@ -1394,11 +1448,9 @@
       
       console.log("Food Amounts:", stockAmounts);
 
-
-
       var _temp_mod = _land_info[0];
 
-      var _season = await NFTcontract.returnSeason();
+      var _season = await cityContract.returnSeason();
 
       _season = Number(_season);
 
@@ -1442,7 +1494,7 @@
       for(let i = 0; i < 8; ++i){
         if(Kingdom_Lands[_kingdomType][i] == Number(LandMenu.value)){_selectedLand = i}
       }
-      _myLandArray= await NFTcontract.getLand(myAddress);
+      _myLandArray= await cityContract.getLand(myAddress);
       console.log("My Land Array",_myLandArray)
       console.log("Amount Of Selected Land:",_myLandArray[_selectedLand]);
       if(_availableLabor[0] < Amount.value){
@@ -1483,7 +1535,7 @@
     
     async function balanceOfItem(_value) {
 
-      const _item = await NFTcontract.balanceOf(myAddress, _value);
+      const _item = await baseContract.balanceOf(myAddress, _value);
       console.log(_item);
 
       itemBalance.textContent = "Balance Of Item:" + _item;
@@ -1543,17 +1595,16 @@
           for(let i = 0; i < allItems.length; ++i) {
             you_cubed.push(myAddress);
           }
-          const total_inventory = await NFTcontract.balanceOfBatch(you_cubed,allItems);
+          const total_inventory = await baseContract.balanceOfBatch(you_cubed,allItems);
 
           for(let i = 0; i < 3; ++i){
             CivGBalance.innerHTML += itemName(allItems[i]) + ": " + total_inventory[i] + " "
           }
     }
     
-   
     async function ShowFertilizer(_value) {
 
-      const _item = await NFTcontract.balanceOf(myAddress, _value);
+      const _item = await baseContract.balanceOf(myAddress, _value);
 
       FertilizerBalance.style.display = "block";
       FertilizerBalance.innerHTML = "You Have: " + _item;
@@ -1841,13 +1892,19 @@
       <option value="0">--Non-Edible Foods</option>
       <option value="-1"></option>
 
+      <option value="501" class="4">Wheat Flour</option>
+      <option value="502" class="4">Rye Flour</option>
+      <option value="503" class="4">Rice Flour</option>
+      <option value="504" class="4">Corn Flour</option>
+      <option value="505" class="4">Sorghum Flour</option>
+      <option value="538" class="4">Barley Flour</option>
+      <option value="540" class="4">Oat Flour</option>
       <option value="1300" class="4">Vinegar</option>
       <option value="1301" class="4">Sugar From Honey</option>
       <option value="519" class="4">Sugar From Sugarcane</option>
       <option value="1315" class="4">Molasses From Sugarcane</option>
       <option value="536" class="4">Sugar From Silver Sap</option>
       <option value="1302" class="4">Olive Oil</option>
-      <option value="1303" class="4">Flour</option>
       <option value="1304" class="4">Ketchup</option>
       <option value="1305" class="4">Basic Spice Pack</option>
       <option value="1306" class="4">Royal Spice Pack</option>
@@ -2931,10 +2988,10 @@
   <BuyorSell class="InvisableOnStart" id="BuyorSell">
     <label for="BuyorSellID" class="BuyorSell" id="BuyorSellLabel">Are you Buying or Selling?</label>
 
-    <select class="BuyorSell Dropdown" id="BuyorSellID" onchange="sellCheck()">
+    <select class="BuyorSell Dropdown" id="BuyorSellID" onchange="setBuyString()">
       <option value="-1"></option>
-      <option value="200000">Buy</option>
-      <option value="100000">Sell</option>
+      <option value="true">Buy</option>
+      <option value="false">Sell</option>
     </select>
   </BuyorSell>
 

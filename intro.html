@@ -20,19 +20,16 @@
             [80, 81, 82, 0, 0, 0, 0, 0]];
 
         async function checkLand(_value) {
-            var addies = await _address();
-            const address = addies[0];
-            const waraddress = addies[1];
-
             const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner()
             console.log(signer);
 
-            const NFTcontractSigner = new ethers.Contract(address, abi, signer);
+            const cityContractSigner = new ethers.Contract(cityAddress, city_abi, signer);
+            const baseContractSigner = new ethers.Contract(baseAddress, base_abi, signer);
             const myAddress = await signer.getAddress();
             _add = [myAddress,myAddress,myAddress,myAddress,myAddress,myAddress,myAddress,myAddress];
             var _totalLandBalance = 0;
-            _balance = await NFTcontractSigner.balanceOfBatch(_add, Kingdom_Lands[_value]);
+            _balance = await baseContractSigner.balanceOfBatch(_add, Kingdom_Lands[_value]);
             for(let i = 0; i < 8; ++i){
                 if(Kingdom_Lands[_value][i] != 0) {
                     console.log(_balance[i]);
@@ -47,17 +44,14 @@
 
         }
         async function submitTX() {
-            var addies = await _address();
-            const address = addies[0];
-            const waraddress = addies[1];
 
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
             console.log(signer);
 
-            const NFTcontractSigner = new ethers.Contract(address, abi, signer);
+            const cityContractSigner = new ethers.Contract(cityAddress, city_abi, signer);
 
-            NFTcontractSigner.setKingdomType(KingdomID.value);
+            cityContractSigner.setKingdomType(KingdomID.value);
         }
     </script>
 </head>

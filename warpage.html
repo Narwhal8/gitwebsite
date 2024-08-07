@@ -7,10 +7,6 @@
     <script src="./excelIntegration.js" type="application/javascript"></script>
 
     <script>
-        const baseaddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-        const waraddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
-
-
         function showRecipe() {
             if (actionSelector.value == "6") {
                 let whyJS = returnRecipe(TroopListDropdown.value);
@@ -53,7 +49,7 @@
 
             var addies = await _address();
             const address = addies[0];
-            const waraddress = addies[1];
+            const waraddress = addies[4];
 
             const signer = provider.getSigner()
             const NFTcontract = new ethers.Contract(waraddress, war_abi, provider)
@@ -126,16 +122,16 @@
 
             var addies = await _address();
             const address = addies[0];
-            const waraddress = addies[1];
+            const waraddress = addies[4];
 
             const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner();
 
             const NFTWarContract = new ethers.Contract(waraddress, war_abi, provider);
-            const NFTBaseContract = new ethers.Contract(baseaddress, abi, provider)
+            const NFTBaseContract = new ethers.Contract(address, city_abi, provider)
 
             const NFTWarContractSigner = new ethers.Contract(waraddress, war_abi, signer);
-            const NFTBaseContractSigner = new ethers.Contract(baseaddress, abi, signer);
+            const NFTBaseContractSigner = new ethers.Contract(address, city_abi, signer);
 
             const myAddress = await signer.getAddress();
             var _armyData = await NFTWarContractSigner.currentArmy(myAddress);
