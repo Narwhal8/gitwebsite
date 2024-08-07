@@ -325,8 +325,6 @@
           break;
 
         case "13":
-            erc1155ContractSigner = new ethers.Contract(erc1155Address, erc1155_abi, signer);
-
             txWaiter = true;
             var tx = await baseContractSigner.safeTransferFrom(myAddress,
             document.getElementById("Address").value,
