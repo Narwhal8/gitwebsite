@@ -235,7 +235,13 @@
           var item_output_amount = whyJS[2];
           var item_output = whyJS[3];
           var time = whyJS[5];
-          if(document.getElementById("BatchAmount").value == 0){document.getElementById("BatchAmount").value = 1}
+          if(BatchAmount.style.display == "none")
+          {
+            console.log("GHHH");
+            BatchAmount.value = Amount.value
+            Amount.value = 1;
+          }
+
           console.log(items);
           for(let i = 0; i < 8; ++i) {
             if (items[i] < 0) {
@@ -246,10 +252,10 @@
           txWaiter = true;
           var tx = await cityContractSigner.cook(
             document.getElementById("RecipeID").value,
-            document.getElementById("BatchAmount").value,
+            BatchAmount.value,
             items,
             document.getElementById("CID").value,
-            document.getElementById("Amount").value,
+            Amount.value
           )
           break;
 
@@ -262,7 +268,7 @@
             BuyorSell = true;
           }
           else{
-            minTradePrice /= 2;
+            minTradePrice = Math.floor(minTradePrice / 2);
             BuyorSell = false;
           }
           txWaiter = true;
@@ -2030,6 +2036,7 @@
       <option value="5022" class="7">Steel Sword</option>
       <option value="5023" class="7">Emerald Bronze Sword</option>
       <option value="5024" class="7">Damascus Steel Sword</option>
+      <option value="5025" class="7">Diamond Sword</option>
       <option value="5030" class="7">Bronze Mace</option>
       <option value="5031" class="7">Iron Mace</option>
       <option value="5032" class="7">Steel Mace</option>

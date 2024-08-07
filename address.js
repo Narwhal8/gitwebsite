@@ -1,11 +1,11 @@
 
 
-cityAddress = "0xa18b15E554D613f9F7b14d6fe32c2E48dA5ac065";
-baseAddress = "0x635CFc424EE4732B4C442D2543221Fae861395d9";
-merchantAddress = "0x5462659873a31887000d5cDDD4a702D55acdd1D2";
-landGiveawayAddress = "0xE8bC6497f076b1A76F63a181A7306a4FCd68992b";
-warAddress = "0x6D0b3Ca0163716FD22e28A8CF084A43c7542bbee";
-eventAddress = "0x94851547eF6B806074554531cc19343513b7e4D3";
+cityAddress = "0x14Fc86cdDf7cFB65E51597b0402C6D6F11f02e90";
+baseAddress = "0x02E664619CCA7aa9382539CcFFffE055aDCC67e2";
+merchantAddress = "0xe74a6231D85Dd06b9E9b9455E841DEEE81A8B1a5";
+landGiveawayAddress = "0x92Cc2e722732ea0822d6D1701023ec388b879b95";
+warAddress = "0x40DAcfF4dAba8F6E45e597Eb6C413471949FD8bB";
+eventAddress = "0x0D872ACd1a7dFA8466f3B23ac20BB5aBC162dfc4";
 
 async function _address() {
 
@@ -14,14 +14,14 @@ async function _address() {
     const network = await provider.getNetwork();
     console.log(network);
     if(network.chainId == 421614) {
-      cityAddress = "0xa18b15E554D613f9F7b14d6fe32c2E48dA5ac065";
-      baseAddress = "0x635CFc424EE4732B4C442D2543221Fae861395d9";
-      merchantAddress = "0x5462659873a31887000d5cDDD4a702D55acdd1D2";
-      landGiveawayAddress = "0xE8bC6497f076b1A76F63a181A7306a4FCd68992b";
-      warAddress = "0x6D0b3Ca0163716FD22e28A8CF084A43c7542bbee";
-      tradingEvent = "0x94851547eF6B806074554531cc19343513b7e4D3";
+      cityAddress = "0x14Fc86cdDf7cFB65E51597b0402C6D6F11f02e90";
+      baseAddress = "0x02E664619CCA7aa9382539CcFFffE055aDCC67e2";
+      merchantAddress = "0xe74a6231D85Dd06b9E9b9455E841DEEE81A8B1a5";
+      landGiveawayAddress = "0x92Cc2e722732ea0822d6D1701023ec388b879b95";
+      warAddress = "0x40DAcfF4dAba8F6E45e597Eb6C413471949FD8bB";
+      eventAddress = "0x0D872ACd1a7dFA8466f3B23ac20BB5aBC162dfc4";
 
-      console.log("Testnet Arbitrum Chain: Last Updated 7/25/2024 - 1");
+      console.log("Testnet Arbitrum Chain: Last Updated 8/7/2024 - 1");
     }
     else if(network.chainId == 31337) {
       cityAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
@@ -29,7 +29,7 @@ async function _address() {
       merchantAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
       landGiveawayAddress = "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9";
       warAddress = "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9";
-      tradingEvent = "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707";
+      eventAddress = "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707";
       console.log("Local Host Chain");
     }
     else{console.log("address bruh moment")}
