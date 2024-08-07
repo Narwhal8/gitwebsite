@@ -89,8 +89,6 @@
     }
     async function landShopCost() {
 
-        console.log("Coin Balance: ",await baseContract.balanceOf(landMerchant,28800))
-        console.log("Land Balance: ",await baseContract.balanceOf(landMerchant,LandMenu.value))
         var _amount = 1;
         LandMenu.value = Number(LandMenu.value);
           if((LandMenu.value >= 70 &&  LandMenu.value < 80)){_amount = 2;}
