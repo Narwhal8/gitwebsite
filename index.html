@@ -101,6 +101,7 @@
     async function welcome() {
 
 
+      await _address();
       provider = new ethers.providers.Web3Provider(window.ethereum)
 
       network = await provider.getNetwork();
@@ -116,12 +117,110 @@
       myAddress = await signer.getAddress();
       cityData = await cityContract.getKingdomInfo(myAddress);
 
-      buildingData = await cityContract.getBuildingCount(myAddress);
+      buildingCount = await cityContract.getBuildingCount(myAddress);
 
       stockAmounts = await cityContract.getGeneralStockpile(myAddress);
 
     }
-
+    function getBuildingName(_value){
+      switch(_value) {
+        case 0:
+          return "Housing T1";
+        break;
+        case 1:
+          return "Housing T2";
+        break;
+        case 2:
+          return "Housing T3";
+        break;
+        case 3:
+          return "Housing T4";
+        break;
+        case 4:
+          return "Housing T5";
+        break;
+        case 5:
+          return "Housing T6";
+        break;
+        case 6:
+          return "Housing T7";
+        break;
+        case 7:
+          return "Housing T8";
+        break;
+        case 8:
+          return "Cookery T1";
+          break;
+        case 9:
+          return "Cookery T2";
+          break;
+        case 10:
+          return "Cookery T3";
+          break;
+        case 11:
+          return "Cookery T4";
+          break;
+        case 12:
+          return "Brewery T1";
+          break;
+        case 13:
+          return "Brewery T2";
+          break;
+        case 14:
+          return "Brewery T3";
+          break;
+        case 15:
+          return "Brewery T4";
+          break;
+        case 16:
+          return "Smeltery T1";
+          break;
+        case 17:
+          return "Smeltery T2";
+          break;
+        case 18:
+          return "Smeltery T3";
+          break;
+        case 19:
+          return "Mason";
+          break;
+        case 21:
+          return "Blacksmith T1";
+          break;
+        case 22:
+          return "Blacksmith T2";
+          break;
+        case 23:
+          return "Aging Facility";
+          break;
+        case 24:
+          return "Infrastructure";
+          break;
+        case 25:
+          return "Harbor";
+          break;
+        case 26:
+          return "Jeweler T1";
+          break;
+        case 27:
+          return "Jeweler T2";
+          break;
+        case 28:
+          return "Weaver T1";
+          break;
+        case 29:
+          return "Weaver T2";
+          break;
+        case 30:
+          return "Carpenter T1";
+          break;
+        case 31:
+          return "Carpenter T2";
+          break;
+        default:
+          return "None";
+      }
+    }
     async function signon() {
       await provider.send("eth_requestAccounts", []);
 
@@ -199,6 +298,7 @@
               document.getElementById("ErrorToast").style.display = "block"
             }
     }
+    
     async function TXLogic() {
 
       console.log(cityData);
@@ -423,7 +523,7 @@
         var _productivity = 10*_civ_stocks[1] + _baseYield;
       }
       if(_mode == 1){
-        var _infra = (buildingData[24] + buildingData[25] * 50)/ cityData[3];
+        var _infra = (buildingCount[24] + buildingCount[25] * 50)/ cityData[3];
         if(_infra > 50){_infra = 50;}
         _productivity += _infra;
       }
@@ -589,7 +689,6 @@
           document.getElementById("BuyorSellID").style.display = "block";
           document.getElementById("BuyorSell").style.display = "block";
           document.getElementById("totalCostID").style.display = "block";
-          document.getElementById("ShopingNotice").style.display = "block";
 
 
           break;
@@ -649,9 +748,50 @@
           document.getElementById("RecruitID").style.display = "inline";
           break;
         case "10":
-          document.getElementById("CDInput").style.display = "block";
-          document.getElementById("CDLabel").style.display = "inline";
-          document.getElementById("CID").style.display = "inline";
+
+
+          
+          for(let i = 8; i < 32; ++i){
+            if(buildingCount[i] != 0){
+
+              ClaimButtonGrid.innerHTML = "";
+
+              var newDiv = document.createElement('button');
+              newDiv.id = "ClaimButton"+i;
+              newDiv.onclick = function() {cityContractSigner.collect(i)}
+              
+              newDiv.innerHTML = getBuildingName(i);
+              ClaimButtonGrid.appendChild(newDiv);
+              
+              newDiv.classList.add("ClaimButton");
+
+              var completionTime = await cityContract.craftProgress(myAddress,i)
+              completionTime = Number(completionTime[0]);
+              console.log(completionTime);
+
+              if(completionTime == 1){
+                newDiv.style.background = "yellowgreen";
+                newDiv.innerHTML += "\nIdle";
+                console.log("1");
+              }
+              else if(completionTime > (Date.now()/1000)){
+                newDiv.style.background = "yellow";
+                const TTC = secondsToHMS(completionTime - (Date.now()/1000))
+                newDiv.innerHTML += "\nDone In: " + TTC;
+
+                console.log("2");
+              }
+              else{
+                newDiv.style.background = "red";
+                newDiv.innerHTML += "\n Click To Claim";
+                console.log("3");
+
+              }
+
+          }
+          }
+          ClaimButtonGrid.style.display = "grid";
+          console.log("Sneed");
           break;
         case "11":
           var allItems = returnItemID();
@@ -1220,14 +1360,12 @@
         if(Number(itemValue(Number(ItemMenuID.value))) < 20){_item = (Math.floor(_item/100));}
         Amount.value = _item;
         AmountID.style.display = "none";
-        ShopingNotice.style.display = "none";
         console.log("amount:",Amount.value);
         totalCostCalc();
         console.log(SellAllCheck);
       }
       else if(SellAllCheck == false){
         AmountID.style.display = "block";
-        ShopingNotice.style.display = "block";
       }
 
 
@@ -1308,11 +1446,12 @@
       document.getElementById("LandAmountLabel").style.display = "none";
       document.getElementById("Amount").style.display = "none";
       document.getElementById("AmountLabel").style.display = "none";
-      document.getElementById("ShopingNotice").style.display = "none";
       document.getElementById("TimeAmountLabel").style.display = "none";
       document.getElementById("TimeAmount").style.display = "none";
       document.getElementById("BatchAmount").style.display = "none";
       document.getElementById("BatchAmountLabel").style.display = "none";
+
+      document.getElementById("ClaimButtonGrid").style.display = "none";
 
       hideBuildingCost();
       noHousingNotice.style.display = "none";
@@ -1429,7 +1568,6 @@
       document.getElementById("Amount").style.display = "none";
       document.getElementById("AmountID").style.display = "none";
       document.getElementById("AmountLabel").style.display = "none";
-      document.getElementById("ShopingNotice").style.display = "none";
     }
     
     function hideFarmYield() {
@@ -2549,8 +2687,10 @@
       <option value="0">--Industrial Goods</option>
       <option value="-1"></option>
 
-      <option value="2101" class="6">Refined Stone Blocks</option>
-      <option value="2102" class="6">Carved Wood</option>
+      <option value="2150" class="6">Basic Building Materials</option>
+      <option value="2151" class="6">Durable Basic Building Materials</option>
+      <option value="2152" class="6">Advanced Building Materials</option>
+      <option value="2153" class="6">Durable Advanced Building Materials</option>
       <option value="4000"class="6">Nails</option>
       <option value="4001"class="6">Diamond Blade</option>
       <option value="4002"class="6">Fabric</option>
@@ -3142,7 +3282,9 @@
     </select>
   </FoodAmounts>
 
+  <ClaimMenu class="InvisableOnStart ClaimButtonGrid" id="ClaimButtonGrid">
 
+  </ClaimMenu>
   <CivGoods class="CivG InvisableOnStart" id="CivGoods">
     <label id="CivGInfo">What Item Would you like to contribute</label>
     <select class="Dropdown CivG" id="CivGM" onchange="CivGoodStock()">
@@ -3427,7 +3569,6 @@
     <text class="InvisableOnStart"id="landAdderNotice">NOTICE: Land added can't EVER be removed</text>
     <text class="InvisableOnStart" id="noHousingNotice"><br>To prevent players from accidently Soft-Locking, You must build housing before adding land to this kingdom</text>
     <text class="InvisableOnStart" id="lackItemsNotice"><br>You do not have enough Items to do this transaction</text>
-    <text class="InvisableOnStart" id="ShopingNotice">Note: Items of less then 20 value are traded in increments of 100</text>
   </Notices>
   <TXamount class="Amount InvisableOnStart" id="AmountID">
     <text class="" id="BatchAmountLabel">How many batches would you like to make?</text>
@@ -3542,6 +3683,21 @@
 
   .InvisableOnStart {
     display: none;
+  }
+  .ClaimButtonGrid {
+    
+    display: inline-flex;
+    justify-content: space-around;
+    width: 500px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .ClaimButton {
+    display: inline-block;
+    background-color: purple;
+    align-self: flex-start;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    height: 75px;
+    width: 125px;
   }
   .InventoryPanel {
     display: inline-flex;

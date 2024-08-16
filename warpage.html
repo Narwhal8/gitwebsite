@@ -47,9 +47,6 @@
         async function selectAction(_value) {
             const provider = new ethers.providers.Web3Provider(window.ethereum)
 
-            var addies = await _address();
-            const address = addies[0];
-            const waraddress = addies[4];
 
             const signer = provider.getSigner()
             const NFTcontract = new ethers.Contract(waraddress, war_abi, provider)

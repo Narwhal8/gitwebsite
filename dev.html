@@ -22,10 +22,14 @@
     var signer;
     var cityContract
     var cityContractSigner;
+    var merchantContract;
+    var merchantContractSigner;
     var myAddress;
     var cityData;
 
     async function welcome() {
+
+      await _address();
       
       provider = new ethers.providers.Web3Provider(window.ethereum)
 
@@ -51,6 +55,10 @@
         case "2":
           NFTcontractSigner.adjustTime(document.getElementById("Input1").value);
           break;
+        case "3":
+          const _var = await merchantContract.returnAmountSold(Number(Input1.value));
+          console.log("value",Number(_var));
+          break;
         case "10":
           merchantContractSigner.devIsSelling();
         }
@@ -66,7 +74,9 @@
   <select id="FunctionCalled">
     <option value="0"></option>
     <option value="1">Mint</option>
-    <option value="1">Set Time</option>
+    <option value="2">Set Time</option>
+    <option value="3">See Amount Sold</option>
+    <option value="4">See Land Sold</option>
     <option value="10">Claim ETH</option>
 
   </select>
