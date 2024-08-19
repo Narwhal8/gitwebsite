@@ -102,11 +102,12 @@
 
 
       await _address();
+
       provider = new ethers.providers.Web3Provider(window.ethereum)
-
-      network = await provider.getNetwork();
-
       signer = provider.getSigner()
+      network = await provider.getNetwork();
+      await signon();
+
       cityContract = new ethers.Contract(cityAddress, city_abi, provider);
       cityContractSigner = new ethers.Contract(cityAddress, city_abi, signer);
       baseContract = new ethers.Contract(baseAddress, base_abi, provider);
@@ -126,7 +127,6 @@
       buildingCount = await cityContract.getBuildingCount(myAddress);
 
       stockAmounts = await cityContract.getGeneralStockpile(myAddress);
-      await signon();
 
     }
     function getBuildingName(_value){
@@ -238,9 +238,6 @@
         ErrorText.innerHTML = "ERROR: You are connected to the wrong chain. Your current chain is " + network.chainId + ". Please change it to Arbitrum Sepolia, ID 421614";
       }
       else{
-        let _kingdomType = cityData[5]
-        console.log();
-        console.log("KingdomID:", _kingdomType);
 
         ErrorText.style.display = "block";
         ErrorToast.style.display = "block";
