@@ -114,12 +114,19 @@
       merchantContract = new ethers.Contract(merchantAddress, merchant_abi, provider);
       merchantContractSigner = new ethers.Contract(merchantAddress, merchant_abi, signer);
 
+      try{await signer.getAddress();}
+      catch(err){
+        ErrorToast.style.display = "block";
+        ErrorText.style.display = "block";
+        ErrorText.innerHTML = `ERROR: You do not currently have a wallet connected, please click "Connect Your Wallet Here" and refresh the page`;
+      }
       myAddress = await signer.getAddress();
       cityData = await cityContract.getKingdomInfo(myAddress);
 
       buildingCount = await cityContract.getBuildingCount(myAddress);
 
       stockAmounts = await cityContract.getGeneralStockpile(myAddress);
+      await signon();
 
     }
     function getBuildingName(_value){
@@ -230,21 +237,31 @@
         ErrorText.style.display = "block";
         ErrorText.innerHTML = "ERROR: You are connected to the wrong chain. Your current chain is " + network.chainId + ". Please change it to Arbitrum Sepolia, ID 421614";
       }
-      let _kingdomType = cityData[5]
-      console.log();
-      console.log("KingdomID:", _kingdomType);
+      else{
+        let _kingdomType = cityData[5]
+        console.log();
+        console.log("KingdomID:", _kingdomType);
 
-      ErrorText.style.display = "block";
-      ErrorToast.style.display = "block";
-      ErrorText.innerHTML = "Wallet Connected!";
+        ErrorText.style.display = "block";
+        ErrorToast.style.display = "block";
+        ErrorText.innerHTML = "Wallet Connected!";
+
+        setTimeout(closeErrorText,5000);
+      }
 
 
+
+    }
+
+    function closeErrorText(){
+      ErrorText.style.display = "none";
+      ErrorToast.style.display = "none";
     }
     
     async function submitTX() {
 
       console.log("TXLogic in action")
-      try{TXLogic()}
+      try{await TXLogic()}
       catch (err) {
         console.log("ERROR DETECTED:");
         document.getElementById("ErrorTextbox").style.display = "block";
