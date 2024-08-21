@@ -261,8 +261,9 @@
       try{await TXLogic()}
       catch (err) {
         console.log("ERROR DETECTED:");
-        document.getElementById("ErrorTextbox").style.display = "block";
-        document.getElementById("ErrorTextbox").textContent = "Error: TX can not be submitted";
+        ErrorText.style.display = "block";
+        ErrorToast.style.display = "block";
+        ErrorText.innerHTML = "Error: TX can not be submitted";
       }
       console.log("TXLogic Ran");
     }    
@@ -1651,11 +1652,12 @@
       }
       _myLandArray= await cityContract.getLand(myAddress);
       console.log("My Land Array",_myLandArray)
+      console.log("Amount:", Amount.value);
       console.log("Amount Of Selected Land:",_myLandArray[_selectedLand]);
-      if(_availableLabor[0] < Amount.value){
+      if(Number(_availableLabor[0]) < Amount.value){
         document.getElementById("CropYieldAmount").textContent = "You don't have enough people to do this! Max: " + _availableLabor[0];
       }
-      if(_myLandArray[_selectedLand] < Amount.value){
+      if(Number(_myLandArray[_selectedLand]) < Amount.value){
         document.getElementById("CropYieldAmount").textContent = "You don't have enough land to do this! Max: " + _myLandArray[_selectedLand];
       }
       else if(_land_info[1] < crop_info[3][0]){
@@ -3746,7 +3748,7 @@
   .ErrorTextbox {
     display: block;
     position: fixed;
-    background-color: chartreuse;
+    background-color: yellowgreen;
     width: 200px;
     height: 100px;
     right:10px;
