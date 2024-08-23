@@ -263,7 +263,7 @@
         console.log("ERROR DETECTED:");
         ErrorText.style.display = "block";
         ErrorToast.style.display = "block";
-        ErrorText.innerHTML = "Error: TX can not be submitted";
+        ErrorText.innerHTML = "Error: " + err.message;
       }
       console.log("TXLogic Ran");
     }    
