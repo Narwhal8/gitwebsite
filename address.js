@@ -21,7 +21,7 @@ async function _address() {
       warAddress = "0x40DAcfF4dAba8F6E45e597Eb6C413471949FD8bB";
       eventAddress = "0x0D872ACd1a7dFA8466f3B23ac20BB5aBC162dfc4";
 
-      console.log("Testnet Arbitrum Chain: Last Updated 8/19/2024 - 1");
+      console.log("Testnet Arbitrum Chain: Last Updated 11/2/2024 - 1");
     }
     else if(network.chainId == 31337) {
       cityAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
