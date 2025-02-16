@@ -3,63 +3,33 @@
 <html>
 
 <head>
-  <script src="./ethers.umd.min.js" type="application/javascript"></script>
+  <script src="lib/ethers.umd.min.js" type="application/javascript"></script>
   <script src="./abi.js" type="application/javascript"></script>
   <script src="./address.js" type="application/javascript"></script>
   <script src="./excelIntegration.js" type="application/javascript"></script>
-  
+  <script src="lib/sypher.umd.js" type="application/javascript"></script>
 
   <script>
     console.log(ethers);
     if(typeof ethers == "undefined") {}
+    console.log(sypher);
+    addEventListener("DOMContentLoaded", (event) => {
+          console.log("DOM fully loaded and parsed");
+          sypher.init({
+        interface: {
+            button: {
+                type: "connect",
+                text: "Connect Wallet",
+                modal: true,
+                append: header
+            }
+        }
+    });
+        });
   </script>
-  <script id="ethersScript">
+  
+  <script>
 
-    var _kingdomType;
-
-
-
-    const maxAllowableOrders =
-      [0, 0, 0, 0, //housing, ignore
-        0, 0, 0, 0, //same
-        1, 4, 9, 32, //cookery
-        2, 4, 6, 14, // brewery
-        1, 2, 6, 4, // Smeltery/Mason
-        5, 10, 1, 0, // Blacksmith/Aging
-        0, 1, 3, 7, // Infra/Harbor/Jeweler
-        4, 22, 4, 20]; // Weaver/Carpenter
-    const Workers =
-      [0, 0, 0, 0, //housing, ignore
-        0, 0, 0, 0, //same
-        3, 8, 16, 23, //cookery
-        8, 14, 20, 22, // brewery
-        6, 12, 14, 5, // Smeltery/Builder
-        10, 14, 0, 0, // Blacksmith/Aging
-        0, 2, 4, 10, // Infra/Harbor/Jeweler
-        6, 10, 6, 10]; // Weaver/Carpenter
-    const Time_Multiplier = 10;
-    const Kingdom_Lands =
-      [[0],
-      [1, 2, 3, 4, 44, 0, 0, 0],
-      [11, 12, 13, 14, 41, 0, 0, 0],
-      [21, 22, 23, 42, 0, 0, 0, 0],
-      [31, 32, 33, 34, 43, 0, 0, 0],
-      [41, 42, 43, 44, 0, 0, 0, 0],
-      [51, 52, 53, 0, 0, 0, 0, 0],
-      [61, 62, 63, 64, 0, 0, 0, 0],
-      [70, 71, 72, 0, 0, 0, 0, 0],
-      [80, 81, 82, 0, 0, 0, 0, 0]];
-
-    const Kingdom_Civilian_Items = 
-    [[0],
-    [2,11,21,31,41],
-    [1,11,21,31,41],
-    [2,11,21,31,41],
-    [2,11,21,31,41],
-    [2,11,21,31,41],
-    [1,11,21,31,41],
-    [2,11,21,31,41],
-    [2,11,21,31,41]];
     var TitheDetails = [];
     //Clothes
     TitheDetails[1] = [4500,4,4500,20,4503,40];
@@ -73,16 +43,20 @@
     //Jewelery
     TitheDetails[41] = [4560,3,4561,3,4562,3];
 
+    var KingdomTitheCost = [];
+            
+    KingdomTitheCost[1] = [2,11,21];
+            KingdomTitheCost[2] = [1,11,21];
+            KingdomTitheCost[3] = [2,11,21];
+            KingdomTitheCost[4] = [2,11,21];
+            KingdomTitheCost[5] = [2,11,21];
+            KingdomTitheCost[6] = [2,11,21];
+            KingdomTitheCost[7] = [1,11,21];
+            KingdomTitheCost[8] = [2,11,21];
+            KingdomTitheCost[9] = [2,11,21];
+
 
     KingdomTemp = [0,90,30,60,80,60,60,50,60,60]
-
-    const FertilizerLevel = [];
-    
-    FertilizerLevel[0] = 0;
-    FertilizerLevel[4030] = 1;
-    FertilizerLevel[4031] = 2;
-    FertilizerLevel[4032] = 3;
-    FertilizerLevel[4040] = 10;
 
     var SellAllCheck = false;
 
@@ -95,14 +69,18 @@
     var merchantContractSigner;
     var baseContract;
     var baseContractSigner;
+    var productionContract;
+    var productionContractSigner;
     var myAddress;
     var cityData;
+  
+    var buildingCount;
+
+    var selectedItem;
+    var lastRecipe;
 
     async function welcome() {
-
-
-      await _address();
-
+      
       provider = new ethers.providers.Web3Provider(window.ethereum)
       signer = provider.getSigner()
       network = await provider.getNetwork();
@@ -114,6 +92,8 @@
       baseContractSigner = new ethers.Contract(baseAddress, base_abi, signer);
       merchantContract = new ethers.Contract(merchantAddress, merchant_abi, provider);
       merchantContractSigner = new ethers.Contract(merchantAddress, merchant_abi, signer);
+      productionContract = new ethers.Contract(productionAddress, production_abi, provider);
+      productionContractSigner = new ethers.Contract(productionAddress, production_abi, signer);
 
       try{await signer.getAddress();}
       catch(err){
@@ -123,111 +103,16 @@
       }
       myAddress = await signer.getAddress();
       cityData = await cityContract.getKingdomInfo(myAddress);
+      console.log(cityData);
 
       buildingCount = await cityContract.getBuildingCount(myAddress);
 
       stockAmounts = await cityContract.getGeneralStockpile(myAddress);
 
+      BuildingKingdomType.value = cityData.kingdomType
+
     }
-    function getBuildingName(_value){
-      switch(_value) {
-        case 0:
-          return "Housing T1";
-        break;
-        case 1:
-          return "Housing T2";
-        break;
-        case 2:
-          return "Housing T3";
-        break;
-        case 3:
-          return "Housing T4";
-        break;
-        case 4:
-          return "Housing T5";
-        break;
-        case 5:
-          return "Housing T6";
-        break;
-        case 6:
-          return "Housing T7";
-        break;
-        case 7:
-          return "Housing T8";
-        break;
-        case 8:
-          return "Cookery T1";
-          break;
-        case 9:
-          return "Cookery T2";
-          break;
-        case 10:
-          return "Cookery T3";
-          break;
-        case 11:
-          return "Cookery T4";
-          break;
-        case 12:
-          return "Brewery T1";
-          break;
-        case 13:
-          return "Brewery T2";
-          break;
-        case 14:
-          return "Brewery T3";
-          break;
-        case 15:
-          return "Brewery T4";
-          break;
-        case 16:
-          return "Smeltery T1";
-          break;
-        case 17:
-          return "Smeltery T2";
-          break;
-        case 18:
-          return "Smeltery T3";
-          break;
-        case 19:
-          return "Mason";
-          break;
-        case 21:
-          return "Blacksmith T1";
-          break;
-        case 22:
-          return "Blacksmith T2";
-          break;
-        case 23:
-          return "Aging Facility";
-          break;
-        case 24:
-          return "Infrastructure";
-          break;
-        case 25:
-          return "Harbor";
-          break;
-        case 26:
-          return "Jeweler T1";
-          break;
-        case 27:
-          return "Jeweler T2";
-          break;
-        case 28:
-          return "Weaver T1";
-          break;
-        case 29:
-          return "Weaver T2";
-          break;
-        case 30:
-          return "Carpenter T1";
-          break;
-        case 31:
-          return "Carpenter T2";
-          break;
-        default:
-          return "None";
-      }
-    }
+    
     async function signon() {
       await provider.send("eth_requestAccounts", []);
 
@@ -245,9 +130,6 @@
 
         setTimeout(closeErrorText,5000);
       }
-
-
-
     }
 
     function closeErrorText(){
@@ -300,7 +182,11 @@
                 showToast = true;
                 break;
               case "8":
-                ErrorText.innerHTML = "Pops Recruited!"
+                ErrorText.innerHTML = "Food Added!"
+                showToast = true;
+                break;
+              case "9":
+                ErrorText.innerHTML = "Medicine Added!"
                 showToast = true;
                 break;
               default:
@@ -317,59 +203,54 @@
     async function TXLogic() {
 
       console.log(cityData);
-      const _kingdomType = cityData[5];
-
       var txWaiter = false;
-
-
       switch (actionSelect.value) {
 
         case "1":
           txWaiter = true;
-          var tx = await cityContractSigner.plant(
-
+          console.log("TX Input:",[
             LandMenu.value,
             document.getElementById("Amount").value,
             document.getElementById("cropSelect").value,
-            FertilizerSelector.value,
-            document.getElementById("TimeAmount").value
+            Number(FertilizerSelector.value),
+            document.getElementById("TimeAmount").value,
+            0]);
+          var tx = await productionContractSigner.plant(
+            LandMenu.value,
+            document.getElementById("Amount").value,
+            document.getElementById("cropSelect").value,
+            Number(FertilizerSelector.value),
+            document.getElementById("TimeAmount").value,
+            Number(PopTypeSelector.value)
           );
           tx.wait().then(
             async (receipt) => {console.log("Really worked",receipt);
             OnscreenTXConfirm();
             }
-
           )
           break;
 
         case "2":
-
-          let whyJS = returnRecipe(Number(document.getElementById("RecipeID").value));
-          var items = whyJS[1];
-          var item_amount = whyJS[0];
-          var item_output_amount = whyJS[2];
-          var item_output = whyJS[3];
-          var time = whyJS[5];
+          console.log("Recipe: ",lastRecipe);
+          let recipe = getRecipies(lastRecipe);
           if(BatchAmount.style.display == "none")
           {
-            console.log("GHHH");
             BatchAmount.value = Amount.value
             Amount.value = 1;
           }
-
-          console.log(items);
+          console.log(recipe.ingrediant);
           for(let i = 0; i < 8; ++i) {
-            if (items[i] < 0) {
-              items[i] = document.querySelectorAll(".Items")[(-1 * items[0])].value
+            if (recipe.ingrediant[i] < 0) {
+              recipe.ingrediant[i] = document.querySelectorAll("Ingrediants")[(-1 * recipe.ingrediant[0])].value
             }
           }
           if(BatchAmount.value == 0 || Amount.value == 0){Error("Amount is not valid");}
           txWaiter = true;
-          var tx = await cityContractSigner.cook(
-            document.getElementById("RecipeID").value,
+          var tx = await productionContractSigner.cook(
+            lastRecipe,
             BatchAmount.value,
-            items,
-            document.getElementById("CID").value,
+            recipe.ingrediant,
+            [document.getElementById("CID").value,BuildingKingdomType.value - 1],
             Amount.value
           )
           break;
@@ -400,15 +281,17 @@
 
         case "4":
         txWaiter = true;
+        console.log("Building Value: ",CID.value);
+        console.log("Building Sub Value: ",BuildingKingdomType.value);
           var tx = await cityContractSigner.developCity(
-            document.getElementById("CID").value,
+            [document.getElementById("CID").value,BuildingKingdomType.value - 1],
             document.getElementById("Amount").value,
             LandMenu.value
           )
           break;
         case "5":
         txWaiter = true;
-          var tx = await cityContractSigner.claim(
+          var tx = await productionContractSigner.claim(
             LandMenu.value
           )
           break;
@@ -427,22 +310,21 @@
         case "8":
           txWaiter = true;
           var tx = await cityContractSigner.addFood(
-            document.getElementById("foodInputID").value,
+            ItemMenuID.value,
             document.getElementById("Amount").value
           ) 
           break;
         case "9":
-        txWaiter = true;
-          var tx = await cityContractSigner.recruitNewPeople(RecruitID.value, Amount.value)
+          txWaiter = true;
+          var tx = await cityContractSigner.treatIllness(
+            [4200,4201,4202,4203,4204,4205,4206,4207]
+          ) 
           break;
         case "10":
         txWaiter = true;
-          var tx = await cityContractSigner.collect(document.getElementById("CID").value)
+          var tx = await productionContractSigner.collect(document.getElementById("CID").value)
           break;
         case "11":
-          break;
-      
-        case "12":
           break;
 
         case "13":
@@ -472,130 +354,149 @@
 
       hideBuildingCost();
 
-      if (actionSelect.value == "4") {
-        const building_info = eval("building" + CID.value);
+      if (actionSelect.value == "4" && CID.value != "200") {
+        const building_info = eval("Building" + CID.value + "_" + BuildingKingdomType.value);
         const addyArray = [myAddress,myAddress,myAddress,myAddress,myAddress];
-        const itemBal = await baseContract.balanceOfBatch(addyArray,building_info[1]);
+        const itemBal = await baseContract.balanceOfBatch(addyArray,building_info.reasourceType);
         console.log("building info",building_info);
         document.getElementById("B-Cost").style.display = "block";
 
+        sendTX.style.display = "block";
+        lackRecipeNotice.style.display = "none";
         for(let i = 0; i < 5 ; ++i) {
           document.getElementById("B-" + i).style.display = "block";
           document.getElementById("H-" + i).style.display = "block";
           if(i < 5){
-            document.getElementById("B-" + i).textContent = simpleDigit(building_info[2][i]) + " " + itemName(building_info[1][i])
+            document.getElementById("B-" + i).textContent = simpleDigit(building_info.reasourceAmount[i]) + " " + itemName(building_info.reasourceType[i])
             document.getElementById("H-" + i).textContent = "You have: " + itemBal[i];
-            if(building_info[2][i] != 0 && building_info[2][i] > itemBal[i]){
+            if(building_info.reasourceAmount[i] != 0 && building_info.reasourceAmount[i] > Number(itemBal[i])){
               sendTX.style.display = "none";
-              lackItemsNotice.style.display = "block";
+              lackRecipeNotice.style.display = "block";
+              console.log("Insufficient Balance of",building_info.reasourceType[i]," Reasource Amount Needed:",building_info.reasourceAmount[i],"You Have: ",Number(itemBal[i]))
             }
           }
-          if(building_info[1][i] == 0){
+          if(building_info.reasourceType[i] == 0){
             document.getElementById("B-" + i).style.display = "none";
             document.getElementById("H-" + i).style.display = "none";
           }
         }
-        if(building_info[2][5] != 0){
+        if(building_info.reasourceAmount[5] != 0){
           document.getElementById("B-6").style.display = "block";
-          document.getElementById("B-6").textContent = building_info[2][5] + " Land";
+          document.getElementById("B-6").textContent = building_info.reasourceAmount[5] + " Land";
         }
-        document.getElementById("B-" + 7).style.display = "block";
-        document.getElementById("B-" + 7).textContent = "Manpower Requirements";
-
-        if(building_info[3][0] < 0){
-          document.getElementById("B-" + 8).style.display = "block";
-          document.getElementById("B-" + 8).textContent = (building_info[3][0] * -1) + " Peasents";
-        }
-        if(building_info[3][1] < 0){
-          document.getElementById("B-" + 9).style.display = "block";
-          document.getElementById("B-" + 9).textContent = (building_info[3][1] * -1) + " Low Nobility";
-        }
-        if(building_info[3][2] < 0){
-          document.getElementById("B-" + 10).style.display = "block";
-          document.getElementById("B-" + 10).textContent = (building_info[3][2] * -1) + " High Nobility";
+        if(Number(BuildingKingdomType.value) != cityData.kingdomType){
+          document.getElementById("B-7").style.display = "block";
+          document.getElementById("B-7").textContent =  building_info.reasourceAmount[6] + " Building Permits";; 
         }
 
       }
     }
+  async function newBonusCalc(_mode,_baseproduction) {
+      
+      _consumerStockpiles = await cityContract.getStockedGoods(myAddress);
 
-    async function bonusCalc(_mode,_baseYield){
 
-
-      console.log("Base Yield: ",_baseYield);
-
-      _baseYield = Math.round(_baseYield);
-
-      const _stockpiles = await cityContract.getStockedGoods(myAddress);
-      var _civ_stocks = _stockpiles[2];
-      var _kingdomType = cityData[5];
-      console.log(_civ_stocks);
+      var _season = await cityContract.returnSeason();
+      const _kingdomTemp = seasonTemp(_season,KingdomTemp[cityData.kingdomType]);
 
       var _bonus = 0;
+      var _happiness = -20;
+      var _comfort = 0;
+      var _productivity = 0;
 
-      if(_mode != 5){
-        var _food_value = Math.floor(~~(Number(stockAmounts[1]) / Number(stockAmounts[0]))) + Math.floor(~~(Number(stockAmounts[3]) / Number(stockAmounts[2])));
-        var _happiness = 10*(_civ_stocks[2] + _civ_stocks[3] + _civ_stocks[4]) + _buildTimeBasedOnFood(_food_value);
-        var _productivity = 10*_civ_stocks[1] + _baseYield;
+      //375 is used as 150000 is the goal number,and 20 happiness is the ideal value, so (150000/20^2) = 375. 4x used for low noble and 40x for high noble.
+      var _divisor = (150000 *( cityData.totalPopulation[0] + 4 * cityData.totalPopulation[1] + 40 * cityData.totalPopulation[2]))/400;
+      if(_divisor != 0){
+          _happiness += Math.floor(Math.sqrt(await (cityContract.getPlayerCityItems(myAddress).itemValue) / _divisor));
       }
-      if(_mode == 1){
-        var _infra = (buildingCount[24] + buildingCount[25] * 50)/ cityData[3];
-        if(_infra > 50){_infra = 50;}
-        _productivity += _infra;
+
+      //Capped at a buff of 20 happiness
+      if(_happiness > 20){_happiness = 20;}
+
+      if(_consumerStockpiles.lastMedicalTreatment != await cityContract.returnYear()){
+          _consumerStockpiles.medicalEffectiveness = 0;
       }
-      var _comfort = (_civ_stocks[0] * 10) + (_civ_stocks[2] * 5);
 
-      var _temp = KingdomTemp[_kingdomType];
-
+      _bonus += ((_consumerStockpiles.medicalEffectiveness));
       
-      var _season = await cityContract.returnSeason();
+      if(_mode != 5){
+          _happiness = (10 * (_consumerStockpiles.stockpileLevels[2])) + await _foodvaluecalc(Amount.value * BatchAmount.value);
+          _productivity = (10 * (_consumerStockpiles.stockpileLevels[1])) + _baseproduction;
+          _nutrition = cityContract.getNutrition(myAddress);
+          if(_nutrition[0] < 1500){_happiness -= 10;}
+          if(_nutrition[1] < 1500){_productivity -= 10;}
+          if(_nutrition[2] < 1500){_productivity -= 10;}
+          if(_nutrition[3] < 1500){_happiness -= 10;}
+          if(_nutrition[4] < 1500){_comfort -= 10;}
+        }
+        if(_mode == 1){
+            var _infraBonus = 0;
+            var _beautyBonus = 0;
+            _buildingStats = await cityContract.getBuildingInfo(CID.value,BuildingKingdomType.value - 1);
+            if(cityData.industrySize != 0){
+                _infraBonus = Math.round((cityData.infraCount  * 50) / cityData.industrySize);
+                _beautyBonus = Math.round((cityData.totalBeauty  * 5) / (cityData.industrySize));
+            }
+            if(_infraBonus > 50){_infraBonus = 50;}
+            _productivity += _infraBonus + _buildingStats.buildingErgonommics;
+            _happiness += _beautyBonus;
+            _comfort += _buildingStats.buildingInsulation;
+        }
+          _comfort = ((10 * _consumerStockpiles.stockpileLevels[0] + 5 * _consumerStockpiles.stockpileLevels[2]));
 
-      _season = Number(_season);
-
-      if(_season == 0) {_temp -= 20;}
-      else if(_season == 2) {_temp += 20;}
-      else if(_season == 3) {_temp -= 10;}
-
-      console.log("Temp: ", _temp);
-
-      if(_temp > 65 + _comfort){
-        _bonus -= _mode * (_temp - (65 + _comfort));
-      }
-
-      else if(_temp < (65 - _comfort)){
-        _bonus -= _mode * ((65 - _comfort) - _temp);
-      }
-      if(_mode != 5){ 
-          if(_happiness > _productivity){_bonus += (_happiness / 4) + (_productivity * 3 / 4);}
-          else{_bonus += (_happiness * 3/ 4) + (_productivity / 4);}
-          console.log("Bonus: ", _bonus, "Happiness: ", _happiness, "Productivity: ", _productivity);
-      }
-      else{
-          _bonus += 35;
-      }
-      _bonus += 65;
-      if(_bonus <= 0){throw new Error("Nothing will happen here")};
-      return(_bonus);
+          if(_kingdomTemp > (65 + _comfort)){
+              _bonus -= _mode * (_kingdomTemp - (65 + _comfort));
+          }
+          else if(_kingdomTemp < (65 - _comfort)){
+              _bonus -= _mode * ((65 - _comfort) - _kingdomTemp);
+          }
+          
+          if(_mode != 5){ 
+              if(_happiness > _productivity){_bonus += Math.round((_happiness / 4) + Math.round(_productivity * 3 / 4));}
+              else{_bonus += Math.round(Math.round(_happiness * 3/ 4) + (_productivity / 4));}
+          }
+          else{_bonus += 35;}
+          _bonus += 65;
+          return(_bonus);
 
     }
+    async function _foodvaluecalc (_amount) {
+      var _foodStockpiles = cityContract.getGeneralStockpile(myAddress);
+      var _foodValue = 0;
+      var _drinkValue = 0;
+      if(_foodStockpiles.foodItemCount >= _amount){
+          _foodValuePer = (_foodStockpiles.foodItemValue / _foodStockpiles.foodItemCount);
+          _foodValue = Math.floor(Math.sqrt(_foodValuePer * 20));
+      }
+      else{
+            _foodValue = 0;
+        }
+        
+        if(_foodStockpiles.drinkItemCount >= _amount){
+                _drinkValuePer = (_foodStockpiles.drinkItemValue / _foodStockpiles.drinkItemCount);
+                _drinkValue = Math.floor(Math.sqrt(_drinkValuePer * 20));
+            }
+            else{_drinkValue = 0;}
 
+      return(_foodValue + _drinkValue);
+    }
     function Stuff(_value) {
 
       showRecipe(_value);
       var whyJS;
-      whyJS = returnRecipe(Number(document.getElementById("RecipeID").value));
-      const _items = whyJS[1];
+      recipe = getRecipies(Number(document.getElementById("RecipeID").value));
       const _time = whyJS[5];
       hideTimedCraftingMenu();
       if (_time != 0) {
         showTimedCraftingMenu();
       }
 
-      console.log(_items);
-      if (_items[0] < 0) {
-        showMultiItemMenu(_items[0])
+      console.log(_recipe.ingrediant);
+      if (_recipe.ingrediant[0] < 0) {
+        showMultiItemMenu(_recipe.ingrediant[0],0)
       }
-      if (_items[1] < 0) {
-        showMultiItemMenu(_items[1])
+      if (_recipe.ingrediant[1] < 0) {
+        showMultiItemMenu(_recipe.ingrediant[1],1)
       }
       console.log("showRecipe did run");
 
@@ -605,64 +506,40 @@
       if(_value >= 10_000){return((_value / 1000) + "K")}
       else if(_value >= 10_000_000){return((_value / 1_000_000) + "M")}
     }
-    
-    function showTimedCraftingMenu() {
-      document.getElementsByClassName("foodInput")[0].style.display = "block";
-      document.getElementsByClassName("foodInput")[1].style.display = "inline-block";
-      document.getElementsByClassName("CDInput")[0].style.display = "inline";
-      document.getElementsByClassName("CDInput")[1].style.display = "inline";
-      document.getElementsByClassName("CDInput")[2].style.display = "inline";
-      document.getElementById("BatchAmountLabel").style.display = "block";
-      document.getElementById("BatchAmount").style.display = "block";
-    }
 
     function hideTimedCraftingMenu() {
-      document.getElementsByClassName("foodInput")[0].style.display = "none";
-      document.getElementsByClassName("foodInput")[1].style.display = "none";
       document.getElementsByClassName("CDInput")[0].style.display = "none";
       document.getElementsByClassName("CDInput")[1].style.display = "none";
       document.getElementsByClassName("CDInput")[2].style.display = "none";
     }
 
     function showRecipe(_value) {
-      let whyJS = returnRecipe(Number(document.getElementById("RecipeID").value));
-      var items = whyJS[1];
-      var item_amount = whyJS[0];
-      var item_output_amount = whyJS[2];
-      var item_output = whyJS[3];
-      var time = whyJS[5];
+      let recipe = getRecipies(Number(document.getElementById("RecipeID").value));
       var _recipeText;
       if (document.getElementById("Cost").textContent != "Cost: ") { document.getElementById("Cost").textContent = "Cost:" }
       for (let i = 0; i < 6; i++) {
-        if (items[i] == 0) { break; }
-        document.getElementById("Cost").textContent += (item_amount[i]);
+        if (recipe.ingrediant[i] == 0) { break; }
+        document.getElementById("Cost").textContent += (recipe.amount[i]);
         document.getElementById("Cost").textContent += " ";
-        document.getElementById("Cost").textContent += itemName(items[i]);
-        if (items[(i + 1)] != 0) {
+        document.getElementById("Cost").textContent += itemName(recipe.ingrediant[i]);
+        if (recipe.ingrediant[(i + 1)] != 0) {
           document.getElementById("Cost").textContent += ", ";
         }
       }
-      document.getElementById("Cost").textContent += " For " + item_output_amount[0] + " " + itemName(item_output[0]);
+      document.getElementById("Cost").textContent += " For " + recipe.outputAmount[0] + " " + itemName(recipe.output[0]);
 
-      if (item_output[1] != 0) {
+      if (recipe.output[1] != 0) {
 
-        document.getElementById("Cost").textContent += " & " + item_output_amount[1] + " " + itemName(item_output[1]);
+        document.getElementById("Cost").textContent += " & " + recipe.outputAmount[1] + " " + itemName(recipe.output[1]);
 
 }
-      if (item_output[2] != 0) {
+      if (recipe.output[2] != 0) {
 
-        document.getElementById("Cost").textContent += " & " + item_output_amount[2] + " " + itemName(item_output[2]);
+        document.getElementById("Cost").textContent += " & " + recipe.outputAmount[2] + " " + itemName(recipe.output[2]);
 
       }
 
       document.getElementById("Cost").style.display = "block";
-    }
-
-    function calcCost() {
-
-      var _orderSize;
-      _orderSize = document.getElementById("Amount").value * maxAllowableOrders[document.getElementById("CID").value]
-      console.log(_orderSize)
     }
 
     async function selectTask(_value) {
@@ -686,11 +563,12 @@
           document.getElementById("LandAmountLabel").style.display = "block";
           break;
         case "2":
-          showAmount();
+          
+          document.getElementById("ItemMenu").style.display = "block";
+          document.getElementById("ItemMenuSelector").style.display = "block";
+          document.getElementById("ItemMenuSelectorLabel").style.display = "block";
 
-          showCraftingFields();
-          document.getElementById("totalCostID").style.display = "block";
-
+          console.log("New Craft Run");
           break;
         case "3":
           showAmount();
@@ -698,8 +576,6 @@
           document.getElementById("ItemMenu").style.display = "block";
           document.getElementById("ItemMenuSelector").style.display = "block";
           document.getElementById("ItemMenuSelectorLabel").style.display = "block";
-          document.getElementById("ItemMenuID").style.display = "block";
-          document.getElementById("ItemMenuLabelID").style.display = "block";
           document.getElementById("BuyorSellLabel").style.display = "block";
           document.getElementById("BuyorSellID").style.display = "block";
           document.getElementById("BuyorSell").style.display = "block";
@@ -709,6 +585,8 @@
           break;
         case "4":
           showAmount();
+          
+          document.getElementById("BuildingKingdomType").options[Number(cityData.kingdomType)].setAttribute('selected', true);
 
           document.getElementById("ItemMenu").style.display = "block";
 
@@ -742,7 +620,6 @@
 
           showLandMenu();}
           break;
-
         case "7":
           showAmount();
 
@@ -751,70 +628,70 @@
           break;
         case "8":
           showAmount();
-                  
-          document.getElementById("FoodAmounts").style.display = "block";
-          document.getElementById("foodInputLabel").style.display = "block";
-          document.getElementById("foodInputID").style.display = "block";
+          document.getElementById("ItemMenu").style.display = "block";
+          generateItemMenu("[22,23]");
           break;
         case "9":
-          showAmount();
 
-          document.getElementById("RecruitInput").style.display = "block";
-          document.getElementById("RecruitID").style.display = "inline";
           break;
         case "10":
 
 
           
           for(let i = 8; i < 32; ++i){
-            if(buildingCount[i] != 0){
+            for(let j = 0; j < 9; ++j){
+              if(buildingCount[j][i] != 0){
 
-              ClaimButtonGrid.innerHTML = "";
+                ClaimButtonGrid.innerHTML = "";
 
-              var newDiv = document.createElement('button');
-              newDiv.id = "ClaimButton"+i;
-              newDiv.onclick = function() {cityContractSigner.collect(i)}
-              
-              newDiv.innerHTML = getBuildingName(i);
-              ClaimButtonGrid.appendChild(newDiv);
-              
-              newDiv.classList.add("ClaimButton");
+                var newDiv = document.createElement('button');
+                newDiv.id = "ClaimButton"+i;
+                newDiv.onclick = function() {productionContractSigner.collect(i,j)}
+                
+                newDiv.innerHTML = getBuildingName(i);
+                ClaimButtonGrid.appendChild(newDiv);
+                
+                newDiv.classList.add("ClaimButton");
 
-              var completionTime = await cityContract.craftProgress(myAddress,i)
-              completionTime = Number(completionTime[0]);
-              console.log(completionTime);
+                var completionTime = await cityContract.craftProgress(myAddress,i,j);
+                console.log("Comp Time",completionTime);
+                for(let k = 0; k < 8; ++k){ 
+                  const _craftCompletionTime = Number(completionTime[k].timeWhenCompleted);
+                  console.log("Craft Completion Time " + k, _craftCompletionTime);
+                  if(_craftCompletionTime < (Date.now()/1000) && _craftCompletionTime != 0){
+                  newDiv.style.background = "red";
+                  newDiv.innerHTML += "\n Click To Claim";
+                  console.log("3");
+                  break;
 
-              if(completionTime == 1){
-                newDiv.style.background = "yellowgreen";
-                newDiv.innerHTML += "\nIdle";
-                console.log("1");
-              }
-              else if(completionTime > (Date.now()/1000)){
-                newDiv.style.background = "yellow";
-                const TTC = secondsToHMS(completionTime - (Date.now()/1000))
-                newDiv.innerHTML += "\nDone In: " + TTC;
+                }
+                //Uint64 max
+                else if(_craftCompletionTime >= (Date.now()/1000) && _craftCompletionTime != 18446744073709551615){
+                  newDiv.style.background = "yellow";
+                  const TTC = secondsToHMS(_craftCompletionTime - (Date.now()/1000))
+                  newDiv.innerHTML += "\nDone In: " + TTC;
+                  console.log("2");
+                  break;
+                }
+                else if(k == 7){
+                  newDiv.style.background = "yellowgreen";
+                  newDiv.innerHTML += "\n Idle";
+                  console.log("3");
 
-                console.log("2");
-              }
-              else{
-                newDiv.style.background = "red";
-                newDiv.innerHTML += "\n Click To Claim";
-                console.log("3");
-
-              }
-
+                }
+                }
+            }
           }
           }
           ClaimButtonGrid.style.display = "grid";
-          console.log("Sneed");
           break;
         case "11":
-          var allItems = returnItemID();
+          var AllRecipies = itemID;
           var you_cubed = []
-          for(let i = 0; i < allItems.length; ++i) {
+          for(let i = 0; i < AllRecipies.length; ++i) {
             you_cubed.push(myAddress);
           }
-          const total_inventory = await baseContract.balanceOfBatch(you_cubed,allItems);
+          const total_inventory = await baseContract.balanceOfBatch(you_cubed,AllRecipies);
           console.log(total_inventory);
           
           let thirdArray = [];
@@ -825,20 +702,20 @@
 
           let item_tracker = [];
 
-          for(let i = 0; i < allItems.length; ++i){
+          for(let i = 0; i < AllRecipies.length; ++i){
               thirdArray.push([0,0]);
-              thirdArray[i][0] = (Number(total_inventory[i] * itemValue(allItems[i])));
+              thirdArray[i][0] = (Number(total_inventory[i] * itemValue(AllRecipies[i])));
               //NaN check
               if(thirdArray[i][0] !== thirdArray[i][0]){thirdArray[i][0] = total_inventory[i]}
-              thirdArray[i][1] = allItems[i];
-              backupInv[i] = Number(total_inventory[i]) * itemValue(allItems[i]);
+              thirdArray[i][1] = AllRecipies[i];
+              backupInv[i] = Number(total_inventory[i]) * itemValue(AllRecipies[i]);
             }
             backupInv.sort(function(a, b) {return b - a;});
             console.log("uhf",backupInv);
              
-            for(let i = 0; i < allItems.length; ++i){
+            for(let i = 0; i < AllRecipies.length; ++i){
               
-                for(let j = 0; j < allItems.length; ++j){
+                for(let j = 0; j < AllRecipies.length; ++j){
                   if(thirdArray[j][0] == backupInv[i]){
                     if (item_tracker[j] == true){break;}
                     if(backupInv[i] != 0)
@@ -867,131 +744,6 @@
           InventoryPanel.style.gridTemplateRows = Math.ceil(finalarray.length/3);
           console.log("Test Inventory Finished For", myAddress);
           break;
-        case "12":
-
-          KingdomInfo.style.display = "block";
-          
-          let _population = cityData[0];
-          let _jobless_population = cityData[1];
-          let _max_population = cityData[2];
-          let _land_available = cityData[4];
-          let _kingdomType = cityData[5];
-          var _land = await cityContract.getLand(myAddress);
-
-
-          var _civilian_stockpiles = await cityContract.getStockedGoods(myAddress);
-          var _food_stockpiles = await cityContract.getGeneralStockpile(myAddress);
-          let _tithe_items = _civilian_stockpiles[1];
-
-          var _buildingAmount = await cityContract.getBuildingCount(myAddress);
-          var _season = await cityContract.returnSeason();
-
-          if(_season == 0) {_season = "Winter";}
-          if(_season == 1) {_season = "Spring";}
-          if(_season == 2) {_season = "Summer";}
-          if(_season == 3) {_season = "Fall";}
-
-
-
-          document.getElementById("peasentPop").style.display = "block";
-          document.getElementById("peasentPop").textContent = "Peasents:";
-          document.getElementById("peasentPop").textContent += _population[0];
-          document.getElementById("peasentPop").textContent += ", Jobless:";
-          document.getElementById("peasentPop").textContent += _jobless_population[0];
-          document.getElementById("peasentPop").textContent += ", Max:";
-          document.getElementById("peasentPop").textContent += _max_population[0];
-          document.getElementById("peasentPop").style.display = "block";
-
-          document.getElementById("lowNobelPop").style.display = "block";
-          document.getElementById("lowNobelPop").textContent = "Low Nobles:";
-          document.getElementById("lowNobelPop").textContent += _population[1];
-          document.getElementById("lowNobelPop").textContent += ", Jobless:";
-          document.getElementById("lowNobelPop").textContent += _jobless_population[1];
-          document.getElementById("lowNobelPop").textContent += ", Max:";
-          document.getElementById("lowNobelPop").textContent += _max_population[1];
-
-          document.getElementById("highNobelPop").style.display = "block";
-          document.getElementById("highNobelPop").textContent = "High Nobles:" + _population[2] + ", Jobless:" + _jobless_population[2] + ", Max:" + _max_population[2];
-
-
-
-
-          for (let i = 12; i < document.getElementsByClassName("Population").length; i++) {
-            document.getElementsByClassName("Population")[i].style.display = "block";
-          }
-          document.getElementById("housing").textContent = "Housing Count: Land Permits: " + _buildingAmount[0] + ", Tier 1: " + _buildingAmount[1] + ", Tier 2: " + _buildingAmount[2] + ", Tier 3: " + _buildingAmount[3] + ", Tier 4: " + _buildingAmount[4] + ", Tier 5: " + _buildingAmount[5] + ", Tier 6: " + _buildingAmount[6] + ", Tier 7: " + _buildingAmount[7];
-
-
-
-          document.getElementById("cookery").textContent = "Cookery Count: Tier 1: " + _buildingAmount[8] + ", Tier 2: " + _buildingAmount[9] +", Tier 3: " + _buildingAmount[10] + ", Tier 4: " + _buildingAmount[11];
-
-
-
-          document.getElementById("brewery").textContent = "Brewery Count: Tier 1: "+_buildingAmount[12]+ ", Tier 2: "+ _buildingAmount[13]+", Tier 3: "+_buildingAmount[14]+", Tier 4: "+_buildingAmount[15];
-
-
-          document.getElementById("smeltery").textContent = "Smeltery Count: Tier 1: "+_buildingAmount[16]+", Tier 2: "+ _buildingAmount[17]+", Tier 3: "+_buildingAmount[18];
-
-
-          document.getElementById("mason").textContent = "Mason Count: "+_buildingAmount[19];
-
-
-
-          document.getElementById("blacksmith").textContent = "Blacksmith Count: Tier 1: "+_buildingAmount[21]+", Tier 2: "+_buildingAmount[22];
-
-          document.getElementById("agingFacility").textContent = "Aging Facility Count: "+_buildingAmount[23];
-
-          document.getElementById("infra").textContent = "Infra Count: "+_buildingAmount[24];
-          document.getElementById("port").textContent = "Port Count: "+_buildingAmount[2];
-
-          document.getElementById("jeweler").textContent = "Jeweler Count: Tier 1: "+_buildingAmount[26]+", Tier 2: "+_buildingAmount[27];
-
-          document.getElementById("weaver").textContent = "Weaver Count: Tier 1: "+_buildingAmount[28]+", Tier 2: "+_buildingAmount[29];
-
-          document.getElementById("carpenter").textContent = "Carpenter Count: Tier 1: "+ _buildingAmount[30]+", Tier 2: "+_buildingAmount[31];
-
-          document.getElementsByClassName("Population")[3].style.display = "block";
-
-
-          document.getElementById("titheData").textContent = "Tithe Item Stockpiles:"+" Clothes: "+_tithe_items[0]+" Tools: "+_tithe_items[1]+" Furniture: "+ _tithe_items[2]+" Bedding: "+_tithe_items[3]+" Jewelery: "+_tithe_items[4];
-
-
-          document.getElementById("titheData").style.display = "block";
-          document.getElementById("seasonData").style.display = "block";
-
-          document.getElementById("seasonData").textContent = "Season: " + _season;
-
-          document.getElementById("foodStocks").textContent = "Food Stocks: " + _food_stockpiles[0];
-          document.getElementById("foodStocksValue").textContent = "Value of Food Stocks: " + _food_stockpiles[1];
-          document.getElementById("drinkStocks").textContent = "Drink Stocks: " + _food_stockpiles[2];
-          document.getElementById("drinkStocksValue").textContent = "Value of Drink Stocks: " + _food_stockpiles[3];
-
-
-          for (let i = 0; i < 10; i++) {
-
-            var _name = "land";
-            _name += (i + 1);
-
-            console.log("count")
-            if (Kingdom_Lands[_kingdomType][i] != 0) { document.getElementById(_name).style.display = "block"; }
-            else { break; }
-            console.log(i);
-            document.getElementsByClassName("Population")[i + 3].style.display = "block";
-            document.getElementById(_name).textContent = "Land Balance:"+_land[i]+" "+itemName(Kingdom_Lands[_kingdomType][i])+"________";
-            if (_land_available[i] == false) { document.getElementById(_name).textContent += "Land is available"; }
-            else {
-              const available_time_data = await cityContract.farmProgress(myAddress,i);
-              const available_time = Number(available_time_data[0]) + Number(available_time_data[5]);
-              console.log(available_time, "Available Time");
-              console.log(Date.now()/1000, "Current Time");
-              var time_to_available;
-              if(available_time < (Date.now()/1000)){time_to_available = "NOW";}
-              else{time_to_available = secondsToHMS(Math.ceil(available_time - (Date.now()/1000)))}
-              document.getElementById(_name).textContent += "Land NOT available, will be available " + time_to_available; }
-
-
-          }
-          break;
         case "13":
           showAmount();
           document.getElementById("ItemMenu").style.display = "block";
@@ -1013,13 +765,10 @@
 
     async function showLandMenu() {
 
-      const _kingdomType = cityData[5];
-
-
       for(let i = 0; i < LandMenu.options.length; ++i) {
-                    if(LandMenu.options[i].classList.contains(_kingdomType) == true || _kingdomType == 0) 
+                    if(LandMenu.options[i].classList.contains(cityData.kingdomType) == true || cityData.kingdomType == 0) 
                     {LandMenu.options[i].style.display = "block"}
-                    else if(typeof _kingdomType !== "undefined"){LandMenu.options[i].style.display = "none"}
+                    else if(typeof cityData.kingdomType !== "undefined"){LandMenu.options[i].style.display = "none"}
       }
 
 
@@ -1033,20 +782,19 @@
       document.getElementById("landSelection").style.display = "none";
     }
 
-    function hideInvalidBuildings() {
+    function hideInvalidBuildings(recipe) {
 
-      let whyJS = returnRecipe(Number(document.getElementById("RecipeID").value));
-      console.log(whyJS);
-      var _item_building = whyJS[6];
-
-      //Removes 0 to begin with as 0 is never a valid option
-      document.getElementsByClassName("buildingSelector")[0].style.display = "none";
-
-      for (let i = 1; i < 32; i++) {
-        if (i != _item_building[0] && i != _item_building[1] && i != _item_building[2] && i != _item_building[3]) { document.getElementsByClassName("buildingSelector")[i].style.display = "none"; }
-        else { document.getElementsByClassName("buildingSelector")[i].style.display = "initial"; }
-
+      console.log("Recipe: ",recipe);
+      for (let i = 0; i < 32; i++) 
+      { document.getElementsByClassName("buildingSelector")[i].style.display = "none"; }
+      for(let i = 0; i < 8; ++i){
+        if(recipe.allowableBuildings[i] != 200)
+        { console.log("Building ID: ",recipe.allowableBuildings[i]);
+          document.getElementsByClassName("buildingSelector")[recipe.allowableBuildings[i]].style.display = "initial"; }      
+        else{break;}
       }
+
+      
     }
 
     function hideBuildingCost() {
@@ -1056,17 +804,10 @@
         document.getElementById("H-" + i).style.display = "none";
       }
     }
-    
-    function showCraftingFields() {
-      document.getElementById("RecipeMenus").style.display = "block";
-      document.getElementById("RecipeMenuSelectorLabel").style.display = "block";
-      document.getElementById("RecipeMenuSelector").style.display = "block";
-      document.getElementById("RecipeIDLabel").style.display = "block";
-      document.getElementById("RecipeID").style.display = "block";
-    }
 
     async function totalCostCalc() {
 
+      _value = selectedItem;
       document.getElementById("totalCost").style.display = "block";
       document.getElementById("totalCostID").style.display = "block";
 
@@ -1080,84 +821,79 @@
         else if(cropSelect.value == 1) {await landYieldApproximator(TimeAmount.value)}
         else if(cropSelect.value == 2) {document.getElementById("totalCostID").textContent = "Total Cost: " + (Amount * TimeAmount.value) + " Low Noble Hunting Ration. Will require " + (5 * Amount) + " land.";}
         else if(cropSelect.value == 3) {document.getElementById("totalCostID").textContent = "Total Cost: " + (Amount * TimeAmount.value) + " High Noble Hunting Ration. Will require " + (100 * Amount) + " land.";}
+        PopTypeInput.style.display = "block";
       }
       else if(actionSelect.value == "2") {
-        let whyJS = returnRecipe(Number(selector()));
-        var items = whyJS[1];
-        var item_amount = whyJS[0];
-        var item_output_amount = whyJS[2];
-        var item_output = whyJS[3];
-        var recipe_size = whyJS[4];
-        var time = whyJS[5];
+        console.log("Value: ",_value);
+        var recipe = getRecipies(_value);
+        lastRecipe = _value;
+        console.log("Recipe: ",recipe);
+ 
+        document.getElementById("totalCostID").textContent = "Total Cost:";
 
-        document.getElementById("totalCostID").textContent = "Total Cost: ";
-
-
-        if (items[0] != 0) {
+        document.getElementById("CDInput").style.display = "block";
+          document.getElementById("CDLabel").style.display = "inline";
+          document.getElementById("CID").style.display = "inline";
+        if (recipe.amount[0] != 0) {
           var _recipeText;
           var _foodcost;
-          var _foodMultiplier = (Math.ceil((document.getElementById("BatchAmount").value * recipe_size) / maxAllowableOrders[document.getElementById("CID").value]));
+          var _building;
+          if(CID.value == 200){_building = eval("Building200");}
+          else {_building = eval("Building"+CID.value+"_"+BuildingKingdomType.value);}
+          hideInvalidBuildings(recipe);
+          var _foodMultiplier = (Math.ceil((document.getElementById("BatchAmount").value * recipe.capacityUsed) / _building.industrySize));
           console.log(document.getElementById("BatchAmount").value, "a")
-          console.log(Amount.value, "b")
-          _foodcost = Workers[document.getElementById("CID").value] * (_foodMultiplier) * Math.ceil((time * Amount.value)/10);
+          _foodcost = _building.employees * (_foodMultiplier) * (recipe.timeToMake * Amount.value);
           var _outputText;
-          _outputText = item_output_amount[0] * Amount.value;
-          if (time != 0) {
-            const _buildingCount = await cityContract.getBuildingCount(myAddress);
+          _outputText = recipe.outputAmount[0] * Amount.value;
+          if (recipe.timeToMake != 0) {
             console.log("is this running?");
             document.getElementById("BatchAmountLabel").textContent = "How many batches would you like to make? Max: ";
-            document.getElementById("BatchAmountLabel").textContent += (maxAllowableOrders[document.getElementById("CID").value] * _buildingCount[document.getElementById("CID").value] / recipe_size)
-            for (var i = 0; i < 6; i++) {
-              if (items[i] == 0) { break; }
-              document.getElementById("totalCostID").textContent += ((item_amount[i]) * Amount.value * document.getElementById("BatchAmount").value) + " " + itemName(items[i]);
-            }
+            document.getElementById("BatchAmountLabel").textContent += (_building.industrySize * buildingCount[Number(BuildingKingdomType.value) - 1][CID.value] / recipe.capacityUsed);
+            //console.log("building read:", buildingCount[BuildingKingdomType.value + 1][CID.value]);
           }
           else {
             // Does this to account for no batches without more complex math
             document.getElementById("BatchAmount").value = 1;
-            for (var i = 0; i < 6; i++) {
-              if (items[i] == 0) { break; }
-              document.getElementById("totalCostID").textContent += ((item_amount[i]) * Amount.value * document.getElementById("BatchAmount").value) + " " +  itemName(items[i]) + " ";
-            }
           }
-
-          if (time != 0) {
+          for (var i = 0; i < 6; i++) {
+              if (recipe.ingrediant[i] == 0) { break; }
+              document.getElementById("totalCostID").textContent += " " + ((recipe.amount[i]) * Amount.value * document.getElementById("BatchAmount").value) + " " + itemName(recipe.ingrediant[i]);
+            }
+          if (recipe.timeToMake != 0) {
             document.getElementById("totalCostID").textContent += " & " + _foodcost + " Food";
           }
           document.getElementById("totalCostID").textContent += " For ";
 
 
-          if (document.getElementById("actionSelect").value == 2) { _outputText = _outputText * Number(document.getElementById("BatchAmount").value); }
-          document.getElementById("totalCostID").textContent += (_outputText) + " " + itemName(item_output[0]);
+          if (actionSelect.value == 2) { _outputText = _outputText * Number(document.getElementById("BatchAmount").value); }
+          document.getElementById("totalCostID").textContent += (_outputText) + " " + itemName(recipe.output[0]);
 
           document.getElementById("totalCostID").style.display = "block";
 
 
-          if (item_output[1] != 0) {
-              document.getElementById("totalCostID").textContent += " & " + ((item_output_amount[1]) * Amount.value * document.getElementById("BatchAmount").value) + " " + itemName(item_output[1]);
+          if (recipe.output[1] != 0) {
+              document.getElementById("totalCostID").textContent += " & " + ((recipe.outputAmount[1]) * Amount.value * document.getElementById("BatchAmount").value) + " " + itemName(recipe.output[1]);
             }
 
-          if (item_output[2] != 0) {
-              document.getElementById("totalCostID").textContent += " & " + ((item_output_amount[2]) * Amount.value * document.getElementById("BatchAmount").value) + " " + itemName(item_output[2]);
+          if (recipe.output[2] != 0) {
+              document.getElementById("totalCostID").textContent += " & " + ((recipe.outputAmount[2]) * Amount.value * document.getElementById("BatchAmount").value) + " " + itemName(recipe.output[2]);
             }
-        }
-
-            
-
-        if (time == 0 || document.getElementById("actionSelect").value == "7" ||
-          document.getElementById("actionSelect").value == "8" ||
-          document.getElementById("actionSelect").value == "4" ||
-          document.getElementById("actionSelect").value == "3") { }
+        } 
+        if (recipe.timeToMake == 0 || actionSelect.value == "7" ||
+          actionSelect.value == "8" ||
+          actionSelect.value == "4" ||
+          actionSelect.value == "3") { }
         //Why is this here? Because I cant figure out how to make it work right in the if statement and its not worth the time to fix when this works
         else {
           if (document.getElementById("CID").value != 22) {
             console.log("Food Amounts:", stockAmounts);
-            var _civ_bonus = await bonusCalc(1,0);
+            var _civ_bonus = await newBonusCalc(1,0);
             console.log("Civ Bonus:",_civ_bonus);
 
-            setTTC((Number(Amount.value) * time * 100) / (_civ_bonus));
+            setTTC((Number(Amount.value) * recipe.timeToMake * 100) / (_civ_bonus));
           }
-          else { setTTC(Number(Amount) * time); }
+          else { setTTC(Number(Amount.value) * recipe.timeToMake); }
         }
 
       }
@@ -1166,12 +902,9 @@
         var tradeCost = await calcTradeCost();
         totalCostID.textContent += tradeCost;
         totalCostID.textContent += " Coins";
-
-
       }
       else if(actionSelect.value == "7") {
 
-        let _kingdomType = cityData[5];
         let _popData = cityData[0];
         
         const _stockedGoods = await cityContract.getStockedGoods(myAddress);
@@ -1180,16 +913,16 @@
         if((_goods + (Amount.value * 4)) > 25){document.getElementById("totalCostID").textContent = "Error: You are trying to stock too many goods at once. The maximum amount your storage can currently handle is " + Math.floor((24 - _goods)/4)}
 
         else{
-        document.getElementById("totalCostID").textContent = "Total Cost: "
+        document.getElementById("totalCostID").textContent = "Total Cost:"
         for(let i = 0; i < 3; ++i) {
-          document.getElementById("totalCostID").textContent += (Amount.value * _popData[i] *  TitheDetails[Kingdom_Civilian_Items[_kingdomType][CivGM.value]][2*i + 1]);
-          document.getElementById("totalCostID").textContent += " " + itemName(TitheDetails[Kingdom_Civilian_Items[_kingdomType][CivGM.value]][2*i]);
+          document.getElementById("totalCostID").textContent += " " + (Amount.value * _popData[i] *  TitheDetails[cityData.kingdomType][2*i + 1]);
+          document.getElementById("totalCostID").textContent += " " + itemName(TitheDetails[cityData.kingdomType][2*i]);
           if(i != 2){document.getElementById("totalCostID").textContent += " & "}
           
         }}
       }
       else if(actionSelect.value == "9") {
-        switch (RecruitID.value) {
+        switch (RecruitSelector.value) {
           case "0":
             document.getElementById("totalCostID").textContent += 10000 * Amount.value + " Copper";
             break;
@@ -1214,128 +947,167 @@
       console.log("first value check", _value2);
       return (_value2);
     }
+    function craftingMenu(_value) {
+      hideAll();
+      selectedItem = _value;
+      totalCostCalc();
+      showAmount();
+      showBatchAmount();
+    }
+    function generateItemMenu(_value) {
+      if(_value != ItemMenuID.value){
+      const _old_div_label = document.getElementById("ItemMenuIDLabel");
+      const _old_div = document.getElementById("ItemMenuID");
+      _old_div_label.remove();
+      _old_div.remove();
+      const _div_label = document.createElement("label");
+      _div_label.id = ("ItemMenuIDLabel");
+      const _div = document.createElement("select");
+      _div.id = ("ItemMenuID");
+      _div.classList.add("Dropdown");
+      _div.addEventListener("change", function() {
+        generateItemMenu(ItemMenuID.value);
+        console.log("Test");
+      })
+      if(_value.charAt(0) == "["){_value = eval(_value);}
+      else{_value = [Number(_value)];}
+      console.log("Value: ",_value);
+      var _recipe = [];
+      for(let i = 0; i < _value.length; ++i){
+        _recipe[i] = (groupItems(_value[i]));
+      }
+      console.log("Recipe: ",_recipe);
 
-    function showMultiItemMenu(_value) {
+      _div_label.innerHTML = "Which Item would you like to select?";
+      for(let i = 0; i < _recipe.length; ++i)
+      {
+        for(let j = 0; j < _recipe[i].length; ++j){
 
-      document.getElementById("itemSelection").style.display = "inline";
-      document.getElementsByClassName("itemSelection")[_value * -1].style.display = "inline";
+          const _child = document.createElement("option");
+          _child.value = _recipe[i][j];
+          _child.innerHTML = itemName(_recipe[i][j]);
 
+          _div.appendChild(_child);
+        }
+      }
+    
+      itemMixSelection.appendChild(_div_label);
+      itemMixSelection.appendChild(_div);
+    }
+    
+      ItemMenuID.style.display = "block";
+      ItemMenuIDLabel.style.display = "block";
+      console.log("This also ran");
 
+      if(actionSelect.value == "2"){
+        console.log("This ran",ItemMenuID.value);
 
-      switch (_value) {
-        case -1:
-          GrainLabel.style.display = "inline";
-          GrainMultiSelect.style.display = "inline";
-          break;
-        case -2:
-          MeatLabel.style.display = "inline";
-          MeatMultiSelect.style.display = "inline";
-          break;
-        case -3:
-          FruitLabel.style.display = "inline";
-          FruitMultiSelect.style.display = "inline";
-          break;
-        case -4:
-          VegetableLabel.style.display = "inline";
-          VegetableMultiSelect.style.display = "inline";
-          break;
-        case -5:
-          CookingOilLabel.style.display = "inline";
-          CookingOilMultiSelect.style.display = "inline";
-          break;
-        case -6:
-          T2MetalLabel.style.display = "inline";
-          T2MetalMultiSelect.style.display = "inline";
-          break;
-        case -7:
-          T1DrinksLabel.style.display = "inline";
-          T1DrinksMultiSelect.style.display = "inline";
-          break;
-        case -8:
-          ExoticBerryLabel.style.display = "inline";
-          ExoticBerryMultiSelect.style.display = "inline";
-          break;
-        case -9:
-          BreadLabel.style.display = "inline";
-          BreadMultiSelect.style.display = "inline";
-          break;
-        case -10:
-          T2DrinksLabel.style.display = "inline";
-          T2DrinksMultiSelect.style.display = "inline";
-          break;
-        case -11:
-          T3DrinksLabel.style.display = "inline";
-          T3DrinksMultiSelect.style.display = "inline";
-          break;
-        case -12:
-          T4DrinksLabel.style.display = "inline";
-          T4DrinksMultiSelect.style.display = "inline";
-          break;
-        case -13:
-          T5DrinksLabel.style.display = "inline";
-          T5DrinksMultiSelect.style.display = "inline";
-          break;
-        case -14:
-          SeafoodLabel.style.display = "inline";
-          SeafoodMultiSelect.style.display = "inline";
-          break;
-        case -15:
-          FloursLabel.style.display = "inline";
-          FloursMultiSelect.style.display = "inline";
-          break;
-        case -16:
-          CropsLabel.style.display = "inline";
-          CropsMultiSelect.style.display = "inline";
-          break;
-        case -17:
-          PolishedCommonGemstoneLabel.style.display = "inline";
-          PolishedCommonGemstoneMultiSelect.style.display = "inline";
-          break;
-        case -18:
-          PolishedRareGemstoneLabel.style.display = "inline";
-          PolishedRareGemstoneMultiSelect.style.display = "inline";
-          break;
-        case -19:
-          CommonGemstoneLabel.style.display = "inline";
-          CommonGemstoneMultiSelect.style.display = "inline";
-          break;
-        case -20:
-          RareGemstoneLabel.style.display = "inline";
-          RareGemstoneMultiSelect.style.display = "inline";
-          break;
-        case -21:
-          FibersLabel.style.display = "inline";
-          FibersMultiSelect.style.display = "inline";
-          break;
-        case -22:
-          FlatbreadsLabel.style.display = "inline";
-          FlatbreadsMultiSelect.style.display = "inline";
-          break;
-        case -23:
-          StocksLabel.style.display = "inline";
-          StocksMultiSelect.style.display = "inline";
-          break;
-        case -24:
-          BonesLabel.style.display = "inline";
-          BonesMultiSelect.style.display = "inline";
-          break;
-        case -25:
-          SaucesLabel.style.display = "inline";
-          SaucesMultiSelect.style.display = "inline";
-          break;
-        case -26:
-          FuelsLabel.style.display = "inline";
-          FuelsMultiSelect.style.display = "inline";
-          break;
-        case -27:
-          UnboiledMeatsLabel.style.display = "inline";
-          UnboiledMeatsMultiSelect.style.display = "inline";
-          break;
-        default:
-          console.log("did NOT work");
+        
+        const _recipieOptions = groupCrafting(ItemMenuID.value);
 
+        console.log(_recipieOptions);
+        document.getElementById("totalCost").style.display = "block";
+        
+        document.getElementById("BatchAmount").value = 1;
+        Amount.value = 1;
+        
+        const _old_div = document.getElementById("totalCostID");
+        _old_div.remove();
+        const _div = document.createElement("div");
+        _div.id = ("totalCostID");
+        _div.innerHTML = "Recipies:<br>";
+        for(let n = 0; n < 2; ++n){
+
+          //This breaks everything and IDK why,
+          //if(n == 1){_div.innerHTML += "<br>Secondary Recipies: <br>"}
+          for(let i = 0; i < _recipieOptions[n].length; ++i){
+                      // Does this to account for no batches without more complex math
+              if(_recipieOptions[n][i] == -1){break;}
+              var _recipe = getRecipies(_recipieOptions[n][i]);
+                          
+                const _child = document.createElement("button");
+                _child.id = ("craftingOption"+n+"-"+i);
+                console.log(("craftingOption"+n+"-"+i));
+                _child.value = _recipieOptions[n][i];
+                
+                _child.onclick = function() {
+                  console.log("Craft Clicked!",_child.value);
+                  selectedRecipe = _child.value;
+                  craftingMenu(_child.value);
+                }
+                
+
+                  var _input = "Inputs: ";
+                  var _yields = "<br>Yields: ";
+                for (let j = 0; j < 6; j++) {
+                  if (_recipe.amount[j] != 0){_input += (_recipe.amount[j] * Amount.value * document.getElementById("BatchAmount").value) + " " +  itemName(_recipe.ingrediant[j]) + " ";}
+                  if(_recipe.outputAmount[j] != 0){_yields += (_recipe.outputAmount[j] * Amount.value * document.getElementById("BatchAmount").value) + " " +  itemName(_recipe.output[j]) + " ";}
+                }
+                _child.innerHTML += _input + _yields;
+
+                _child.innerHTML += "<br> Building Used: " + getBuildingName(_recipe.allowableBuildings[0]) 
+                if(CraftingPreq[_recipe.allowableBuildings[0] + 1] != 200 && _recipe.allowableBuildings[0] != 200){_child.innerHTML += " Or Higher";}
+                _child.innerHTML += "<br> Building Subtype: "
+                var _allTrue = true;
+                for(let j = 0; j < 9; ++j){
+                  if(_recipe.allowableBuildingTypes[j] == false){
+                    _allTrue = false;
+                    break;
+                  }
+                }
+                if(_allTrue == true){_child.innerHTML += "No Limits"}
+                else{
+                  _child.innerHTML += "Valid Subtypes: "
+                  var _trueCount = 0;
+                  for(let j = 0; j < 9; ++j){
+                    if(_recipe.allowableBuildingTypes[j] == true){
+                      if(_trueCount != 0){_child.innerHTML += ", "}
+                      _child.innerHTML += kingdomName(j + 1);
+                      _trueCount += 1;
+                    }
+                  }
+                }
+                _child.classList.add("CraftingOption");
+                _div.appendChild(_child);
+          }
+        }
+          _div.style.display = "block";
+          
+          totalCost.appendChild(_div);
       }
     }
+    function showMultiItemMenu(_value,_inputValue) {
+
+      const _old_div_label = document.getElementById("MultiMixItemLabel"+_inputValue);
+      const _old_div = document.getElementById("MultiMixItem"+_inputValue);
+      _old_div_label.remove();
+      _old_div.remove();
+      const _div_label = document.createElement("label");
+      _div_label.id = ("MultiMixItemLabel"+_inputValue);
+      const _div = document.createElement("select");
+      _div.id = ("MultiMixItem"+_inputValue);
+      _div.classList.add("Dropdown");
+
+      console.log("Mix Value:", ("MultiMixItem"+_inputValue));
+      const _recipe = getRecipies(_value);
+
+      _div_label.innerHTML = "What Kind of Item would you like to use?";
+
+      for(let i = 0; i < _recipe.length; ++i){
+
+        const _child = document.createElement("option");
+        _child.value = _recipe[i];
+        _child.innerHTML = itemName(_recipe[i]);
+
+        _div.appendChild(_child);
+      }
+
+      itemMixSelection.appendChild(_div_label);
+      itemMixSelection.appendChild(_div);
+
+      _div.style.display = "block";
+      _div_label.style.display = "block";
+}
 
     function setTTC(_time) {
       console.log("SetTTC is run");
@@ -1343,7 +1115,7 @@
       document.getElementById("timeToCompletion").style.display = "block";
       document.getElementById("Time").style.display = "block";
       const _new_Time = Math.trunc(Time_Multiplier * _time);
-
+      console.log("New Time:", _new_Time)
 
       document.getElementById("timeToCompletion").textContent = 
       "Time To Completion: " + secondsToHMS(_new_Time);
@@ -1353,14 +1125,6 @@
     function secondsToHMS(_new_Time) {
       _new_Time = Math.trunc(_new_Time / 3600) +  " Hours " +  (Math.trunc(_new_Time / 60) % 60) +  " Minutes " +  Math.trunc(_new_Time % 60) +  " Seconds ";
       return(_new_Time)
-    }
-
-    function showRelevantItems(_value) {
-      for(let i = 0; i < document.getElementById("ItemMenuID").options.length; ++i) {
-                    if(document.getElementById("ItemMenuID").options[i].classList.contains(_value) == true) 
-                    {document.getElementById("ItemMenuID").options[i].style.display = "block"}
-                    else {document.getElementById("ItemMenuID").options[i].style.display = "none"}
-      }
     }
 
     function sellAllCheck() {
@@ -1386,47 +1150,41 @@
 
     }
     async function calcTradeCost() {
-      var MarketSize = await merchantContract.returnMarketSize(Number(ItemMenuID.value));
+      var marketSize = await merchantContract.returnMarketSize(Number(ItemMenuID.value));
       var TotalMarketSize = await merchantContract.returnMarketSizeMultiplier();
       var LandSold = await merchantContract.returnTotalLandSales();
       var ItemValue = itemValue(Number(ItemMenuID.value));
+      console.log("Item Value: ", ItemValue);
       var marketFee = await merchantContract.returnMarketFee();
       var AmountSold = await merchantContract.returnAmountSold(Number(ItemMenuID.value));
       LandSold = Number(LandSold);
       AmountSold = Number(AmountSold);
-      MarketSize = Number(MarketSize);
+      marketSize = Number(marketSize);
       marketFee = Number(marketFee);
 
-      console.log(MarketSize);
       var tradeCost
-      var finalTradeCost
+      var tempAmountSold
 
       if(BuyorSellID.value == "true"){
         AmountSold += Math.floor(Number(Amount.value)/2);
-        console.log(AmountSold);
+        console.log(AmountSold, "Amount Sold");
       }
       else{
         AmountSold -= Math.floor(Number(Amount.value)/2);
         console.log(AmountSold,"e");
       }
-      if(AmountSold > 0){
-        tradeCost = Math.floor((Number(TotalMarketSize) * Math.floor(Math.floor(Number(AmountSold)/Number(MarketSize)) + LandSold))/LandSold);
-        console.log(tradeCost);
-      }
-      else{
-        AmountSold = Math.abs(AmountSold);
-        tradeCost = Math.floor((Number(TotalMarketSize) * LandSold) / (Math.floor(AmountSold/MarketSize) + LandSold));
-        console.log(tradeCost, "e");
-      }
-      finalTradeCost = Math.floor((Amount.value * Number(ItemValue)) * Math.floor((tradeCost/Math.floor(Number(TotalMarketSize)/100)))/100);
-      console.log(finalTradeCost, "f");
+      AmountSold = Math.abs(AmountSold);
+      tempAmountSold = (10000 + Math.floor((AmountSold * ItemValue)/(marketSize * LandSold)));
+      AmountSold = Math.floor((AmountSold * ItemValue * tempAmountSold)/TotalMarketSize);
+
+      //*2 in here to balance it all
       if(BuyorSellID.value == "true"){
-        finalTradeCost = Math.floor(finalTradeCost * 10000 / marketFee);
+        AmountSold = Math.floor((AmountSold * 10000 * 2) / marketFee);
       }
       else{
-        finalTradeCost = Math.floor(finalTradeCost * marketFee / 10000);
+        AmountSold = Math.floor((AmountSold * marketFee * 2) / 10000);
       }
-      return(finalTradeCost)
+      return(AmountSold)
 
     }
     
@@ -1440,23 +1198,11 @@
       }
     }
     
-    function selector() {
-      if (document.getElementById("actionSelect").value == 2) {
-        return document.getElementById("RecipeID").value;
-      }
-      var _r;
-      _r = Number(document.getElementById("ItemMenuID").value) + Number(document.getElementById("BuyorSellID").value);
-      return _r;
-
-    }
-    
     function setBuyString(){
       console.log(BuyorSellID.value)
     }
     
     function hideAll() {
-
-      hideMultiSelector();
 
       document.getElementById("LandAmountLabel").style.display = "none";
       document.getElementById("Amount").style.display = "none";
@@ -1468,9 +1214,15 @@
 
       document.getElementById("ClaimButtonGrid").style.display = "none";
 
+      for(let i = 0; i < 3; ++i){
+        document.getElementById("MultiMixItem" + i).style.display = "none";
+        document.getElementById("MultiMixItemLabel" + i).style.display = "none";
+
+      }
+
       hideBuildingCost();
       noHousingNotice.style.display = "none";
-      lackItemsNotice.style.display = "none";
+      lackRecipeNotice.style.display = "none";
 
       sendTX.style.display = "block";
 
@@ -1481,6 +1233,8 @@
       
       sellAllCheckbox.style.display = "none";
       sellAllText.style.display = "none";
+
+      PopTypeInput.style.display = "none";
 
       document.getElementById("ErrorText").style.display = "none"
       document.getElementById("ErrorToast").style.display = "none"
@@ -1520,7 +1274,7 @@
       document.getElementById("CivGM").style.display = "none";
 
       document.getElementById("RecruitInput").style.display = "none";
-      document.getElementById("RecruitID").style.display = "none";
+      document.getElementById("RecruitSelector").style.display = "none";
 
       document.getElementById("CDInput").style.display = "none";
       document.getElementById("CID").style.display = "none";
@@ -1530,14 +1284,12 @@
       document.getElementById("BuyorSellID").style.display = "none";
       document.getElementById("BuyorSell").style.display = "none";
       hideAmount();
-
-
-      document.getElementsByClassName("ItemMenu")[0].style.display = "none";
-      document.getElementsByClassName("ItemMenu")[1].style.display = "none";
       document.getElementById("balance").style.display = "none";
 
       hideTimedCraftingMenu();
       document.getElementById("totalCostID").style.display = "none";
+      document.getElementById("ItemMenuIDLabel").style.display = "none";
+      document.getElementById("ItemMenuID").style.display = "none";
 
       document.getElementById("BuyorSellLabel").style.display = "none";
 
@@ -1566,17 +1318,14 @@
       return(housingValid)
     }
     
-    function hideMultiSelector() {
-      for(let i = 0; i < 28; ++i) {
-        document.getElementsByClassName("Items")[i].style.display = "none";
-        document.getElementsByClassName("itemSelection")[i].style.display = "none";
-      }
-    }
-    
     function showAmount() {
       document.getElementById("Amount").style.display = "block";
       document.getElementById("AmountID").style.display = "block";
       document.getElementById("AmountLabel").style.display = "block";
+    }
+    function showBatchAmount() {
+      document.getElementById("BatchAmountLabel").style.display = "block";
+      document.getElementById("BatchAmount").style.display = "block";
     }
 
     function hideAmount() {
@@ -1592,50 +1341,64 @@
     
     async function farmYieldApproximator() {
 
-      const _kingdomType = cityData[5];
       const _availableLabor = cityData[1];
 
-      const crop_info = returnCropData(cropSelect.value);
+      const _cropInfo = farmData(cropSelect.value);
 
-      const _land_info = returnLandData(LandMenu.value);
-
-      var crop_yield_times = crop_info[6];
-      var secondary_crop_yield_times = crop_info[7];
-      
+      const _landInfo = farmLandData(LandMenu.value);
       console.log("Food Amounts:", stockAmounts);
 
-      var _temp_mod = _land_info[0];
+      var _currentTemp = _landInfo.temperature;
 
       var _season = await cityContract.returnSeason();
 
-      _season = Number(_season);
+      _currentTemp = seasonTemp(_season,_currentTemp);
 
-      if(_season == 0) {_temp_mod -= 20;}
-      else if(_season == 2) {_temp_mod += 20;}
-      else if(_season == 3) {_temp_mod -= 10;}
+      if (!_cropInfo.isAnimal) {
 
+           _soilQuality = ((_landInfo.soilQuality));
+          //TODO: This can be ran locally, currently not because lazy
+          _soilQuality += 5 * await cityContract.getItemLevel(FertilizerSelector.value);
 
+          var _tempMultiplier = 0;
+          // Each degree off optimal decreases yield by 1%
+          _tempMultiplier = (((_currentTemp) - ((_cropInfo.temperature[2]))));
+          _tempMultiplier = Math.abs(_tempMultiplier);
+          _tempMultiplier = (100 - (_tempMultiplier));
+
+          _yieldperland = Math.round((((_soilQuality) + 100) * _tempMultiplier)/100) - 100;
+          console.log("Yield Per Land:", _yieldperland);
+          if(_yieldperland <= 0){console.log("ERROR: YOU ARE TO WEAK TO FARM THIS. MINIMUM 0. YOU HAVE:", _yieldperland);}
+          //require(_landInfo.soilQuality != 0,"Should have soil Quality");
+          //require (_soilQuality >= ((_cropInfo.minsoil)), "Land is too barren");
+
+          }
+
+          //require ((_currentTemp) >= _cropInfo.temperature[0] && (_currentTemp) <= _cropInfo.temperature[1] , "Temprature too Hot/Cold");
+          //require (_landInfo.waterQuantity >= _cropInfo.water[0] && _landInfo.waterQuantity <= _cropInfo.water[1], "Weather Too Wet/Dry");
+          //require (_landInfo.altitude <= _cropInfo.maxheight, "Land is too high up");
+      /*
       var temp_bonus = 100 - Math.abs((crop_info[2][2] - _temp_mod));
       console.log("Temp Bonus: ",temp_bonus);
       const fertility_bonus = (_land_info[3] + (5 * FertilizerLevel[FertilizerSelector.value]))
       const land_mod = ((temp_bonus * (100 + fertility_bonus))/100)-100;
       console.log("land mod",land_mod);
-      const civ_good_bonus = await bonusCalc(2,land_mod);
+      const civ_good_bonus = await newBonusCalc(2,land_mod);
       console.log("civ goods: ",civ_good_bonus);
       var primary_yield = Math.round(TimeAmount.value * Amount.value * (crop_info[0] * civ_good_bonus)/100);
-
-      if(secondary_crop_yield_times != 0) {
+      */
+      if(_cropInfo.secondaryOutput != 0) {
         document.getElementById("SecondaryCropYieldAmount").style.display = "block";
         document.getElementById("SecondaryCropYieldAmount").textContent = "Estimated Secondary Yield: ";
 
-        primary_yield = (crop_info[0] * yield_mod * Amount.value);
-        var secondary_start = (crop_info[6]/10)
+        primary_yield = (_cropInfo.yield * _yieldperland * Amount.value);
+        var secondary_start = (_cropInfo.growthTime/10)
 
-        var secondary_yield_check = crop_info[1] * (TimeAmount.value - secondary_start) * Amount.value * yield_mod ;
+        var secondary_yield_check = _cropInfo.secondaryOutput * (TimeAmount.value - secondary_start) * Amount.value * _yieldperland ;
         if(secondary_yield_check < 0 ) {secondary_yield_check = 0}
-        if(_value * 10 - crop_info[6] < 0) {primary_yield = 0}
+        if(_value * 10 - _cropInfo.growthTime < 0) {primary_yield = 0}
 
-        document.getElementById("SecondaryCropYieldAmount").textContent += secondary_yield_check + " " + itemName(crop_info[10]);
+        document.getElementById("SecondaryCropYieldAmount").textContent += secondary_yield_check + " " + itemName(_cropInfo.secondaryOutput);
       }
 
       document.getElementById("CropYieldAmount").style.display = "block";
@@ -1643,50 +1406,51 @@
       document.getElementById("totalCostID").textContent = "Total Cost: " + Amount.value * TimeAmount.value * 10 + " Food";
 
 
-
-      document.getElementById("CropYieldAmount").textContent = "Estimated Primary Yield: " + primary_yield + " " + itemName(crop_info[9]);
+      var _finalValue = Math.floor(_cropInfo.yield * _yieldperland * Amount.value * TimeAmount.value/100);
+      document.getElementById("CropYieldAmount").textContent = "Estimated Primary Yield: " + _finalValue+ " " + itemName(_cropInfo.output);
 
       var _selectedLand;
       for(let i = 0; i < 8; ++i){
-        if(Kingdom_Lands[_kingdomType][i] == Number(LandMenu.value)){_selectedLand = i}
+        if(Kingdom_Lands[cityData.kingdomType][i] == Number(LandMenu.value)){_selectedLand = i}
       }
       _myLandArray= await cityContract.getLand(myAddress);
       console.log("My Land Array",_myLandArray)
       console.log("Amount:", Amount.value);
       console.log("Amount Of Selected Land:",_myLandArray[_selectedLand]);
+      console.log("Crop Water: ",_landInfo.waterQuantity);
+      console.log("Max Water: ",_cropInfo.water);
       if(Number(_availableLabor[0]) < Amount.value){
         document.getElementById("CropYieldAmount").textContent = "You don't have enough people to do this! Max: " + _availableLabor[0];
       }
       if(Number(_myLandArray[_selectedLand]) < Amount.value){
         document.getElementById("CropYieldAmount").textContent = "You don't have enough land to do this! Max: " + _myLandArray[_selectedLand];
       }
-      else if(_land_info[1] < crop_info[3][0]){
+      else if(_landInfo.waterQuantity < _cropInfo.water[0]){
         document.getElementById("CropYieldAmount").textContent = "Land is too dry to grow this";
       }
-      else if(_land_info[1] > crop_info[3][1]){
+      else if(_landInfo.waterQuantity > _cropInfo.water[1]){
         document.getElementById("CropYieldAmount").textContent = "Land is too wet to grow this";
       }
-      else if(crop_info[5] < _land_info[2]) {
+      else if(_cropInfo.maxHeight < _landInfo.altitude) {
         document.getElementById("CropYieldAmount").textContent = "Land is too high up for cultivation of this crop";
       }
-      else if(crop_info[4] > _land_info[3] + (5 * FertilizerLevel[FertilizerSelector.value])) {
+      else if(_cropInfo.minsoil > _soilQuality) {
         document.getElementById("CropYieldAmount").textContent = "Land is too barren up for cultivation of this crop";
       }
-      else if(crop_info[2][0] > _temp_mod) {
+      else if(_cropInfo.temperature[0] > _currentTemp) {
         document.getElementById("CropYieldAmount").textContent = "Land is too cold for cultivation";
       }
-      else if(crop_info[2][1] < _temp_mod) {
+      else if(_cropInfo.temperature[1] < _currentTemp) {
         document.getElementById("CropYieldAmount").textContent = "Land is too hot for cultication";
       }
       else if(document.getElementById("TimeAmount").value > 25) {
         document.getElementById("CropYieldAmount").textContent = "This Is Too Long! Maximum number of repeats allowed is 25";
       }
-      if (document.getElementById("CropYieldAmount").textContent != "Estimated Primary Yield: " + primary_yield + " " + itemName(crop_info[9]))
+      if (_finalValue < 0)
       {
         sendTX.style.display = "none";
       }
       else{sendTX.style.display = "block";}
-      console.log(_temp_mod);
 
     }
     
@@ -1701,17 +1465,17 @@
     
     async function landYieldApproximator(_value) {
 
-      const _kingdomType = cityData[5];
-      const _land_info = returnLandData(LandMenu.value);
+      const _wild_land_info = wildLandData(LandMenu.value);
+      console.log(_wild_land_info);
       var temp_name = "Estimated Yield: ";
 
-      const civilian_bonus = await bonusCalc(2,0);
+      const civilian_bonus = await newBonusCalc(2,0);
       console.log(civilian_bonus);
       for(let i = 0; i < 5; ++i) {
-        if(_land_info[5][i] == 0){break;}
-        var _primaryYield = Math.floor((_land_info[4][i] * _value * Amount.value * civilian_bonus) / 100);
-        temp_name += _primaryYield +" "+ itemName(_land_info[5][i]);
-        if(_land_info[5][i + 1] == 0 || typeof(_land_info[5][i + 1]) == "undefined"){break;}
+        if(_wild_land_info[0][i] == 0){break;}
+        var _primaryYield = Math.floor((_wild_land_info[1][i] * _value * Amount.value * civilian_bonus) / 100);
+        temp_name += _primaryYield +" "+ itemName(_wild_land_info[0][i]);
+        if(_wild_land_info[0][i + 1] == 0 || typeof(_wild_land_info[0][i + 1]) == "undefined"){break;}
         temp_name += " & ";
 
       }
@@ -1743,10 +1507,10 @@
     
     async function CivGoodStock() {
       CivGBalance.style.display = "block";
-      CivGBalance.innerHTML = "Balance of Items:";
+      CivGBalance.innerHTML = "Balance of Item:";
 
-      const _kingdomType = cityData[5];
-      const _itemRationType = TitheDetails[Kingdom_Civilian_Items[_kingdomType][CivGM.value]]
+      const _itemRationType = TitheDetails[KingdomTitheCost[cityData.kingdomType][0]];
+      console.log("Item Rations:", _itemRationType);
       var allItems = [_itemRationType[0],_itemRationType[2],_itemRationType[4]];
           var you_cubed = []
           for(let i = 0; i < allItems.length; ++i) {
@@ -1767,35 +1531,27 @@
       FertilizerBalance.innerHTML = "You Have: " + _item;
 
     }
-    function cityDevHelper() {
+    async function cityDevHelper() {
       hideLandMenu();
+      var _buildingAmount = await cityContract.getBuildingCount(myAddress);
 
-      switch (actionSelect.value) {
-
-        case "4":
-          if (document.getElementById("CID").value == "0" ||
-            document.getElementById("CID").value == "8" ||
-            document.getElementById("CID").value == "12" ||
-            document.getElementById("CID").value == "16" ||
-            document.getElementById("CID").value == "19" ||
-            document.getElementById("CID").value == "20" ||
-            document.getElementById("CID").value == "22" ||
-            document.getElementById("CID").value == "26" ||
-            document.getElementById("CID").value == "28" ||
-            document.getElementById("CID").value == "30")
-            showLandMenu();
-
-      }
+        if(actionSelect.value == "4" && CID.value != "200"){
+          var _Building = eval("Building" + document.getElementById("CID").value + "_" + document.getElementById("BuildingKingdomType").value);
+          if (_Building.baseBuilding == 200) {showLandMenu();}
+        }
     }
   </script>
 
 </head>
 
-<body onload="welcome()">
-
+<body onload=" address(); welcome(); ">
+  
+  <header id="header"></header>
+  <script>
+  </script>
   <h3>Attention: This website is very WIP. If something doesn't work try connecting your wallet. If that doesn't work refresh the page. If it still doesnt work contact me with the details.</h3>
   <h3>For anyone who needs the clarification, USE AT YOUR OWN RISK</h3>
-  <button id="walletConnect" class="walletConnect" onclick="signon();">Connect Your Wallet Here!</button>
+  <button id="connect-button" class="walletConnect" onclick="signon();">Connect Your Wallet Here!</button>
 
   <label class="actionSelect" for="actionSelect">Select an action:</label>
   <select class="actionSelect Dropdown" id="actionSelect" onchange="selectTask(this.value);">
@@ -1808,10 +1564,9 @@
     <option value="6">Add Land To Kingdom</option>
     <option value="7">Give Civilians Goods</option>
     <option value="8">Add Foodstuffs To City</option>
-    <option value="9">Recruit Pops</option>
-    <option value="10">Claim Crafting Items</option>
+    <option value="9">Add Medicine</option>
+    <option value="10">Claim Crafting Recipe</option>
     <option value="11">Inventory</option>
-    <option value="12">City Info</option>
     <option value="13">Transfer</option>
 
 
@@ -1850,6 +1605,7 @@
       <option value=538>Oats</option>
       <option value=540>Barley</option>
       <option value=542>Cotton</option>
+      <option value=585>Peas</option>
 
       <option value="_"></option>
       <option value="_">--Tree Crops</option>
@@ -1926,466 +1682,74 @@
 
     </select>
     <label class="Recipe" for="RecipeID" id="RecipeIDLabel">What Would You Like To Make:</label>
-
-    <select class="Recipe Dropdown" id="RecipeID"
-      onchange=" hideMultiSelector();  Stuff(this.value); totalCostCalc(); hideInvalidBuildings(); showRelevantCraftingRecipies() ">
-      <option value="-1"></option>
-      <option value="0">--Drinks</option>
-      <option value="-1"></option>
-      <option value="1000" class="1">Wheat Beer</option>
-      <option value="1001" class="1">Rye Beer</option>
-      <option value="1002" class="1">Barley Beer</option>
-      <option value="1003" class="1">Oat Beer</option>
-      <option value="1004" class="1">Rice Beer</option>
-      <option value="1010" class="1">Cider</option>
-      <option value="1011" class="1">Wine</option>
-      <option value="1012" class="1">Plum Wine</option>
-      <option value="1013" class="1">Peach Wine</option>
-      <option value="1014" class="1">Cherry Wine</option>
-      <option value="1020" class="1">Mead</option>
-      <option value="1020" class="1">Grog</option>
-      <option value="1030" class="1">Vodka</option>
-      <option value="1031" class="1">Rum</option>
-      <option value="1032" class="1">Kumis</option>
-      <option value="1040" class="1">Brandy</option>
-      <option value="1041" class="1">Silver Wine</option>
-      <option value="1042" class="1">Jungle Wine</option>
-      <option value="1043" class="1">Winter Wine</option>
-      <option value="1044" class="1">Aged Rum</option>
-      <option value="1050" class="1">Ginseng Wine</option>
-      <option value="1051" class="1">Spiced Vodka</option>
-      <option value="1060" class="1">Double Brandy</option>
-      <option value="1061" class="1">Auric Mead</option>
-
-      <option value="-1"></option>
-      <option value="0">--Food Production
-      <option value="-1"></option>
-
-      <option value="1200" class="2">Bread (Generic Recipe)</option>
-      <option value="301200" class="2">Bread w/ Potatoes </option>
-      <option value="1201" class="2">Wheat Bread</option>
-      <option value="1202" class="2">Rye Bread</option>
-      <option value="1203" class="2">Corn Bread</option>
-      <option value="701200" class="2">Quick Bread (Generic Recipe)</option>
-      <option value="701201" class="2">Quick Wheat Bread</option>
-      <option value="701202" class="2">Quick Rye Bread</option>
-      <option value="701203" class="2">Quick Corn Bread</option>
-
-      <option value="1204" class="2">Corn FlatBread</option>
-      <option value="1205" class="2">Basic FlatBread</option>
-
-
-      <option value="1206" class="2">Pumpernickle Bread</option>
-
-      <option value="1207" class="2">Pastries</option>
-      <option value="1208" class="2">Fruit Pastries</option>
-      <option value="1220" class="2">Apple Pie</option>
-      <option value="1221" class="2">Plum Pie</option>
-      <option value="1222" class="2">Peach Pie</option>
-      <option value="1225" class="2">Cherry Pie</option>
-      <option value="1223" class="2">Sugar Pie</option>
-      <option value="1224" class="2">Pot Pie</option>
-      <option value="1230" class="2">Cheese</option>
-      <option value="1231" class="2">Aged Cheese</option>
-      <option value="1232" class="2">Imperial Cheese</option>
-      <option value="1240" class="2">Dried Vegetables</option>
-      <option value="1241" class="2">Pickled Vegetables</option>
-      <option value="1250" class="2">Dried Fruit</option>
-      <option value="1251" class="2">Brandied Fruit</option>
-      <option value="1260" class="2">Sausage</option>
-      <option value="1261" class="2">Fried Meat</option>
-      <option value="1262" class="2">Roast</option>
-      <option value="1263" class="2">Cured Meat</option>
-      <option value="1264" class="2">Salted Meat</option>
-      <option value="1265" class="2">Preserved Eggs</option>
-      <option value="1265" class="2">Pemmican</option>
-      <option value="1270" class="2">Beef Stew</option>
-      <option value="1271" class="2">King's Stew</option>
-      <option value="1272" class="2">Onion Soup</option>
-      <option value="1273" class="2">Huntsman's Stew</option>
-      <option value="1274" class="2">Chicken Soup</option>
-      <option value="1275" class="2">Fish Soup</option>
-      <option value="1276" class="2">Vegetable Soup</option>
-      <option value="1277" class="2">Seafood Soup</option>
-      <option value="1280" class="2">Baked Beans</option>
-      <option value="1281" class="2">Beans & Rice</option>
-      <option value="1282" class="2">Hash</option>
-
-      <option value="-1"></option>
-      <option value="0">--Food Combos</option>
-      <option value="-1"></option>
-
-      <option value="1901" class="3">Main Ration 1</option>
-      <option value="1902" class="3">Main Ration 2</option>
-      <option value="1903" class="3">Main Ration 3</option>
-      <option value="1904" class="3">Main Ration 4</option>
-      <option value="1905" class="3">Main Ration 5</option>
-      <option value="1906" class="3">Main Ration 6</option>
-      <option value="1907" class="3">Main Ration 7</option>
-      <option value="1908" class="3">Main Ration 8</option>
-      <option value="1909" class="3">Main Ration 9</option>
-
-      <option value="1911" class="3">Extras 1</option>
-      <option value="1912" class="3">Extras 2</option>
-      <option value="1913" class="3">Extras 3</option>
-      <option value="1914" class="3">Extras 4</option>
-      <option value="1915" class="3">Extras 5</option>
-      <option value="1916" class="3">Extras 6</option>
-      <option value="1917" class="3">Extras 7</option>
-      <option value="1918" class="3">Extras 8</option>
-      <option value="1919" class="3">Extras 9</option>
-
-      <option value="1921" class="3">Drink Pack 1</option>
-      <option value="1922" class="3">Drink Pack 2</option>
-      <option value="1923" class="3">Drink Pack 3</option>
-      <option value="1924" class="3">Drink Pack 4</option>
-      <option value="1925" class="3">Drink Pack 5</option>
-      <option value="1926" class="3">Drink Pack 6</option>
-      <option value="1927" class="3">Drink Pack 7</option>
-      <option value="1928" class="3">Drink Pack 8</option>
-      <option value="1929" class="3">Drink Pack 9</option>
-
-      <option value="-1"></option>
-      <option value="0">--Non-Edible Foods</option>
-      <option value="-1"></option>
-
-      <option value="501" class="4">Wheat Flour</option>
-      <option value="502" class="4">Rye Flour</option>
-      <option value="503" class="4">Rice Flour</option>
-      <option value="504" class="4">Corn Flour</option>
-      <option value="505" class="4">Sorghum Flour</option>
-      <option value="538" class="4">Barley Flour</option>
-      <option value="540" class="4">Oat Flour</option>
-      <option value="1300" class="4">Vinegar</option>
-      <option value="1301" class="4">Sugar From Honey</option>
-      <option value="519" class="4">Sugar From Sugarcane</option>
-      <option value="1315" class="4">Molasses From Sugarcane</option>
-      <option value="536" class="4">Sugar From Silver Sap</option>
-      <option value="1302" class="4">Olive Oil</option>
-      <option value="1304" class="4">Ketchup</option>
-      <option value="1305" class="4">Basic Spice Pack</option>
-      <option value="1306" class="4">Royal Spice Pack</option>
-      <option value="1307" class="4">Confectioner's Dough</option>
-      <option value="1308" class="4">Fruit Preserves</option>
-      <option value="1309" class="4">Exotic Fruit Preserves</option>
-      <option value="1310" class="4">Mushroom Stock</option>
-      <option value="1311" class="4">Meat Stock</option>
-      <option value="1312" class="4">Vegetable Stock</option>
-      <option value="1313" class="4">Bone Stock</option>
-
-      <option value="1320" class="4">Cider Sauce</option>
-      <option value="1321" class="4">Wine Sauce</option>
-      <option value="1322" class="4">Hot Sauce</option>
-
-      <option value="-1"></option>
-      <option value="0">--Industrial Goods</option>
-      <option value="-1"></option>
-
-      <option value="2121" class="5">Iron</option>
-      <option value="2122" class="5">Gold</option>
-      <option value="2123" class="5">Silver</option>
-      <option value="2124" class="5">Copper</option>
-      <option value="2125" class="5">Tin</option>
-      <option value="2180" class="5">Emerald Bronze</option>
-      <option value="2181" class="5">Bronze</option>
-      <option value="2182" class="5">Steel</option>
-      <option value="2183" class="5">Damascus Steel</option>
-
-      <option value="302103" class="5">Simple Charcoal Production</option>
-      <option value="312103" class="5">Intermediate Charcoal Production</option>
-      <option value="322103" class="5">Advanced Charcoal Production</option>
-      <option value="332103" class="5">Advanced Slow Charcoal Production</option>
-
-
-      <option value="2300" class="5">Polished Ruby</option>
-      <option value="2301" class="5">Polished Emerald</option>
-      <option value="2302" class="5">Polished Sapphire</option>
-      <option value="2303" class="5">Polished Diamond</option>
-      <option value="2304" class="5">Polished Amethyst</option>
-      <option value="2305" class="5">Polished Opal</option>
-      <option value="2306" class="5">Polished Citrine</option>
-      <option value="2307" class="5">Polished Pearls</option>
-      <option value="2308" class="5">Polished Moonstone</option>
-      <option value="2309" class="5">Polished Amber</option>
-      <option value="2310" class="5">Polished Onyx</option>
-      <option value="2311" class="5">Polished Aquamarine</option>
-      <option value="2312" class="5">Polished Crystal Glass</option>
-
-
-      <option value="4030" class="5">Level 1 Fertilizer</option>
-      <option value="4031" class="5">Level 2 Fertilizer</option>
-      <option value="4032" class="5">Level 3 Fertilizer</option>
-
-
-
-      <option value="-1"></option>
-      <option value="0">--Finished Goods</option>
-      <option value="-1"></option>
-
-
-
-      <option value="4000" class="6">Forge Nails</option>
-      <option value="4001" class="6">Craft Diamond Blades</option>
-      <option value="4002" class="6">Weave Fabric</option>
-
-      <option value="4013" class="6">Turn Leopard Hide Into Decor</option>
-      <option value="4014" class="6">Turn Aurochs Hide Into Decor</option>
-      <option value="4015" class="6">Turn Black Leopard Hide Into Decor</option>
-      <option value="4016" class="6">Turn Bear Hide Into Decor</option>
-      <option value="4017" class="6">Turn Polar Bear Hide Into Decor</option>
-      <option value="4018" class="6">Turn Tiger Hide Into Decor</option>
-
-
-      <option value="4500" class="6">Fur Clothes</option>
-      <option value="4501" class="6">Fabric Clothes</option>
-      <option value="4502" class="6">Leather Clothes</option>
-      <option value="4503" class="6">Tailored Fur Clothes</option>
-      <option value="4504" class="6">Tailored Fabric Clothes</option>
-      <option value="4505" class="6">Clothes</option>
-      <option value="4520" class="6">Basic Furniture</option>
-      <option value="304520" class="6">Pottery (Basic Furniture)</option>
-      <option value="4521" class="6">Ornate Furniture</option>
-      <option value="304521" class="6">Pottery (Ornate Furniture)</option>
-      <option value="4522" class="6">Oppulant Furniture</option>
-      <option value="304522" class="6">Pottery (Oppulant Furniture)</option>
-      <option value="4540" class="6">Basic Tool</option>
-      <option value="4541" class="6">Artisan Tool</option>
-      <option value="4542" class="6">Oppulant Tool</option>
-      <option value="4560" class="6">Copper (Basic) Jewelery</option>
-      <option value="304560" class="6">Ceramic (Basic) Jewelery</option>
-      <option value="4561" class="6">Silver Jewelery</option>
-      <option value="4562" class="6">Gold Jewelery</option>
-      <option value="4580" class="6">Fur Bedding</option>
-      <option value="4581" class="6">Enhanced Bedding</option>
-      <option value="4582" class="6">Down Beeding</option>
-
-      <option value="-1"></option>
-      <option value="0">--Refining Process</option>
-      <option value="-1"></option>
-      <option value="4019" class="7">Make Rushseed Oil</option>
-
-      <option value="4100" class="7">Bronze Plate</option>
-      <option value="4101" class="7">Iron Plate</option>
-      <option value="4102" class="7">Steel Plate</option>
-      <option value="4103" class="7">Emerald Bronze Plate</option>
-      <option value="4104" class="7">Damascus Steel Plate</option>
-      <option value="4105" class="7">Bronze Chainmail</option>
-      <option value="4106" class="7">Iron Chainmail</option>
-      <option value="4107" class="7">Steel Chainmail</option>
-      <option value="4108" class="7">Emerald Bronze Chainmail</option>
-      <option value="4109" class="7">Damascus Steel Chainmail</option>
-      <option value="5000" class="7">Bronze Spear</option>
-      <option value="5001" class="7">Iron Spear</option>
-      <option value="5002" class="7">Steel Spear</option>
-      <option value="5003" class="7">Emerald Bronze Spear</option>
-      <option value="5004" class="7">Damascus Steel Spear</option>
-      <option value="5010" class="7">Bronze Axe</option>
-      <option value="5011" class="7">Iron Axe</option>
-      <option value="5012" class="7">Steel Axe</option>
-      <option value="5013" class="7">Emerald Bronze Axe</option>
-      <option value="5014" class="7">Damascus Steel Axe</option>
-      <option value="5020" class="7">Bronze Sword</option>
-      <option value="5021" class="7">Iron Sword</option>
-      <option value="5022" class="7">Steel Sword</option>
-      <option value="5023" class="7">Emerald Bronze Sword</option>
-      <option value="5024" class="7">Damascus Steel Sword</option>
-      <option value="5025" class="7">Diamond Sword</option>
-      <option value="5030" class="7">Bronze Mace</option>
-      <option value="5031" class="7">Iron Mace</option>
-      <option value="5032" class="7">Steel Mace</option>
-      <option value="5033" class="7">Emerald Bronze Mace</option>
-      <option value="5034" class="7">Damascus Steel Mace</option>
-      <option value="5040" class="7">Bronze Lance</option>
-      <option value="5041" class="7">Iron Lance</option>
-      <option value="5042" class="7">Steel Lance</option>
-      <option value="5043" class="7">Emerald Bronze Lance</option>
-      <option value="5044" class="7">Damascus Steel Lance</option>
-      <option value="5050" class="7">Bronze Poleaxe</option>
-      <option value="5051" class="7">Iron Poleaxe</option>
-      <option value="5052" class="7">Steel Poleaxe</option>
-      <option value="5053" class="7">Emerald Bronze Poleaxe</option>
-      <option value="5054" class="7">Damascus Steel Poleaxe</option>
-      <option value="5060" class="7">Bronze Greatsword</option>
-      <option value="5061" class="7">Iron Greatsword</option>
-      <option value="5062" class="7">Steel Greatsword</option>
-      <option value="5063" class="7">Emerald Bronze Greatsword</option>
-      <option value="5064" class="7">Damascus Steel Greatsword</option>
-      <option value="5070" class="7">Bronze Warhammer</option>
-      <option value="5071" class="7">Iron Warhammer</option>
-      <option value="5072" class="7">Steel Warhammer</option>
-      <option value="5073" class="7">Emerald Bronze Warhammer</option>
-      <option value="5074" class="7">Damascus Steel Warhammer</option>
-      <option value="5200" class="7">BasicBow</option>
-      <option value="5201" class="7">Longbow</option>
-      <option value="5202" class="7">Greatbow</option>
-      <option value="5210" class="7">Simple Crossbow</option>
-      <option value="5211" class="7">Basic Sling</option>
-      <option value="5212" class="7">Heavy Flamer</option>
-      <option value="5213" class="7">Flame Grenade</option>
-      <option value="5214" class="7">Golden Sling</option>
-      <option value="5500" class="7">Light Bronze Mail</option>
-      <option value="5501" class="7">Light Iron Mail</option>
-      <option value="5502" class="7">Light Steel Mail</option>
-      <option value="5503" class="7">Light Emerald Bronze Mail</option>
-      <option value="5504" class="7">Light Damascus Steel Mail</option>
-      <option value="5510" class="7">Light Bronze Plate</option>
-      <option value="5511" class="7">Light Iron Plate</option>
-      <option value="5512" class="7">Light Steel Plate</option>
-      <option value="5513" class="7">Light Emerald Bronze Plate</option>
-      <option value="5514" class="7">Light Damascus Steel Plate</option>
-      <option value="5520" class="7">Medium Bronze Mail</option>
-      <option value="5521" class="7">Medium Iron Mail</option>
-      <option value="5522" class="7">Medium Steel Mail</option>
-      <option value="5523" class="7">Medium Emerald Bronze Mail</option>
-      <option value="5524" class="7">Medium Damascus Steel Mail</option>
-      <option value="5530" class="7">Medium Bronze Plate</option>
-      <option value="5531" class="7">Medium Iron Plate</option>
-      <option value="5532" class="7">Medium Steel Plate</option>
-      <option value="5533" class="7">Medium Emerald Bronze Plate</option>
-      <option value="5534" class="7">Medium Damascus Steel Plate</option>
-      <option value="5540" class="7">Bronze Heavy Armor</option>
-      <option value="5541" class="7">Iron Heavy Armor</option>
-      <option value="5542" class="7">Steel Heavy Armor</option>
-      <option value="5543" class="7">Emerald Bronze Heavy Armor</option>
-      <option value="5544" class="7">Damascus Steel Heavy Armor</option>
-      <option value="5550" class="7">Light Bronze Horse Armor</option>
-      <option value="5551" class="7">Light Iron Horse Armor</option>
-      <option value="5552" class="7">Light Steel Horse Armor</option>
-      <option value="5553" class="7">Light Emerald Bronze Horse Armor</option>
-      <option value="5554" class="7">Light Damascus Steel Horse Armor</option>
-      <option value="5560" class="7">Medium Bronze Horse Armor</option>
-      <option value="5561" class="7">Medium Iron Horse Armor</option>
-      <option value="5562" class="7">Medium Steel Horse Armor</option>
-      <option value="5563" class="7">Medium Emerald Bronze Horse Armor</option>
-      <option value="5564" class="7">Medium Damascus Steel Horse Armor</option>
-      <option value="5570" class="7">Heavy Bronze Horse Armor</option>
-      <option value="5571" class="7">Heavy Iron Horse Armor</option>
-      <option value="5572" class="7">Heavy Steel Horse Armor</option>
-      <option value="5573" class="7">Heavy Emerald Bronze Horse Armor</option>
-      <option value="5574" class="7">Heavy Damascus Steel Horse Armor</option>
-      <option value="5580" class="7">Leather Armor</option>
-      <option value="5581" class="7">Thick Leather Armor</option>
-      <option value="5582" class="7">Gambeson</option>
-      <option value="5900" class="7">Wooden Shield</option>
-      <option value="5901" class="7">Banded Shield</option>
-      <option value="5902" class="7">Standard Shield</option>
-      <option value="5903" class="7">Metal Shield</option>
-      <option value="5904" class="7">Gong Shield</option>
-      <option value="5905" class="7">Heirloom Shield</option>
-      <option value="5910" class="7">Wall Shield</option>
-      <option value="5911" class="7">Advanced Wall Shield</option>
-
-      <option value="-1"></option>
-      <option value="0">--Butcher Animals</option>
-      <option value="-1"></option>
-
-
-      <option value="7400" class="8">Butcher Cow</option>
-      <option value="7401" class="8">Butcher Chicken</option>
-      <option value="7402" class="8">Butcher Sheep</option>
-      <option value="77400" class="8">Advanced Butcher Cow</option>
-      <option value="77401" class="8">Advanced Butcher Chicken</option>
-      <option value="77402" class="8">Advanced Butcher Sheep</option>
-      <option value="7000" class="8">Butcher Rabbit</option>
-      <option value="7001" class="8">Butcher Deer</option>
-      <option value="7002" class="8">Butcher Turkey</option>
-      <option value="7003" class="8">Butcher Mink</option>
-      <option value="7004" class="8">Butcher Cyote</option>
-      <option value="7005" class="8">Butcher Snake</option>
-      <option value="7100" class="8">Butcher Fox</option>
-      <option value="7101" class="8">Butcher Boar</option>
-      <option value="7102" class="8">Butcher Zebra</option>
-      <option value="7103" class="8">Butcher Reindeer</option>
-      <option value="7104" class="8">Butcher Leopard</option>
-      <option value="7105" class="8">Butcher Crocodile</option>
-      <option value="7106" class="8">Butcher Otter</option>
-      <option value="7107" class="8">Butcher Wolf</option>
-      <option value="7108" class="8">Butcher Seal</option>
-      <option value="7200" class="8">Butcher Elk</option>
-      <option value="7201" class="8">Butcher Aurochs</option>
-      <option value="7202" class="8">Butcher Black Leopard</option>
-      <option value="7203" class="8">Butcher Bear</option>
-      <option value="7204" class="8">Butcher Sea Mink</option>
-      <option value="7205" class="8">Butcher Whalrus</option>
-      <option value="7206" class="8">Butcher Poison Snake</option>
-      <option value="7300" class="8">Butcher Elephant</option>
-      <option value="7301" class="8">Butcher Rhino</option>
-      <option value="7302" class="8">Butcher Polar Bear</option>
-      <option value="7303" class="8">Butcher Tiger</option>
-      <option value="7304" class="8">Butcher Titan Snake</option>
-
-
-      <option value="-1"></option>
-      <option value="0">--Building Materials</option>
-      <option value="-1"></option>
-
-      
-      <option value="2150" class="9">Basic Building Materials (Wood)</option>
-      <option value="2004" class="9">Basic Building Materials (Clay)</option>
-      <option value="2151" class="9">Basic Durable Building Materials (Stone)</option>
-      <option value="302151" class="9">Basic Durable Building Materials (Fired Brick)</option>
-      <option value="2152" class="9">Advanced Building Materials (Wood)</option>
-      <option value="2153" class="9">Advanced Durable Building Materials (Stone)</option>
-      <option value="302153" class="9">Advanced Durable Building Materials (Fired Brick)</option>
-    </select>
-
     <text class="Recipe RecipeText" id="Cost">Cost:</text>
-
-
-
   </Recipe>
 
   <CityDevelopment class="CDInput InvisableOnStart" id="CDInput">
     <br>
     <text class="CDInput" id="CDLabel">Which Building is involved?</text>
     <select class="CDInput Dropdown" id="CID"
-      onclick=" cityDevHelper(); buildingCost(this.value); calcCost(); totalCostCalc();">
+      onclick=" cityDevHelper(); buildingCost(this.value); totalCostCalc();">
       <option value="200" selected></option>
-      <option class="buildingSelector" value="0">Land Permit</option>
-      <option class="buildingSelector" value="1">Tier 1 Housing</option>
-      <option class="buildingSelector" value="2">Tier 2 Housing</option>
-      <option class="buildingSelector" value="3">Tier 3 Housing</option>
-      <option class="buildingSelector" value="4">Tier 4 Housing</option>
-      <option class="buildingSelector" value="5">Tier 5 Housing</option>
-      <option class="buildingSelector" value="6">Tier 6 Housing</option>
-      <option class="buildingSelector" value="7">Tier 7 Housing</option>
+      <option class="buildingSelector" value="0">Low-Density Peasent Housing</option>
+      <option class="buildingSelector" value="1">Peasent Housing</option>
+      <option class="buildingSelector" value="2">High-Density Peasent Housing</option>
+      <option class="buildingSelector" value="3">Low-Density Low Noble Housing</option>
+      <option class="buildingSelector" value="4">Low Noble Housing</option>
+      <option class="buildingSelector" value="5">High-Density Low Noble Housing</option>
+      <option class="buildingSelector" value="4">High Noble Housing</option>
+      <option class="buildingSelector" value="5">High-Density High Noble Housing</option>
 
-      <option class="buildingSelector" value="8">Tier 1 Cookery</option>
-      <option class="buildingSelector" value="9">Tier 2 Cookery</option>
-      <option class="buildingSelector" value="10">Tier 3 Cookery</option>
-      <option class="buildingSelector" value="11">Tier 4 Cookery</option>
+      <option class="buildingSelector" value="8">Simple Cookery</option>
+      <option class="buildingSelector" value="9">Cookery</option>
+      <option class="buildingSelector" value="10">Advanced Cookery</option>
+      <option class="buildingSelector" value="11">Royal Cookery</option>
 
-      <option class="buildingSelector" value="12">Tier 1 Brewery</option>
-      <option class="buildingSelector" value="13">Tier 2 Brewery</option>
-      <option class="buildingSelector" value="14">Tier 3 Brewery</option>
-      <option class="buildingSelector" value="15">Tier 4 Brewery</option>
+      <option class="buildingSelector" value="12">Simple Brewery</option>
+      <option class="buildingSelector" value="13">Brewery</option>
+      <option class="buildingSelector" value="14">Advanced Brewery</option>
+      <option class="buildingSelector" value="15">Royal Brewery</option>
 
-      <option class="buildingSelector" value="16">Tier 1 Smeltery</option>
-      <option class="buildingSelector" value="17">Tier 2 Smeltery</option>
-      <option class="buildingSelector" value="18">Tier 3 Smeltery</option>
+      <option class="buildingSelector" value="16">Simple Smeltery</option>
+      <option class="buildingSelector" value="17">Smeltery</option>
+      <option class="buildingSelector" value="18">Royal Smeltery</option>
 
-      <option class="buildingSelector" value="19">Mason</option>
+      <option class="buildingSelector" value="19">Mason/Harbor</option>
 
-      <option class="buildingSelector" value="20">Tier 1 Blacksmith</option>
-      <option class="buildingSelector" value="21">Tier 2 Blacksmith</option>
+      <option class="buildingSelector" value="20">University</option>
 
-      <option class="buildingSelector" value="22">Aging Facilitity</option>
+      <option class="buildingSelector" value="21">Blacksmith</option>
+      <option class="buildingSelector" value="22">Royal Blacksmith</option>
 
-      <option class="buildingSelector" value="23"></option>
+      <option class="buildingSelector" value="23">Aging Facilitity</option>
+
       <option class="buildingSelector" value="24">Infrastructure</option>
-      <option class="buildingSelector" value="25">Harbor</option>
 
-      <option class="buildingSelector" value="26">Tier 1 Jeweler</option>
-      <option class="buildingSelector" value="27">Tier 2 Jeweler</option>
+      <option class="buildingSelector" value="26">Jeweler</option>
+      <option class="buildingSelector" value="27">Royal Jeweler</option>
 
-      <option class="buildingSelector" value="28">Tier 1 Weaver</option>
-      <option class="buildingSelector" value="29">Tier 2 Weaver</option>
+      <option class="buildingSelector" value="28">Weaver</option>
+      <option class="buildingSelector" value="29">Royal Weaver</option>
 
-      <option class="buildingSelector" value="30">Tier 1 Carpenter</option>
-      <option class="buildingSelector" value="31">Tier 2 Carpenter</option>
+      <option class="buildingSelector" value="30">Carpenter</option>
+      <option class="buildingSelector" value="31">Royal Carpenter</option>
 
     </select>
-
+    <br>
+    <text class="" id="KingdomTypeLabel">Which Building Type is involved?</text>
+    <select class="Dropdown" id="BuildingKingdomType" onchange="buildingCost(this.value); totalCostCalc();">
+      <option value="0"></option>
+      <option value="1">Arid</option>
+      <option value="2">Northern</option>
+      <option value="3">Central</option>
+      <option value="4">Southern</option>
+      <option value="5">Ocean</option>
+      <option value="6">Swamp</option>
+      <option value="7">Mountain</option>
+      <option value="8">Silver</option>
+      <option value="9">Guilded</option>
+    </select>
+    <br>
 
 
     <text class="RecipeText InvisableOnStart Indented" id="B-Cost">Cost:</text>
@@ -2438,711 +1802,6 @@
     </select>
     <text id="FertilizerBalance" class="InvisableOnStart">You Have: </text>
   </FertilizerMenu>
-  <ItemMenu class="InvisableOnStart" id="ItemMenu">
-    <label id="ItemMenuSelectorLabel" class="InvisableOnStart" for="ItemMenuSelector"> What class of item are you looking for?</label>
-    <select id="ItemMenuSelector" class="InvisableOnStart Dropdown" onchange="showRelevantItems(this.value)">
-      <option value="_"></option>
-      <option value="0">Common Items</option>
-      <option value="1">Land</option>
-      <option value="2">Basic Crop Items</option>
-      <option value="3">Food & Drink</option>
-      <option value="4">Finished Rations</option>
-      <option value="5">Raw Materials</option>
-      <option value="6">Industrial Goods</option>
-      <option value="7">Gemstones</option>
-      <option value="8">Civilian Goods</option>
-      <option value="9">War Goods</option>
-      <option value="10">Animals</option>
-      <option value="11">Soliders</option>
-      <option value="12">Mercenaries</option>
-    </select>
-    <label id="ItemMenuLabelID" class="ItemMenu" for="ItemMenuID">What Item are you looking for?</label><br>
-    <select class="ItemMenu Dropdown" id="ItemMenuID" onchange="balanceOfItem(this.value); sellAll();">
-
-      <option value="-1"></option>
-      <option value="0">--Land</option>
-      <option value="-1"></option>
-      <option value="1" class="1">Arid Badlands</option>
-      <option value="2" class="1">Arid Steppes</option>
-      <option value="3" class="1">Arid Oasis</option>
-      <option value="4" class="1">Arid River</option>
-      <option value="11" class="1">Northern Rocky Wastes</option>
-      <option value="12" class="1">Northern Tundra</option>
-      <option value="13" class="1">Northern Forest</option>
-      <option value="14" class="1">Northern River</option>
-      <option value="21" class="1">Rocky Heartland</option>
-      <option value="22" class="1">Heartland</option>
-      <option value="23" class="1">River Heartland</option>
-      <option value="31" class="1">Southern Rocky</option>
-      <option value="32" class="1">Southern Forest</option>
-      <option value="33" class="1">Southern Jungle</option>
-      <option value="34" class="1">Southern River</option>
-      <option value="41" class="1">Northern Ocean</option>
-      <option value="42" class="1">Central Ocean</option>
-      <option value="43" class="1">Southern Ocean</option>
-      <option value="44" class="1">Desolate Ocean</option>
-      <option value="51" class="1">Brackish Swamp</option>
-      <option value="52" class="1">Swamp</option>
-      <option value="53" class="1">Lush Swamp</option>
-      <option value="61" class="1">Red Mountain</option>
-      <option value="62" class="1">Blue Mountain</option>
-      <option value="63" class="1">Green Mountain</option>
-      <option value="64" class="1">White Mountain</option>
-      <option value="70" class="1">Ochre Plains</option>
-      <option value="71" class="1">Lustrous River</option>
-      <option value="72" class="1">Silver Forest</option>
-      <option value="80" class="1">Golden Plains</option>
-      <option value="81" class="1">Golden Hills</option>
-      <option value="82" class="1">Golden Forest</option>
-
-      <option value="501"class="2">Wheat</option>
-      <option value="502"class="2">Rye</option>
-      <option value="503"class="2">Rice</option>
-      <option value="504"class="2">Corn</option>
-      <option value="505"class="2">Sorghum</option>
-      <option value="506"class="2">Apples</option>
-      <option value="507"class="2">Plums</option>
-      <option value="508"class="2">Olives</option>
-      <option value="509"class="2">Beans</option>
-      <option value="510"class="2">Mushrooms</option>
-      <option value="511"class="2">Beets</option>
-      <option value="512"class="2">Casava</option>
-      <option value="513"class="2">Peanuts</option>
-      <option value="514"class="2">Cherries</option>
-      <option value="515"class="2">Peaches</option>
-      <option value="516"class="2">Garlic</option>
-      <option value="517"class="2">Onion</option>
-      <option value="518"class="2">Carrots</option>
-      <option value="519"class="2">Sugarcane</option>
-      <option value="520"class="2">Peppers</option>
-      <option value="521"class="2">Allspice</option>
-      <option value="522"class="2">Grapes</option>
-      <option value="523"class="2">Ginseng</option>
-      <option value="524"class="2">Winterberries</option>
-      <option value="525"class="2">Jungleberries</option>
-      <option value="526"class="2">Auric Honey</option>
-      <option value="527"class="2">Wasabi</option>
-      <option value="528"class="2">Rushseed</option>
-      <option value="529"class="2">Exotic Herb</option>
-      <option value="530"class="2">Oyster</option>
-      <option value="531"class="2">Fish Meat</option>
-      <option value="532"class="2">Beef</option>
-      <option value="533"class="2">Chicken Meat</option>
-      <option value="534"class="2">Eggs</option>
-      <option value="535"class="2">Potato</option>
-      <option value="536"class="2">Silver Sap</option>
-      <option value="537"class="2">Honey</option>
-      <option value="538"class="2">Oats</option>
-      <option value="539"class="2">Milk</option>
-      <option value="540"class="2">Barley</option>
-      <option value="541"class="2">Exotic Meat</option>
-      <option value="542"class="2">Wool</option>
-      <option value="543"class="2">Cotton</option>
-      <option value="544"class="2">Mutton</option>
-      <option value="545"class="2">Game Meat</option>
-      <option value="546"class="2">Heartland Herbs</option>
-      <option value="550"class="2">Organ Meat</option>
-      <option value="551"class="2">Bone</option>
-      <option value="552"class="2">Fat</option>
-      <option value="553"class="2">Tender Meat</option>
-      <option value="554"class="2">Oyster Meat</option>
-      <option value="555"class="2">Crab</option>
-      
-      <option value="-1"></option>
-      <option value="0">--Food & Drinks</option>
-      <option value="-1"></option>
-
-      <option value="1000"class="3">Wheat Beer</option>
-      <option value="1001"class="3">Rye Beer</option>
-      <option value="1002"class="3">Barley Beer</option>
-      <option value="1003"class="3">Oat Beer</option>
-      <option value="1004"class="3">Rice Beer</option>
-      <option value="1005"class="3">Sorghum Beer</option>
-      <option value="1010"class="3">Cider</option>
-      <option value="1011"class="3">Wine</option>
-      <option value="1012"class="3">Plum Wine</option>
-      <option value="1013"class="3">Peach Wine</option>
-      <option value="1014"class="3">Cherry Wine</option>
-      <option value="1020"class="3">Mead</option>
-      <option value="1021"class="3">Grog</option>
-      <option value="1030"class="3">Vodka</option>
-      <option value="1031"class="3">Kumis</option>
-      <option value="1032"class="3">Rum</option>
-      <option value="1033"class="3">Grain Whiskey</option>
-      <option value="1040"class="3">Brandy</option>
-      <option value="1041"class="3">Silver Wine</option>
-      <option value="1042"class="3">Jungle Wine</option>
-      <option value="1043"class="3">Winter Wine</option>
-      <option value="1044"class="3">Aged Rum</option>
-      <option value="1050"class="3">Ginseng Wine</option>
-      <option value="1051"class="3">Spiced Vodka</option>
-      <option value="1060"class="3">Double Brandy</option>
-      <option value="1061"class="3">Auric Mead</option>
-      <option value="1200"class="3">Basic Bread</option>
-      <option value="1201"class="3">Wheat Bread</option>
-      <option value="1202"class="3">Rye Bread</option>
-      <option value="1203"class="3">Corn Bread</option>
-      <option value="1204"class="3">Corn Flatbread</option>
-      <option value="1205"class="3">Basic Flatbread</option>
-      <option value="1206"class="3">Pumpernickle</option>
-      <option value="1207"class="3">Pastry</option>
-      <option value="1208"class="3">Fruit Pastry</option>
-      <option value="1209"class="3">Cheese Pastry</option>
-      <option value="1210"class="3">Fruit Bread</option>
-      <option value="1211"class="3">Cheese Bread</option>
-      <option value="1212"class="3">Glittercake</option>
-      <option value="1213"class="3">Fruit Glittercake</option>
-      <option value="1220"class="3">Apple Pie</option>
-      <option value="1221"class="3">Plum Pie</option>
-      <option value="1222"class="3">Peach Pie</option>
-      <option value="1223"class="3">Sugar Pie</option>
-      <option value="1224"class="3">Pot Pie</option>
-      <option value="1225"class="3">Cherry Pie</option>
-      <option value="1230"class="3">Cheese</option>
-      <option value="1231"class="3">Aged Cheese</option>
-      <option value="1232"class="3">Imperial Cheese</option>
-      <option value="1240"class="3">Dried Vegetables</option>
-      <option value="1241"class="3">Pickled Vegetables</option>
-      <option value="1242"class="3">Hearty Dried Vegetables</option>
-      <option value="1250"class="3">Dried Fruit</option>
-      <option value="1251"class="3">Brandied Fruit</option>
-      <option value="1260"class="3">Sausage</option>
-      <option value="1261"class="3">Fried Meat</option>
-      <option value="1262"class="3">Roast</option>
-      <option value="1263"class="3">Cured Meat</option>
-      <option value="1264"class="3">Salted Meat</option>
-      <option value="1265"class="3">Preserved Eggs</option>
-      <option value="1266"class="3">Exotic Cured Meat</option>
-      <option value="1267"class="3">Boiled Meat</option>
-      <option value="1268"class="3">Noble Roast</option>
-      <option value="1269"class="3">Pemmican</option>
-      <option value="1270"class="3">Beef Stew</option>
-      <option value="1271"class="3">Kings Soup</option>
-      <option value="1272"class="3">Onion Soup</option>
-      <option value="1273"class="3">Huntsmans Soup</option>
-      <option value="1274"class="3">Chicken Soup</option>
-      <option value="1275"class="3">Fish Soup</option>
-      <option value="1276"class="3">Vegetable Soup</option>
-      <option value="1277"class="3">Seafood Soup</option>
-      <option value="1280"class="3">Baked Beans</option>
-      <option value="1281"class="3">Beans And Rice</option>
-      <option value="1282"class="3">Hash</option>
-      <option value="1283"class="3">Fried Crab</option>
-      <option value="1300"class="3">Vinegar</option>
-      <option value="1301"class="3">Sugar</option>
-      <option value="1302"class="3">Olive Oil</option>
-      <option value="1304"class="3">Ketchup</option>
-      <option value="1305"class="3">Basic Spice Pack</option>
-      <option value="1306"class="3">Royal Spice Pack</option>
-      <option value="1307"class="3">Pastry Dough</option>
-      <option value="1308"class="3">Fruit Preserve</option>
-      <option value="1309"class="3">Exotic Fruit Preserve</option>
-      <option value="1310"class="3">Mushroom Stock</option>
-      <option value="1311"class="3">Meat Stock</option>
-      <option value="1312"class="3">Vegetable Stock</option>
-      <option value="1313"class="3">Bone Stock</option>
-      <option value="1314"class="3">Barm</option>
-      <option value="1315"class="3">Molasses</option>
-      <option value="1320"class="3">Cider Sauce</option>
-      <option value="1321"class="3">Wine Sauce</option>
-      <option value="1322"class="3">Spicy Sauce</option>
-      <option value="1330"class="3">Flour</option>
-      <option value="1331"class="3">Wheat Flour</option>
-      <option value="1332"class="3">Rye Flour</option>
-      <option value="1333"class="3">Corn Flour</option>
-
-
-      <option value="1900" class="4">Fodder Bread</option>
-      <option value="1901" class="4">Main Ration 1</option>
-      <option value="1902" class="4">Main Ration 2</option>
-      <option value="1903" class="4">Main Ration 3</option>
-      <option value="1904" class="4">Main Ration 4</option>
-      <option value="1905" class="4">Main Ration 5</option>
-      <option value="1906" class="4">Main Ration 6</option>
-      <option value="1907" class="4">Main Ration 7</option>
-      <option value="1908" class="4">Main Ration 8</option>
-      <option value="1909" class="4">Main Ration 9</option>
-      <option value="1911" class="4">Extras 1</option>
-      <option value="1912" class="4">Extras 2</option>
-      <option value="1913" class="4">Extras 3</option>
-      <option value="1914" class="4">Extras 4</option>
-      <option value="1915" class="4">Extras 5</option>
-      <option value="1916" class="4">Extras 6</option>
-      <option value="1917" class="4">Extras 7</option>
-      <option value="1918" class="4">Extras 8</option>
-      <option value="1919" class="4">Extras 9</option>
-      <option value="1921" class="4">Drink Pack 1</option>
-      <option value="1922" class="4">Drink Pack 2</option>
-      <option value="1923" class="4">Drink Pack 3</option>
-      <option value="1924" class="4">Drink Pack 4</option>
-      <option value="1925" class="4">Drink Pack 5</option>
-      <option value="1926" class="4">Drink Pack 6</option>
-      <option value="1927" class="4">Drink Pack 7</option>
-      <option value="1928" class="4">Drink Pack 8</option>
-      <option value="1929" class="4">Drink Pack 9</option>
-      <option value="1990" class="4">Peasent Hunting Supplies</option>
-      <option value="1991" class="4">Low Noble Hunting Supplies</option>
-      <option value="1992" class="4">High Noble Hunting Supplies</option>
-
-      <option value="-1"></option>
-      <option value="0">--Raw Materials</option>
-      <option value="-1"></option>
-      <option value="542" class="5">Wool</option>
-      <option value="543" class="5">Cotton</option>
-      <option value="2001" class="5">Stone</option>
-      <option value="2002" class="5">Wood</option>
-      <option value="2003" class="5">Salt</option>
-      <option value="2021" class="5">Iron Ore</option>
-      <option value="2022" class="5">Gold Ore</option>
-      <option value="2023" class="5">Silver Ore</option>
-      <option value="2024" class="5">Copper Ore</option>
-      <option value="2025" class="5">Tin Ore</option>
-
-    
-      <option value="-1"></option>
-      <option value="0">--Industrial Goods</option>
-      <option value="-1"></option>
-
-      <option value="2150" class="6">Basic Building Materials</option>
-      <option value="2151" class="6">Durable Basic Building Materials</option>
-      <option value="2152" class="6">Advanced Building Materials</option>
-      <option value="2153" class="6">Durable Advanced Building Materials</option>
-      <option value="4000"class="6">Nails</option>
-      <option value="4001"class="6">Diamond Blade</option>
-      <option value="4002"class="6">Fabric</option>
-      <option value="4003"class="6">Down</option>
-      <option value="4004"class="6">Leather</option>
-      <option value="4005"class="6">Exotic Leather</option>
-      <option value="4006"class="6">Fur</option>
-      <option value="4007"class="6">Exotic Fur</option>
-      <option value="4008"class="6">Feather</option>
-      <option value="4009"class="6">Thick Leather</option>
-      <option value="4010"class="6">Antler</option>
-      <option value="4011"class="6">Ivory</option>
-      <option value="4012"class="6">Poison</option>
-      <option value="4013"class="6">Leopard Skin</option>
-      <option value="4014"class="6">Aurochs Hide</option>
-      <option value="4015"class="6">Black Leopard Skin</option>
-      <option value="4016"class="6">Bear Hide</option>
-      <option value="4017"class="6">Polar Bear Hide</option>
-      <option value="4018"class="6">Tiger Hide</option>
-      <option value="4019"class="6">Rushseed Oil</option>
-      <option value="4020"class="6">Cooked Bone</option>
-      <option value="4021"class="6">Sugarcane Pulp</option>
-      <option value="4022"class="6">Organic Pulp</option>
-      <option value="4023"class="6">Ash</option>
-      <option value="4024"class="6">Clay Beads</option>
-      <option value="4025"class="6">Hay</option>
-      <option value="4026"class="6">Antiseptic</option>
-      <option value="4027"class="6">Soap</option>
-      <option value="4028"class="6">Tar</option>
-      <option value="4030"class="6">Level 1 Fertilizer</option>
-      <option value="4031"class="6">Level 2 Fertilizer</option>
-      <option value="4032"class="6">Level 3 Fertilizer</option>
-      <option value="4040"class="6">Rare Fertilizer</option>
-
-      <option value="2121" class="6">Iron</option>
-      <option value="2122" class="6">Gold</option>
-      <option value="2123" class="6">Silver</option>
-      <option value="2124" class="6">Copper</option>
-      <option value="2125" class="6">Tin</option>
-      <option value="2180" class="6">Emerald Bronze</option>
-      <option value="2181" class="6">Bronze</option>
-      <option value="2182" class="6">Steel</option>
-      <option value="2183" class="6">Damascus Steel</option>
-
-      <option value="4100" class="6">Bronze_Plate</option>
-      <option value="4101" class="6">Iron_Plate</option>
-      <option value="4102" class="6">Steel_Plate</option>
-      <option value="4103" class="6">Emerald_Bronze_Plate</option>
-      <option value="4104" class="6">Damascus_Steel_Plate</option>
-      <option value="4105" class="6">Bronze_Chainmail</option>
-      <option value="4106" class="6">Iron_Chainmail</option>
-      <option value="4107" class="6">Steel_Chainmail</option>
-      <option value="4108" class="6">Emerald_Bronze_Chainmail</option>
-      <option value="4109" class="6">Damascus_Steel_Chainmail</option>
-
-      
-      <option value="-1"></option>
-      <option value="0">--Gemstones</option>
-      <option value="-1"></option>
-      <option value="2200" class="7">Ruby</option>
-      <option value="2201" class="7">Emerald</option>
-      <option value="2202" class="7">Sapphire</option>
-      <option value="2203" class="7">Diamond</option>
-      <option value="2204" class="7">Amethyst</option>
-      <option value="2205" class="7">Opal</option>
-      <option value="2206" class="7">Citrine</option>
-      <option value="2207" class="7">Pearls</option>
-      <option value="2208" class="7">Moonstone</option>
-      <option value="2209" class="7">Amber</option>
-      <option value="2210" class="7">Onyx</option>
-      <option value="2211" class="7">Aquamarine</option>
-      <option value="2212" class="7">Crystal Glass</option>
-      <option value="2213" class="7">Bloodstone</option>
-      <option value="2300" class="7">Polished Ruby</option>
-      <option value="2301" class="7">Polished Emerald</option>
-      <option value="2302" class="7">Polished Sapphire</option>
-      <option value="2303" class="7">Polished Diamond</option>
-      <option value="2304" class="7">Polished Amethyst</option>
-      <option value="2305" class="7">Polished Opal</option>
-      <option value="2306" class="7">Polished Citrine</option>
-      <option value="2307" class="7">Polished Pearls</option>
-      <option value="2308" class="7">Polished Moonstone</option>
-      <option value="2309" class="7">Polished Amber</option>
-      <option value="2310" class="7">Polished Onyx</option>
-      <option value="2311" class="7">Polished Aquamarine</option>
-      <option value="2312" class="7">Polished Crystal Glass</option>
-
-      <option value="-1"></option>
-      <option value="0">--Civilian Goods</option>
-      <option value="-1"></option>
-
-      <option value="4500" class="8">Fur_Clothes</option>
-      <option value="4501" class="8">Fabric_Clothes</option>
-      <option value="4502" class="8">Leather_Clothes</option>
-      <option value="4503" class="8">Tailored_Fur_Clothes</option>
-      <option value="4504" class="8">Tailored_Fabric_Clothes</option>
-      <option value="4505" class="8">Clothes</option>
-      <option value="4520" class="8">Basic_Furniture</option>
-      <option value="4521" class="8">Ornate_Furniture</option>
-      <option value="4522" class="8">Oppulant_Furniture</option>
-      <option value="4540" class="8">Basic_Tool</option>
-      <option value="4541" class="8">Artisan_Tool</option>
-      <option value="4542" class="8">Oppulant_Tool</option>
-      <option value="4560" class="8">Copper_Jewelery</option>
-      <option value="4561" class="8">Silver_Jewelery</option>
-      <option value="4562" class="8">Gold_Jewelery</option>
-      <option value="4580" class="8">Fur_Bedding</option>
-      <option value="4581" class="8">Enhanced_Bedding</option>
-      <option value="4582" class="8">Down_Beeding</option>
-
-      <option value="28800" class="0">Coins</option>
-
-
-      
-      <option value="-1"></option>
-      <option value="0">--War Stuff</option>
-      <option value="-1"></option>
-
-      <option value="5000"class="9">Bronze Spear</option>
-      <option value="5001"class="9">Iron Spear</option>
-      <option value="5002"class="9">Steel Spear</option>
-      <option value="5003"class="9">Emerald Bronze Spear</option>
-      <option value="5004"class="9">Damascus Steel Spear</option>
-      <option value="5010"class="9">Bronze Axe</option>
-      <option value="5011"class="9">Iron Axe</option>
-      <option value="5012"class="9">Steel Axe</option>
-      <option value="5013"class="9">Emerald Bronze Axe</option>
-      <option value="5014"class="9">Damascus Steel Axe</option>
-      <option value="5020"class="9">Bronze Sword</option>
-      <option value="5021"class="9">Iron Sword</option>
-      <option value="5022"class="9">Steel Sword</option>
-      <option value="5023"class="9">Emerald Bronze Sword</option>
-      <option value="5024"class="9">Damascus Steel Sword</option>
-      <option value="5025"class="9">Diamond Sword</option>
-      <option value="5030"class="9">Bronze Mace</option>
-      <option value="5031"class="9">Iron Mace</option>
-      <option value="5032"class="9">Steel Mace</option>
-      <option value="5033"class="9">Emerald Bronze Mace</option>
-      <option value="5034"class="9">Damascus Steel Mace</option>
-      <option value="5040"class="9">Bronze Lance</option>
-      <option value="5041"class="9">Iron Lance</option>
-      <option value="5042"class="9">Steel Lance</option>
-      <option value="5043"class="9">Emerald Bronze Lance</option>
-      <option value="5044"class="9">Damascus Steel Lance</option>
-      <option value="5050"class="9">Bronze Poleaxe</option>
-      <option value="5051"class="9">Iron Poleaxe</option>
-      <option value="5052"class="9">Steel Poleaxe</option>
-      <option value="5053"class="9">Emerald Bronze Poleaxe</option>
-      <option value="5054"class="9">Damascus Steel Poleaxe</option>
-      <option value="5060"class="9">Bronze Greatsword</option>
-      <option value="5061"class="9">Iron Greatsword</option>
-      <option value="5062"class="9">Steel Greatsword</option>
-      <option value="5063"class="9">Emerald Bronze Greatsword</option>
-      <option value="5064"class="9">Damascus Steel Greatsword</option>
-      <option value="5070"class="9">Bronze Warhammer</option>
-      <option value="5071"class="9">Iron Warhammer</option>
-      <option value="5072"class="9">Steel Warhammer</option>
-      <option value="5073"class="9">Emerald Bronze Warhammer</option>
-      <option value="5074"class="9">Damascus Steel Warhammer</option>
-      <option value="5080"class="9">Bronze Elephant Tusk Cap</option>
-      <option value="5081"class="9">Iron Elephant Tusk Cap</option>
-      <option value="5082"class="9">Steel Elephant Tusk Cap</option>
-      <option value="5083"class="9">Beryl Bronze Elephant Tusk Cap</option>
-      <option value="5084"class="9">Damascus Elephant Tusk Cap</option>
-      <option value="5090"class="9">Bronze Rhino Tusk Cap</option>
-      <option value="5091"class="9">Iron Rhino Tusk Cap</option>
-      <option value="5092"class="9">Steel Rhino Tusk Cap</option>
-      <option value="5093"class="9">Beryl Bronze Rhino Tusk Cap</option>
-      <option value="5094"class="9">Damascus Rhino Tusk Cap</option>
-      <option value="5200"class="9">BasicBow</option>
-      <option value="5201"class="9">Longbow</option>
-      <option value="5202"class="9">Greatbow</option>
-      <option value="5210"class="9">Simple Crossbow</option>
-      <option value="5211"class="9">Basic Sling</option>
-      <option value="5212"class="9">Heavy Flamer</option>
-      <option value="5213"class="9">Flame Grenade</option>
-      <option value="5214"class="9">Golden Sling</option>
-      <option value="5400"class="9">Farm Horse</option>
-      <option value="5401"class="9">Horse</option>
-      <option value="5402"class="9">Charge Horse</option>
-      <option value="5403"class="9">War Horse</option>
-      <option value="5420"class="9">Trained Elephant</option>
-      <option value="5430"class="9">Trained Rhino</option>
-      <option value="5500"class="9">Light Bronze Mail</option>
-      <option value="5501"class="9">Light Iron Mail</option>
-      <option value="5502"class="9">Light Steel Mail</option>
-      <option value="5503"class="9">Light Emerald Bronze Mail</option>
-      <option value="5504"class="9">Light Damascus Steel Mail</option>
-      <option value="5510"class="9">Light Bronze Plate</option>
-      <option value="5511"class="9">Light Iron Plate</option>
-      <option value="5512"class="9">Light Steel Plate</option>
-      <option value="5513"class="9">Light Emerald Bronze Plate</option>
-      <option value="5514"class="9">Light Damascus Steel Plate</option>
-      <option value="5520"class="9">Medium Bronze Mail</option>
-      <option value="5521"class="9">Medium Iron Mail</option>
-      <option value="5522"class="9">Medium Steel Mail</option>
-      <option value="5523"class="9">Medium Emerald Bronze Mail</option>
-      <option value="5524"class="9">Medium Damascus Steel Mail</option>
-      <option value="5530"class="9">Medium Bronze Plate</option>
-      <option value="5531"class="9">Medium Iron Plate</option>
-      <option value="5532"class="9">Medium Steel Plate</option>
-      <option value="5533"class="9">Medium Emerald Bronze Plate</option>
-      <option value="5534"class="9">Medium Damascus Steel Plate</option>
-      <option value="5540"class="9">Bronze Heavy Armor</option>
-      <option value="5541"class="9">Iron Heavy Armor</option>
-      <option value="5542"class="9">Steel Heavy Armor</option>
-      <option value="5543"class="9">Emerald Bronze Heavy Armor</option>
-      <option value="5544"class="9">Damascus Steel Heavy Armor</option>
-      <option value="5550"class="9">Light Bronze Horse Armor</option>
-      <option value="5551"class="9">Light Iron Horse Armor</option>
-      <option value="5552"class="9">Light Steel Horse Armor</option>
-      <option value="5553"class="9">Light Emerald Bronze Horse Armor</option>
-      <option value="5554"class="9">Light Damascus Steel Horse Armor</option>
-      <option value="5560"class="9">Medium Bronze Horse Armor</option>
-      <option value="5561"class="9">Medium Iron Horse Armor</option>
-      <option value="5562"class="9">Medium Steel Horse Armor</option>
-      <option value="5563"class="9">Medium Emerald Bronze Horse Armor</option>
-      <option value="5564"class="9">Medium Damascus Steel Horse Armor</option>
-      <option value="5570"class="9">Heavy Bronze Horse Armor</option>
-      <option value="5571"class="9">Heavy Iron Horse Armor</option>
-      <option value="5572"class="9">Heavy Steel Horse Armor</option>
-      <option value="5573"class="9">Heavy Emerald Bronze Horse Armor</option>
-      <option value="5574"class="9">Heavy Damascus Steel Horse Armor</option>
-      <option value="5580"class="9">Leather Armor</option>
-      <option value="5581"class="9">Thick Leather Armor</option>
-      <option value="5582"class="9">Gambeson</option>
-      <option value="5800"class="9">Bronze Rhino Armor</option>
-      <option value="5801"class="9">Iron Rhino Armor</option>
-      <option value="5802"class="9">Steel Rhino Armor</option>
-      <option value="5803"class="9">Emerald Bronze Rhino Armor</option>
-      <option value="5804"class="9">Damascus Steel Rhino Armor</option>
-      <option value="5810"class="9">Heavy Bronze Rhino Armor</option>
-      <option value="5811"class="9">Heavy Iron Rhino Armor</option>
-      <option value="5812"class="9">Heavy Steel Rhino Armor</option>
-      <option value="5813"class="9">Heavy Emerald Bronze Rhino Armor</option>
-      <option value="5814"class="9">Heavy Damascus Steel Rhino Armor</option>
-      <option value="5820"class="9">Bronze Elephant Armor</option>
-      <option value="5821"class="9">Iron Elephant Armor</option>
-      <option value="5822"class="9">Steel Elephant Armor</option>
-      <option value="5823"class="9">Emerald Bronze Elephant Armor</option>
-      <option value="5824"class="9">Damascus Steel Elephant Armor</option>
-      <option value="5830"class="9">Heavy Bronze Elephant Armor</option>
-      <option value="5831"class="9">Heavy Iron Elephant Armor</option>
-      <option value="5832"class="9">Heavy Steel Elephant Armor</option>
-      <option value="5833"class="9">Heavy Emerald Bronze Elephant Armor</option>
-      <option value="5834"class="9">Heavy Damascus Steel Elephant Armor</option>
-      <option value="5900"class="9">Wooden Shield</option>
-      <option value="5901"class="9">Banded Shield</option>
-      <option value="5902"class="9">Standard Shield</option>
-      <option value="5903"class="9">Metal Shield</option>
-      <option value="5904"class="9">Gong Shield</option>
-      <option value="5905"class="9">Heirloom Shield</option>
-      <option value="5910"class="9">Wall Shield</option>
-      <option value="5911"class="9">Advanced Wall Shield</option>
-      
-
-      <option value="28502" class="9">Tier 2 XP</option>
-      <option value="28503" class="9">Tier 3 XP</option>
-      <option value="28504" class="9">Tier 4 XP</option>
-      <option value="28505" class="9">Tier 5 XP</option>
-      <option value="28506" class="9">Tier 6 XP</option>
-      <option value="28507" class="9">Tier 7 XP</option>
-      <option value="28508" class="9">Tier 8 XP</option>
-      <option value="-1"></option>
-      <option value="0">--Animals</option>
-      <option value="-1"></option>
-
-
-        <option value="7000" class="10">Rabbit</option>
-        <option value="7001" class="10">Deer</option>
-        <option value="7002" class="10">Turkey</option>
-        <option value="7003" class="10">Mink</option>
-        <option value="7004" class="10">Cyote</option>
-        <option value="7005" class="10">Snake</option>
-        <option value="7100" class="10">Fox</option>
-        <option value="7101" class="10">Boar</option>
-        <option value="7102" class="10">Zebra</option>
-        <option value="7103" class="10">Reindeer</option>
-        <option value="7104" class="10">Leopard</option>
-        <option value="7105" class="10">Crocodile</option>
-        <option value="7106" class="10">Otter</option>
-        <option value="7107" class="10">Wolf</option>
-        <option value="7108" class="10">Seal</option>
-        <option value="7109" class="10">Ostridge</option>
-        <option value="7200" class="10">Elk</option>
-        <option value="7201" class="10">Aurochs</option>
-        <option value="7202" class="10">Black Leopard</option>
-        <option value="7203" class="10">Bear</option>
-        <option value="7204" class="10">Sea Mink</option>
-        <option value="7205" class="10">Whalrus</option>
-        <option value="7206" class="10">Poison Snake</option>
-        <option value="7300" class="10">Elephant</option>
-        <option value="7301" class="10">Rhino</option>
-        <option value="7302" class="10">Polar Bear</option>
-        <option value="7303" class="10">Tiger</option>
-        <option value="7304" class="10">Titan Snake</option>
-        <option value="7400" class="10">Cow</option>
-        <option value="7401" class="10">Chicken</option>
-        <option value="7402" class="10">Sheep</option>
-
-        <option value="-1"></option>
-        <option value="0">--Soliders</option>
-        <option value="-1"></option>
-
-        <option value="10001"class="11">T1 Spearman</option>
-        <option value="10002"class="11">T2 Spearman</option>
-        <option value="10003"class="11">T3 Spearman</option>
-        <option value="10004"class="11">T4 Spearman</option>
-        <option value="10005"class="11">T5 Spearman</option>
-        <option value="10006"class="11">T6 Spearman</option>
-        <option value="10007"class="11">T7 Spearman</option>
-        <option value="10008"class="11">T8 Spearman</option>
-        <option value="10011"class="11">T1 Swordman</option>
-        <option value="10012"class="11">T2 Swordman</option>
-        <option value="10013"class="11">T3 Swordman</option>
-        <option value="10014"class="11">T4 Swordman</option>
-        <option value="10015"class="11">T5 Swordman</option>
-        <option value="10016"class="11">T6 Swordman</option>
-        <option value="10017"class="11">T7 Swordman</option>
-        <option value="10018"class="11">T8 Swordman</option>
-        <option value="10021"class="11">T1 Axeman</option>
-        <option value="10022"class="11">T2 Axeman</option>
-        <option value="10023"class="11">T3 Axeman</option>
-        <option value="10024"class="11">T4 Axeman</option>
-        <option value="10025"class="11">T5 Axeman</option>
-        <option value="10026"class="11">T6 Axeman</option>
-        <option value="10027"class="11">T7 Axeman</option>
-        <option value="10028"class="11">T8 Axeman</option>
-        <option value="10201"class="11">T1 Archer</option>
-        <option value="10202"class="11">T2 Archer</option>
-        <option value="10203"class="11">T3 Archer</option>
-        <option value="10204"class="11">T4 Archer</option>
-        <option value="10205"class="11">T5 Archer</option>
-        <option value="10206"class="11">T6 Archer</option>
-        <option value="10207"class="11">T7 Archer</option>
-        <option value="10208"class="11">T8 Archer</option>
-        <option value="10211"class="11">T1 Slinger</option>
-        <option value="10212"class="11">T2 Slinger</option>
-        <option value="10213"class="11">T3 Slinger</option>
-        <option value="10214"class="11">T4 Slinger</option>
-        <option value="10215"class="11">T5 Slinger</option>
-        <option value="10216"class="11">T6 Slinger</option>
-        <option value="10217"class="11">T7 Slinger</option>
-        <option value="10218"class="11">T8 Slinger</option>
-        <option value="10225"class="11">T5 Flamer</option>
-        <option value="10226"class="11">T6 Flamer</option>
-        <option value="10227"class="11">T7 Flamer</option>
-        <option value="10228"class="11">T8 Flamer</option>
-        <option value="10231"class="11">T1 Crossbowman</option>
-        <option value="10232"class="11">T2 Crossbowman</option>
-        <option value="10233"class="11">T3 Crossbowman</option>
-        <option value="10234"class="11">T4 Crossbowman</option>
-        <option value="10235"class="11">T5 Crossbowman</option>
-        <option value="10236"class="11">T6 Crossbowman</option>
-        <option value="10237"class="11">T7 Crossbowman</option>
-        <option value="10238"class="11">T8 Crossbowman</option>
-        <option value="10301"class="11">T1 Lancer</option>
-        <option value="10302"class="11">T2 Lancer</option>
-        <option value="10303"class="11">T3 Lancer</option>
-        <option value="10304"class="11">T4 Lancer</option>
-        <option value="10305"class="11">T5 Lancer</option>
-        <option value="10306"class="11">T6 Lancer</option>
-        <option value="10307"class="11">T7 Lancer</option>
-        <option value="10308"class="11">T8 Lancer</option>
-        <option value="10311"class="11">T1 Mounted Swordman</option>
-        <option value="10312"class="11">T2 Mounted Swordman</option>
-        <option value="10313"class="11">T3 Mounted Swordman</option>
-        <option value="10314"class="11">T4 Mounted Swordman</option>
-        <option value="10315"class="11">T5 Mounted Swordman</option>
-        <option value="10316"class="11">T6 Mounted Swordman</option>
-        <option value="10317"class="11">T7 Mounted Swordman</option>
-        <option value="10318"class="11">T8 Mounted Swordman</option>
-        <option value="10321"class="11">T1 Mounted Axeman</option>
-        <option value="10322"class="11">T2 Mounted Axeman</option>
-        <option value="10323"class="11">T3 Mounted Axeman</option>
-        <option value="10324"class="11">T4 Mounted Axeman</option>
-        <option value="10325"class="11">T5 Mounted Axeman</option>
-        <option value="10326"class="11">T6 Mounted Axeman</option>
-        <option value="10327"class="11">T7 Mounted Axeman</option>
-        <option value="10328"class="11">T8 Mounted Axeman</option>
-        <option value="10505"class="11">T5 Elephant</option>
-        <option value="10506"class="11">T6 Elephant</option>
-        <option value="10507"class="11">T7 Elephant</option>
-        <option value="10508"class="11">T8 Elephant</option>
-        <option value="10525"class="11">T5 Rhino</option>
-        <option value="10526"class="11">T6 Rhino</option>
-        <option value="10527"class="11">T7 Rhino</option>
-        <option value="10528"class="11">T8 Rhino</option>
-        <option value="10601"class="11">T1 Horse Archer</option>
-        <option value="10602"class="11">T2 Horse Archer</option>
-        <option value="10603"class="11">T3 Horse Archer</option>
-        <option value="10604"class="11">T4 Horse Archer</option>
-        <option value="10605"class="11">T5 Horse Archer</option>
-        <option value="10606"class="11">T6 Horse Archer</option>
-        <option value="10607"class="11">T7 Horse Archer</option>
-        <option value="10608"class="11">T8 Horse Archer</option>
-
-        <option value="11000"class="12">Bandits</option>
-        <option value="11010"class="12">Peasent Levy</option>
-        <option value="11011"class="12">Veteran Peasent Levy</option>
-        <option value="11020"class="12">Levy Spear</option>
-        <option value="11021"class="12">Veteran Levy Spear</option>
-        <option value="11030"class="12">Mountain Levy</option>
-        <option value="11031"class="12">Veteran Mountain Levy</option>
-        <option value="11040"class="12">Mercenary Swordman</option>
-        <option value="11041"class="12">Veteran Mercenary Swordman</option>
-        <option value="11042"class="12">Palace Guard</option>
-        <option value="11050"class="12">Mercenary Axeman</option>
-        <option value="11060"class="12">Mercenary Maceman</option>
-        <option value="11070"class="12">Pikeman</option>
-        <option value="11200"class="12">Peasent Bowman</option>
-        <option value="11210"class="12">Levy Archer</option>
-        <option value="11211"class="12">Veteran Levy Archer</option>
-        <option value="11220"class="12">Huntsman</option>
-        <option value="11230"class="12">Slinger</option>
-        <option value="11231"class="12">Golden Slinger</option>
-        <option value="11241"class="12">Imperial Flamer</option>
-        <option value="11300"class="12">Free Lance</option>
-        <option value="11301"class="12">Knight</option>
-        <option value="11310"class="12">Mounted Levy</option>
-        <option value="11311"class="12">Mounted Palace Guard</option>
-        <option value="11501"class="12">War Elephant</option>
-        <option value="11502"class="12">Elite War Elephant</option>
-        <option value="11520"class="12">War Rhino</option>
-        <option value="11521"class="12">Elite War Elephant</option>
-        <option value="11600"class="12">Horse Archer</option>
-        <option value="11601"class="12">Veteran Horse Archer</option>
-        <option value="11602"class="12">Palace Archer</option>
-
-
-
-    </select>
-    <text class="InvisableOnStart" id="itemBalance">Balance Of Item:</text>
-    <input class="InvisableOnStart" type="checkbox" id="sellAllCheckbox" onchange=" sellAllCheck(); sellAll();"></input>
-    <text class="InvisableOnStart" id="sellAllText">Sell All?</text>
-  </ItemMenu>
 
 
   <BuyorSell class="InvisableOnStart" id="BuyorSell">
@@ -3155,149 +1814,6 @@
     </select>
   </BuyorSell>
 
-
-  <FoodAmounts class="InvisableOnStart" id="FoodAmounts">
-
-    <br>
-    <text class="foodInput InvisableOnStart" id="foodInputLabel">What would you like to feed the workers?</text>
-
-    <select class="foodInput Dropdown InvisableOnStart" id="foodInputID" onchange="totalCostCalc()">
-      <option value="0"></option>
-
-      <option value="501"class="2">Wheat</option>
-      <option value="502"class="2">Rye</option>
-      <option value="503"class="2">Rice</option>
-      <option value="504"class="2">Corn</option>
-      <option value="505"class="2">Sorghum</option>
-      <option value="506"class="2">Apples</option>
-      <option value="507"class="2">Plums</option>
-      <option value="508"class="2">Olives</option>
-      <option value="509"class="2">Beans</option>
-      <option value="510"class="2">Mushrooms</option>
-      <option value="511"class="2">Beets</option>
-      <option value="512"class="2">Casava</option>
-      <option value="513"class="2">Peanuts</option>
-      <option value="514"class="2">Cherries</option>
-      <option value="515"class="2">Peaches</option>
-      <option value="516"class="2">Garlic</option>
-      <option value="517"class="2">Onion</option>
-      <option value="518"class="2">Carrots</option>
-      <option value="519"class="2">Sugarcane</option>
-      <option value="520"class="2">Peppers</option>
-      <option value="521"class="2">Allspice</option>
-      <option value="522"class="2">Grapes</option>
-      <option value="523"class="2">Ginseng</option>
-      <option value="524"class="2">Winterberries</option>
-      <option value="525"class="2">Jungleberries</option>
-      <option value="527"class="2">Wasabi</option>
-      <option value="530"class="2">Oyster</option>
-      <option value="531"class="2">Fish Meat</option>
-      <option value="532"class="2">Beef</option>
-      <option value="533"class="2">Chicken Meat</option>
-      <option value="534"class="2">Eggs</option>
-      <option value="535"class="2">Potato</option>
-      <option value="538"class="2">Oats</option>
-      <option value="539"class="2">Milk</option>
-      <option value="540"class="2">Barley</option>
-      <option value="541"class="2">Exotic Meat</option>
-      <option value="542"class="2">Wool</option>
-      <option value="543"class="2">Cotton</option>
-      <option value="544"class="2">Mutton</option>
-      <option value="545"class="2">Game Meat</option>
-      <option value="550"class="2">Organ Meat</option>
-      <option value="551"class="2">Bone</option>
-      <option value="552"class="2">Fat</option>
-      <option value="553"class="2">Tender Meat</option>
-      <option value="554"class="2">Oyster Meat</option>
-      <option value="555"class="2">Crab</option>
-      
-      <option value="-1"></option>
-      <option value="0">--Food & Drinks</option>
-      <option value="-1"></option>
-
-      <option value="1000"class="3">Wheat Beer</option>
-      <option value="1001"class="3">Rye Beer</option>
-      <option value="1002"class="3">Barley Beer</option>
-      <option value="1003"class="3">Oat Beer</option>
-      <option value="1004"class="3">Rice Beer</option>
-      <option value="1005"class="3">Sorghum Beer</option>
-      <option value="1010"class="3">Cider</option>
-      <option value="1011"class="3">Wine</option>
-      <option value="1012"class="3">Plum Wine</option>
-      <option value="1013"class="3">Peach Wine</option>
-      <option value="1014"class="3">Cherry Wine</option>
-      <option value="1020"class="3">Mead</option>
-      <option value="1021"class="3">Grog</option>
-      <option value="1030"class="3">Vodka</option>
-      <option value="1031"class="3">Kumis</option>
-      <option value="1032"class="3">Rum</option>
-      <option value="1033"class="3">Grain Whiskey</option>
-      <option value="1040"class="3">Brandy</option>
-      <option value="1041"class="3">Silver Wine</option>
-      <option value="1042"class="3">Jungle Wine</option>
-      <option value="1043"class="3">Winter Wine</option>
-      <option value="1044"class="3">Aged Rum</option>
-      <option value="1050"class="3">Ginseng Wine</option>
-      <option value="1051"class="3">Spiced Vodka</option>
-      <option value="1060"class="3">Double Brandy</option>
-      <option value="1061"class="3">Auric Mead</option>
-      <option value="1200"class="3">Basic Bread</option>
-      <option value="1201"class="3">Wheat Bread</option>
-      <option value="1202"class="3">Rye Bread</option>
-      <option value="1203"class="3">Corn Bread</option>
-      <option value="1204"class="3">Corn Flatbread</option>
-      <option value="1205"class="3">Basic Flatbread</option>
-      <option value="1206"class="3">Pumpernickle</option>
-      <option value="1207"class="3">Pastry</option>
-      <option value="1208"class="3">Fruit Pastry</option>
-      <option value="1209"class="3">Cheese Pastry</option>
-      <option value="1210"class="3">Fruit Bread</option>
-      <option value="1211"class="3">Cheese Bread</option>
-      <option value="1212"class="3">Glittercake</option>
-      <option value="1213"class="3">Fruit Glittercake</option>
-      <option value="1220"class="3">Apple Pie</option>
-      <option value="1221"class="3">Plum Pie</option>
-      <option value="1222"class="3">Peach Pie</option>
-      <option value="1223"class="3">Sugar Pie</option>
-      <option value="1224"class="3">Pot Pie</option>
-      <option value="1225"class="3">Cherry Pie</option>
-      <option value="1230"class="3">Cheese</option>
-      <option value="1231"class="3">Aged Cheese</option>
-      <option value="1232"class="3">Imperial Cheese</option>
-      <option value="1240"class="3">Dried Vegetables</option>
-      <option value="1241"class="3">Pickled Vegetables</option>
-      <option value="1242"class="3">Hearty Dried Vegetables</option>
-      <option value="1250"class="3">Dried Fruit</option>
-      <option value="1251"class="3">Brandied Fruit</option>
-      <option value="1260"class="3">Sausage</option>
-      <option value="1261"class="3">Fried Meat</option>
-      <option value="1262"class="3">Roast</option>
-      <option value="1263"class="3">Cured Meat</option>
-      <option value="1264"class="3">Salted Meat</option>
-      <option value="1265"class="3">Preserved Eggs</option>
-      <option value="1266"class="3">Exotic Cured Meat</option>
-      <option value="1267"class="3">Boiled Meat</option>
-      <option value="1268"class="3">Noble Roast</option>
-      <option value="1269"class="3">Pemmican</option>
-      <option value="1270"class="3">Beef Stew</option>
-      <option value="1271"class="3">Kings Soup</option>
-      <option value="1272"class="3">Onion Soup</option>
-      <option value="1273"class="3">Huntsmans Soup</option>
-      <option value="1274"class="3">Chicken Soup</option>
-      <option value="1275"class="3">Fish Soup</option>
-      <option value="1276"class="3">Vegetable Soup</option>
-      <option value="1277"class="3">Seafood Soup</option>
-      <option value="1280"class="3">Baked Beans</option>
-      <option value="1281"class="3">Beans And Rice</option>
-      <option value="1282"class="3">Hash</option>
-      <option value="1283"class="3">Fried Crab</option>
-
-
-
-
-    </select>
-  </FoodAmounts>
-
   <ClaimMenu class="InvisableOnStart ClaimButtonGrid" id="ClaimButtonGrid">
 
   </ClaimMenu>
@@ -3307,16 +1823,14 @@
       <option value="-1"></option>
       <option value="0">Clothes</option>
       <option value="1">Tools</option>
-      <option value="2">Furniture</option>
-      <option value="3">Bedding</option>
-      <option value="4">Jewelery</option>
+      <option value="2">Bedding</option>
     </select>
     <div id="CivGBalance"></div>
   </CivGoods>
 
   <RecruitPeople class="RecruitInput InvisableOnStart" id="RecruitInput">
-    <label for="RecruitID">What Type of citizen are you recruiting?</label><br>
-    <select id="RecruitID" class="Dropdown">
+    <label for="RecruitSelector">What Type of citizen are you recruiting?</label><br>
+    <select id="RecruitSelector" class="Dropdown">
       <option value="-1"></option>
       <option value="0">Peasents</option>
       <option value="1">Low Nobles</option>
@@ -3324,267 +1838,65 @@
     </select>
 
   </RecruitPeople>
+  <PopTypes class="InvisableOnStart" id="PopTypeInput">
+    <label for="PopTypeSelector">What kind of pop would you like to use?</label>
+    <select id="PopTypeSelector" class="Dropdown">
+      <option value="-1"></option>
+      <option value="0">Unskilled</option>
+      <option value="1">Chef</option>
+      <option value="2">Jeweler</option>
+      <option value="3">Brewer</option>
+      <option value="4">Doctor</option>
+      <option value="5">Sailor</option>
+      <option value="6">Blacksmith</option>
+      <option value="7">Artist</option>
+      <option value="8">Carpenter</option>
+      <option value="9">Weaver</option>
+      <option value="10">Mason</option>
+      <option value="11">Soldier</option>
+    </select>
+  </PopTypes>
   <br>
-  <ItemSelection class="itemSelection Items InvisableOnStart" id="itemSelection">
-    <br>
-    <label class="itemSelection Grains" id="GrainLabel">What Kind of Grain would you like to use?</label>
-    <select class="Grains Items Dropdown InvisableOnStart" id="GrainMultiSelect">
-      <option value="-"></option>
-      <option value="501">Wheat</option>
-      <option value="502">Rye</option>
-      <option value="504">Corn</option>
-      <option value="503">Rice</option>
-      <option value="505">Sorghum</option>
-      <option value="538">Oats</option>
-      <option value="540">Barley</option>
-    </select>
-    <label class="itemSelection" for="MeatMultiSelect" id="MeatLabel">What Kind of Meat would you like to use?</label>
-    <select class="Meats Items Dropdown InvisableOnStart" id="MeatMultiSelect">
-      <option value="-"></option>
-      <option value="531">Fish</option>
-      <option value="532">Beef</option>
-      <option value="533">Chicken</option>
-      <option value="544">Mutton</option>
-      <option value="545">Game Meat</option>
-      <option value="1267">Boiled Meat</option>
+  <recipe.ingrediantelection class="recipe.ingrediantelection recipe.ingrediant " id="itemMixSelection">
+    <label id="MultiMixItemLabel0" class="InvisableOnStart"></label>
+    <select id="MultiMixItem0" class="InvisableOnStart"></select>
+    <label id="MultiMixItemLabel1" class="InvisableOnStart"></label>
+    <select id="MultiMixItem1" class="InvisableOnStart"></select>
+    <label id="MultiMixItemLabel2" class="InvisableOnStart"></label>
+    <select id="MultiMixItem2" class="InvisableOnStart"></select>
 
-    </select>
-    <label class="itemSelection" for="FruitMultiSelect" id="FruitLabel">What Kind of Fruit would you like to use?</label>
-    <select class="Fruits Items Dropdown InvisableOnStart" id="FruitMultiSelect">
-      <option value="-"></option>
-      <option value="522">Grapes</option>
-      <option value="515">Peaches</option>
-      <option value="507">Plums</option>
-      <option value="506">Apples</option>
-      <option value="514">Cherries</option>
-    </select>
-    <label class="itemSelection Vegetables" id="VegetableLabel">What Kind of Vegetables would you like to use?</label>
-    <select class="Vegetables Items Dropdown InvisableOnStart" id="VegetableMultiSelect">
-      <option value="-"></option>
-      <option value="517">Potatoes</option>
-      <option value="518">Onions</option>
-      <option value="519">Peppers</option>
-      <option value="520">Carrots</option>
-    </select>
-    <label class="itemSelection CookingOil" id="CookingOilLabel">What Kind of oil would you like to use?</label>
-    <select class="CookingOil Items Dropdown" id="CookingOilMultiSelect">
-      <option value="-"></option>
-      
-      <option value="552">Fat</option>
-      <option value="1302">Olive Oil</option>
-
-    </select>
-
-    <label class="itemSelection Tier2Metals" id="T2MetalLabel">What Kind of Metal would you like to use?</label>
-    <select class="T2Metals Items Dropdown InvisableOnStart" id="T2MetalMultiSelect">
-      <option value="-"></option>
-      <option value="2121">Iron</option>
-      <option value="2181">Bronze</option>
-    </select>
-    <label class="itemSelection T1Drinks" id="T1DrinksLabel">What Kind of Drink would you like to use?</label>
-    <select class="T1Drinks Items Dropdown InvisableOnStart" id="T1DrinksMultiSelect">
-      <option value="-"></option>
-      <option value="1000">Wheat Beer</option>
-      <option value="1001">Rye Beer</option>
-      <option value="1002">Barley Beer</option>
-      <option value="1003">Oat Beer</option>
-      <option value="1004">Rice Beer</option>
-      <option value="1010">Cider</option>
-      <option value="1011">Wine</option>
-      <option value="1012">Plum Wine</option>
-      <option value="1013">Peach Wine</option>
-      <option value="1014">Cherry Wine</option>
-      <option value="1020">Mead</option>
-      <option value="1021">Grog</option>
-    </select>
-    <label class="itemSelection ExoticBerry" id="ExoticBerryLabel">What Kind of Berries would you like to use?</label>
-    <select class="ExoticBerry Items Dropdown InvisableOnStart" id="ExoticBerryMultiSelect">
-      <option value="-"></option>
-      <option value="524">Winter Berry</option>
-      <option value="525">Jungle Berry</option>
-    </select>
-    <label class="itemSelection Bread" id="BreadLabel">What Kind of Bread would you like to use?</label>
-    <select class="Bread Items InvisableOnStart Dropdown" id="BreadMultiSelect">
-      <option value="-"></option>
-      <option value="1200">Basic Bread</option>
-      <option value="1201">Wheat Bread</option>
-      <option value="1202">Rye Bread</option>
-      <option value="1203">Corn Bread</option>
-
-    </select>
-    <label class="itemSelection T2Drinks" id="T2DrinksLabel">What Kind of Drink would you like to use?</label>
-    <select class="T2Drinks Items Dropdown InvisableOnStart" id="T2DrinksMultiSelect">
-      <option value="-"></option>
-      <option value="1030">Vodka</option>
-      <option value="1031">Rum</option>
-      <option value="1032">Kumis</option>
-    </select>
-
-    <label class="itemSelection T3Drinks" id="T3DrinksLabel">What Kind of Drink would you like to use?</label>
-    <select class="T3Drinks Items Dropdown InvisableOnStart" id="T3DrinksMultiSelect">
-      <option value="-"></option>
-      <option value="1040">Brandy</option>
-      <option value="1041">Silver Wine</option>
-      <option value="1042">Jungle Wine</option>
-      <option value="1043">Winter Wine</option>
-      <option value="1044">Aged Rum</option>
-    </select>
-
-    <label class="itemSelection T4Drinks" id="T4DrinksLabel">What Kind of Drink would you like to use?</label>
-    <select class="T4Drinks Items Dropdown InvisableOnStart" id="T4DrinksMultiSelect">
-      <option value="-"></option>
-      <option value="1050">Ginseng Wine</option>
-      <option value="1051">Spiced Vodka</option>
-    </select>
-
-    <label class="itemSelection T5Drinks" id="T5DrinksLabel">What Kind of Drink would you like to use?</label>
-    <select class="T5Drinks Items Dropdown InvisableOnStart" id="T5DrinksMultiSelect">
-      <option value="-"></option>
-      <option value="1060">Double Brandy</option>
-      <option value="1061">Auric Mead</option>
-    </select>
-
-    <label class="itemSelection Seafood" id="SeafoodLabel">What Kind of Pie would you like to use?</label>
-    <select class="Seafood Items Dropdown InvisableOnStart" id="SeafoodMultiSelect">
-      <option value="-"></option>
-      <option value="554">Oyster Meat</option>
-      <option value="530">Oyster</option>
-      <option value="555">Crab</option>
-    </select>
-    <label class="Flours itemSelection" id="FloursLabel">What Kind of Flour would you like to use?</label>
-    <select class="Flours Items Dropdown InvisableOnStart" id="FloursMultiSelect">Rare Gemstone
-      <option value="-"></option>
-      <option value="1330">Basic Flour</option>
-      <option value="1331">Wheat Flour</option>
-      <option value="1332">Rye Flour</option>
-      <option value="1333">Corn Flour</option>
-    </select>
-
-    <label class="itemSelection Fodder" id="FodderLabel">What Kind of Fodder would you like to use?</label>
-    <select class="Fodder Items Dropdown InvisableOnStart" id="FodderMultiSelect">
-      <option value="-"></option>
-      <option value="501">Wheat</option>
-      <option value="502">Rye</option>
-      <option value="504">Corn</option>
-      <option value="503">Rice</option>
-      <option value="505">Sorghum</option>
-      <option value="538">Oats</option>
-      <option value="540">Barley</option>
-      <option value=512>Casava</option>
-      <option value=506>Apple</option>
-      <option value=507>Plum</option>
-      <option value=509>Beans</option>
-    </select>
-
-    <label class="PCGemstone itemSelection" id="PolishedCommonGemstoneLabel">What Kind of Gemstone would you like to use?</label>
-    <select class="PCGemstone Items Dropdown InvisableOnStart" id="PolishedCommonGemstoneMultiSelect">
-      <option value="-"></option>
-      <option value="2304">Polished Amethyst</option>
-      <option value="2305">Polished Opal</option>
-      <option value="2306">Polished Citrine</option>
-      <option value="2307">Polished Pearls</option>
-      <option value="2309">Polished Amber</option>
-      <option value="2310">Polished Onyx</option>
-      <option value="2311">Polished Aquamarine</option>
-      <option value="2312">Polished Crystal Glass</option>
-    </select>
-    <label class="PRGemstone itemSelection" id="PolishedRareGemstoneLabel">What Kind of Gemstone would you like to use?</label>
-    <select class="PRGemstone Items Dropdown InvisableOnStart" id="PolishedRareGemstoneMultiSelect">Polished Rare Gemstone
-      <option value="-"></option>
-      <option value="2300">Polished Ruby</option>
-      <option value="2301">Polished Emerald</option>
-      <option value="2302">Polished Sapphire</option>
-      <option value="2303">Polished Diamond</option>
-      <option value="2308">Polished Moonstone</option>
-    </select>
-
-    <label class="CGemstone itemSelection" id="CommonGemstoneLabel">What Kind of Gemstone would you like to use?</label>
-    <select class="CGemstone Items Dropdown InvisableOnStart" id="CommonGemstoneMultiSelect">Common Gemstone
-      <option value="-"></option>
-      <option value="2204">Amethyst</option>
-      <option value="2205">Opal</option>
-      <option value="2206">Citrine</option>
-      <option value="2207">Pearls</option>
-      <option value="2209">Amber</option>
-      <option value="2210">Onyx</option>
-      <option value="2211">Aquamarine</option>
-      <option value="2212">Crystal Glass</option>
-    </select>
-
-    <label class="RGemstone itemSelection" id="RareGemstoneLabel">What Kind of Gemstone would you like to use?</label>
-    <select class="RGemstone Items Dropdown InvisableOnStart" id="RareGemstoneMultiSelect">Rare Gemstone
-      <option value="-"></option>
-      <option value="2200">Ruby</option>
-      <option value="2201">Emerald</option>
-      <option value="2202">Sapphire</option>
-      <option value="2203">Diamond</option>
-      <option value="2208">Moonstone</option>
-    </select>
-
-    <label class="Fibers itemSelection" id="FibersLabel">What Kind of Fiber would you like to use?</label>
-    <select class="Fibers Items Dropdown InvisableOnStart" id="FibersMultiSelect">Rare Gemstone
-      <option value="-"></option>
-      <option value="543">Cotton</option>
-      <option value="542">Wool</option>
-    </select>
-
-    <label class="Flatbreads itemSelection" id="FlatbreadsLabel">What Kind of Flatbread would you like to use?</label>
-    <select class="FlatbreadsItems Items Dropdown InvisableOnStart" id="FlatbreadsMultiSelect">Rare Gemstone
-      <option value="-"></option>
-      <option value="1204">Flatbread</option>
-      <option value="1215">Corn Flatbread</option>
-    </select>
-
-    <label class="Stocks itemSelection" id="StocksLabel">What Kind of Stock would you like to use?</label>
-    <select class="Stocks Items Dropdown InvisableOnStart" id="StocksMultiSelect">Rare Gemstone
-      <option value="-"></option>
-      <option value="1310">Mushroom Stock</option>
-      <option value="1311">Meat Stock</option>
-      <option value="1312">Vegetable Stock</option>
-      <option value="1313">Bone Stock</option>
-    </select>
-
-    <label class="Bones itemSelection" id="BonesLabel">What Kind of Bone would you like to use?</label>
-    <select class="Bones Items Dropdown InvisableOnStart" id="BonesMultiSelect">Rare Gemstone
-      <option value="-"></option>
-      <option value="551">Bone</option>
-      <option value="4020">Cooked Bone</option>
-    </select>
-
-    <label class="Sauces itemSelection" id="SaucesLabel">What Kind of Sauce would you like to use?</label>
-    <select class="Sauces Items Dropdown InvisableOnStart" id="SaucesMultiSelect">Rare Gemstone
-      <option value="-"></option>
-      <option value="1320">Cider Sauce</option>
-      <option value="1321">Wine Sauce</option>
-      <option value="1322">Spicy Sauce</option>
-      <option value="1304">Ketchup</option>
-    </select>
-
-    <label class="Fuels itemSelection" id="FuelsLabel">What Kind of Fuel would you like to use?</label>
-    <select class="Fuels Items Dropdown InvisableOnStart" id="FuelsMultiSelect">Rare Gemstone
-      <option value="-"></option>
-      <option value="2002">Wood</option>
-      <option value="2103">Charcoal</option>
-    </select>
-
-    <label class="UnboiledMeats itemSelection" id="UnboiledMeatsLabel">What Kind of Meat would you like to use?</label>
-    <select class="UnboiledMeats Items Dropdown InvisableOnStart" id="UnboiledMeatsMultiSelect">Rare Gemstone
-      <option value="-"></option>
-      <option value="531">Fish</option>
-      <option value="532">Beef</option>
-      <option value="533">Chicken</option>
-      <option value="544">Mutton</option>
-      <option value="545">Game_Meat</option>
-
-    </select>
-
-
-  </ItemSelection>
+    <ItemMenu class="InvisableOnStart" id="ItemMenu">
+      <label id="ItemMenuSelectorLabel" class="InvisableOnStart" for="ItemMenuSelector"> What class of item are you looking for?</label>
+      <select id="ItemMenuSelector" class="InvisableOnStart Dropdown" onchange="generateItemMenu(this.value)">
+        <option value="_"></option>
+        <option value="0">Common Items</option>
+        <option value="[20,21]">Basic Crops</option>
+        <option value="[22,23]">Food & Drink</option>
+        <option value="24">Food Ingrediants</option>
+        <option value="52">Raw Materials</option>
+        <option value="24">Animal Goods</option>
+        <option value="[50,51]">Industrial Goods</option>
+        <option value="[1,2,3,4,5,6,7,8,9,10,11,12,13]">Civilian Goods</option>
+        <option value="[30,31,32,33]">War Goods</option>
+        <option value="[53,70]">Building Materials</option>
+        <option value="[100,101]">Animals</option>
+        <option value="220">Mercenaries</option>
+        <option value="[71,72]">Misc. Items</option>
+      </select>
+      <label id="ItemMenuIDLabel" class="ItemMenu" for="ItemMenuID">What Item are you looking for?</label><br>
+      <select class="ItemMenu Dropdown" id="ItemMenuID" onchange="balanceOfItem(this.value); generateItemMenu(`0`); sellAll();">
+  
+      </select>
+      <text class="InvisableOnStart" id="itemBalance">Balance Of Item:</text>
+      <input class="InvisableOnStart" type="checkbox" id="sellAllCheckbox" onchange=" sellAllCheck(); sellAll();"></input>
+      <text class="InvisableOnStart" id="sellAllText">Sell All?</text>
+    </ItemMenu>
+  </recipe.ingrediantelection>
   <br>
   <Notices class="Notice">
     <text class="InvisableOnStart"id="landAdderNotice">NOTICE: Land added can't EVER be removed</text>
     <text class="InvisableOnStart" id="noHousingNotice"><br>To prevent players from accidently Soft-Locking, You must build housing before adding land to this kingdom</text>
-    <text class="InvisableOnStart" id="lackItemsNotice"><br>You do not have enough Items to do this transaction</text>
+    <text class="InvisableOnStart" id="lackRecipeNotice"><br>You do not have enough Ingrediants to do this transaction</text>
   </Notices>
   <TXamount class="Amount InvisableOnStart" id="AmountID">
     <text class="" id="BatchAmountLabel">How many batches would you like to make?</text>
@@ -3614,43 +1926,6 @@
 
   </TotalCost>
 
-  <KingdomInfo class="InvisableOnStart" id="KingdomInfo">
-    <text id="peasentPop" class="Population">Peasents:</text>
-    <text id="lowNobelPop" class="Population">Low Nobles:</text>
-    <text id="highNobelPop" class="Population">High Nobles:</text>
-    <br class="Population">
-    <text id="land1" class="Population">Land Balance:</text>
-    <text id="land2" class="Population">Land Balance:</text>
-    <text id="land3" class="Population">Land Balance:</text>
-    <text id="land4" class="Population">Land Balance:</text>
-    <text id="land5" class="Population">Land Balance:</text>
-    <text id="land6" class="Population">Land Balance:</text>
-    <text id="land7" class="Population">Land Balance:</text>
-    <text id="land8" class="Population">Land Balance:</text>
-    <br>
-    <text id="housing" class="Population">Housing Count: <br></text>
-    <text id="cookery" class="Population">Cookery Count:</text>
-    <text id="brewery" class="Population">Brewery Count:</text>
-    <text id="smeltery" class="Population">Smithy Count:</text>
-    <text id="mason" class="Population">Mason Count:</text>
-    <text id="blacksmith" class="Population">Blacksmith Count:</text>
-    <text id="agingFacility" class="Population">Aging Facility Count:</text>
-    <text id="infra" class="Population">Infra Count:</text>
-    <text id="port" class="Population">Port Count:</text>
-    <text id="jeweler" class="Population">Jeweler Count:</text>
-    <text id="weaver" class="Population">Weaver Count:</text>
-    <text id="carpenter" class="Population">Carpenter Count:</text>
-    <br>
-    <text id="titheData" class="Population">Tithe Item Stockpiles:</text>
-    <text id="seasonData" class="Population">Current Season:</text>
-    <br>
-    <text id="foodStocks" class="Population">Food Stocks: </text>
-    <text id="foodStocksValue" class="Population">Food Stocks Value: </text>
-    <text id="drinkStocks" class="Population">Drink Stocks: </text>
-    <text id="drinkStocksValue" class="Population">Drink Stocks Value: </text>
-
-  </KingdomInfo>
-
   <text id="balance" class="Balance InvisableOnStart">Balance of Item:</text>
 
   <Time class="InvisableOnStart" id="Time">
@@ -3674,8 +1949,8 @@
     <a href="warpage.html">
       <button class="notesButton">Manage Army</button>
     </a>
-    <a href="wiki.html">
-      <button class="notesButton">Game Encylopedia</button>
+    <a href="cityPanel.html">
+      <button class="notesButton">View City Info</button>
     </a>
     <a href="landShop.html">
       <button class="notesButton">Land Shop</button>
@@ -3735,7 +2010,6 @@
     border: 1px solid rgba(0, 0, 0, 0.8);
     height: 100px;
     width: 1fr;
-    height: 1fr;
   }
   .InventoryItem2 {
     display: inline-block;
@@ -3763,7 +2037,7 @@
     bottom: 10px;
   
   }
-  .walletConnect {
+  #connect-button {
     background-color: darkred;
     position: absolute;
     right: 50px;
@@ -3772,8 +2046,16 @@
     height: 50px;
     border-radius: 12px;
   }
+  .CraftingOption {
+    
+    display: inline-block;
+    width: 50%;
+    height: 100px;
+    background-color: green;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+  }
 
-  .walletConnect:hover {
+  #connect-button:hover {
     background-color: brown;
   }
 

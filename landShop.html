@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <script src="./ethers.umd.min.js" type="application/javascript"></script>
+      <script src="lib/ethers.umd.min.js" type="application/javascript"></script>
       <script src="./abi.js" type="application/javascript"></script>
         <script src="./address.js" type="application/javascript"></script>
 
@@ -18,7 +18,7 @@
 
             async function signon() {
 
-                await _address();
+                await address();
 
 
                 provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -39,9 +39,8 @@
 
 
                 _cityData = await cityContract.getKingdomInfo(myAddress);
-                let _kingdomType = _cityData[5]
                 console.log();
-                console.log("KingdomID:", _kingdomType);
+                console.log("KingdomID:", _cityData.kingdomType);
                 if(await FreeLandContract.alreadyUsed(myAddress) == false){
                     ClaimText.style.display = "block";
                 }
@@ -52,13 +51,12 @@
     async function showLandMenu() {
 
       var _cityData = await cityContract.getKingdomInfo(myAddress);
-      const _kingdomType = _cityData[5];
 
 
       for(let i = 0; i < LandMenu.options.length; ++i) {
-                    if(LandMenu.options[i].classList.contains(_kingdomType) == true || _kingdomType == 0) 
+                    if(LandMenu.options[i].classList.contains(_cityData.kingdomType) == true || _cityData.kingdomType == 0) 
                     {LandMenu.options[i].style.display = "block"}
-                    else if(typeof _kingdomType !== "undefined"){LandMenu.options[i].style.display = "none"}
+                    else if(typeof _cityData.kingdomType !== "undefined"){LandMenu.options[i].style.display = "none"}
       }
 
       document.getElementById("landSelection").style.display = "block";
@@ -94,7 +92,7 @@
           if((LandMenu.value >= 70 &&  LandMenu.value < 80)){_amount = 2;}
           else if((LandMenu.value >= 80 && LandMenu.value < 90)){_amount = 3;}
           const _soldAmount = await LandSaleContract.currentLandPrice(LandMenu.value)
-          var _landCost = (((((100 + Number(_soldAmount)) + Math.floor((AmountInput.value - 1) / 2))) * AmountInput.value * _amount)/100);
+          var _landCost = (((((100 + Number(_soldAmount)) + Math.floor((AmountInput.value - 1) / 2))) * AmountInput.value * _amount)/10000);
           return(_landCost);
     }
         </script>

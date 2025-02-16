@@ -2,34 +2,46 @@
 <!DOCTYPE html>
 
 <head>
-    <script src="./ethers.umd.min.js" type="application/javascript"></script>
+    <script src="lib/ethers.umd.min.js" type="application/javascript"></script>
     <script src="./abi.js" type="application/javascript"></script>
     <script src="./address.js" type="application/javascript"></script>
     <script src="./excelIntegration.js" type="application/javascript"></script>
     <script>
         async function initEvent() {
-            var addies = await _address();
-            const address = addies[0];
-            const eventAddress = addies[4];
+            var addies = await address();
             
             const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner();
-            const NFTcontract = new ethers.Contract(address, abi, provider)
+            const NFTcontract = new ethers.Contract(baseAddress, base_abi, provider)
+            const Citycontract = new ethers.Contract(cityAddress, city_abi, provider)
             const Eventcontract = new ethers.Contract(eventAddress, tradingEvent_abi, provider)
-            const NFTcontractSigner = new ethers.Contract(address, abi, signer);
+            const MerchantContract = new ethers.Contract(merchantAddress, merchant_abi, provider)
+            const NFTcontractSigner = new ethers.Contract(cityAddress, city_abi, signer);
             const myAddress = await signer.getAddress();
 
             const eventNumber = await Eventcontract.eventCounter();
             const eventData = await Eventcontract.getCurrentEventData();
             const playerData = await Eventcontract.getPlayerData(myAddress);
 
-            const kingdomData = await NFTcontract.getKingdomInfo(myAddress);
+            const baseItemCost = await MerchantContract.returnItemValue(eventData[2]);
+            const baseRewardItemCost = await MerchantContract.returnItemValue(eventData[1]);
 
-            const population =  Number(kingdomData[0][0]) + Number(kingdomData[0][1]) + Number(kingdomData[0][2]);
+            const rewardItemCost = [ await MerchantContract.returnItemValue(eventData[0][0]), await MerchantContract.returnItemValue(eventData[0][1]), await MerchantContract.returnItemValue(eventData[0][2]), await MerchantContract.returnItemValue(eventData[0][3])];
 
-            console.log(playerData);
+            console.log(rewardItemCost);
+            const eventEndTime = await Eventcontract.eventEndTime();
 
-            if( Number(playerData[1]) != 0 && Number(playerData[2]) != Number(eventNumber))
+            const mileStones = [await Eventcontract.eventMilestones(0),await Eventcontract.eventMilestones(1),await Eventcontract.eventMilestones(2),await Eventcontract.eventMilestones(3)];
+
+            const kingdomData = await Citycontract.getKingdomInfo(myAddress);
+
+            const kingdomWealth = Number(await Citycontract.getPlayerCityItemValue(myAddress));
+
+            console.log("Player Data: ",playerData);
+            console.log("Event Data: ",eventData);
+            console.log("Kingdom Wealth: ", kingdomWealth);
+
+            if(Number(playerData[1]) != 0 && Number(playerData[2]) != Number(eventNumber))
             {
                 ClaimOldReward.style.display = "block";
                 EventContribute.style.display = "none";
@@ -39,34 +51,25 @@
             {
                 EventNumber.innerHTML = "Current Event:" + eventNumber;
                 console.log("End Date:" + Number(eventData[3] * 1000))
-                EventEndTime.innerHTML = "Event End Date:" + new Date(Number(eventData[3] * 1000));
-                EventPlayerContributions.innerHTML = "You have given to this event so far: " + Number(playerData[1]);
-                console.log(playerData[1]);
+                EventEndTime.innerHTML = "Event End Date:" + new Date(Number(eventEndTime * 1000));
+                EventPlayerContributions.innerHTML = "You have given to this event so far: " + Number(playerData[0]);
+                console.log(playerData[1]);  
+                const itemAmount = await NFTcontract.balanceOf(myAddress,eventData.eventItem);
+                EventContributeText.innerHTML += "<br>" + " You Have: " + itemAmount + " " + itemName(Number(eventData[2]));
 
-                const itemAmount = await NFTcontract.balanceOf(myAddress,eventData[4]);
-                EventContributeText.innerHTML += "<br>" + " You Have: " + itemAmount + " " + itemName(Number(eventData[4]));
-
-                var eventTier = _offChainEventTierCalc(eventData,population);
-
-                if(eventTier == -1){
-                    eventTier = 0;
-                    EventContributeInput.style.display = "none";
-                    MaxFillGrid.style.display = "none";
-                    EventContributeButton.innerHTML = "Minimum population required for event: " + eventData[2][0] + " You Have: " + population;
-                }
                 
-                    EventMilestoneItem1.innerHTML = "Milestone 1: " + eventData[0][eventTier][0] + "<br>" + "Reward: " + eventData[1][eventTier][0][1] + " " + itemName(Number(eventData[1][eventTier][0][0]));
-                    EventMilestoneItem2.innerHTML = "Milestone 2: " + eventData[0][eventTier][1] + "<br>" + "Reward: " + eventData[1][eventTier][1][1] + " " + itemName(Number(eventData[1][eventTier][1][0]));
-                    EventMilestoneItem3.innerHTML = "Milestone 3: " + eventData[0][eventTier][2] + "<br>" + "Reward: " + eventData[1][eventTier][2][1] + " " + itemName(Number(eventData[1][eventTier][2][0]));
-                    EventMilestoneItem4.innerHTML = "Milestone 4: " + eventData[0][eventTier][3] + "<br>" + "Reward: " + eventData[1][eventTier][3][1] + " " + itemName(Number(eventData[1][eventTier][3][0]));
-                    EventBaseItem.innerHTML = "Base Reward: 1 " + itemName(Number(eventData[5])) + " Per "+ Number(eventData[6]) + " " + itemName(Number(eventData[4])) + " Contributed";
+                EventMilestoneItem1.innerHTML = "Milestone 1: " + Math.ceil((kingdomWealth * mileStones[0])/(baseItemCost * 100 * 100)) + "<br>" + "Reward: " + Math.round(((kingdomWealth * mileStones[0])/(rewardItemCost[0]*(100*100)))) + " " + itemName(Number(eventData[0][0]));
+                EventMilestoneItem2.innerHTML = "Milestone 2: " + Math.ceil((kingdomWealth * mileStones[1])/(baseItemCost * 100* 100)) + "<br>" + "Reward: " + Math.round(((kingdomWealth * (mileStones[1] - mileStones[0]))/(rewardItemCost[1]*100*100))) + " " + itemName(Number(eventData[0][1]));
+                EventMilestoneItem3.innerHTML = "Milestone 3: " + Math.ceil((kingdomWealth * mileStones[2])/(baseItemCost * 100* 100)) + "<br>" + "Reward: " + Math.round((kingdomWealth * (mileStones[2] - mileStones[1]))/(rewardItemCost[2]*100*100)) + " " + itemName(Number(eventData[0][2]));
+                EventMilestoneItem4.innerHTML = "Milestone 4: " + Math.ceil((kingdomWealth * mileStones[3])/(baseItemCost * 100* 100)) + "<br>" + "Reward: " + Math.round((kingdomWealth * (mileStones[3] - mileStones[2]))/(rewardItemCost[3]*100*100)) + " " + itemName(Number(eventData[0][3]));
+
+                    EventBaseItem.innerHTML = "Base Reward: 1 " + itemName(Number(eventData[1])) + " Per "+ ((baseRewardItemCost)/baseItemCost) + " " + itemName(Number(eventData[2])) + " Contributed";
                 
             }
             console.log("Init successful!");
         }
         async function submitTX() {
-            var addies = await _address();
-            const eventAddress = addies[4];
+            var addies = await address();
 
             const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner();
@@ -77,18 +80,8 @@
             EventcontractSigner.payEvent(EventContributeInput.value);
             console.log("TX submitted")
         }
-        function _offChainEventTierCalc(eventData,population) {
-            for(let i = 0; i < 4; ++i){
-                if(eventData[2][i] > population){return(i - 1)}
-                if(eventData[2][i] == population){return(i)}
-                if(i == 3){console.log("ERROR: YOU DONT NOT HAVE ENOUGH PEOPLE");return(-1)}
-            }
-
-        }
         async function claimReward() {
             
-            var addies = await _address();
-            const eventAddress = addies[4];
 
             const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner();
@@ -99,25 +92,27 @@
             EventcontractSigner.claimEventRewards();
         }
         async function eventContributionAmount(_value){
-            var addies = await _address();
-            const address = addies[0];
-            const eventAddress = addies[4];
+
             
             const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner();
             const Eventcontract = new ethers.Contract(eventAddress, tradingEvent_abi, provider)
-
-            const NFTcontract = new ethers.Contract(address, abi, provider)
+            const Merchantcontract = new ethers.Contract(merchantAddress, merchant_abi, provider)
             const myAddress = await signer.getAddress();
 
-            const kingdomData = await NFTcontract.getKingdomInfo(myAddress);
-            const population = kingdomData[0][0] +kingdomData[0][1] +kingdomData[0][2];
-
             const eventData = await Eventcontract.getCurrentEventData();
-            const eventTier = _offChainEventTierCalc(eventData,population);
-            const playerData = await Eventcontract.getPlayerData(myAddress);
 
-            var _cost = Number(eventData[0][eventTier][_value]);
+            const Citycontract = new ethers.Contract(cityAddress, city_abi, provider)
+            const kingdomWealth = await Citycontract.getPlayerCityItemValue(myAddress);
+            const baseItemCost = await Merchantcontract.returnItemValue(eventData[2]);
+
+
+            const kingdomData = await Citycontract.getKingdomInfo(myAddress);
+
+            const playerData = await Eventcontract.getPlayerData(myAddress);
+            const mileStones = [await Eventcontract.eventMilestones(0),await Eventcontract.eventMilestones(1),await Eventcontract.eventMilestones(2),await Eventcontract.eventMilestones(3)];
+
+            var _cost = Number(Math.ceil((kingdomWealth * mileStones[_value])/(baseItemCost * 100 * 100)));
             _cost -= Number(playerData[1]);
             if(_cost < 0){_cost = 0;}
 

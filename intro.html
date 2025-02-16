@@ -1,29 +1,17 @@
 <!DOCTYPE html>
 
 <head>
-  <script src="./ethers.umd.min.js" type="application/javascript"></script>
+  <script src="lib/ethers.umd.min.js" type="application/javascript"></script>
     <script src="./abi.js" type="application/javascript"></script>
     <script src="./address.js" type="application/javascript"></script>
     <script src="./excelIntegration.js" type="application/javascript"></script>
     <script>
-        
-        const Kingdom_Lands =
-            [[0],
-            [1, 2, 3, 4, 44, 0, 0, 0],
-            [11, 12, 13, 14, 41, 0, 0, 0],
-            [21, 22, 23, 42, 0, 0, 0, 0],
-            [31, 32, 33, 34, 43, 0, 0, 0],
-            [41, 42, 43, 44, 0, 0, 0, 0],
-            [51, 52, 53, 0, 0, 0, 0, 0],
-            [61, 62, 63, 64, 0, 0, 0, 0],
-            [70, 71, 72, 0, 0, 0, 0, 0],
-            [80, 81, 82, 0, 0, 0, 0, 0]];
 
         async function checkLand(_value) {
             const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner()
             console.log(signer);
-            await _address();
+            await address();
             const cityContractSigner = new ethers.Contract(cityAddress, city_abi, signer);
             const baseContractSigner = new ethers.Contract(baseAddress, base_abi, signer);
             const myAddress = await signer.getAddress();

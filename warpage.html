@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 
 <head>
-    <script src="./ethers.umd.min.js" type="application/javascript"></script>
+    <script src="lib/ethers.umd.min.js" type="application/javascript"></script>
     <script src="./abi.js" type="application/javascript"></script>
     <script src="./address.js" type="application/javascript"></script>
     <script src="./excelIntegration.js" type="application/javascript"></script>
 
     <script>
+        const MountPopMaping = new Map();
+
+        MountPopMaping.set("0",0);
+        MountPopMaping.set("5400",0);
+        MountPopMaping.set("5401",1);
+        MountPopMaping.set("5402",1);
+        MountPopMaping.set("5403",1);
+        MountPopMaping.set("5404",1);
+        MountPopMaping.set("5420",2);
+        MountPopMaping.set("5421",2);
+        MountPopMaping.set("5430",2);
+        MountPopMaping.set("5431",2);
+
+        const PopMaping = new Map();
+
+        PopMaping.set(0,"Peasents");
+        PopMaping.set(1,"Low Noble");
+        PopMaping.set(2,"High Noble");
+
+        addEventListener("DOMContentLoaded", (event) => {
+          console.log("DOM fully loaded and parsed");
+          generateTroopOptions();
+        });
+
         function showRecipe() {
             if (actionSelector.value == "6") {
                 let whyJS = returnRecipe(TroopListDropdown.value);
@@ -45,27 +69,39 @@
             }
         }
         async function selectAction(_value) {
+            var addies = await address();
+
             const provider = new ethers.providers.Web3Provider(window.ethereum)
 
 
             const signer = provider.getSigner()
-            const NFTcontract = new ethers.Contract(waraddress, war_abi, provider)
-            myAddress = await signer.getAddress()
+            const WarContract = new ethers.Contract(warAddress, war_abi, provider)
+            const myAddress = await signer.getAddress()
 
             hideAll();
             switch (_value) {
-                case "1":
-                    submitTX();
-                    break;
                 case "2":
-                    document.getElementById("TroopList").style.display = "block";
                     document.getElementById("TroopAmount").style.display = "block";
-                    document.getElementById("TroopUpgrade").style.display = "none";
-                    document.getElementById("TroopUpgradeLabel").style.display = "none";
+                    document.getElementById("TroopAmountBlock").style.display = "block";
+                    document.getElementById("SoldierItemAdder").style.display = "block";
+                    document.getElementById("SoldierSlotList").style.display = "block";
+                    document.getElementById("WeaponInput").style.display = "block";
+                    document.getElementById("WeaponInputLabel").style.display = "block";
+                    document.getElementById("ArmorInput").style.display = "block";
+                    document.getElementById("ArmorInputLabel").style.display = "block";
+                    document.getElementById("OffhandInput").style.display = "block";
+                    document.getElementById("OffhandInputLabel").style.display = "block";
+                    document.getElementById("OtherInput").style.display = "block";
+                    document.getElementById("OtherInputLabel").style.display = "block";
                     break;
                 case "3":
                     document.getElementById("MercAdder").style.display = "block";
                     document.getElementById("SoldierSlotList").style.display = "block";
+                    document.getElementById("TroopAmount").style.display = "block";
+                    document.getElementById("TroopAmountBlock").style.display = "block";
+                    UseProTroops.style.display = "none";
+                    UseProTroopsLabel.style.display = "none";
+
                     break;
                 case "4":
                     document.getElementById("SoldierSlotList").style.display = "block";
@@ -75,7 +111,9 @@
                     document.getElementById("QuestSelectorText").style.display = "block";
                     break;
                 case "6":
-                    document.getElementById("TroopList").style.display = "block";
+                    document.getElementById("SoldierSlotList").style.display = "block";
+                    document.getElementById("TotalCost").style.display = "block";
+
                     break;
                 case "7":
                     document.getElementById("RationSelector").style.display = "block";
@@ -84,140 +122,152 @@
 
             console.log("test");
         }
-        function TroopListDropdownHelper() {
-            switch(actionSelector.value) {
-                case "2":
-                    document.getElementById("SoldierSlotList").style.display = "block";
-                    document.getElementById("SoldierItemAdder").style.display = "block";
-                    var _solider_data = eval("soldier" + TroopListDropdown.value);
-                    console.log(_solider_data);
-                    if (_solider_data[7][0] != 0) {
-                        document.getElementById("WeaponInput").style.display = "block";
-                        document.getElementById("WeaponInputLabel").style.display = "block";
-                        removeInvalidEquipment(_solider_data[7][0]);
-                    }
-                    if (_solider_data[7][1] != 0) {
-                        document.getElementById("ArmorInput").style.display = "block";
-                        document.getElementById("ArmorInputLabel").style.display = "block";
-                    }
-                    if (_solider_data[7][2] != 0) {
-                        document.getElementById("OffhandInput").style.display = "block";
-                        document.getElementById("OffhandInputLabel").style.display = "block";
-                    }
-                    if (_solider_data[7][3] != 0) {
-                        document.getElementById("OtherInput").style.display = "block";
-                        document.getElementById("OtherInputLabel").style.display = "block";
-                    }
-                    break;
-                case "6":
-                    showRecipe();
-                    break;
-            }
-        }
-        async function submitTX() {
-            
-
-            var addies = await _address();
-            const address = addies[0];
-            const waraddress = addies[4];
+        async function SingleSoldiderShow() {
 
             const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner();
 
-            const NFTWarContract = new ethers.Contract(waraddress, war_abi, provider);
-            const NFTBaseContract = new ethers.Contract(address, city_abi, provider)
+            const NFTWarContract = new ethers.Contract(warAddress, war_abi, provider);
+            const NFTBaseContract = new ethers.Contract(cityAddress, city_abi, provider)
 
-            const NFTWarContractSigner = new ethers.Contract(waraddress, war_abi, signer);
-            const NFTBaseContractSigner = new ethers.Contract(address, city_abi, signer);
+            const NFTWarContractSigner = new ethers.Contract(warAddress, war_abi, signer);
+            const NFTBaseContractSigner = new ethers.Contract(cityAddress, city_abi, signer);
 
             const myAddress = await signer.getAddress();
-            var _armyData = await NFTWarContractSigner.currentArmy(myAddress);
+            const _armyData = await NFTWarContractSigner.currentArmy(myAddress);
+        }
+        async function submitTX() {
+            
+
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
+            const signer = provider.getSigner();
+
+            const NFTWarContract = new ethers.Contract(warAddress, war_abi, provider);
+            const NFTBaseContract = new ethers.Contract(cityAddress, city_abi, provider)
+
+            const NFTWarContractSigner = new ethers.Contract(warAddress, war_abi, signer);
+            const NFTBaseContractSigner = new ethers.Contract(cityAddress, city_abi, signer);
+
+            const myAddress = await signer.getAddress();
+            const _armyData = await NFTWarContractSigner.currentArmy(myAddress);
             console.log(_armyData);
             const _value = document.getElementById("actionSelector").value;
             console.log(_value)
             switch (_value) {
-                case "1":
-                    //_armyData = await NFTWarContractSigner.currentArmy("0x8c00000000000000000000000000000000000008");
-                    document.getElementById("SuperSoldierGridContainer").style.display = "grid";
-                    //console.log(_armyData);
-
-                    for(let i = 0; i < 12; ++i) {
-                        document.getElementById(("SoldierGridSlot" + (i + 1) + "-1")).textContent = "Name: " + itemName(_armyData[3][5 * i]);
-                        document.getElementById(("SoldierGridSlot" + (i + 1) + "-3")).textContent = "Weapon: " + itemName(_armyData[3][5 * i + 1]);
-                        document.getElementById(("SoldierGridSlot" + (i + 1) + "-4")).textContent = "Offhand: " + itemName(_armyData[3][5 * i + 2]);
-                        document.getElementById(("SoldierGridSlot" + (i + 1) + "-5")).textContent = "Armor: " + itemName(_armyData[3][5 * i + 3]);
-                        document.getElementById(("SoldierGridSlot" + (i + 1) + "-6")).textContent = "Other: " + itemName(_armyData[3][5 * i + 4]);
-                        document.getElementById(("SoldierGridSlot" + (i + 1) + "-2")).textContent = "Amount: " + _armyData[2][i];
-
-                    }
-
-                        console.log("fiusd")
-                    break;
                 case "2":
-                    NFTBaseContractSigner.sendToWar(
-                        false,
+                    console.log("Num", 12 * MountPopMaping.get(OtherInput.value));
+                    var tx = await NFTWarContractSigner.newTroop(
                         document.getElementById("SoldierSlotSelector").value,
-                        document.getElementById("TroopListDropdown").value,
+                        eval(document.getElementById("UseProTroops").checked),
+                        false,
                         document.getElementById("WeaponInput").value,
                         document.getElementById("OffhandInput").value,
                         document.getElementById("ArmorInput").value,
                         document.getElementById("OtherInput").value,
-                        document.getElementById("TroopAmount").value
+                        0
                         
-                    )
+                    );
+                    tx.wait().then(
+                        async (receipt) => {
+                            if(document.getElementById("TroopAmount").value != 0){
+                                NFTWarContractSigner.reinforceSoldier(
+                                    document.getElementById("SoldierSlotSelector").value,
+                                    document.getElementById("TroopAmount").value
+                                );
+                            }
+                        }
+                    );
                     break;
                 case "3":
-                    NFTBaseContractSigner.sendToWar(
-                        true,
+                    var tx = await NFTWarContractSigner.newTroop(
                         document.getElementById("SoldierSlotSelector").value,
-                        document.getElementById("MercList").value,
+                        false,
+                        true,
                         0,
                         0,
                         0,
                         0,
-                        document.getElementById("MercAmount").value
-                        , {gasLimit: 5000000}
+                        document.getElementById("MercList").value
                     )
+                    tx.wait().then(
+                        async (receipt) => {
+                            if(document.getElementById("TroopAmount").value != 0){
+                                NFTWarContractSigner.reinforceSoldier(
+                                    document.getElementById("SoldierSlotSelector").value,
+                                    document.getElementById("TroopAmount").value
+                                );
+                            }
+                        }
+                    );
                     break;
                 case "4":
-                    NFTBaseContractSigner.returnHome(document.getElementById("SoldierSlotSelector").value, {gasLimit: 5000000});
+                    NFTWarContractSigner.removeSoldier(document.getElementById("SoldierSlotSelector").value, {gasLimit: 5000000});
                     break;
                 case "5":
-                    NFTBaseContractSigner.startQuest(
+                    NFTWarContractSigner.beginQuest(
                         document.getElementById("QuestSelector").value
                     )
                     break;
                 case "6":
-                    const Trade = Number(document.getElementById("TroopListDropdown").value)
-                    let array2 = returnRecipe(Trade)[1];
-                    console.log(array2);
-                    NFTBaseContractSigner.cook(
-                        Trade,
-                        document.getElementById("TroopUpgrade").value,
-                        array2,
-                        0,
-                        0
+                    NFTWarContractSigner.upgradeSoldier(
+                        document.getElementById("SoldierSlotSelector").value
                     )
                     break;
                 case "7":
-                    NFTWarContractSigner.userSetRation([document.getElementById("MainRationSelector").value,document.getElementById("ExtraRationSelector").value,document.getElementById("DrinkRationSelector").value],false)
+                    NFTWarContractSigner.setRation([document.getElementById("MainRationSelector").value,document.getElementById("ExtraRationSelector").value,document.getElementById("DrinkRationSelector").value],UseMeds.checked,myAddress)
                     break;
             }
 
             console.log("web submit script TX completed");
         }
+        function updateCheckbox(_value) {
+        }
         function removeInvalidEquipment(_value) {
-            const _equipment_type = Math.floor(_value / 100);
-            const _string_value = toString(_value);
-            switch (_equipment_type) {
+            
+                var _valid_items
+            switch (_value) {
+                case 0:
+                _valid_items = warItemExclusive(Number(WeaponInput.value));
+                    break;
                 case 1:
-                console.log(document.getElementById("WeaponInput").options[1].classList.contains(_value));
-                for(let i = 0; i < document.getElementById("WeaponInput").options.length; ++i) {
-                    if(document.getElementById("WeaponInput").options[i].classList.contains(_value) == true) 
-                    {document.getElementById("WeaponInput").options[i].style.display = "block"}
-                    else {document.getElementById("WeaponInput").options[i].style.display = "none"}
+                _valid_items = warItemExclusive(Number(ArmorInput.value));
+                    break;
+                case 2:
+                _valid_items = warItemExclusive(Number(OffhandInput.value));
+                    break;
+                case 3:
+                _valid_items = warItemExclusive(Number(OtherInput.value));
+                    break;
+            }
+                console.log("Valid: ",_valid_items);
+
+            if(_value != 0){
+                for(let i = 0; i < WeaponInput.options.length; ++i) {
+                    if(_valid_items[0] == warItemClass(WeaponInput.options[i].value)[1])
+                    {WeaponInput.options[i].style.display = "block"}
+                    else if(_valid_items[0] != 0){WeaponInput.options[i].style.display = "none"}
                 }
-                break;
+            }
+            if(_value != 1){
+                for(let i = 0; i < ArmorInput.options.length; ++i) {
+                    if(_valid_items[1] == warItemClass(ArmorInput.options[i].value)[1])
+                    {ArmorInput.options[i].style.display = "block"}
+                    else if(_valid_items[1] != 0){ArmorInput.options[i].style.display = "none"}
+                }
+            }
+            if(_value != 2){
+                for(let i = 0; i < OffhandInput.options.length; ++i) {
+                    if(_valid_items[2] == warItemClass(OffhandInput.options[i].value)[1])
+                    {OffhandInput.options[i].style.display = "block"}
+                    else if(_valid_items[2] != 0){OffhandInput.options[i].style.display = "none"}
+                }
+            }
+            if(_value != 2){
+                for(let i = 0; i < OtherInput.options.length; ++i) {
+                    if(_valid_items[3] == warItemClass(OtherInput.options[i].value)[1])
+                    {OtherInput.options[i].style.display = "block"}
+                    else if(_valid_items[3] != 0){OtherInput.options[i].style.display = "none"}
+                }
             }
         }
 
@@ -259,7 +309,6 @@
             }
         }
         function hideAll() {
-            document.getElementById("SuperSoldierGridContainer").style.display = "none";
             document.getElementById("WeaponInput").style.display = "none";
             document.getElementById("WeaponInputLabel").style.display = "none";
             document.getElementById("OffhandInput").style.display = "none";
@@ -269,14 +318,76 @@
             document.getElementById("OtherInput").style.display = "none";
             document.getElementById("OtherInputLabel").style.display = "none";
             document.getElementById("MercAdder").style.display = "none";
+            document.getElementById("TroopAmount").style.display = "none";
             document.getElementById("QuestSelectorText").style.display = "none";
             document.getElementById("QuestSelector").style.display = "none";
             document.getElementById("QuestDescriptionText").style.display = "none";
-            document.getElementById("TroopList").style.display = "none";
             document.getElementById("SoldierSlotList").style.display = "none";
             document.getElementById("RationSelector").style.display = "none";
+            document.getElementById("TotalCost").style.display = "none";
         }
+        async function TroopCost() {
 
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
+            const signer = provider.getSigner();
+            const NFTWarContractSigner = new ethers.Contract(warAddress, war_abi, signer);
+
+            const myAddress = await signer.getAddress();
+            const _armyData = await NFTWarContractSigner.currentArmy(myAddress);
+
+            console.log(_armyData);
+
+            if(actionSelector.value == "2"){
+                PopCostText.innerHTML = "Population Required: " + Number(TroopAmount.value) + " " + PopMaping.get(MountPopMaping.get(OtherInput.value));
+            }
+            if(actionSelector.value == "6"){
+                TotalCostText.innerHTML = "Total Cost: " + Number(_armyData.soldierAmount[SoldierSlotSelector.value]) * Number(_armyData.soldierType[SoldierSlotSelector.value]) + " XP";
+            }
+        }
+        async function generateTroopOptions() {
+            var _items = [[0],[0],[0],[0]];
+            for(let i = 5000; i < 6000; ++i){
+                var _warClass = warItemClass(i);
+                if(itemName(i) != "Error: No Name"){
+                    _items[_warClass[0]].push(i);
+                }
+            }
+            for(let i = 0; i < 4; ++i){
+
+                console.log("Length: ",_items[i].length);
+                for(let j = 0; j < _items[i].length; ++j){
+                    const _child = document.createElement("option");
+                    _child.value = Number(_items[i][j]);
+                    _child.innerHTML = itemName(_items[i][j]);    
+                    switch(i) {
+                        case 0:
+                            WeaponInput.appendChild(_child);
+                            break;
+                        case 1:
+                            ArmorInput.appendChild(_child);
+                            break;
+                        case 2:
+                            OffhandInput.appendChild(_child);
+                            break;
+                        case 3:
+                            OtherInput.appendChild(_child);
+                            break;
+                    }
+                }
+            }
+            var _mercList = [0];
+            for(let i = 11000; i < 12000; ++i){
+                var _mercName = itemName(i);
+                if(itemName(i) != "Error: No Name"){
+                    const _child = document.createElement("option");
+                    _child.value = i;
+                    _child.innerHTML = itemName(i);    
+                    MercList.appendChild(_child);
+                }
+            }
+            
+        
+        }
     </script>
 </head>
 
@@ -286,7 +397,6 @@
         <text>What would you like to do?</text>
         <select class="Dropdown" id="actionSelector" onchange="selectAction(this.value)">
             <option value="-1"></option>
-            <option value="1">Army Overview</option>
             <option value="2">Add Soldiers To Army</option>
             <option value="3">Add Mercenaries To Army</option>
             <option value="4">Remove Troop From Army</option>
@@ -338,10 +448,12 @@
                 <option value="1928">Drink Pack 8</option>
                 <option value="1929">Drink Pack 9</option>
             </select>
+            <br>
+            <input type="checkbox" id="UseMeds">Use medicine?</input>
         </RationSelector>
         <SoldierSlotList id="SoldierSlotList" class="InvisableOnStart">
             <label id="SSSLabel" for="SoldierSlotSelector">Which Slot does this operation involve?</label>
-            <select class="Dropdown" id="SoldierSlotSelector">
+            <select class="Dropdown" id="SoldierSlotSelector" onchange="TroopCost()">
                 <option value="-1"></option>
                 <option value="0">Frontline Slot 1</option>
                 <option value="1">Frontline Slot 2</option>
@@ -358,36 +470,9 @@
             </select>
         </SoldierSlotList>
         <AddMercs id="MercAdder" class="InvisableOnStart">
-            <input class="NumericInput" type="number" id="MercAmount">How many would you like to add?</input>
             <br>
             <select class="Dropdown" id="MercList">
                 <option value="0"></option>
-                <option value="11000">Bandits</option>
-                <option value="11010">Peasent_Levy</option>
-                <option value="11011">Veteran_Peasent_Levy</option>
-                <option value="11020">Levy_Spear</option>
-                <option value="11021">Veteran_Levy_Spear</option>
-                <option value="11030">Mountain_Levy</option>
-                <option value="11031">Veteran_Mountain_Levy</option>
-                <option value="11040">Mercenary Swordsman</option>
-                <option value="11041">Veteran_Mercenary_Swordsman</option>
-                <option value="11042">Palace Guard</option>
-                <option value="11050">Mercenary Axeman</option>
-                <option value="11060">Mercenary Maceman</option>
-                <option value="11070">Pikeman</option>
-                <option value="11200">Peasent_Bowman</option>
-                <option value="11210">Levy Archer</option>
-                <option value="11211">Veteran_Levy_Archer</option>
-                <option value="11220">Huntsman</option>
-                <option value="11230">Slinger</option>
-                <option value="11241">Imperial Flamer</option>
-                <option value="11300">Free lance</option>
-                <option value="11301">Knight</option>
-                <option value="11310">Mounted Levy</option>
-                <option value="11311">Mounted Palace Guard</option>
-                <option value="11600">Horse_Archer</option>
-                <option value="11601">Veteran_Horse_Archer</option>
-                <option value="11602">Palace_Archer</option>
             </select>
             What Mercenaries would you like to add?
         </AddMercs>
@@ -395,246 +480,34 @@
             <input type="number" class="NumericInput">Which Quest would you like to do?</input>
         </Questing>
         <SoldierItemAdder id="SoldierItemAdder" class="InvisableOnStart">
-            <label for="WeaponInput" id="WeaponInputLabel">What Weapon would you like to give?</label>
-            <select class="InvisableOnStart Dropdown" id="WeaponInput">
+            <label for="OtherInput" class="InvisableOnStart" id="OtherInputLabel" >What Mount would you like this soldier to have?</label>
+            <select class="Dropdown InvisableOnStart" id="OtherInput" onchange="TroopCost();removeInvalidEquipment(3)">
                 <option value="0" selected></option>
-                <option value="5000" class=" 100">Bronze Spear</option>
-                <option value="5001" class=" 100">Iron Spear</option>
-                <option value="5002" class=" 100">Steel Spear</option>
-                <option value="5003" class=" 100">Emerald Bronze Spear</option>
-                <option value="5004" class=" 100">Damascus Steel Spear</option>
-                <option value="5010" class=" 102">Bronze Axe</option>
-                <option value="5011" class=" 102">Iron Axe</option>
-                <option value="5012" class=" 102">Steel Axe</option>
-                <option value="5013" class=" 102">Emerald Bronze Axe</option>
-                <option value="5014" class=" 102">Damascus Steel Axe</option>
-                <option value="5020" class=" 101">Bronze Sword</option>
-                <option value="5021" class=" 101">Iron Sword</option>
-                <option value="5022" class=" 101">Steel Sword</option>
-                <option value="5023" class=" 101">Emerald Bronze Sword</option>
-                <option value="5024" class=" 101">Damascus Steel Sword</option>
-                <option value="5030" class=" 101">Bronze Mace</option>
-                <option value="5031" class=" 101">Iron Mace</option>
-                <option value="5032" class=" 101">Steel Mace</option>
-                <option value="5033" class=" 101">Emerald Bronze Mace</option>
-                <option value="5034" class=" 101">Damascus Steel Mace</option>
-                <option value="5040" class=" 100">Bronze Lance</option>
-                <option value="5041" class=" 100">Iron Lance</option>
-                <option value="5042" class=" 100">Steel Lance</option>
-                <option value="5043" class=" 100">Emerald Bronze Lance</option>
-                <option value="5044" class=" 100">Damascus Steel Lance</option>
-                <option value="5050" class=" 100 102">Bronze Poleaxe</option>
-                <option value="5051" class=" 100 102">Iron Poleaxe</option>
-                <option value="5052" class=" 100 102">Steel Poleaxe</option>
-                <option value="5053" class=" 100 102">Emerald Bronze Poleaxe</option>
-                <option value="5054" class=" 100 102">Damascus Steel Poleaxe</option>
-                <option value="5060" class=" 101">Bronze Greatsword</option>
-                <option value="5061" class=" 101">Iron Greatsword</option>
-                <option value="5062" class=" 101">Steel Greatsword</option>
-                <option value="5063" class=" 101">Emerald Bronze Greatsword</option>
-                <option value="5064" class=" 101">Damascus Steel Greatsword</option>
-                <option value="5070" class=" 101">Bronze Warhammer</option>
-                <option value="5071" class=" 101">Iron Warhammer</option>
-                <option value="5072" class=" 101">Steel Warhammer</option>
-                <option value="5073" class=" 101">Emerald Bronze Warhammer</option>
-                <option value="5074" class=" 101">Damascus Steel Warhammer</option>
-                <option value="5200" class=" 104">Bow</option>
-                <option value="5201" class=" 104">Longbow</option>
-                <option value="5202" class=" 104">Greatbow</option>
-                <option value="5210" class=" 107">Crossbow</option>
-                <option value="5211" class=" 105">Sling</option>
-                <option value="5212" class=" 106">Flamer</option>
-                <option value="5213" class=" 106">Flame Grenade</option>
-                <option value="5214" class=" 105">Golden Sling</option>
-                
+            </select>
+            <label for="WeaponInput" id="WeaponInputLabel">What Weapon would you like to give?</label>
+            <select class="InvisableOnStart Dropdown" id="WeaponInput" onchange="removeInvalidEquipment(0)">
+                <option value="0" selected></option>
+            </select>
+            <label for="ArmorInput" class="InvisableOnStart" id="ArmorInputLabel">What Armor would you like to give?</label>
+            <select class="Dropdown InvisableOnStart" id="ArmorInput" onchange="removeInvalidEquipment(1)">
+                <option value="0" selected></option>
             </select>
             <label for="OffhandInput" class="InvisableOnStart" id="OffhandInputLabel">What Offhand would you like to give?</label>
-            <select class="Dropdown InvisableOnStart" id="OffhandInput">
+            <select class="Dropdown InvisableOnStart" id="OffhandInput" onchange="removeInvalidEquipment(2)">
                 <option value="0" selected></option>
-                <option value="0" class="200">None</option>
-                <option value="5900" class= "200">Wooden Shield</option>
-                <option value="5901" class= "200">Banded Shield</option>
-                <option value="5902" class= "200">Standard Shield</option>
-                <option value="5903" class= "200">Metal Shield</option>
-                <option value="5904" class= "200">Gong Shield</option>
-                <option value="5905" class= "200">Heirloom Shield</option>
-                <option value="5910" class= "200">Wall Shield</option>
-                <option value="5911" class= "200">Advanced Wall Shield</option>
-                
-            </select>
-            <label for="ArmorInput" class="InvisableOnStart" id="ArmorInputLabel"  class="300">What Armor would you like to give?</label>
-            <select class="Dropdown InvisableOnStart" id="ArmorInput"  class="300">
-                <option value="0" selected></option>
-                <option value="5500"  class="300">Light Bronze Mail</option>
-                <option value="5501"  class="300">Light Iron Mail</option>
-                <option value="5502"  class="300">Light Steel Mail</option>
-                <option value="5503"  class="300">Light Emerald Bronze Mail</option>
-                <option value="5504"  class="300">Light Damascus Steel Mail</option>
-                <option value="5510"  class="300">Light Bronze Plate</option>
-                <option value="5511"  class="300">Light Iron Plate</option>
-                <option value="5512"  class="300">Light Steel Plate</option>
-                <option value="5513"  class="300">Light Emerald Bronze Plate</option>
-                <option value="5514"  class="300">Light Damascus Steel Plate</option>
-                <option value="5520"  class="300">Medium Bronze Mail</option>
-                <option value="5521"  class="300">Medium Iron Mail</option>
-                <option value="5522"  class="300">Medium Steel Mail</option>
-                <option value="5523"  class="300">Medium Emerald Bronze Mail</option>
-                <option value="5524"  class="300">Medium Damascus Steel Mail</option>
-                <option value="5530"  class="300">Medium Bronze Plate</option>
-                <option value="5531"  class="300">Medium Iron Plate</option>
-                <option value="5532"  class="300">Medium Steel Plate</option>
-                <option value="5533"  class="300">Medium Emerald Bronze Plate</option>
-                <option value="5534"  class="300">Medium Damascus Steel Plate</option>
-                <option value="5540"  class="300">Bronze Heavy Armor</option>
-                <option value="5541"  class="300">Iron Heavy Armor</option>
-                <option value="5542"  class="300">Steel Heavy Armor</option>
-                <option value="5543"  class="300">Emerald Bronze Heavy Armor</option>
-                <option value="5544"  class="300">Damascus Steel Heavy Armor</option>
-                <option value="5550"  class="301">Light Bronze Horse Armor</option>
-                <option value="5551"  class="301">Light Iron Horse Armor</option>
-                <option value="5552"  class="301">Light Steel Horse Armor</option>
-                <option value="5553"  class="301">Light Emerald Bronze Horse Armor</option>
-                <option value="5554"  class="301">Light Damascus Steel Horse Armor</option>
-                <option value="5560"  class="301">Medium Bronze Horse Armor</option>
-                <option value="5561"  class="301">Medium Iron Horse Armor</option>
-                <option value="5562"  class="301">Medium Steel Horse Armor</option>
-                <option value="5563"  class="301">Medium Emerald Bronze Horse Armor</option>
-                <option value="5564"  class="301">Medium Damascus Steel Horse Armor</option>
-                <option value="5570"  class="301">Heavy Bronze Horse Armor</option>
-                <option value="5571"  class="301">Heavy Iron Horse Armor</option>
-                <option value="5572"  class="301">Heavy Steel Horse Armor</option>
-                <option value="5573"  class="301">Heavy Emerald Bronze Horse Armor</option>
-                <option value="5574"  class="301">Heavy Damascus Steel Horse Armor</option>
-                <option value="5580"  class="300">Leather Armor</option>
-                <option value="5581"  class="300">Thick Leather Armor</option>
-                <option value="5582"  class="300">Gambeson</option>
             </select>
             <br>
-            <label for="OtherInput" class="InvisableOnStart" id="OtherInputLabel">What Other Item would you like to give?</label>
-            <select class="Dropdown InvisableOnStart" id="OtherInput">
-                <option value="0" selected></option>
-                <option value="5400" class="400">Farm Horse</option>
-                <option value="5401" class="400">Horse</option>
-                <option value="5402" class="400">Charge Horse</option>
-                <option value="5403" class="400">War Horse</option>
-                <option value="7300" class="401">Elephant</option>
-            </select>
-            <br>
-            <label for="TroopAmount" class="InvisableOnStart">How many would you like to add?</label>
-            <input class="NumericInput InvisableOnStart" id="TroopAmount"></input>
         </SoldierItemAdder>
-        <SoldierViewGrid class="SuperSoldierGridContainer InvisableOnStart" id="SuperSoldierGridContainer">
-            <div class="SoldierGridContainer">
-                <div class="SoldierInfoGrid" id="SoldierInfoGrid1">
-                    <div id="SoldierGridSlot1-1">Name:</div>
-                    <div id="SoldierGridSlot1-2">Amount:</div>
-                    <div id="SoldierGridSlot1-3">Weapon:</div>
-                    <div id="SoldierGridSlot1-4">Offhand:</div>
-                    <div id="SoldierGridSlot1-5">Armor:</div>
-                    <div id="SoldierGridSlot1-6">Other:</div>
-                </div>                </div>
-            <div class="SoldierGridContainer">
-                <div class="SoldierInfoGrid" id="SoldierInfoGrid2">
-                    <div id="SoldierGridSlot2-1">Name:</div>
-                    <div id="SoldierGridSlot2-2">Amount:</div>
-                    <div id="SoldierGridSlot2-3">Weapon:</div>
-                    <div id="SoldierGridSlot2-4">Offhand:</div>
-                    <div id="SoldierGridSlot2-5">Armor:</div>
-                    <div id="SoldierGridSlot2-6">Other:</div>
-                </div>                </div>
-            <div class="SoldierGridContainer">
-                <div class="SoldierInfoGrid" id="SoldierInfoGrid3">
-                    <div id="SoldierGridSlot3-1">Name:</div>
-                    <div id="SoldierGridSlot3-2">Amount:</div>
-                    <div id="SoldierGridSlot3-3">Weapon:</div>
-                    <div id="SoldierGridSlot3-4">Offhand:</div>
-                    <div id="SoldierGridSlot3-5">Armor:</div>
-                    <div id="SoldierGridSlot3-6">Other:</div>
-                </div>                </div>
-            <div class="SoldierGridContainer">
-                <div class="SoldierInfoGrid" id="SoldierInfoGrid4">
-                    <div id="SoldierGridSlot4-1">Name:</div>
-                    <div id="SoldierGridSlot4-2">Amount:</div>
-                    <div id="SoldierGridSlot4-3">Weapon:</div>
-                    <div id="SoldierGridSlot4-4">Offhand:</div>
-                    <div id="SoldierGridSlot4-5">Armor:</div>
-                    <div id="SoldierGridSlot4-6">Other:</div>
-                </div>                </div>
-            <div class="SoldierGridContainer">
-                <div class="SoldierInfoGrid" id="SoldierInfoGrid5">
-                    <div id="SoldierGridSlot5-1">Name:</div>
-                    <div id="SoldierGridSlot5-2">Amount:</div>
-                    <div id="SoldierGridSlot5-3">Weapon:</div>
-                    <div id="SoldierGridSlot5-4">Offhand:</div>
-                    <div id="SoldierGridSlot5-5">Armor:</div>
-                    <div id="SoldierGridSlot5-6">Other:</div>
-                </div>                </div>
-            <div class="SoldierGridContainer">
-                <div class="SoldierInfoGrid" id="SoldierInfoGrid6">
-                    <div id="SoldierGridSlot6-1">Name:</div>
-                    <div id="SoldierGridSlot6-2">Amount:</div>
-                    <div id="SoldierGridSlot6-3">Weapon:</div>
-                    <div id="SoldierGridSlot6-4">Offhand:</div>
-                    <div id="SoldierGridSlot6-5">Armor:</div>
-                    <div id="SoldierGridSlot6-6">Other:</div>
-                </div>                </div>
-            <div class="SoldierGridContainer">
-                <div class="SoldierInfoGrid" id="SoldierInfoGrid7">
-                    <div id="SoldierGridSlot7-1">Name:</div>
-                    <div id="SoldierGridSlot7-2">Amount:</div>
-                    <div id="SoldierGridSlot7-3">Weapon:</div>
-                    <div id="SoldierGridSlot7-4">Offhand:</div>
-                    <div id="SoldierGridSlot7-5">Armor:</div>
-                    <div id="SoldierGridSlot7-6">Other:</div>
-                </div>                </div>
-            <div class="SoldierGridContainer">
-                <div class="SoldierInfoGrid" id="SoldierInfoGrid8">
-                    <div id="SoldierGridSlot8-1">Name:</div>
-                    <div id="SoldierGridSlot8-2">Amount:</div>
-                    <div id="SoldierGridSlot8-3">Weapon:</div>
-                    <div id="SoldierGridSlot8-4">Offhand:</div>
-                    <div id="SoldierGridSlot8-5">Armor:</div>
-                    <div id="SoldierGridSlot8-6">Other:</div>
-                </div>                </div>
-            <div class="SoldierGridContainer">
-                <div class="SoldierInfoGrid" id="SoldierInfoGrid9">
-                    <div id="SoldierGridSlot9-1">Name:</div>
-                    <div id="SoldierGridSlot9-2">Amount:</div>
-                    <div id="SoldierGridSlot9-3">Weapon:</div>
-                    <div id="SoldierGridSlot9-4">Offhand:</div>
-                    <div id="SoldierGridSlot9-5">Armor:</div>
-                    <div id="SoldierGridSlot9-6">Other:</div>
-                </div>                </div>
-            <div class="SoldierGridContainer">
-                <div class="SoldierInfoGrid" id="SoldierInfoGrid10">
-                    <div id="SoldierGridSlot10-1">Name:</div>
-                    <div id="SoldierGridSlot10-2">Amount:</div>
-                    <div id="SoldierGridSlot10-3">Weapon:</div>
-                    <div id="SoldierGridSlot10-4">Offhand:</div>
-                    <div id="SoldierGridSlot10-5">Armor:</div>
-                    <div id="SoldierGridSlot10-6">Other:</div>
-                </div>                </div>
-            <div class="SoldierGridContainer">
-                <div class="SoldierInfoGrid" id="SoldierInfoGrid11">
-                    <div id="SoldierGridSlot11-1">Name:</div>
-                    <div id="SoldierGridSlot11-2">Amount:</div>
-                    <div id="SoldierGridSlot11-3">Weapon:</div>
-                    <div id="SoldierGridSlot11-4">Offhand:</div>
-                    <div id="SoldierGridSlot11-5">Armor:</div>
-                    <div id="SoldierGridSlot11-6">Other:</div>
-                </div>                </div>
-            <div class="SoldierGridContainer">
-                <div class="SoldierInfoGrid" id="SoldierInfoGrid12">
-                    <div id="SoldierGridSlot12-1">Name:</div>
-                    <div id="SoldierGridSlot12-2">Amount:</div>
-                    <div id="SoldierGridSlot12-3">Weapon:</div>
-                    <div id="SoldierGridSlot12-4">Offhand:</div>
-                    <div id="SoldierGridSlot12-5">Armor:</div>
-                    <div id="SoldierGridSlot12-6">Other:</div>
-                </div>
-
-            </div>
-        </SoldierViewGrid>
+        <AddTroops id="TroopAmountBlock" class="InvisableOnStart">
+            <input class="NumericInput" type="number" id="TroopAmount" onchange="TroopCost()">How many would you like to add?</input>
+            <label for="UseProTroops" id="UseProTroopsLabel">Use professional soldiers?</label>
+            <input type="checkbox" id="UseProTroops"></input>
+            <br>
+            <text id="PopCostText"></text>
+        </AddTroops>
+        <TotalCost id="TotalCost" class="InvisableOnStart">
+            <text id="TotalCostText"></text>
+        </TotalCost>
         <QuestMenu>
             <text class="InvisableOnStart" id="QuestSelectorText">Which Quest Would you like to do?</text>
             <select class="Dropdown InvisableOnStart" id="QuestSelector" onchange="questText(this.value)">
@@ -655,109 +528,14 @@
             <text class="InvisableOnStart WidthLimited" id="QuestDescriptionText"></text>
 
         </QuestMenu>
-        <TroopList class="InvisableOnStart" id="TroopList">
-            <label for="TroopListDropdown">Which Troop would you like?</label>
-            <select class="Dropdown" id="TroopListDropdown" onchange="TroopListDropdownHelper()">
-                <option value="-1"></option>
-                <option value="10001">T1_Spearman</option>
-                <option value="10002">T2_Spearman</option>
-                <option value="10003">T3_Spearman</option>
-                <option value="10004">T4_Spearman</option>
-                <option value="10005">T5_Spearman</option>
-                <option value="10006">T6_Spearman</option>
-                <option value="10007">T7_Spearman</option>
-                <option value="10008">T8_Spearman</option>
-                <option value="10011">T1_Swordman</option>
-                <option value="10012">T2_Swordman</option>
-                <option value="10013">T3_Swordman</option>
-                <option value="10014">T4_Swordman</option>
-                <option value="10015">T5_Swordman</option>
-                <option value="10016">T6_Swordman</option>
-                <option value="10017">T7_Swordman</option>
-                <option value="10018">T8_Swordman</option>
-                <option value="10021">T1_Axeman</option>
-                <option value="10022">T2_Axeman</option>
-                <option value="10023">T3_Axeman</option>
-                <option value="10024">T4_Axeman</option>
-                <option value="10025">T5_Axeman</option>
-                <option value="10026">T6_Axeman</option>
-                <option value="10027">T7_Axeman</option>
-                <option value="10028">T8_Axeman</option>
-                <option value="10201">T1_Archer</option>
-                <option value="10202">T2_Archer</option>
-                <option value="10203">T3_Archer</option>
-                <option value="10204">T4_Archer</option>
-                <option value="10205">T5_Archer</option>
-                <option value="10206">T6_Archer</option>
-                <option value="10207">T7_Archer</option>
-                <option value="10208">T8_Archer</option>
-                <option value="10211">T1_Slinger</option>
-                <option value="10212">T2_Slinger</option>
-                <option value="10213">T3_Slinger</option>
-                <option value="10214">T4_Slinger</option>
-                <option value="10215">T5_Slinger</option>
-                <option value="10216">T6_Slimger</option>
-                <option value="10217">T7_Slinger</option>
-                <option value="10218">T8_Slinger</option>
-                <option value="10225">T5_Flamer</option>
-                <option value="10226">T6_Flamer</option>
-                <option value="10227">T7_Flamer</option>
-                <option value="10228">T8_Flamer</option>
-                <option value="10231">T1_Crossbowman</option>
-                <option value="10232">T2_Crossbowman</option>
-                <option value="10233">T3_Crossbowman</option>
-                <option value="10234">T4_Crossbowman</option>
-                <option value="10235">T5_Crossbowman</option>
-                <option value="10236">T6_Crossbowman</option>
-                <option value="10237">T7_Crossbowman</option>
-                <option value="10238">T8_Crossbowman</option>
-                <option value="10301">T1_Lancer</option>
-                <option value="10302">T2_Lancer</option>
-                <option value="10303">T3_Lancer</option>
-                <option value="10304">T4_Lancer</option>
-                <option value="10305">T5_Lancer</option>
-                <option value="10306">T6_Lancer</option>
-                <option value="10307">T7_Lancer</option>
-                <option value="10308">T8_Lancer</option>
-                <option value="10311">T1_Mounted_Sword</option>
-                <option value="10312">T2_Mounted_Sword</option>
-                <option value="10313">T3_Mounted_Sword</option>
-                <option value="10314">T4_Mounted_Sword</option>
-                <option value="10315">T5_Mounted_Sword</option>
-                <option value="10316">T6_Mounted_Sword</option>
-                <option value="10317">T7_Mounted_Sword</option>
-                <option value="10318">T8_Mounted_Sword</option>
-                <option value="10321">T1_Mounted_Axeman</option>
-                <option value="10322">T2_Mounted_Axeman</option>
-                <option value="10323">T3_Mounted_Axeman</option>
-                <option value="10324">T4_Mounted_Axeman</option>
-                <option value="10325">T5_Mounted_Axeman</option>
-                <option value="10326">T6_Mounted_Axeman</option>
-                <option value="10327">T7_Mounted_Axeman</option>
-                <option value="10328">T8_Mounted_Axeman</option>
-                <option value="10505">T5_Elephant</option>
-                <option value="10506">T6_Elephant</option>
-                <option value="10507">T7_Elephant</option>
-                <option value="10508">T8_Elephant</option>
-                <option value="10601">T1_Horse_Archer</option>
-                <option value="10602">T2_Horse_Archer</option>
-                <option value="10603">T3_Horse_Archer</option>
-                <option value="10604">T4_Horse_Archer</option>
-                <option value="10605">T5_Horse_Archer</option>
-                <option value="10606">T6_Horse_Archer</option>
-                <option value="10607">T7_Horse_Archer</option>
-                <option value="10608">T8_Horse_Archer</option>
-            </select>
-            <text class="Recipe RecipeText BigText" id="Cost"></text>
-            <br>
-            <label for="TroopUpgrade" id="TroopUpgradeLabel">How many troops would you like to upgrade?</label>
-            <input type="number" class="NumericInput" id="TroopUpgrade"></input>
 
-        </TroopList>
     </MainSelector>
 
 
     <MenuButtons class="menuButtons">
+        <a href="newWarpage.html">
+            <button class="indexButton">View Current Army</button>
+        </a>
         <a href="index.html">
             <button class="indexButton">Return to Main Menu</button>
         </a>
@@ -814,10 +592,13 @@
     .SoldierInfoGrid {
         display: inline-block;
     }
-    .menuButtons {
+    .menuButtons{
         position: absolute;
         top: 5px;
-        right: 20px;
+        right:20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(1, 1fr);
     }
     .sticky {
         position: fixed;

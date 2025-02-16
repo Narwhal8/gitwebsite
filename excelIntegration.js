@@ -1,6392 +1,10729 @@
-const Unboiled_Meat = -27;
-const Fuel = -26;
-const Sauce = -25;
-const Any_Bone = -24;
-const Stock = -23;
-const Flatbread = -22;
-const Fiber = -21;
-const Rare_Gemstone = -20;
-const Common_Gemstone = -19;
-const Polished_Rare_Gemstone = -18;
-const Polished_Common_Gemstone = -17;
-const Fodder = -16;
-const Any_Flour = -15;
-const Any_Seafood = -14;
-const T5_Drink = -13;
-const T4_Drink = -12;
-const T3_Drink = -11;
-const T2_Drink = -10;
-const Bread = -9;
-const Exotic_Berry = -8;
-const T1_Drink = -7;
-const T2_Metal = -6;
-const Cooking_Oil = -5;
-const Vegetables = -4;
-const Fruit = -3;
-const Meat = -2;
-const Grain = -1;
-const None = 0;
-const Arid_Badlands = 1;
-const Arid_Steppe = 2;
-const Arid_Oasis = 3;
-const Arid_River = 4;
-const Northern_Rocky_Waste = 11;
-const Northern_Tundra = 12;
-const Northern_Forest = 13;
-const Northern_River = 14;
-const Rocky_Heartland = 21;
-const Heartland = 22;
-const River_Heartland = 23;
-const Southern_Rocky = 31;
-const Southern_Forest = 32;
-const Southern_Jungle = 33;
-const Southern_River = 34;
-const Northern_Ocean = 41;
-const Central_Ocean = 42;
-const Southern_Ocean = 43;
-const Desolate_Ocean = 44;
-const Brackish_Swamp = 51;
-const Swamp = 52;
-const Lush_Swamp = 53;
-const Red_Mountain = 61;
-const Blue_Mountain = 62;
-const Green_Mountain = 63;
-const White_Mountain = 64;
-const Ochre_Plains = 70;
-const Lustrous_River = 71;
-const Silver_Forest = 72;
-const Golden_Plains = 80;
-const Golden_Forest = 81;
-const Golden_Hills = 82;
-const Wheat = 501;
-const Rye = 502;
-const Rice = 503;
-const Corn = 504;
-const Sorghum = 505;
-const Apples = 506;
-const Plums = 507;
-const Olives = 508;
-const Beans = 509;
-const Mushrooms = 510;
-const Beets = 511;
-const Casava = 512;
-const Peanuts = 513;
-const Cherries = 514;
-const Peaches = 515;
-const Garlic = 516;
-const Onion = 517;
-const Carrots = 518;
-const Sugarcane = 519;
-const Peppers = 520;
-const Allspice = 521;
-const Grapes = 522;
-const Ginseng = 523;
-const Winterberries = 524;
-const Jungleberries = 525;
-const Auric_Honey = 526;
-const Wasabi = 527;
-const Rushseed = 528;
-const Exotic_Herb = 529;
-const Oyster = 530;
-const Fish_Meat = 531;
-const Beef = 532;
-const Chicken_Meat = 533;
-const Eggs = 534;
-const Potato = 535;
-const Silver_Sap = 536;
-const Honey = 537;
-const Oats = 538;
-const Milk = 539;
-const Barley = 540;
-const Exotic_Meat = 541;
-const Wool = 542;
-const Cotton = 543;
-const Mutton = 544;
-const Game_Meat = 545;
-const Heartland_Herbs = 546;
-const Organ_Meat = 550;
-const Bone = 551;
-const Fat = 552;
-const Tender_Meat = 553;
-const Oyster_Meat = 554;
-const Crab = 555;
-const Wheat_Beer = 1000;
-const Rye_Beer = 1001;
-const Barley_Beer = 1002;
-const Oat_Beer = 1003;
-const Rice_Beer = 1004;
-const Sorghum_Beer = 1005;
-const Cider = 1010;
-const Wine = 1011;
-const Plum_Wine = 1012;
-const Peach_Wine = 1013;
-const Cherry_Wine = 1014;
-const Mead = 1020;
-const Grog = 1021;
-const Vodka = 1030;
-const Kumis = 1031;
-const Rum = 1032;
-const Grain_Whiskey = 1033;
-const Brandy = 1040;
-const Silver_Wine = 1041;
-const Jungle_Wine = 1042;
-const Winter_Wine = 1043;
-const Aged_Rum = 1044;
-const Ginseng_Wine = 1050;
-const Spiced_Vodka = 1051;
-const Double_Brandy = 1060;
-const Auric_Mead = 1061;
-const Basic_Bread = 1200;
-const Wheat_Bread = 1201;
-const Rye_Bread = 1202;
-const Corn_Bread = 1203;
-const Corn_Flatbread = 1204;
-const Basic_Flatbread = 1205;
-const Pumpernickle = 1206;
-const Pastry = 1207;
-const Fruit_Pastry = 1208;
-const Cheese_Pastry = 1209;
-const Fruit_Bread = 1210;
-const Cheese_Bread = 1211;
-const Glittercake = 1212;
-const Fruit_Glittercake = 1213;
-const Apple_Pie = 1220;
-const Plum_Pie = 1221;
-const Peach_Pie = 1222;
-const Sugar_Pie = 1223;
-const Pot_Pie = 1224;
-const Cherry_Pie = 1225;
-const Cheese = 1230;
-const Aged_Cheese = 1231;
-const Imperial_Cheese = 1232;
-const Dried_Vegetables = 1240;
-const Pickled_Vegetables = 1241;
-const Hearty_Dried_Vegetables = 1242;
-const Dried_Fruit = 1250;
-const Brandied_Fruit = 1251;
-const Sausage = 1260;
-const Fried_Meat = 1261;
-const Roast = 1262;
-const Cured_Meat = 1263;
-const Salted_Meat = 1264;
-const Preserved_Eggs = 1265;
-const Exotic_Cured_Meat = 1266;
-const Boiled_Meat = 1267;
-const Noble_Roast = 1268;
-const Pemmican = 1269;
-const Beef_Stew = 1270;
-const Kings_Soup = 1271;
-const Onion_Soup = 1272;
-const Huntsmans_Soup = 1273;
-const Chicken_Soup = 1274;
-const Fish_Soup = 1275;
-const Vegetable_Soup = 1276;
-const Seafood_Soup = 1277;
-const Baked_Beans = 1280;
-const Beans_And_Rice = 1281;
-const Hash = 1282;
-const Fried_Crab = 1283;
-const Vinegar = 1300;
-const Sugar = 1301;
-const Olive_Oil = 1302;
-const Ketchup = 1304;
-const Basic_Spice_Pack = 1305;
-const Royal_Spice_Pack = 1306;
-const Pastry_Dough = 1307;
-const Fruit_Preserve = 1308;
-const Exotic_Fruit_Preserve = 1309;
-const Mushroom_Stock = 1310;
-const Meat_Stock = 1311;
-const Vegetable_Stock = 1312;
-const Bone_Stock = 1313;
-const Barm = 1314;
-const Molasses = 1315;
-const Cider_Sauce = 1320;
-const Wine_Sauce = 1321;
-const Spicy_Sauce = 1322;
-const Flour = 1330;
-const Wheat_Flour = 1331;
-const Rye_Flour = 1332;
-const Corn_Flour = 1333;
-const Fodder_Bread = 1900;
-const Main_Ration_1 = 1901;
-const Main_Ration_2 = 1902;
-const Main_Ration_3 = 1903;
-const Main_Ration_4 = 1904;
-const Main_Ration_5 = 1905;
-const Main_Ration_6 = 1906;
-const Main_Ration_7 = 1907;
-const Main_Ration_8 = 1908;
-const Main_Ration_9 = 1909;
-const Extras_1 = 1911;
-const Extras_2 = 1912;
-const Extras_3 = 1913;
-const Extras_4 = 1914;
-const Extras_5 = 1915;
-const Extras_6 = 1916;
-const Extras_7 = 1917;
-const Extras_8 = 1918;
-const Extras_9 = 1919;
-const Drink_Pack_1 = 1921;
-const Drink_Pack_2 = 1922;
-const Drink_Pack_3 = 1923;
-const Drink_Pack_4 = 1924;
-const Drink_Pack_5 = 1925;
-const Drink_Pack_6 = 1926;
-const Drink_Pack_7 = 1927;
-const Drink_Pack_8 = 1928;
-const Drink_Pack_9 = 1929;
-const Medpack = 1930;
-const Peasent_Hunting_Supplies = 1990;
-const Low_Noble_Hunting_Supplies = 1991;
-const High_Noble_Hunting_Supplies = 1992;
-const Stone = 2001;
-const Wood = 2002;
-const Salt = 2003;
-const Clay = 2004;
-const Iron_Ore = 2021;
-const Gold_Ore = 2022;
-const Silver_Ore = 2023;
-const Copper_Ore = 2024;
-const Tin_Ore = 2025;
-const Refined_Stone = 2101;
-const Refined_Wood = 2102;
-const Charcoal = 2103;
-const Iron = 2121;
-const Gold = 2122;
-const Silver = 2123;
-const Copper = 2124;
-const Tin = 2125;
-const Basic_Building_Materials = 2150;
-const Durable_Basic_Building_Materials = 2151;
-const Advanced_Building_Materials = 2152;
-const Durable_Advanced_Building_Materials = 2153;
-const Emerald_Bronze = 2180;
-const Bronze = 2181;
-const Steel = 2182;
-const Damascus_Steel = 2183;
-const Ruby = 2200;
-const Emerald = 2201;
-const Sapphire = 2202;
-const Diamond = 2203;
-const Amethyst = 2204;
-const Opal = 2205;
-const Citrine = 2206;
-const Pearl = 2207;
-const Moonstone = 2208;
-const Amber = 2209;
-const Onyx = 2210;
-const Aquamarine = 2211;
-const Crystal_Glass = 2212;
-const Bloodstone = 2213;
-const Polished_Ruby = 2300;
-const Polished_Emerald = 2301;
-const Polished_Sapphire = 2302;
-const Polished_Diamond = 2303;
-const Polished_Amethyst = 2304;
-const Polished_Opal = 2305;
-const Polished_Citrine = 2306;
-const Polished_Pearl = 2307;
-const Polished_Moonstone = 2308;
-const Polished_Amber = 2309;
-const Polished_Onyx = 2310;
-const Polished_Aquamarine = 2311;
-const Polished_Crystal_Glass = 2312;
-const Nails = 4000;
-const Diamond_Blade = 4001;
-const Fabric = 4002;
-const Down = 4003;
-const Leather = 4004;
-const Exotic_Leather = 4005;
-const Fur = 4006;
-const Exotic_Fur = 4007;
-const Feather = 4008;
-const Thick_Leather = 4009;
-const Antler = 4010;
-const Ivory = 4011;
-const Poison = 4012;
-const Leopard_Skin = 4013;
-const Aurochs_Hide = 4014;
-const Black_Leopard_Skin = 4015;
-const Bear_Hide = 4016;
-const Polar_Bear_Hide = 4017;
-const Tiger_Hide = 4018;
-const Rushseed_Oil = 4019;
-const Cooked_Bone = 4020;
-const Sugarcane_Pulp = 4021;
-const Organic_Pulp = 4022;
-const Ash = 4023;
-const Clay_Beads = 4024;
-const Hay = 4025;
-const Antiseptic = 4026;
-const Soap = 4027;
-const Tar = 4028;
-const Level_1_Fertilizer = 4030;
-const Level_2_Fertilizer = 4031;
-const Level_3_Fertilizer = 4032;
-const Rare_Fertilizer = 4040;
-const Bronze_Plate = 4100;
-const Iron_Plate = 4101;
-const Steel_Plate = 4102;
-const Emerald_Bronze_Plate = 4103;
-const Damascus_Steel_Plate = 4104;
-const Bronze_Chainmail = 4105;
-const Iron_Chainmail = 4106;
-const Steel_Chainmail = 4107;
-const Emerald_Bronze_Chainmail = 4108;
-const Damascus_Steel_Chainmail = 4109;
-const Fishing_Boat = 4200;
-const Battered_Fishing_Boat = 4201;
-const Fur_Clothes = 4500;
-const Regular_Clothes = 4501;
-const Tailored_Fur_Clothes = 4503;
-const Tailored_Regular_Clothes = 4504;
-const Basic_Furniture = 4520;
-const Ornate_Furniture = 4521;
-const Oppulant_Furniture = 4522;
-const Basic_Tool = 4540;
-const Artisan_Tool = 4541;
-const Oppulant_Tool = 4542;
-const Basic_Jewelery = 4560;
-const Silver_Jewelery = 4561;
-const Gold_Jewelery = 4562;
-const Basic_Bedding = 4580;
-const Enhanced_Bedding = 4581;
-const Down_Bedding = 4582;
-const Bronze_Spear = 5000;
-const Iron_Spear = 5001;
-const Steel_Spear = 5002;
-const Emerald_Bronze_Spear = 5003;
-const Damascus_Steel_Spear = 5004;
-const Bronze_Axe = 5010;
-const Iron_Axe = 5011;
-const Steel_Axe = 5012;
-const Emerald_Bronze_Axe = 5013;
-const Damascus_Steel_Axe = 5014;
-const Bronze_Sword = 5020;
-const Iron_Sword = 5021;
-const Steel_Sword = 5022;
-const Emerald_Bronze_Sword = 5023;
-const Damascus_Steel_Sword = 5024;
-const Diamond_Sword = 5025;
-const Bronze_Mace = 5030;
-const Iron_Mace = 5031;
-const Steel_Mace = 5032;
-const Emerald_Bronze_Mace = 5033;
-const Damascus_Steel_Mace = 5034;
-const Bronze_Lance = 5040;
-const Iron_Lance = 5041;
-const Steel_Lance = 5042;
-const Emerald_Bronze_Lance = 5043;
-const Damascus_Steel_Lance = 5044;
-const Bronze_Poleaxe = 5050;
-const Iron_Poleaxe = 5051;
-const Steel_Poleaxe = 5052;
-const Emerald_Bronze_Poleaxe = 5053;
-const Damascus_Steel_Poleaxe = 5054;
-const Bronze_Greatsword = 5060;
-const Iron_Greatsword = 5061;
-const Steel_Greatsword = 5062;
-const Emerald_Bronze_Greatsword = 5063;
-const Damascus_Steel_Greatsword = 5064;
-const Bronze_Warhammer = 5070;
-const Iron_Warhammer = 5071;
-const Steel_Warhammer = 5072;
-const Emerald_Bronze_Warhammer = 5073;
-const Damascus_Steel_Warhammer = 5074;
-const Bronze_Elephant_Tusk_Cap = 5080;
-const Iron_Elephant_Tusk_Cap = 5081;
-const Steel_Elephant_Tusk_Cap = 5082;
-const Beryl_Bronze_Elephant_Tusk_Cap = 5083;
-const Damascus_Elephant_Tusk_Cap = 5084;
-const Bronze_Rhino_Tusk_Cap = 5090;
-const Iron_Rhino_Tusk_Cap = 5091;
-const Steel_Rhino_Tusk_Cap = 5092;
-const Beryl_Bronze_Rhino_Tusk_Cap = 5093;
-const Damascus_Rhino_Tusk_Cap = 5094;
-const BasicBow = 5200;
-const Longbow = 5201;
-const Greatbow = 5202;
-const Simple_Crossbow = 5210;
-const Basic_Sling = 5211;
-const Heavy_Flamer = 5212;
-const Flame_Grenade = 5213;
-const Golden_Sling = 5214;
-const Farm_Horse = 5400;
-const Horse = 5401;
-const Charge_Horse = 5402;
-const War_Horse = 5403;
-const Trained_Elephant = 5420;
-const Trained_Rhino = 5430;
-const Light_Bronze_Mail = 5500;
-const Light_Iron_Mail = 5501;
-const Light_Steel_Mail = 5502;
-const Light_Emerald_Bronze_Mail = 5503;
-const Light_Damascus_Steel_Mail = 5504;
-const Light_Bronze_Plate = 5510;
-const Light_Iron_Plate = 5511;
-const Light_Steel_Plate = 5512;
-const Light_Emerald_Bronze_Plate = 5513;
-const Light_Damascus_Steel_Plate = 5514;
-const Medium_Bronze_Mail = 5520;
-const Medium_Iron_Mail = 5521;
-const Medium_Steel_Mail = 5522;
-const Medium_Emerald_Bronze_Mail = 5523;
-const Medium_Damascus_Steel_Mail = 5524;
-const Medium_Bronze_Plate = 5530;
-const Medium_Iron_Plate = 5531;
-const Medium_Steel_Plate = 5532;
-const Medium_Emerald_Bronze_Plate = 5533;
-const Medium_Damascus_Steel_Plate = 5534;
-const Bronze_Heavy_Armor = 5540;
-const Iron_Heavy_Armor = 5541;
-const Steel_Heavy_Armor = 5542;
-const Emerald_Bronze_Heavy_Armor = 5543;
-const Damascus_Steel_Heavy_Armor = 5544;
-const Light_Bronze_Horse_Armor = 5550;
-const Light_Iron_Horse_Armor = 5551;
-const Light_Steel_Horse_Armor = 5552;
-const Light_Emerald_Bronze_Horse_Armor = 5553;
-const Light_Damascus_Steel_Horse_Armor = 5554;
-const Medium_Bronze_Horse_Armor = 5560;
-const Medium_Iron_Horse_Armor = 5561;
-const Medium_Steel_Horse_Armor = 5562;
-const Medium_Emerald_Bronze_Horse_Armor = 5563;
-const Medium_Damascus_Steel_Horse_Armor = 5564;
-const Heavy_Bronze_Horse_Armor = 5570;
-const Heavy_Iron_Horse_Armor = 5571;
-const Heavy_Steel_Horse_Armor = 5572;
-const Heavy_Emerald_Bronze_Horse_Armor = 5573;
-const Heavy_Damascus_Steel_Horse_Armor = 5574;
-const Leather_Armor = 5580;
-const Thick_Leather_Armor = 5581;
-const Gambeson = 5582;
-const Bronze_Rhino_Armor = 5800;
-const Iron_Rhino_Armor = 5801;
-const Steel_Rhino_Armor = 5802;
-const Emerald_Bronze_Rhino_Armor = 5803;
-const Damascus_Steel_Rhino_Armor = 5804;
-const Heavy_Bronze_Rhino_Armor = 5810;
-const Heavy_Iron_Rhino_Armor = 5811;
-const Heavy_Steel_Rhino_Armor = 5812;
-const Heavy_Emerald_Bronze_Rhino_Armor = 5813;
-const Heavy_Damascus_Steel_Rhino_Armor = 5814;
-const Bronze_Elephant_Armor = 5820;
-const Iron_Elephant_Armor = 5821;
-const Steel_Elephant_Armor = 5822;
-const Emerald_Bronze_Elephant_Armor = 5823;
-const Damascus_Steel_Elephant_Armor = 5824;
-const Heavy_Bronze_Elephant_Armor = 5830;
-const Heavy_Iron_Elephant_Armor = 5831;
-const Heavy_Steel_Elephant_Armor = 5832;
-const Heavy_Emerald_Bronze_Elephant_Armor = 5833;
-const Heavy_Damascus_Steel_Elephant_Armor = 5834;
-const Wooden_Shield = 5900;
-const Banded_Shield = 5901;
-const Standard_Shield = 5902;
-const Metal_Shield = 5903;
-const Gong_Shield = 5904;
-const Heirloom_Shield = 5905;
-const Wall_Shield = 5910;
-const Advanced_Wall_Shield = 5911;
-const Rabbit = 7000;
-const Deer = 7001;
-const Turkey = 7002;
-const Mink = 7003;
-const Cyote = 7004;
-const Snake = 7005;
-const Fox = 7100;
-const Boar = 7101;
-const Zebra = 7102;
-const Reindeer = 7103;
-const Leopard = 7104;
-const Crocodile = 7105;
-const Otter = 7106;
-const Wolf = 7107;
-const Seal = 7108;
-const Ostridge = 7109;
-const Elk = 7200;
-const Aurochs = 7201;
-const Black_Leopard = 7202;
-const Bear = 7203;
-const Sea_Mink = 7204;
-const Whalrus = 7205;
-const Poison_Snake = 7206;
-const Elephant = 7300;
-const Rhino = 7301;
-const Polar_Bear = 7302;
-const Tiger = 7303;
-const Titan_Snake = 7304;
-const Cow = 7400;
-const Chicken = 7401;
-const Sheep = 7402;
-const T1_Spearman = 10001;
-const T2_Spearman = 10002;
-const T3_Spearman = 10003;
-const T4_Spearman = 10004;
-const T5_Spearman = 10005;
-const T6_Spearman = 10006;
-const T7_Spearman = 10007;
-const T8_Spearman = 10008;
-const T1_Swordman = 10011;
-const T2_Swordman = 10012;
-const T3_Swordman = 10013;
-const T4_Swordman = 10014;
-const T5_Swordman = 10015;
-const T6_Swordman = 10016;
-const T7_Swordman = 10017;
-const T8_Swordman = 10018;
-const T1_Axeman = 10021;
-const T2_Axeman = 10022;
-const T3_Axeman = 10023;
-const T4_Axeman = 10024;
-const T5_Axeman = 10025;
-const T6_Axeman = 10026;
-const T7_Axeman = 10027;
-const T8_Axeman = 10028;
-const T1_Archer = 10201;
-const T2_Archer = 10202;
-const T3_Archer = 10203;
-const T4_Archer = 10204;
-const T5_Archer = 10205;
-const T6_Archer = 10206;
-const T7_Archer = 10207;
-const T8_Archer = 10208;
-const T1_Slinger = 10211;
-const T2_Slinger = 10212;
-const T3_Slinger = 10213;
-const T4_Slinger = 10214;
-const T5_Slinger = 10215;
-const T6_Slinger = 10216;
-const T7_Slinger = 10217;
-const T8_Slinger = 10218;
-const T5_Flamer = 10225;
-const T6_Flamer = 10226;
-const T7_Flamer = 10227;
-const T8_Flamer = 10228;
-const T1_Crossbowman = 10231;
-const T2_Crossbowman = 10232;
-const T3_Crossbowman = 10233;
-const T4_Crossbowman = 10234;
-const T5_Crossbowman = 10235;
-const T6_Crossbowman = 10236;
-const T7_Crossbowman = 10237;
-const T8_Crossbowman = 10238;
-const T1_Lancer = 10301;
-const T2_Lancer = 10302;
-const T3_Lancer = 10303;
-const T4_Lancer = 10304;
-const T5_Lancer = 10305;
-const T6_Lancer = 10306;
-const T7_Lancer = 10307;
-const T8_Lancer = 10308;
-const T1_Mounted_Swordman = 10311;
-const T2_Mounted_Swordman = 10312;
-const T3_Mounted_Swordman = 10313;
-const T4_Mounted_Swordman = 10314;
-const T5_Mounted_Swordman = 10315;
-const T6_Mounted_Swordman = 10316;
-const T7_Mounted_Swordman = 10317;
-const T8_Mounted_Swordman = 10318;
-const T1_Mounted_Axeman = 10321;
-const T2_Mounted_Axeman = 10322;
-const T3_Mounted_Axeman = 10323;
-const T4_Mounted_Axeman = 10324;
-const T5_Mounted_Axeman = 10325;
-const T6_Mounted_Axeman = 10326;
-const T7_Mounted_Axeman = 10327;
-const T8_Mounted_Axeman = 10328;
-const T5_Elephant = 10505;
-const T6_Elephant = 10506;
-const T7_Elephant = 10507;
-const T8_Elephant = 10508;
-const T5_Tower_Elephant = 10515;
-const T6_Tower_Elephant = 10516;
-const T7_Tower_Elephant = 10517;
-const T8_Tower_Elephant = 10518;
-const T5_Rhino = 10525;
-const T6_Rhino = 10526;
-const T7_Rhino = 10527;
-const T8_Rhino = 10528;
-const T1_Mounted_Archer = 10601;
-const T2_Mounted_Archer = 10602;
-const T3_Mounted_Archer = 10603;
-const T4_Mounted_Archer = 10604;
-const T5_Mounted_Archer = 10605;
-const T6_Mounted_Archer = 10606;
-const T7_Mounted_Archer = 10607;
-const T8_Mounted_Archer = 10608;
-const Bandits = 11000;
-const Peasent_Levy = 11010;
-const Veteran_Peasent_Levy = 11011;
-const Levy_Spear = 11020;
-const Veteran_Levy_Spear = 11021;
-const Mountain_Levy = 11030;
-const Veteran_Mountain_Levy = 11031;
-const Mercenary_Swordman = 11040;
-const Veteran_Mercenary_Swordman = 11041;
-const Palace_Guard = 11042;
-const Mercenary_Axeman = 11050;
-const Mercenary_Maceman = 11060;
-const Pikeman = 11070;
-const Peasent_Bowman = 11200;
-const Levy_Archer = 11210;
-const Veteran_Levy_Archer = 11211;
-const Huntsman = 11220;
-const Slinger = 11230;
-const Golden_Slinger = 11231;
-const Imperial_Flamer = 11241;
-const Free_Lance = 11300;
-const Knight = 11301;
-const Mounted_Levy = 11310;
-const Mounted_Palace_Guard = 11311;
-const War_Elephant = 11501;
-const Elite_War_Elephant = 11502;
-const War_Rhino = 11520;
-const Elite_War_Rhino = 11521;
-const Mounted_Archer = 11600;
-const Veteran_Mounted_Archer = 11601;
-const Palace_Archer = 11602;
-const T1_XP = 28501;
-const T2_XP = 28502;
-const T3_XP = 28503;
-const T4_XP = 28504;
-const T5_XP = 28505;
-const T6_XP = 28506;
-const T7_XP = 28507;
-const T8_XP = 28508;
-const Coins = 28800;
-
-const Cookery_T1 = 8;
-const Cookery_T2 = 9;
-const Cookery_T3 = 10;
-const Cookery_T4 = 11;
-const Brewery_T1 = 12;
-const Brewery_T2 = 13;
-const Brewery_T3 = 14;
-const Brewery_T4 = 15;
-const Smeltery_T1 = 16;
-const Smeltery_T2 = 17;
-const Smeltery_T3 = 18;
-const Mason = 19;
-
-const Blacksmith_T1 = 21;
-const Blacksmith_T2 = 22;
-const Aging_Facility = 23;
-const Infrastructure = 24;
-const Harbor = 25;
-const Jeweler_T1 = 26;
-const Jeweler_T2 = 27;
-const Weaver_T1 = 28;
-const Weaver_T2 = 29;
-const Carpenter_T1 = 30;
-const Carpenter_T2 = 31;
-
-const Spears = 100;
-const Swords = 101;
-const Axes = 102;
-const Maces = 103;
-const Bows = 104;
-const Slings = 105;
-const Flamers = 106;
-const Crossbows = 107;
-const Elephant_Weapons = 108;
-const Rhino_Weapons = 109;
-const Shields = 200;
-const Human_Armors = 300;
-const Horse_Armors = 301;
-const Elephant_Armors = 302;
-const Rhino_Armors = 303;
-const Army_Horses = 400;
-const Army_Elephants = 401;
-const Army_Rhinos = 402;
-
-const Lance = 1;
-const Spear = 2;
-const Axe = 3;
-const Mace = 4;
-const Poleaxe = 5;
-const Sword = 7;
-const Crossbow = 8;
-const Bow = 9;
-const Flamer = 10;
-const Sling = 11;
-const Human_Armor = 12;
-const Greatsword = 13;
-const Horse_Armor = 14;
-const Shield = 15;
-const Army_Horse = 16;
-const Warhammer = 17;
-const Army_Elephant = 18;
-const Elephant_Weapon = 19;
-const Rhino_Weapon = 20;
-const Elephant_Armor = 21;
-const Rhino_Armor = 22;
-const Army_Rhino = 23;
-
-var recipeID = [501,502,503,504,505,519,530,536,538,540,1000,1001,1002,1003,1004,1005,1010,1011,1012,1013,1014,1020,1021,1030,1031,1032,1033,1040,1041,1042,1043,1044,1050,1051,1060,1061,1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211,1212,1213,1215,1220,1221,1222,1223,1224,1230,1231,1232,1240,1241,1250,1251,1260,1261,1262,1263,1264,1265,1266,1268,1269,1270,1271,1272,1273,1274,1275,1276,1277,1280,1281,1282,1283,1300,1301,1302,1304,1305,1306,1307,1308,1309,1310,1311,1312,1313,1315,1320,1321,1322,1900,1901,1902,1903,1904,1905,1906,1907,1908,1909,1911,1912,1913,1914,1915,1916,1917,1918,1919,1921,1922,1923,1924,1925,1926,1927,1928,1929,1930,1990,1991,1992,2004,2121,2122,2123,2124,2125,2150,2151,2152,2153,2180,2181,2182,2300,2301,2302,2303,2304,2305,2306,2307,2308,2309,2310,2311,2312,4000,4001,4002,4013,4014,4015,4016,4017,4018,4019,4020,4024,4027,4030,4031,4032,4040,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4200,4201,4500,4501,4502,4503,4504,4520,4521,4522,4540,4541,4542,4560,4561,4562,4580,4581,4582,5000,5001,5002,5003,5004,5010,5011,5012,5013,5014,5020,5021,5022,5023,5024,5025,5030,5031,5032,5033,5034,5040,5041,5042,5043,5044,5050,5051,5052,5053,5054,5060,5061,5062,5063,5064,5070,5071,5072,5073,5074,5080,5081,5082,5083,5084,5090,5091,5092,5093,5094,5200,5201,5202,5210,5211,5212,5213,5214,5420,5430,5500,5501,5502,5503,5504,5510,5511,5512,5513,5514,5520,5521,5522,5523,5524,5530,5531,5532,5533,5534,5540,5541,5542,5543,5544,5550,5551,5552,5553,5554,5560,5561,5562,5563,5564,5570,5571,5572,5573,5574,5580,5581,5582,5800,5801,5802,5803,5804,5810,5811,5812,5813,5814,5820,5821,5822,5823,5824,5830,5831,5832,5833,5834,5900,5901,5902,5903,5904,5905,5910,5911,7000,7001,7002,7003,7004,7005,7100,7101,7102,7103,7104,7105,7106,7107,7108,7200,7201,7202,7203,7204,7205,7206,7300,7301,7302,7303,7304,7400,7401,7402,10001,10002,10003,10004,10005,10006,10007,10008,10011,10012,10013,10014,10015,10016,10017,10018,10021,10204,10205,10206,10207,10208,10211,10212,10213,10214,10215,10216,10217,10218,10225,10226,10227,10228,10231,10232,10233,10234,10235,10236,10237,10238,10301,10302,10303,10304,10305,10306,10307,10308,10311,10312,10313,10314,10315,10316,10317,10318,10321,10322,10323,10324,10325,10326,10327,10328,10505,10506,10507,10508,10601,10602,10603,10604,10605,10606,10607,10608,66000,66001,66002,71207,71210,71211,74013,74014,74015,74016,74017,74018,74030,77400,77401,77402,301200,302103,302151,302153,304520,304521,304522,304560,311200,312103,322103,332103,701200,701201,701202,701203];
-var itemID = [1,2,3,4,11,12,13,14,21,22,23,31,32,33,34,41,42,43,44,51,52,53,61,62,63,64,70,71,72,80,81,82,501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,550,551,552,553,554,555,1000,1001,1002,1003,1004,1005,1010,1011,1012,1013,1014,1020,1021,1030,1031,1032,1033,1040,1041,1042,1043,1044,1050,1051,1060,1061,1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211,1212,1213,1220,1221,1222,1223,1224,1225,1230,1231,1232,1240,1241,1242,1250,1251,1260,1261,1262,1263,1264,1265,1266,1267,1268,1269,1270,1271,1272,1273,1274,1275,1276,1277,1280,1281,1282,1283,1300,1301,1302,1304,1305,1306,1307,1308,1309,1310,1311,1312,1313,1314,1315,1320,1321,1322,1330,1331,1332,1333,1900,1901,1902,1903,1904,1905,1906,1907,1908,1909,1911,1912,1913,1914,1915,1916,1917,1918,1919,1921,1922,1923,1924,1925,1926,1927,1928,1929,1930,1990,1991,1992,2001,2002,2003,2004,2021,2022,2023,2024,2025,2101,2102,2103,2121,2122,2123,2124,2125,2150,2151,2152,2153,2180,2181,2182,2183,2200,2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2212,2213,2300,2301,2302,2303,2304,2305,2306,2307,2308,2309,2310,2311,2312,4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025,4026,4027,4028,4030,4031,4032,4040,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4200,4201,4500,4501,4503,4504,4520,4521,4522,4540,4541,4542,4560,4561,4562,4580,4581,4582,5000,5001,5002,5003,5004,5010,5011,5012,5013,5014,5020,5021,5022,5023,5024,5025,5030,5031,5032,5033,5034,5040,5041,5042,5043,5044,5050,5051,5052,5053,5054,5060,5061,5062,5063,5064,5070,5071,5072,5073,5074,5080,5081,5082,5083,5084,5090,5091,5092,5093,5094,5200,5201,5202,5210,5211,5212,5213,5214,5400,5401,5402,5403,5420,5430,5500,5501,5502,5503,5504,5510,5511,5512,5513,5514,5520,5521,5522,5523,5524,5530,5531,5532,5533,5534,5540,5541,5542,5543,5544,5550,5551,5552,5553,5554,5560,5561,5562,5563,5564,5570,5571,5572,5573,5574,5580,5581,5582,5800,5801,5802,5803,5804,5810,5811,5812,5813,5814,5820,5821,5822,5823,5824,5830,5831,5832,5833,5834,5900,5901,5902,5903,5904,5905,5910,5911,7000,7001,7002,7003,7004,7005,7100,7101,7102,7103,7104,7105,7106,7107,7108,7109,7200,7201,7202,7203,7204,7205,7206,7300,7301,7302,7303,7304,7400,7401,7402,10001,10002,10003,10004,10005,10006,10007,10008,10011,10012,10013,10014,10015,10016,10017,10018,10021,10022,10023,10024,10025,10026,10027,10028,10201,10202,10203,10204,10205,10206,10207,10208,10211,10212,10213,10214,10215,10216,10217,10218,10225,10226,10227,10228,10231,10232,10233,10234,10235,10236,10237,10238,10301,10302,10303,10304,10305,10306,10307,10308,10311,10312,10313,10314,10315,10316,10317,10318,10321,10322,10323,10324,10325,10326,10327,10328,10505,10506,10507,10508,10515,10516,10517,10518,10525,10526,10527,10528,10601,10602,10603,10604,10605,10606,10607,10608,11000,11010,11011,11020,11021,11030,11031,11040,11041,11042,11050,11060,11070,11200,11210,11211,11220,11230,11231,11241,11300,11301,11310,11311,11501,11502,11520,11521,11600,11601,11602,28501,28502,28503,28504,28505,28506,28507,28508,28800];
-let recipe501 = [[1000,0,0,0,0,0,0,0], [Wheat,0,0,0,0,0,0,0], [400,50,0,0,0,0], [Wheat_Flour,Hay,0,0,0,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe502 = [[1000,0,0,0,0,0,0,0], [Rye,0,0,0,0,0,0,0], [400,50,0,0,0,0], [Rye_Flour,Hay,0,0,0,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe503 = [[1000,0,0,0,0,0,0,0], [Rice,0,0,0,0,0,0,0], [400,50,0,0,0,0], [Flour,Hay,0,0,0,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe504 = [[1000,0,0,0,0,0,0,0], [Corn,0,0,0,0,0,0,0], [400,100,0,0,0,0], [Corn_Flour,Organic_Pulp,0,0,0,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe505 = [[1000,0,0,0,0,0,0,0], [Sorghum,0,0,0,0,0,0,0], [400,50,0,0,0,0], [Flour,Hay,0,0,0,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe519 = [[250,0,0,0,0,0,0,0], [Sugarcane,0,0,0,0,0,0,0], [25,250,0,0,0,0], [Sugar,Sugarcane_Pulp,0,0,0,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe530 = [[500,0,0,0,0,0,0,0], [Oyster,0,0,0,0,0,0,0], [500,100,0,0,0,0], [Oyster_Meat,Pearl,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe536 = [[500,0,0,0,0,0,0,0], [Silver_Sap,0,0,0,0,0,0,0], [250,50,0,0,0,0], [Sugar,Silver,0,0,0,0], 1, 5, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe538 = [[1000,0,0,0,0,0,0,0], [Barley,0,0,0,0,0,0,0], [400,50,0,0,0,0], [Flour,Hay,0,0,0,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe540 = [[1000,0,0,0,0,0,0,0], [Oats,0,0,0,0,0,0,0], [400,50,0,0,0,0], [Flour,Hay,0,0,0,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1000 = [[2500,0,0,0,0,0,0,0], [Wheat,0,0,0,0,0,0,0], [2000,50,0,0,0,0], [Wheat_Beer,Barm,0,0,0,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-let recipe1001 = [[2500,0,0,0,0,0,0,0], [Rye,0,0,0,0,0,0,0], [2000,50,0,0,0,0], [Rye_Beer,Barm,0,0,0,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-let recipe1002 = [[2500,0,0,0,0,0,0,0], [Barley,0,0,0,0,0,0,0], [2000,50,0,0,0,0], [Barley_Beer,Barm,0,0,0,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-let recipe1003 = [[2500,0,0,0,0,0,0,0], [Oats,0,0,0,0,0,0,0], [2000,50,0,0,0,0], [Oat_Beer,Barm,0,0,0,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-let recipe1004 = [[2500,0,0,0,0,0,0,0], [Rice,0,0,0,0,0,0,0], [2000,50,0,0,0,0], [Rice_Beer,Barm,0,0,0,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-let recipe1005 = [[2500,0,0,0,0,0,0,0], [Sorghum,0,0,0,0,0,0,0], [2000,50,0,0,0,0], [Sorghum_Beer,Barm,0,0,0,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-let recipe1010 = [[2500,0,0,0,0,0,0,0], [Apples,0,0,0,0,0,0,0], [2500,0,0,0,0,0], [Cider,0,0,0,0,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-let recipe1011 = [[2500,0,0,0,0,0,0,0], [Grapes,0,0,0,0,0,0,0], [2500,0,0,0,0,0], [Wine,0,0,0,0,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-let recipe1012 = [[2500,0,0,0,0,0,0,0], [Plums,0,0,0,0,0,0,0], [2500,0,0,0,0,0], [Plum_Wine,0,0,0,0,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-let recipe1013 = [[2500,0,0,0,0,0,0,0], [Peaches,0,0,0,0,0,0,0], [2500,0,0,0,0,0], [Peach_Wine,0,0,0,0,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-let recipe1014 = [[2500,0,0,0,0,0,0,0], [Cherries,0,0,0,0,0,0,0], [2500,0,0,0,0,0], [Cherry_Wine,0,0,0,0,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-let recipe1020 = [[1750,0,0,0,0,0,0,0], [Honey,0,0,0,0,0,0,0], [5000,0,0,0,0,0], [Mead,0,0,0,0,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-let recipe1021 = [[1,0,0,0,0,0,0,0], [Rum,0,0,0,0,0,0,0], [4,0,0,0,0,0], [Grog,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1030 = [[16000,0,0,0,0,0,0,0], [Potato,0,0,0,0,0,0,0], [2000,0,0,0,0,0], [Vodka,0,0,0,0,0], 1, 10, [Brewery_T2,Brewery_T3,Brewery_T4,200]];
-let recipe1031 = [[1600,0,0,0,0,0,0,0], [Milk,0,0,0,0,0,0,0], [1200,0,0,0,0,0], [Kumis,0,0,0,0,0], 1, 10, [Brewery_T2,Brewery_T3,Brewery_T4,200]];
-let recipe1032 = [[120,0,0,0,0,0,0,0], [Sugar,0,0,0,0,0,0,0], [750,0,0,0,0,0], [Rum,0,0,0,0,0], 1, 10, [Brewery_T3,Brewery_T4,200,200]];
-let recipe1033 = [[16000,0,0,0,0,0,0,0], [Grain,0,0,0,0,0,0,0], [2000,0,0,0,0,0], [Grain_Whiskey,0,0,0,0,0], 1, 10, [Brewery_T2,Brewery_T3,Brewery_T4,200]];
-let recipe1040 = [[700,0,0,0,0,0,0,0], [Wine,0,0,0,0,0,0,0], [250,0,0,0,0,0], [Brandy,0,0,0,0,0], 1, 10, [Brewery_T3,Brewery_T4,200,200]];
-let recipe1041 = [[1600,0,0,0,0,0,0,0], [Silver_Sap,0,0,0,0,0,0,0], [1600,0,0,0,0,0], [Silver_Wine,0,0,0,0,0], 1, 10, [Brewery_T2,Brewery_T3,Brewery_T4,200]];
-let recipe1042 = [[800,0,0,0,0,0,0,0], [Jungleberries,0,0,0,0,0,0,0], [800,0,0,0,0,0], [Jungle_Wine,0,0,0,0,0], 1, 10, [Brewery_T2,Brewery_T3,Brewery_T4,200]];
-let recipe1043 = [[800,0,0,0,0,0,0,0], [Winterberries,0,0,0,0,0,0,0], [800,0,0,0,0,0], [Winter_Wine,0,0,0,0,0], 1, 10, [Brewery_T2,Brewery_T3,Brewery_T4,200]];
-let recipe1044 = [[10000,0,0,0,0,0,0,0], [Rum,0,0,0,0,0,0,0], [9100,0,0,0,0,0], [Aged_Rum,0,0,0,0,0], 1, 500, [23,200,200,200]];
-let recipe1050 = [[120,0,0,0,0,0,0,0], [Ginseng,0,0,0,0,0,0,0], [150,0,0,0,0,0], [Ginseng_Wine,0,0,0,0,0], 1, 10, [Brewery_T3,Brewery_T4,200,200]];
-let recipe1051 = [[500,1000,500,0,0,0,0,0], [Vodka,Allspice,Heartland_Herbs,0,0,0,0,0], [500,0,0,0,0,0], [Spiced_Vodka,0,0,0,0,0], 1, 10, [Brewery_T4,200,200,200]];
-let recipe1060 = [[400,400,0,0,0,0,0,0], [Winter_Wine,Jungle_Wine,0,0,0,0,0,0], [200,0,0,0,0,0], [Double_Brandy,0,0,0,0,0], 1, 10, [Brewery_T4,200,200,200]];
-let recipe1061 = [[35,0,0,0,0,0,0,0], [Auric_Honey,0,0,0,0,0,0,0], [50,0,0,0,0,0], [Auric_Mead,0,0,0,0,0], 1, 10, [Brewery_T3,Brewery_T4,200,200]];
-let recipe1200 = [[5000,500,0,0,0,0,0,0], [Any_Flour,Fuel,0,0,0,0,0,0], [3000,100,0,0,0,0], [Basic_Bread,Ash,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1201 = [[5000,500,0,0,0,0,0,0], [Wheat_Flour,Fuel,0,0,0,0,0,0], [3000,100,0,0,0,0], [Wheat_Bread,Ash,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1202 = [[5000,500,0,0,0,0,0,0], [Rye_Flour,Fuel,0,0,0,0,0,0], [3000,100,0,0,0,0], [Rye_Bread,Ash,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1203 = [[5000,500,0,0,0,0,0,0], [Corn_Flour,Fuel,0,0,0,0,0,0], [3000,100,0,0,0,0], [Corn_Bread,Ash,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1204 = [[5000,500,0,0,0,0,0,0], [Corn_Flour,Fuel,0,0,0,0,0,0], [6000,100,0,0,0,0], [Basic_Flatbread,Ash,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1205 = [[2500,6250,500,0,0,0,0,0], [Any_Flour,Potato,Fuel,0,0,0,0,0], [6000,100,0,0,0,0], [Basic_Flatbread,Ash,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1206 = [[4000,100,50,0,0,0,0,0], [Rye_Flour,Molasses,Barm,0,0,0,0,0], [2500,0,0,0,0,0], [Pumpernickle,0,0,0,0,0], 1, 5, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1207 = [[1000,0,0,0,0,0,0,0], [Pastry_Dough,0,0,0,0,0,0,0], [2000,0,0,0,0,0], [Pastry,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1208 = [[1000,1500,0,0,0,0,0,0], [Pastry_Dough,Fruit_Preserve,0,0,0,0,0,0], [4000,0,0,0,0,0], [Fruit_Pastry,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1209 = [[3000,500,0,0,0,0,0,0], [Pastry_Dough,Aged_Cheese,0,0,0,0,0,0], [2750,0,0,0,0,0], [Cheese_Pastry,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1210 = [[5000,1000,0,0,0,0,0,0], [Any_Flour,Cheese,0,0,0,0,0,0], [2000,0,0,0,0,0], [Cheese_Bread,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1211 = [[5000,2000,0,0,0,0,0,0], [Any_Flour,Dried_Fruit,0,0,0,0,0,0], [2000,0,0,0,0,0], [Fruit_Bread,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1212 = [[200,5000,0,0,0,0,0,0], [Auric_Honey,Pastry_Dough,0,0,0,0,0,0], [1250,0,0,0,0,0], [Glittercake,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1213 = [[500,100,0,0,0,0,0,0], [Exotic_Fruit_Preserve,Glittercake,0,0,0,0,0,0], [500,0,0,0,0,0], [Fruit_Glittercake,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1215 = [[5000,0,0,0,0,0,0,0], [Any_Flour,0,0,0,0,0,0,0], [6000,0,0,0,0,0], [Basic_Flatbread,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1220 = [[5000,10000,0,0,0,0,0,0], [Flour,Apples,0,0,0,0,0,0], [2500,0,0,0,0,0], [Apple_Pie,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1221 = [[5000,10000,0,0,0,0,0,0], [Flour,Plums,0,0,0,0,0,0], [2500,0,0,0,0,0], [Plum_Pie,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1222 = [[5000,10000,0,0,0,0,0,0], [Flour,Peaches,0,0,0,0,0,0], [2500,0,0,0,0,0], [Peach_Pie,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1223 = [[5000,10000,0,0,0,0,0,0], [Flour,Sugar,0,0,0,0,0,0], [2500,0,0,0,0,0], [Sugar_Pie,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1224 = [[5000,1000,5000,0,0,0,0,0], [Flour,Meat,Potato,0,0,0,0,0], [2500,0,0,0,0,0], [Pot_Pie,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1230 = [[1000,250,0,0,0,0,0,0], [Milk,Salt,0,0,0,0,0,0], [1000,0,0,0,0,0], [Cheese,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1231 = [[1250,0,0,0,0,0,0,0], [Cheese,0,0,0,0,0,0,0], [1250,0,0,0,0,0], [Aged_Cheese,0,0,0,0,0], 1, 100, [23,200,200,200]];
-let recipe1232 = [[1250,0,0,0,0,0,0,0], [Cheese,0,0,0,0,0,0,0], [1000,0,0,0,0,0], [Imperial_Cheese,0,0,0,0,0], 1, 900, [23,200,200,200]];
-let recipe1240 = [[20000,0,0,0,0,0,0,0], [Vegetables,0,0,0,0,0,0,0], [5000,0,0,0,0,0], [Dried_Vegetables,0,0,0,0,0], 1, 20, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1241 = [[10000,500,0,0,0,0,0,0], [Vegetables,Vinegar,0,0,0,0,0,0], [1500,0,0,0,0,0], [Pickled_Vegetables,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1250 = [[20000,0,0,0,0,0,0,0], [Fruit,0,0,0,0,0,0,0], [5000,0,0,0,0,0], [Dried_Fruit,0,0,0,0,0], 1, 20, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1251 = [[5000,50,0,0,0,0,0,0], [Fruit,Brandy,0,0,0,0,0,0], [500,0,0,0,0,0], [Brandied_Fruit,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1260 = [[6000,1500,1000,0,0,0,0,0], [Organ_Meat,Allspice,Garlic,0,0,0,0,0], [1000,0,0,0,0,0], [Sausage,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1261 = [[10000,1000,100,0,0,0,0,0], [Meat,Cooking_Oil,Flour,0,0,0,0,0], [1500,0,0,0,0,0], [Fried_Meat,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1262 = [[1000,5000,1000,0,0,0,0,0], [Meat,Vegetables,T1_Drink,0,0,0,0,0], [1000,0,0,0,0,0], [Roast,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1263 = [[1000,0,0,0,0,0,0,0], [Meat,0,0,0,0,0,0,0], [100,0,0,0,0,0], [Cured_Meat,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1264 = [[5000,1000,0,0,0,0,0,0], [Meat,Salt,0,0,0,0,0,0], [3750,0,0,0,0,0], [Salted_Meat,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1265 = [[3000,1500,0,0,0,0,0,0], [Ash,Eggs,0,0,0,0,0,0], [1000,0,0,0,0,0], [Preserved_Eggs,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1266 = [[1000,0,0,0,0,0,0,0], [Exotic_Meat,0,0,0,0,0,0,0], [100,0,0,0,0,0], [Exotic_Cured_Meat,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1268 = [[2000,20000,2000,2000,0,0,0,0], [Tender_Meat,Vegetables,T3_Drink,Fuel,0,0,0,0], [1250,400,0,0,0,0], [Noble_Roast,Ash,0,0,0,0], 2, 10, [Cookery_T2,Cookery_T3,Cookery_T4,200]];
-let recipe1269 = [[1000,1000,1000,0,0,0,0,0], [Fat,Meat,Fuel,0,0,0,0,0], [1250,200,0,0,0,0], [Pemmican,Ash,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1270 = [[1500,3000,3000,4000,100,1000,0,0], [Beef,Onion,Carrots,Potato,Stock,Fuel,0,0], [2000,200,0,0,0,0], [Beef_Stew,Ash,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1271 = [[1500,2500,2500,2500,10,100,1000,0], [Tender_Meat,Onion,Carrots,Potato,Royal_Spice_Pack,Stock,Fuel,0], [700,200,0,0,0,0], [Kings_Soup,Ash,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1272 = [[5000,500,100,1000,0,0,0,0], [Onion,Cheese,Stock,Fuel,0,0,0,0], [1500,200,0,0,0,0], [Onion_Soup,Ash,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1273 = [[1500,2500,2500,2500,10,1000,0,0], [Exotic_Meat,Onion,Carrots,Potato,Basic_Spice_Pack,Fuel,0,0], [500,200,0,0,0,0], [Huntsmans_Soup,Ash,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1274 = [[1000,2000,5000,100,1000,0,0,0], [Chicken,Flour,Vegetables,Stock,Fuel,0,0,0], [2000,200,0,0,0,0], [Chicken_Soup,Ash,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1275 = [[1500,500,2500,2500,100,1000,0,0], [Fish_Meat,Milk,Corn,Potato,Stock,Fuel,0,0], [2000,200,0,0,0,0], [Fish_Soup,Ash,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1276 = [[7500,2500,2500,2500,100,1000,0,0], [Beans,Mushrooms,Corn,Potato,Vegetable_Stock,Fuel,0,0], [2000,200,0,0,0,0], [Vegetable_Soup,Ash,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1277 = [[500,1000,100,5000,0,0,0,0], [Any_Seafood,Milk,Spicy_Sauce,Vegetables,0,0,0,0], [1500,0,0,0,0,0], [Seafood_Soup,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1280 = [[10000,100,1000,0,0,0,0,0], [Beans,Sugar,Fuel,0,0,0,0,0], [3000,200,0,0,0,0], [Baked_Beans,Ash,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1281 = [[10000,10000,10,1000,0,0,0,0], [Beans,Rice,Basic_Spice_Pack,Fuel,0,0,0,0], [5000,200,0,0,0,0], [Beans_And_Rice,Ash,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1282 = [[1000,5000,2500,1000,0,0,0,0], [Meat,Potato,Onion,Fuel,0,0,0,0], [3000,200,0,0,0,0], [Hash,Ash,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1283 = [[500,1000,0,0,0,0,0,0], [Crab,Cooking_Oil,0,0,0,0,0,0], [1000,0,0,0,0,0], [Fried_Crab,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1300 = [[2500,0,0,0,0,0,0,0], [T1_Drink,0,0,0,0,0,0,0], [200,0,0,0,0,0], [Vinegar,0,0,0,0,0], 1, 10, [Brewery_T1,Brewery_T2,Brewery_T3,Brewery_T4]];
-let recipe1301 = [[5,0,0,0,0,0,0,0], [Honey,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Sugar,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1302 = [[10000,0,0,0,0,0,0,0], [Olives,0,0,0,0,0,0,0], [2500,0,0,0,0,0], [Olive_Oil,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1304 = [[10000,0,0,0,0,0,0,0], [Mushrooms,0,0,0,0,0,0,0], [250,0,0,0,0,0], [Ketchup,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1305 = [[1,1,5,25,25,10,0,0], [Vinegar,Sauce,Salt,Garlic,Allspice,Olive_Oil,0,0], [1,0,0,0,0,0], [Basic_Spice_Pack,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1306 = [[1,20,10,2,0,0,0,0], [Exotic_Herb,Wasabi,Auric_Honey,Basic_Spice_Pack,0,0,0,0], [1,0,0,0,0,0], [Royal_Spice_Pack,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1307 = [[5000,1000,1000,500,100,0,0,0], [Wheat_Flour,Eggs,Fat,Milk,Sugar,0,0,0], [4000,0,0,0,0,0], [Pastry_Dough,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1308 = [[100,5000,0,0,0,0,0,0], [Sugar,Fruit,0,0,0,0,0,0], [1000,0,0,0,0,0], [Fruit_Preserve,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1309 = [[100,500,0,0,0,0,0,0], [Sugar,Exotic_Berry,0,0,0,0,0,0], [10,0,0,0,0,0], [Exotic_Fruit_Preserve,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1310 = [[2500,500,0,0,0,0,0,0], [Mushrooms,Fuel,0,0,0,0,0,0], [200,100,0,0,0,0], [Mushroom_Stock,Ash,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1311 = [[500,500,0,0,0,0,0,0], [Unboiled_Meat,Fuel,0,0,0,0,0,0], [100,500,100,0,0,0], [Meat_Stock,Boiled_Meat,Ash,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1312 = [[2500,500,0,0,0,0,0,0], [Vegetables,Fuel,0,0,0,0,0,0], [200,100,0,0,0,0], [Vegetable_Stock,Ash,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1313 = [[1000,500,0,0,0,0,0,0], [Bone,Fuel,0,0,0,0,0,0], [200,1000,100,0,0,0], [Bone_Stock,Cooked_Bone,Ash,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1315 = [[2500,0,0,0,0,0,0,0], [Sugarcane_Pulp,0,0,0,0,0,0,0], [150,250,0,0,0,0], [Molasses,Organic_Pulp,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1320 = [[80,20,0,0,0,0,0,0], [Cider,Sugar,0,0,0,0,0,0], [100,0,0,0,0,0], [Cider_Sauce,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1321 = [[80,20,0,0,0,0,0,0], [Wine,Sugar,0,0,0,0,0,0], [100,0,0,0,0,0], [Wine_Sauce,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1322 = [[5000,20,30,75,0,0,0,0], [Peppers,Vinegar,Sugar,Salt,0,0,0,0], [200,0,0,0,0,0], [Spicy_Sauce,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1900 = [[22500,0,0,0,0,0,0,0], [Fodder,0,0,0,0,0,0,0], [2000,0,0,0,0,0], [Fodder_Bread,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe1901 = [[250,50,0,0,0,0,0,0], [Grain,Dried_Vegetables,0,0,0,0,0,0], [1,0,0,0,0,0], [Main_Ration_1,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1902 = [[250,50,10,0,0,0,0,0], [Grain,Hearty_Dried_Vegetables,Dried_Vegetables,0,0,0,0,0], [1,0,0,0,0,0], [Main_Ration_2,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1903 = [[100,50,100,0,0,0,0,0], [Flour,Dried_Vegetables,Salted_Meat,0,0,0,0,0], [1,0,0,0,0,0], [Main_Ration_3,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1904 = [[200,100,200,0,0,0,0,0], [Flour,Dried_Vegetables,Salted_Meat,0,0,0,0,0], [1,0,0,0,0,0], [Main_Ration_4,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1905 = [[200,200,250,0,0,0,0,0], [Flour,Pickled_Vegetables,Salted_Meat,0,0,0,0,0], [1,0,0,0,0,0], [Main_Ration_5,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1906 = [[200,200,300,300,0,0,0,0], [Flour,Pickled_Vegetables,Salted_Meat,Preserved_Eggs,0,0,0,0], [1,0,0,0,0,0], [Main_Ration_6,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1907 = [[200,200,300,160,0,0,0,0], [Flour,Pickled_Vegetables,Cured_Meat,Preserved_Eggs,0,0,0,0], [1,0,0,0,0,0], [Main_Ration_7,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1908 = [[400,400,600,320,0,0,0,0], [Flour,Pickled_Vegetables,Cured_Meat,Preserved_Eggs,0,0,0,0], [1,0,0,0,0,0], [Main_Ration_8,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1909 = [[200,300,300,300,0,0,0,0], [Flour,Pickled_Vegetables,Exotic_Cured_Meat,Preserved_Eggs,0,0,0,0], [1,0,0,0,0,0], [Main_Ration_9,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1911 = [[10,1,0,0,0,0,0,0], [Cheese,Sugar,0,0,0,0,0,0], [1,0,0,0,0,0], [Extras_1,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1912 = [[1,30,10,0,0,0,0,0], [Basic_Spice_Pack,Dried_Fruit,Cheese,0,0,0,0,0], [2,0,0,0,0,0], [Extras_2,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1913 = [[1,30,10,0,0,0,0,0], [Basic_Spice_Pack,Dried_Fruit,Cheese,0,0,0,0,0], [1,0,0,0,0,0], [Extras_3,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1914 = [[1,50,30,0,0,0,0,0], [Basic_Spice_Pack,Fruit_Preserve,Cheese,0,0,0,0,0], [1,0,0,0,0,0], [Extras_4,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1915 = [[2,60,30,0,0,0,0,0], [Basic_Spice_Pack,Fruit_Preserve,Aged_Cheese,0,0,0,0,0], [1,0,0,0,0,0], [Extras_5,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1916 = [[2,50,60,0,0,0,0,0], [Basic_Spice_Pack,Brandied_Fruit,Aged_Cheese,0,0,0,0,0], [1,0,0,0,0,0], [Extras_6,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1917 = [[1,90,80,0,0,0,0,0], [Royal_Spice_Pack,Brandied_Fruit,Aged_Cheese,0,0,0,0,0], [1,0,0,0,0,0], [Extras_7,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1918 = [[1,100,50,0,0,0,0,0], [Royal_Spice_Pack,Brandied_Fruit,Imperial_Cheese,0,0,0,0,0], [1,0,0,0,0,0], [Extras_8,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1919 = [[2,200,100,0,0,0,0,0], [Royal_Spice_Pack,Brandied_Fruit,Aged_Cheese,0,0,0,0,0], [1,0,0,0,0,0], [Extras_9,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1921 = [[50,0,0,0,0,0,0,0], [T1_Drink,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Drink_Pack_1,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1922 = [[10,60,0,0,0,0,0,0], [T1_Drink,T2_Drink,0,0,0,0,0,0], [1,0,0,0,0,0], [Drink_Pack_2,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1923 = [[50,0,0,0,0,0,0,0], [T2_Drink,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Drink_Pack_3,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1924 = [[20,50,0,0,0,0,0,0], [T3_Drink,T2_Drink,0,0,0,0,0,0], [1,0,0,0,0,0], [Drink_Pack_4,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1925 = [[80,0,0,0,0,0,0,0], [T3_Drink,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Drink_Pack_5,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1926 = [[30,40,0,0,0,0,0,0], [T4_Drink,T3_Drink,0,0,0,0,0,0], [1,0,0,0,0,0], [Drink_Pack_6,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1927 = [[80,0,0,0,0,0,0,0], [T4_Drink,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Drink_Pack_7,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1928 = [[40,60,0,0,0,0,0,0], [T4_Drink,T5_Drink,0,0,0,0,0,0], [1,0,0,0,0,0], [Drink_Pack_8,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1929 = [[120,0,0,0,0,0,0,0], [T5_Drink,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Drink_Pack_9,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1930 = [[1000,200,10,0,0,0,0,0], [Soap,Fabric,Antiseptic,0,0,0,0,0], [1,0,0,0,0,0], [Medpack,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1990 = [[100,100,0,0,0,0,0,0], [Flatbread,T1_Drink,0,0,0,0,0,0], [1,0,0,0,0,0], [Peasent_Hunting_Supplies,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1991 = [[100,100,0,0,0,0,0,0], [Pemmican,T2_Drink,0,0,0,0,0,0], [1,0,0,0,0,0], [Low_Noble_Hunting_Supplies,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe1992 = [[1,1,2,0,0,0,0,0], [Main_Ration_6,Extras_5,Drink_Pack_5,0,0,0,0,0], [1,0,0,0,0,0], [High_Noble_Hunting_Supplies,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe2004 = [[1500,200,0,0,0,0,0,0], [Clay,Hay,0,0,0,0,0,0], [1000,0,0,0,0,0], [Basic_Building_Materials,0,0,0,0,0], 1, 10, [23,200,200,200]];
-let recipe2121 = [[3000,1000,0,0,0,0,0,0], [Iron_Ore,Charcoal,0,0,0,0,0,0], [1500,300,0,0,0,0], [Iron,Ash,0,0,0,0], 1, 10, [Smeltery_T2,Smeltery_T3,200,200]];
-let recipe2122 = [[200,1000,0,0,0,0,0,0], [Gold_Ore,Wood,0,0,0,0,0,0], [50,200,0,0,0,0], [Gold,Ash,0,0,0,0], 1, 10, [Smeltery_T1,Smeltery_T2,Smeltery_T3,200]];
-let recipe2123 = [[400,1000,0,0,0,0,0,0], [Silver_Ore,Wood,0,0,0,0,0,0], [250,200,0,0,0,0], [Silver,Ash,0,0,0,0], 1, 10, [Smeltery_T1,Smeltery_T2,Smeltery_T3,200]];
-let recipe2124 = [[2000,1000,0,0,0,0,0,0], [Copper_Ore,Wood,0,0,0,0,0,0], [2000,200,0,0,0,0], [Copper,Ash,0,0,0,0], 1, 10, [Smeltery_T1,Smeltery_T2,Smeltery_T3,200]];
-let recipe2125 = [[1500,1000,0,0,0,0,0,0], [Tin_Ore,Wood,0,0,0,0,0,0], [500,200,0,0,0,0], [Tin,Ash,0,0,0,0], 1, 10, [Smeltery_T1,Smeltery_T2,Smeltery_T3,200]];
-let recipe2150 = [[5,0,0,0,0,0,0,0], [Wood,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Basic_Building_Materials,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe2151 = [[5,0,0,0,0,0,0,0], [Stone,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Durable_Basic_Building_Materials,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe2152 = [[7500,100,0,0,0,0,0,0], [Wood,Nails,0,0,0,0,0,0], [350,0,0,0,0,0], [Advanced_Building_Materials,0,0,0,0,0], 1, 10, [Carpenter_T1,Carpenter_T2,200,200]];
-let recipe2153 = [[10000,0,0,0,0,0,0,0], [Stone,0,0,0,0,0,0,0], [250,0,0,0,0,0], [Durable_Advanced_Building_Materials,0,0,0,0,0], 1, 10, [19,200,200,200]];
-let recipe2180 = [[500,250,1000,0,0,0,0,0], [Copper,Emerald,Charcoal,0,0,0,0,0], [100,300,0,0,0,0], [Emerald_Bronze,Ash,0,0,0,0], 1, 10, [Smeltery_T3,200,200,200]];
-let recipe2181 = [[800,250,1000,0,0,0,0,0], [Copper,Tin,Wood,0,0,0,0,0], [1000,200,0,0,0,0], [Bronze,Ash,0,0,0,0], 1, 10, [Smeltery_T1,Smeltery_T2,Smeltery_T3,200]];
-let recipe2182 = [[500,1000,0,0,0,0,0,0], [Iron,Charcoal,0,0,0,0,0,0], [300,300,0,0,0,0], [Steel,Ash,0,0,0,0], 1, 10, [Smeltery_T3,200,200,200]];
-let recipe2300 = [[200,0,0,0,0,0,0,0], [Ruby,0,0,0,0,0,0,0], [200,0,0,0,0,0], [Polished_Ruby,0,0,0,0,0], 1, 10, [Jeweler_T2,200,200,200]];
-let recipe2301 = [[200,0,0,0,0,0,0,0], [Emerald,0,0,0,0,0,0,0], [200,0,0,0,0,0], [Polished_Emerald,0,0,0,0,0], 1, 10, [Jeweler_T2,200,200,200]];
-let recipe2302 = [[200,0,0,0,0,0,0,0], [Sapphire,0,0,0,0,0,0,0], [200,0,0,0,0,0], [Polished_Sapphire,0,0,0,0,0], 1, 10, [Jeweler_T2,200,200,200]];
-let recipe2303 = [[200,0,0,0,0,0,0,0], [Diamond,0,0,0,0,0,0,0], [200,0,0,0,0,0], [Polished_Diamond,0,0,0,0,0], 1, 10, [Jeweler_T2,200,200,200]];
-let recipe2304 = [[200,0,0,0,0,0,0,0], [Amethyst,0,0,0,0,0,0,0], [160,0,0,0,0,0], [Polished_Amethyst,0,0,0,0,0], 1, 10, [Jeweler_T2,200,200,200]];
-let recipe2305 = [[200,0,0,0,0,0,0,0], [Opal,0,0,0,0,0,0,0], [160,0,0,0,0,0], [Polished_Opal,0,0,0,0,0], 1, 10, [Jeweler_T1,Jeweler_T2,200,200]];
-let recipe2306 = [[200,0,0,0,0,0,0,0], [Citrine,0,0,0,0,0,0,0], [160,0,0,0,0,0], [Polished_Citrine,0,0,0,0,0], 1, 10, [Jeweler_T1,Jeweler_T2,200,200]];
-let recipe2307 = [[200,0,0,0,0,0,0,0], [Pearl,0,0,0,0,0,0,0], [160,0,0,0,0,0], [Polished_Pearl,0,0,0,0,0], 1, 10, [Jeweler_T1,Jeweler_T2,200,200]];
-let recipe2308 = [[200,0,0,0,0,0,0,0], [Moonstone,0,0,0,0,0,0,0], [160,0,0,0,0,0], [Polished_Moonstone,0,0,0,0,0], 1, 10, [Jeweler_T1,Jeweler_T2,200,200]];
-let recipe2309 = [[200,0,0,0,0,0,0,0], [Amber,0,0,0,0,0,0,0], [160,0,0,0,0,0], [Polished_Amber,0,0,0,0,0], 1, 10, [Jeweler_T1,Jeweler_T2,200,200]];
-let recipe2310 = [[200,0,0,0,0,0,0,0], [Onyx,0,0,0,0,0,0,0], [160,0,0,0,0,0], [Polished_Onyx,0,0,0,0,0], 1, 10, [Jeweler_T1,Jeweler_T2,200,200]];
-let recipe2311 = [[200,0,0,0,0,0,0,0], [Aquamarine,0,0,0,0,0,0,0], [160,0,0,0,0,0], [Polished_Aquamarine,0,0,0,0,0], 1, 10, [Jeweler_T1,Jeweler_T2,200,200]];
-let recipe2312 = [[200,0,0,0,0,0,0,0], [Crystal_Glass,0,0,0,0,0,0,0], [160,0,0,0,0,0], [Polished_Crystal_Glass,0,0,0,0,0], 1, 10, [Jeweler_T1,Jeweler_T2,200,200]];
-let recipe4000 = [[40,0,0,0,0,0,0,0], [T2_Metal,0,0,0,0,0,0,0], [120,0,0,0,0,0], [Nails,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe4001 = [[25,0,0,0,0,0,0,0], [Diamond,0,0,0,0,0,0,0], [30,0,0,0,0,0], [Diamond_Blade,0,0,0,0,0], 1, 10, [Jeweler_T2,200,200,200]];
-let recipe4002 = [[2500,0,0,0,0,0,0,0], [Fiber,0,0,0,0,0,0,0], [100,0,0,0,0,0], [Fabric,0,0,0,0,0], 1, 10, [Weaver_T1,Weaver_T2,200,200]];
-let recipe4013 = [[1,0,0,0,0,0,0,0], [Leopard_Skin,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Oppulant_Furniture,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe4014 = [[1,0,0,0,0,0,0,0], [Aurochs_Hide,0,0,0,0,0,0,0], [2,0,0,0,0,0], [Oppulant_Furniture,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe4015 = [[1,0,0,0,0,0,0,0], [Black_Leopard_Skin,0,0,0,0,0,0,0], [2,0,0,0,0,0], [Oppulant_Furniture,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe4016 = [[1,0,0,0,0,0,0,0], [Bear_Hide,0,0,0,0,0,0,0], [10,0,0,0,0,0], [Oppulant_Furniture,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe4017 = [[1,0,0,0,0,0,0,0], [Polar_Bear_Hide,0,0,0,0,0,0,0], [10,0,0,0,0,0], [Oppulant_Furniture,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe4018 = [[1,0,0,0,0,0,0,0], [Tiger_Hide,0,0,0,0,0,0,0], [10,0,0,0,0,0], [Oppulant_Furniture,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe4019 = [[400,0,0,0,0,0,0,0], [Rushseed,0,0,0,0,0,0,0], [10,0,0,0,0,0], [Rushseed_Oil,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe4020 = [[500,250,1000,0,0,0,0,0], [Stone,Cooked_Bone,Charcoal,0,0,0,0,0], [1,300,0,0,0,0], [Ornate_Furniture,Ash,0,0,0,0], 1, 10, [19,200,200,200]];
-let recipe4024 = [[5000,0,0,0,0,0,0,0], [Clay,0,0,0,0,0,0,0], [200,0,0,0,0,0], [Clay_Beads,0,0,0,0,0], 1, 10, [Smeltery_T1,Smeltery_T2,Smeltery_T3,200]];
-let recipe4027 = [[1000,1000,0,0,0,0,0,0], [Ash,Fat,0,0,0,0,0,0], [500,0,0,0,0,0], [Soap,0,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe4030 = [[5,0,0,0,0,0,0,0], [Hay,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Level_1_Fertilizer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe4031 = [[5,5,0,0,0,0,0,0], [Hay,Ash,0,0,0,0,0,0], [1,0,0,0,0,0], [Level_2_Fertilizer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe4032 = [[1,7,0,0,0,0,0,0], [Level_2_Fertilizer,Organic_Pulp,0,0,0,0,0,0], [1,0,0,0,0,0], [Level_3_Fertilizer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe4040 = [[8,0,0,0,0,0,0,0], [Bloodstone,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Rare_Fertilizer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe4100 = [[5000,5000,0,0,0,0,0,0], [Bronze,Fuel,0,0,0,0,0,0], [5,1000,0,0,0,0], [Bronze_Plate,Ash,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe4101 = [[2000,2000,0,0,0,0,0,0], [Iron,Charcoal,0,0,0,0,0,0], [2,600,0,0,0,0], [Iron_Plate,0,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe4102 = [[2000,2000,0,0,0,0,0,0], [Steel,Charcoal,0,0,0,0,0,0], [2,600,0,0,0,0], [Steel_Plate,0,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe4103 = [[2000,2000,0,0,0,0,0,0], [Emerald_Bronze,Charcoal,0,0,0,0,0,0], [2,600,0,0,0,0], [Emerald_Bronze_Plate,0,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe4104 = [[2000,2000,0,0,0,0,0,0], [Damascus_Steel,Charcoal,0,0,0,0,0,0], [2,600,0,0,0,0], [Damascus_Steel_Plate,0,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe4105 = [[2000,4000,0,0,0,0,0,0], [Bronze,Fuel,0,0,0,0,0,0], [4,800,0,0,0,0], [Bronze_Chainmail,0,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe4106 = [[500,1000,0,0,0,0,0,0], [Iron,Charcoal,0,0,0,0,0,0], [1,300,0,0,0,0], [Iron_Chainmail,0,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe4107 = [[500,1000,0,0,0,0,0,0], [Steel,Charcoal,0,0,0,0,0,0], [1,300,0,0,0,0], [Steel_Chainmail,0,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe4108 = [[500,1000,0,0,0,0,0,0], [Emerald_Bronze,Charcoal,0,0,0,0,0,0], [1,300,0,0,0,0], [Emerald_Bronze_Chainmail,0,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe4109 = [[500,1000,0,0,0,0,0,0], [Damascus_Steel,Charcoal,0,0,0,0,0,0], [1,300,0,0,0,0], [Damascus_Steel_Chainmail,0,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe4200 = [[25000,200,0,0,0,0,0,0], [Wood,Tar,0,0,0,0,0,0], [1,0,0,0,0,0], [Fishing_Boat,0,0,0,0,0], 4, 10, [Carpenter_T1,Carpenter_T2,200,200]];
-let recipe4201 = [[1,100,0,0,0,0,0,0], [Battered_Fishing_Boat,Tar,0,0,0,0,0,0], [1,0,0,0,0,0], [Fishing_Boat,0,0,0,0,0], 1, 10, [Carpenter_T1,Carpenter_T2,200,200]];
-let recipe4500 = [[200,0,0,0,0,0,0,0], [Fur,0,0,0,0,0,0,0], [10,0,0,0,0,0], [Fur_Clothes,0,0,0,0,0], 1, 10, [Weaver_T1,Weaver_T2,200,200]];
-let recipe4501 = [[200,0,0,0,0,0,0,0], [Fabric,0,0,0,0,0,0,0], [10,0,0,0,0,0], [Regular_Clothes,0,0,0,0,0], 1, 10, [Weaver_T1,Weaver_T2,200,200]];
-let recipe4502 = [[400,0,0,0,0,0,0,0], [Leather,0,0,0,0,0,0,0], [8,0,0,0,0,0], [Regular_Clothes,0,0,0,0,0], 1, 10, [Weaver_T1,Weaver_T2,200,200]];
-let recipe4503 = [[200,0,0,0,0,0,0,0], [Exotic_Fur,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Tailored_Fur_Clothes,0,0,0,0,0], 1, 10, [Weaver_T1,Weaver_T2,200,200]];
-let recipe4504 = [[150,0,0,0,0,0,0,0], [Fabric,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Tailored_Regular_Clothes,0,0,0,0,0], 1, 10, [Weaver_T1,Weaver_T2,200,200]];
-let recipe4520 = [[20000,0,0,0,0,0,0,0], [Wood,0,0,0,0,0,0,0], [10,0,0,0,0,0], [Basic_Furniture,0,0,0,0,0], 1, 10, [Carpenter_T1,Carpenter_T2,200,200]];
-let recipe4521 = [[100,300,100,0,0,0,0,0], [Refined_Wood,Antler,Leather,0,0,0,0,0], [5,0,0,0,0,0], [Ornate_Furniture,0,0,0,0,0], 1, 10, [Carpenter_T1,Carpenter_T2,200,200]];
-let recipe4522 = [[100,25,10,0,0,0,0,0], [Refined_Wood,Ivory,Exotic_Leather,0,0,0,0,0], [1,0,0,0,0,0], [Oppulant_Furniture,0,0,0,0,0], 1, 10, [Carpenter_T2,200,200,200]];
-let recipe4540 = [[200,10000,5000,0,0,0,0,0], [T2_Metal,Wood,Stone,0,0,0,0,0], [20,0,0,0,0,0], [Basic_Tool,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe4541 = [[200,10000,200,0,0,0,0,0], [Steel,Wood,Antler,0,0,0,0,0], [10,0,0,0,0,0], [Artisan_Tool,0,0,0,0,0], 1, 10, [Blacksmith_T2,200,200,200]];
-let recipe4542 = [[100,32,100,0,0,0,0,0], [Emerald_Bronze,Ivory,Exotic_Leather,0,0,0,0,0], [10,0,0,0,0,0], [Oppulant_Tool,0,0,0,0,0], 5, 10, [Blacksmith_T2,200,200,200]];
-let recipe4560 = [[800,500,0,0,0,0,0,0], [Copper,Common_Gemstone,0,0,0,0,0,0], [10,0,0,0,0,0], [Basic_Jewelery,0,0,0,0,0], 1, 10, [Jeweler_T1,Jeweler_T2,200,200]];
-let recipe4561 = [[325,350,0,0,0,0,0,0], [Silver,Polished_Common_Gemstone,0,0,0,0,0,0], [5,0,0,0,0,0], [Silver_Jewelery,0,0,0,0,0], 1, 10, [Jeweler_T1,Jeweler_T2,200,200]];
-let recipe4562 = [[300,1000,0,0,0,0,0,0], [Gold,Polished_Rare_Gemstone,0,0,0,0,0,0], [1,0,0,0,0,0], [Gold_Jewelery,0,0,0,0,0], 1, 10, [Jeweler_T2,200,200,200]];
-let recipe4580 = [[400,0,0,0,0,0,0,0], [Fur,0,0,0,0,0,0,0], [10,0,0,0,0,0], [Basic_Bedding,0,0,0,0,0], 1, 10, [Carpenter_T1,Carpenter_T2,200,200]];
-let recipe4581 = [[100,70,0,0,0,0,0,0], [Exotic_Fur,Down,0,0,0,0,0,0], [10,0,0,0,0,0], [Enhanced_Bedding,0,0,0,0,0], 1, 10, [Carpenter_T1,Carpenter_T2,200,200]];
-let recipe4582 = [[120,0,0,0,0,0,0,0], [Down,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Down_Bedding,0,0,0,0,0], 1, 10, [Carpenter_T2,200,200,200]];
-let recipe5000 = [[4000,4000,0,0,0,0,0,0], [Bronze,Fuel,0,0,0,0,0,0], [10,800,0,0,0,0], [Bronze_Spear,Ash,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5001 = [[2000,2000,0,0,0,0,0,0], [Iron,Charcoal,0,0,0,0,0,0], [5,600,0,0,0,0], [Iron_Spear,Ash,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5002 = [[2000,2000,0,0,0,0,0,0], [Steel,Charcoal,0,0,0,0,0,0], [5,600,0,0,0,0], [Steel_Spear,Ash,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5003 = [[2000,2000,0,0,0,0,0,0], [Emerald_Bronze,Charcoal,0,0,0,0,0,0], [5,600,0,0,0,0], [Emerald_Bronze_Spear,Ash,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5004 = [[2000,2000,0,0,0,0,0,0], [Damascus_Steel,Charcoal,0,0,0,0,0,0], [5,600,0,0,0,0], [Damascus_Steel_Spear,Ash,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5010 = [[4000,4000,0,0,0,0,0,0], [Bronze,Fuel,0,0,0,0,0,0], [4,800,0,0,0,0], [Bronze_Axe,Ash,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5011 = [[1000,1000,0,0,0,0,0,0], [Iron,Charcoal,0,0,0,0,0,0], [1,300,0,0,0,0], [Iron_Axe,Ash,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5012 = [[1000,1000,0,0,0,0,0,0], [Steel,Charcoal,0,0,0,0,0,0], [1,300,0,0,0,0], [Steel_Axe,Ash,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5013 = [[1000,1000,0,0,0,0,0,0], [Emerald_Bronze,Charcoal,0,0,0,0,0,0], [1,300,0,0,0,0], [Emerald_Bronze_Axe,Ash,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5014 = [[1000,1000,0,0,0,0,0,0], [Damascus_Steel,Charcoal,0,0,0,0,0,0], [1,300,0,0,0,0], [Damascus_Steel_Axe,Ash,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5020 = [[4000,4000,0,0,0,0,0,0], [Bronze,Fuel,0,0,0,0,0,0], [4,800,0,0,0,0], [Bronze_Sword,Ash,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5021 = [[1000,1000,0,0,0,0,0,0], [Iron,Charcoal,0,0,0,0,0,0], [1,300,0,0,0,0], [Iron_Sword,Ash,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5022 = [[1000,1000,0,0,0,0,0,0], [Steel,Charcoal,0,0,0,0,0,0], [1,300,0,0,0,0], [Steel_Sword,Ash,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5023 = [[1000,1000,0,0,0,0,0,0], [Emerald_Bronze,Charcoal,0,0,0,0,0,0], [1,300,0,0,0,0], [Emerald_Bronze_Sword,Ash,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5024 = [[1000,1000,0,0,0,0,0,0], [Damascus_Steel,Charcoal,0,0,0,0,0,0], [1,300,0,0,0,0], [Damascus_Steel_Sword,Ash,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5025 = [[10000,0,0,0,0,0,0,0], [Diamond_Blade,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Diamond_Sword,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe5030 = [[4000,4000,0,0,0,0,0,0], [Bronze,Fuel,0,0,0,0,0,0], [4,800,0,0,0,0], [Bronze_Mace,Ash,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5031 = [[1000,1000,0,0,0,0,0,0], [Iron,Charcoal,0,0,0,0,0,0], [1,300,0,0,0,0], [Iron_Mace,Ash,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5032 = [[1000,1000,0,0,0,0,0,0], [Steel,Charcoal,0,0,0,0,0,0], [1,300,0,0,0,0], [Steel_Mace,Ash,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5033 = [[1000,1000,0,0,0,0,0,0], [Emerald_Bronze,Charcoal,0,0,0,0,0,0], [1,300,0,0,0,0], [Emerald_Bronze_Mace,Ash,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5034 = [[1000,1000,0,0,0,0,0,0], [Damascus_Steel,Charcoal,0,0,0,0,0,0], [1,300,0,0,0,0], [Damascus_Steel_Mace,Ash,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5040 = [[3000,3000,0,0,0,0,0,0], [Bronze,Fuel,0,0,0,0,0,0], [2,600,0,0,0,0], [Bronze_Lance,Ash,0,0,0,0], 5, 10, [Blacksmith_T2,200,200,200]];
-let recipe5041 = [[1500,1500,0,0,0,0,0,0], [Iron,Charcoal,0,0,0,0,0,0], [1,450,0,0,0,0], [Iron_Lance,Ash,0,0,0,0], 5, 10, [Blacksmith_T2,200,200,200]];
-let recipe5042 = [[1500,1500,0,0,0,0,0,0], [Steel,Charcoal,0,0,0,0,0,0], [1,450,0,0,0,0], [Steel_Lance,Ash,0,0,0,0], 5, 10, [Blacksmith_T2,200,200,200]];
-let recipe5043 = [[1500,1500,0,0,0,0,0,0], [Emerald_Bronze,Charcoal,0,0,0,0,0,0], [1,450,0,0,0,0], [Emerald_Bronze_Lance,Ash,0,0,0,0], 5, 10, [Blacksmith_T2,200,200,200]];
-let recipe5044 = [[1500,1500,0,0,0,0,0,0], [Damascus_Steel,Charcoal,0,0,0,0,0,0], [1,450,0,0,0,0], [Damascus_Steel_Lance,Ash,0,0,0,0], 5, 10, [Blacksmith_T2,200,200,200]];
-let recipe5050 = [[3000,3000,0,0,0,0,0,0], [Bronze,Fuel,0,0,0,0,0,0], [2,600,0,0,0,0], [Bronze_Poleaxe,Ash,0,0,0,0], 5, 10, [Blacksmith_T2,200,200,200]];
-let recipe5051 = [[1500,1500,0,0,0,0,0,0], [Iron,Charcoal,0,0,0,0,0,0], [1,450,0,0,0,0], [Iron_Poleaxe,Ash,0,0,0,0], 5, 10, [Blacksmith_T2,200,200,200]];
-let recipe5052 = [[1500,1500,0,0,0,0,0,0], [Steel,Charcoal,0,0,0,0,0,0], [1,450,0,0,0,0], [Steel_Poleaxe,Ash,0,0,0,0], 5, 10, [Blacksmith_T2,200,200,200]];
-let recipe5053 = [[1500,1500,0,0,0,0,0,0], [Emerald_Bronze,Charcoal,0,0,0,0,0,0], [1,450,0,0,0,0], [Emerald_Bronze_Poleaxe,Ash,0,0,0,0], 5, 10, [Blacksmith_T2,200,200,200]];
-let recipe5054 = [[1500,1500,0,0,0,0,0,0], [Damascus_Steel,Charcoal,0,0,0,0,0,0], [1,450,0,0,0,0], [Damascus_Steel_Poleaxe,Ash,0,0,0,0], 5, 10, [Blacksmith_T2,200,200,200]];
-let recipe5060 = [[3000,3000,0,0,0,0,0,0], [Bronze,Fuel,0,0,0,0,0,0], [2,600,0,0,0,0], [Bronze_Greatsword,Ash,0,0,0,0], 5, 10, [Blacksmith_T2,200,200,200]];
-let recipe5061 = [[1500,1500,0,0,0,0,0,0], [Iron,Charcoal,0,0,0,0,0,0], [1,450,0,0,0,0], [Iron_Greatsword,Ash,0,0,0,0], 5, 10, [Blacksmith_T2,200,200,200]];
-let recipe5062 = [[1500,1500,0,0,0,0,0,0], [Steel,Charcoal,0,0,0,0,0,0], [1,450,0,0,0,0], [Steel_Greatsword,Ash,0,0,0,0], 5, 10, [Blacksmith_T2,200,200,200]];
-let recipe5063 = [[1500,1500,0,0,0,0,0,0], [Emerald_Bronze,Charcoal,0,0,0,0,0,0], [1,450,0,0,0,0], [Emerald_Bronze_Greatsword,Ash,0,0,0,0], 5, 10, [Blacksmith_T2,200,200,200]];
-let recipe5064 = [[1500,1500,0,0,0,0,0,0], [Damascus_Steel,Charcoal,0,0,0,0,0,0], [1,450,0,0,0,0], [Damascus_Steel_Greatsword,Ash,0,0,0,0], 5, 10, [Blacksmith_T2,200,200,200]];
-let recipe5070 = [[3000,3000,0,0,0,0,0,0], [Bronze,Fuel,0,0,0,0,0,0], [2,600,0,0,0,0], [Bronze_Warhammer,Ash,0,0,0,0], 5, 10, [Blacksmith_T2,200,200,200]];
-let recipe5071 = [[1500,1500,0,0,0,0,0,0], [Iron,Charcoal,0,0,0,0,0,0], [1,450,0,0,0,0], [Iron_Warhammer,Ash,0,0,0,0], 1, 10, [Blacksmith_T2,200,200,200]];
-let recipe5072 = [[1500,1500,0,0,0,0,0,0], [Steel,Charcoal,0,0,0,0,0,0], [1,450,0,0,0,0], [Steel_Warhammer,Ash,0,0,0,0], 5, 10, [Blacksmith_T2,200,200,200]];
-let recipe5073 = [[1500,1500,0,0,0,0,0,0], [Emerald_Bronze,Charcoal,0,0,0,0,0,0], [1,450,0,0,0,0], [Emerald_Bronze_Warhammer,Ash,0,0,0,0], 5, 10, [Blacksmith_T2,200,200,200]];
-let recipe5074 = [[1500,1500,0,0,0,0,0,0], [Damascus_Steel,Charcoal,0,0,0,0,0,0], [1,450,0,0,0,0], [Damascus_Steel_Warhammer,Ash,0,0,0,0], 5, 10, [Blacksmith_T2,200,200,200]];
-let recipe5080 = [[50,25000,0,0,0,0,0,0], [Bronze_Plate,Fuel,0,0,0,0,0,0], [1,5000,0,0,0,0], [Bronze_Elephant_Tusk_Cap,0,0,0,0,0], 10, 100, [Blacksmith_T2,200,200,200]];
-let recipe5081 = [[50,25000,0,0,0,0,0,0], [Iron_Plate,Charcoal,0,0,0,0,0,0], [1,7500,0,0,0,0], [Iron_Elephant_Tusk_Cap,0,0,0,0,0], 10, 200, [Blacksmith_T2,200,200,200]];
-let recipe5082 = [[50,25000,0,0,0,0,0,0], [Steel_Plate,Charcoal,0,0,0,0,0,0], [1,7500,0,0,0,0], [Steel_Elephant_Tusk_Cap,0,0,0,0,0], 10, 200, [Blacksmith_T2,200,200,200]];
-let recipe5083 = [[50,25000,0,0,0,0,0,0], [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0], [1,7500,0,0,0,0], [Beryl_Bronze_Elephant_Tusk_Cap,0,0,0,0,0], 10, 200, [Blacksmith_T2,200,200,200]];
-let recipe5084 = [[50,25000,0,0,0,0,0,0], [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0], [1,7500,0,0,0,0], [Damascus_Elephant_Tusk_Cap,0,0,0,0,0], 10, 200, [Blacksmith_T2,200,200,200]];
-let recipe5090 = [[50,25000,0,0,0,0,0,0], [Bronze_Plate,Fuel,0,0,0,0,0,0], [1,5000,0,0,0,0], [Bronze_Rhino_Tusk_Cap,0,0,0,0,0], 10, 100, [Blacksmith_T2,200,200,200]];
-let recipe5091 = [[50,25000,0,0,0,0,0,0], [Iron_Plate,Charcoal,0,0,0,0,0,0], [1,7500,0,0,0,0], [Iron_Rhino_Tusk_Cap,0,0,0,0,0], 10, 200, [Blacksmith_T2,200,200,200]];
-let recipe5092 = [[50,25000,0,0,0,0,0,0], [Steel_Plate,Charcoal,0,0,0,0,0,0], [1,7500,0,0,0,0], [Steel_Rhino_Tusk_Cap,0,0,0,0,0], 10, 200, [Blacksmith_T2,200,200,200]];
-let recipe5093 = [[50,25000,0,0,0,0,0,0], [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0], [1,7500,0,0,0,0], [Beryl_Bronze_Rhino_Tusk_Cap,0,0,0,0,0], 10, 200, [Blacksmith_T2,200,200,200]];
-let recipe5094 = [[50,25000,0,0,0,0,0,0], [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0], [1,7500,0,0,0,0], [Damascus_Rhino_Tusk_Cap,0,0,0,0,0], 10, 200, [Blacksmith_T2,200,200,200]];
-let recipe5200 = [[2500,0,0,0,0,0,0,0], [Wood,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Bow,0,0,0,0,0], 2, 10, [Carpenter_T1,Carpenter_T2,200,200]];
-let recipe5201 = [[2500,0,0,0,0,0,0,0], [Wood,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Longbow,0,0,0,0,0], 4, 10, [Carpenter_T1,Carpenter_T2,200,200]];
-let recipe5202 = [[5000,0,0,0,0,0,0,0], [Wood,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Greatbow,0,0,0,0,0], 8, 20, [Carpenter_T2,200,200,200]];
-let recipe5210 = [[5000,2,0,0,0,0,0,0], [Wood,Iron_Plate,0,0,0,0,0,0], [1,0,0,0,0,0], [Crossbow,0,0,0,0,0], 2, 10, [Carpenter_T1,Carpenter_T2,200,200]];
-let recipe5211 = [[50,0,0,0,0,0,0,0], [Fabric,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Sling,0,0,0,0,0], 1, 5, [Weaver_T1,Weaver_T2,200,200]];
-let recipe5212 = [[6,0,0,0,0,0,0,0], [Iron_Plate,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Flamer,0,0,0,0,0], 5, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5213 = [[5000,0,0,0,0,0,0,0], [Stone,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Flame_Grenade,0,0,0,0,0], 1, 10, [19,200,200,200]];
-let recipe5214 = [[1,1900,0,0,0,0,0,0], [Sling,Gold,0,0,0,0,0,0], [1,0,0,0,0,0], [Golden_Sling,0,0,0,0,0], 6, 10, [Blacksmith_T2,200,200,200]];
-let recipe5420 = [[1,8500,0,0,0,0,0,0], [Elephant,Bloodstone,0,0,0,0,0,0], [1,0,0,0,0,0], [Trained_Elephant,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe5430 = [[1,8500,0,0,0,0,0,0], [Rhino,Bloodstone,0,0,0,0,0,0], [1,0,0,0,0,0], [Trained_Rhino,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe5500 = [[2,2000,0,0,0,0,0,0], [Bronze_Chainmail,Fuel,0,0,0,0,0,0], [1,400,0,0,0,0], [Light_Bronze_Mail,Ash,0,0,0,0], 1, 5, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5501 = [[2,2000,0,0,0,0,0,0], [Iron_Chainmail,Charcoal,0,0,0,0,0,0], [1,600,0,0,0,0], [Light_Iron_Mail,Ash,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5502 = [[2,2000,0,0,0,0,0,0], [Steel_Chainmail,Charcoal,0,0,0,0,0,0], [1,600,0,0,0,0], [Light_Steel_Mail,Ash,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5503 = [[2,2000,0,0,0,0,0,0], [Emerald_Bronze_Chainmail,Charcoal,0,0,0,0,0,0], [1,600,0,0,0,0], [Light_Emerald_Bronze_Mail,Ash,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5504 = [[2,2000,0,0,0,0,0,0], [Damascus_Steel_Chainmail,Charcoal,0,0,0,0,0,0], [1,600,0,0,0,0], [Light_Damascus_Steel_Mail,Ash,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5510 = [[2,2000,0,0,0,0,0,0], [Bronze_Plate,Fuel,0,0,0,0,0,0], [1,400,0,0,0,0], [Light_Bronze_Plate,0,0,0,0,0], 1, 5, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5511 = [[2,2000,0,0,0,0,0,0], [Iron_Plate,Charcoal,0,0,0,0,0,0], [1,600,0,0,0,0], [Light_Iron_Plate,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5512 = [[2,2000,0,0,0,0,0,0], [Steel_Plate,Charcoal,0,0,0,0,0,0], [1,600,0,0,0,0], [Light_Steel_Plate,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5513 = [[2,2000,0,0,0,0,0,0], [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0], [1,600,0,0,0,0], [Light_Emerald_Bronze_Plate,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5514 = [[2,2000,0,0,0,0,0,0], [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0], [1,600,0,0,0,0], [Light_Damascus_Steel_Plate,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5520 = [[4,4000,0,0,0,0,0,0], [Bronze_Chainmail,Fuel,0,0,0,0,0,0], [1,800,0,0,0,0], [Medium_Bronze_Mail,0,0,0,0,0], 1, 5, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5521 = [[4,4000,0,0,0,0,0,0], [Iron_Chainmail,Charcoal,0,0,0,0,0,0], [1,1200,0,0,0,0], [Medium_Iron_Mail,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5522 = [[4,4000,0,0,0,0,0,0], [Steel_Chainmail,Charcoal,0,0,0,0,0,0], [1,1200,0,0,0,0], [Medium_Steel_Mail,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5523 = [[4,4000,0,0,0,0,0,0], [Emerald_Bronze_Chainmail,Charcoal,0,0,0,0,0,0], [1,1200,0,0,0,0], [Medium_Emerald_Bronze_Mail,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5524 = [[4,4000,0,0,0,0,0,0], [Damascus_Steel_Chainmail,Charcoal,0,0,0,0,0,0], [1,1200,0,0,0,0], [Medium_Damascus_Steel_Mail,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5530 = [[4,4000,0,0,0,0,0,0], [Bronze_Plate,Fuel,0,0,0,0,0,0], [1,800,0,0,0,0], [Medium_Bronze_Plate,0,0,0,0,0], 1, 5, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5531 = [[4,4000,0,0,0,0,0,0], [Iron_Plate,Charcoal,0,0,0,0,0,0], [1,1200,0,0,0,0], [Medium_Iron_Plate,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5532 = [[4,4000,0,0,0,0,0,0], [Steel_Plate,Charcoal,0,0,0,0,0,0], [1,1200,0,0,0,0], [Medium_Steel_Plate,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5533 = [[4,4000,0,0,0,0,0,0], [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0], [1,1200,0,0,0,0], [Medium_Emerald_Bronze_Plate,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5534 = [[4,4000,0,0,0,0,0,0], [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0], [1,1200,0,0,0,0], [Medium_Damascus_Steel_Plate,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5540 = [[4,4,8000,0,0,0,0,0], [Bronze_Chainmail,Bronze_Plate,Fuel,0,0,0,0,0], [1,1600,0,0,0,0], [Bronze_Heavy_Armor,0,0,0,0,0], 1, 5, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5541 = [[4,4,8000,0,0,0,0,0], [Iron_Chainmail,Iron_Plate,Charcoal,0,0,0,0,0], [1,2400,0,0,0,0], [Iron_Heavy_Armor,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5542 = [[4,4,8000,0,0,0,0,0], [Steel_Chainmail,Steel_Plate,Charcoal,0,0,0,0,0], [1,2400,0,0,0,0], [Steel_Heavy_Armor,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5543 = [[4,4,8000,0,0,0,0,0], [Emerald_Bronze_Chainmail,Emerald_Bronze_Plate,Charcoal,0,0,0,0,0], [1,2400,0,0,0,0], [Emerald_Bronze_Heavy_Armor,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5544 = [[4,4,8000,0,0,0,0,0], [Damascus_Steel_Chainmail,Damascus_Steel_Plate,Charcoal,0,0,0,0,0], [1,2400,0,0,0,0], [Damascus_Steel_Heavy_Armor,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5550 = [[6,6000,0,0,0,0,0,0], [Bronze_Plate,Fuel,0,0,0,0,0,0], [1,1200,0,0,0,0], [Light_Bronze_Horse_Armor,0,0,0,0,0], 1, 5, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5551 = [[6,6000,0,0,0,0,0,0], [Iron_Plate,Charcoal,0,0,0,0,0,0], [1,1800,0,0,0,0], [Light_Iron_Horse_Armor,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5552 = [[6,6000,0,0,0,0,0,0], [Steel_Plate,Charcoal,0,0,0,0,0,0], [1,1800,0,0,0,0], [Light_Steel_Horse_Armor,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5553 = [[6,6000,0,0,0,0,0,0], [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0], [1,1800,0,0,0,0], [Light_Emerald_Bronze_Horse_Armor,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5554 = [[6,6000,0,0,0,0,0,0], [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0], [1,1800,0,0,0,0], [Light_Damascus_Steel_Horse_Armor,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5560 = [[12,12000,0,0,0,0,0,0], [Bronze_Plate,Fuel,0,0,0,0,0,0], [1,2400,0,0,0,0], [Medium_Bronze_Horse_Armor,0,0,0,0,0], 1, 5, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5561 = [[12,12000,0,0,0,0,0,0], [Iron_Plate,Charcoal,0,0,0,0,0,0], [1,3600,0,0,0,0], [Medium_Iron_Horse_Armor,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5562 = [[12,12000,0,0,0,0,0,0], [Steel_Plate,Charcoal,0,0,0,0,0,0], [1,3600,0,0,0,0], [Medium_Steel_Horse_Armor,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5563 = [[12,12000,0,0,0,0,0,0], [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0], [1,3600,0,0,0,0], [Medium_Emerald_Bronze_Horse_Armor,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5564 = [[12,12000,0,0,0,0,0,0], [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0], [1,3600,0,0,0,0], [Medium_Damascus_Steel_Horse_Armor,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5570 = [[6,18,24000,0,0,0,0,0], [Bronze_Chainmail,Bronze_Plate,Fuel,0,0,0,0,0], [1,4800,0,0,0,0], [Heavy_Bronze_Horse_Armor,0,0,0,0,0], 1, 5, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5571 = [[6,18,24000,0,0,0,0,0], [Iron_Chainmail,Iron_Plate,Charcoal,0,0,0,0,0], [1,7200,0,0,0,0], [Heavy_Iron_Horse_Armor,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5572 = [[6,18,24000,0,0,0,0,0], [Steel_Chainmail,Steel_Plate,Charcoal,0,0,0,0,0], [1,7200,0,0,0,0], [Heavy_Steel_Horse_Armor,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5573 = [[6,18,24000,0,0,0,0,0], [Emerald_Bronze_Chainmail,Emerald_Bronze_Plate,Charcoal,0,0,0,0,0], [1,7200,0,0,0,0], [Heavy_Emerald_Bronze_Horse_Armor,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5574 = [[6,18,24000,0,0,0,0,0], [Damascus_Steel_Chainmail,Damascus_Steel_Plate,Charcoal,0,0,0,0,0], [1,7200,0,0,0,0], [Heavy_Damascus_Steel_Horse_Armor,0,0,0,0,0], 1, 10, [Blacksmith_T1,Blacksmith_T2,200,200]];
-let recipe5580 = [[1000,0,0,0,0,0,0,0], [Leather,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Leather_Armor,0,0,0,0,0], 5, 1, [Weaver_T1,Weaver_T2,200,200]];
-let recipe5581 = [[1000,0,0,0,0,0,0,0], [Thick_Leather,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Thick_Leather_Armor,0,0,0,0,0], 10, 1, [Weaver_T2,200,200,200]];
-let recipe5582 = [[500,0,0,0,0,0,0,0], [Fabric,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Gambeson,0,0,0,0,0], 2, 1, [Weaver_T1,Weaver_T2,200,200]];
-let recipe5800 = [[50,25000,0,0,0,0,0,0], [Bronze_Plate,Fuel,0,0,0,0,0,0], [1,5000,0,0,0,0], [Bronze_Rhino_Armor,0,0,0,0,0], 10, 100, [Blacksmith_T2,200,200,200]];
-let recipe5801 = [[50,25000,0,0,0,0,0,0], [Iron_Plate,Charcoal,0,0,0,0,0,0], [1,7500,0,0,0,0], [Iron_Rhino_Armor,0,0,0,0,0], 10, 200, [Blacksmith_T2,200,200,200]];
-let recipe5802 = [[50,25000,0,0,0,0,0,0], [Steel_Plate,Charcoal,0,0,0,0,0,0], [1,7500,0,0,0,0], [Steel_Rhino_Armor,0,0,0,0,0], 10, 200, [Blacksmith_T2,200,200,200]];
-let recipe5803 = [[50,25000,0,0,0,0,0,0], [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0], [1,7500,0,0,0,0], [Emerald_Bronze_Rhino_Armor,0,0,0,0,0], 10, 200, [Blacksmith_T2,200,200,200]];
-let recipe5804 = [[50,25000,0,0,0,0,0,0], [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0], [1,7500,0,0,0,0], [Damascus_Steel_Rhino_Armor,0,0,0,0,0], 10, 200, [Blacksmith_T2,200,200,200]];
-let recipe5810 = [[100,50,75000,0,0,0,0,0], [Bronze_Chainmail,Bronze_Plate,Fuel,0,0,0,0,0], [1,15000,0,0,0,0], [Heavy_Bronze_Rhino_Armor,0,0,0,0,0], 10, 500, [Blacksmith_T2,200,200,200]];
-let recipe5811 = [[100,50,75000,0,0,0,0,0], [Iron_Chainmail,Iron_Plate,Charcoal,0,0,0,0,0], [1,15000,0,0,0,0], [Heavy_Iron_Rhino_Armor,0,0,0,0,0], 10, 1000, [Blacksmith_T2,200,200,200]];
-let recipe5812 = [[100,50,75000,0,0,0,0,0], [Steel_Chainmail,Steel_Plate,Charcoal,0,0,0,0,0], [1,15000,0,0,0,0], [Heavy_Steel_Rhino_Armor,0,0,0,0,0], 10, 1000, [Blacksmith_T2,200,200,200]];
-let recipe5813 = [[100,50,75000,0,0,0,0,0], [Emerald_Bronze_Chainmail,Emerald_Bronze_Plate,Charcoal,0,0,0,0,0], [1,15000,0,0,0,0], [Heavy_Emerald_Bronze_Rhino_Armor,0,0,0,0,0], 10, 1000, [Blacksmith_T2,200,200,200]];
-let recipe5814 = [[100,50,75000,0,0,0,0,0], [Damascus_Steel_Chainmail,Damascus_Steel_Plate,Charcoal,0,0,0,0,0], [1,15000,0,0,0,0], [Heavy_Damascus_Steel_Rhino_Armor,0,0,0,0,0], 10, 1000, [Blacksmith_T2,200,200,200]];
-let recipe5820 = [[100,50000,0,0,0,0,0,0], [Bronze_Plate,Fuel,0,0,0,0,0,0], [1,10000,0,0,0,0], [Bronze_Elephant_Armor,0,0,0,0,0], 10, 200, [Blacksmith_T2,200,200,200]];
-let recipe5821 = [[100,50000,0,0,0,0,0,0], [Iron_Plate,Charcoal,0,0,0,0,0,0], [1,15000,0,0,0,0], [Iron_Elephant_Armor,0,0,0,0,0], 10, 400, [Blacksmith_T2,200,200,200]];
-let recipe5822 = [[100,50000,0,0,0,0,0,0], [Steel_Plate,Charcoal,0,0,0,0,0,0], [1,15000,0,0,0,0], [Steel_Elephant_Armor,0,0,0,0,0], 10, 400, [Blacksmith_T2,200,200,200]];
-let recipe5823 = [[100,50000,0,0,0,0,0,0], [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0], [1,15000,0,0,0,0], [Emerald_Bronze_Elephant_Armor,0,0,0,0,0], 10, 400, [Blacksmith_T2,200,200,200]];
-let recipe5824 = [[100,50000,0,0,0,0,0,0], [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0], [1,15000,0,0,0,0], [Damascus_Steel_Elephant_Armor,0,0,0,0,0], 10, 400, [Blacksmith_T2,200,200,200]];
-let recipe5830 = [[200,100,150000,0,0,0,0,0], [Bronze_Chainmail,Bronze_Plate,Fuel,0,0,0,0,0], [1,30000,0,0,0,0], [Heavy_Bronze_Elephant_Armor,0,0,0,0,0], 10, 1000, [Blacksmith_T2,200,200,200]];
-let recipe5831 = [[200,100,150000,0,0,0,0,0], [Iron_Chainmail,Iron_Plate,Charcoal,0,0,0,0,0], [1,30000,0,0,0,0], [Heavy_Iron_Elephant_Armor,0,0,0,0,0], 10, 2000, [Blacksmith_T2,200,200,200]];
-let recipe5832 = [[200,100,150000,0,0,0,0,0], [Steel_Chainmail,Steel_Plate,Charcoal,0,0,0,0,0], [1,30000,0,0,0,0], [Heavy_Steel_Elephant_Armor,0,0,0,0,0], 10, 2000, [Blacksmith_T2,200,200,200]];
-let recipe5833 = [[200,100,150000,0,0,0,0,0], [Emerald_Bronze_Chainmail,Emerald_Bronze_Plate,Charcoal,0,0,0,0,0], [1,30000,0,0,0,0], [Heavy_Emerald_Bronze_Elephant_Armor,0,0,0,0,0], 10, 2000, [Blacksmith_T2,200,200,200]];
-let recipe5834 = [[200,100,150000,0,0,0,0,0], [Damascus_Steel_Chainmail,Damascus_Steel_Plate,Charcoal,0,0,0,0,0], [1,30000,0,0,0,0], [Heavy_Damascus_Steel_Elephant_Armor,0,0,0,0,0], 10, 2000, [Blacksmith_T2,200,200,200]];
-let recipe5900 = [[200,0,0,0,0,0,0,0], [Refined_Wood,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Wooden_Shield,0,0,0,0,0], 1, 10, [Carpenter_T1,Carpenter_T2,200,200]];
-let recipe5901 = [[200,1,0,0,0,0,0,0], [Refined_Wood,Iron_Plate,0,0,0,0,0,0], [1,0,0,0,0,0], [Banded_Shield,0,0,0,0,0], 1, 10, [Carpenter_T1,Carpenter_T2,200,200]];
-let recipe5902 = [[200,1,750,0,0,0,0,0], [Refined_Wood,Iron_Plate,Leather,0,0,0,0,0], [1,0,0,0,0,0], [Banded_Shield,0,0,0,0,0], 1, 10, [Carpenter_T1,Carpenter_T2,200,200]];
-let recipe5903 = [[2,0,0,0,0,0,0,0], [Steel_Plate,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Metal_Shield,0,0,0,0,0], 5, 10, [Blacksmith_T2,200,200,200]];
-let recipe5904 = [[2,0,0,0,0,0,0,0], [Emerald_Bronze_Plate,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Gong_Shield,0,0,0,0,0], 5, 20, [Blacksmith_T2,200,200,200]];
-let recipe5905 = [[2,0,0,0,0,0,0,0], [Damascus_Steel_Plate,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Heirloom_Shield,0,0,0,0,0], 5, 100, [Blacksmith_T2,200,200,200]];
-let recipe5910 = [[450,0,0,0,0,0,0,0], [Refined_Wood,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Wall_Shield,0,0,0,0,0], 1, 10, [Carpenter_T1,Carpenter_T2,200,200]];
-let recipe5911 = [[400,2,1500,0,0,0,0,0], [Refined_Wood,Iron_Plate,Leather,0,0,0,0,0], [1,0,0,0,0,0], [Advanced_Wall_Shield,0,0,0,0,0], 2, 10, [Carpenter_T1,Carpenter_T2,200,200]];
-let recipe7000 = [[1,0,0,0,0,0,0,0], [Rabbit,0,0,0,0,0,0,0], [250,50,0,0,0,0], [Game_Meat,Fur,0,0,0,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7001 = [[1,0,0,0,0,0,0,0], [Deer,0,0,0,0,0,0,0], [1000,200,100,100,0,0], [Game_Meat,Fat,Leather,Antler,0,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7002 = [[1,0,0,0,0,0,0,0], [Turkey,0,0,0,0,0,0,0], [250,250,0,0,0,0], [Game_Meat,Feather,0,0,0,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7003 = [[1,0,0,0,0,0,0,0], [Mink,0,0,0,0,0,0,0], [10,10,0,0,0,0], [Exotic_Meat,Exotic_Fur,0,0,0,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7004 = [[1,0,0,0,0,0,0,0], [Cyote,0,0,0,0,0,0,0], [200,100,0,0,0,0], [Game_Meat,Fur,0,0,0,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7005 = [[1,0,0,0,0,0,0,0], [Snake,0,0,0,0,0,0,0], [10,20,0,0,0,0], [Exotic_Meat,Exotic_Leather,0,0,0,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7100 = [[1,0,0,0,0,0,0,0], [Fox,0,0,0,0,0,0,0], [100,150,0,0,0,0], [Exotic_Meat,Fur,0,0,0,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7101 = [[1,0,0,0,0,0,0,0], [Boar,0,0,0,0,0,0,0], [5,1000,100,0,0,0], [Ivory,Game_Meat,Leather,0,0,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7102 = [[1,0,0,0,0,0,0,0], [Zebra,0,0,0,0,0,0,0], [400,300,0,0,0,0], [Exotic_Meat,Leather,0,0,0,0], 1, 4, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7103 = [[1,0,0,0,0,0,0,0], [Reindeer,0,0,0,0,0,0,0], [1000,1000,600,100,0,0], [Game_Meat,Fat,Leather,Antler,0,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7104 = [[1,0,0,0,0,0,0,0], [Leopard,0,0,0,0,0,0,0], [400,1,0,0,0,0], [Exotic_Meat,Leopard_Skin,0,0,0,0], 1, 4, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7105 = [[1,0,0,0,0,0,0,0], [Crocodile,0,0,0,0,0,0,0], [200,200,0,0,0,0], [Exotic_Meat,Exotic_Leather,0,0,0,0], 1, 5, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7106 = [[1,0,0,0,0,0,0,0], [Otter,0,0,0,0,0,0,0], [100,60,0,0,0,0], [Exotic_Meat,Exotic_Fur,0,0,0,0], 1, 5, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7107 = [[1,0,0,0,0,0,0,0], [Wolf,0,0,0,0,0,0,0], [100,400,0,0,0,0], [Game_Meat,Fur,0,0,0,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7108 = [[1,0,0,0,0,0,0,0], [Seal,0,0,0,0,0,0,0], [250,750,400,0,0,0], [Game_Meat,Fat,Fur,0,0,0], 1, 2, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7200 = [[1,0,0,0,0,0,0,0], [Elk,0,0,0,0,0,0,0], [5000,500,500,0,0,0], [Game_Meat,Leather,Antler,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7201 = [[1,0,0,0,0,0,0,0], [Aurochs,0,0,0,0,0,0,0], [1250,500,1,0,0,0], [Beef,Fat,Aurochs_Hide,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7202 = [[1,0,0,0,0,0,0,0], [Black_Leopard,0,0,0,0,0,0,0], [600,1,0,0,0,0], [Exotic_Meat,Black_Leopard_Skin,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7203 = [[1,0,0,0,0,0,0,0], [Bear,0,0,0,0,0,0,0], [1000,1,0,0,0,0], [Exotic_Meat,Bear_Hide,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7204 = [[1,0,0,0,0,0,0,0], [Sea_Mink,0,0,0,0,0,0,0], [100,100,0,0,0,0], [Exotic_Meat,Exotic_Fur,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7205 = [[1,0,0,0,0,0,0,0], [Whalrus,0,0,0,0,0,0,0], [1000,800,4000,50,0,0], [Game_Meat,Leather,Fat,Ivory,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7206 = [[1,0,0,0,0,0,0,0], [Poison_Snake,0,0,0,0,0,0,0], [50,50,100,0,0,0], [Exotic_Leather,Poison,Exotic_Meat,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7300 = [[1,0,0,0,0,0,0,0], [Elephant,0,0,0,0,0,0,0], [4000,200,5000,0,0,0], [Exotic_Meat,Ivory,Thick_Leather,0,0,0], 10, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7301 = [[1,0,0,0,0,0,0,0], [Rhino,0,0,0,0,0,0,0], [4000,5000,0,0,0,0], [Exotic_Meat,Thick_Leather,0,0,0,0], 10, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7302 = [[1,0,0,0,0,0,0,0], [Polar_Bear,0,0,0,0,0,0,0], [2000,2,0,0,0,0], [Exotic_Meat,Polar_Bear_Hide,0,0,0,0], 2, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7303 = [[1,0,0,0,0,0,0,0], [Tiger,0,0,0,0,0,0,0], [2000,1,0,0,0,0], [Exotic_Meat,Tiger_Hide,0,0,0,0], 2, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7304 = [[1,0,0,0,0,0,0,0], [Titan_Snake,0,0,0,0,0,0,0], [2000,2000,0,0,0,0], [Exotic_Meat,Exotic_Leather,0,0,0,0], 2, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7400 = [[5,0,0,0,0,0,0,0], [Cow,0,0,0,0,0,0,0], [75,30,0,0,0,0], [Beef,Leather,0,0,0,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7401 = [[10,0,0,0,0,0,0,0], [Chicken,0,0,0,0,0,0,0], [150,50,0,0,0,0], [Chicken,Feather,0,0,0,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe7402 = [[10,0,0,0,0,0,0,0], [Sheep,0,0,0,0,0,0,0], [150,20,0,0,0,0], [Mutton,Fur,0,0,0,0], 1, 1, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe10001 = [[1000,0,0,0,0,0,0,0], [Polished_Sapphire,0,0,0,0,0,0,0], [1,0,0,0,0,0], [T1_Spearman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10002 = [[2,1,0,0,0,0,0,0], [T2_XP,T1_Spearman,0,0,0,0,0,0], [1,0,0,0,0,0], [T2_Spearman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10003 = [[4,1,0,0,0,0,0,0], [T3_XP,T2_Spearman,0,0,0,0,0,0], [1,0,0,0,0,0], [T3_Spearman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10004 = [[6,1,0,0,0,0,0,0], [T4_XP,T3_Spearman,0,0,0,0,0,0], [1,0,0,0,0,0], [T4_Spearman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10005 = [[8,1,0,0,0,0,0,0], [T5_XP,T4_Spearman,0,0,0,0,0,0], [1,0,0,0,0,0], [T5_Spearman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10006 = [[12,1,0,0,0,0,0,0], [T6_XP,T5_Spearman,0,0,0,0,0,0], [1,0,0,0,0,0], [T6_Spearman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10007 = [[16,1,0,0,0,0,0,0], [T7_XP,T6_Spearman,0,0,0,0,0,0], [1,0,0,0,0,0], [T7_Spearman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10008 = [[20,1,0,0,0,0,0,0], [T8_XP,T7_Spearman,0,0,0,0,0,0], [1,0,0,0,0,0], [T8_Spearman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10011 = [[1000,0,0,0,0,0,0,0], [Polished_Sapphire,0,0,0,0,0,0,0], [1,0,0,0,0,0], [T1_Swordman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10012 = [[2,1,0,0,0,0,0,0], [T2_XP,T1_Swordman,0,0,0,0,0,0], [1,0,0,0,0,0], [T2_Swordman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10013 = [[4,1,0,0,0,0,0,0], [T3_XP,T2_Swordman,0,0,0,0,0,0], [1,0,0,0,0,0], [T3_Swordman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10014 = [[6,1,0,0,0,0,0,0], [T4_XP,T3_Swordman,0,0,0,0,0,0], [1,0,0,0,0,0], [T4_Swordman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10015 = [[8,1,0,0,0,0,0,0], [T5_XP,T4_Swordman,0,0,0,0,0,0], [1,0,0,0,0,0], [T5_Swordman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10016 = [[12,1,0,0,0,0,0,0], [T6_XP,T5_Swordman,0,0,0,0,0,0], [1,0,0,0,0,0], [T6_Swordman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10017 = [[16,1,0,0,0,0,0,0], [T7_XP,T6_Swordman,0,0,0,0,0,0], [1,0,0,0,0,0], [T7_Swordman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10018 = [[20,1,0,0,0,0,0,0], [T8_XP,T7_Swordman,0,0,0,0,0,0], [1,0,0,0,0,0], [T8_Swordman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10021 = [[1000,0,0,0,0,0,0,0], [Polished_Sapphire,0,0,0,0,0,0,0], [1,0,0,0,0,0], [T1_Axeman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10204 = [[6,1,0,0,0,0,0,0], [T4_XP,T3_Archer,0,0,0,0,0,0], [1,0,0,0,0,0], [T4_Archer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10205 = [[8,1,0,0,0,0,0,0], [T5_XP,T4_Archer,0,0,0,0,0,0], [1,0,0,0,0,0], [T5_Archer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10206 = [[12,1,0,0,0,0,0,0], [T6_XP,T5_Archer,0,0,0,0,0,0], [1,0,0,0,0,0], [T6_Archer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10207 = [[16,1,0,0,0,0,0,0], [T7_XP,T6_Archer,0,0,0,0,0,0], [1,0,0,0,0,0], [T7_Archer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10208 = [[20,1,0,0,0,0,0,0], [T8_XP,T7_Archer,0,0,0,0,0,0], [1,0,0,0,0,0], [T8_Archer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10211 = [[1000,0,0,0,0,0,0,0], [Polished_Ruby,0,0,0,0,0,0,0], [1,0,0,0,0,0], [T1_Slinger,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10212 = [[2,1,0,0,0,0,0,0], [T2_XP,T1_Slinger,0,0,0,0,0,0], [1,0,0,0,0,0], [T2_Slinger,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10213 = [[4,1,0,0,0,0,0,0], [T3_XP,T2_Slinger,0,0,0,0,0,0], [1,0,0,0,0,0], [T3_Slinger,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10214 = [[6,1,0,0,0,0,0,0], [T4_XP,T3_Slinger,0,0,0,0,0,0], [1,0,0,0,0,0], [T4_Slinger,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10215 = [[8,1,0,0,0,0,0,0], [T5_XP,T4_Slinger,0,0,0,0,0,0], [1,0,0,0,0,0], [T5_Slinger,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10216 = [[12,1,0,0,0,0,0,0], [T6_XP,T5_Slinger,0,0,0,0,0,0], [1,0,0,0,0,0], [T6_Slinger,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10217 = [[16,1,0,0,0,0,0,0], [T7_XP,T6_Slinger,0,0,0,0,0,0], [1,0,0,0,0,0], [T7_Slinger,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10218 = [[20,1,0,0,0,0,0,0], [T8_XP,T7_Slinger,0,0,0,0,0,0], [1,0,0,0,0,0], [T8_Slinger,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10225 = [[10000,0,0,0,0,0,0,0], [Polished_Ruby,0,0,0,0,0,0,0], [1,0,0,0,0,0], [T5_Flamer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10226 = [[150,1,0,0,0,0,0,0], [T6_XP,T5_Flamer,0,0,0,0,0,0], [1,0,0,0,0,0], [T6_Flamer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10227 = [[300,1,0,0,0,0,0,0], [T7_XP,T6_Flamer,0,0,0,0,0,0], [1,0,0,0,0,0], [T7_Flamer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10228 = [[400,1,0,0,0,0,0,0], [T8_XP,T7_Flamer,0,0,0,0,0,0], [1,0,0,0,0,0], [T8_Flamer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10231 = [[1000,0,0,0,0,0,0,0], [Polished_Ruby,0,0,0,0,0,0,0], [1,0,0,0,0,0], [T1_Crossbowman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10232 = [[2,1,0,0,0,0,0,0], [T2_XP,T1_Crossbowman,0,0,0,0,0,0], [1,0,0,0,0,0], [T2_Crossbowman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10233 = [[4,1,0,0,0,0,0,0], [T3_XP,T2_Crossbowman,0,0,0,0,0,0], [1,0,0,0,0,0], [T3_Crossbowman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10234 = [[6,1,0,0,0,0,0,0], [T4_XP,T3_Crossbowman,0,0,0,0,0,0], [1,0,0,0,0,0], [T4_Crossbowman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10235 = [[8,1,0,0,0,0,0,0], [T5_XP,T4_Crossbowman,0,0,0,0,0,0], [1,0,0,0,0,0], [T5_Crossbowman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10236 = [[12,1,0,0,0,0,0,0], [T6_XP,T5_Crossbowman,0,0,0,0,0,0], [1,0,0,0,0,0], [T6_Crossbowman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10237 = [[16,1,0,0,0,0,0,0], [T7_XP,T6_Crossbowman,0,0,0,0,0,0], [1,0,0,0,0,0], [T7_Crossbowman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10238 = [[20,1,0,0,0,0,0,0], [T8_XP,T7_Crossbowman,0,0,0,0,0,0], [1,0,0,0,0,0], [T8_Crossbowman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10301 = [[1000,0,0,0,0,0,0,0], [Polished_Emerald,0,0,0,0,0,0,0], [1,0,0,0,0,0], [T1_Lancer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10302 = [[6,1,0,0,0,0,0,0], [T2_XP,T1_Lancer,0,0,0,0,0,0], [1,0,0,0,0,0], [T2_Lancer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10303 = [[12,1,0,0,0,0,0,0], [T3_XP,T2_Lancer,0,0,0,0,0,0], [1,0,0,0,0,0], [T3_Lancer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10304 = [[18,1,0,0,0,0,0,0], [T4_XP,T3_Lancer,0,0,0,0,0,0], [1,0,0,0,0,0], [T4_Lancer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10305 = [[24,1,0,0,0,0,0,0], [T5_XP,T4_Lancer,0,0,0,0,0,0], [1,0,0,0,0,0], [T5_Lancer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10306 = [[36,1,0,0,0,0,0,0], [T6_XP,T5_Lancer,0,0,0,0,0,0], [1,0,0,0,0,0], [T6_Lancer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10307 = [[48,1,0,0,0,0,0,0], [T7_XP,T6_Lancer,0,0,0,0,0,0], [1,0,0,0,0,0], [T7_Lancer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10308 = [[60,1,0,0,0,0,0,0], [T8_XP,T7_Lancer,0,0,0,0,0,0], [1,0,0,0,0,0], [T8_Lancer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10311 = [[1000,0,0,0,0,0,0,0], [Polished_Emerald,0,0,0,0,0,0,0], [1,0,0,0,0,0], [T1_Mounted_Swordman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10312 = [[6,1,0,0,0,0,0,0], [T2_XP,T1_Mounted_Swordman,0,0,0,0,0,0], [1,0,0,0,0,0], [T2_Mounted_Swordman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10313 = [[12,1,0,0,0,0,0,0], [T3_XP,T2_Mounted_Swordman,0,0,0,0,0,0], [1,0,0,0,0,0], [T3_Mounted_Swordman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10314 = [[18,1,0,0,0,0,0,0], [T4_XP,T3_Mounted_Swordman,0,0,0,0,0,0], [1,0,0,0,0,0], [T4_Mounted_Swordman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10315 = [[24,1,0,0,0,0,0,0], [T5_XP,T4_Mounted_Swordman,0,0,0,0,0,0], [1,0,0,0,0,0], [T5_Mounted_Swordman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10316 = [[36,1,0,0,0,0,0,0], [T6_XP,T5_Mounted_Swordman,0,0,0,0,0,0], [1,0,0,0,0,0], [T6_Mounted_Swordman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10317 = [[48,1,0,0,0,0,0,0], [T7_XP,T6_Mounted_Swordman,0,0,0,0,0,0], [1,0,0,0,0,0], [T7_Mounted_Swordman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10318 = [[60,1,0,0,0,0,0,0], [T8_XP,T7_Mounted_Swordman,0,0,0,0,0,0], [1,0,0,0,0,0], [T8_Mounted_Swordman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10321 = [[1000,0,0,0,0,0,0,0], [Polished_Emerald,0,0,0,0,0,0,0], [1,0,0,0,0,0], [T1_Mounted_Axeman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10322 = [[6,1,0,0,0,0,0,0], [T2_XP,T1_Mounted_Axeman,0,0,0,0,0,0], [1,0,0,0,0,0], [T2_Mounted_Axeman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10323 = [[12,1,0,0,0,0,0,0], [T3_XP,T2_Mounted_Axeman,0,0,0,0,0,0], [1,0,0,0,0,0], [T3_Mounted_Axeman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10324 = [[18,1,0,0,0,0,0,0], [T4_XP,T3_Mounted_Axeman,0,0,0,0,0,0], [1,0,0,0,0,0], [T4_Mounted_Axeman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10325 = [[24,1,0,0,0,0,0,0], [T5_XP,T4_Mounted_Axeman,0,0,0,0,0,0], [1,0,0,0,0,0], [T5_Mounted_Axeman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10326 = [[36,1,0,0,0,0,0,0], [T6_XP,T5_Mounted_Axeman,0,0,0,0,0,0], [1,0,0,0,0,0], [T6_Mounted_Axeman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10327 = [[48,1,0,0,0,0,0,0], [T7_XP,T6_Mounted_Axeman,0,0,0,0,0,0], [1,0,0,0,0,0], [T7_Mounted_Axeman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10328 = [[60,1,0,0,0,0,0,0], [T8_XP,T7_Mounted_Axeman,0,0,0,0,0,0], [1,0,0,0,0,0], [T8_Mounted_Axeman,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10505 = [[10000,0,0,0,0,0,0,0], [Polished_Emerald,0,0,0,0,0,0,0], [1,0,0,0,0,0], [T5_Elephant,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10506 = [[150,1,0,0,0,0,0,0], [T6_XP,T5_Elephant,0,0,0,0,0,0], [1,0,0,0,0,0], [T6_Elephant,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10507 = [[300,1,0,0,0,0,0,0], [T7_XP,T6_Elephant,0,0,0,0,0,0], [1,0,0,0,0,0], [T7_Elephant,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10508 = [[400,1,0,0,0,0,0,0], [T8_XP,T7_Elephant,0,0,0,0,0,0], [1,0,0,0,0,0], [T8_Elephant,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10601 = [[1000,0,0,0,0,0,0,0], [Polished_Emerald,0,0,0,0,0,0,0], [1,0,0,0,0,0], [T1_Mounted_Archer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10602 = [[6,1,0,0,0,0,0,0], [T2_XP,T1_Mounted_Archer,0,0,0,0,0,0], [1,0,0,0,0,0], [T2_Mounted_Archer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10603 = [[12,1,0,0,0,0,0,0], [T3_XP,T2_Mounted_Archer,0,0,0,0,0,0], [1,0,0,0,0,0], [T3_Mounted_Archer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10604 = [[18,1,0,0,0,0,0,0], [T4_XP,T3_Mounted_Archer,0,0,0,0,0,0], [1,0,0,0,0,0], [T4_Mounted_Archer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10605 = [[24,1,0,0,0,0,0,0], [T5_XP,T4_Mounted_Archer,0,0,0,0,0,0], [1,0,0,0,0,0], [T5_Mounted_Archer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10606 = [[36,1,0,0,0,0,0,0], [T6_XP,T5_Mounted_Archer,0,0,0,0,0,0], [1,0,0,0,0,0], [T6_Mounted_Archer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10607 = [[48,1,0,0,0,0,0,0], [T7_XP,T6_Mounted_Archer,0,0,0,0,0,0], [1,0,0,0,0,0], [T7_Mounted_Archer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe10608 = [[60,1,0,0,0,0,0,0], [T8_XP,T7_Mounted_Archer,0,0,0,0,0,0], [1,0,0,0,0,0], [T8_Mounted_Archer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe66000 = [[1,0,0,0,0,0,0,0], [Basic_Tool,0,0,0,0,0,0,0], [250,250,250,0,0,0], [Oyster,Crab,Fish_Meat,0,0,0], 1, 10, [25,200,200,200]];
-let recipe66001 = [[1,0,0,0,0,0,0,0], [Fishing_Boat,0,0,0,0,0,0,0], [2500,1,0,0,0,0], [Fish_Meat,Battered_Fishing_Boat,0,0,0,0], 1, 10, [25,200,200,200]];
-let recipe66002 = [[1,2,0,0,0,0,0,0], [Fishing_Boat,Basic_Tool,0,0,0,0,0,0], [1500,1,0,0,0,0], [Crab,Battered_Fishing_Boat,0,0,0,0], 1, 10, [25,200,200,200]];
-let recipe71207 = [[1000,50,200,0,0,0,0,0], [Pastry_Dough,Barm,Fuel,0,0,0,0,0], [100,40,0,0,0,0], [Pastry,Ash,0,0,0,0], 1, 5, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe71210 = [[5000,50,1000,200,0,0,0,0], [Any_Flour,Barm,Cheese,Fuel,0,0,0,0], [250,40,0,0,0,0], [Cheese_Bread,Ash,0,0,0,0], 1, 5, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe71211 = [[5000,50,200,200,0,0,0,0], [Any_Flour,Barm,Dried_Fruit,Fuel,0,0,0,0], [250,40,0,0,0,0], [Fruit_Bread,Ash,0,0,0,0], 1, 5, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe74013 = [[1,0,0,0,0,0,0,0], [Leopard_Skin,0,0,0,0,0,0,0], [300,0,0,0,0,0], [Fur,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe74014 = [[1,0,0,0,0,0,0,0], [Aurochs_Hide,0,0,0,0,0,0,0], [2000,0,0,0,0,0], [Leather,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe74015 = [[1,0,0,0,0,0,0,0], [Black_Leopard_Skin,0,0,0,0,0,0,0], [300,0,0,0,0,0], [Fur,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe74016 = [[1,0,0,0,0,0,0,0], [Bear_Hide,0,0,0,0,0,0,0], [300,0,0,0,0,0], [Exotic_Fur,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe74017 = [[1,0,0,0,0,0,0,0], [Polar_Bear_Hide,0,0,0,0,0,0,0], [500,0,0,0,0,0], [Exotic_Fur,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe74018 = [[1,0,0,0,0,0,0,0], [Tiger_Hide,0,0,0,0,0,0,0], [500,0,0,0,0,0], [Exotic_Fur,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe74030 = [[5,0,0,0,0,0,0,0], [Ash,0,0,0,0,0,0,0], [1,0,0,0,0,0], [Level_1_Fertilizer,0,0,0,0,0], 0, 0, [200,200,200,200]];
-let recipe77400 = [[1,0,0,0,0,0,0,0], [Cow,0,0,0,0,0,0,0], [15,6,10,30,10,2], [Beef,Leather,Organ_Meat,Bone,Fat,Tender_Meat], 1, 1, [Cookery_T3,Cookery_T4,200,200]];
-let recipe77401 = [[2,0,0,0,0,0,0,0], [Chicken,0,0,0,0,0,0,0], [30,10,10,3,20,10], [Chicken,Feather,Organ_Meat,Leather,Bone,Fat], 1, 1, [Cookery_T3,Cookery_T4,200,200]];
-let recipe77402 = [[2,0,0,0,0,0,0,0], [Sheep,0,0,0,0,0,0,0], [30,4,20,30,2,5], [Mutton,Fur,Organ_Meat,Bone,Tender_Meat,Fat], 1, 1, [Cookery_T3,Cookery_T4,200,200]];
-let recipe301200 = [[2500,6250,500,0,0,0,0,0], [Any_Flour,Potato,Fuel,0,0,0,0,0], [3000,100,0,0,0,0], [Basic_Bread,Ash,0,0,0,0], 1, 10, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe302103 = [[9000,0,0,0,0,0,0,0], [Wood,0,0,0,0,0,0,0], [9000,20,0,0,0,0], [Charcoal,Tar,0,0,0,0], 1, 10, [Smeltery_T1,Smeltery_T2,Smeltery_T3,200]];
-let recipe302151 = [[5000,500,0,0,0,0,0,0], [Clay,Fuel,0,0,0,0,0,0], [1000,100,0,0,0,0], [Durable_Basic_Building_Materials,0,0,0,0,0], 1, 10, [Smeltery_T1,Smeltery_T2,Smeltery_T3,200]];
-let recipe302153 = [[2500,500,0,0,0,0,0,0], [Clay,Charcoal,0,0,0,0,0,0], [250,150,0,0,0,0], [Durable_Advanced_Building_Materials,0,0,0,0,0], 1, 10, [Smeltery_T3,200,200,200]];
-let recipe304520 = [[1000,0,0,0,0,0,0,0], [Clay,0,0,0,0,0,0,0], [2,0,0,0,0,0], [Basic_Furniture,0,0,0,0,0], 1, 10, [Smeltery_T1,Smeltery_T2,Smeltery_T3,200]];
-let recipe304521 = [[2000,100,0,0,0,0,0,0], [Clay,Tin,0,0,0,0,0,0], [3,0,0,0,0,0], [Ornate_Furniture,0,0,0,0,0], 1, 10, [Smeltery_T2,Smeltery_T3,200,200]];
-let recipe304522 = [[2500,2000,0,0,0,0,0,0], [Clay,Any_Bone,0,0,0,0,0,0], [1,0,0,0,0,0], [Oppulant_Furniture,0,0,0,0,0], 1, 10, [Smeltery_T3,200,200,200]];
-let recipe304560 = [[1000,1000,0,0,0,0,0,0], [Clay_Beads,Copper,0,0,0,0,0,0], [29,0,0,0,0,0], [Basic_Jewelery,0,0,0,0,0], 1, 10, [Jeweler_T1,Jeweler_T2,200,200]];
-let recipe311200 = [[2500,6250,50,500,0,0,0,0], [Any_Flour,Potato,Barm,Fuel,0,0,0,0], [3000,100,0,0,0,0], [Basic_Bread,Ash,0,0,0,0], 1, 5, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe312103 = [[8000,0,0,0,0,0,0,0], [Wood,0,0,0,0,0,0,0], [10000,20,0,0,0,0], [Charcoal,Tar,0,0,0,0], 1, 10, [Smeltery_T2,Smeltery_T3,200,200]];
-let recipe322103 = [[7000,0,0,0,0,0,0,0], [Wood,0,0,0,0,0,0,0], [12000,40,0,0,0,0], [Charcoal,Tar,0,0,0,0], 1, 10, [Smeltery_T3,200,200,200]];
-let recipe332103 = [[7000,0,0,0,0,0,0,0], [Wood,0,0,0,0,0,0,0], [12000,20,40,0,0,0], [Charcoal,Antiseptic,0,0,0,0], 1, 20, [Smeltery_T3,200,200,200]];
-let recipe701200 = [[5000,50,500,0,0,0,0,0], [Any_Flour,Barm,Fuel,0,0,0,0,0], [3000,100,0,0,0,0], [Basic_Bread,Ash,0,0,0,0], 1, 5, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe701201 = [[5000,50,500,0,0,0,0,0], [Wheat_Flour,Barm,Fuel,0,0,0,0,0], [3000,100,0,0,0,0], [Wheat_Bread,Ash,0,0,0,0], 1, 5, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe701202 = [[5000,50,500,0,0,0,0,0], [Rye_Flour,Barm,Fuel,0,0,0,0,0], [3000,100,0,0,0,0], [Rye_Bread,Ash,0,0,0,0], 1, 5, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
-let recipe701203 = [[5000,50,500,0,0,0,0,0], [Corn_Flour,Barm,Fuel,0,0,0,0,0], [3000,100,0,0,0,0], [Corn_Bread,Ash,0,0,0,0], 1, 5, [Cookery_T1,Cookery_T2,Cookery_T3,Cookery_T4]];
- var soldierID = [10001,10002,10003,10004,10005,10006,10007,10008,10011,10012,10013,10014,10015,10016,10017,10018,10021,10022,10023,10024,10025,10026,10027,10028,10201,10202,10203,10204,10205,10206,10207,10208,10211,10212,10213,10214,10215,10216,10217,10218,10225,10226,10227,10228,10231,10232,10233,10234,10235,10236,10237,10238,10301,10302,10303,10304,10305,10306,10307,10308,10311,10312,10313,10314,10315,10316,10317,10318,10321,10322,10323,10324,10325,10326,10327,10328,10505,10506,10507,10508,10515,10516,10517,10518,10525,10526,10527,10528,10601,10602,10603,10604,10605,10606,10607,10608,11000,11010,11011,11020,11021,11030,11031,11040,11041,11042,11050,11060,11070,11200,11210,11211,11220,11230,11231,11241,11300,11301,11310,11311,11501,11502,11520,11521,11600,11601,11602];
-var weaponID = [5000,5001,5002,5003,5004,5010,5011,5012,5013,5014,5020,5021,5022,5023,5024,5025,5030,5031,5032,5033,5034,5040,5041,5042,5043,5044,5050,5051,5052,5053,5054,5060,5061,5062,5063,5064,5070,5071,5072,5073,5074,5080,5081,5082,5083,5084,5090,5091,5092,5093,5094,5200,5201,5202,5210,5211,5212,5213,5214,5220,5221,5400,5401,5402,5403,5404,5420,5421,5430,5431,5500,5501,5502,5503,5504,5510,5511,5512,5513,5514,5520,5521,5522,5523,5524,5530,5531,5532,5533,5534,5540,5541,5542,5543,5544,5550,5551,5552,5553,5554,5560,5561,5562,5563,5564,5570,5571,5572,5573,5574,5580,5581,5582,5800,5801,5802,5803,5804,5810,5811,5812,5813,5814,5820,5821,5822,5823,5824,5830,5831,5832,5833,5834,5900,5901,5902,5903,5904,5905,5910];
-let weapon5000 = [Spear,false,10,10,0,0,50,0,10,2];
-let weapon5001 = [Spear,false,13,10,0,0,75,0,10,2];
-let weapon5002 = [Spear,false,15,10,0,0,85,0,10,2];
-let weapon5003 = [Spear,false,18,10,0,0,100,0,10,2];
-let weapon5004 = [Spear,false,23,10,0,0,125,0,10,2];
-let weapon5010 = [Axe,false,20,8,0,0,10,0,10,2];
-let weapon5011 = [Axe,false,22,8,0,0,30,0,10,2];
-let weapon5012 = [Axe,false,22,8,0,0,50,0,10,2];
-let weapon5013 = [Axe,false,25,8,0,0,50,0,10,2];
-let weapon5014 = [Axe,false,30,8,0,0,80,0,10,2];
-let weapon5020 = [Sword,false,10,12,0,0,30,0,10,2];
-let weapon5021 = [Sword,false,12,13,0,0,50,0,10,2];
-let weapon5022 = [Sword,false,14,14,0,0,50,0,10,2];
-let weapon5023 = [Sword,false,16,15,0,0,75,0,10,2];
-let weapon5024 = [Sword,false,20,18,0,0,125,0,10,2];
-let weapon5025 = [Sword,false,20,18,0,0,250,0,10,2];
-let weapon5030 = [Mace,false,7,10,0,0,100,0,10,2];
-let weapon5031 = [Mace,false,9,10,0,0,125,0,10,2];
-let weapon5032 = [Mace,false,10,10,0,0,150,0,10,2];
-let weapon5033 = [Mace,false,12,10,0,0,175,0,10,2];
-let weapon5034 = [Mace,false,13,10,0,0,250,0,10,2];
-let weapon5040 = [Lance,false,20,10,-5,0,75,0,20,2];
-let weapon5041 = [Lance,false,22,10,-5,0,100,0,20,2];
-let weapon5042 = [Lance,false,23,10,-5,0,130,0,20,2];
-let weapon5043 = [Lance,false,26,10,-5,0,150,0,20,2];
-let weapon5044 = [Lance,false,30,10,-5,0,200,0,20,2];
-let weapon5050 = [Poleaxe,false,20,10,-5,0,50,0,20,2];
-let weapon5051 = [Poleaxe,false,22,10,-5,0,75,0,20,2];
-let weapon5052 = [Poleaxe,false,23,10,-5,0,100,0,20,2];
-let weapon5053 = [Poleaxe,false,27,10,-5,0,100,0,20,2];
-let weapon5054 = [Poleaxe,false,33,10,-5,0,175,0,20,2];
-let weapon5060 = [Greatsword,false,15,12,-5,0,30,0,20,2];
-let weapon5061 = [Greatsword,false,17,13,-5,0,50,0,20,2];
-let weapon5062 = [Greatsword,false,22,13,-5,0,50,0,20,2];
-let weapon5063 = [Greatsword,false,22,15,-5,0,75,0,20,2];
-let weapon5064 = [Greatsword,false,25,17,-5,0,125,0,20,2];
-let weapon5070 = [Warhammer,false,10,10,-5,0,150,0,20,2];
-let weapon5071 = [Warhammer,false,12,10,-5,0,200,0,20,2];
-let weapon5072 = [Warhammer,false,13,10,-5,0,225,0,20,2];
-let weapon5073 = [Warhammer,false,15,10,-5,0,250,0,20,2];
-let weapon5074 = [Warhammer,false,17,10,-5,0,300,0,20,2];
-let weapon5080 = [Elephant_Weapon,false,13,10,-5,20,75,0,100,2];
-let weapon5081 = [Elephant_Weapon,false,14,10,-5,30,150,0,100,2];
-let weapon5082 = [Elephant_Weapon,false,16,10,-5,50,250,0,100,2];
-let weapon5083 = [Elephant_Weapon,false,18,10,-5,75,300,0,100,2];
-let weapon5084 = [Elephant_Weapon,false,25,12,-5,150,450,0,100,2];
-let weapon5090 = [Rhino_Weapon,false,11,10,-5,20,25,0,50,2];
-let weapon5091 = [Rhino_Weapon,false,12,10,-5,20,50,0,50,2];
-let weapon5092 = [Rhino_Weapon,false,13,10,-5,20,100,0,50,2];
-let weapon5093 = [Rhino_Weapon,false,15,10,-5,20,150,0,50,2];
-let weapon5094 = [Rhino_Weapon,false,18,12,-5,100,250,0,50,2];
-let weapon5200 = [Bow,true,0,10,0,0,20,3,0,2];
-let weapon5201 = [Bow,true,-4,10,0,0,50,5,5,2];
-let weapon5202 = [Bow,true,-8,10,0,0,100,7,10,2];
-let weapon5210 = [Bow,true,-5,10,0,0,60,4,10,2];
-let weapon5211 = [Sling,true,0,10,0,0,20,6,0,2];
-let weapon5212 = [Flamer,false,12,10,0,0,1000,2,50,2];
-let weapon5213 = [Flamer,false,10,10,0,0,500,1,20,2];
-let weapon5214 = [Sling,true,0,10,0,0,120,6,0,2];
-let weapon5220 = [Elephant_Weapon,false,10,10,-20,0,100,7,300,2];
-let weapon5221 = [Elephant_Weapon,true,-20,10,-30,0,1000,10,500,2];
-let weapon5400 = [Army_Horse,false,9,10,-20,0,0,0,150,2];
-let weapon5401 = [Army_Horse,false,10,10,0,0,0,0,150,2];
-let weapon5402 = [Army_Horse,false,10,10,30,0,0,0,150,2];
-let weapon5403 = [Army_Horse,false,12,10,0,0,0,0,150,2];
-let weapon5404 = [Army_Horse,false,10,11,-10,0,0,0,125,1];
-let weapon5420 = [Army_Elephant,false,10,10,0,0,0,0,1000,3];
-let weapon5421 = [Army_Elephant,false,10,12,0,0,0,0,1000,1];
-let weapon5430 = [Army_Elephant,false,10,10,0,0,0,0,500,3];
-let weapon5431 = [Army_Elephant,false,10,12,0,0,0,0,500,1];
-let weapon5500 = [Human_Armor,false,10,10,-5,30,0,0,25,2];
-let weapon5501 = [Human_Armor,false,10,10,-5,45,0,0,25,2];
-let weapon5502 = [Human_Armor,false,10,10,-5,60,0,0,25,2];
-let weapon5503 = [Human_Armor,false,10,10,-5,75,0,0,25,2];
-let weapon5504 = [Human_Armor,false,10,10,-5,125,0,0,25,2];
-let weapon5510 = [Human_Armor,false,10,10,-10,60,0,0,25,2];
-let weapon5511 = [Human_Armor,false,10,10,-10,75,0,0,25,2];
-let weapon5512 = [Human_Armor,false,10,10,-10,85,0,0,25,2];
-let weapon5513 = [Human_Armor,false,10,10,-10,100,0,0,25,2];
-let weapon5514 = [Human_Armor,false,10,10,-10,175,0,0,25,2];
-let weapon5520 = [Human_Armor,false,9,11,-10,60,0,0,50,2];
-let weapon5521 = [Human_Armor,false,9,11,-10,80,0,0,50,2];
-let weapon5522 = [Human_Armor,false,9,11,-10,95,0,0,50,2];
-let weapon5523 = [Human_Armor,false,9,11,-10,120,0,0,50,2];
-let weapon5524 = [Human_Armor,false,10,11,-10,200,0,0,50,2];
-let weapon5530 = [Human_Armor,false,9,11,-15,75,0,0,50,2];
-let weapon5531 = [Human_Armor,false,9,11,-15,105,0,0,50,2];
-let weapon5532 = [Human_Armor,false,9,11,-15,115,0,0,50,2];
-let weapon5533 = [Human_Armor,false,9,11,-15,150,0,0,50,2];
-let weapon5534 = [Human_Armor,false,10,11,-15,225,0,0,50,2];
-let weapon5540 = [Human_Armor,false,8,12,-25,110,0,0,100,2];
-let weapon5541 = [Human_Armor,false,8,12,-25,155,0,0,100,2];
-let weapon5542 = [Human_Armor,false,8,12,-25,180,0,0,100,2];
-let weapon5543 = [Human_Armor,false,8,12,-25,220,0,0,100,2];
-let weapon5544 = [Human_Armor,false,10,12,-25,275,0,0,100,2];
-let weapon5550 = [Horse_Armor,false,10,12,-10,50,0,0,50,2];
-let weapon5551 = [Horse_Armor,false,10,12,-10,85,0,0,50,2];
-let weapon5552 = [Horse_Armor,false,10,12,-10,100,0,0,50,2];
-let weapon5553 = [Horse_Armor,false,10,12,-10,125,0,0,50,2];
-let weapon5554 = [Horse_Armor,false,10,12,-10,175,0,0,50,2];
-let weapon5560 = [Horse_Armor,false,9,10,-30,85,0,0,150,2];
-let weapon5561 = [Horse_Armor,false,9,10,-30,125,0,0,150,2];
-let weapon5562 = [Horse_Armor,false,9,10,-30,145,0,0,150,2];
-let weapon5563 = [Horse_Armor,false,9,10,-30,175,0,0,150,2];
-let weapon5564 = [Horse_Armor,false,10,10,-30,225,0,0,150,2];
-let weapon5570 = [Horse_Armor,false,8,10,-50,110,0,0,400,2];
-let weapon5571 = [Horse_Armor,false,8,10,-50,155,0,0,400,2];
-let weapon5572 = [Horse_Armor,false,8,10,-50,180,0,0,400,2];
-let weapon5573 = [Horse_Armor,false,8,10,-50,220,0,0,400,2];
-let weapon5574 = [Horse_Armor,false,10,10,-50,300,0,0,400,2];
-let weapon5580 = [Human_Armor,false,10,10,-8,50,0,0,15,2];
-let weapon5581 = [Human_Armor,false,10,10,-12,80,0,0,40,2];
-let weapon5582 = [Human_Armor,false,10,10,-20,60,0,0,20,2];
-let weapon5800 = [Rhino_Armor,false,10,12,-15,75,0,0,250,2];
-let weapon5801 = [Rhino_Armor,false,10,13,-15,125,0,0,250,2];
-let weapon5802 = [Rhino_Armor,false,10,14,-15,145,0,0,250,2];
-let weapon5803 = [Rhino_Armor,false,10,16,-15,175,0,0,250,2];
-let weapon5804 = [Rhino_Armor,false,10,20,-15,225,0,0,250,2];
-let weapon5810 = [Rhino_Armor,false,8,15,-40,100,0,0,500,2];
-let weapon5811 = [Rhino_Armor,false,8,16,-40,150,0,0,500,2];
-let weapon5812 = [Rhino_Armor,false,8,18,-40,200,0,0,500,2];
-let weapon5813 = [Rhino_Armor,false,8,20,-40,250,0,0,500,2];
-let weapon5814 = [Rhino_Armor,false,10,25,-40,350,0,0,500,2];
-let weapon5820 = [Elephant_Armor,false,10,12,-10,75,0,0,500,2];
-let weapon5821 = [Elephant_Armor,false,10,13,-10,125,0,0,500,2];
-let weapon5822 = [Elephant_Armor,false,10,14,-10,145,0,0,500,2];
-let weapon5823 = [Elephant_Armor,false,10,16,-10,175,0,0,500,2];
-let weapon5824 = [Elephant_Armor,false,10,20,-10,225,0,0,500,2];
-let weapon5830 = [Elephant_Armor,false,8,15,-30,100,0,0,1000,2];
-let weapon5831 = [Elephant_Armor,false,8,16,-30,150,0,0,1000,2];
-let weapon5832 = [Elephant_Armor,false,8,18,-30,200,0,0,1000,2];
-let weapon5833 = [Elephant_Armor,false,8,20,-30,250,0,0,1000,2];
-let weapon5834 = [Elephant_Armor,false,10,25,-30,350,0,0,1000,2];
-let weapon5900 = [Shield,false,5,13,-10,35,0,0,20,2];
-let weapon5901 = [Shield,false,5,15,-10,50,0,0,25,2];
-let weapon5902 = [Shield,false,5,16,-10,60,0,0,25,2];
-let weapon5903 = [Shield,false,6,15,-6,50,0,0,30,2];
-let weapon5904 = [Shield,false,7,18,-5,75,0,0,30,2];
-let weapon5905 = [Shield,false,7,20,-5,125,0,0,30,2];
-let weapon5910 = [Shield,false,3,25,-20,90,0,0,40,2];
-let soldier10001 = [[10, 50, 0, 30, 0, 0, 3000, 50, false, [0, 0] ,2], [Spears, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10002 = [[12, 60, 0, 32, 0, 0, 3500, 50, false, [0, 0] ,2], [Spears, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10003 = [[15, 75, 0, 34, 0, 0, 4000, 50, false, [0, 0] ,2], [Spears, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10004 = [[20, 100, 0, 36, 0, 0, 4500, 50, false, [0, 0] ,2], [Spears, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10005 = [[25, 150, 0, 37, 0, 0, 5000, 50, false, [0, 0] ,2], [Spears, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10006 = [[30, 200, 0, 38, 0, 0, 5500, 50, false, [0, 0] ,2], [Spears, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10007 = [[40, 250, 0, 39, 0, 0, 6000, 50, false, [0, 0] ,2], [Spears, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10008 = [[50, 350, 0, 40, 0, 0, 7000, 50, false, [0, 0] ,2], [Spears, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10011 = [[10, 50, 0, 30, 0, 0, 3000, 50, false, [0, 0] ,2], [Swords, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10012 = [[12, 60, 0, 32, 0, 0, 3500, 50, false, [0, 0] ,2], [Swords, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10013 = [[15, 75, 0, 34, 0, 0, 4000, 50, false, [0, 0] ,2], [Swords, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10014 = [[20, 100, 0, 36, 0, 0, 4500, 50, false, [0, 0] ,2], [Swords, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10015 = [[25, 150, 0, 37, 0, 0, 5000, 50, false, [0, 0] ,2], [Swords, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10016 = [[30, 200, 0, 38, 0, 0, 5500, 50, false, [0, 0] ,2], [Swords, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10017 = [[40, 250, 0, 39, 0, 0, 6000, 50, false, [0, 0] ,2], [Swords, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10018 = [[50, 350, 0, 40, 0, 0, 7000, 50, false, [0, 0] ,2], [Swords, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10021 = [[10, 50, 0, 30, 0, 0, 3000, 50, false, [0, 0] ,2], [Axes, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10022 = [[12, 60, 0, 32, 0, 0, 3500, 50, false, [0, 0] ,2], [Axes, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10023 = [[15, 75, 0, 34, 0, 0, 4000, 50, false, [0, 0] ,2], [Axes, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10024 = [[20, 100, 0, 36, 0, 0, 4500, 50, false, [0, 0] ,2], [Axes, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10025 = [[25, 150, 0, 37, 0, 0, 5000, 50, false, [0, 0] ,2], [Axes, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10026 = [[30, 200, 0, 38, 0, 0, 5500, 50, false, [0, 0] ,2], [Axes, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10027 = [[40, 250, 0, 39, 0, 0, 6000, 50, false, [0, 0] ,2], [Axes, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10028 = [[50, 350, 0, 40, 0, 0, 7000, 50, false, [0, 0] ,2], [Axes, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10201 = [[8, 25, 0, 30, 0, 0, 3000, 50, false, [0, 0] ,2], [Bows, None, Human_Armors, None], [true, false, false, false]]
-let soldier10202 = [[10, 30, 0, 32, 0, 0, 3500, 50, false, [0, 0] ,2], [Bows, None, Human_Armors, None], [true, false, false, false]]
-let soldier10203 = [[12, 40, 0, 34, 0, 0, 4000, 50, false, [0, 0] ,2], [Bows, None, Human_Armors, None], [true, false, false, false]]
-let soldier10204 = [[15, 55, 0, 36, 0, 0, 4500, 50, false, [0, 0] ,2], [Bows, None, Human_Armors, None], [true, false, false, false]]
-let soldier10205 = [[20, 75, 0, 37, 0, 0, 5000, 50, false, [0, 0] ,2], [Bows, None, Human_Armors, None], [true, false, false, false]]
-let soldier10206 = [[24, 100, 0, 38, 0, 0, 5500, 50, false, [0, 0] ,2], [Bows, None, Human_Armors, None], [true, false, false, false]]
-let soldier10207 = [[30, 120, 0, 39, 0, 0, 6000, 50, false, [0, 0] ,2], [Bows, None, Human_Armors, None], [true, false, false, false]]
-let soldier10208 = [[35, 150, 0, 40, 0, 0, 7000, 50, false, [0, 0] ,2], [Bows, None, Human_Armors, None], [true, false, false, false]]
-let soldier10211 = [[6, 25, 0, 30, 0, 0, 3000, 50, false, [0, 0] ,2], [Slings, None, Human_Armors, None], [true, false, false, false]]
-let soldier10212 = [[8, 30, 0, 32, 0, 0, 3500, 50, false, [0, 0] ,2], [Slings, None, Human_Armors, None], [true, false, false, false]]
-let soldier10213 = [[10, 40, 0, 34, 0, 0, 4000, 50, false, [0, 0] ,2], [Slings, None, Human_Armors, None], [true, false, false, false]]
-let soldier10214 = [[12, 55, 0, 36, 0, 0, 4500, 50, false, [0, 0] ,2], [Slings, None, Human_Armors, None], [true, false, false, false]]
-let soldier10215 = [[15, 75, 0, 37, 0, 0, 5000, 50, false, [0, 0] ,2], [Slings, None, Human_Armors, None], [true, false, false, false]]
-let soldier10216 = [[18, 100, 0, 38, 0, 0, 5500, 50, false, [0, 0] ,2], [Slings, None, Human_Armors, None], [true, false, false, false]]
-let soldier10217 = [[20, 120, 0, 39, 0, 0, 6000, 50, false, [0, 0] ,2], [Slings, None, Human_Armors, None], [true, false, false, false]]
-let soldier10218 = [[25, 150, 0, 40, 0, 0, 7000, 50, false, [0, 0] ,2], [Slings, None, Human_Armors, None], [true, false, false, false]]
-let soldier10225 = [[15, 15, 0, 37, 0, 0, 5000, 50, false, [Rushseed_Oil, 10] ,2], [Flamers, None, Human_Armors, None], [true, false, false, false]]
-let soldier10226 = [[20, 20, 0, 38, 0, 0, 5500, 50, false, [Rushseed_Oil, 10] ,2], [Flamers, None, Human_Armors, None], [true, false, false, false]]
-let soldier10227 = [[25, 25, 0, 39, 0, 0, 6000, 50, false, [Rushseed_Oil, 10] ,2], [Flamers, None, Human_Armors, None], [true, false, false, false]]
-let soldier10228 = [[30, 30, 0, 40, 0, 0, 7000, 50, false, [Rushseed_Oil, 10] ,2], [Flamers, None, Human_Armors, None], [true, false, false, false]]
-let soldier10231 = [[10, 25, 0, 30, 0, 0, 3000, 50, false, [0, 0] ,2], [Crossbows, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10232 = [[12, 30, 0, 32, 0, 0, 3500, 50, false, [0, 0] ,2], [Crossbows, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10233 = [[15, 40, 0, 34, 0, 0, 4000, 50, false, [0, 0] ,2], [Crossbows, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10234 = [[18, 55, 0, 36, 0, 0, 4500, 50, false, [0, 0] ,2], [Crossbows, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10235 = [[20, 75, 0, 37, 0, 0, 5000, 50, false, [0, 0] ,2], [Crossbows, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10236 = [[22, 100, 0, 38, 0, 0, 5500, 50, false, [0, 0] ,2], [Crossbows, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10237 = [[25, 120, 0, 39, 0, 0, 6000, 50, false, [0, 0] ,2], [Crossbows, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10238 = [[25, 150, 0, 40, 0, 0, 7000, 50, false, [0, 0] ,2], [Crossbows, Shields, Human_Armors, None], [true, false, false, false]]
-let soldier10301 = [[20, 100, 0, 120, 0, 0, 3000, 50, false, [Fodder_Bread, 100] ,2], [Spears, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10302 = [[25, 150, 0, 120, 0, 0, 3500, 50, false, [Fodder_Bread, 100] ,2], [Spears, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10303 = [[30, 200, 0, 120, 0, 0, 4000, 50, false, [Fodder_Bread, 100] ,2], [Spears, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10304 = [[40, 250, 0, 120, 0, 0, 4500, 50, false, [Fodder_Bread, 100] ,2], [Spears, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10305 = [[50, 350, 0, 120, 0, 0, 5000, 50, false, [Fodder_Bread, 100] ,2], [Spears, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10306 = [[60, 500, 0, 120, 0, 0, 5500, 50, false, [Fodder_Bread, 100] ,2], [Spears, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10307 = [[80, 700, 0, 120, 0, 0, 6000, 50, false, [Fodder_Bread, 100] ,2], [Spears, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10308 = [[100, 1000, 0, 120, 0, 0, 7000, 50, false, [Fodder_Bread, 100] ,2], [Spears, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10311 = [[20, 100, 0, 120, 0, 0, 3000, 50, false, [Fodder_Bread, 100] ,2], [Swords, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10312 = [[25, 150, 0, 120, 0, 0, 3500, 50, false, [Fodder_Bread, 100] ,2], [Swords, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10313 = [[30, 200, 0, 120, 0, 0, 4000, 50, false, [Fodder_Bread, 100] ,2], [Swords, None, Horse_Armor, Horse], [true, false, false, true]]
-let soldier10314 = [[40, 250, 0, 120, 0, 0, 4500, 50, false, [Fodder_Bread, 100] ,2], [Swords, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10315 = [[50, 350, 0, 120, 0, 0, 5000, 50, false, [Fodder_Bread, 100] ,2], [Swords, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10316 = [[60, 500, 0, 120, 0, 0, 5500, 50, false, [Fodder_Bread, 100] ,2], [Swords, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10317 = [[80, 700, 0, 120, 0, 0, 6000, 50, false, [Fodder_Bread, 100] ,2], [Swords, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10318 = [[100, 1000, 0, 120, 0, 0, 7000, 50, false, [Fodder_Bread, 100] ,2], [Swords, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10321 = [[20, 100, 0, 120, 0, 0, 3000, 50, false, [Fodder_Bread, 100] ,2], [Axes, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10322 = [[25, 150, 0, 120, 0, 0, 3500, 50, false, [Fodder_Bread, 100] ,2], [Axes, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10323 = [[30, 200, 0, 120, 0, 0, 4000, 50, false, [Fodder_Bread, 100] ,2], [Axes, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10324 = [[40, 250, 0, 120, 0, 0, 4500, 50, false, [Fodder_Bread, 100] ,2], [Axes, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10325 = [[50, 350, 0, 120, 0, 0, 5000, 50, false, [Fodder_Bread, 100] ,2], [Axes, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10326 = [[60, 500, 0, 120, 0, 0, 5500, 50, false, [Fodder_Bread, 100] ,2], [Axes, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10327 = [[80, 700, 0, 120, 0, 0, 6000, 50, false, [Fodder_Bread, 100] ,2], [Axes, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10328 = [[100, 1000, 0, 120, 0, 0, 7000, 50, false, [Fodder_Bread, 100] ,2], [Axes, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10505 = [[100, 2000, 150, 50, 0, 100, 5000, 50, false, [Fodder_Bread, 2000] ,2], [None, None, None, Army_Elephants], [false, false, false, true]]
-let soldier10506 = [[150, 2500, 150, 50, 0, 100, 5500, 50, false, [Fodder_Bread, 2000] ,2], [None, None, None, Army_Elephants], [false, false, false, true]]
-let soldier10507 = [[200, 3500, 150, 50, 0, 100, 6000, 50, false, [Fodder_Bread, 2000] ,2], [None, None, None, Army_Elephants], [false, false, false, true]]
-let soldier10508 = [[250, 5000, 150, 50, 0, 100, 7000, 50, false, [Fodder_Bread, 2000] ,2], [None, None, None, Army_Elephants], [false, false, false, true]]
-let soldier10515 = [[80, 2000, 150, 50, 0, 100, 5000, 50, false, [Fodder_Bread, 2000] ,2], [None, None, None, Army_Elephants], [false, false, false, true]]
-let soldier10516 = [[100, 2500, 150, 50, 0, 100, 5500, 50, false, [Fodder_Bread, 2000] ,2], [None, None, None, Army_Elephants], [false, false, false, true]]
-let soldier10517 = [[120, 3500, 150, 50, 0, 100, 6000, 50, false, [Fodder_Bread, 2000] ,2], [None, None, None, Army_Elephants], [false, false, false, true]]
-let soldier10518 = [[150, 5000, 150, 50, 0, 100, 7000, 50, false, [Fodder_Bread, 2000] ,2], [None, None, None, Army_Elephants], [false, false, false, true]]
-let soldier10525 = [[100, 1000, 150, 100, 0, 250, 6000, 50, false, [Fodder_Bread, 2000] ,2], [None, None, None, Army_Rhinos], [false, false, false, true]]
-let soldier10526 = [[150, 1250, 150, 100, 0, 250, 6500, 50, false, [Fodder_Bread, 2000] ,2], [None, None, None, Army_Rhinos], [false, false, false, true]]
-let soldier10527 = [[200, 1750, 150, 100, 0, 250, 7000, 50, false, [Fodder_Bread, 2000] ,2], [None, None, None, Army_Rhinos], [false, false, false, true]]
-let soldier10528 = [[250, 2500, 150, 100, 0, 250, 8000, 50, false, [Fodder_Bread, 2000] ,2], [None, None, None, Army_Rhinos], [false, false, false, true]]
-let soldier10601 = [[12, 80, 0, 120, 0, 0, 3000, 50, false, [Fodder_Bread, 100] ,2], [Bows, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10602 = [[15, 120, 0, 120, 0, 0, 3500, 50, false, [Fodder_Bread, 100] ,2], [Bows, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10603 = [[18, 150, 0, 120, 0, 0, 4000, 50, false, [Fodder_Bread, 100] ,2], [Bows, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10604 = [[20, 200, 0, 120, 0, 0, 4500, 50, false, [Fodder_Bread, 100] ,2], [Bows, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10605 = [[25, 250, 0, 120, 0, 0, 5000, 50, false, [Fodder_Bread, 100] ,2], [Bows, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10606 = [[30, 350, 0, 120, 0, 0, 5500, 50, false, [Fodder_Bread, 100] ,2], [Bows, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10607 = [[35, 400, 0, 120, 0, 0, 6000, 50, false, [Fodder_Bread, 100] ,2], [Bows, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier10608 = [[40, 500, 0, 120, 0, 0, 7000, 50, false, [Fodder_Bread, 100] ,2], [Bows, None, Horse_Armors, Horse], [true, false, false, true]]
-let soldier11000 = [[12, 50, 20, 30, 0, 50, 4000, 50, false, [0, 0] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11010 = [[5, 65, 95, 0, 0, 50, 3000, 100, true, [0, 0] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11011 = [[7, 97, 95, 0, 0, 50, 4000, 100, true, [0, 0] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11020 = [[6, 75, 100, 4, 0, 75, 3000, 100, true, [0, 0] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11021 = [[9, 112, 100, 12, 0, 75, 4000, 100, true, [0, 0] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11030 = [[11, 60, 100, 4, 0, 30, 3000, 100, true, [0, 0] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11031 = [[16, 89, 100, 12, 0, 30, 4000, 100, true, [0, 0] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11040 = [[10, 168, 135, 14, 0, 50, 4000, 110, true, [0, 0] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11041 = [[17, 336, 135, 17, 0, 50, 5000, 110, true, [0, 0] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11042 = [[56, 900, 325, 19, 0, 250, 10000, 140, true, [0, 0] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11050 = [[16, 96, 135, 14, 0, 50, 4000, 135, true, [0, 0] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11060 = [[7, 120, 135, 14, 0, 150, 4000, 135, true, [0, 0] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11070 = [[34, 75, 110, 4, 0, 130, 4000, 170, true, [0, 0] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11200 = [[8, 25, 60, 10, 3, 20, 3000, 75, false, [0, 0] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11210 = [[8, 40, 60, 14, 5, 50, 4000, 80, false, [0, 0] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11211 = [[16, 75, 60, 17, 5, 50, 5000, 80, false, [0, 0] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11220 = [[15, 55, 50, 28, 3, 20, 4500, 70, false, [0, 0] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11230 = [[10, 40, 60, 14, 6, 20, 4000, 70, false, [0, 0] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11231 = [[25, 150, 125, 35, 6, 120, 10000, 70, false, [0, 0] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11241 = [[30, 25, 275, 14, 2, 500, 10000, 250, false, [Rushseed_Oil, 10] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11300 = [[55, 150, 50, 105, 0, 100, 6000, 270, false, [Fodder_Bread, 100] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11301 = [[92, 250, 125, 85, 0, 130, 6000, 370, false, [Fodder_Bread, 100] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11310 = [[26, 100, 0, 100, 0, 75, 6000, 210, false, [Fodder_Bread, 100] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11311 = [[134, 2520, 325, 85, 0, 250, 10000, 390, true, [Fodder_Bread, 100] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11501 = [[50, 2000, 150, 50, 0, 100, 5000, 1000, false, [Fodder_Bread, 2000] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11502 = [[160, 3500, 200, 45, 0, 350, 6000, 1100, false, [Fodder_Bread, 2000] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11520 = [[100, 1000, 150, 100, 0, 250, 5000, 500, false, [Fodder_Bread, 2000] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11521 = [[200, 1750, 150, 100, 0, 250, 6000, 500, false, [Fodder_Bread, 2000] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11600 = [[15, 120, 50, 90, 3, 20, 6000, 250, false, [Fodder_Bread, 100] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11601 = [[16, 200, 50, 110, 5, 50, 6000, 255, false, [Fodder_Bread, 100] ,2], [None, None, None, None], [true, true, true, true]]
-let soldier11602 = [[32, 400, 150, 110, 7, 100, 10000, 260, false, [Fodder_Bread, 100] ,2], [None, None, None, None], [true, true, true, true]]
-building0 = [200,[0,0,0,0,0],[0,0,0,0,0,20],[20,0,0],0];
-building1 = [0,[Basic_Building_Materials,0,0,0,0],[3_600_000,0,0,0,0,0],[30,0,0],0];
-building2 = [1,[Basic_Building_Materials,0,0,0,0],[6_000_000,0,0,0,0,0],[50,0,0],0];
-building3 = [2,[Basic_Building_Materials,Pearl,0,0,0],[8_000_000,800_000,0,0,0,0],[50,10,0],0];
-building4 = [3,[Advanced_Building_Materials,Pearl,0,0,0],[800_000,2_000_000,0,0,0,0],[100,10,0],0];
-building5 = [4,[Advanced_Building_Materials,Pearl,0,0,0],[1_600_000,4_000_000,0,0,0,0],[100,20,0],0];
-building6 = [5,[Advanced_Building_Materials,Moonstone,0,0,0],[3_400_000,5_000_000,0,0,0,0],[0,40,5],0];
-building7 = [6,[Advanced_Building_Materials,Polished_Moonstone,0,0,0],[3_000_000,8_000_000,0,0,0,0],[0,0,20],0];
-
-building8 = [200,[Basic_Building_Materials,0,0,0,0],[8_000_000,0,0,0,0,6],[-3,0,0],3];
-building9 = [8,[Basic_Building_Materials,Durable_Basic_Building_Materials,Basic_Tool,Aquamarine,0],[1_600_000,800_000,4000,500_000,0,0],[-3,-2,0],8];
-building10 = [9,[Advanced_Building_Materials,Durable_Advanced_Building_Materials,Artisan_Tool,Polished_Aquamarine,0],[60_000,140_000,3750,200_000,0,0],[-5,-3,0],16];
-building11 = [10,[Advanced_Building_Materials,Durable_Advanced_Building_Materials,Oppulant_Tool,Polished_Aquamarine,0],[200_000,200_000,3700,400_000,0,0],[0,-5,-2],23];
-
-building12 = [200,[Basic_Building_Materials,Copper,0,0,0],[1_000_000,500_000,0,0,0,8],[-8,0,0],8];
-building13 = [12,[Basic_Building_Materials,Copper,Citrine,0,0],[2_000_000,1_000_000,1_000_000,0,0,0],[-5,-1,0],14];
-building14 = [13,[Advanced_Building_Materials,Copper,Polished_Citrine,0,0],[500_000,1_000_000,100_000,0,0,0],[-5,-1,0],20];
-building15 = [14,[Advanced_Building_Materials,Copper,Polished_Citrine,0,0],[1_000_000,2_000_000,500_000,0,0,0],[0,-1,-1],22];
-
-building16 = [200,[Durable_Basic_Building_Materials,0,0,0,0],[1_300_000,0,0,0,0,10],[-5,-1,0],6];
-building17 = [16,[Durable_Basic_Building_Materials,Bronze,Basic_Tool,Onyx,0],[1_000_000,500_000,6000,100_000,0,0],[-5,-1,0],12];
-building18 = [17,[Durable_Advanced_Building_Materials,Iron,Artisan_Tool,Polished_Onyx,0],[200_000,1_000_000,10_000,500_000,0,0],[0,-1,-1],14];
-
-building19 = [200,[Basic_Building_Materials,0,0,0,0],[4_000_000,0,0,0,0,10],[0,-5,0],5];
-
-building20 = [0,[0,0,0,0,0],[0,0,0,0,0,0],[0,0,0],0];
-
-building21 = [200,[Durable_Basic_Building_Materials,Iron,Onyx,0,0],[4_000_000,2_000_000,1_500_000,0,0,6],[-6,-4,0],10];
-building22 = [21,[Durable_Advanced_Building_Materials,0,0,0,0],[0,0,0,0,0,20],[0,-3,-1],14];
-
-building23 = [200,[Basic_Building_Materials,0,0,0,0],[1_400_000,0,0,0,0,4],[-1,0,0],0];
-
-building24 = [200,[Durable_Basic_Building_Materials,0,0,0,0],[1_000_000,0,0,0,0,1],[0,0,0],0];
-building25 = [200,[Durable_Basic_Building_Materials,0,0,0,0],[4_000_000,0,0,0,0,5],[-2,0,0],0];
-
-building26 = [200,[Advanced_Building_Materials,Amethyst,0,0,0],[500_000,1_000_000,0,0,0,4],[0,-3,-1],4];
-building27 = [26,[Advanced_Building_Materials,Polished_Amethyst,Oppulant_Tool,0,0],[500_000,1_000_000,4000,0,0,0],[0,-5,-1],10];
-
-building28 = [200,[Advanced_Building_Materials,Amber,0,0,0],[400_000,1_000_000,0,0,0,5],[-5,-1,0],6];
-building29 = [28,[Advanced_Building_Materials,Polished_Amber,0,0,0],[1_000_000,1_000_000,0,0,0,0],[-2,-1,-1],10];
-
-building30 = [200,[Advanced_Building_Materials,Amber,0,0,0],[1_000_000,2_000_000,0,0,0,10],[-5,-1,0],6];
-building31 = [30,[Advanced_Building_Materials,Polished_Amber,0,0,0],[2_500_000,2_000_000,0,0,0,0],[-2,-1,-1],10];
-
-
-
-function itemName(_value) {
-    var _name;
-    switch (_value) {
-          case -27:
-    _name = "Unboiled Meat";
-    break;
+function groupItems(_value) {
+      _value = Number(_value);
+      switch (_value) {
+          case 1: 
+         return([Bead_Bracelet,Copper_Bracelet,Silver_Bracelet,Gold_Bracelet,Aluminum_Bracelet,Artifact_Bronze_Bracelet,Artifact_Gold_Bracelet,Pearl_Bracelet]);
+  case 5: 
+         return([Wood_Chair,Stone_Chair,Fine_Chair,Carved_Chair,Encrusted_Chair]);
+  case 7: 
+         return([Mug,Drinking_Glass,Crystal_Drinking_Glass,Goblet,Aincient_Goblet]);
+  case 13: 
+         return([Simple_Home_Furniture,Standard_Home_Furniture,Ornate_Home_Furniture]);
+  case 3: 
+         return([Bead_Necklace,Copper_Necklace,Silver_Necklace,Gold_Necklace,Amber_Necklace,Artifact_Bronze_Necklace,Artifact_Gold_Necklace,Aluminum_Necklace,Pearl_Necklace]);
+  case 8: 
+         return([Simple_Totem,Silver_Totem,Gold_Totem,Icon_Statue,Mysterious_Totem]);
+  case 2: 
+         return([Copper_Ring,Silver_Ring,Gold_Ring,Artifact_Bronze_Ring,Artifact_Gold_Ring,Aluminum_Ring]);
+  case 12: 
+         return([Simple_Storage,Storage_Pots,Refined_Storage,Luxary_Storage]);
+  case 4: 
+         return([Wood_Table,Stone_Table,Fine_Table,Carved_Table,Encrusted_Table]);
+  case 6: 
+         return([Wooden_Tableware,Stone_Tableware,Ceramic_Tableware,Fine_Ceramic_Tableware,Silver_Tableware,Gold_Tableware,Aluminum_Tableware,Relic_Tableware]);
+  case 9: 
+         return([Small_Rug,Rug,Ornate_Rug]);
+  case 10: 
+         return([Small_Painting,Painting,Large_Painting,Guilded_Painting]);
+  case 101: 
+         return([Cow,Chicken,Sheep]);
+  case 24: 
+         return([Oyster,Fish_Meat,Beef,Chicken_Meat,Eggs,Milk,Exotic_Meat,Wool,Mutton,Game_Meat,Organ_Meat,Bone,Fat,Tender_Meat,Oyster_Meat,Crab_Meat,Raw_Shark_Meat,Prepared_Shark_Meat,Life_Scales,Roe,Fish_Organs,Polar_Bear_Liver,Polished_Rice,Very_Polished_Rice,Shrimp_Meat,Rare_Mushroom,Malted_Grain,Venison,Rabbit_Meat,Butter,Boiled_Meat,Veggie_Mix,Vinegar,Sugar,Olive_Oil,Ketchup,Basic_Spice_Pack,Royal_Spice_Pack,Pastry_Dough,Fruit_Preserve,Exotic_Fruit_Preserve,Mushroom_Stock,Meat_Stock,Vegetable_Stock,Barm,Molasses,Paprika,Cider_Sauce,Wine_Sauce,Spicy_Sauce,Common_Flour,Wheat_Flour,Rye_Flour,Corn_Flour,Cinnamon_Powder,Sweet_Spice_Pack,Savory_Spice_Pack,Spicy_Spice_Park,Royal_Sweet_Spice_Pack,Royal_Savory_Spice_Park,Royal_Spicy_Spice_Park,Cheese,Aged_Cheese,Imperial_Cheese,Dried_Vegetables,Pickled_Vegetables,Hearty_Dried_Vegetables,Dried_Fruit,Brandied_Fruit,Exotic_Dried_Fruit,Cured_Meat,Salted_Meat,Preserved_Eggs,Exotic_Cured_Meat,Pemmican,Pate,Mixed_Vegetables,Down,Leather,Exotic_Leather,Fur,Exotic_Fur,Feather,Thick_Leather,Antler,Ivory,Poison,Leopard_Skin,Aurochs_Hide,Black_Leopard_Skin,Bear_Hide,Polar_Bear_Hide,Tiger_Hide]);
+  case 70: 
+         return([Arid_Blueprint,Northern_Blueprint,Central_Blueprint,Southern_Blueprint,Island_Blueprint,Swamp_Blueprint,Mountain_Blueprint,Silver_Blueprint,Gold_Blueprint]);
+  case 100: 
+         return([Rabbit,Deer,Turkey,Fox,Cyote,Snake,Ocean_Fish,Metal_Fish,Shrimp_School,Seaweed_Crop,Mink,Boar,Zebra,Reindeer,Leopard,Crocodile,Otter,Wolf,Seal,Ostridge,Turtle,Crab_Cluster,Elk,Aurochs,Black_Leopard,Bear,Sea_Mink,Whalrus,Poison_Snake,Shark,Elephant,Rhino,Polar_Bear,Tiger,Titan_Snake,Whale,Iron_Snail,River_Fish]);
+  case 21: 
+         return([Wheat,Rye,Rice,Corn,Sorghum,Apples,Plums,Olives,Beans,Mushrooms,Beets,Cassava,Peanuts,Cherries,Peaches,Garlic,Onion,Carrot,Sugarcane,Peppers,Allspice,Grapes,Potato,Oats,Barley,Cotton,Peas,Oranges]);
+  case 72: 
+         return([Ice_Ticket,Fire_Ticket,T1_XP,T2_XP,T3_XP,T4_XP,T5_XP,T6_XP,T7_XP,T8_XP]);
+  case 23: 
+         return([Ale,Cider,Fruit_Wine,Grog,Wine,Fine_Ale,Mead,Spruce_Beer,Sweet_Beer,Vodka,Kumis,Rum,Grain_Whiskey,Sake,Brandy,Silver_Wine,Jungle_Wine,Winter_Wine,Aged_Rum,Ginseng_Wine,Spiced_Vodka,Pure_Alcohol,Double_Brandy,Auric_Mead,Fine_Sake]);
+  case 22: 
+         return([Basic_Bread,Simple_Spread,Buttered_Bread,Basic_Flatbread,Pumpernickle,Pastry,Fruit_Pastry,Cheese_Pastry,Glittercake,Fruit_Glittercake,Fruit_Pie,Sugar_Pie,Pot_Pie,Roasted_Peanut,Candied_Peanut,Sausage,Fried_Meat,Roast,Noble_Roast,Beef_Stew,Kings_Soup,Onion_Soup,Huntsmans_Soup,Chicken_Soup,Fish_Soup,Vegetable_Soup,Seafood_Soup,Turtle_Soup,Shark_Soup,Baked_Beans,Beans_And_Rice,Hash,Fried_Crab,Fish_Roll,Deluxe_Fish_Roll,Rare_Mushroom_Soup,Oatmeal,Sweetend_Oatmeal,Simple_Soup,Roasted_Whole_Chicken,Pea_Pudding,Mutton_Stew,Glazed_Veggies,Glazed_Mutton,Simple_Risotto,Mushroom_Risotto,Shrimp_Risotto]);
+  case 50: 
+         return([Nails,Diamond_Blade,Fabric,Bronze_Plate,Iron_Plate,Steel_Plate,Emerald_Bronze_Plate,Damascus_Steel_Plate]);
+  case 20: 
+         return([Ginseng,Winterberries,Jungleberries,Auric_Honey,Wasabi,Rushseed,Exotic_Herb,Silver_Sap,Honey,Seaweed,Flowers,Flower_Petals,Flower_Hearts,Nettles,Joyous_Flowers,Spruce_Trimming,Nightberry,Life_Bark,Silver_Bark,Sweet_Herbs,Savory_Herbs,Spicy_Herbs,Sweet_Bark,Vanilla_Pod]);
+  case 51: 
+         return([Rice_Bran,Pomace,Refined_Stone,Refined_Wood,Charcoal,Washed_Kaolinite,Iron,Gold,Silver,Copper,Tin,Aluminum,Mercury,Platinum,Lead,Emerald_Bronze,Bronze,Steel,Damascus_Steel,Rushseed_Oil,Cooked_Bone,Sugarcane_Pulp,Organic_Pulp,Ash,Clay_Beads,Hay,Antiseptic,Soap,Tar,Paper,Level_1_Fertilizer,Level_2_Fertilizer,Level_3_Fertilizer,Rare_Fertilizer,Forest_Glass,Lead_Glass,Forest_Glass_Pane,Lead_Glass_Pane,Crystal_Glass_Pane,Boat_Part,Treated_Fabric,Human_Earth,Vitae_Dust,Berry_Dust,Ink,Red_Dye,Blue_Dye,Green_Dye,White_Dye,Dye_Pack,Gold_Foil,Gold_Artifact_Cache,Bronze_Artifact_Cache,Bronze_Chainmail,Iron_Chainmail,Steel_Chainmail,Emerald_Bronze_Chainmail,Damascus_Steel_Chainmail,Boat_Fix_Kit]);
+  case 230: 
+         return([Panacea,Nettle_Tea,Life_Powder,Nightberry_Tea,Sweet_Herb_Tea,Happiness_Tea,Soothing_Powder,Savory_Herb_Tea,Spruce_Tea,Life_Tincture,Nightberry_Tincture,Sweet_Herb_Tincture,Happiness_Tincture,Soothing_Tea,Savory_Herb_Tincture]);
+  case 220: 
+         return([Peasent_Levy,Veteran_Peasent_Levy,Levy_Spear,Veteran_Levy_Spear,Mountain_Levy,Veteran_Mountain_Levy,Mercenary_Swordman,Veteran_Mercenary_Swordman,Palace_Guard,Mercenary_Axeman,Mercenary_Maceman,Pikeman,Peasent_Bowman,Levy_Archer,Veteran_Levy_Archer,Huntsman,Slinger,Golden_Slinger,Imperial_Flamer,Free_Lance,Knight,Mounted_Levy,Mounted_Palace_Guard,Mercenary_War_Elephant,Elite_Mercenary_War_Elephant,Mercanary_War_Rhino,Elite_Mercenary_War_Rhino,Mounted_Archer,Veteran_Mounted_Archer,Palace_Archer]);
+  case 31: 
+         return([Light_Bronze_Mail,Light_Iron_Mail,Light_Steel_Mail,Light_Emerald_Bronze_Mail,Light_Damascus_Steel_Mail,Light_Bronze_Plate,Light_Iron_Plate,Light_Steel_Plate,Light_Emerald_Bronze_Plate,Light_Damascus_Steel_Plate,Medium_Bronze_Mail,Medium_Iron_Mail,Medium_Steel_Mail,Medium_Emerald_Bronze_Mail,Medium_Damascus_Steel_Mail,Medium_Bronze_Plate,Medium_Iron_Plate,Medium_Steel_Plate,Medium_Emerald_Bronze_Plate,Medium_Damascus_Steel_Plate,Heavy_Bronze_Armor,Heavy_Iron_Armor,Heavy_Steel_Armor,Heavy_Beryl_Bronze_Armor,Heavy_Damascus_Steel_Armor,Light_Bronze_Horse_Armor,Light_Iron_Horse_Armor,Light_Steel_Horse_Armor,Light_Emerald_Bronze_Horse_Armor,Light_Damascus_Steel_Horse_Armor,Medium_Bronze_Horse_Armor,Medium_Iron_Horse_Armor,Medium_Steel_Horse_Armor,Medium_Emerald_Bronze_Horse_Armor,Medium_Damascus_Steel_Horse_Armor,Heavy_Bronze_Horse_Armor,Heavy_Iron_Horse_Armor,Heavy_Steel_Horse_Armor,Heavy_Emerald_Bronze_Horse_Armor,Heavy_Damascus_Steel_Horse_Armor,Leather_Armor,Thick_Leather_Armor,Gambeson,Rhino_Mount_Cushion,Elephant_Mount_Cushion,Bronze_Rhino_Armor,Iron_Rhino_Armor,Steel_Rhino_Armor,Emerald_Bronze_Rhino_Armor,Damascus_Steel_Rhino_Armor,Heavy_Bronze_Rhino_Armor,Heavy_Iron_Rhino_Armor,Heavy_Steel_Rhino_Armor,Heavy_Emerald_Bronze_Rhino_Armor,Heavy_Damascus_Steel_Rhino_Armor,Bronze_Elephant_Armor,Iron_Elephant_Armor,Steel_Elephant_Armor,Emerald_Bronze_Elephant_Armor,Damascus_Steel_Elephant_Armor,Heavy_Bronze_Elephant_Armor,Heavy_Iron_Elephant_Armor,Heavy_Steel_Elephant_Armor,Heavy_Emerald_Bronze_Elephant_Armor,Heavy_Damascus_Steel_Elephant_Armor]);
+  case 33: 
+         return([Farm_Horse,Standard_Army_Horse,Charge_Horse,War_Horse,Arctic_Horse,War_Elephant,War_Wooly_Elephant,War_Rhino,War_Wooly_Rhino]);
+  case 32: 
+         return([Stone_Shot,Lead_Shot,Gold_Shot,Small_Fuel_Tank,Large_Fuel_Tank,Stone_Shot_Pouch,Lead_Shot_Pouch,Gold_Shot_Pouch,Wood_Arrow_Quiver,Steel_Arrow_Quiver,Beryl_Arrow_Quiver,Diamond_Arrow_Quiver,Wooden_Shield,Banded_Shield,Standard_Shield,Metal_Shield,Gong_Shield,Heirloom_Shield,Wall_Shield,Advanced_Wall_Shield]);
+  case 30: 
+         return([Bronze_Spear,Iron_Spear,Steel_Spear,Emerald_Bronze_Spear,Damascus_Steel_Spear,Bronze_Axe,Iron_Axe,Steel_Axe,Emerald_Bronze_Axe,Damascus_Steel_Axe,Bronze_Sword,Iron_Sword,Steel_Sword,Emerald_Bronze_Sword,Damascus_Steel_Sword,Diamond_Sword,Bronze_Mace,Iron_Mace,Steel_Mace,Emerald_Bronze_Mace,Damascus_Steel_Mace,Bronze_Lance,Iron_Lance,Steel_Lance,Emerald_Bronze_Lance,Damascus_Steel_Lance,Bronze_Poleaxe,Iron_Poleaxe,Steel_Poleaxe,Emerald_Bronze_Poleaxe,Damascus_Steel_Poleaxe,Bronze_Greatsword,Iron_Greatsword,Steel_Greatsword,Emerald_Bronze_Greatsword,Damascus_Steel_Greatsword,Bronze_Warhammer,Iron_Warhammer,Steel_Warhammer,Emerald_Bronze_Warhammer,Damascus_Steel_Warhammer,Bronze_Elephant_Tusk_Cap,Iron_Elephant_Tusk_Cap,Steel_Elephant_Tusk_Cap,Beryl_Bronze_Elephant_Tusk_Cap,Damascus_Elephant_Tusk_Cap,Bronze_Rhino_Tusk_Cap,Iron_Rhino_Tusk_Cap,Steel_Rhino_Tusk_Cap,Beryl_Bronze_Rhino_Tusk_Cap,Damascus_Rhino_Tusk_Cap,Basic_Bow,Longbow,Greatbow,Steel_Arrowhead,Beryl_Bronze_Arrowhead,Simple_Crossbow,Basic_Sling,Heavy_Flamer,Flame_Grenade,Golden_Sling]);
+  case 71: 
+         return([Farming_Guide,Jewelers_Guide,Brewers_Guide,Medicine_Guide,Sailing_Guide,Smithing_Guide,Art_Guide,Carpentry_Guide,Weaver_Guide,Masonry_Guide,Soldier_Guide]);
+  case 52: 
+         return([Stone,Wood,Salt,Clay,Kaolinite,Iron_Ore,Gold_Ore,Silver_Ore,Copper_Ore,Tin_Ore,Tailings,Galena,Black_Copper_Ore]);
+  case 53: 
+         return([Basic_Building_Material,Basic_Wood_Building_Materials,Basic_Stone_Building_Materials,Basic_Mud_Building_Materials,Basic_Brick_Building_Material,Advanced_Building_Material,Advanced_Wood_Building_Materials,Advanced_Stone_Building_Materials,Advanced_Mud_Building_Materials,Advanced_Brick_Building_Material]);
+  case 54: 
+         return([undefined]);
+  case 73: 
+         return([undefined]);
+  case 24: 
+         return([Oyster,Fish_Meat,Beef,Chicken_Meat,Eggs,Milk,Exotic_Meat,Wool,Mutton,Game_Meat,Organ_Meat,Bone,Fat,Tender_Meat,Oyster_Meat,Crab_Meat,Raw_Shark_Meat,Prepared_Shark_Meat,Life_Scales,Roe,Fish_Organs,Polar_Bear_Liver,Polished_Rice,Very_Polished_Rice,Shrimp_Meat,Rare_Mushroom,Malted_Grain,Venison,Rabbit_Meat,Butter,Boiled_Meat,Veggie_Mix,Vinegar,Sugar,Olive_Oil,Ketchup,Basic_Spice_Pack,Royal_Spice_Pack,Pastry_Dough,Fruit_Preserve,Exotic_Fruit_Preserve,Mushroom_Stock,Meat_Stock,Vegetable_Stock,Barm,Molasses,Paprika,Cider_Sauce,Wine_Sauce,Spicy_Sauce,Common_Flour,Wheat_Flour,Rye_Flour,Corn_Flour,Cinnamon_Powder,Sweet_Spice_Pack,Savory_Spice_Pack,Spicy_Spice_Park,Royal_Sweet_Spice_Pack,Royal_Savory_Spice_Park,Royal_Spicy_Spice_Park,Cheese,Aged_Cheese,Imperial_Cheese,Dried_Vegetables,Pickled_Vegetables,Hearty_Dried_Vegetables,Dried_Fruit,Brandied_Fruit,Exotic_Dried_Fruit,Cured_Meat,Salted_Meat,Preserved_Eggs,Exotic_Cured_Meat,Pemmican,Pate,Mixed_Vegetables,Down,Leather,Exotic_Leather,Fur,Exotic_Fur,Feather,Thick_Leather,Antler,Ivory,Poison,Leopard_Skin,Aurochs_Hide,Black_Leopard_Skin,Bear_Hide,Polar_Bear_Hide,Tiger_Hide]);
+  case -32:
+   return([Double_Brandy,Auric_Mead,Fine_Sake]);
+  case -31:
+   return([Stone_Shot_Pouch,Lead_Shot_Pouch,Gold_Shot_Pouch]);
+  case -30:
+   return([Wood_Arrow_Quiver,Steel_Arrow_Quiver,Beryl_Arrow_Quiver,Diamond_Arrow_Quiver]);
+  case -29:
+   return([Advanced_Building_Material,Advanced_Wood_Building_Materials,Advanced_Stone_Building_Materials,Advanced_Mud_Building_Materials,Advanced_Brick_Building_Material]);
+  case -28:
+   return([Basic_Building_Material,Basic_Wood_Building_Materials,Basic_Stone_Building_Materials,Basic_Mud_Building_Materials,Basic_Brick_Building_Material]);
+  case -27:
+   return([Beef,Chicken_Meat,Fish_Meat,Mutton,Game_Meat]);
   case -26:
-    _name = "Fuel";
-    break;
+   return([Wood,Charcoal]);
   case -25:
-    _name = "Sauce";
-    break;
+   return([Ketchup,Wine_Sauce,Spicy_Sauce,Cider_Sauce]);
   case -24:
-    _name = "Any Bone";
-    break;
+   return([Bone,Cooked_Bone]);
   case -23:
-    _name = "Stock";
-    break;
-  case -22:
-    _name = "Flatbread";
-    break;
+   return([Meat_Stock,Vegetable_Stock,Mushroom_Stock]);
   case -21:
-    _name = "Fiber";
-    break;
+   return([Wool,Cotton]);
   case -20:
-    _name = "Rare Gemstone";
-    break;
+   return([Ruby,Emerald,Sapphire]);
   case -19:
-    _name = "Common Gemstone";
-    break;
+   return([Amethyst,Opal,Citrine,Pearl,Amber,Onyx,Aquamarine,Crystal_Glass]);
   case -18:
-    _name = "Polished Rare Gemstone";
-    break;
+   return([Polished_Ruby,Polished_Emerald,Polished_Sapphire]);
   case -17:
-    _name = "Polished Common Gemstone";
-    break;
+   return([Polished_Amethyst,Polished_Opal,Polished_Citrine,Polished_Amber,Polished_Onyx,Polished_Aquamarine,Polished_Crystal_Glass]);
   case -16:
-    _name = "Fodder";
-    break;
+   return([Wheat,Rye,Corn,Sorghum,Oats,Barley,Rice,Plums,Apples,Potato,Onion,Carrot,Cassava,Rice_Bran,Peas]);
   case -15:
-    _name = "Any Flour";
-    break;
+   return([Common_Flour,Wheat_Flour,Corn_Flour,Rye_Flour]);
   case -14:
-    _name = "Any Seafood";
-    break;
+   return([Oyster_Meat,Crab_Meat,Oyster]);
   case -13:
-    _name = "T5 Drink";
-    break;
+   return([Ginseng_Wine,Spiced_Vodka,Pure_Alcohol]);
   case -12:
-    _name = "T4 Drink";
-    break;
+   return([Brandy,Jungle_Wine,Winter_Wine,Aged_Rum]);
   case -11:
-    _name = "T3 Drink";
-    break;
+   return([Vodka,Kumis,Rum,Grain_Whiskey,Sake]);
   case -10:
-    _name = "T2 Drink";
-    break;
-  case -9:
-    _name = "Bread";
-    break;
+   return([Wine,Fine_Ale,Mead,Spruce_Beer,Sweet_Beer]);
   case -8:
-    _name = "Exotic Berry";
-    break;
+   return([Winterberries,Jungleberries]);
   case -7:
-    _name = "T1 Drink";
-    break;
+   return([Ale,Cider,Fruit_Wine,Grog]);
   case -6:
-    _name = "T2 Metal";
-    break;
+   return([Iron,Bronze]);
   case -5:
-    _name = "Cooking Oil";
-    break;
+   return([Fat,Olive_Oil,Butter]);
   case -4:
-    _name = "Vegetables";
-    break;
+   return([Potato,Onion,Carrot,Cassava,Peppers]);
   case -3:
-    _name = "Fruit";
-    break;
+   return([Grapes,Peaches,Plums,Apples,Cherries]);
   case -2:
-    _name = "Meat";
-    break;
+   return([Beef,Chicken_Meat,Fish_Meat,Mutton,Game_Meat,Boiled_Meat]);
   case -1:
-    _name = "Grain";
-    break;
-  case 0:
-    _name = "None";
-    break;
-  case 1:
-    _name = "Arid Badlands";
-    break;
-  case 2:
-    _name = "Arid Steppe";
-    break;
-  case 3:
-    _name = "Arid Oasis";
-    break;
-  case 4:
-    _name = "Arid River";
-    break;
-  case 11:
-    _name = "Northern Rocky Waste";
-    break;
-  case 12:
-    _name = "Northern Tundra";
-    break;
-  case 13:
-    _name = "Northern Forest";
-    break;
-  case 14:
-    _name = "Northern River";
-    break;
-  case 21:
-    _name = "Rocky Heartland";
-    break;
-  case 22:
-    _name = "Heartland";
-    break;
-  case 23:
-    _name = "River Heartland";
-    break;
-  case 31:
-    _name = "Southern Rocky";
-    break;
-  case 32:
-    _name = "Southern Forest";
-    break;
-  case 33:
-    _name = "Southern Jungle";
-    break;
-  case 34:
-    _name = "Southern River";
-    break;
-  case 41:
-    _name = "Northern Ocean";
-    break;
-  case 42:
-    _name = "Central Ocean";
-    break;
-  case 43:
-    _name = "Southern Ocean";
-    break;
-  case 44:
-    _name = "Desolate Ocean";
-    break;
-  case 51:
-    _name = "Brackish Swamp";
-    break;
-  case 52:
-    _name = "Swamp";
-    break;
-  case 53:
-    _name = "Lush Swamp";
-    break;
-  case 61:
-    _name = "Red Mountain";
-    break;
-  case 62:
-    _name = "Blue Mountain";
-    break;
-  case 63:
-    _name = "Green Mountain";
-    break;
-  case 64:
-    _name = "White Mountain";
-    break;
-  case 70:
-    _name = "Ochre Plains";
-    break;
-  case 71:
-    _name = "Lustrous River";
-    break;
-  case 72:
-    _name = "Silver Forest";
-    break;
-  case 80:
-    _name = "Golden Plains";
-    break;
-  case 81:
-    _name = "Golden Forest";
-    break;
-  case 82:
-    _name = "Golden Hills";
-    break;
-  case 501:
-    _name = "Wheat";
-    break;
-  case 502:
-    _name = "Rye";
-    break;
-  case 503:
-    _name = "Rice";
-    break;
-  case 504:
-    _name = "Corn";
-    break;
-  case 505:
-    _name = "Sorghum";
-    break;
-  case 506:
-    _name = "Apples";
-    break;
-  case 507:
-    _name = "Plums";
-    break;
-  case 508:
-    _name = "Olives";
-    break;
-  case 509:
-    _name = "Beans";
-    break;
-  case 510:
-    _name = "Mushrooms";
-    break;
-  case 511:
-    _name = "Beets";
-    break;
-  case 512:
-    _name = "Casava";
-    break;
-  case 513:
-    _name = "Peanuts";
-    break;
-  case 514:
-    _name = "Cherries";
-    break;
-  case 515:
-    _name = "Peaches";
-    break;
-  case 516:
-    _name = "Garlic";
-    break;
-  case 517:
-    _name = "Onion";
-    break;
-  case 518:
-    _name = "Carrots";
-    break;
-  case 519:
-    _name = "Sugarcane";
-    break;
-  case 520:
-    _name = "Peppers";
-    break;
-  case 521:
-    _name = "Allspice";
-    break;
-  case 522:
-    _name = "Grapes";
-    break;
-  case 523:
-    _name = "Ginseng";
-    break;
-  case 524:
-    _name = "Winterberries";
-    break;
-  case 525:
-    _name = "Jungleberries";
-    break;
-  case 526:
-    _name = "Auric Honey";
-    break;
-  case 527:
-    _name = "Wasabi";
-    break;
-  case 528:
-    _name = "Rushseed";
-    break;
-  case 529:
-    _name = "Exotic Herb";
-    break;
-  case 530:
-    _name = "Oyster";
-    break;
-  case 531:
-    _name = "Fish Meat";
-    break;
-  case 532:
-    _name = "Beef";
-    break;
-  case 533:
-    _name = "Chicken Meat";
-    break;
-  case 534:
-    _name = "Eggs";
-    break;
-  case 535:
-    _name = "Potato";
-    break;
-  case 536:
-    _name = "Silver Sap";
-    break;
-  case 537:
-    _name = "Honey";
-    break;
-  case 538:
-    _name = "Oats";
-    break;
-  case 539:
-    _name = "Milk";
-    break;
-  case 540:
-    _name = "Barley";
-    break;
-  case 541:
-    _name = "Exotic Meat";
-    break;
-  case 542:
-    _name = "Wool";
-    break;
-  case 543:
-    _name = "Cotton";
-    break;
-  case 544:
-    _name = "Mutton";
-    break;
-  case 545:
-    _name = "Game Meat";
-    break;
-  case 546:
-    _name = "Heartland Herbs";
-    break;
-  case 550:
-    _name = "Organ Meat";
-    break;
-  case 551:
-    _name = "Bone";
-    break;
-  case 552:
-    _name = "Fat";
-    break;
-  case 553:
-    _name = "Tender Meat";
-    break;
-  case 554:
-    _name = "Oyster Meat";
-    break;
-  case 555:
-    _name = "Crab";
-    break;
-  case 1000:
-    _name = "Wheat Beer";
-    break;
-  case 1001:
-    _name = "Rye Beer";
-    break;
-  case 1002:
-    _name = "Barley Beer";
-    break;
-  case 1003:
-    _name = "Oat Beer";
-    break;
-  case 1004:
-    _name = "Rice Beer";
-    break;
-  case 1005:
-    _name = "Sorghum Beer";
-    break;
-  case 1010:
-    _name = "Cider";
-    break;
-  case 1011:
-    _name = "Wine";
-    break;
-  case 1012:
-    _name = "Plum Wine";
-    break;
-  case 1013:
-    _name = "Peach Wine";
-    break;
-  case 1014:
-    _name = "Cherry Wine";
-    break;
-  case 1020:
-    _name = "Mead";
-    break;
-  case 1021:
-    _name = "Grog";
-    break;
-  case 1030:
-    _name = "Vodka";
-    break;
-  case 1031:
-    _name = "Kumis";
-    break;
-  case 1032:
-    _name = "Rum";
-    break;
-  case 1033:
-    _name = "Grain Whiskey";
-    break;
-  case 1040:
-    _name = "Brandy";
-    break;
-  case 1041:
-    _name = "Silver Wine";
-    break;
-  case 1042:
-    _name = "Jungle Wine";
-    break;
-  case 1043:
-    _name = "Winter Wine";
-    break;
-  case 1044:
-    _name = "Aged Rum";
-    break;
-  case 1050:
-    _name = "Ginseng Wine";
-    break;
-  case 1051:
-    _name = "Spiced Vodka";
-    break;
-  case 1060:
-    _name = "Double Brandy";
-    break;
-  case 1061:
-    _name = "Auric Mead";
-    break;
-  case 1200:
-    _name = "Basic Bread";
-    break;
-  case 1201:
-    _name = "Wheat Bread";
-    break;
-  case 1202:
-    _name = "Rye Bread";
-    break;
-  case 1203:
-    _name = "Corn Bread";
-    break;
-  case 1204:
-    _name = "Corn Flatbread";
-    break;
-  case 1205:
-    _name = "Basic Flatbread";
-    break;
-  case 1206:
-    _name = "Pumpernickle";
-    break;
-  case 1207:
-    _name = "Pastry";
-    break;
-  case 1208:
-    _name = "Fruit Pastry";
-    break;
-  case 1209:
-    _name = "Cheese Pastry";
-    break;
-  case 1210:
-    _name = "Fruit Bread";
-    break;
-  case 1211:
-    _name = "Cheese Bread";
-    break;
-  case 1212:
-    _name = "Glittercake";
-    break;
-  case 1213:
-    _name = "Fruit Glittercake";
-    break;
-  case 1220:
-    _name = "Apple Pie";
-    break;
-  case 1221:
-    _name = "Plum Pie";
-    break;
-  case 1222:
-    _name = "Peach Pie";
-    break;
-  case 1223:
-    _name = "Sugar Pie";
-    break;
-  case 1224:
-    _name = "Pot Pie";
-    break;
-  case 1225:
-    _name = "Cherry Pie";
-    break;
-  case 1230:
-    _name = "Cheese";
-    break;
-  case 1231:
-    _name = "Aged Cheese";
-    break;
-  case 1232:
-    _name = "Imperial Cheese";
-    break;
-  case 1240:
-    _name = "Dried Vegetables";
-    break;
-  case 1241:
-    _name = "Pickled Vegetables";
-    break;
-  case 1242:
-    _name = "Hearty Dried Vegetables";
-    break;
-  case 1250:
-    _name = "Dried Fruit";
-    break;
-  case 1251:
-    _name = "Brandied Fruit";
-    break;
-  case 1260:
-    _name = "Sausage";
-    break;
-  case 1261:
-    _name = "Fried Meat";
-    break;
-  case 1262:
-    _name = "Roast";
-    break;
-  case 1263:
-    _name = "Cured Meat";
-    break;
-  case 1264:
-    _name = "Salted Meat";
-    break;
-  case 1265:
-    _name = "Preserved Eggs";
-    break;
-  case 1266:
-    _name = "Exotic Cured Meat";
-    break;
-  case 1267:
-    _name = "Boiled Meat";
-    break;
-  case 1268:
-    _name = "Noble Roast";
-    break;
-  case 1269:
-    _name = "Pemmican";
-    break;
-  case 1270:
-    _name = "Beef Stew";
-    break;
-  case 1271:
-    _name = "Kings Soup";
-    break;
-  case 1272:
-    _name = "Onion Soup";
-    break;
-  case 1273:
-    _name = "Huntsmans Soup";
-    break;
-  case 1274:
-    _name = "Chicken Soup";
-    break;
-  case 1275:
-    _name = "Fish Soup";
-    break;
-  case 1276:
-    _name = "Vegetable Soup";
-    break;
-  case 1277:
-    _name = "Seafood Soup";
-    break;
-  case 1280:
-    _name = "Baked Beans";
-    break;
-  case 1281:
-    _name = "Beans And Rice";
-    break;
-  case 1282:
-    _name = "Hash";
-    break;
-  case 1283:
-    _name = "Fried Crab";
-    break;
-  case 1300:
-    _name = "Vinegar";
-    break;
-  case 1301:
-    _name = "Sugar";
-    break;
-  case 1302:
-    _name = "Olive Oil";
-    break;
-  case 1304:
-    _name = "Ketchup";
-    break;
-  case 1305:
-    _name = "Basic Spice Pack";
-    break;
-  case 1306:
-    _name = "Royal Spice Pack";
-    break;
-  case 1307:
-    _name = "Pastry Dough";
-    break;
-  case 1308:
-    _name = "Fruit Preserve";
-    break;
-  case 1309:
-    _name = "Exotic Fruit Preserve";
-    break;
-  case 1310:
-    _name = "Mushroom Stock";
-    break;
-  case 1311:
-    _name = "Meat Stock";
-    break;
-  case 1312:
-    _name = "Vegetable Stock";
-    break;
-  case 1313:
-    _name = "Bone Stock";
-    break;
-  case 1314:
-    _name = "Barm";
-    break;
-  case 1315:
-    _name = "Molasses";
-    break;
-  case 1320:
-    _name = "Cider Sauce";
-    break;
-  case 1321:
-    _name = "Wine Sauce";
-    break;
-  case 1322:
-    _name = "Spicy Sauce";
-    break;
-  case 1330:
-    _name = "Flour";
-    break;
-  case 1331:
-    _name = "Wheat Flour";
-    break;
-  case 1332:
-    _name = "Rye Flour";
-    break;
-  case 1333:
-    _name = "Corn Flour";
-    break;
-  case 1900:
-    _name = "Fodder Bread";
-    break;
-  case 1901:
-    _name = "Main Ration 1";
-    break;
-  case 1902:
-    _name = "Main Ration 2";
-    break;
-  case 1903:
-    _name = "Main Ration 3";
-    break;
-  case 1904:
-    _name = "Main Ration 4";
-    break;
-  case 1905:
-    _name = "Main Ration 5";
-    break;
-  case 1906:
-    _name = "Main Ration 6";
-    break;
-  case 1907:
-    _name = "Main Ration 7";
-    break;
-  case 1908:
-    _name = "Main Ration 8";
-    break;
-  case 1909:
-    _name = "Main Ration 9";
-    break;
-  case 1911:
-    _name = "Extras 1";
-    break;
-  case 1912:
-    _name = "Extras 2";
-    break;
-  case 1913:
-    _name = "Extras 3";
-    break;
-  case 1914:
-    _name = "Extras 4";
-    break;
-  case 1915:
-    _name = "Extras 5";
-    break;
-  case 1916:
-    _name = "Extras 6";
-    break;
-  case 1917:
-    _name = "Extras 7";
-    break;
-  case 1918:
-    _name = "Extras 8";
-    break;
-  case 1919:
-    _name = "Extras 9";
-    break;
-  case 1921:
-    _name = "Drink Pack 1";
-    break;
-  case 1922:
-    _name = "Drink Pack 2";
-    break;
-  case 1923:
-    _name = "Drink Pack 3";
-    break;
-  case 1924:
-    _name = "Drink Pack 4";
-    break;
-  case 1925:
-    _name = "Drink Pack 5";
-    break;
-  case 1926:
-    _name = "Drink Pack 6";
-    break;
-  case 1927:
-    _name = "Drink Pack 7";
-    break;
-  case 1928:
-    _name = "Drink Pack 8";
-    break;
-  case 1929:
-    _name = "Drink Pack 9";
-    break;
-  case 1930:
-    _name = "Medpack";
-    break;
-  case 1990:
-    _name = "Peasent Hunting Supplies";
-    break;
-  case 1991:
-    _name = "Low Noble Hunting Supplies";
-    break;
-  case 1992:
-    _name = "High Noble Hunting Supplies";
-    break;
-  case 2001:
-    _name = "Stone";
-    break;
-  case 2002:
-    _name = "Wood";
-    break;
-  case 2003:
-    _name = "Salt";
-    break;
-  case 2004:
-    _name = "Clay";
-    break;
-  case 2021:
-    _name = "Iron Ore";
-    break;
-  case 2022:
-    _name = "Gold Ore";
-    break;
-  case 2023:
-    _name = "Silver Ore";
-    break;
-  case 2024:
-    _name = "Copper Ore";
-    break;
-  case 2025:
-    _name = "Tin Ore";
-    break;
-  case 2101:
-    _name = "Refined Stone";
-    break;
-  case 2102:
-    _name = "Refined Wood";
-    break;
-  case 2103:
-    _name = "Charcoal";
-    break;
-  case 2121:
-    _name = "Iron";
-    break;
-  case 2122:
-    _name = "Gold";
-    break;
-  case 2123:
-    _name = "Silver";
-    break;
-  case 2124:
-    _name = "Copper";
-    break;
-  case 2125:
-    _name = "Tin";
-    break;
-  case 2150:
-    _name = "Basic Building Materials";
-    break;
-  case 2151:
-    _name = "Durable Basic Building Materials";
-    break;
-  case 2152:
-    _name = "Advanced Building Materials";
-    break;
-  case 2153:
-    _name = "Durable Advanced Building Materials";
-    break;
-  case 2180:
-    _name = "Emerald Bronze";
-    break;
-  case 2181:
-    _name = "Bronze";
-    break;
-  case 2182:
-    _name = "Steel";
-    break;
-  case 2183:
-    _name = "Damascus Steel";
-    break;
-  case 2200:
-    _name = "Ruby";
-    break;
-  case 2201:
-    _name = "Emerald";
-    break;
-  case 2202:
-    _name = "Sapphire";
-    break;
-  case 2203:
-    _name = "Diamond";
-    break;
-  case 2204:
-    _name = "Amethyst";
-    break;
-  case 2205:
-    _name = "Opal";
-    break;
-  case 2206:
-    _name = "Citrine";
-    break;
-  case 2207:
-    _name = "Pearl";
-    break;
-  case 2208:
-    _name = "Moonstone";
-    break;
-  case 2209:
-    _name = "Amber";
-    break;
-  case 2210:
-    _name = "Onyx";
-    break;
-  case 2211:
-    _name = "Aquamarine";
-    break;
-  case 2212:
-    _name = "Crystal Glass";
-    break;
-  case 2213:
-    _name = "Bloodstone";
-    break;
-  case 2300:
-    _name = "Polished Ruby";
-    break;
-  case 2301:
-    _name = "Polished Emerald";
-    break;
-  case 2302:
-    _name = "Polished Sapphire";
-    break;
-  case 2303:
-    _name = "Polished Diamond";
-    break;
-  case 2304:
-    _name = "Polished Amethyst";
-    break;
-  case 2305:
-    _name = "Polished Opal";
-    break;
-  case 2306:
-    _name = "Polished Citrine";
-    break;
-  case 2307:
-    _name = "Polished Pearl";
-    break;
-  case 2308:
-    _name = "Polished Moonstone";
-    break;
-  case 2309:
-    _name = "Polished Amber";
-    break;
-  case 2310:
-    _name = "Polished Onyx";
-    break;
-  case 2311:
-    _name = "Polished Aquamarine";
-    break;
-  case 2312:
-    _name = "Polished Crystal Glass";
-    break;
-  case 4000:
-    _name = "Nails";
-    break;
-  case 4001:
-    _name = "Diamond Blade";
-    break;
-  case 4002:
-    _name = "Fabric";
-    break;
-  case 4003:
-    _name = "Down";
-    break;
-  case 4004:
-    _name = "Leather";
-    break;
-  case 4005:
-    _name = "Exotic Leather";
-    break;
-  case 4006:
-    _name = "Fur";
-    break;
-  case 4007:
-    _name = "Exotic Fur";
-    break;
-  case 4008:
-    _name = "Feather";
-    break;
-  case 4009:
-    _name = "Thick Leather";
-    break;
-  case 4010:
-    _name = "Antler";
-    break;
-  case 4011:
-    _name = "Ivory";
-    break;
-  case 4012:
-    _name = "Poison";
-    break;
-  case 4013:
-    _name = "Leopard Skin";
-    break;
-  case 4014:
-    _name = "Aurochs Hide";
-    break;
-  case 4015:
-    _name = "Black Leopard Skin";
-    break;
-  case 4016:
-    _name = "Bear Hide";
-    break;
-  case 4017:
-    _name = "Polar Bear Hide";
-    break;
-  case 4018:
-    _name = "Tiger Hide";
-    break;
-  case 4019:
-    _name = "Rushseed Oil";
-    break;
-  case 4020:
-    _name = "Cooked Bone";
-    break;
-  case 4021:
-    _name = "Sugarcane Pulp";
-    break;
-  case 4022:
-    _name = "Organic Pulp";
-    break;
-  case 4023:
-    _name = "Ash";
-    break;
-  case 4024:
-    _name = "Clay Beads";
-    break;
-  case 4025:
-    _name = "Hay";
-    break;
-  case 4026:
-    _name = "Antiseptic";
-    break;
-  case 4027:
-    _name = "Soap";
-    break;
-  case 4028:
-    _name = "Tar";
-    break;
-  case 4030:
-    _name = "Level 1 Fertilizer";
-    break;
-  case 4031:
-    _name = "Level 2 Fertilizer";
-    break;
-  case 4032:
-    _name = "Level 3 Fertilizer";
-    break;
-  case 4040:
-    _name = "Rare Fertilizer";
-    break;
-  case 4100:
-    _name = "Bronze Plate";
-    break;
-  case 4101:
-    _name = "Iron Plate";
-    break;
-  case 4102:
-    _name = "Steel Plate";
-    break;
-  case 4103:
-    _name = "Emerald Bronze Plate";
-    break;
-  case 4104:
-    _name = "Damascus Steel Plate";
-    break;
-  case 4105:
-    _name = "Bronze Chainmail";
-    break;
-  case 4106:
-    _name = "Iron Chainmail";
-    break;
-  case 4107:
-    _name = "Steel Chainmail";
-    break;
-  case 4108:
-    _name = "Emerald Bronze Chainmail";
-    break;
-  case 4109:
-    _name = "Damascus Steel Chainmail";
-    break;
-  case 4200:
-    _name = "Fishing Boat";
-    break;
-  case 4201:
-    _name = "Battered Fishing Boat";
-    break;
-  case 4500:
-    _name = "Fur Clothes";
-    break;
-  case 4501:
-    _name = "Regular Clothes";
-    break;
-  case 4503:
-    _name = "Tailored Fur Clothes";
-    break;
-  case 4504:
-    _name = "Tailored Regular Clothes";
-    break;
-  case 4520:
-    _name = "Basic Furniture";
-    break;
-  case 4521:
-    _name = "Ornate Furniture";
-    break;
-  case 4522:
-    _name = "Oppulant Furniture";
-    break;
-  case 4540:
-    _name = "Basic Tool";
-    break;
-  case 4541:
-    _name = "Artisan Tool";
-    break;
-  case 4542:
-    _name = "Oppulant Tool";
-    break;
-  case 4560:
-    _name = "Basic Jewelery";
-    break;
-  case 4561:
-    _name = "Silver Jewelery";
-    break;
-  case 4562:
-    _name = "Gold Jewelery";
-    break;
-  case 4580:
-    _name = "Basic Bedding";
-    break;
-  case 4581:
-    _name = "Enhanced Bedding";
-    break;
-  case 4582:
-    _name = "Down Bedding";
-    break;
-  case 5000:
-    _name = "Bronze Spear";
-    break;
-  case 5001:
-    _name = "Iron Spear";
-    break;
-  case 5002:
-    _name = "Steel Spear";
-    break;
-  case 5003:
-    _name = "Emerald Bronze Spear";
-    break;
-  case 5004:
-    _name = "Damascus Steel Spear";
-    break;
-  case 5010:
-    _name = "Bronze Axe";
-    break;
-  case 5011:
-    _name = "Iron Axe";
-    break;
-  case 5012:
-    _name = "Steel Axe";
-    break;
-  case 5013:
-    _name = "Emerald Bronze Axe";
-    break;
-  case 5014:
-    _name = "Damascus Steel Axe";
-    break;
-  case 5020:
-    _name = "Bronze Sword";
-    break;
-  case 5021:
-    _name = "Iron Sword";
-    break;
-  case 5022:
-    _name = "Steel Sword";
-    break;
-  case 5023:
-    _name = "Emerald Bronze Sword";
-    break;
-  case 5024:
-    _name = "Damascus Steel Sword";
-    break;
-  case 5025:
-    _name = "Diamond Sword";
-    break;
-  case 5030:
-    _name = "Bronze Mace";
-    break;
-  case 5031:
-    _name = "Iron Mace";
-    break;
-  case 5032:
-    _name = "Steel Mace";
-    break;
-  case 5033:
-    _name = "Emerald Bronze Mace";
-    break;
-  case 5034:
-    _name = "Damascus Steel Mace";
-    break;
-  case 5040:
-    _name = "Bronze Lance";
-    break;
-  case 5041:
-    _name = "Iron Lance";
-    break;
-  case 5042:
-    _name = "Steel Lance";
-    break;
-  case 5043:
-    _name = "Emerald Bronze Lance";
-    break;
-  case 5044:
-    _name = "Damascus Steel Lance";
-    break;
-  case 5050:
-    _name = "Bronze Poleaxe";
-    break;
-  case 5051:
-    _name = "Iron Poleaxe";
-    break;
-  case 5052:
-    _name = "Steel Poleaxe";
-    break;
-  case 5053:
-    _name = "Emerald Bronze Poleaxe";
-    break;
-  case 5054:
-    _name = "Damascus Steel Poleaxe";
-    break;
-  case 5060:
-    _name = "Bronze Greatsword";
-    break;
-  case 5061:
-    _name = "Iron Greatsword";
-    break;
-  case 5062:
-    _name = "Steel Greatsword";
-    break;
-  case 5063:
-    _name = "Emerald Bronze Greatsword";
-    break;
-  case 5064:
-    _name = "Damascus Steel Greatsword";
-    break;
-  case 5070:
-    _name = "Bronze Warhammer";
-    break;
-  case 5071:
-    _name = "Iron Warhammer";
-    break;
-  case 5072:
-    _name = "Steel Warhammer";
-    break;
-  case 5073:
-    _name = "Emerald Bronze Warhammer";
-    break;
-  case 5074:
-    _name = "Damascus Steel Warhammer";
-    break;
-  case 5080:
-    _name = "Bronze Elephant Tusk Cap";
-    break;
-  case 5081:
-    _name = "Iron Elephant Tusk Cap";
-    break;
-  case 5082:
-    _name = "Steel Elephant Tusk Cap";
-    break;
-  case 5083:
-    _name = "Beryl Bronze Elephant Tusk Cap";
-    break;
-  case 5084:
-    _name = "Damascus Elephant Tusk Cap";
-    break;
-  case 5090:
-    _name = "Bronze Rhino Tusk Cap";
-    break;
-  case 5091:
-    _name = "Iron Rhino Tusk Cap";
-    break;
-  case 5092:
-    _name = "Steel Rhino Tusk Cap";
-    break;
-  case 5093:
-    _name = "Beryl Bronze Rhino Tusk Cap";
-    break;
-  case 5094:
-    _name = "Damascus Rhino Tusk Cap";
-    break;
-  case 5200:
-    _name = "BasicBow";
-    break;
-  case 5201:
-    _name = "Longbow";
-    break;
-  case 5202:
-    _name = "Greatbow";
-    break;
-  case 5210:
-    _name = "Simple Crossbow";
-    break;
-  case 5211:
-    _name = "Basic Sling";
-    break;
-  case 5212:
-    _name = "Heavy Flamer";
-    break;
-  case 5213:
-    _name = "Flame Grenade";
-    break;
-  case 5214:
-    _name = "Golden Sling";
-    break;
-  case 5400:
-    _name = "Farm Horse";
-    break;
-  case 5401:
-    _name = "Horse";
-    break;
-  case 5402:
-    _name = "Charge Horse";
-    break;
-  case 5403:
-    _name = "War Horse";
-    break;
-  case 5420:
-    _name = "Trained Elephant";
-    break;
-  case 5430:
-    _name = "Trained Rhino";
-    break;
-  case 5500:
-    _name = "Light Bronze Mail";
-    break;
-  case 5501:
-    _name = "Light Iron Mail";
-    break;
-  case 5502:
-    _name = "Light Steel Mail";
-    break;
-  case 5503:
-    _name = "Light Emerald Bronze Mail";
-    break;
-  case 5504:
-    _name = "Light Damascus Steel Mail";
-    break;
-  case 5510:
-    _name = "Light Bronze Plate";
-    break;
-  case 5511:
-    _name = "Light Iron Plate";
-    break;
-  case 5512:
-    _name = "Light Steel Plate";
-    break;
-  case 5513:
-    _name = "Light Emerald Bronze Plate";
-    break;
-  case 5514:
-    _name = "Light Damascus Steel Plate";
-    break;
-  case 5520:
-    _name = "Medium Bronze Mail";
-    break;
-  case 5521:
-    _name = "Medium Iron Mail";
-    break;
-  case 5522:
-    _name = "Medium Steel Mail";
-    break;
-  case 5523:
-    _name = "Medium Emerald Bronze Mail";
-    break;
-  case 5524:
-    _name = "Medium Damascus Steel Mail";
-    break;
-  case 5530:
-    _name = "Medium Bronze Plate";
-    break;
-  case 5531:
-    _name = "Medium Iron Plate";
-    break;
-  case 5532:
-    _name = "Medium Steel Plate";
-    break;
-  case 5533:
-    _name = "Medium Emerald Bronze Plate";
-    break;
-  case 5534:
-    _name = "Medium Damascus Steel Plate";
-    break;
-  case 5540:
-    _name = "Bronze Heavy Armor";
-    break;
-  case 5541:
-    _name = "Iron Heavy Armor";
-    break;
-  case 5542:
-    _name = "Steel Heavy Armor";
-    break;
-  case 5543:
-    _name = "Emerald Bronze Heavy Armor";
-    break;
-  case 5544:
-    _name = "Damascus Steel Heavy Armor";
-    break;
-  case 5550:
-    _name = "Light Bronze Horse Armor";
-    break;
-  case 5551:
-    _name = "Light Iron Horse Armor";
-    break;
-  case 5552:
-    _name = "Light Steel Horse Armor";
-    break;
-  case 5553:
-    _name = "Light Emerald Bronze Horse Armor";
-    break;
-  case 5554:
-    _name = "Light Damascus Steel Horse Armor";
-    break;
-  case 5560:
-    _name = "Medium Bronze Horse Armor";
-    break;
-  case 5561:
-    _name = "Medium Iron Horse Armor";
-    break;
-  case 5562:
-    _name = "Medium Steel Horse Armor";
-    break;
-  case 5563:
-    _name = "Medium Emerald Bronze Horse Armor";
-    break;
-  case 5564:
-    _name = "Medium Damascus Steel Horse Armor";
-    break;
-  case 5570:
-    _name = "Heavy Bronze Horse Armor";
-    break;
-  case 5571:
-    _name = "Heavy Iron Horse Armor";
-    break;
-  case 5572:
-    _name = "Heavy Steel Horse Armor";
-    break;
-  case 5573:
-    _name = "Heavy Emerald Bronze Horse Armor";
-    break;
-  case 5574:
-    _name = "Heavy Damascus Steel Horse Armor";
-    break;
-  case 5580:
-    _name = "Leather Armor";
-    break;
-  case 5581:
-    _name = "Thick Leather Armor";
-    break;
-  case 5582:
-    _name = "Gambeson";
-    break;
-  case 5800:
-    _name = "Bronze Rhino Armor";
-    break;
-  case 5801:
-    _name = "Iron Rhino Armor";
-    break;
-  case 5802:
-    _name = "Steel Rhino Armor";
-    break;
-  case 5803:
-    _name = "Emerald Bronze Rhino Armor";
-    break;
-  case 5804:
-    _name = "Damascus Steel Rhino Armor";
-    break;
-  case 5810:
-    _name = "Heavy Bronze Rhino Armor";
-    break;
-  case 5811:
-    _name = "Heavy Iron Rhino Armor";
-    break;
-  case 5812:
-    _name = "Heavy Steel Rhino Armor";
-    break;
-  case 5813:
-    _name = "Heavy Emerald Bronze Rhino Armor";
-    break;
-  case 5814:
-    _name = "Heavy Damascus Steel Rhino Armor";
-    break;
-  case 5820:
-    _name = "Bronze Elephant Armor";
-    break;
-  case 5821:
-    _name = "Iron Elephant Armor";
-    break;
-  case 5822:
-    _name = "Steel Elephant Armor";
-    break;
-  case 5823:
-    _name = "Emerald Bronze Elephant Armor";
-    break;
-  case 5824:
-    _name = "Damascus Steel Elephant Armor";
-    break;
-  case 5830:
-    _name = "Heavy Bronze Elephant Armor";
-    break;
-  case 5831:
-    _name = "Heavy Iron Elephant Armor";
-    break;
-  case 5832:
-    _name = "Heavy Steel Elephant Armor";
-    break;
-  case 5833:
-    _name = "Heavy Emerald Bronze Elephant Armor";
-    break;
-  case 5834:
-    _name = "Heavy Damascus Steel Elephant Armor";
-    break;
-  case 5900:
-    _name = "Wooden Shield";
-    break;
-  case 5901:
-    _name = "Banded Shield";
-    break;
-  case 5902:
-    _name = "Standard Shield";
-    break;
-  case 5903:
-    _name = "Metal Shield";
-    break;
-  case 5904:
-    _name = "Gong Shield";
-    break;
-  case 5905:
-    _name = "Heirloom Shield";
-    break;
-  case 5910:
-    _name = "Wall Shield";
-    break;
-  case 5911:
-    _name = "Advanced Wall Shield";
-    break;
-  case 7000:
-    _name = "Rabbit";
-    break;
-  case 7001:
-    _name = "Deer";
-    break;
-  case 7002:
-    _name = "Turkey";
-    break;
-  case 7003:
-    _name = "Mink";
-    break;
-  case 7004:
-    _name = "Cyote";
-    break;
-  case 7005:
-    _name = "Snake";
-    break;
-  case 7100:
-    _name = "Fox";
-    break;
-  case 7101:
-    _name = "Boar";
-    break;
-  case 7102:
-    _name = "Zebra";
-    break;
-  case 7103:
-    _name = "Reindeer";
-    break;
-  case 7104:
-    _name = "Leopard";
-    break;
-  case 7105:
-    _name = "Crocodile";
-    break;
-  case 7106:
-    _name = "Otter";
-    break;
-  case 7107:
-    _name = "Wolf";
-    break;
-  case 7108:
-    _name = "Seal";
-    break;
-  case 7109:
-    _name = "Ostridge";
-    break;
-  case 7200:
-    _name = "Elk";
-    break;
-  case 7201:
-    _name = "Aurochs";
-    break;
-  case 7202:
-    _name = "Black Leopard";
-    break;
-  case 7203:
-    _name = "Bear";
-    break;
-  case 7204:
-    _name = "Sea Mink";
-    break;
-  case 7205:
-    _name = "Whalrus";
-    break;
-  case 7206:
-    _name = "Poison Snake";
-    break;
-  case 7300:
-    _name = "Elephant";
-    break;
-  case 7301:
-    _name = "Rhino";
-    break;
-  case 7302:
-    _name = "Polar Bear";
-    break;
-  case 7303:
-    _name = "Tiger";
-    break;
-  case 7304:
-    _name = "Titan Snake";
-    break;
-  case 7400:
-    _name = "Cow";
-    break;
-  case 7401:
-    _name = "Chicken";
-    break;
-  case 7402:
-    _name = "Sheep";
-    break;
-  case 10001:
-    _name = "T1 Spearman";
-    break;
-  case 10002:
-    _name = "T2 Spearman";
-    break;
-  case 10003:
-    _name = "T3 Spearman";
-    break;
-  case 10004:
-    _name = "T4 Spearman";
-    break;
-  case 10005:
-    _name = "T5 Spearman";
-    break;
-  case 10006:
-    _name = "T6 Spearman";
-    break;
-  case 10007:
-    _name = "T7 Spearman";
-    break;
-  case 10008:
-    _name = "T8 Spearman";
-    break;
-  case 10011:
-    _name = "T1 Swordman";
-    break;
-  case 10012:
-    _name = "T2 Swordman";
-    break;
-  case 10013:
-    _name = "T3 Swordman";
-    break;
-  case 10014:
-    _name = "T4 Swordman";
-    break;
-  case 10015:
-    _name = "T5 Swordman";
-    break;
-  case 10016:
-    _name = "T6 Swordman";
-    break;
-  case 10017:
-    _name = "T7 Swordman";
-    break;
-  case 10018:
-    _name = "T8 Swordman";
-    break;
-  case 10021:
-    _name = "T1 Axeman";
-    break;
-  case 10022:
-    _name = "T2 Axeman";
-    break;
-  case 10023:
-    _name = "T3 Axeman";
-    break;
-  case 10024:
-    _name = "T4 Axeman";
-    break;
-  case 10025:
-    _name = "T5 Axeman";
-    break;
-  case 10026:
-    _name = "T6 Axeman";
-    break;
-  case 10027:
-    _name = "T7 Axeman";
-    break;
-  case 10028:
-    _name = "T8 Axeman";
-    break;
-  case 10201:
-    _name = "T1 Archer";
-    break;
-  case 10202:
-    _name = "T2 Archer";
-    break;
-  case 10203:
-    _name = "T3 Archer";
-    break;
-  case 10204:
-    _name = "T4 Archer";
-    break;
-  case 10205:
-    _name = "T5 Archer";
-    break;
-  case 10206:
-    _name = "T6 Archer";
-    break;
-  case 10207:
-    _name = "T7 Archer";
-    break;
-  case 10208:
-    _name = "T8 Archer";
-    break;
-  case 10211:
-    _name = "T1 Slinger";
-    break;
-  case 10212:
-    _name = "T2 Slinger";
-    break;
-  case 10213:
-    _name = "T3 Slinger";
-    break;
-  case 10214:
-    _name = "T4 Slinger";
-    break;
-  case 10215:
-    _name = "T5 Slinger";
-    break;
-  case 10216:
-    _name = "T6 Slinger";
-    break;
-  case 10217:
-    _name = "T7 Slinger";
-    break;
-  case 10218:
-    _name = "T8 Slinger";
-    break;
-  case 10225:
-    _name = "T5 Flamer";
-    break;
-  case 10226:
-    _name = "T6 Flamer";
-    break;
-  case 10227:
-    _name = "T7 Flamer";
-    break;
-  case 10228:
-    _name = "T8 Flamer";
-    break;
-  case 10231:
-    _name = "T1 Crossbowman";
-    break;
-  case 10232:
-    _name = "T2 Crossbowman";
-    break;
-  case 10233:
-    _name = "T3 Crossbowman";
-    break;
-  case 10234:
-    _name = "T4 Crossbowman";
-    break;
-  case 10235:
-    _name = "T5 Crossbowman";
-    break;
-  case 10236:
-    _name = "T6 Crossbowman";
-    break;
-  case 10237:
-    _name = "T7 Crossbowman";
-    break;
-  case 10238:
-    _name = "T8 Crossbowman";
-    break;
-  case 10301:
-    _name = "T1 Lancer";
-    break;
-  case 10302:
-    _name = "T2 Lancer";
-    break;
-  case 10303:
-    _name = "T3 Lancer";
-    break;
-  case 10304:
-    _name = "T4 Lancer";
-    break;
-  case 10305:
-    _name = "T5 Lancer";
-    break;
-  case 10306:
-    _name = "T6 Lancer";
-    break;
-  case 10307:
-    _name = "T7 Lancer";
-    break;
-  case 10308:
-    _name = "T8 Lancer";
-    break;
-  case 10311:
-    _name = "T1 Mounted Swordman";
-    break;
-  case 10312:
-    _name = "T2 Mounted Swordman";
-    break;
-  case 10313:
-    _name = "T3 Mounted Swordman";
-    break;
-  case 10314:
-    _name = "T4 Mounted Swordman";
-    break;
-  case 10315:
-    _name = "T5 Mounted Swordman";
-    break;
-  case 10316:
-    _name = "T6 Mounted Swordman";
-    break;
-  case 10317:
-    _name = "T7 Mounted Swordman";
-    break;
-  case 10318:
-    _name = "T8 Mounted Swordman";
-    break;
-  case 10321:
-    _name = "T1 Mounted Axeman";
-    break;
-  case 10322:
-    _name = "T2 Mounted Axeman";
-    break;
-  case 10323:
-    _name = "T3 Mounted Axeman";
-    break;
-  case 10324:
-    _name = "T4 Mounted Axeman";
-    break;
-  case 10325:
-    _name = "T5 Mounted Axeman";
-    break;
-  case 10326:
-    _name = "T6 Mounted Axeman";
-    break;
-  case 10327:
-    _name = "T7 Mounted Axeman";
-    break;
-  case 10328:
-    _name = "T8 Mounted Axeman";
-    break;
-  case 10505:
-    _name = "T5 Elephant";
-    break;
-  case 10506:
-    _name = "T6 Elephant";
-    break;
-  case 10507:
-    _name = "T7 Elephant";
-    break;
-  case 10508:
-    _name = "T8 Elephant";
-    break;
-  case 10515:
-    _name = "T5 Tower Elephant";
-    break;
-  case 10516:
-    _name = "T6 Tower Elephant";
-    break;
-  case 10517:
-    _name = "T7 Tower Elephant";
-    break;
-  case 10518:
-    _name = "T8 Tower Elephant";
-    break;
-  case 10525:
-    _name = "T5 Rhino";
-    break;
-  case 10526:
-    _name = "T6 Rhino";
-    break;
-  case 10527:
-    _name = "T7 Rhino";
-    break;
-  case 10528:
-    _name = "T8 Rhino";
-    break;
-  case 10601:
-    _name = "T1 Mounted Archer";
-    break;
-  case 10602:
-    _name = "T2 Mounted Archer";
-    break;
-  case 10603:
-    _name = "T3 Mounted Archer";
-    break;
-  case 10604:
-    _name = "T4 Mounted Archer";
-    break;
-  case 10605:
-    _name = "T5 Mounted Archer";
-    break;
-  case 10606:
-    _name = "T6 Mounted Archer";
-    break;
-  case 10607:
-    _name = "T7 Mounted Archer";
-    break;
-  case 10608:
-    _name = "T8 Mounted Archer";
-    break;
-  case 11000:
-    _name = "Bandits";
-    break;
-  case 11010:
-    _name = "Peasent Levy";
-    break;
-  case 11011:
-    _name = "Veteran Peasent Levy";
-    break;
-  case 11020:
-    _name = "Levy Spear";
-    break;
-  case 11021:
-    _name = "Veteran Levy Spear";
-    break;
-  case 11030:
-    _name = "Mountain Levy";
-    break;
-  case 11031:
-    _name = "Veteran Mountain Levy";
-    break;
-  case 11040:
-    _name = "Mercenary Swordman";
-    break;
-  case 11041:
-    _name = "Veteran Mercenary Swordman";
-    break;
-  case 11042:
-    _name = "Palace Guard";
-    break;
-  case 11050:
-    _name = "Mercenary Axeman";
-    break;
-  case 11060:
-    _name = "Mercenary Maceman";
-    break;
-  case 11070:
-    _name = "Pikeman";
-    break;
-  case 11200:
-    _name = "Peasent Bowman";
-    break;
-  case 11210:
-    _name = "Levy Archer";
-    break;
-  case 11211:
-    _name = "Veteran Levy Archer";
-    break;
-  case 11220:
-    _name = "Huntsman";
-    break;
-  case 11230:
-    _name = "Slinger";
-    break;
-  case 11231:
-    _name = "Golden Slinger";
-    break;
-  case 11241:
-    _name = "Imperial Flamer";
-    break;
-  case 11300:
-    _name = "Free Lance";
-    break;
-  case 11301:
-    _name = "Knight";
-    break;
-  case 11310:
-    _name = "Mounted Levy";
-    break;
-  case 11311:
-    _name = "Mounted Palace Guard";
-    break;
-  case 11501:
-    _name = "War Elephant";
-    break;
-  case 11502:
-    _name = "Elite War Elephant";
-    break;
-  case 11520:
-    _name = "War Rhino";
-    break;
-  case 11521:
-    _name = "Elite War Rhino";
-    break;
-  case 11600:
-    _name = "Mounted Archer";
-    break;
-  case 11601:
-    _name = "Veteran Mounted Archer";
-    break;
-  case 11602:
-    _name = "Palace Archer";
-    break;
-  case 28501:
-    _name = "T1 XP";
-    break;
-  case 28502:
-    _name = "T2 XP";
-    break;
-  case 28503:
-    _name = "T3 XP";
-    break;
-  case 28504:
-    _name = "T4 XP";
-    break;
-  case 28505:
-    _name = "T5 XP";
-    break;
-  case 28506:
-    _name = "T6 XP";
-    break;
-  case 28507:
-    _name = "T7 XP";
-    break;
-  case 28508:
-    _name = "T8 XP";
-    break;
-  case 28800:
-    _name = "Coins";
-    break;
-
-}
-return (_name);
-}
-
-const questRewards1 = [Bloodstone,T2_XP,0,0,0,0,100,10,0,0,0,0];
-const questRewards2 = [Bloodstone,T2_XP,0,0,0,0,1000,50,0,0,0,0];
-const questRewards3 = [Bloodstone,T2_XP,T3_XP,0,0,0,2500,100,50,0,0,0];
-const questRewards4 = [Bloodstone,T3_XP,0,0,0,0,4000,250,0,0,0,0];
-const questRewards5 = [Bloodstone,T4_XP,0,0,0,0,7500,700,0,0,0,0];
-const questRewards6 = [Bloodstone,T5_XP,0,0,0,0,20_000,1000,0,0,0,0];
-const questRewards7 = [Bloodstone,T6_XP,0,0,0,0,50_000,2500,0,0,0,0];
-const questRewards8 = [Bloodstone,T7_XP,0,0,0,0,200_000,7000,0,0,0,0];
-const questRewards10 = [Bloodstone,T8_XP,0,0,0,0,1_000_000,25000,0,0,0,0];
-
-const questArmy1 = [[Bandits,0,0,0,0,0,0,0,0,0,0,0],[20,0,0,0,0,0,0,0,0,0,0,0]];
-const questArmy2 = [[Peasent_Levy,0,0,0,0,0,0,0,0,0,0,0],[50,0,0,0,0,0,0,0,0,0,0,0]];
-const questArmy3 = [[Peasent_Levy,Veteran_Peasent_Levy,0,0,0,0,Peasent_Bowman,0,0,0,0,0],[50,50,0,0,0,0,50,0,0,0,0,0]];
-const questArmy4 = [[Levy_Spear,Peasent_Levy,0,0,0,0,0,0,0,Veteran_Mountain_Levy,0,0],[100,100,0,0,0,0,0,0,0,25,0,0]];
-const questArmy5 = [[Mercenary_Swordman,Levy_Spear,0,0,0,0,Levy_Archer,0,0,Mounted_Levy,0,0],[100,100,0,0,0,0,100,0,0,50,0,0]];
-const questArmy6 = [[Veteran_Levy_Spear,Mountain_Levy,Free_Lance,0,0,0,Levy_Archer,Mounted_Archer,0,Veteran_Mountain_Levy,0,0],[200,400,50,0,0,0,200,50,0,100,0,0]];
-const questArmy7 = [[Mercenary_Maceman,Pikeman,Mercenary_Maceman,Veteran_Mercenary_Swordman,0,0,Huntsman,0,0,Knight,0,0],[200,500,200,200,0,0,300,0,0,50,0,0]];
-const questArmy8 = [[Mercenary_Axeman,Pikeman,Veteran_Mercenary_Swordman,Mounted_Palace_Guard,0,0,Veteran_Mounted_Archer,Mounted_Archer,0,Mounted_Palace_Guard,0,0],[1000,2000,1000,200,0,0,500,1000,0,100,0,0]];
-const questArmy10 = [[Palace_Guard,Mounted_Palace_Guard,Palace_Guard,T7_Elephant,Palace_Guard,Mounted_Palace_Guard,Golden_Slinger,Imperial_Flamer,Palace_Archer,Mounted_Palace_Guard,0,0],[2000,1000,2000,500,2000,1000,2000,500,2000,500,0,0]];
-
-
-let recipe0 = [[0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0], [0,0,0,0,0,0], 0, 0, [0,0,0,0]];
-
-let weapon0 = [0,false,0,0,0,0,0,0,0,0];
-
-//Null
-const mixedItemData0 = "uint16(0),0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0";
-//Grain
-const mixedItemData1 = [Wheat,Rye,Corn,Sorghum,Oats,Barley,Rice];
-//Meat
-const mixedItemData2 = [Beef,Chicken_Meat,Fish_Meat,Mutton,Game_Meat,Boiled_Meat];
-//Fruit
-const mixedItemData3 = [Grapes,Peaches,Plums,Apples,Cherries];
-//Vegetables
-const mixedItemData4 = [Potato,Onion,Carrots,Casava,Peppers];
-
-const mixedItemData5 = [Fat,Olive_Oil];
-//T2 Metal
-const mixedItemData6 = [Iron,Bronze];
-//T1 Drink
-const mixedItemData7 = [Wheat_Beer,Rye_Beer,Barley_Beer,Oat_Beer,Rice_Beer,Sorghum_Beer,Cider,Wine,Plum_Wine,Peach_Wine,Cherry_Wine,Mead,Grog];
-//Exotic Berries
-const mixedItemData8 = [Winterberries,Jungleberries];
-//Bread
-const mixedItemData9 = [Basic_Bread,Wheat_Bread,Rye_Bread,Corn_Bread];
-//T2 Drink
-const mixedItemData10 = [Vodka,Kumis,Rum,Grain_Whiskey];
-//T3 Drink
-const mixedItemData11 = [Brandy,Jungle_Wine,Winter_Wine,Aged_Rum];
-//T4 Drink
-const mixedItemData12 = [Ginseng_Wine,Spiced_Vodka];
-//T5 Drink
-const mixedItemData13 = [Double_Brandy,Auric_Mead];
-//Seafood
-const mixedItemData14 = [Oyster_Meat,Crab,Oyster];
-//Flour
-const mixedItemData15 = [Flour,Wheat_Flour,Corn_Flour,Rye_Flour];
-//Crops
-const mixedItemData16 = [Wheat,Rye,Corn,Sorghum,Oats,Barley,Rice,Apples,Plums,Beans];
-//Polished Common Gemstones
-const mixedItemData17 = [Polished_Amethyst,Polished_Opal,Polished_Citrine,Polished_Pearl,Polished_Amber,Polished_Onyx,Polished_Aquamarine,Polished_Crystal_Glass];
-//Polished Rare Gemstones
-const mixedItemData18 = [Polished_Ruby,Polished_Emerald,Polished_Sapphire];
-//Common Gemstones
-const mixedItemData19 = [Amethyst,Opal,Citrine,Pearl,Amber,Onyx,Aquamarine,Crystal_Glass];
-//Rare Gemstones
-const mixedItemData20 = [Ruby,Emerald,Sapphire];
-//Fiber
-const mixedItemData21 = [Wool,Cotton];
-//Flatbread
-const mixedItemData22 = [Basic_Flatbread,Corn_Flatbread];
-//Stock
-const mixedItemData23 = [Bone_Stock,Vegetable_Stock,Mushroom_Stock,Meat_Stock];
-//Any_Bone
-const mixedItemData24 = [Bone,Cooked_Bone];
-//Sauce
-const mixedItemData25 = [Ketchup,Wine_Sauce,Spicy_Sauce,Cider_Sauce];
-//Fuek
-const mixedItemData26 = [Wood,Charcoal];
-//Unboiled Meat
-const mixedItemData27 = [Beef,Chicken_Meat,Fish_Meat,Mutton,Game_Meat];
-
-
-
-          
-cropData501 = [500, 0, [50, 100, 75], [50, 150], 50, 150, 10, 0, false, Wheat, 0];
-
-cropData502 = [500, 0, [0, 80, 50], [50, 150], 0, 150, 10, 0, false, Rye, 0];
-
-cropData503 = [500, 0, [50, 120, 80], [110, 200], 25, 150, 10, 0, false, Rice, 0];
-
-cropData504 = [500, 0, [50, 100, 75], [50, 150], 25, 150, 10, 0, false, Corn, 0];
-
-cropData505 = [500, 0, [30, 120, 90], [25, 150], 20, 150, 10, 0, false, Sorghum, 0];
-
-cropData535 = [600, 0, [30, 110, 60], [50, 150], 25, 200, 10, 0, false, Potato, 0];
-
-cropData506 = [2500, 500, [60, 110, 80], [50, 150], 25, 100, 50, 10, false, Wood, Apples];
-
-cropData507 = [2500, 500, [30, 110, 70], [50, 150], 25, 100, 50, 10,false, Wood, Plums];
-
-cropData508 = [2500, 500, [50, 120, 80], [25, 150], 0, 100, 50, 10, false, Wood, Olives];
-
-cropData509 = [500, 0, [50, 120, 75], [50, 150], 25, 150, 10, 0, false,  Beans, 0];
-
-cropData510 = [400, 0, [30, 120, 60], [50, 100], 0, 150, 10, 0, false, Mushrooms, 0];
-
-cropData514 = [2500, 500, [50, 110, 70], [50, 150], 25,100, 50, 10, false, Wood, Cherries];
-
-cropData512 = [600, 0, [70, 120, 80], [50, 150], 25, 150, 10, 0, false, Casava, 0];
-
-cropData513 = [500, 0, [50, 100, 75], [50, 150], 25, 150, 10, 0, false, Peanuts, 0];
-
-cropData515 = [2500, 500, [60, 110, 80], [50, 150], 0, 100, 50, 10, false, Wood, Peaches];
-
-cropData516 = [500, 0, [50, 120, 75], [50, 150], 25, 200, 10, 0, false, Garlic, 0];
-
-cropData517 = [500, 0, [50, 120, 75], [50, 150], 25, 200, 10, 0, false, Onion, 0];
-
-cropData518 = [500, 0, [50, 120, 75], [50, 150], 25, 200, 10, 0, false, Carrots, 0];
-
-cropData519 = [500, 0, [75, 150, 90], [80, 170], 40, 100 , 20, 0, false, Sugarcane, 0];
-
-cropData520 = [500, 0, [45, 110, 70], [50, 100], 25, 250 , 10, 0, false, Peppers, 0];
-
-cropData511 = [500, 0, [20, 100, 60], [50, 150], 0, 200, 10, 0, false, Beets, 0];
-
-cropData521 = [500, 0, [60, 120, 85], [50, 150], 25, 100, 10, 0, false, Allspice, 0];
-
-cropData522 = [500, 0, [50, 120, 75], [50, 150], 25, 150, 10, 0, false, Grapes, 0];
-
-cropData538 = [500, 0, [30, 80, 60], [60, 175], 15, 200, 10, 0, false, Oats, 0];
-
-cropData540 = [500, 0, [30, 80, 60], [25, 125], 0, 200, 10, 0, false, Barley, 0];
-
-cropData542 = [500, 0, [70, 120, 85], [75, 150], 30, 150, 10, 0, false, Cotton, 0];
-
-cropData532 = [10, 100, [30, 80, 60], [50, 150], 0, 250, 50, 10, true, Cow, Milk];
-cropData533 = [10, 100, [30, 80, 60], [0, 200], 0, 250, 20, 10, true, Chicken, Eggs];
-cropData544 = [10, 500, [30, 80, 60], [25, 200], 0, 250, 30, 10, true, Sheep, Wool];
-
-cropData0 = [0, 0, [0, 0, 0], [0, 0], 0, 0, 0, 0, false, 0, 0, 0];
-
-soldier0 =  [[0, 0, 0, 0, 0, 0, 0, 0, false, [0, 0] ,0], [None, None, None, None], [false, false, false, false]]
-
-const BuildingName = ["Land Permit", "Tier 1 Housing", "Tier 2 Housing", "Tier 3 Housing", "Tier 4 Housing", "Tier 5 Housing", "Tier 6 Housing", "Tier 7 Housing", "Tier 1 Cookery", "Tier 2 Cookery", "Tier 3 Cookery", "Tier 4 Cookery", "Tier 1 Brewery", "Tier 2 Brewery", "Tier 3 Brewery", "Tier 4 Brewery", "Tier 1 Smeltery", "Tier 3 Smeltery", "Tier 3 Smeltery", "Masonry","None", "Tier 1 Blacksmith", "Tier 2 Blacksmith", "Aging Facility","Infrastructure","Harbor", "Tier 1 Jeweler", "Tier 2 Jeweler", "Tier 1 Weaver", "Tier 2 Weaver", "Tier 1 Carpenter", "Tier 2 Carpenter" ];
-
-//Land Info
-landData1 = [ 90,  25,  50,  5,   [100, 10, 20, 2, 0], [Stone, Amethyst, Copper_Ore, Silver_Ore, 0]];
-landData2 = [ 80,  25,  50,  15,   [150, 10, 10, 0, 0],[Stone, Amethyst, Rushseed, 0, 0]];
-landData3 = [ 80,  75,  50,  25,   [100, 250, 15, 0, 0],[Wood, Clay, Oyster, 0, 0]];
-landData4 = [ 80,  100,  50,  50,   [250, 10, 1, 5, 0],[Clay,Copper_Ore,Gold_Ore,Oyster, 0]];
-
-landData11 = [ 30,  25,  50,  0,  [200, 5, 10, 10, 0],[Stone, Winterberries, Copper_Ore, Aquamarine, 0]];
-landData12 = [ 40,  100,  50,  15,  [25, 0, 0, 0, 0], [Winterberries, 0, 0, 0, 0]];
-landData13 = [ 50,  100,  50,  25,  [300, 10, 0, 0, 0],[Wood, Winterberries, 0, 0, 0]];
-landData14 = [ 40,  110,  50,  50,   [100, 50, 25, 5, 0],[Wood, Clay, Oyster, Winterberries, 0]];
-
-landData21 = [ 60,  25,  50,  0,   [200, 10, 20, 0, 0],[Stone, Iron_Ore, Onyx, 0, 0]];
-landData22 = [ 60,  100,  50,  25,  [300, 10, 20, 0, 0],[Wood, Heartland_Herbs, Honey, 0, 0]];
-landData23 = [ 60,  100,  50,  50,  [10, 20, 20, 1, 0],[Oyster, Heartland_Herbs, Honey, Gold_Ore, 0]];
-
-landData31 = [ 80,  25,  50,  0,  [200, 20, 20, 0, 0],  [Stone, Citrine, Copper_Ore, 0, 0]];
-landData32 = [ 80,  75,  50,  25,  [200, 10, 20, 0, 0],[Wood, Jungleberries, Honey, 0, 0]];
-landData33 = [ 85,  100,  50,  35, [200, 15, 0, 0, 0],[Wood, Jungleberries, 0, 0, 0]];
-landData34 = [ 80,  110,  50,  50,  [100, 10, 5, 1, 0],[Wood, Jungleberries, Iron_Ore, Gold_Ore, 0]];
-
-landData41 = [ 45,  120,  0,  0,  [100, 10, 20, 5, 10],[Wood, Salt, Fish_Meat, Winterberries, Amber]];
-landData42 = [ 55,  120,  0,  0,  [100, 20, 20, 10, 0],[Wood, Salt, Fish_Meat, Oyster, 0]];
-landData43 = [ 65,  120,  0,  0,  [150, 30, 10, 5, 0],[Wood, Salt, Fish_Meat, Jungleberries, 0]];
-landData44 = [ 75,  120,  0,  0,  [100, 40, 0, 0, 0],  [Stone, Salt, 0, 0, 0]];
-
-landData51 = [ 70,  200,  50,  15,  [20, 10, 100, 10, 100], [Fish_Meat, Salt, Wood, Amber, Clay]];
-landData52 = [ 70,  175,  50,  35,  [30, 10, 150, 10, 0],  [Fish_Meat, Amber, Wood, Iron_Ore, 0]];
-landData53 = [ 70,  150,  50,  50,  [40, 20, 100, 0, 0],  [Fish_Meat, Amber, Wood, 0, 0]];
-
-landData61 = [ 55,  100,  175,  25,  [200, 2, 10, 2, 0],  [Stone, Ginseng, Copper_Ore, Ruby, 0]];
-landData62 = [ 55,  100,  175,  25,  [200, 2, 10, 2, 0],  [Stone, Wasabi, Iron_Ore, Sapphire, 0]];
-landData63 = [ 60,  100,  150,  25,  [200, 2, 10, 2, 0],  [Stone, Wasabi, Iron_Ore, Emerald, 0]];
-landData64 = [ 45,  100,  200,  25,  [200, 2, 10, 5, 0],  [Stone, Ginseng, Tin_Ore, Crystal_Glass, 0]];
-
-landData70 = [ 65,  100,  50,  100,  [10, 5, 150, 10, 0],  [Moonstone, Silver_Ore, Stone, Iron_Ore, 0]];
-landData71 = [ 55,  110,  50,  175,  [40, 20, 5, 50, 0],  [Oyster, Silver_Sap, Moonstone, Wood, 0]];
-landData72 = [ 65,  100,  50,  150,  [80, 200, 0, 0, 0],  [Silver_Sap, Wood, 0, 0, 0]];
-
-landData80 = [ 70,  100,  50,  200,  [8, 1, 200, 0, 0],  [Diamond, Gold, Stone, 0, 0]];
-landData81 = [ 60,  100,  100,  225, [200, 1, 16, 0, 0],  [Wood, Gold, Auric_Honey, 0, 0]];
-landData82 = [ 70,  100,  50,  250,  [100, 100, 1, 8, 4],  [Wood, Stone, Gold, Auric_Honey, Diamond]];
-
-function returnRecipe(_value) {
-    _value = "recipe" + _value;
-    _value = eval(_value);
-    return _value;
-}
-
-function returnArmyInfo(_value) {
-    _value = "soldier" + _value;
-    _value = eval(_value);
-    return _value;
+   return([Wheat,Rye,Corn,Sorghum,Oats,Barley,Rice]);
+default:
+          return(["             "]);
+              }
+      };
+function groupCrafting(_value) {
+      _value = Number(_value);
+      switch (_value) {
+      
+case -32:
+return([[-1],[-1]]);
+case -31:
+return([[-1],[-1]]);
+case -30:
+return([[-1],[-1]]);
+case -29:
+return([[-1],[-1]]);
+case -28:
+return([[-1],[-1]]);
+case -27:
+return([[-1],[-1]]);
+case -26:
+return([[-1],[-1]]);
+case -25:
+return([[-1],[-1]]);
+case -24:
+return([[-1],[-1]]);
+case -23:
+return([[-1],[-1]]);
+case -22:
+return([[-1],[-1]]);
+case -21:
+return([[-1],[-1]]);
+case -20:
+return([[-1],[-1]]);
+case -19:
+return([[-1],[-1]]);
+case -18:
+return([[-1],[-1]]);
+case -17:
+return([[-1],[-1]]);
+case -16:
+return([[-1],[-1]]);
+case -15:
+return([[-1],[-1]]);
+case -14:
+return([[-1],[-1]]);
+case -13:
+return([[-1],[-1]]);
+case -12:
+return([[-1],[-1]]);
+case -11:
+return([[-1],[-1]]);
+case -10:
+return([[-1],[-1]]);
+case -8:
+return([[-1],[-1]]);
+case -7:
+return([[-1],[-1]]);
+case -6:
+return([[-1],[-1]]);
+case -5:
+return([[-1],[-1]]);
+case -4:
+return([[-1],[-1]]);
+case -3:
+return([[-1],[-1]]);
+case -2:
+return([[-1],[-1]]);
+case -1:
+return([[-1],[-1]]);
+case 0:
+return([[-1],[-1]]);
+case 1:
+return([[-1],[-1]]);
+case 2:
+return([[-1],[-1]]);
+case 3:
+return([[-1],[-1]]);
+case 4:
+return([[-1],[-1]]);
+case 11:
+return([[-1],[-1]]);
+case 12:
+return([[-1],[-1]]);
+case 13:
+return([[-1],[-1]]);
+case 14:
+return([[-1],[-1]]);
+case 21:
+return([[-1],[-1]]);
+case 22:
+return([[-1],[-1]]);
+case 23:
+return([[-1],[-1]]);
+case 31:
+return([[-1],[-1]]);
+case 32:
+return([[-1],[-1]]);
+case 33:
+return([[-1],[-1]]);
+case 34:
+return([[-1],[-1]]);
+case 41:
+return([[-1],[-1]]);
+case 42:
+return([[-1],[-1]]);
+case 43:
+return([[-1],[-1]]);
+case 44:
+return([[-1],[-1]]);
+case 51:
+return([[-1],[-1]]);
+case 52:
+return([[-1],[-1]]);
+case 53:
+return([[-1],[-1]]);
+case 61:
+return([[-1],[-1]]);
+case 62:
+return([[-1],[-1]]);
+case 63:
+return([[-1],[-1]]);
+case 64:
+return([[-1],[-1]]);
+case 70:
+return([[-1],[-1]]);
+case 71:
+return([[-1],[-1]]);
+case 72:
+return([[-1],[-1]]);
+case 80:
+return([[-1],[-1]]);
+case 81:
+return([[-1],[-1]]);
+case 82:
+return([[-1],[-1]]);
+case 501:
+return([[-1],[-1]]);
+case 502:
+return([[-1],[-1]]);
+case 503:
+return([[-1],[-1]]);
+case 504:
+return([[-1],[-1]]);
+case 505:
+return([[-1],[-1]]);
+case 506:
+return([[-1],[-1]]);
+case 507:
+return([[-1],[-1]]);
+case 508:
+return([[-1],[-1]]);
+case 509:
+return([[-1],[-1]]);
+case 510:
+return([[-1],[-1]]);
+case 511:
+return([[-1],[-1]]);
+case 512:
+return([[-1],[-1]]);
+case 513:
+return([[-1],[-1]]);
+case 514:
+return([[-1],[-1]]);
+case 515:
+return([[-1],[-1]]);
+case 516:
+return([[-1],[-1]]);
+case 517:
+return([[-1],[-1]]);
+case 518:
+return([[-1],[-1]]);
+case 519:
+return([[-1],[-1]]);
+case 520:
+return([[-1],[-1]]);
+case 521:
+return([[-1],[-1]]);
+case 522:
+return([[-1],[-1]]);
+case 523:
+return([[-1],[-1]]);
+case 524:
+return([[-1],[-1]]);
+case 525:
+return([[-1],[-1]]);
+case 526:
+return([[-1],[-1]]);
+case 527:
+return([[-1],[-1]]);
+case 528:
+return([[-1],[-1]]);
+case 529:
+return([[-1],[-1]]);
+case 530:
+return([[66000,66003],[-1]]);
+case 531:
+return([[7006,7007,7403,66001],[66000]]);
+case 532:
+return([[7201,7400,77400],[-1]]);
+case 533:
+return([[7401,77401],[-1]]);
+case 534:
+return([[-1],[-1]]);
+case 535:
+return([[-1],[-1]]);
+case 536:
+return([[-1],[-1]]);
+case 537:
+return([[-1],[-1]]);
+case 538:
+return([[-1],[-1]]);
+case 539:
+return([[-1],[-1]]);
+case 540:
+return([[-1],[-1]]);
+case 541:
+return([[7003,7005,7100,7102,7104,7105,7106,7202,7203,7204,7300,7301,7302,7303,7304],[7206]]);
+case 542:
+return([[-1],[-1]]);
+case 543:
+return([[-1],[-1]]);
+case 544:
+return([[7402,77402],[-1]]);
+case 545:
+return([[7000,7001,7002,7004,7103,7107,7108,7109,7200,7205],[7101,7305]]);
+case 546:
+return([[7009],[-1]]);
+case 547:
+return([[-1],[-1]]);
+case 548:
+return([[548],[-1]]);
+case 549:
+return([[-1],[548]]);
+case 550:
+return([[-1],[77400,77401,77402]]);
+case 551:
+return([[-1],[77400,77401,77402]]);
+case 552:
+return([[7305],[7001,7103,7108,7201,7205,77400,77401,77402]]);
+case 553:
+return([[-1],[77400,77402]]);
+case 554:
+return([[530],[-1]]);
+case 555:
+return([[7111,66002],[66000]]);
+case 556:
+return([[-1],[-1]]);
+case 557:
+return([[-1],[-1]]);
+case 558:
+return([[7207],[-1]]);
+case 559:
+return([[559],[-1]]);
+case 560:
+return([[-1],[7007]]);
+case 561:
+return([[-1],[7006]]);
+case 562:
+return([[-1],[-1]]);
+case 563:
+return([[-1],[-1]]);
+case 564:
+return([[-1],[7302]]);
+case 565:
+return([[-1],[-1]]);
+case 566:
+return([[-1],[-1]]);
+case 567:
+return([[-1],[-1]]);
+case 568:
+return([[-1],[-1]]);
+case 569:
+return([[-1],[-1]]);
+case 570:
+return([[-1],[-1]]);
+case 571:
+return([[-1],[-1]]);
+case 572:
+return([[-1],[-1]]);
+case 573:
+return([[-1],[574,575]]);
+case 574:
+return([[574],[-1]]);
+case 575:
+return([[575],[-1]]);
+case 576:
+return([[7008],[-1]]);
+case 577:
+return([[-1],[-1]]);
+case 578:
+return([[-1],[1001,1002,1010]]);
+case 579:
+return([[579],[-1]]);
+case 580:
+return([[-1],[-1]]);
+case 581:
+return([[-1],[-1]]);
+case 583:
+return([[583],[-1]]);
+case 584:
+return([[-1],[1410]]);
+case 585:
+return([[-1],[-1]]);
+case 586:
+return([[-1],[-1]]);
+case 590:
+return([[584],[-1]]);
+case 1000:
+return([[1000],[-1]]);
+case 1001:
+return([[1001],[-1]]);
+case 1002:
+return([[1002],[-1]]);
+case 1003:
+return([[1003],[-1]]);
+case 1010:
+return([[1010],[-1]]);
+case 1011:
+return([[1011],[-1]]);
+case 1012:
+return([[1012],[-1]]);
+case 1013:
+return([[1013],[-1]]);
+case 1014:
+return([[1014],[-1]]);
+case 1030:
+return([[1030],[-1]]);
+case 1031:
+return([[1031],[-1]]);
+case 1032:
+return([[1032],[-1]]);
+case 1033:
+return([[1033],[-1]]);
+case 1034:
+return([[1034],[-1]]);
+case 1040:
+return([[1040],[-1]]);
+case 1041:
+return([[1041],[-1]]);
+case 1042:
+return([[1042],[-1]]);
+case 1043:
+return([[1043],[-1]]);
+case 1044:
+return([[1044],[-1]]);
+case 1050:
+return([[1050],[-1]]);
+case 1051:
+return([[1051],[-1]]);
+case 1052:
+return([[-1],[-1]]);
+case 1060:
+return([[1060],[-1]]);
+case 1061:
+return([[1061],[-1]]);
+case 1062:
+return([[1062],[-1]]);
+case 1200:
+return([[1200,301200,311200,701200],[-1]]);
+case 1203:
+return([[-1],[-1]]);
+case 1204:
+return([[-1],[-1]]);
+case 1205:
+return([[1204,71205],[-1]]);
+case 1206:
+return([[1206],[-1]]);
+case 1207:
+return([[1207],[-1]]);
+case 1208:
+return([[1208],[-1]]);
+case 1209:
+return([[1209],[-1]]);
+case 1212:
+return([[1212],[-1]]);
+case 1213:
+return([[1213],[-1]]);
+case 1220:
+return([[1220],[-1]]);
+case 1221:
+return([[1223],[-1]]);
+case 1222:
+return([[1224],[-1]]);
+case 1223:
+return([[-1],[-1]]);
+case 1224:
+return([[-1],[-1]]);
+case 1260:
+return([[1260],[-1]]);
+case 1261:
+return([[1261],[-1]]);
+case 1262:
+return([[1262],[-1]]);
+case 1268:
+return([[1268],[-1]]);
+case 1270:
+return([[1270],[-1]]);
+case 1271:
+return([[1271],[-1]]);
+case 1272:
+return([[1272],[-1]]);
+case 1273:
+return([[1273],[-1]]);
+case 1274:
+return([[1274],[-1]]);
+case 1275:
+return([[1275],[-1]]);
+case 1276:
+return([[1276],[-1]]);
+case 1277:
+return([[1277],[-1]]);
+case 1278:
+return([[1278],[-1]]);
+case 1279:
+return([[1279],[-1]]);
+case 1280:
+return([[1280],[-1]]);
+case 1281:
+return([[1281],[-1]]);
+case 1282:
+return([[1282],[-1]]);
+case 1283:
+return([[1283],[-1]]);
+case 1284:
+return([[1284],[-1]]);
+case 1285:
+return([[1285],[-1]]);
+case 1286:
+return([[1286],[-1]]);
+case 1287:
+return([[1287],[-1]]);
+case 1288:
+return([[1288],[-1]]);
+case 1289:
+return([[1289],[-1]]);
+case 1290:
+return([[1290],[-1]]);
+case 1291:
+return([[1291],[-1]]);
+case 1294:
+return([[1294],[-1]]);
+case 1295:
+return([[1295],[-1]]);
+case 1296:
+return([[1296],[-1]]);
+case 1299:
+return([[1299],[-1]]);
+case 1300:
+return([[1300],[-1]]);
+case 1301:
+return([[1301],[-1]]);
+case 1400:
+return([[1400],[-1]]);
+case 1401:
+return([[519,536],[-1]]);
+case 1402:
+return([[1402],[-1]]);
+case 1403:
+return([[1403],[-1]]);
+case 1404:
+return([[1404],[-1]]);
+case 1405:
+return([[1405],[-1]]);
+case 1406:
+return([[1406],[-1]]);
+case 1407:
+return([[1407],[-1]]);
+case 1408:
+return([[1408],[-1]]);
+case 1409:
+return([[1409],[-1]]);
+case 1410:
+return([[1410,4020],[-1]]);
+case 1411:
+return([[1411],[-1]]);
+case 1412:
+return([[-1],[1000,1011,1013,1014]]);
+case 1413:
+return([[1413],[-1]]);
+case 1414:
+return([[1414],[-1]]);
+case 1415:
+return([[-1],[-1]]);
+case 1416:
+return([[1416],[-1]]);
+case 1417:
+return([[1417],[-1]]);
+case 1418:
+return([[503,505,538,540,1418],[-1]]);
+case 1419:
+return([[501],[-1]]);
+case 1420:
+return([[502],[-1]]);
+case 1421:
+return([[504],[-1]]);
+case 1422:
+return([[-1],[-1]]);
+case 1423:
+return([[1423],[-1]]);
+case 1424:
+return([[1424],[-1]]);
+case 1425:
+return([[1425],[-1]]);
+case 1426:
+return([[1426],[-1]]);
+case 1427:
+return([[1427],[-1]]);
+case 1428:
+return([[1428],[-1]]);
+case 1430:
+return([[1430],[-1]]);
+case 1431:
+return([[1431],[-1]]);
+case 1432:
+return([[1432],[-1]]);
+case 1433:
+return([[1433],[-1]]);
+case 1434:
+return([[1434],[-1]]);
+case 1435:
+return([[-1],[-1]]);
+case 1436:
+return([[1435],[-1]]);
+case 1437:
+return([[1436],[-1]]);
+case 1438:
+return([[1437],[-1]]);
+case 1439:
+return([[1439],[-1]]);
+case 1440:
+return([[1440],[-1]]);
+case 1441:
+return([[1441],[-1]]);
+case 1442:
+return([[1442],[-1]]);
+case 1443:
+return([[1269],[-1]]);
+case 1444:
+return([[1444],[-1]]);
+case 1445:
+return([[-1],[-1]]);
+case 1900:
+return([[-1],[-1]]);
+case 1901:
+return([[1901],[-1]]);
+case 1902:
+return([[1902],[-1]]);
+case 1903:
+return([[1903],[-1]]);
+case 1904:
+return([[1904],[-1]]);
+case 1905:
+return([[1905],[-1]]);
+case 1906:
+return([[1906],[-1]]);
+case 1907:
+return([[1907],[-1]]);
+case 1908:
+return([[1908],[-1]]);
+case 1909:
+return([[1909],[-1]]);
+case 1911:
+return([[1911],[-1]]);
+case 1912:
+return([[1912],[-1]]);
+case 1913:
+return([[1913],[-1]]);
+case 1914:
+return([[1914],[-1]]);
+case 1915:
+return([[1915],[-1]]);
+case 1916:
+return([[1916],[-1]]);
+case 1917:
+return([[1917],[-1]]);
+case 1918:
+return([[1918],[-1]]);
+case 1919:
+return([[1919],[-1]]);
+case 1921:
+return([[1921],[-1]]);
+case 1922:
+return([[1922],[-1]]);
+case 1923:
+return([[1923],[-1]]);
+case 1924:
+return([[1924],[-1]]);
+case 1925:
+return([[1925],[-1]]);
+case 1926:
+return([[1926],[-1]]);
+case 1927:
+return([[1927],[-1]]);
+case 1928:
+return([[1928],[-1]]);
+case 1929:
+return([[1929],[-1]]);
+case 1930:
+return([[1930],[-1]]);
+case 1990:
+return([[1990],[-1]]);
+case 1991:
+return([[1991],[-1]]);
+case 1992:
+return([[1992],[-1]]);
+case 2001:
+return([[-1],[-1]]);
+case 2002:
+return([[-1],[-1]]);
+case 2003:
+return([[-1],[-1]]);
+case 2004:
+return([[-1],[-1]]);
+case 2005:
+return([[-1],[-1]]);
+case 2021:
+return([[7306],[-1]]);
+case 2022:
+return([[-1],[-1]]);
+case 2023:
+return([[-1],[-1]]);
+case 2024:
+return([[-1],[-1]]);
+case 2025:
+return([[-1],[-1]]);
+case 2028:
+return([[-1],[2122]]);
+case 2029:
+return([[-1],[-1]]);
+case 2080:
+return([[-1],[-1]]);
+case 2101:
+return([[-1],[-1]]);
+case 2102:
+return([[2101],[-1]]);
+case 2103:
+return([[2103,4026,4028,302103],[-1]]);
+case 2105:
+return([[2105],[-1]]);
+case 2121:
+return([[2121],[-1]]);
+case 2122:
+return([[2122],[-1]]);
+case 2123:
+return([[2123],[536,2129]]);
+case 2124:
+return([[2124],[-1]]);
+case 2125:
+return([[2125],[-1]]);
+case 2126:
+return([[2126],[-1]]);
+case 2127:
+return([[2127],[-1]]);
+case 2128:
+return([[2128],[-1]]);
+case 2129:
+return([[2129],[-1]]);
+case 2150:
+return([[2150],[-1]]);
+case 2151:
+return([[2151],[-1]]);
+case 2152:
+return([[2152],[-1]]);
+case 2153:
+return([[2153],[-1]]);
+case 2154:
+return([[2154],[-1]]);
+case 2160:
+return([[2160],[-1]]);
+case 2161:
+return([[2161],[-1]]);
+case 2162:
+return([[2162],[-1]]);
+case 2163:
+return([[2163],[-1]]);
+case 2164:
+return([[2164],[-1]]);
+case 2180:
+return([[2180],[-1]]);
+case 2181:
+return([[2080,2181],[-1]]);
+case 2182:
+return([[2182],[-1]]);
+case 2183:
+return([[-1],[-1]]);
+case 2200:
+return([[-1],[-1]]);
+case 2201:
+return([[-1],[-1]]);
+case 2202:
+return([[-1],[-1]]);
+case 2203:
+return([[-1],[-1]]);
+case 2204:
+return([[-1],[-1]]);
+case 2205:
+return([[-1],[-1]]);
+case 2206:
+return([[-1],[-1]]);
+case 2207:
+return([[-1],[530]]);
+case 2208:
+return([[-1],[-1]]);
+case 2209:
+return([[-1],[-1]]);
+case 2210:
+return([[-1],[-1]]);
+case 2211:
+return([[-1],[-1]]);
+case 2212:
+return([[-1],[-1]]);
+case 2213:
+return([[-1],[-1]]);
+case 2214:
+return([[-1],[-1]]);
+case 2215:
+return([[-1],[-1]]);
+case 2300:
+return([[2300],[-1]]);
+case 2301:
+return([[2301],[-1]]);
+case 2302:
+return([[2302],[-1]]);
+case 2303:
+return([[2303],[-1]]);
+case 2304:
+return([[2304],[-1]]);
+case 2305:
+return([[2305],[-1]]);
+case 2306:
+return([[2306],[-1]]);
+case 2308:
+return([[2308],[-1]]);
+case 2309:
+return([[2309],[-1]]);
+case 2310:
+return([[2310],[-1]]);
+case 2311:
+return([[2311],[-1]]);
+case 2312:
+return([[2312],[-1]]);
+case 2314:
+return([[2314],[-1]]);
+case 2315:
+return([[2315],[-1]]);
+case 4000:
+return([[4000],[-1]]);
+case 4001:
+return([[4001],[-1]]);
+case 4002:
+return([[4002],[-1]]);
+case 4003:
+return([[-1],[-1]]);
+case 4004:
+return([[74014],[7001,7101,7102,7103,7200,7205,7400,77400,77401]]);
+case 4005:
+return([[7206],[7005,7105,7109,7304]]);
+case 4006:
+return([[74013,74015],[7000,7004,7100,7107,7108,7402,77402]]);
+case 4007:
+return([[74016,74017,74018],[7003,7106,7204]]);
+case 4008:
+return([[-1],[7002,7401,77401]]);
+case 4009:
+return([[-1],[7300,7301]]);
+case 4010:
+return([[-1],[7001,7103,7200]]);
+case 4011:
+return([[7101],[7205,7300]]);
+case 4012:
+return([[-1],[7206]]);
+case 4013:
+return([[-1],[7104]]);
+case 4014:
+return([[-1],[7201]]);
+case 4015:
+return([[-1],[7202]]);
+case 4016:
+return([[-1],[7203]]);
+case 4017:
+return([[-1],[7302]]);
+case 4018:
+return([[-1],[7303]]);
+case 4019:
+return([[4019],[-1]]);
+case 4020:
+return([[-1],[4020]]);
+case 4021:
+return([[-1],[519]]);
+case 4022:
+return([[578],[1413]]);
+case 4023:
+return([[-1],[559,1200,1204,1207,1208,1209,1220,1223,1224,1268,1269,1270,1271,1272,1273,1274,1275,1276,1277,1278,1279,1280,1281,1282,1283,1286,1287,1288,1299,1300,1301,1409,1410,1411,2080,2121,2122,2123,2124,2125,2127,2129,2154,2180,2181,2182,4020,4051,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4662,4663,4681,4781,5000,5001,5002,5003,5004,5010,5011,5012,5013,5014,5020,5021,5022,5023,5024,5030,5031,5032,5033,5034,5040,5041,5042,5043,5044,5050,5051,5052,5053,5054,5060,5061,5062,5063,5064,5070,5071,5072,5073,5074,5080,5081,5082,5083,5084,5090,5091,5092,5093,5094,5203,5204,5500,5501,5502,5503,5504,5510,5511,5512,5513,5514,5520,5521,5522,5523,5524,5530,5531,5532,5533,5534,5540,5541,5542,5543,5544,5550,5551,5552,5553,5554,5560,5561,5562,5563,5564,5570,5571,5572,5573,5574,5800,5801,5802,5803,5804,5810,5811,5812,5813,5814,5820,5821,5822,5823,5824,5830,5831,5832,5833,5834,71205,301200,311200,701200]]);
+case 4024:
+return([[4024],[-1]]);
+case 4025:
+return([[-1],[501,502,503,504,505,538,540]]);
+case 4026:
+return([[-1],[4026,302103]]);
+case 4027:
+return([[4027],[-1]]);
+case 4028:
+return([[-1],[2103,4026,4028]]);
+case 4029:
+return([[4029],[-1]]);
+case 4030:
+return([[4030,74030],[-1]]);
+case 4031:
+return([[4031],[-1]]);
+case 4032:
+return([[4032],[-1]]);
+case 4040:
+return([[4040],[-1]]);
+case 4050:
+return([[4050],[-1]]);
+case 4051:
+return([[4051],[-1]]);
+case 4052:
+return([[4053],[-1]]);
+case 4053:
+return([[4054],[-1]]);
+case 4054:
+return([[-1],[-1]]);
+case 4055:
+return([[4055],[-1]]);
+case 4056:
+return([[4056],[-1]]);
+case 4057:
+return([[-1],[2105]]);
+case 4058:
+return([[564],[-1]]);
+case 4059:
+return([[4059],[-1]]);
+case 4060:
+return([[4060],[-1]]);
+case 4061:
+return([[4061],[-1]]);
+case 4062:
+return([[4062],[-1]]);
+case 4063:
+return([[4063],[-1]]);
+case 4064:
+return([[-1],[-1]]);
+case 4065:
+return([[4065],[-1]]);
+case 4066:
+return([[-1],[-1]]);
+case 4070:
+return([[-1],[-1]]);
+case 4071:
+return([[-1],[-1]]);
+case 4100:
+return([[4100],[-1]]);
+case 4101:
+return([[4101],[-1]]);
+case 4102:
+return([[4102],[-1]]);
+case 4103:
+return([[4103],[-1]]);
+case 4104:
+return([[4109],[-1]]);
+case 4105:
+return([[4105],[-1]]);
+case 4106:
+return([[4106],[-1]]);
+case 4107:
+return([[4107],[-1]]);
+case 4108:
+return([[4108],[-1]]);
+case 4109:
+return([[4104],[-1]]);
+case 4200:
+return([[4200],[-1]]);
+case 4201:
+return([[4201],[-1]]);
+case 4202:
+return([[4202],[-1]]);
+case 4203:
+return([[4203],[-1]]);
+case 4204:
+return([[4204],[-1]]);
+case 4205:
+return([[4205],[-1]]);
+case 4206:
+return([[4206],[-1]]);
+case 4207:
+return([[4207],[-1]]);
+case 4221:
+return([[4221],[-1]]);
+case 4222:
+return([[4222],[-1]]);
+case 4223:
+return([[4223],[-1]]);
+case 4224:
+return([[4224],[-1]]);
+case 4225:
+return([[4225],[-1]]);
+case 4226:
+return([[4226],[-1]]);
+case 4227:
+return([[4227],[-1]]);
+case 4300:
+return([[-1],[-1]]);
+case 4301:
+return([[-1],[-1]]);
+case 4311:
+return([[4311],[-1]]);
+case 4312:
+return([[4312],[-1]]);
+case 4313:
+return([[4313],[-1]]);
+case 4314:
+return([[4314],[-1]]);
+case 4315:
+return([[4315],[-1]]);
+case 4316:
+return([[4316],[-1]]);
+case 4317:
+return([[4317],[-1]]);
+case 4318:
+return([[4318],[-1]]);
+case 4319:
+return([[4319],[-1]]);
+case 4321:
+return([[4321],[-1]]);
+case 4322:
+return([[4322],[-1]]);
+case 4323:
+return([[4323],[-1]]);
+case 4324:
+return([[4324],[-1]]);
+case 4325:
+return([[4325],[-1]]);
+case 4326:
+return([[4326],[-1]]);
+case 4327:
+return([[4327],[-1]]);
+case 4328:
+return([[4328],[-1]]);
+case 4329:
+return([[4329],[-1]]);
+case 4330:
+return([[4330],[-1]]);
+case 4331:
+return([[4331],[-1]]);
+case 4400:
+return([[4400],[2128]]);
+case 4410:
+return([[4410],[-1]]);
+case 4411:
+return([[4411],[-1]]);
+case 4412:
+return([[4412],[-1]]);
+case 4413:
+return([[-1],[-1]]);
+case 4414:
+return([[4414],[-1]]);
+case 4500:
+return([[4500],[-1]]);
+case 4501:
+return([[4501,4502],[-1]]);
+case 4503:
+return([[4503],[-1]]);
+case 4504:
+return([[4504],[-1]]);
+case 4520:
+return([[4520],[-1]]);
+case 4521:
+return([[4521],[-1]]);
+case 4522:
+return([[4522],[-1]]);
+case 4523:
+return([[4523],[-1]]);
+case 4524:
+return([[4524],[-1]]);
+case 4525:
+return([[4525],[-1]]);
+case 4526:
+return([[4526],[-1]]);
+case 4527:
+return([[4527],[-1]]);
+case 4540:
+return([[4540],[-1]]);
+case 4541:
+return([[4541],[-1]]);
+case 4542:
+return([[4542],[-1]]);
+case 4560:
+return([[4560],[-1]]);
+case 4561:
+return([[4561],[-1]]);
+case 4562:
+return([[4562],[-1]]);
+case 4563:
+return([[4563],[-1]]);
+case 4564:
+return([[4564],[-1]]);
+case 4565:
+return([[4565],[-1]]);
+case 4580:
+return([[4580],[-1]]);
+case 4581:
+return([[4581],[-1]]);
+case 4582:
+return([[4582],[-1]]);
+case 4600:
+return([[4600],[-1]]);
+case 4601:
+return([[4601],[-1]]);
+case 4602:
+return([[4602],[-1]]);
+case 4603:
+return([[4603],[-1]]);
+case 4604:
+return([[4604],[-1]]);
+case 4605:
+return([[4605],[-1]]);
+case 4606:
+return([[4606],[-1]]);
+case 4607:
+return([[4607],[-1]]);
+case 4608:
+return([[4608],[-1]]);
+case 4620:
+return([[4620],[-1]]);
+case 4621:
+return([[4621],[-1]]);
+case 4622:
+return([[4622],[-1]]);
+case 4623:
+return([[4623],[-1]]);
+case 4624:
+return([[4624],[-1]]);
+case 4640:
+return([[4640],[-1]]);
+case 4641:
+return([[4641],[-1]]);
+case 4642:
+return([[4642],[-1]]);
+case 4643:
+return([[4643],[-1]]);
+case 4644:
+return([[4644],[-1]]);
+case 4660:
+return([[4660],[-1]]);
+case 4661:
+return([[4661],[-1]]);
+case 4662:
+return([[4662],[-1]]);
+case 4663:
+return([[4663],[-1]]);
+case 4664:
+return([[4664],[-1]]);
+case 4665:
+return([[4665],[-1]]);
+case 4666:
+return([[4666],[-1]]);
+case 4667:
+return([[4667],[-1]]);
+case 4680:
+return([[4680],[-1]]);
+case 4681:
+return([[4681],[-1]]);
+case 4682:
+return([[4682],[-1]]);
+case 4683:
+return([[4683],[-1]]);
+case 4684:
+return([[4684],[-1]]);
+case 4700:
+return([[4700],[-1]]);
+case 4701:
+return([[4701],[-1]]);
+case 4702:
+return([[4702],[-1]]);
+case 4703:
+return([[4703],[-1]]);
+case 4704:
+return([[4704],[-1]]);
+case 4720:
+return([[4720],[-1]]);
+case 4721:
+return([[4721],[-1]]);
+case 4722:
+return([[4722],[-1]]);
+case 4740:
+return([[4740],[-1]]);
+case 4741:
+return([[4741],[-1]]);
+case 4742:
+return([[4742],[-1]]);
+case 4743:
+return([[4743],[-1]]);
+case 4760:
+return([[4760],[-1]]);
+case 4761:
+return([[4761],[-1]]);
+case 4762:
+return([[4762],[-1]]);
+case 4763:
+return([[-1],[-1]]);
+case 4764:
+return([[-1],[-1]]);
+case 4765:
+return([[-1],[-1]]);
+case 4780:
+return([[4780],[-1]]);
+case 4781:
+return([[4781],[-1]]);
+case 4782:
+return([[4782],[-1]]);
+case 4783:
+return([[4783],[-1]]);
+case 4800:
+return([[4800],[-1]]);
+case 4801:
+return([[4801],[-1]]);
+case 4802:
+return([[4802],[-1]]);
+case 5000:
+return([[5000],[-1]]);
+case 5001:
+return([[5001],[-1]]);
+case 5002:
+return([[5002],[-1]]);
+case 5003:
+return([[5003],[-1]]);
+case 5004:
+return([[5004],[-1]]);
+case 5010:
+return([[5010],[-1]]);
+case 5011:
+return([[5011],[-1]]);
+case 5012:
+return([[5012],[-1]]);
+case 5013:
+return([[5013],[-1]]);
+case 5014:
+return([[5014],[-1]]);
+case 5020:
+return([[5020],[-1]]);
+case 5021:
+return([[5021],[-1]]);
+case 5022:
+return([[5022],[-1]]);
+case 5023:
+return([[5023],[-1]]);
+case 5024:
+return([[5024],[-1]]);
+case 5025:
+return([[5025],[-1]]);
+case 5030:
+return([[5030],[-1]]);
+case 5031:
+return([[5031],[-1]]);
+case 5032:
+return([[5032],[-1]]);
+case 5033:
+return([[5033],[-1]]);
+case 5034:
+return([[5034],[-1]]);
+case 5040:
+return([[5040],[-1]]);
+case 5041:
+return([[5041],[-1]]);
+case 5042:
+return([[5042],[-1]]);
+case 5043:
+return([[5043],[-1]]);
+case 5044:
+return([[5044],[-1]]);
+case 5050:
+return([[5050],[-1]]);
+case 5051:
+return([[5051],[-1]]);
+case 5052:
+return([[5052],[-1]]);
+case 5053:
+return([[5053],[-1]]);
+case 5054:
+return([[5054],[-1]]);
+case 5060:
+return([[5060],[-1]]);
+case 5061:
+return([[5061],[-1]]);
+case 5062:
+return([[5062],[-1]]);
+case 5063:
+return([[5063],[-1]]);
+case 5064:
+return([[5064],[-1]]);
+case 5070:
+return([[5070],[-1]]);
+case 5071:
+return([[5071],[-1]]);
+case 5072:
+return([[5072],[-1]]);
+case 5073:
+return([[5073],[-1]]);
+case 5074:
+return([[5074],[-1]]);
+case 5080:
+return([[5080],[-1]]);
+case 5081:
+return([[5081],[-1]]);
+case 5082:
+return([[5082],[-1]]);
+case 5083:
+return([[5083],[-1]]);
+case 5084:
+return([[5084],[-1]]);
+case 5090:
+return([[5090],[-1]]);
+case 5091:
+return([[5091],[-1]]);
+case 5092:
+return([[5092],[-1]]);
+case 5093:
+return([[5093],[-1]]);
+case 5094:
+return([[5094],[-1]]);
+case 5200:
+return([[5200],[-1]]);
+case 5201:
+return([[5201],[-1]]);
+case 5202:
+return([[5202],[-1]]);
+case 5203:
+return([[5203],[-1]]);
+case 5204:
+return([[5204],[-1]]);
+case 5210:
+return([[5210],[-1]]);
+case 5211:
+return([[5211],[-1]]);
+case 5212:
+return([[5212],[-1]]);
+case 5213:
+return([[5213],[-1]]);
+case 5214:
+return([[5214],[-1]]);
+case 5400:
+return([[-1],[-1]]);
+case 5401:
+return([[-1],[-1]]);
+case 5402:
+return([[-1],[-1]]);
+case 5403:
+return([[-1],[-1]]);
+case 5404:
+return([[-1],[-1]]);
+case 5420:
+return([[5420],[-1]]);
+case 5421:
+return([[-1],[-1]]);
+case 5430:
+return([[5430],[-1]]);
+case 5431:
+return([[-1],[-1]]);
+case 5500:
+return([[5500],[-1]]);
+case 5501:
+return([[5501],[-1]]);
+case 5502:
+return([[5502],[-1]]);
+case 5503:
+return([[5503],[-1]]);
+case 5504:
+return([[5504],[-1]]);
+case 5510:
+return([[5510],[-1]]);
+case 5511:
+return([[5511],[-1]]);
+case 5512:
+return([[5512],[-1]]);
+case 5513:
+return([[5513],[-1]]);
+case 5514:
+return([[5514],[-1]]);
+case 5520:
+return([[5520],[-1]]);
+case 5521:
+return([[5521],[-1]]);
+case 5522:
+return([[5522],[-1]]);
+case 5523:
+return([[5523],[-1]]);
+case 5524:
+return([[5524],[-1]]);
+case 5530:
+return([[5530],[-1]]);
+case 5531:
+return([[5531],[-1]]);
+case 5532:
+return([[5532],[-1]]);
+case 5533:
+return([[5533],[-1]]);
+case 5534:
+return([[5534],[-1]]);
+case 5540:
+return([[5540],[-1]]);
+case 5541:
+return([[5541],[-1]]);
+case 5542:
+return([[5542],[-1]]);
+case 5543:
+return([[5543],[-1]]);
+case 5544:
+return([[5544],[-1]]);
+case 5550:
+return([[5550],[-1]]);
+case 5551:
+return([[5551],[-1]]);
+case 5552:
+return([[5552],[-1]]);
+case 5553:
+return([[5553],[-1]]);
+case 5554:
+return([[5554],[-1]]);
+case 5560:
+return([[5560],[-1]]);
+case 5561:
+return([[5561],[-1]]);
+case 5562:
+return([[5562],[-1]]);
+case 5563:
+return([[5563],[-1]]);
+case 5564:
+return([[5564],[-1]]);
+case 5570:
+return([[5570],[-1]]);
+case 5571:
+return([[5571],[-1]]);
+case 5572:
+return([[5572],[-1]]);
+case 5573:
+return([[5573],[-1]]);
+case 5574:
+return([[5574],[-1]]);
+case 5580:
+return([[5580],[-1]]);
+case 5581:
+return([[5581],[-1]]);
+case 5582:
+return([[5582],[-1]]);
+case 5585:
+return([[5585],[-1]]);
+case 5586:
+return([[5586],[-1]]);
+case 5600:
+return([[-1],[-1]]);
+case 5601:
+return([[-1],[-1]]);
+case 5602:
+return([[-1],[-1]]);
+case 5611:
+return([[-1],[-1]]);
+case 5612:
+return([[-1],[-1]]);
+case 5613:
+return([[5613,75613],[-1]]);
+case 5614:
+return([[5614,75164],[-1]]);
+case 5620:
+return([[5620],[-1]]);
+case 5621:
+return([[5621],[-1]]);
+case 5622:
+return([[5622],[-1]]);
+case 5623:
+return([[5623],[-1]]);
+case 5700:
+return([[5700],[-1]]);
+case 5701:
+return([[5701],[-1]]);
+case 5702:
+return([[5702],[-1]]);
+case 5720:
+return([[5720],[-1]]);
+case 5721:
+return([[5721],[-1]]);
+case 5722:
+return([[5722],[-1]]);
+case 5723:
+return([[5723],[-1]]);
+case 5800:
+return([[5800],[-1]]);
+case 5801:
+return([[5801],[-1]]);
+case 5802:
+return([[5802],[-1]]);
+case 5803:
+return([[5803],[-1]]);
+case 5804:
+return([[5804],[-1]]);
+case 5810:
+return([[5810],[-1]]);
+case 5811:
+return([[5811],[-1]]);
+case 5812:
+return([[5812],[-1]]);
+case 5813:
+return([[5813],[-1]]);
+case 5814:
+return([[5814],[-1]]);
+case 5820:
+return([[5820],[-1]]);
+case 5821:
+return([[5821],[-1]]);
+case 5822:
+return([[5822],[-1]]);
+case 5823:
+return([[5823],[-1]]);
+case 5824:
+return([[5824],[-1]]);
+case 5830:
+return([[5830],[-1]]);
+case 5831:
+return([[5831],[-1]]);
+case 5832:
+return([[5832],[-1]]);
+case 5833:
+return([[5833],[-1]]);
+case 5834:
+return([[5834],[-1]]);
+case 5900:
+return([[5900],[-1]]);
+case 5901:
+return([[5901],[-1]]);
+case 5902:
+return([[5902],[-1]]);
+case 5903:
+return([[5903],[-1]]);
+case 5904:
+return([[5904],[-1]]);
+case 5905:
+return([[5905],[-1]]);
+case 5910:
+return([[5910],[-1]]);
+case 5911:
+return([[5911],[-1]]);
+case 7000:
+return([[-1],[-1]]);
+case 7001:
+return([[-1],[-1]]);
+case 7002:
+return([[-1],[-1]]);
+case 7003:
+return([[-1],[-1]]);
+case 7004:
+return([[-1],[-1]]);
+case 7005:
+return([[-1],[-1]]);
+case 7006:
+return([[-1],[-1]]);
+case 7007:
+return([[-1],[-1]]);
+case 7008:
+return([[-1],[-1]]);
+case 7009:
+return([[-1],[-1]]);
+case 7100:
+return([[-1],[-1]]);
+case 7101:
+return([[-1],[-1]]);
+case 7102:
+return([[-1],[-1]]);
+case 7103:
+return([[-1],[-1]]);
+case 7104:
+return([[-1],[-1]]);
+case 7105:
+return([[-1],[-1]]);
+case 7106:
+return([[-1],[-1]]);
+case 7107:
+return([[-1],[-1]]);
+case 7108:
+return([[-1],[-1]]);
+case 7109:
+return([[-1],[-1]]);
+case 7110:
+return([[-1],[-1]]);
+case 7111:
+return([[-1],[-1]]);
+case 7200:
+return([[-1],[-1]]);
+case 7201:
+return([[-1],[-1]]);
+case 7202:
+return([[-1],[-1]]);
+case 7203:
+return([[-1],[-1]]);
+case 7204:
+return([[-1],[-1]]);
+case 7205:
+return([[-1],[-1]]);
+case 7206:
+return([[-1],[-1]]);
+case 7207:
+return([[-1],[-1]]);
+case 7300:
+return([[-1],[-1]]);
+case 7301:
+return([[-1],[-1]]);
+case 7302:
+return([[-1],[-1]]);
+case 7303:
+return([[-1],[-1]]);
+case 7304:
+return([[-1],[-1]]);
+case 7305:
+return([[-1],[-1]]);
+case 7306:
+return([[-1],[-1]]);
+case 7400:
+return([[-1],[-1]]);
+case 7401:
+return([[-1],[-1]]);
+case 7402:
+return([[-1],[-1]]);
+case 7403:
+return([[-1],[-1]]);
+case 11000:
+return([[-1],[-1]]);
+case 11010:
+return([[-1],[-1]]);
+case 11011:
+return([[-1],[-1]]);
+case 11020:
+return([[-1],[-1]]);
+case 11021:
+return([[-1],[-1]]);
+case 11030:
+return([[-1],[-1]]);
+case 11031:
+return([[-1],[-1]]);
+case 11040:
+return([[-1],[-1]]);
+case 11041:
+return([[-1],[-1]]);
+case 11042:
+return([[-1],[-1]]);
+case 11050:
+return([[-1],[-1]]);
+case 11060:
+return([[-1],[-1]]);
+case 11070:
+return([[-1],[-1]]);
+case 11200:
+return([[-1],[-1]]);
+case 11210:
+return([[-1],[-1]]);
+case 11211:
+return([[-1],[-1]]);
+case 11220:
+return([[-1],[-1]]);
+case 11230:
+return([[-1],[-1]]);
+case 11231:
+return([[-1],[-1]]);
+case 11241:
+return([[-1],[-1]]);
+case 11300:
+return([[-1],[-1]]);
+case 11301:
+return([[-1],[-1]]);
+case 11310:
+return([[-1],[-1]]);
+case 11311:
+return([[-1],[-1]]);
+case 11501:
+return([[-1],[-1]]);
+case 11502:
+return([[-1],[-1]]);
+case 11520:
+return([[-1],[-1]]);
+case 11521:
+return([[-1],[-1]]);
+case 11600:
+return([[-1],[-1]]);
+case 11601:
+return([[-1],[-1]]);
+case 11602:
+return([[-1],[-1]]);
+case 28501:
+return([[-1],[-1]]);
+case 28502:
+return([[-1],[-1]]);
+case 28503:
+return([[-1],[-1]]);
+case 28504:
+return([[-1],[-1]]);
+case 28505:
+return([[-1],[-1]]);
+case 28506:
+return([[-1],[-1]]);
+case 28507:
+return([[-1],[-1]]);
+case 28508:
+return([[-1],[-1]]);
+case 28800:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
   }
+      };
+T6_Drink = -32;
+Any_Shot_Pouch = -31;
+Any_Quiver = -30;
+Any_Advanced_Material = -29;
+Any_Basic_Material = -28;
+Unboiled_Meat = -27;
+Any_Fuel = -26;
+Any_Sauce = -25;
+Any_Bone = -24;
+Any_Stock = -23;
+Any_Flatbread = -22;
+Any_Fiber = -21;
+Any_Rare_Gemstone = -20;
+Any_Common_Gemstone = -19;
+Any_Polished_Rare_Gemstone = -18;
+Any_Polished_Common_Gemstone = -17;
+Any_Fodder = -16;
+Any_Flour = -15;
+Any_Seafood = -14;
+T5_Drink = -13;
+T4_Drink = -12;
+T3_Drink = -11;
+T2_Drink = -10;
+Any_Exotic_Berry = -8;
+T1_Drink = -7;
+T2_Metal = -6;
+Any_Cooking_Oil = -5;
+Any_Vegetable = -4;
+Any_Fruit = -3;
+Any_Meat = -2;
+Any_Grain = -1;
+None = 0;
+Arid_Badlands = 1;
+Arid_Steppe = 2;
+Arid_Oasis = 3;
+Arid_River = 4;
+Northern_Rocky_Waste = 11;
+Northern_Tundra = 12;
+Northern_Forest = 13;
+Northern_River = 14;
+Rocky_Heartland = 21;
+Heartland = 22;
+River_Heartland = 23;
+Southern_Rocky = 31;
+Southern_Forest = 32;
+Southern_Jungle = 33;
+Southern_River = 34;
+Northern_Ocean = 41;
+Central_Ocean = 42;
+Southern_Ocean = 43;
+Desolate_Ocean = 44;
+Brackish_Swamp = 51;
+Common_Swamp = 52;
+Lush_Swamp = 53;
+Red_Mountain = 61;
+Blue_Mountain = 62;
+Green_Mountain = 63;
+White_Mountain = 64;
+Ochre_Plains = 70;
+Lustrous_River = 71;
+Silver_Forest = 72;
+Golden_Plains = 80;
+Golden_Forest = 81;
+Golden_Hills = 82;
+Wheat = 501;
+Rye = 502;
+Rice = 503;
+Corn = 504;
+Sorghum = 505;
+Apples = 506;
+Plums = 507;
+Olives = 508;
+Beans = 509;
+Mushrooms = 510;
+Beets = 511;
+Cassava = 512;
+Peanuts = 513;
+Cherries = 514;
+Peaches = 515;
+Garlic = 516;
+Onion = 517;
+Carrot = 518;
+Sugarcane = 519;
+Peppers = 520;
+Allspice = 521;
+Grapes = 522;
+Ginseng = 523;
+Winterberries = 524;
+Jungleberries = 525;
+Auric_Honey = 526;
+Wasabi = 527;
+Rushseed = 528;
+Exotic_Herb = 529;
+Oyster = 530;
+Fish_Meat = 531;
+Beef = 532;
+Chicken_Meat = 533;
+Eggs = 534;
+Potato = 535;
+Silver_Sap = 536;
+Honey = 537;
+Oats = 538;
+Milk = 539;
+Barley = 540;
+Exotic_Meat = 541;
+Wool = 542;
+Cotton = 543;
+Mutton = 544;
+Game_Meat = 545;
+Seaweed = 546;
+Flowers = 547;
+Flower_Petals = 548;
+Flower_Hearts = 549;
+Organ_Meat = 550;
+Bone = 551;
+Fat = 552;
+Tender_Meat = 553;
+Oyster_Meat = 554;
+Crab_Meat = 555;
+Nettles = 556;
+Joyous_Flowers = 557;
+Raw_Shark_Meat = 558;
+Prepared_Shark_Meat = 559;
+Life_Scales = 560;
+Roe = 561;
+Spruce_Trimming = 562;
+Fish_Organs = 563;
+Polar_Bear_Liver = 564;
+Nightberry = 565;
+Life_Bark = 566;
+Silver_Bark = 567;
+Sweet_Herbs = 568;
+Savory_Herbs = 569;
+Spicy_Herbs = 570;
+Sweet_Bark = 571;
+Vanilla_Pod = 572;
+Rice_Bran = 573;
+Polished_Rice = 574;
+Very_Polished_Rice = 575;
+Shrimp_Meat = 576;
+Rare_Mushroom = 577;
+Pomace = 578;
+Malted_Grain = 579;
+Venison = 580;
+Rabbit_Meat = 581;
+Butter = 583;
+Boiled_Meat = 584;
+Peas = 585;
+Oranges = 586;
+Veggie_Mix = 590;
+Ale = 1000;
+Cider = 1001;
+Fruit_Wine = 1002;
+Grog = 1003;
+Wine = 1010;
+Fine_Ale = 1011;
+Mead = 1012;
+Spruce_Beer = 1013;
+Sweet_Beer = 1014;
+Vodka = 1030;
+Kumis = 1031;
+Rum = 1032;
+Grain_Whiskey = 1033;
+Sake = 1034;
+Brandy = 1040;
+Silver_Wine = 1041;
+Jungle_Wine = 1042;
+Winter_Wine = 1043;
+Aged_Rum = 1044;
+Ginseng_Wine = 1050;
+Spiced_Vodka = 1051;
+Pure_Alcohol = 1052;
+Double_Brandy = 1060;
+Auric_Mead = 1061;
+Fine_Sake = 1062;
+Basic_Bread = 1200;
+Simple_Spread = 1203;
+Buttered_Bread = 1204;
+Basic_Flatbread = 1205;
+Pumpernickle = 1206;
+Pastry = 1207;
+Fruit_Pastry = 1208;
+Cheese_Pastry = 1209;
+Glittercake = 1212;
+Fruit_Glittercake = 1213;
+Fruit_Pie = 1220;
+Sugar_Pie = 1221;
+Pot_Pie = 1222;
+Roasted_Peanut = 1223;
+Candied_Peanut = 1224;
+Sausage = 1260;
+Fried_Meat = 1261;
+Roast = 1262;
+Noble_Roast = 1268;
+Beef_Stew = 1270;
+Kings_Soup = 1271;
+Onion_Soup = 1272;
+Huntsmans_Soup = 1273;
+Chicken_Soup = 1274;
+Fish_Soup = 1275;
+Vegetable_Soup = 1276;
+Seafood_Soup = 1277;
+Turtle_Soup = 1278;
+Shark_Soup = 1279;
+Baked_Beans = 1280;
+Beans_And_Rice = 1281;
+Hash = 1282;
+Fried_Crab = 1283;
+Fish_Roll = 1284;
+Deluxe_Fish_Roll = 1285;
+Rare_Mushroom_Soup = 1286;
+Oatmeal = 1287;
+Sweetend_Oatmeal = 1288;
+Simple_Soup = 1289;
+Roasted_Whole_Chicken = 1290;
+Pea_Pudding = 1291;
+Mutton_Stew = 1294;
+Glazed_Veggies = 1295;
+Glazed_Mutton = 1296;
+Simple_Risotto = 1299;
+Mushroom_Risotto = 1300;
+Shrimp_Risotto = 1301;
+Vinegar = 1400;
+Sugar = 1401;
+Olive_Oil = 1402;
+Ketchup = 1403;
+Basic_Spice_Pack = 1404;
+Royal_Spice_Pack = 1405;
+Pastry_Dough = 1406;
+Fruit_Preserve = 1407;
+Exotic_Fruit_Preserve = 1408;
+Mushroom_Stock = 1409;
+Meat_Stock = 1410;
+Vegetable_Stock = 1411;
+Barm = 1412;
+Molasses = 1413;
+Paprika = 1414;
+Cider_Sauce = 1415;
+Wine_Sauce = 1416;
+Spicy_Sauce = 1417;
+Common_Flour = 1418;
+Wheat_Flour = 1419;
+Rye_Flour = 1420;
+Corn_Flour = 1421;
+Cinnamon_Powder = 1422;
+Sweet_Spice_Pack = 1423;
+Savory_Spice_Pack = 1424;
+Spicy_Spice_Park = 1425;
+Royal_Sweet_Spice_Pack = 1426;
+Royal_Savory_Spice_Park = 1427;
+Royal_Spicy_Spice_Park = 1428;
+Cheese = 1430;
+Aged_Cheese = 1431;
+Imperial_Cheese = 1432;
+Dried_Vegetables = 1433;
+Pickled_Vegetables = 1434;
+Hearty_Dried_Vegetables = 1435;
+Dried_Fruit = 1436;
+Brandied_Fruit = 1437;
+Exotic_Dried_Fruit = 1438;
+Cured_Meat = 1439;
+Salted_Meat = 1440;
+Preserved_Eggs = 1441;
+Exotic_Cured_Meat = 1442;
+Pemmican = 1443;
+Pate = 1444;
+Mixed_Vegetables = 1445;
+Fodder_Bread = 1900;
+Main_Ration_1 = 1901;
+Main_Ration_2 = 1902;
+Main_Ration_3 = 1903;
+Main_Ration_4 = 1904;
+Main_Ration_5 = 1905;
+Main_Ration_6 = 1906;
+Main_Ration_7 = 1907;
+Main_Ration_8 = 1908;
+Main_Ration_9 = 1909;
+Extras_1 = 1911;
+Extras_2 = 1912;
+Extras_3 = 1913;
+Extras_4 = 1914;
+Extras_5 = 1915;
+Extras_6 = 1916;
+Extras_7 = 1917;
+Extras_8 = 1918;
+Extras_9 = 1919;
+Drink_Pack_1 = 1921;
+Drink_Pack_2 = 1922;
+Drink_Pack_3 = 1923;
+Drink_Pack_4 = 1924;
+Drink_Pack_5 = 1925;
+Drink_Pack_6 = 1926;
+Drink_Pack_7 = 1927;
+Drink_Pack_8 = 1928;
+Drink_Pack_9 = 1929;
+Medpack = 1930;
+Stable_Peasent_Ration = 1990;
+Stable_Low_Noble_Ration = 1991;
+Stable_High_Noble_Ration = 1992;
+Stone = 2001;
+Wood = 2002;
+Salt = 2003;
+Clay = 2004;
+Kaolinite = 2005;
+Iron_Ore = 2021;
+Gold_Ore = 2022;
+Silver_Ore = 2023;
+Copper_Ore = 2024;
+Tin_Ore = 2025;
+Tailings = 2028;
+Galena = 2029;
+Black_Copper_Ore = 2080;
+Refined_Stone = 2101;
+Refined_Wood = 2102;
+Charcoal = 2103;
+Washed_Kaolinite = 2105;
+Iron = 2121;
+Gold = 2122;
+Silver = 2123;
+Copper = 2124;
+Tin = 2125;
+Aluminum = 2126;
+Mercury = 2127;
+Platinum = 2128;
+Lead = 2129;
+Basic_Building_Material = 2150;
+Basic_Wood_Building_Materials = 2151;
+Basic_Stone_Building_Materials = 2152;
+Basic_Mud_Building_Materials = 2153;
+Basic_Brick_Building_Material = 2154;
+Advanced_Building_Material = 2160;
+Advanced_Wood_Building_Materials = 2161;
+Advanced_Stone_Building_Materials = 2162;
+Advanced_Mud_Building_Materials = 2163;
+Advanced_Brick_Building_Material = 2164;
+Emerald_Bronze = 2180;
+Bronze = 2181;
+Steel = 2182;
+Damascus_Steel = 2183;
+Ruby = 2200;
+Emerald = 2201;
+Sapphire = 2202;
+Diamond = 2203;
+Amethyst = 2204;
+Opal = 2205;
+Citrine = 2206;
+Pearl = 2207;
+Moonstone = 2208;
+Amber = 2209;
+Onyx = 2210;
+Aquamarine = 2211;
+Crystal_Glass = 2212;
+Bloodstone = 2213;
+Ice_Stone = 2214;
+Fire_Stone = 2215;
+Polished_Ruby = 2300;
+Polished_Emerald = 2301;
+Polished_Sapphire = 2302;
+Polished_Diamond = 2303;
+Polished_Amethyst = 2304;
+Polished_Opal = 2305;
+Polished_Citrine = 2306;
+Polished_Moonstone = 2308;
+Polished_Amber = 2309;
+Polished_Onyx = 2310;
+Polished_Aquamarine = 2311;
+Polished_Crystal_Glass = 2312;
+Polished_Ice_Stone = 2314;
+Polished_Fire_Stone = 2315;
+Nails = 4000;
+Diamond_Blade = 4001;
+Fabric = 4002;
+Down = 4003;
+Leather = 4004;
+Exotic_Leather = 4005;
+Fur = 4006;
+Exotic_Fur = 4007;
+Feather = 4008;
+Thick_Leather = 4009;
+Antler = 4010;
+Ivory = 4011;
+Poison = 4012;
+Leopard_Skin = 4013;
+Aurochs_Hide = 4014;
+Black_Leopard_Skin = 4015;
+Bear_Hide = 4016;
+Polar_Bear_Hide = 4017;
+Tiger_Hide = 4018;
+Rushseed_Oil = 4019;
+Cooked_Bone = 4020;
+Sugarcane_Pulp = 4021;
+Organic_Pulp = 4022;
+Ash = 4023;
+Clay_Beads = 4024;
+Hay = 4025;
+Antiseptic = 4026;
+Soap = 4027;
+Tar = 4028;
+Paper = 4029;
+Level_1_Fertilizer = 4030;
+Level_2_Fertilizer = 4031;
+Level_3_Fertilizer = 4032;
+Rare_Fertilizer = 4040;
+Forest_Glass = 4050;
+Lead_Glass = 4051;
+Forest_Glass_Pane = 4052;
+Lead_Glass_Pane = 4053;
+Crystal_Glass_Pane = 4054;
+Boat_Part = 4055;
+Treated_Fabric = 4056;
+Human_Earth = 4057;
+Vitae_Dust = 4058;
+Berry_Dust = 4059;
+Ink = 4060;
+Red_Dye = 4061;
+Blue_Dye = 4062;
+Green_Dye = 4063;
+White_Dye = 4064;
+Dye_Pack = 4065;
+Gold_Foil = 4066;
+Gold_Artifact_Cache = 4070;
+Bronze_Artifact_Cache = 4071;
+Bronze_Plate = 4100;
+Iron_Plate = 4101;
+Steel_Plate = 4102;
+Emerald_Bronze_Plate = 4103;
+Damascus_Steel_Plate = 4104;
+Bronze_Chainmail = 4105;
+Iron_Chainmail = 4106;
+Steel_Chainmail = 4107;
+Emerald_Bronze_Chainmail = 4108;
+Damascus_Steel_Chainmail = 4109;
+Panacea = 4200;
+Nettle_Tea = 4201;
+Life_Powder = 4202;
+Nightberry_Tea = 4203;
+Sweet_Herb_Tea = 4204;
+Happiness_Tea = 4205;
+Soothing_Powder = 4206;
+Savory_Herb_Tea = 4207;
+Spruce_Tea = 4221;
+Life_Tincture = 4222;
+Nightberry_Tincture = 4223;
+Sweet_Herb_Tincture = 4224;
+Happiness_Tincture = 4225;
+Soothing_Tea = 4226;
+Savory_Herb_Tincture = 4227;
+Ice_Ticket = 4300;
+Fire_Ticket = 4301;
+Arid_Blueprint = 4311;
+Northern_Blueprint = 4312;
+Central_Blueprint = 4313;
+Southern_Blueprint = 4314;
+Island_Blueprint = 4315;
+Swamp_Blueprint = 4316;
+Mountain_Blueprint = 4317;
+Silver_Blueprint = 4318;
+Gold_Blueprint = 4319;
+Farming_Guide = 4321;
+Jewelers_Guide = 4322;
+Brewers_Guide = 4323;
+Medicine_Guide = 4324;
+Sailing_Guide = 4325;
+Smithing_Guide = 4326;
+Art_Guide = 4327;
+Carpentry_Guide = 4328;
+Weaver_Guide = 4329;
+Masonry_Guide = 4330;
+Soldier_Guide = 4331;
+T1_Melter = 4400;
+Small_Boat = 4410;
+Medium_Boat = 4411;
+Large_Boat = 4412;
+Fishing_Boat = 4413;
+Boat_Fix_Kit = 4414;
+Fur_Clothes = 4500;
+Regular_Clothes = 4501;
+Tailored_Fur_Clothes = 4503;
+Tailored_Regular_Clothes = 4504;
+Bead_Bracelet = 4520;
+Copper_Bracelet = 4521;
+Silver_Bracelet = 4522;
+Gold_Bracelet = 4523;
+Aluminum_Bracelet = 4524;
+Artifact_Bronze_Bracelet = 4525;
+Artifact_Gold_Bracelet = 4526;
+Pearl_Bracelet = 4527;
+Basic_Tool = 4540;
+Artisan_Tool = 4541;
+Oppulant_Tool = 4542;
+Copper_Ring = 4560;
+Silver_Ring = 4561;
+Gold_Ring = 4562;
+Artifact_Bronze_Ring = 4563;
+Artifact_Gold_Ring = 4564;
+Aluminum_Ring = 4565;
+Basic_Bedding = 4580;
+Enhanced_Bedding = 4581;
+Down_Bedding = 4582;
+Bead_Necklace = 4600;
+Copper_Necklace = 4601;
+Silver_Necklace = 4602;
+Gold_Necklace = 4603;
+Amber_Necklace = 4604;
+Artifact_Bronze_Necklace = 4605;
+Artifact_Gold_Necklace = 4606;
+Aluminum_Necklace = 4607;
+Pearl_Necklace = 4608;
+Wood_Table = 4620;
+Stone_Table = 4621;
+Fine_Table = 4622;
+Carved_Table = 4623;
+Encrusted_Table = 4624;
+Wood_Chair = 4640;
+Stone_Chair = 4641;
+Fine_Chair = 4642;
+Carved_Chair = 4643;
+Encrusted_Chair = 4644;
+Wooden_Tableware = 4660;
+Stone_Tableware = 4661;
+Ceramic_Tableware = 4662;
+Fine_Ceramic_Tableware = 4663;
+Silver_Tableware = 4664;
+Gold_Tableware = 4665;
+Aluminum_Tableware = 4666;
+Relic_Tableware = 4667;
+Mug = 4680;
+Drinking_Glass = 4681;
+Crystal_Drinking_Glass = 4682;
+Goblet = 4683;
+Aincient_Goblet = 4684;
+Simple_Totem = 4700;
+Silver_Totem = 4701;
+Gold_Totem = 4702;
+Icon_Statue = 4703;
+Mysterious_Totem = 4704;
+Small_Rug = 4720;
+Rug = 4721;
+Ornate_Rug = 4722;
+Small_Painting = 4740;
+Painting = 4741;
+Large_Painting = 4742;
+Guilded_Painting = 4743;
+Bust = 4760;
+Sculpture = 4761;
+Statue = 4762;
+Stuffed_Leopard = 4763;
+Stuffed_Bear = 4764;
+Stuffed_Polar_Bear = 4765;
+Simple_Storage = 4780;
+Storage_Pots = 4781;
+Refined_Storage = 4782;
+Luxary_Storage = 4783;
+Simple_Home_Furniture = 4800;
+Standard_Home_Furniture = 4801;
+Ornate_Home_Furniture = 4802;
+Bronze_Spear = 5000;
+Iron_Spear = 5001;
+Steel_Spear = 5002;
+Emerald_Bronze_Spear = 5003;
+Damascus_Steel_Spear = 5004;
+Bronze_Axe = 5010;
+Iron_Axe = 5011;
+Steel_Axe = 5012;
+Emerald_Bronze_Axe = 5013;
+Damascus_Steel_Axe = 5014;
+Bronze_Sword = 5020;
+Iron_Sword = 5021;
+Steel_Sword = 5022;
+Emerald_Bronze_Sword = 5023;
+Damascus_Steel_Sword = 5024;
+Diamond_Sword = 5025;
+Bronze_Mace = 5030;
+Iron_Mace = 5031;
+Steel_Mace = 5032;
+Emerald_Bronze_Mace = 5033;
+Damascus_Steel_Mace = 5034;
+Bronze_Lance = 5040;
+Iron_Lance = 5041;
+Steel_Lance = 5042;
+Emerald_Bronze_Lance = 5043;
+Damascus_Steel_Lance = 5044;
+Bronze_Poleaxe = 5050;
+Iron_Poleaxe = 5051;
+Steel_Poleaxe = 5052;
+Emerald_Bronze_Poleaxe = 5053;
+Damascus_Steel_Poleaxe = 5054;
+Bronze_Greatsword = 5060;
+Iron_Greatsword = 5061;
+Steel_Greatsword = 5062;
+Emerald_Bronze_Greatsword = 5063;
+Damascus_Steel_Greatsword = 5064;
+Bronze_Warhammer = 5070;
+Iron_Warhammer = 5071;
+Steel_Warhammer = 5072;
+Emerald_Bronze_Warhammer = 5073;
+Damascus_Steel_Warhammer = 5074;
+Bronze_Elephant_Tusk_Cap = 5080;
+Iron_Elephant_Tusk_Cap = 5081;
+Steel_Elephant_Tusk_Cap = 5082;
+Beryl_Bronze_Elephant_Tusk_Cap = 5083;
+Damascus_Elephant_Tusk_Cap = 5084;
+Bronze_Rhino_Tusk_Cap = 5090;
+Iron_Rhino_Tusk_Cap = 5091;
+Steel_Rhino_Tusk_Cap = 5092;
+Beryl_Bronze_Rhino_Tusk_Cap = 5093;
+Damascus_Rhino_Tusk_Cap = 5094;
+Basic_Bow = 5200;
+Longbow = 5201;
+Greatbow = 5202;
+Steel_Arrowhead = 5203;
+Beryl_Bronze_Arrowhead = 5204;
+Simple_Crossbow = 5210;
+Basic_Sling = 5211;
+Heavy_Flamer = 5212;
+Flame_Grenade = 5213;
+Golden_Sling = 5214;
+Farm_Horse = 5400;
+Standard_Army_Horse = 5401;
+Charge_Horse = 5402;
+War_Horse = 5403;
+Arctic_Horse = 5404;
+War_Elephant = 5420;
+War_Wooly_Elephant = 5421;
+War_Rhino = 5430;
+War_Wooly_Rhino = 5431;
+Light_Bronze_Mail = 5500;
+Light_Iron_Mail = 5501;
+Light_Steel_Mail = 5502;
+Light_Emerald_Bronze_Mail = 5503;
+Light_Damascus_Steel_Mail = 5504;
+Light_Bronze_Plate = 5510;
+Light_Iron_Plate = 5511;
+Light_Steel_Plate = 5512;
+Light_Emerald_Bronze_Plate = 5513;
+Light_Damascus_Steel_Plate = 5514;
+Medium_Bronze_Mail = 5520;
+Medium_Iron_Mail = 5521;
+Medium_Steel_Mail = 5522;
+Medium_Emerald_Bronze_Mail = 5523;
+Medium_Damascus_Steel_Mail = 5524;
+Medium_Bronze_Plate = 5530;
+Medium_Iron_Plate = 5531;
+Medium_Steel_Plate = 5532;
+Medium_Emerald_Bronze_Plate = 5533;
+Medium_Damascus_Steel_Plate = 5534;
+Heavy_Bronze_Armor = 5540;
+Heavy_Iron_Armor = 5541;
+Heavy_Steel_Armor = 5542;
+Heavy_Beryl_Bronze_Armor = 5543;
+Heavy_Damascus_Steel_Armor = 5544;
+Light_Bronze_Horse_Armor = 5550;
+Light_Iron_Horse_Armor = 5551;
+Light_Steel_Horse_Armor = 5552;
+Light_Emerald_Bronze_Horse_Armor = 5553;
+Light_Damascus_Steel_Horse_Armor = 5554;
+Medium_Bronze_Horse_Armor = 5560;
+Medium_Iron_Horse_Armor = 5561;
+Medium_Steel_Horse_Armor = 5562;
+Medium_Emerald_Bronze_Horse_Armor = 5563;
+Medium_Damascus_Steel_Horse_Armor = 5564;
+Heavy_Bronze_Horse_Armor = 5570;
+Heavy_Iron_Horse_Armor = 5571;
+Heavy_Steel_Horse_Armor = 5572;
+Heavy_Emerald_Bronze_Horse_Armor = 5573;
+Heavy_Damascus_Steel_Horse_Armor = 5574;
+Leather_Armor = 5580;
+Thick_Leather_Armor = 5581;
+Gambeson = 5582;
+Rhino_Mount_Cushion = 5585;
+Elephant_Mount_Cushion = 5586;
+Stone_Shot = 5600;
+Lead_Shot = 5601;
+Gold_Shot = 5602;
+Small_Fuel_Tank = 5611;
+Large_Fuel_Tank = 5612;
+Quiver = 5613;
+Stone_Pouch = 5614;
+Wood_Arrow_Bundle = 5620;
+Steel_Arrow_Bundle = 5621;
+Emerald_Bronze_Arrow_Bundle = 5622;
+Diamond_Arrow_Bundle = 5623;
+Stone_Shot_Pouch = 5700;
+Lead_Shot_Pouch = 5701;
+Gold_Shot_Pouch = 5702;
+Wood_Arrow_Quiver = 5720;
+Steel_Arrow_Quiver = 5721;
+Beryl_Arrow_Quiver = 5722;
+Diamond_Arrow_Quiver = 5723;
+Bronze_Rhino_Armor = 5800;
+Iron_Rhino_Armor = 5801;
+Steel_Rhino_Armor = 5802;
+Emerald_Bronze_Rhino_Armor = 5803;
+Damascus_Steel_Rhino_Armor = 5804;
+Heavy_Bronze_Rhino_Armor = 5810;
+Heavy_Iron_Rhino_Armor = 5811;
+Heavy_Steel_Rhino_Armor = 5812;
+Heavy_Emerald_Bronze_Rhino_Armor = 5813;
+Heavy_Damascus_Steel_Rhino_Armor = 5814;
+Bronze_Elephant_Armor = 5820;
+Iron_Elephant_Armor = 5821;
+Steel_Elephant_Armor = 5822;
+Emerald_Bronze_Elephant_Armor = 5823;
+Damascus_Steel_Elephant_Armor = 5824;
+Heavy_Bronze_Elephant_Armor = 5830;
+Heavy_Iron_Elephant_Armor = 5831;
+Heavy_Steel_Elephant_Armor = 5832;
+Heavy_Emerald_Bronze_Elephant_Armor = 5833;
+Heavy_Damascus_Steel_Elephant_Armor = 5834;
+Wooden_Shield = 5900;
+Banded_Shield = 5901;
+Standard_Shield = 5902;
+Metal_Shield = 5903;
+Gong_Shield = 5904;
+Heirloom_Shield = 5905;
+Wall_Shield = 5910;
+Advanced_Wall_Shield = 5911;
+Rabbit = 7000;
+Deer = 7001;
+Turkey = 7002;
+Fox = 7003;
+Cyote = 7004;
+Snake = 7005;
+Ocean_Fish = 7006;
+Metal_Fish = 7007;
+Shrimp_School = 7008;
+Seaweed_Crop = 7009;
+Mink = 7100;
+Boar = 7101;
+Zebra = 7102;
+Reindeer = 7103;
+Leopard = 7104;
+Crocodile = 7105;
+Otter = 7106;
+Wolf = 7107;
+Seal = 7108;
+Ostridge = 7109;
+Turtle = 7110;
+Crab_Cluster = 7111;
+Elk = 7200;
+Aurochs = 7201;
+Black_Leopard = 7202;
+Bear = 7203;
+Sea_Mink = 7204;
+Whalrus = 7205;
+Poison_Snake = 7206;
+Shark = 7207;
+Elephant = 7300;
+Rhino = 7301;
+Polar_Bear = 7302;
+Tiger = 7303;
+Titan_Snake = 7304;
+Whale = 7305;
+Iron_Snail = 7306;
+Cow = 7400;
+Chicken = 7401;
+Sheep = 7402;
+River_Fish = 7403;
+Bandits = 11000;
+Peasent_Levy = 11010;
+Veteran_Peasent_Levy = 11011;
+Levy_Spear = 11020;
+Veteran_Levy_Spear = 11021;
+Mountain_Levy = 11030;
+Veteran_Mountain_Levy = 11031;
+Mercenary_Swordman = 11040;
+Veteran_Mercenary_Swordman = 11041;
+Palace_Guard = 11042;
+Mercenary_Axeman = 11050;
+Mercenary_Maceman = 11060;
+Pikeman = 11070;
+Peasent_Bowman = 11200;
+Levy_Archer = 11210;
+Veteran_Levy_Archer = 11211;
+Huntsman = 11220;
+Slinger = 11230;
+Golden_Slinger = 11231;
+Imperial_Flamer = 11241;
+Free_Lance = 11300;
+Knight = 11301;
+Mounted_Levy = 11310;
+Mounted_Palace_Guard = 11311;
+Mercenary_War_Elephant = 11501;
+Elite_Mercenary_War_Elephant = 11502;
+Mercanary_War_Rhino = 11520;
+Elite_Mercenary_War_Rhino = 11521;
+Mounted_Archer = 11600;
+Veteran_Mounted_Archer = 11601;
+Palace_Archer = 11602;
+T1_XP = 28501;
+T2_XP = 28502;
+T3_XP = 28503;
+T4_XP = 28504;
+T5_XP = 28505;
+T6_XP = 28506;
+T7_XP = 28507;
+T8_XP = 28508;
+Coins = 28800;
+Axe = 2;
+Bow_Ammo = 19;
+Crossbow = 13;
+Elephant_Melee = 6;
+Elephant_Ranged = 11;
+Flamer_Tank = 20;
+Grenade = 10;
+Mace = 4;
+Sling = 5;
+Sling_Ammo = 21;
+Spear = 1;
+Sword = 3;
+Accessory = 4;
+Army_Elephant = 8;
+Army_Rhino = 10;
+Bow = 9;
+Elephant_Weapon = 3;
+Flame_Weapon = 6;
+Flamer = 12;
+Melee = 1;
+Ranged = 2;
+Rhino_Melee = 7;
+Rhino_Weapon = 5;
+Slingshot = 11;
+Armor = 1;
+Mount = 3;
+Offhand = 2;
+Weapon = 0;
+Army_Horse = 103;
+Elephant_Armor = 102;
+Horse_Armor = 101;
+Human_Armor = 100;
+Human_Shield = 105;
+Rhino_Armor = 104;
+Shield = 106;
+Art = 11;
+Bracelet = 1;
+Chair = 5;
+Cup = 7;
+Home_Furniture = 13;
+Necklace = 3;
+Religous_Totem = 8;
+Ring = 2;
+Storage = 12;
+Table = 4;
+Tableware = 6;
+Tapestry = 9;
+Wall_Painting = 10;
+Land = 10;
+NaN = 0;
+No_Limit = 0;
+Required_Empty = 1;
+undefined = 0;
+Animal = 100;
+Consumable_Drink = 23;
+Consumable_Food = 22;
+Crop = 20;
+Fertilizer = 220;
+Finished_Good = 60;
+Furniture = 80;
+Inedible_Food = 24;
+Jewelery = 70;
+Military = 30;
+Personal_Items = 90;
+Processed_Material = 50;
+Raw_Material = 40;
+Arid = 1;
+Central = 3;
+Glimmering = 8;
+Guilded = 9;
+Mountain = 7;
+Northern = 2;
+Ocean = 5;
+Southern = 4;
+Swamp = 6;
+Advanced_Butcherable_Animal = 101;
+Animal_Product = 24;
+Blueprint = 70;
+Butcherable_Animal = 100;
+Common_Crop = 21;
+Concept_Item = 72;
+Consumable_Drink_UI = 23;
+Consumable_Food_UI = 22;
+Crafting_Item = 50;
+Foraged_Crop = 20;
+Industrial_Good = 51;
+Medicine = 230;
+Mercanary = 220;
+Military_Armor = 31;
+Military_Mount = 33;
+Military_Offhand = 32;
+Military_Weapon = 30;
+Textbook = 71;
+Unprocessed = 52;
+Building_Materials = 53;
+Industry_Material = 54;
+Boat = 73;
+Food_Ingrediant = 24;
+Building200 = { baseBuilding: -1, buildingVariant: 0, reasourceType: [0,0,0,0,0],reasourceAmount: [0,0,0,0,0,0,0],popRequirements: [0,0,0],employeeType: 0,employees: 0,buildingBeauty: 0, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 0};
+Building0_1 = { baseBuilding: 200, buildingVariant: 0, reasourceType: [0,0,0,0,0],reasourceAmount: [0,0,0,0,0,10,62],popRequirements: [10,0,0],employeeType: 0,employees: 10,buildingBeauty: 0, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building0_2 = { baseBuilding: 200, buildingVariant: 1, reasourceType: [0,0,0,0,0],reasourceAmount: [0,0,0,0,0,10,62],popRequirements: [10,0,0],employeeType: 0,employees: 10,buildingBeauty: 0, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building0_3 = { baseBuilding: 200, buildingVariant: 2, reasourceType: [0,0,0,0,0],reasourceAmount: [0,0,0,0,0,10,56],popRequirements: [20,0,0],employeeType: 0,employees: 20,buildingBeauty: -15, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building0_4 = { baseBuilding: 200, buildingVariant: 3, reasourceType: [0,0,0,0,0],reasourceAmount: [0,0,0,0,0,10,62],popRequirements: [10,0,0],employeeType: 0,employees: 10,buildingBeauty: 0, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building0_5 = { baseBuilding: 200, buildingVariant: 4, reasourceType: [0,0,0,0,0],reasourceAmount: [0,0,0,0,0,10,62],popRequirements: [10,0,0],employeeType: 0,employees: 10,buildingBeauty: 0, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building0_6 = { baseBuilding: 200, buildingVariant: 5, reasourceType: [0,0,0,0,0],reasourceAmount: [0,0,0,0,0,10,62],popRequirements: [10,0,0],employeeType: 0,employees: 10,buildingBeauty: 0, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building0_7 = { baseBuilding: 200, buildingVariant: 6, reasourceType: [0,0,0,0,0],reasourceAmount: [0,0,0,0,0,10,62],popRequirements: [10,0,0],employeeType: 0,employees: 10,buildingBeauty: 0, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building0_8 = { baseBuilding: 200, buildingVariant: 7, reasourceType: [0,0,0,0,0],reasourceAmount: [0,0,0,0,0,5,33],popRequirements: [1,0,0],employeeType: 0,employees: 1,buildingBeauty: 6, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building0_9 = { baseBuilding: 200, buildingVariant: 8, reasourceType: [0,0,0,0,0],reasourceAmount: [0,0,0,0,0,5,33],popRequirements: [1,0,0],employeeType: 0,employees: 1,buildingBeauty: 6, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building1_1 = { baseBuilding: 0, buildingVariant: 0, reasourceType: [2152,4002,0,0,0],reasourceAmount: [5000000,250000,0,0,0,0,450],popRequirements: [50,0,0],employeeType: 0,employees: 50,buildingBeauty: 10, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 2, industrySize: 5};
+Building1_2 = { baseBuilding: 0, buildingVariant: 1, reasourceType: [2153,4006,0,0,0],reasourceAmount: [3000000,250000,0,0,0,0,358],popRequirements: [50,0,0],employeeType: 0,employees: 50,buildingBeauty: 10, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building1_3 = { baseBuilding: 0, buildingVariant: 2, reasourceType: [2150,4540,0,0,0],reasourceAmount: [5000000,10000,0,0,0,0,487],popRequirements: [100,0,0],employeeType: 0,employees: 100,buildingBeauty: -40, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 1, industrySize: 5};
+Building1_4 = { baseBuilding: 0, buildingVariant: 3, reasourceType: [2151,2121,0,0,0],reasourceAmount: [5000000,200000,0,0,0,0,358],popRequirements: [50,0,0],employeeType: 0,employees: 50,buildingBeauty: 10, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building1_5 = { baseBuilding: 0, buildingVariant: 4, reasourceType: [2153,4052,0,0,0],reasourceAmount: [5000000,2500,0,0,0,0,358],popRequirements: [50,0,0],employeeType: 0,employees: 50,buildingBeauty: 10, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building1_6 = { baseBuilding: 0, buildingVariant: 5, reasourceType: [2151,2129,0,0,0],reasourceAmount: [5000000,100000,0,0,0,0,335],popRequirements: [50,0,0],employeeType: 0,employees: 50,buildingBeauty: 5, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 6};
+Building1_7 = { baseBuilding: 0, buildingVariant: 6, reasourceType: [2152,2181,0,0,0],reasourceAmount: [5000000,200000,0,0,0,0,358],popRequirements: [50,0,0],employeeType: 0,employees: 50,buildingBeauty: 10, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building1_8 = { baseBuilding: 0, buildingVariant: 7, reasourceType: [2154,2123,0,0,0],reasourceAmount: [5000000,25000,0,0,0,0,260],popRequirements: [5,0,0],employeeType: 0,employees: 5,buildingBeauty: 50, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building1_9 = { baseBuilding: 0, buildingVariant: 8, reasourceType: [2154,2122,0,0,0],reasourceAmount: [8000000,10000,0,0,0,0,420],popRequirements: [5,0,0],employeeType: 0,employees: 5,buildingBeauty: 75, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 1, industrySize: 5};
+Building2_1 = { baseBuilding: 1, buildingVariant: 0, reasourceType: [2152,4002,0,0,0],reasourceAmount: [10000000,750000,0,0,0,0,1281],popRequirements: [150,0,0],employeeType: 0,employees: 150,buildingBeauty: 25, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 5, industrySize: 20};
+Building2_2 = { baseBuilding: 1, buildingVariant: 1, reasourceType: [2153,4006,0,0,0],reasourceAmount: [10000000,250000,0,0,0,0,1052],popRequirements: [150,0,0],employeeType: 0,employees: 150,buildingBeauty: 25, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 20};
+Building2_3 = { baseBuilding: 1, buildingVariant: 2, reasourceType: [2150,4540,0,0,0],reasourceAmount: [20000000,50000,0,0,0,0,2437],popRequirements: [500,0,0],employeeType: 0,employees: 500,buildingBeauty: -200, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 5, industrySize: 20};
+Building2_4 = { baseBuilding: 1, buildingVariant: 3, reasourceType: [2151,2121,0,0,0],reasourceAmount: [10000000,200000,0,0,0,0,937],popRequirements: [150,0,0],employeeType: 0,employees: 150,buildingBeauty: 0, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 20};
+Building2_5 = { baseBuilding: 1, buildingVariant: 4, reasourceType: [2153,4052,0,0,0],reasourceAmount: [10000000,15000,0,0,0,0,1029],popRequirements: [150,0,0],employeeType: 0,employees: 150,buildingBeauty: 20, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 20};
+Building2_6 = { baseBuilding: 1, buildingVariant: 5, reasourceType: [2151,2129,0,0,0],reasourceAmount: [10000000,2000000,0,0,0,0,1029],popRequirements: [150,0,0],employeeType: 0,employees: 150,buildingBeauty: 20, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 20};
+Building2_7 = { baseBuilding: 1, buildingVariant: 6, reasourceType: [2152,2181,0,0,0],reasourceAmount: [15000000,1000000,0,0,0,0,1350],popRequirements: [150,0,0],employeeType: 0,employees: 150,buildingBeauty: 40, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 5, industrySize: 20};
+Building2_8 = { baseBuilding: 1, buildingVariant: 7, reasourceType: [2154,2123,0,0,0],reasourceAmount: [10000000,200000,0,0,0,0,843],popRequirements: [25,0,0],employeeType: 0,employees: 25,buildingBeauty: 100, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 5, industrySize: 20};
+Building2_9 = { baseBuilding: 1, buildingVariant: 8, reasourceType: [2154,2122,0,0,0],reasourceAmount: [10000000,50000,0,0,0,0,1072],popRequirements: [25,0,0],employeeType: 0,employees: 25,buildingBeauty: 100, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 10, industrySize: 20};
+Building3_1 = { baseBuilding: 200, buildingVariant: 0, reasourceType: [2152,4002,0,0,0],reasourceAmount: [1000000,100000,0,0,0,15,175],popRequirements: [0,5,0],employeeType: 0,employees: 5,buildingBeauty: 10, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 1, industrySize: 1};
+Building3_2 = { baseBuilding: 200, buildingVariant: 1, reasourceType: [2153,4006,0,0,0],reasourceAmount: [500000,100000,0,0,0,10,129],popRequirements: [0,5,0],employeeType: 0,employees: 5,buildingBeauty: 10, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building3_3 = { baseBuilding: 200, buildingVariant: 2, reasourceType: [2150,4541,0,0,0],reasourceAmount: [500000,1000,0,0,0,10,120],popRequirements: [0,10,0],employeeType: 0,employees: 10,buildingBeauty: -10, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building3_4 = { baseBuilding: 200, buildingVariant: 3, reasourceType: [2151,2121,0,0,0],reasourceAmount: [500000,250000,0,0,0,10,129],popRequirements: [0,5,0],employeeType: 0,employees: 5,buildingBeauty: 10, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building3_5 = { baseBuilding: 200, buildingVariant: 4, reasourceType: [2153,4053,0,0,0],reasourceAmount: [500000,1500,0,0,0,10,129],popRequirements: [0,5,0],employeeType: 0,employees: 5,buildingBeauty: 10, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building3_6 = { baseBuilding: 200, buildingVariant: 5, reasourceType: [2151,2129,0,0,0],reasourceAmount: [500000,750000,0,0,0,10,129],popRequirements: [0,5,0],employeeType: 0,employees: 5,buildingBeauty: 10, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building3_7 = { baseBuilding: 200, buildingVariant: 6, reasourceType: [2152,2181,0,0,0],reasourceAmount: [500000,250000,0,0,0,10,129],popRequirements: [0,5,0],employeeType: 0,employees: 5,buildingBeauty: 10, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building3_8 = { baseBuilding: 200, buildingVariant: 7, reasourceType: [2154,2123,0,0,0],reasourceAmount: [500000,50000,0,0,0,10,131],popRequirements: [0,1,0],employeeType: 0,employees: 1,buildingBeauty: 25, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building3_9 = { baseBuilding: 200, buildingVariant: 8, reasourceType: [2154,2122,0,0,0],reasourceAmount: [1000000,35000,0,0,0,10,245],popRequirements: [0,1,0],employeeType: 0,employees: 1,buildingBeauty: 50, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building4_1 = { baseBuilding: 3, buildingVariant: 0, reasourceType: [2152,2207,4002,0,0],reasourceAmount: [1000000,1000000,500000,0,0,0,668],popRequirements: [0,25,0],employeeType: 0,employees: 25,buildingBeauty: 25, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 3, industrySize: 5};
+Building4_2 = { baseBuilding: 3, buildingVariant: 1, reasourceType: [2153,2207,4006,0,0],reasourceAmount: [1000000,1000000,400000,0,0,0,531],popRequirements: [0,25,0],employeeType: 0,employees: 25,buildingBeauty: 25, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building4_3 = { baseBuilding: 3, buildingVariant: 2, reasourceType: [2150,2207,4541,0,0],reasourceAmount: [1000000,1000000,7500,0,0,0,604],popRequirements: [0,50,0],employeeType: 0,employees: 50,buildingBeauty: -50, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building4_4 = { baseBuilding: 3, buildingVariant: 3, reasourceType: [2151,2207,2121,0,0],reasourceAmount: [1000000,1000000,750000,0,0,0,531],popRequirements: [0,25,0],employeeType: 0,employees: 25,buildingBeauty: 25, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building4_5 = { baseBuilding: 3, buildingVariant: 4, reasourceType: [2153,2207,4053,0,0],reasourceAmount: [1000000,1000000,5000,0,0,0,531],popRequirements: [0,25,0],employeeType: 0,employees: 25,buildingBeauty: 25, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building4_6 = { baseBuilding: 3, buildingVariant: 5, reasourceType: [2151,2207,2129,0,0],reasourceAmount: [1000000,1000000,2000000,0,0,0,531],popRequirements: [0,25,0],employeeType: 0,employees: 25,buildingBeauty: 25, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 6};
+Building4_7 = { baseBuilding: 3, buildingVariant: 6, reasourceType: [2152,2207,2181,0,0],reasourceAmount: [1000000,1000000,750000,0,0,0,531],popRequirements: [0,25,0],employeeType: 0,employees: 25,buildingBeauty: 25, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building4_8 = { baseBuilding: 3, buildingVariant: 7, reasourceType: [2154,2207,2123,0,0],reasourceAmount: [1000000,1000000,50000,0,0,0,433],popRequirements: [0,4,0],employeeType: 0,employees: 4,buildingBeauty: 80, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building4_9 = { baseBuilding: 3, buildingVariant: 8, reasourceType: [2154,2207,2122,0,0],reasourceAmount: [2000000,1000000,25000,0,0,0,639],popRequirements: [0,4,0],employeeType: 0,employees: 4,buildingBeauty: 125, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building5_1 = { baseBuilding: 4, buildingVariant: 0, reasourceType: [2162,2207,4056,0,0],reasourceAmount: [2000000,1000000,50000,0,0,0,1750],popRequirements: [0,50,0],employeeType: 0,employees: 50,buildingBeauty: 100, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 10, industrySize: 20};
+Building5_2 = { baseBuilding: 4, buildingVariant: 1, reasourceType: [2163,2207,4007,0,0],reasourceAmount: [1000000,1000000,50000,0,0,0,1291],popRequirements: [0,50,0],employeeType: 0,employees: 50,buildingBeauty: 100, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 20};
+Building5_3 = { baseBuilding: 4, buildingVariant: 2, reasourceType: [2160,2207,4541,0,0],reasourceAmount: [2000000,1000000,10000,0,0,0,2041],popRequirements: [0,150,0],employeeType: 0,employees: 150,buildingBeauty: -100, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 20};
+Building5_4 = { baseBuilding: 4, buildingVariant: 3, reasourceType: [2161,2207,2121,0,0],reasourceAmount: [1000000,1000000,200000,0,0,0,1291],popRequirements: [0,50,0],employeeType: 0,employees: 50,buildingBeauty: 100, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 20};
+Building5_5 = { baseBuilding: 4, buildingVariant: 4, reasourceType: [2163,2207,4053,0,0],reasourceAmount: [1000000,1000000,2500,0,0,0,1291],popRequirements: [0,50,0],employeeType: 0,employees: 50,buildingBeauty: 100, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 20};
+Building5_6 = { baseBuilding: 4, buildingVariant: 5, reasourceType: [2161,2207,2129,0,0],reasourceAmount: [1000000,1000000,1500000,0,0,0,1291],popRequirements: [0,50,0],employeeType: 0,employees: 50,buildingBeauty: 100, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 20};
+Building5_7 = { baseBuilding: 4, buildingVariant: 6, reasourceType: [2162,2207,2181,0,0],reasourceAmount: [1000000,1000000,750000,0,0,0,1291],popRequirements: [0,50,0],employeeType: 0,employees: 50,buildingBeauty: 100, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 20};
+Building5_8 = { baseBuilding: 4, buildingVariant: 7, reasourceType: [2164,2207,2123,0,0],reasourceAmount: [1000000,1000000,50000,0,0,0,1129],popRequirements: [0,10,0],employeeType: 0,employees: 10,buildingBeauty: 200, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 1, industrySize: 20};
+Building5_9 = { baseBuilding: 4, buildingVariant: 8, reasourceType: [2164,2207,2122,0,0],reasourceAmount: [2000000,1000000,10000,0,0,0,1770],popRequirements: [0,10,0],employeeType: 0,employees: 10,buildingBeauty: 300, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 5, industrySize: 20};
+Building6_1 = { baseBuilding: 200, buildingVariant: 0, reasourceType: [2162,2208,4056,0,0],reasourceAmount: [500000,250000,25000,0,0,40,570],popRequirements: [0,0,2],employeeType: 0,employees: 2,buildingBeauty: 50, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 2, industrySize: 5};
+Building6_2 = { baseBuilding: 200, buildingVariant: 1, reasourceType: [2163,2208,4007,0,0],reasourceAmount: [500000,250000,15000,0,0,20,479],popRequirements: [0,0,2],employeeType: 0,employees: 2,buildingBeauty: 50, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building6_3 = { baseBuilding: 200, buildingVariant: 2, reasourceType: [2160,2208,4542,0,0],reasourceAmount: [500000,250000,1000,0,0,10,454],popRequirements: [0,0,4],employeeType: 0,employees: 4,buildingBeauty: -10, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building6_4 = { baseBuilding: 200, buildingVariant: 3, reasourceType: [2161,2208,4054,0,0],reasourceAmount: [500000,250000,2500,0,0,20,708],popRequirements: [0,0,2],employeeType: 0,employees: 2,buildingBeauty: 100, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building6_5 = { baseBuilding: 200, buildingVariant: 4, reasourceType: [2163,2208,2121,0,0],reasourceAmount: [500000,250000,500000,0,0,20,525],popRequirements: [0,0,2],employeeType: 0,employees: 2,buildingBeauty: 50, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 1, industrySize: 5};
+Building6_6 = { baseBuilding: 200, buildingVariant: 5, reasourceType: [2161,2208,2129,0,0],reasourceAmount: [500000,250000,1000000,0,0,20,525],popRequirements: [0,0,2],employeeType: 0,employees: 2,buildingBeauty: 50, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 1, industrySize: 5};
+Building6_7 = { baseBuilding: 200, buildingVariant: 6, reasourceType: [2162,2208,2181,0,0],reasourceAmount: [500000,250000,500000,0,0,20,525],popRequirements: [0,0,2],employeeType: 0,employees: 2,buildingBeauty: 50, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 1, industrySize: 5};
+Building6_8 = { baseBuilding: 200, buildingVariant: 7, reasourceType: [2164,2208,2123,0,0],reasourceAmount: [500000,250000,200000,0,0,20,583],popRequirements: [0,0,1],employeeType: 0,employees: 1,buildingBeauty: 100, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building6_9 = { baseBuilding: 200, buildingVariant: 8, reasourceType: [2164,2208,2122,0,0],reasourceAmount: [1000000,250000,50000,0,0,20,812],popRequirements: [0,0,1],employeeType: 0,employees: 1,buildingBeauty: 100, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 5, industrySize: 5};
+Building7_1 = { baseBuilding: 6, buildingVariant: 0, reasourceType: [2162,2308,4056,0,0],reasourceAmount: [1000000,1000000,400000,0,0,0,3083],popRequirements: [0,0,10],employeeType: 0,employees: 10,buildingBeauty: 300, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 10, industrySize: 20};
+Building7_2 = { baseBuilding: 6, buildingVariant: 1, reasourceType: [2163,2308,4007,0,0],reasourceAmount: [1000000,1000000,100000,0,0,0,2625],popRequirements: [0,0,10],employeeType: 0,employees: 10,buildingBeauty: 300, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 20};
+Building7_3 = { baseBuilding: 6, buildingVariant: 2, reasourceType: [2160,2308,4542,0,0],reasourceAmount: [1000000,1000000,2500,0,0,0,2500],popRequirements: [0,0,20],employeeType: 0,employees: 20,buildingBeauty: 0, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 20};
+Building7_4 = { baseBuilding: 6, buildingVariant: 3, reasourceType: [2161,2308,4054,0,0],reasourceAmount: [1000000,1000000,2500,0,0,0,2625],popRequirements: [0,0,10],employeeType: 0,employees: 10,buildingBeauty: 300, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 20};
+Building7_5 = { baseBuilding: 6, buildingVariant: 4, reasourceType: [2163,2308,2121,0,0],reasourceAmount: [1000000,1000000,2000000,0,0,0,2625],popRequirements: [0,0,10],employeeType: 0,employees: 10,buildingBeauty: 300, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 20};
+Building7_6 = { baseBuilding: 6, buildingVariant: 5, reasourceType: [2161,2308,2129,0,0],reasourceAmount: [1000000,1000000,6000000,0,0,0,2625],popRequirements: [0,0,10],employeeType: 0,employees: 10,buildingBeauty: 300, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 20};
+Building7_7 = { baseBuilding: 6, buildingVariant: 6, reasourceType: [2162,2308,2181,0,0],reasourceAmount: [1000000,1000000,2000000,0,0,0,2625],popRequirements: [0,0,10],employeeType: 0,employees: 10,buildingBeauty: 300, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 20};
+Building7_8 = { baseBuilding: 6, buildingVariant: 7, reasourceType: [2164,2308,2123,0,0],reasourceAmount: [1000000,1000000,500000,0,0,0,2687],popRequirements: [0,0,5],employeeType: 0,employees: 5,buildingBeauty: 400, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 5, industrySize: 20};
+Building7_9 = { baseBuilding: 6, buildingVariant: 8, reasourceType: [2164,2308,2122,0,0],reasourceAmount: [2000000,1000000,100000,0,0,0,3375],popRequirements: [0,0,5],employeeType: 0,employees: 5,buildingBeauty: 500, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 10, industrySize: 20};
+Building8_1 = { baseBuilding: 200, buildingVariant: 0, reasourceType: [2152,0,0,0,0],reasourceAmount: [800000,0,0,0,0,12,100],popRequirements: [5,0,0],employeeType: 0,employees: 5,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 1, industrySize: 1};
+Building8_2 = { baseBuilding: 200, buildingVariant: 1, reasourceType: [2153,0,0,0,0],reasourceAmount: [800000,0,0,0,0,6,100],popRequirements: [5,0,0],employeeType: 0,employees: 5,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building8_3 = { baseBuilding: 200, buildingVariant: 2, reasourceType: [2150,0,0,0,0],reasourceAmount: [800000,0,0,0,0,2,100],popRequirements: [5,0,0],employeeType: 0,employees: 5,buildingBeauty: -20, buildingInsulation: 0, buildingErgonommics: -5, buildingInfra: 1, industrySize: 2};
+Building8_4 = { baseBuilding: 200, buildingVariant: 3, reasourceType: [2151,0,0,0,0],reasourceAmount: [800000,0,0,0,0,6,100],popRequirements: [5,0,0],employeeType: 0,employees: 5,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building8_5 = { baseBuilding: 200, buildingVariant: 4, reasourceType: [2153,0,0,0,0],reasourceAmount: [1000000,0,0,0,0,3,100],popRequirements: [5,0,0],employeeType: 0,employees: 5,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building8_6 = { baseBuilding: 200, buildingVariant: 5, reasourceType: [2151,0,0,0,0],reasourceAmount: [600000,0,0,0,0,6,100],popRequirements: [5,0,0],employeeType: 0,employees: 5,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building8_7 = { baseBuilding: 200, buildingVariant: 6, reasourceType: [2152,0,0,0,0],reasourceAmount: [600000,0,0,0,0,6,100],popRequirements: [5,0,0],employeeType: 0,employees: 5,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building8_8 = { baseBuilding: 200, buildingVariant: 7, reasourceType: [2154,2123,0,0,0],reasourceAmount: [800000,75000,0,0,0,3,100],popRequirements: [5,0,0],employeeType: 0,employees: 5,buildingBeauty: 5, buildingInsulation: 10, buildingErgonommics: 5, buildingInfra: 0, industrySize: 1};
+Building8_9 = { baseBuilding: 200, buildingVariant: 8, reasourceType: [2154,2122,0,0,0],reasourceAmount: [2000000,25000,0,0,0,3,200],popRequirements: [5,0,0],employeeType: 0,employees: 5,buildingBeauty: 10, buildingInsulation: 10, buildingErgonommics: 10, buildingInfra: 1, industrySize: 1};
+Building9_1 = { baseBuilding: 8, buildingVariant: 0, reasourceType: [2152,4540,4002,0,0],reasourceAmount: [3000000,10000,200000,0,0,0,600],popRequirements: [8,1,0],employeeType: 1,employees: 9,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 3, industrySize: 5};
+Building9_2 = { baseBuilding: 8, buildingVariant: 1, reasourceType: [2153,4540,4006,0,0],reasourceAmount: [2000000,10000,100000,0,0,0,500],popRequirements: [8,1,0],employeeType: 1,employees: 9,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building9_3 = { baseBuilding: 8, buildingVariant: 2, reasourceType: [2150,4540,0,0,0],reasourceAmount: [2000000,15000,0,0,0,0,400],popRequirements: [8,1,0],employeeType: 1,employees: 9,buildingBeauty: -60, buildingInsulation: 0, buildingErgonommics: -5, buildingInfra: 5, industrySize: 8};
+Building9_4 = { baseBuilding: 8, buildingVariant: 3, reasourceType: [2151,4540,0,0,0],reasourceAmount: [3000000,10000,0,0,0,0,500],popRequirements: [8,1,0],employeeType: 1,employees: 9,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building9_5 = { baseBuilding: 8, buildingVariant: 4, reasourceType: [2153,4540,4052,0,0],reasourceAmount: [1000000,10000,5000,0,0,0,500],popRequirements: [8,1,0],employeeType: 1,employees: 9,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building9_6 = { baseBuilding: 8, buildingVariant: 5, reasourceType: [2151,4540,2129,0,0],reasourceAmount: [1000000,10000,300000,0,0,0,500],popRequirements: [8,1,0],employeeType: 1,employees: 9,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building9_7 = { baseBuilding: 8, buildingVariant: 6, reasourceType: [2152,4540,2181,0,0],reasourceAmount: [1000000,10000,100000,0,0,0,500],popRequirements: [8,1,0],employeeType: 1,employees: 9,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building9_8 = { baseBuilding: 8, buildingVariant: 7, reasourceType: [2154,4540,2123,0,0],reasourceAmount: [2000000,10000,100000,0,0,0,700],popRequirements: [8,1,0],employeeType: 1,employees: 9,buildingBeauty: 20, buildingInsulation: 10, buildingErgonommics: 5, buildingInfra: 0, industrySize: 5};
+Building9_9 = { baseBuilding: 8, buildingVariant: 8, reasourceType: [2154,4540,2122,0,0],reasourceAmount: [1000000,10000,15000,0,0,0,800],popRequirements: [8,1,0],employeeType: 1,employees: 9,buildingBeauty: 30, buildingInsulation: 10, buildingErgonommics: 10, buildingInfra: 2, industrySize: 4};
+Building10_1 = { baseBuilding: 9, buildingVariant: 0, reasourceType: [2162,4541,4002,0,0],reasourceAmount: [500000,4000,500000,0,0,0,1800],popRequirements: [13,4,0],employeeType: 1,employees: 17,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 6, industrySize: 15};
+Building10_2 = { baseBuilding: 9, buildingVariant: 1, reasourceType: [2163,4541,4006,0,0],reasourceAmount: [500000,4000,500000,0,0,0,1500],popRequirements: [13,4,0],employeeType: 1,employees: 17,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 15};
+Building10_3 = { baseBuilding: 9, buildingVariant: 2, reasourceType: [2160,4541,0,0,0],reasourceAmount: [1000000,10000,0,0,0,0,1600],popRequirements: [13,4,0],employeeType: 1,employees: 17,buildingBeauty: -100, buildingInsulation: 0, buildingErgonommics: -5, buildingInfra: 12, industrySize: 25};
+Building10_4 = { baseBuilding: 9, buildingVariant: 3, reasourceType: [2161,4541,2121,0,0],reasourceAmount: [500000,4000,1000000,0,0,0,1500],popRequirements: [13,4,0],employeeType: 1,employees: 17,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 15};
+Building10_5 = { baseBuilding: 9, buildingVariant: 4, reasourceType: [2163,4541,4053,0,0],reasourceAmount: [500000,4000,5000,0,0,0,1400],popRequirements: [13,4,0],employeeType: 1,employees: 17,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 15};
+Building10_6 = { baseBuilding: 9, buildingVariant: 5, reasourceType: [2161,4541,2129,0,0],reasourceAmount: [500000,4000,2000000,0,0,0,1400],popRequirements: [13,4,0],employeeType: 1,employees: 17,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 15};
+Building10_7 = { baseBuilding: 9, buildingVariant: 6, reasourceType: [2162,4541,2181,0,0],reasourceAmount: [500000,4000,1000000,0,0,0,1400],popRequirements: [13,4,0],employeeType: 1,employees: 17,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 15};
+Building10_8 = { baseBuilding: 9, buildingVariant: 7, reasourceType: [2164,4541,2123,0,0],reasourceAmount: [500000,5000,500000,0,0,0,1900],popRequirements: [13,4,0],employeeType: 1,employees: 17,buildingBeauty: 50, buildingInsulation: 10, buildingErgonommics: 5, buildingInfra: 0, industrySize: 15};
+Building10_9 = { baseBuilding: 9, buildingVariant: 8, reasourceType: [2164,4541,2122,0,0],reasourceAmount: [500000,5000,150000,0,0,0,2200],popRequirements: [13,4,0],employeeType: 1,employees: 17,buildingBeauty: 100, buildingInsulation: 10, buildingErgonommics: 10, buildingInfra: 3, industrySize: 12};
+Building11_1 = { baseBuilding: 10, buildingVariant: 0, reasourceType: [2162,4542,4002,0,0],reasourceAmount: [5000000,5000,2000000,0,0,0,6400],popRequirements: [13,6,1],employeeType: 1,employees: 20,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 30, industrySize: 50};
+Building11_2 = { baseBuilding: 10, buildingVariant: 1, reasourceType: [2163,4542,4007,0,0],reasourceAmount: [1000000,5000,250000,0,0,0,5000],popRequirements: [13,6,1],employeeType: 1,employees: 20,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 50};
+Building11_3 = { baseBuilding: 10, buildingVariant: 2, reasourceType: [2160,4542,0,0,0],reasourceAmount: [1000000,5000,0,0,0,0,4500],popRequirements: [13,6,1],employeeType: 1,employees: 20,buildingBeauty: -500, buildingInsulation: 0, buildingErgonommics: -5, buildingInfra: 40, industrySize: 80};
+Building11_4 = { baseBuilding: 10, buildingVariant: 3, reasourceType: [2161,4542,2182,0,0],reasourceAmount: [2000000,5000,1000000,0,0,0,5000],popRequirements: [13,6,1],employeeType: 1,employees: 20,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 50};
+Building11_5 = { baseBuilding: 10, buildingVariant: 4, reasourceType: [2163,4542,4054,0,0],reasourceAmount: [1000000,5000,10000,0,0,0,4600],popRequirements: [13,6,1],employeeType: 1,employees: 20,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 50};
+Building11_6 = { baseBuilding: 10, buildingVariant: 5, reasourceType: [2161,4542,2129,0,0],reasourceAmount: [2000000,5000,3000000,0,0,0,4600],popRequirements: [13,6,1],employeeType: 1,employees: 20,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 50};
+Building11_7 = { baseBuilding: 10, buildingVariant: 6, reasourceType: [2162,4542,2181,0,0],reasourceAmount: [2000000,5000,1000000,0,0,0,4600],popRequirements: [13,6,1],employeeType: 1,employees: 20,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 50};
+Building11_8 = { baseBuilding: 10, buildingVariant: 7, reasourceType: [2164,4542,2123,0,0],reasourceAmount: [1000000,5000,2000000,0,0,0,6600],popRequirements: [13,6,1],employeeType: 1,employees: 20,buildingBeauty: 200, buildingInsulation: 10, buildingErgonommics: 5, buildingInfra: 0, industrySize: 50};
+Building11_9 = { baseBuilding: 10, buildingVariant: 8, reasourceType: [2164,4542,2122,0,0],reasourceAmount: [1000000,5000,600000,0,0,0,8200],popRequirements: [13,6,1],employeeType: 1,employees: 20,buildingBeauty: 500, buildingInsulation: 10, buildingErgonommics: 10, buildingInfra: 10, industrySize: 40};
+Building12_1 = { baseBuilding: 200, buildingVariant: 0, reasourceType: [2152,2124,0,0,0],reasourceAmount: [2500000,500000,0,0,0,20,300],popRequirements: [8,0,0],employeeType: 3,employees: 8,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 1, industrySize: 3};
+Building12_2 = { baseBuilding: 200, buildingVariant: 1, reasourceType: [2153,2124,0,0,0],reasourceAmount: [2500000,500000,0,0,0,10,300],popRequirements: [8,0,0],employeeType: 3,employees: 8,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 3};
+Building12_3 = { baseBuilding: 200, buildingVariant: 2, reasourceType: [2150,2124,0,0,0],reasourceAmount: [3000000,500000,0,0,0,5,300],popRequirements: [8,0,0],employeeType: 3,employees: 8,buildingBeauty: -40, buildingInsulation: 0, buildingErgonommics: -5, buildingInfra: 2, industrySize: 6};
+Building12_4 = { baseBuilding: 200, buildingVariant: 3, reasourceType: [2151,2124,0,0,0],reasourceAmount: [2500000,500000,0,0,0,10,300],popRequirements: [8,0,0],employeeType: 3,employees: 8,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 3};
+Building12_5 = { baseBuilding: 200, buildingVariant: 4, reasourceType: [2153,2124,0,0,0],reasourceAmount: [2500000,500000,0,0,0,5,300],popRequirements: [8,0,0],employeeType: 3,employees: 8,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 3};
+Building12_6 = { baseBuilding: 200, buildingVariant: 5, reasourceType: [2151,2124,0,0,0],reasourceAmount: [2500000,500000,0,0,0,10,300],popRequirements: [8,0,0],employeeType: 3,employees: 8,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 3};
+Building12_7 = { baseBuilding: 200, buildingVariant: 6, reasourceType: [2152,2124,0,0,0],reasourceAmount: [2500000,500000,0,0,0,10,300],popRequirements: [8,0,0],employeeType: 3,employees: 8,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 3};
+Building12_8 = { baseBuilding: 200, buildingVariant: 7, reasourceType: [2154,2124,2123,0,0],reasourceAmount: [2500000,500000,100000,0,0,10,400],popRequirements: [8,0,0],employeeType: 3,employees: 8,buildingBeauty: 10, buildingInsulation: 10, buildingErgonommics: 5, buildingInfra: 0, industrySize: 3};
+Building12_9 = { baseBuilding: 200, buildingVariant: 8, reasourceType: [2154,2124,2122,0,0],reasourceAmount: [2500000,500000,50000,0,0,10,500],popRequirements: [8,0,0],employeeType: 3,employees: 8,buildingBeauty: 20, buildingInsulation: 10, buildingErgonommics: 10, buildingInfra: 2, industrySize: 2};
+Building13_1 = { baseBuilding: 12, buildingVariant: 0, reasourceType: [2152,2124,0,4002,0],reasourceAmount: [4000000,500000,0,250000,0,0,1100],popRequirements: [10,2,0],employeeType: 3,employees: 12,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 4, industrySize: 9};
+Building13_2 = { baseBuilding: 12, buildingVariant: 1, reasourceType: [2153,2124,0,4006,0],reasourceAmount: [2000000,500000,0,250000,0,0,900],popRequirements: [10,2,0],employeeType: 3,employees: 12,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 9};
+Building13_3 = { baseBuilding: 12, buildingVariant: 2, reasourceType: [2150,2124,0,4540,0],reasourceAmount: [2000000,500000,0,2500,0,0,800],popRequirements: [10,2,0],employeeType: 3,employees: 12,buildingBeauty: -75, buildingInsulation: 0, buildingErgonommics: -5, buildingInfra: 4, industrySize: 15};
+Building13_4 = { baseBuilding: 12, buildingVariant: 3, reasourceType: [2151,2124,0,2121,0],reasourceAmount: [2000000,500000,0,500000,0,0,900],popRequirements: [10,2,0],employeeType: 3,employees: 12,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 9};
+Building13_5 = { baseBuilding: 12, buildingVariant: 4, reasourceType: [2153,2124,0,4052,0],reasourceAmount: [2000000,500000,0,10000,0,0,800],popRequirements: [10,2,0],employeeType: 3,employees: 12,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 9};
+Building13_6 = { baseBuilding: 12, buildingVariant: 5, reasourceType: [2151,2124,0,2129,0],reasourceAmount: [2000000,500000,0,750000,0,0,800],popRequirements: [10,2,0],employeeType: 3,employees: 12,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 9};
+Building13_7 = { baseBuilding: 12, buildingVariant: 6, reasourceType: [2152,2124,0,2181,0],reasourceAmount: [2000000,500000,0,250000,0,0,800],popRequirements: [10,2,0],employeeType: 3,employees: 12,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 9};
+Building13_8 = { baseBuilding: 12, buildingVariant: 7, reasourceType: [2154,2124,0,2123,0],reasourceAmount: [2000000,500000,0,200000,0,0,1100],popRequirements: [10,2,0],employeeType: 3,employees: 12,buildingBeauty: 25, buildingInsulation: 10, buildingErgonommics: 5, buildingInfra: 0, industrySize: 9};
+Building13_9 = { baseBuilding: 12, buildingVariant: 8, reasourceType: [2154,2124,0,2122,0],reasourceAmount: [2000000,500000,0,50000,0,0,1400],popRequirements: [10,2,0],employeeType: 3,employees: 12,buildingBeauty: 50, buildingInsulation: 10, buildingErgonommics: 10, buildingInfra: 4, industrySize: 7};
+Building14_1 = { baseBuilding: 13, buildingVariant: 0, reasourceType: [2162,2124,0,4002,0],reasourceAmount: [1000000,1000000,0,250000,0,0,2300],popRequirements: [16,6,0],employeeType: 3,employees: 22,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 6, industrySize: 20};
+Building14_2 = { baseBuilding: 13, buildingVariant: 1, reasourceType: [2163,2124,0,4006,0],reasourceAmount: [750000,1000000,0,500000,0,0,2000],popRequirements: [16,6,0],employeeType: 3,employees: 22,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 20};
+Building14_3 = { baseBuilding: 13, buildingVariant: 2, reasourceType: [2160,2124,0,4541,0],reasourceAmount: [750000,1000000,0,5000,0,0,1800],popRequirements: [16,6,0],employeeType: 3,employees: 22,buildingBeauty: -100, buildingInsulation: 0, buildingErgonommics: -5, buildingInfra: 8, industrySize: 30};
+Building14_4 = { baseBuilding: 13, buildingVariant: 3, reasourceType: [2161,2124,0,2121,0],reasourceAmount: [750000,1000000,0,500000,0,0,2000],popRequirements: [16,6,0],employeeType: 3,employees: 22,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 20};
+Building14_5 = { baseBuilding: 13, buildingVariant: 4, reasourceType: [2163,2124,0,4053,0],reasourceAmount: [750000,1000000,0,5000,0,0,1800],popRequirements: [16,6,0],employeeType: 3,employees: 22,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 20};
+Building14_6 = { baseBuilding: 13, buildingVariant: 5, reasourceType: [2161,2124,0,2129,0],reasourceAmount: [750000,1000000,0,2000000,0,0,1800],popRequirements: [16,6,0],employeeType: 3,employees: 22,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 20};
+Building14_7 = { baseBuilding: 13, buildingVariant: 6, reasourceType: [2162,2124,0,2181,0],reasourceAmount: [750000,1000000,0,500000,0,0,1800],popRequirements: [16,6,0],employeeType: 3,employees: 22,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 20};
+Building14_8 = { baseBuilding: 13, buildingVariant: 7, reasourceType: [2164,2124,0,2123,0],reasourceAmount: [750000,1000000,0,500000,0,0,2500],popRequirements: [16,6,0],employeeType: 3,employees: 22,buildingBeauty: 50, buildingInsulation: 10, buildingErgonommics: 5, buildingInfra: 0, industrySize: 20};
+Building14_9 = { baseBuilding: 13, buildingVariant: 8, reasourceType: [2164,2124,0,2122,0],reasourceAmount: [750000,1000000,0,50000,0,0,2700],popRequirements: [16,6,0],employeeType: 3,employees: 22,buildingBeauty: 100, buildingInsulation: 10, buildingErgonommics: 10, buildingInfra: 5, industrySize: 15};
+Building15_1 = { baseBuilding: 14, buildingVariant: 0, reasourceType: [2162,2124,0,4056,0],reasourceAmount: [2000000,2000000,0,400000,0,0,6200],popRequirements: [16,6,1],employeeType: 3,employees: 23,buildingBeauty: 50, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 20, industrySize: 50};
+Building15_2 = { baseBuilding: 14, buildingVariant: 1, reasourceType: [2163,2124,0,4007,0],reasourceAmount: [2000000,2000000,0,100000,0,0,5200],popRequirements: [16,6,1],employeeType: 3,employees: 23,buildingBeauty: 50, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 50};
+Building15_3 = { baseBuilding: 14, buildingVariant: 2, reasourceType: [2160,2124,0,4542,0],reasourceAmount: [2000000,2000000,0,12000,0,0,5800],popRequirements: [16,6,1],employeeType: 3,employees: 23,buildingBeauty: -200, buildingInsulation: 0, buildingErgonommics: -5, buildingInfra: 40, industrySize: 80};
+Building15_4 = { baseBuilding: 14, buildingVariant: 3, reasourceType: [2161,2124,0,2182,0],reasourceAmount: [2000000,2000000,0,2000000,0,0,5200],popRequirements: [16,6,1],employeeType: 3,employees: 23,buildingBeauty: 50, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 50};
+Building15_5 = { baseBuilding: 14, buildingVariant: 4, reasourceType: [2163,2124,0,4054,0],reasourceAmount: [2000000,2000000,0,5000,0,0,4800],popRequirements: [16,6,1],employeeType: 3,employees: 23,buildingBeauty: 50, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 50};
+Building15_6 = { baseBuilding: 14, buildingVariant: 5, reasourceType: [2161,2124,0,2129,0],reasourceAmount: [2000000,2000000,0,3000000,0,0,4800],popRequirements: [16,6,1],employeeType: 3,employees: 23,buildingBeauty: 50, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 50};
+Building15_7 = { baseBuilding: 14, buildingVariant: 6, reasourceType: [2162,2124,0,2181,0],reasourceAmount: [2000000,2000000,0,1000000,0,0,4800],popRequirements: [16,6,1],employeeType: 3,employees: 23,buildingBeauty: 50, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 50};
+Building15_8 = { baseBuilding: 14, buildingVariant: 7, reasourceType: [2164,2124,0,2123,0],reasourceAmount: [2000000,2000000,0,500000,0,0,6200],popRequirements: [16,6,1],employeeType: 3,employees: 23,buildingBeauty: 100, buildingInsulation: 10, buildingErgonommics: 5, buildingInfra: 0, industrySize: 50};
+Building15_9 = { baseBuilding: 14, buildingVariant: 8, reasourceType: [2164,2124,0,2122,0],reasourceAmount: [2000000,2000000,0,50000,0,0,5700],popRequirements: [16,6,1],employeeType: 3,employees: 23,buildingBeauty: 200, buildingInsulation: 10, buildingErgonommics: 10, buildingInfra: 15, industrySize: 30};
+Building16_1 = { baseBuilding: 200, buildingVariant: 0, reasourceType: [2152,0,0,0,0],reasourceAmount: [1000000,0,0,0,0,20,200],popRequirements: [5,1,0],employeeType: 6,employees: 6,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 1, industrySize: 2};
+Building16_2 = { baseBuilding: 200, buildingVariant: 1, reasourceType: [2153,0,0,0,0],reasourceAmount: [1000000,0,0,0,0,10,200],popRequirements: [5,1,0],employeeType: 6,employees: 6,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 2};
+Building16_3 = { baseBuilding: 200, buildingVariant: 2, reasourceType: [2150,0,0,0,0],reasourceAmount: [1000000,0,0,0,0,5,200],popRequirements: [5,1,0],employeeType: 6,employees: 6,buildingBeauty: -40, buildingInsulation: 0, buildingErgonommics: -5, buildingInfra: 2, industrySize: 4};
+Building16_4 = { baseBuilding: 200, buildingVariant: 3, reasourceType: [2151,0,0,0,0],reasourceAmount: [1000000,0,0,0,0,10,200],popRequirements: [5,1,0],employeeType: 6,employees: 6,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 2};
+Building16_5 = { baseBuilding: 200, buildingVariant: 4, reasourceType: [2153,0,0,0,0],reasourceAmount: [1500000,0,0,0,0,5,200],popRequirements: [5,1,0],employeeType: 6,employees: 6,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 2};
+Building16_6 = { baseBuilding: 200, buildingVariant: 5, reasourceType: [2151,0,0,0,0],reasourceAmount: [1000000,0,0,0,0,10,200],popRequirements: [5,1,0],employeeType: 6,employees: 6,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 2};
+Building16_7 = { baseBuilding: 200, buildingVariant: 6, reasourceType: [2152,0,0,0,0],reasourceAmount: [1000000,0,0,0,0,10,200],popRequirements: [5,1,0],employeeType: 6,employees: 6,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 2};
+Building16_8 = { baseBuilding: 200, buildingVariant: 7, reasourceType: [2154,2123,0,0,0],reasourceAmount: [2000000,50000,0,0,0,10,300],popRequirements: [5,1,0],employeeType: 6,employees: 6,buildingBeauty: 10, buildingInsulation: 10, buildingErgonommics: 5, buildingInfra: 0, industrySize: 2};
+Building16_9 = { baseBuilding: 200, buildingVariant: 8, reasourceType: [2154,2122,0,0,0],reasourceAmount: [2000000,10000,0,0,0,10,300],popRequirements: [5,1,0],employeeType: 6,employees: 6,buildingBeauty: 20, buildingInsulation: 10, buildingErgonommics: 10, buildingInfra: 1, industrySize: 1};
+Building17_1 = { baseBuilding: 16, buildingVariant: 0, reasourceType: [2152,2181,4002,0,0],reasourceAmount: [1500000,500000,300000,0,0,0,900],popRequirements: [10,3,0],employeeType: 6,employees: 13,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 3, industrySize: 8};
+Building17_2 = { baseBuilding: 16, buildingVariant: 1, reasourceType: [2153,2181,4006,0,0],reasourceAmount: [1000000,500000,300000,0,0,0,800],popRequirements: [10,3,0],employeeType: 6,employees: 13,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 8};
+Building17_3 = { baseBuilding: 16, buildingVariant: 2, reasourceType: [2150,2181,4541,0,0],reasourceAmount: [1000000,500000,8000,0,0,0,800],popRequirements: [10,3,0],employeeType: 6,employees: 13,buildingBeauty: -75, buildingInsulation: 0, buildingErgonommics: -5, buildingInfra: 4, industrySize: 16};
+Building17_4 = { baseBuilding: 16, buildingVariant: 3, reasourceType: [2151,2181,2121,0,0],reasourceAmount: [1000000,500000,500000,0,0,0,800],popRequirements: [10,3,0],employeeType: 6,employees: 13,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 8};
+Building17_5 = { baseBuilding: 16, buildingVariant: 4, reasourceType: [2153,2181,4054,0,0],reasourceAmount: [1000000,500000,1000,0,0,0,700],popRequirements: [10,3,0],employeeType: 6,employees: 13,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 8};
+Building17_6 = { baseBuilding: 16, buildingVariant: 5, reasourceType: [2151,2181,2129,0,0],reasourceAmount: [1000000,500000,1000000,0,0,0,700],popRequirements: [10,3,0],employeeType: 6,employees: 13,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 8};
+Building17_7 = { baseBuilding: 16, buildingVariant: 6, reasourceType: [2152,2181,2181,0,0],reasourceAmount: [1000000,500000,500000,0,0,0,700],popRequirements: [10,3,0],employeeType: 6,employees: 13,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 8};
+Building17_8 = { baseBuilding: 16, buildingVariant: 7, reasourceType: [2154,2181,2123,0,0],reasourceAmount: [1500000,500000,250000,0,0,0,1000],popRequirements: [10,3,0],employeeType: 6,employees: 13,buildingBeauty: 25, buildingInsulation: 10, buildingErgonommics: 5, buildingInfra: 0, industrySize: 8};
+Building17_9 = { baseBuilding: 16, buildingVariant: 8, reasourceType: [2154,2181,2122,0,0],reasourceAmount: [1000000,500000,100000,0,0,0,1200],popRequirements: [10,3,0],employeeType: 6,employees: 13,buildingBeauty: 50, buildingInsulation: 10, buildingErgonommics: 10, buildingInfra: 3, industrySize: 6};
+Building18_1 = { baseBuilding: 17, buildingVariant: 0, reasourceType: [2162,2121,4056,0,0],reasourceAmount: [500000,500000,200000,0,0,0,3000],popRequirements: [10,3,1],employeeType: 6,employees: 14,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 12, industrySize: 24};
+Building18_2 = { baseBuilding: 17, buildingVariant: 1, reasourceType: [2163,2121,4007,0,0],reasourceAmount: [500000,500000,50000,0,0,0,2400],popRequirements: [10,3,1],employeeType: 6,employees: 14,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 24};
+Building18_3 = { baseBuilding: 17, buildingVariant: 2, reasourceType: [2160,2121,4542,0,0],reasourceAmount: [500000,500000,10000,0,0,0,3400],popRequirements: [10,3,1],employeeType: 6,employees: 14,buildingBeauty: -150, buildingInsulation: 0, buildingErgonommics: -5, buildingInfra: 24, industrySize: 48};
+Building18_4 = { baseBuilding: 17, buildingVariant: 3, reasourceType: [2161,2121,2182,0,0],reasourceAmount: [500000,500000,500000,0,0,0,2400],popRequirements: [10,3,1],employeeType: 6,employees: 14,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 24};
+Building18_5 = { baseBuilding: 17, buildingVariant: 4, reasourceType: [2163,2121,4053,0,0],reasourceAmount: [500000,500000,1000,0,0,0,2200],popRequirements: [10,3,1],employeeType: 6,employees: 14,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 24};
+Building18_6 = { baseBuilding: 17, buildingVariant: 5, reasourceType: [2161,2121,2129,0,0],reasourceAmount: [500000,500000,750000,0,0,0,2200],popRequirements: [10,3,1],employeeType: 6,employees: 14,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 24};
+Building18_7 = { baseBuilding: 17, buildingVariant: 6, reasourceType: [2162,2121,2181,0,0],reasourceAmount: [500000,500000,250000,0,0,0,2200],popRequirements: [10,3,1],employeeType: 6,employees: 14,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 24};
+Building18_8 = { baseBuilding: 17, buildingVariant: 7, reasourceType: [2164,2121,2123,0,0],reasourceAmount: [500000,500000,500000,0,0,0,3100],popRequirements: [10,3,1],employeeType: 6,employees: 14,buildingBeauty: 75, buildingInsulation: 10, buildingErgonommics: 5, buildingInfra: 0, industrySize: 24};
+Building18_9 = { baseBuilding: 17, buildingVariant: 8, reasourceType: [2164,2121,2122,0,0],reasourceAmount: [500000,500000,100000,0,0,0,3200],popRequirements: [10,3,1],employeeType: 6,employees: 14,buildingBeauty: 150, buildingInsulation: 10, buildingErgonommics: 10, buildingInfra: 8, industrySize: 16};
+Building19_1 = { baseBuilding: 200, buildingVariant: 0, reasourceType: [2152,4541,0,0,0],reasourceAmount: [4000000,20000,0,0,0,0,1000],popRequirements: [0,5,0],employeeType: 10,employees: 5,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 4, industrySize: 8};
+Building19_2 = { baseBuilding: 200, buildingVariant: 1, reasourceType: [2153,4413,0,0,0],reasourceAmount: [3000000,1,0,0,0,0,100],popRequirements: [1,0,0],employeeType: 5,employees: 1,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 1, industrySize: 1};
+Building19_3 = { baseBuilding: 200, buildingVariant: 2, reasourceType: [2150,4413,0,0,0],reasourceAmount: [3000000,1,0,0,0,0,100],popRequirements: [1,0,0],employeeType: 5,employees: 1,buildingBeauty: -20, buildingInsulation: 10, buildingErgonommics: -5, buildingInfra: 2, industrySize: 2};
+Building19_4 = { baseBuilding: 200, buildingVariant: 3, reasourceType: [2151,4413,0,0,0],reasourceAmount: [3000000,1,0,0,0,0,100],popRequirements: [1,0,0],employeeType: 5,employees: 1,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 1, industrySize: 1};
+Building19_5 = { baseBuilding: 200, buildingVariant: 4, reasourceType: [2153,4413,0,0,0],reasourceAmount: [3000000,1,0,0,0,0,100],popRequirements: [1,0,0],employeeType: 5,employees: 1,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 1, industrySize: 1};
+Building19_6 = { baseBuilding: 200, buildingVariant: 5, reasourceType: [2151,4413,0,0,0],reasourceAmount: [3000000,1,0,0,0,0,100],popRequirements: [1,0,0],employeeType: 5,employees: 1,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 1, industrySize: 1};
+Building19_7 = { baseBuilding: 200, buildingVariant: 6, reasourceType: [2152,4541,0,0,0],reasourceAmount: [4000000,12000,0,0,0,0,700],popRequirements: [0,5,0],employeeType: 10,employees: 5,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 8};
+Building19_8 = { baseBuilding: 200, buildingVariant: 7, reasourceType: [2154,4541,0,0,0],reasourceAmount: [8000000,15000,0,0,0,0,1000],popRequirements: [0,5,0],employeeType: 10,employees: 5,buildingBeauty: 10, buildingInsulation: 10, buildingErgonommics: 5, buildingInfra: 0, industrySize: 8};
+Building19_9 = { baseBuilding: 200, buildingVariant: 8, reasourceType: [2154,4541,0,0,0],reasourceAmount: [4000000,22000,0,0,0,0,1100],popRequirements: [0,5,0],employeeType: 10,employees: 5,buildingBeauty: 20, buildingInsulation: 10, buildingErgonommics: 10, buildingInfra: 3, industrySize: 6};
+Building20_1 = { baseBuilding: 200, buildingVariant: 0, reasourceType: [2162,2303,4056,0,0],reasourceAmount: [1500000,100000,500000,0,0,0,6200],popRequirements: [0,5,5],employeeType: 1,employees: 10,buildingBeauty: 100, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 25, industrySize: 50};
+Building20_2 = { baseBuilding: 200, buildingVariant: 1, reasourceType: [2163,2303,4007,0,0],reasourceAmount: [1000000,100000,100000,0,0,0,5300],popRequirements: [0,5,5],employeeType: 4,employees: 10,buildingBeauty: 100, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 5, industrySize: 50};
+Building20_3 = { baseBuilding: 200, buildingVariant: 2, reasourceType: [2160,2303,4542,0,0],reasourceAmount: [1000000,100000,2500,0,0,0,5300],popRequirements: [0,5,5],employeeType: 8,employees: 10,buildingBeauty: -100, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 25, industrySize: 50};
+Building20_4 = { baseBuilding: 200, buildingVariant: 3, reasourceType: [2161,2303,2182,0,0],reasourceAmount: [2000000,100000,2000000,0,0,0,5300],popRequirements: [0,5,5],employeeType: 0,employees: 10,buildingBeauty: 100, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 5, industrySize: 50};
+Building20_5 = { baseBuilding: 200, buildingVariant: 4, reasourceType: [2163,2303,4053,0,0],reasourceAmount: [1500000,100000,2500,0,0,0,5300],popRequirements: [0,5,5],employeeType: 5,employees: 10,buildingBeauty: 100, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 5, industrySize: 50};
+Building20_6 = { baseBuilding: 200, buildingVariant: 5, reasourceType: [2161,2303,2129,0,0],reasourceAmount: [1500000,100000,750000,0,0,0,5300],popRequirements: [0,5,5],employeeType: 4,employees: 10,buildingBeauty: 100, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 5, industrySize: 50};
+Building20_7 = { baseBuilding: 200, buildingVariant: 6, reasourceType: [2162,2303,2181,0,0],reasourceAmount: [1500000,100000,250000,0,0,0,5300],popRequirements: [0,5,5],employeeType: 7,employees: 10,buildingBeauty: 100, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 5, industrySize: 50};
+Building20_8 = { baseBuilding: 200, buildingVariant: 7, reasourceType: [2164,2303,2123,0,0],reasourceAmount: [1500000,100000,1000000,0,0,0,6200],popRequirements: [0,5,5],employeeType: 7,employees: 10,buildingBeauty: 250, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 10, industrySize: 50};
+Building20_9 = { baseBuilding: 200, buildingVariant: 8, reasourceType: [2164,2303,2122,0,0],reasourceAmount: [1500000,100000,500000,0,0,0,7800],popRequirements: [0,5,5],employeeType: 7,employees: 10,buildingBeauty: 500, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 20, industrySize: 50};
+Building21_1 = { baseBuilding: 200, buildingVariant: 0, reasourceType: [2152,2121,2210,4002,0],reasourceAmount: [4000000,1000000,2000000,1000000,0,14,1200],popRequirements: [6,4,0],employeeType: 8,employees: 10,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 5, industrySize: 10};
+Building21_2 = { baseBuilding: 200, buildingVariant: 1, reasourceType: [2153,2121,2210,4006,0],reasourceAmount: [4000000,1000000,2000000,500000,0,12,1000],popRequirements: [6,4,0],employeeType: 8,employees: 10,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 10};
+Building21_3 = { baseBuilding: 200, buildingVariant: 2, reasourceType: [2150,2121,2210,0,0],reasourceAmount: [8000000,4000000,2000000,0,0,6,1500],popRequirements: [6,4,0],employeeType: 8,employees: 10,buildingBeauty: -40, buildingInsulation: 0, buildingErgonommics: -5, buildingInfra: 10, industrySize: 20};
+Building21_4 = { baseBuilding: 200, buildingVariant: 3, reasourceType: [2151,2121,2210,2121,0],reasourceAmount: [4000000,1000000,2000000,1000000,0,12,1000],popRequirements: [6,4,0],employeeType: 8,employees: 10,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 10};
+Building21_5 = { baseBuilding: 200, buildingVariant: 4, reasourceType: [2153,2121,2210,4052,0],reasourceAmount: [4000000,1000000,2000000,10000,0,9,900],popRequirements: [6,4,0],employeeType: 8,employees: 10,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 10};
+Building21_6 = { baseBuilding: 200, buildingVariant: 5, reasourceType: [2151,2121,2210,2129,0],reasourceAmount: [4000000,1000000,2000000,500000,0,12,900],popRequirements: [6,4,0],employeeType: 8,employees: 10,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 10};
+Building21_7 = { baseBuilding: 200, buildingVariant: 6, reasourceType: [2152,2121,2210,2181,0],reasourceAmount: [4000000,1000000,2000000,400000,0,12,900],popRequirements: [6,4,0],employeeType: 8,employees: 10,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 10};
+Building21_8 = { baseBuilding: 200, buildingVariant: 7, reasourceType: [2154,2121,2210,2123,0],reasourceAmount: [6000000,2000000,2000000,250000,0,12,1300],popRequirements: [6,4,0],employeeType: 8,employees: 10,buildingBeauty: 10, buildingInsulation: 10, buildingErgonommics: 5, buildingInfra: 3, industrySize: 10};
+Building21_9 = { baseBuilding: 200, buildingVariant: 8, reasourceType: [2154,2121,2210,2122,0],reasourceAmount: [6000000,1000000,2000000,25000,0,12,1100],popRequirements: [6,4,0],employeeType: 8,employees: 10,buildingBeauty: 20, buildingInsulation: 10, buildingErgonommics: 10, buildingInfra: 3, industrySize: 6};
+Building22_1 = { baseBuilding: 21, buildingVariant: 0, reasourceType: [2162,2182,2310,4056,0],reasourceAmount: [500000,500000,1000000,250000,0,0,4700],popRequirements: [6,7,1],employeeType: 8,employees: 14,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 15, industrySize: 40};
+Building22_2 = { baseBuilding: 21, buildingVariant: 1, reasourceType: [2163,2182,2310,4007,0],reasourceAmount: [500000,500000,1000000,100000,0,0,4000],popRequirements: [6,7,1],employeeType: 8,employees: 14,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 40};
+Building22_3 = { baseBuilding: 21, buildingVariant: 2, reasourceType: [2160,2182,2310,4541,0],reasourceAmount: [500000,500000,1000000,25000,0,0,5600],popRequirements: [6,7,1],employeeType: 8,employees: 14,buildingBeauty: -150, buildingInsulation: 0, buildingErgonommics: -5, buildingInfra: 30, industrySize: 80};
+Building22_4 = { baseBuilding: 21, buildingVariant: 3, reasourceType: [2161,2182,2310,0,0],reasourceAmount: [500000,1000000,1000000,0,0,0,4000],popRequirements: [6,7,1],employeeType: 8,employees: 14,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 40};
+Building22_5 = { baseBuilding: 21, buildingVariant: 4, reasourceType: [2163,2182,2310,4054,0],reasourceAmount: [500000,500000,1000000,2500,0,0,3700],popRequirements: [6,7,1],employeeType: 8,employees: 14,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 40};
+Building22_6 = { baseBuilding: 21, buildingVariant: 5, reasourceType: [2161,2182,2310,2129,0],reasourceAmount: [500000,500000,1000000,1000000,0,0,3700],popRequirements: [6,7,1],employeeType: 8,employees: 14,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 40};
+Building22_7 = { baseBuilding: 21, buildingVariant: 6, reasourceType: [2162,2182,2310,2181,0],reasourceAmount: [500000,500000,1000000,200000,0,0,3700],popRequirements: [6,7,1],employeeType: 8,employees: 14,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 40};
+Building22_8 = { baseBuilding: 21, buildingVariant: 7, reasourceType: [2164,2182,2310,2123,0],reasourceAmount: [1000000,500000,1000000,1000000,0,0,5400],popRequirements: [6,7,1],employeeType: 8,employees: 14,buildingBeauty: 75, buildingInsulation: 10, buildingErgonommics: 5, buildingInfra: 10, industrySize: 40};
+Building22_9 = { baseBuilding: 21, buildingVariant: 8, reasourceType: [2164,2182,2310,2122,0],reasourceAmount: [1000000,500000,1000000,250000,0,0,5300],popRequirements: [6,7,1],employeeType: 8,employees: 14,buildingBeauty: 150, buildingInsulation: 10, buildingErgonommics: 10, buildingInfra: 10, industrySize: 30};
+Building23_1 = { baseBuilding: 200, buildingVariant: 0, reasourceType: [2152,0,0,0,0],reasourceAmount: [1500000,0,0,0,0,4,100],popRequirements: [1,0,0],employeeType: 0,employees: 1,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building23_2 = { baseBuilding: 200, buildingVariant: 1, reasourceType: [2153,0,0,0,0],reasourceAmount: [1500000,0,0,0,0,4,100],popRequirements: [1,0,0],employeeType: 0,employees: 1,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building23_3 = { baseBuilding: 200, buildingVariant: 2, reasourceType: [2150,0,0,0,0],reasourceAmount: [1500000,0,0,0,0,4,100],popRequirements: [1,0,0],employeeType: 0,employees: 1,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building23_4 = { baseBuilding: 200, buildingVariant: 3, reasourceType: [2151,0,0,0,0],reasourceAmount: [1500000,0,0,0,0,4,100],popRequirements: [1,0,0],employeeType: 0,employees: 1,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building23_5 = { baseBuilding: 200, buildingVariant: 4, reasourceType: [2153,0,0,0,0],reasourceAmount: [1500000,0,0,0,0,4,100],popRequirements: [1,0,0],employeeType: 0,employees: 1,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building23_6 = { baseBuilding: 200, buildingVariant: 5, reasourceType: [2151,0,0,0,0],reasourceAmount: [1500000,0,0,0,0,4,100],popRequirements: [1,0,0],employeeType: 0,employees: 1,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building23_7 = { baseBuilding: 200, buildingVariant: 6, reasourceType: [2152,0,0,0,0],reasourceAmount: [1500000,0,0,0,0,4,100],popRequirements: [1,0,0],employeeType: 0,employees: 1,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building23_8 = { baseBuilding: 200, buildingVariant: 7, reasourceType: [2154,0,0,0,0],reasourceAmount: [1500000,0,0,0,0,4,100],popRequirements: [1,0,0],employeeType: 0,employees: 1,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building23_9 = { baseBuilding: 200, buildingVariant: 8, reasourceType: [2154,0,0,0,0],reasourceAmount: [1500000,0,0,0,0,4,100],popRequirements: [1,0,0],employeeType: 0,employees: 1,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
+Building24_1 = { baseBuilding: 200, buildingVariant: 0, reasourceType: [2152,4002,0,0,0],reasourceAmount: [1000000,100000,0,0,0,25,200],popRequirements: [0,0,0],employeeType: 0,employees: 0,buildingBeauty: 10, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 4, industrySize: 0};
+Building24_2 = { baseBuilding: 200, buildingVariant: 1, reasourceType: [2153,4070,2163,0,0],reasourceAmount: [2000000,15,250000,0,0,5,300],popRequirements: [0,0,0],employeeType: 0,employees: 0,buildingBeauty: 50, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 1, industrySize: 0};
+Building24_3 = { baseBuilding: 200, buildingVariant: 2, reasourceType: [2150,0,0,0,0],reasourceAmount: [1000000,0,0,0,0,20,200],popRequirements: [0,0,0],employeeType: 0,employees: 0,buildingBeauty: 25, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 1, industrySize: 0};
+Building24_4 = { baseBuilding: 200, buildingVariant: 3, reasourceType: [2151,4070,4071,0,0],reasourceAmount: [2000000,5,5,0,0,10,200],popRequirements: [0,0,0],employeeType: 0,employees: 0,buildingBeauty: 30, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 1, industrySize: 0};
+Building24_5 = { baseBuilding: 200, buildingVariant: 4, reasourceType: [2153,4070,4071,0,0],reasourceAmount: [2000000,5,5,0,0,10,200],popRequirements: [0,0,0],employeeType: 0,employees: 0,buildingBeauty: 30, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 1, industrySize: 0};
+Building24_6 = { baseBuilding: 200, buildingVariant: 5, reasourceType: [2151,4070,4071,0,0],reasourceAmount: [2000000,5,5,0,0,10,200],popRequirements: [0,0,0],employeeType: 0,employees: 0,buildingBeauty: 30, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 1, industrySize: 0};
+Building24_7 = { baseBuilding: 200, buildingVariant: 6, reasourceType: [2152,4070,4071,0,0],reasourceAmount: [2000000,5,5,0,0,10,200],popRequirements: [0,0,0],employeeType: 0,employees: 0,buildingBeauty: 30, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 1, industrySize: 0};
+Building24_8 = { baseBuilding: 200, buildingVariant: 7, reasourceType: [2164,4071,0,0,0],reasourceAmount: [1000000,25,0,0,0,15,600],popRequirements: [0,0,0],employeeType: 0,employees: 0,buildingBeauty: 125, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 1, industrySize: 0};
+Building24_9 = { baseBuilding: 200, buildingVariant: 8, reasourceType: [2164,4071,0,0,0],reasourceAmount: [1000000,25,0,0,0,15,600],popRequirements: [0,0,0],employeeType: 0,employees: 0,buildingBeauty: 125, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 1, industrySize: 0};
+Building25_1 = { baseBuilding: 200, buildingVariant: 0, reasourceType: [2152,0,0,0,0],reasourceAmount: [1000000,0,0,0,0,0,0],popRequirements: [0,0,0],employeeType: 0,employees: 0,buildingBeauty: 0, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 0};
+Building25_2 = { baseBuilding: 200, buildingVariant: 1, reasourceType: [2153,0,0,0,0],reasourceAmount: [1000000,0,0,0,0,0,0],popRequirements: [0,0,0],employeeType: 0,employees: 0,buildingBeauty: 0, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 0};
+Building25_3 = { baseBuilding: 200, buildingVariant: 2, reasourceType: [2150,0,0,0,0],reasourceAmount: [1000000,0,0,0,0,0,0],popRequirements: [0,0,0],employeeType: 0,employees: 0,buildingBeauty: 0, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 0};
+Building25_4 = { baseBuilding: 200, buildingVariant: 3, reasourceType: [2151,0,0,0,0],reasourceAmount: [1000000,0,0,0,0,0,0],popRequirements: [0,0,0],employeeType: 0,employees: 0,buildingBeauty: 0, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 0};
+Building25_5 = { baseBuilding: 200, buildingVariant: 4, reasourceType: [2153,0,0,0,0],reasourceAmount: [1000000,0,0,0,0,0,0],popRequirements: [0,0,0],employeeType: 0,employees: 0,buildingBeauty: 0, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 0};
+Building25_6 = { baseBuilding: 200, buildingVariant: 5, reasourceType: [2151,0,0,0,0],reasourceAmount: [1000000,0,0,0,0,0,0],popRequirements: [0,0,0],employeeType: 0,employees: 0,buildingBeauty: 0, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 0};
+Building25_7 = { baseBuilding: 200, buildingVariant: 6, reasourceType: [2152,0,0,0,0],reasourceAmount: [1000000,0,0,0,0,0,0],popRequirements: [0,0,0],employeeType: 0,employees: 0,buildingBeauty: 0, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 0};
+Building25_8 = { baseBuilding: 200, buildingVariant: 7, reasourceType: [2154,0,0,0,0],reasourceAmount: [1000000,0,0,0,0,0,0],popRequirements: [0,0,0],employeeType: 0,employees: 0,buildingBeauty: 0, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 0};
+Building25_9 = { baseBuilding: 200, buildingVariant: 8, reasourceType: [2154,0,0,0,0],reasourceAmount: [2000000,0,0,0,0,0,0],popRequirements: [0,0,0],employeeType: 0,employees: 0,buildingBeauty: 0, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 0};
+Building26_1 = { baseBuilding: 200, buildingVariant: 0, reasourceType: [2161,4541,4002,0,0],reasourceAmount: [2000000,10000,2000000,0,0,20,3000],popRequirements: [0,3,1],employeeType: 2,employees: 4,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 10, industrySize: 25};
+Building26_2 = { baseBuilding: 200, buildingVariant: 1, reasourceType: [2163,4541,4006,0,0],reasourceAmount: [2000000,10000,1000000,0,0,10,2500],popRequirements: [0,3,1],employeeType: 2,employees: 4,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 25};
+Building26_3 = { baseBuilding: 200, buildingVariant: 2, reasourceType: [2160,4541,0,0,0],reasourceAmount: [4000000,40000,0,0,0,5,4000],popRequirements: [0,3,1],employeeType: 2,employees: 4,buildingBeauty: -40, buildingInsulation: 0, buildingErgonommics: -5, buildingInfra: 25, industrySize: 50};
+Building26_4 = { baseBuilding: 200, buildingVariant: 3, reasourceType: [2161,4541,2121,0,0],reasourceAmount: [2000000,10000,1000000,0,0,10,2500],popRequirements: [0,3,1],employeeType: 2,employees: 4,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 25};
+Building26_5 = { baseBuilding: 200, buildingVariant: 4, reasourceType: [2163,4541,4053,0,0],reasourceAmount: [2000000,10000,10000,0,0,5,2300],popRequirements: [0,3,1],employeeType: 2,employees: 4,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 25};
+Building26_6 = { baseBuilding: 200, buildingVariant: 5, reasourceType: [2162,4541,2129,0,0],reasourceAmount: [2000000,10000,1000000,0,0,10,2300],popRequirements: [0,3,1],employeeType: 2,employees: 4,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 25};
+Building26_7 = { baseBuilding: 200, buildingVariant: 6, reasourceType: [2162,4541,2181,0,0],reasourceAmount: [2000000,10000,500000,0,0,10,2300],popRequirements: [0,3,1],employeeType: 2,employees: 4,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 25};
+Building26_8 = { baseBuilding: 200, buildingVariant: 7, reasourceType: [2164,4541,2123,0,0],reasourceAmount: [2500000,10000,1000000,0,0,10,3400],popRequirements: [0,3,1],employeeType: 2,employees: 4,buildingBeauty: 10, buildingInsulation: 10, buildingErgonommics: 5, buildingInfra: 10, industrySize: 25};
+Building26_9 = { baseBuilding: 200, buildingVariant: 8, reasourceType: [2164,4541,2122,0,0],reasourceAmount: [2500000,10000,250000,0,0,10,3300],popRequirements: [0,3,1],employeeType: 2,employees: 4,buildingBeauty: 20, buildingInsulation: 10, buildingErgonommics: 10, buildingInfra: 10, industrySize: 20};
+Building27_1 = { baseBuilding: 26, buildingVariant: 0, reasourceType: [2161,4542,4056,0,0],reasourceAmount: [500000,10000,250000,0,0,0,8700],popRequirements: [0,8,2],employeeType: 2,employees: 10,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 25, industrySize: 75};
+Building27_2 = { baseBuilding: 26, buildingVariant: 1, reasourceType: [2163,4542,4007,0,0],reasourceAmount: [500000,10000,100000,0,0,0,7500],popRequirements: [0,8,2],employeeType: 2,employees: 10,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 75};
+Building27_3 = { baseBuilding: 26, buildingVariant: 2, reasourceType: [2160,4542,0,0,0],reasourceAmount: [1000000,20000,0,0,0,0,11500],popRequirements: [0,8,2],employeeType: 2,employees: 10,buildingBeauty: -250, buildingInsulation: 0, buildingErgonommics: -5, buildingInfra: 75, industrySize: 150};
+Building27_4 = { baseBuilding: 26, buildingVariant: 3, reasourceType: [2161,4542,2121,0,0],reasourceAmount: [500000,10000,500000,0,0,0,7500],popRequirements: [0,8,2],employeeType: 2,employees: 10,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 75};
+Building27_5 = { baseBuilding: 26, buildingVariant: 4, reasourceType: [2163,4542,4053,0,0],reasourceAmount: [500000,10000,2500,0,0,0,6800],popRequirements: [0,8,2],employeeType: 2,employees: 10,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 75};
+Building27_6 = { baseBuilding: 26, buildingVariant: 5, reasourceType: [2162,4542,2129,0,0],reasourceAmount: [500000,10000,1000000,0,0,0,6800],popRequirements: [0,8,2],employeeType: 2,employees: 10,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 75};
+Building27_7 = { baseBuilding: 26, buildingVariant: 6, reasourceType: [2162,4542,2181,0,0],reasourceAmount: [500000,10000,500000,0,0,0,6800],popRequirements: [0,8,2],employeeType: 2,employees: 10,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 75};
+Building27_8 = { baseBuilding: 26, buildingVariant: 7, reasourceType: [2164,4542,2123,0,0],reasourceAmount: [500000,10000,1000000,0,0,0,10000],popRequirements: [0,8,2],employeeType: 2,employees: 10,buildingBeauty: 75, buildingInsulation: 10, buildingErgonommics: 5, buildingInfra: 25, industrySize: 75};
+Building27_9 = { baseBuilding: 26, buildingVariant: 8, reasourceType: [2164,4542,2122,0,0],reasourceAmount: [500000,10000,100000,0,0,0,8700],popRequirements: [0,8,2],employeeType: 2,employees: 10,buildingBeauty: 150, buildingInsulation: 10, buildingErgonommics: 10, buildingInfra: 25, industrySize: 50};
+Building28_1 = { baseBuilding: 200, buildingVariant: 0, reasourceType: [2152,4540,4002,0,0],reasourceAmount: [6000000,10000,500000,0,0,20,700],popRequirements: [5,1,0],employeeType: 8,employees: 6,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 5, industrySize: 5};
+Building28_2 = { baseBuilding: 200, buildingVariant: 1, reasourceType: [2153,4540,4006,0,0],reasourceAmount: [4000000,10000,250000,0,0,10,500],popRequirements: [5,1,0],employeeType: 8,employees: 6,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building28_3 = { baseBuilding: 200, buildingVariant: 2, reasourceType: [2150,4540,0,0,0],reasourceAmount: [6000000,25000,0,0,0,5,600],popRequirements: [5,1,0],employeeType: 8,employees: 6,buildingBeauty: -50, buildingInsulation: 0, buildingErgonommics: -5, buildingInfra: 5, industrySize: 10};
+Building28_4 = { baseBuilding: 200, buildingVariant: 3, reasourceType: [2151,4540,2121,0,0],reasourceAmount: [4000000,10000,500000,0,0,10,500],popRequirements: [5,1,0],employeeType: 8,employees: 6,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building28_5 = { baseBuilding: 200, buildingVariant: 4, reasourceType: [2153,4540,4053,0,0],reasourceAmount: [4000000,10000,2500,0,0,5,500],popRequirements: [5,1,0],employeeType: 8,employees: 6,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building28_6 = { baseBuilding: 200, buildingVariant: 5, reasourceType: [2151,4540,2129,0,0],reasourceAmount: [4000000,10000,1000000,0,0,10,500],popRequirements: [5,1,0],employeeType: 8,employees: 6,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building28_7 = { baseBuilding: 200, buildingVariant: 6, reasourceType: [2152,4540,2181,0,0],reasourceAmount: [4000000,10000,200000,0,0,10,500],popRequirements: [5,1,0],employeeType: 8,employees: 6,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building28_8 = { baseBuilding: 200, buildingVariant: 7, reasourceType: [2154,4540,2123,0,0],reasourceAmount: [4000000,10000,250000,0,0,10,600],popRequirements: [5,1,0],employeeType: 8,employees: 6,buildingBeauty: 10, buildingInsulation: 10, buildingErgonommics: 5, buildingInfra: 0, industrySize: 5};
+Building28_9 = { baseBuilding: 200, buildingVariant: 8, reasourceType: [2154,4540,2122,0,0],reasourceAmount: [4000000,10000,75000,0,0,10,700],popRequirements: [5,1,0],employeeType: 8,employees: 6,buildingBeauty: 20, buildingInsulation: 10, buildingErgonommics: 10, buildingInfra: 5, industrySize: 3};
+Building29_1 = { baseBuilding: 28, buildingVariant: 0, reasourceType: [2161,2152,4541,4056,0],reasourceAmount: [2000000,6000000,20000,500000,0,0,5200],popRequirements: [5,2,1],employeeType: 8,employees: 8,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 25, industrySize: 40};
+Building29_2 = { baseBuilding: 28, buildingVariant: 1, reasourceType: [2163,2153,4541,4007,0],reasourceAmount: [2000000,5000000,20000,200000,0,0,4000],popRequirements: [5,2,1],employeeType: 8,employees: 8,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 40};
+Building29_3 = { baseBuilding: 28, buildingVariant: 2, reasourceType: [2160,2150,4541,0,0],reasourceAmount: [4000000,5000000,75000,0,0,0,6500],popRequirements: [5,2,1],employeeType: 8,employees: 8,buildingBeauty: -150, buildingInsulation: 0, buildingErgonommics: -5, buildingInfra: 50, industrySize: 80};
+Building29_4 = { baseBuilding: 28, buildingVariant: 3, reasourceType: [2161,2151,4541,2121,0],reasourceAmount: [2000000,5000000,20000,1000000,0,0,4000],popRequirements: [5,2,1],employeeType: 8,employees: 8,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 40};
+Building29_5 = { baseBuilding: 28, buildingVariant: 4, reasourceType: [2163,2153,4541,4053,0],reasourceAmount: [2000000,5000000,20000,2500,0,0,3700],popRequirements: [5,2,1],employeeType: 8,employees: 8,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 40};
+Building29_6 = { baseBuilding: 28, buildingVariant: 5, reasourceType: [2162,2151,4541,2129,0],reasourceAmount: [2000000,5000000,20000,1000000,0,0,3700],popRequirements: [5,2,1],employeeType: 8,employees: 8,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 40};
+Building29_7 = { baseBuilding: 28, buildingVariant: 6, reasourceType: [2162,2152,4541,2181,0],reasourceAmount: [2000000,5000000,20000,500000,0,0,3700],popRequirements: [5,2,1],employeeType: 8,employees: 8,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 40};
+Building29_8 = { baseBuilding: 28, buildingVariant: 7, reasourceType: [2164,2154,4541,2123,0],reasourceAmount: [2000000,5000000,20000,1000000,0,0,4900],popRequirements: [5,2,1],employeeType: 8,employees: 8,buildingBeauty: 75, buildingInsulation: 10, buildingErgonommics: 5, buildingInfra: 0, industrySize: 40};
+Building29_9 = { baseBuilding: 28, buildingVariant: 8, reasourceType: [2164,2154,4541,2122,0],reasourceAmount: [2000000,5000000,20000,750000,0,0,6900],popRequirements: [5,2,1],employeeType: 8,employees: 8,buildingBeauty: 150, buildingInsulation: 10, buildingErgonommics: 10, buildingInfra: 15, industrySize: 40};
+Building30_1 = { baseBuilding: 200, buildingVariant: 0, reasourceType: [2152,4540,4002,0,0],reasourceAmount: [3000000,15000,400000,0,0,10,600],popRequirements: [5,2,0],employeeType: 9,employees: 7,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 3, industrySize: 5};
+Building30_2 = { baseBuilding: 200, buildingVariant: 1, reasourceType: [2153,4540,4006,0,0],reasourceAmount: [2000000,15000,250000,0,0,8,500],popRequirements: [5,2,0],employeeType: 9,employees: 7,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building30_3 = { baseBuilding: 200, buildingVariant: 2, reasourceType: [2150,4540,0,0,0],reasourceAmount: [3000000,30000,0,0,0,4,600],popRequirements: [5,2,0],employeeType: 9,employees: 7,buildingBeauty: -50, buildingInsulation: 0, buildingErgonommics: -5, buildingInfra: 5, industrySize: 10};
+Building30_4 = { baseBuilding: 200, buildingVariant: 3, reasourceType: [2151,4540,2121,0,0],reasourceAmount: [2000000,15000,500000,0,0,8,500],popRequirements: [5,2,0],employeeType: 9,employees: 7,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building30_5 = { baseBuilding: 200, buildingVariant: 4, reasourceType: [2153,4540,4053,0,0],reasourceAmount: [2000000,15000,2500,0,0,4,500],popRequirements: [5,2,0],employeeType: 9,employees: 7,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building30_6 = { baseBuilding: 200, buildingVariant: 5, reasourceType: [2151,4540,2129,0,0],reasourceAmount: [2000000,15000,1000000,0,0,8,500],popRequirements: [5,2,0],employeeType: 9,employees: 7,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building30_7 = { baseBuilding: 200, buildingVariant: 6, reasourceType: [2152,4540,2181,0,0],reasourceAmount: [2000000,15000,250000,0,0,8,500],popRequirements: [5,2,0],employeeType: 9,employees: 7,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 5};
+Building30_8 = { baseBuilding: 200, buildingVariant: 7, reasourceType: [2154,4540,2123,0,0],reasourceAmount: [2000000,15000,250000,0,0,8,600],popRequirements: [5,2,0],employeeType: 9,employees: 7,buildingBeauty: 10, buildingInsulation: 10, buildingErgonommics: 5, buildingInfra: 0, industrySize: 5};
+Building30_9 = { baseBuilding: 200, buildingVariant: 8, reasourceType: [2154,4540,2122,0,0],reasourceAmount: [2000000,15000,75000,0,0,8,700],popRequirements: [5,2,0],employeeType: 9,employees: 7,buildingBeauty: 20, buildingInsulation: 10, buildingErgonommics: 10, buildingInfra: 5, industrySize: 3};
+Building31_1 = { baseBuilding: 30, buildingVariant: 0, reasourceType: [2161,2152,4542,4056,0],reasourceAmount: [1000000,4000000,10000,600000,0,0,5200],popRequirements: [5,3,1],employeeType: 9,employees: 9,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 25, industrySize: 40};
+Building31_2 = { baseBuilding: 30, buildingVariant: 1, reasourceType: [2163,2153,4542,4007,0],reasourceAmount: [1000000,3000000,10000,100000,0,0,4000],popRequirements: [5,3,1],employeeType: 9,employees: 9,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 40};
+Building31_3 = { baseBuilding: 30, buildingVariant: 2, reasourceType: [2160,2150,4542,0,0],reasourceAmount: [2000000,3000000,30000,0,0,0,6100],popRequirements: [5,3,1],employeeType: 9,employees: 9,buildingBeauty: -150, buildingInsulation: 0, buildingErgonommics: -5, buildingInfra: 40, industrySize: 80};
+Building31_4 = { baseBuilding: 30, buildingVariant: 3, reasourceType: [2161,2151,4542,2121,0],reasourceAmount: [1000000,3000000,10000,2000000,0,0,4000],popRequirements: [5,3,1],employeeType: 9,employees: 9,buildingBeauty: 0, buildingInsulation: 20, buildingErgonommics: 0, buildingInfra: 0, industrySize: 40};
+Building31_5 = { baseBuilding: 30, buildingVariant: 4, reasourceType: [2163,2153,4542,4054,0],reasourceAmount: [1000000,3000000,10000,2500,0,0,3700],popRequirements: [5,3,1],employeeType: 9,employees: 9,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 40};
+Building31_6 = { baseBuilding: 30, buildingVariant: 5, reasourceType: [2162,2151,4542,2129,0],reasourceAmount: [1000000,3000000,10000,1000000,0,0,3700],popRequirements: [5,3,1],employeeType: 9,employees: 9,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 40};
+Building31_7 = { baseBuilding: 30, buildingVariant: 6, reasourceType: [2162,2152,4542,2181,0],reasourceAmount: [1000000,3000000,10000,1000000,0,0,3700],popRequirements: [5,3,1],employeeType: 9,employees: 9,buildingBeauty: 0, buildingInsulation: 10, buildingErgonommics: 0, buildingInfra: 0, industrySize: 40};
+Building31_8 = { baseBuilding: 30, buildingVariant: 7, reasourceType: [2164,2154,4542,2123,0],reasourceAmount: [1000000,3000000,10000,1500000,0,0,4900],popRequirements: [5,3,1],employeeType: 9,employees: 9,buildingBeauty: 75, buildingInsulation: 10, buildingErgonommics: 5, buildingInfra: 0, industrySize: 40};
+Building31_9 = { baseBuilding: 30, buildingVariant: 8, reasourceType: [2164,2154,4542,2122,0],reasourceAmount: [1000000,3000000,10000,250000,0,0,4800],popRequirements: [5,3,1],employeeType: 9,employees: 9,buildingBeauty: 150, buildingInsulation: 10, buildingErgonommics: 10, buildingInfra: 15, industrySize: 25};
 
-function returnRecipeID() {
-    return recipeID;
-}
-function returnItemID() {
-  return itemID;
-}
-function returnsoldierID() {
-    return soldierID;
-}
-function returnweaponID() {
-    return weaponID;
-}
-function returnBuildingName(_value) {
-    return BuildingName[_value];
-}
-function returnWeaponData(_value) {
-    _value = "weapon" + _value;
-    _value = eval(_value);
-    return _value;
-}
-function returnLandData(_value) {
-    _value = "landData" + _value;
-    _value = eval(_value);
-    return _value;
-}
-function returnCropData(_value) {
-    _value = "cropData" + _value;
-    _value = eval(_value);
-    return _value;
-}
-function returnQuestRewards(_value) {
-    _value = "questRewards" + _value;
-    _value = eval(_value);
-    return _value;
-}
-function returnQuestArmy(_value) {
-    _value = "questArmy" + _value;
-    _value = eval(_value);
-    return _value;
-}
-function returnMixedItemData(_value) {
-    _value = "mixedItemData" + _value;
-    _value = eval(_value);
-    return _value;
-}
-
-
-    function marketMult(_marketMult) {
-    switch (_marketMult) {
-      case -27:
-    return("0");
-  case -26:
-    return("0");
-  case -25:
-    return("0");
-  case -24:
-    return("0");
-  case -23:
-    return("0");
-  case -22:
-    return("0");
-  case -21:
-    return("0");
-  case -20:
-    return("0");
-  case -19:
-    return("0");
-  case -18:
-    return("0");
-  case -17:
-    return("0");
-  case -16:
-    return("0");
-  case -15:
-    return("0");
-  case -14:
-    return("0");
-  case -13:
-    return("0");
-  case -12:
-    return("0");
-  case -11:
-    return("0");
-  case -10:
-    return("0");
-  case -9:
-    return("0");
-  case -8:
-    return("0");
-  case -7:
-    return("0");
-  case -6:
-    return("0");
-  case -5:
-    return("0");
-  case -4:
-    return("0");
-  case -3:
-    return("0");
-  case -2:
-    return("0");
-  case -1:
-    return("0");
-  case 0:
-    return("0");
-  case 1:
-    return("0");
-  case 2:
-    return("0");
-  case 3:
-    return("0");
-  case 4:
-    return("0");
-  case 11:
-    return("0");
-  case 12:
-    return("0");
-  case 13:
-    return("0");
-  case 14:
-    return("0");
-  case 21:
-    return("0");
-  case 22:
-    return("0");
-  case 23:
-    return("0");
-  case 31:
-    return("0");
-  case 32:
-    return("0");
-  case 33:
-    return("0");
-  case 34:
-    return("0");
-  case 41:
-    return("0");
-  case 42:
-    return("0");
-  case 43:
-    return("0");
-  case 44:
-    return("0");
-  case 51:
-    return("0");
-  case 52:
-    return("0");
-  case 53:
-    return("0");
-  case 61:
-    return("0");
-  case 62:
-    return("0");
-  case 63:
-    return("0");
-  case 64:
-    return("0");
-  case 70:
-    return("0");
-  case 71:
-    return("0");
-  case 72:
-    return("0");
-  case 80:
-    return("0");
-  case 81:
-    return("0");
-  case 82:
-    return("0");
-  case 501:
-    return("20");
-  case 502:
-    return("20");
-  case 503:
-    return("20");
-  case 504:
-    return("20");
-  case 505:
-    return("20");
-  case 506:
-    return("20");
-  case 507:
-    return("20");
-  case 508:
-    return("20");
-  case 509:
-    return("20");
-  case 510:
-    return("20");
-  case 511:
-    return("20");
-  case 512:
-    return("20");
-  case 513:
-    return("20");
-  case 514:
-    return("20");
-  case 515:
-    return("20");
-  case 516:
-    return("20");
-  case 517:
-    return("20");
-  case 518:
-    return("20");
-  case 519:
-    return("20");
-  case 520:
-    return("20");
-  case 521:
-    return("20");
-  case 522:
-    return("20");
-  case 523:
-    return("10");
-  case 524:
-    return("10");
-  case 525:
-    return("10");
-  case 526:
-    return("10");
-  case 527:
-    return("10");
-  case 528:
-    return("10");
-  case 529:
-    return("0");
-  case 530:
-    return("20");
-  case 531:
-    return("20");
-  case 532:
-    return("20");
-  case 533:
-    return("20");
-  case 534:
-    return("20");
-  case 535:
-    return("20");
-  case 536:
-    return("10");
-  case 537:
-    return("10");
-  case 538:
-    return("20");
-  case 539:
-    return("20");
-  case 540:
-    return("20");
-  case 541:
-    return("20");
-  case 542:
-    return("20");
-  case 543:
-    return("20");
-  case 544:
-    return("20");
-  case 545:
-    return("20");
-  case 546:
-    return("10");
-  case 550:
-    return("20");
-  case 551:
-    return("20");
-  case 552:
-    return("20");
-  case 553:
-    return("20");
-  case 554:
-    return("20");
-  case 555:
-    return("20");
-  case 1000:
-    return("10");
-  case 1001:
-    return("10");
-  case 1002:
-    return("10");
-  case 1003:
-    return("10");
-  case 1004:
-    return("10");
-  case 1005:
-    return("10");
-  case 1010:
-    return("10");
-  case 1011:
-    return("10");
-  case 1012:
-    return("10");
-  case 1013:
-    return("10");
-  case 1014:
-    return("10");
-  case 1020:
-    return("10");
-  case 1021:
-    return("10");
-  case 1030:
-    return("10");
-  case 1031:
-    return("10");
-  case 1032:
-    return("10");
-  case 1033:
-    return("10");
-  case 1040:
-    return("10");
-  case 1041:
-    return("10");
-  case 1042:
-    return("10");
-  case 1043:
-    return("10");
-  case 1044:
-    return("10");
-  case 1050:
-    return("10");
-  case 1051:
-    return("10");
-  case 1060:
-    return("10");
-  case 1061:
-    return("10");
-  case 1200:
-    return("10");
-  case 1201:
-    return("5");
-  case 1202:
-    return("5");
-  case 1203:
-    return("5");
-  case 1204:
-    return("5");
-  case 1205:
-    return("10");
-  case 1206:
-    return("2");
-  case 1207:
-    return("2");
-  case 1208:
-    return("2");
-  case 1209:
-    return("2");
-  case 1210:
-    return("2");
-  case 1211:
-    return("2");
-  case 1212:
-    return("2");
-  case 1213:
-    return("2");
-  case 1220:
-    return("2");
-  case 1221:
-    return("2");
-  case 1222:
-    return("2");
-  case 1223:
-    return("2");
-  case 1224:
-    return("2");
-  case 1225:
-    return("2");
-  case 1230:
-    return("5");
-  case 1231:
-    return("3");
-  case 1232:
-    return("2");
-  case 1240:
-    return("3");
-  case 1241:
-    return("3");
-  case 1242:
-    return("2");
-  case 1250:
-    return("3");
-  case 1251:
-    return("3");
-  case 1260:
-    return("5");
-  case 1261:
-    return("2");
-  case 1262:
-    return("2");
-  case 1263:
-    return("2");
-  case 1264:
-    return("2");
-  case 1265:
-    return("2");
-  case 1266:
-    return("2");
-  case 1267:
-    return("5");
-  case 1268:
-    return("2");
-  case 1269:
-    return("3");
-  case 1270:
-    return("2");
-  case 1271:
-    return("2");
-  case 1272:
-    return("2");
-  case 1273:
-    return("2");
-  case 1274:
-    return("2");
-  case 1275:
-    return("2");
-  case 1276:
-    return("2");
-  case 1277:
-    return("2");
-  case 1280:
-    return("2");
-  case 1281:
-    return("2");
-  case 1282:
-    return("2");
-  case 1283:
-    return("2");
-  case 1300:
-    return("10");
-  case 1301:
-    return("10");
-  case 1302:
-    return("5");
-  case 1304:
-    return("2");
-  case 1305:
-    return("2");
-  case 1306:
-    return("2");
-  case 1307:
-    return("5");
-  case 1308:
-    return("2");
-  case 1309:
-    return("2");
-  case 1310:
-    return("1");
-  case 1311:
-    return("1");
-  case 1312:
-    return("1");
-  case 1313:
-    return("1");
-  case 1314:
-    return("1");
-  case 1315:
-    return("1");
-  case 1320:
-    return("1");
-  case 1321:
-    return("1");
-  case 1322:
-    return("1");
-  case 1330:
-    return("10");
-  case 1331:
-    return("5");
-  case 1332:
-    return("5");
-  case 1333:
-    return("5");
-  case 1900:
-    return("10");
-  case 1901:
-    return("1");
-  case 1902:
-    return("1");
-  case 1903:
-    return("1");
-  case 1904:
-    return("1");
-  case 1905:
-    return("1");
-  case 1906:
-    return("1");
-  case 1907:
-    return("1");
-  case 1908:
-    return("1");
-  case 1909:
-    return("1");
-  case 1911:
-    return("1");
-  case 1912:
-    return("1");
-  case 1913:
-    return("1");
-  case 1914:
-    return("1");
-  case 1915:
-    return("1");
-  case 1916:
-    return("1");
-  case 1917:
-    return("1");
-  case 1918:
-    return("1");
-  case 1919:
-    return("1");
-  case 1921:
-    return("1");
-  case 1922:
-    return("1");
-  case 1923:
-    return("1");
-  case 1924:
-    return("1");
-  case 1925:
-    return("1");
-  case 1926:
-    return("1");
-  case 1927:
-    return("1");
-  case 1928:
-    return("1");
-  case 1929:
-    return("1");
-  case 1930:
-    return("1");
-  case 1990:
-    return("1");
-  case 1991:
-    return("1");
-  case 1992:
-    return("1");
-  case 2001:
-    return("100");
-  case 2002:
-    return("100");
-  case 2003:
-    return("20");
-  case 2004:
-    return("20");
-  case 2021:
-    return("20");
-  case 2022:
-    return("20");
-  case 2023:
-    return("20");
-  case 2024:
-    return("20");
-  case 2025:
-    return("20");
-  case 2101:
-    return("10");
-  case 2102:
-    return("10");
-  case 2103:
-    return("20");
-  case 2121:
-    return("20");
-  case 2122:
-    return("20");
-  case 2123:
-    return("20");
-  case 2124:
-    return("20");
-  case 2125:
-    return("20");
-  case 2150:
-    return("20");
-  case 2151:
-    return("20");
-  case 2152:
-    return("20");
-  case 2153:
-    return("20");
-  case 2180:
-    return("20");
-  case 2181:
-    return("20");
-  case 2182:
-    return("20");
-  case 2183:
-    return("0");
-  case 2200:
-    return("10");
-  case 2201:
-    return("10");
-  case 2202:
-    return("10");
-  case 2203:
-    return("10");
-  case 2204:
-    return("10");
-  case 2205:
-    return("10");
-  case 2206:
-    return("10");
-  case 2207:
-    return("10");
-  case 2208:
-    return("10");
-  case 2209:
-    return("10");
-  case 2210:
-    return("10");
-  case 2211:
-    return("10");
-  case 2212:
-    return("10");
-  case 2213:
-    return("10");
-  case 2300:
-    return("10");
-  case 2301:
-    return("10");
-  case 2302:
-    return("10");
-  case 2303:
-    return("10");
-  case 2304:
-    return("10");
-  case 2305:
-    return("10");
-  case 2306:
-    return("10");
-  case 2307:
-    return("10");
-  case 2308:
-    return("10");
-  case 2309:
-    return("10");
-  case 2310:
-    return("10");
-  case 2311:
-    return("10");
-  case 2312:
-    return("10");
-  case 4000:
-    return("10");
-  case 4001:
-    return("5");
-  case 4002:
-    return("20");
-  case 4003:
-    return("10");
-  case 4004:
-    return("25");
-  case 4005:
-    return("25");
-  case 4006:
-    return("25");
-  case 4007:
-    return("25");
-  case 4008:
-    return("10");
-  case 4009:
-    return("20");
-  case 4010:
-    return("15");
-  case 4011:
-    return("10");
-  case 4012:
-    return("10");
-  case 4013:
-    return("2");
-  case 4014:
-    return("2");
-  case 4015:
-    return("2");
-  case 4016:
-    return("2");
-  case 4017:
-    return("2");
-  case 4018:
-    return("2");
-  case 4019:
-    return("5");
-  case 4020:
-    return("1");
-  case 4021:
-    return("1");
-  case 4022:
-    return("1");
-  case 4023:
-    return("1");
-  case 4024:
-    return("2");
-  case 4025:
-    return("5");
-  case 4026:
-    return("2");
-  case 4027:
-    return("1");
-  case 4028:
-    return("1");
-  case 4030:
-    return("2");
-  case 4031:
-    return("2");
-  case 4032:
-    return("2");
-  case 4040:
-    return("0");
-  case 4100:
-    return("5");
-  case 4101:
-    return("5");
-  case 4102:
-    return("5");
-  case 4103:
-    return("5");
-  case 4104:
-    return("5");
-  case 4105:
-    return("5");
-  case 4106:
-    return("5");
-  case 4107:
-    return("5");
-  case 4108:
-    return("5");
-  case 4109:
-    return("5");
-  case 4200:
-    return("5");
-  case 4201:
-    return("0");
-  case 4500:
-    return("20");
-  case 4501:
-    return("20");
-  case 4503:
-    return("20");
-  case 4504:
-    return("20");
-  case 4520:
-    return("20");
-  case 4521:
-    return("20");
-  case 4522:
-    return("20");
-  case 4540:
-    return("20");
-  case 4541:
-    return("20");
-  case 4542:
-    return("20");
-  case 4560:
-    return("20");
-  case 4561:
-    return("20");
-  case 4562:
-    return("20");
-  case 4580:
-    return("20");
-  case 4581:
-    return("20");
-  case 4582:
-    return("20");
-  case 5000:
-    return("1");
-  case 5001:
-    return("1");
-  case 5002:
-    return("1");
-  case 5003:
-    return("1");
-  case 5004:
-    return("1");
-  case 5010:
-    return("1");
-  case 5011:
-    return("1");
-  case 5012:
-    return("1");
-  case 5013:
-    return("1");
-  case 5014:
-    return("1");
-  case 5020:
-    return("1");
-  case 5021:
-    return("1");
-  case 5022:
-    return("1");
-  case 5023:
-    return("1");
-  case 5024:
-    return("1");
-  case 5025:
-    return("1");
-  case 5030:
-    return("1");
-  case 5031:
-    return("1");
-  case 5032:
-    return("1");
-  case 5033:
-    return("1");
-  case 5034:
-    return("1");
-  case 5040:
-    return("1");
-  case 5041:
-    return("1");
-  case 5042:
-    return("1");
-  case 5043:
-    return("1");
-  case 5044:
-    return("1");
-  case 5050:
-    return("1");
-  case 5051:
-    return("1");
-  case 5052:
-    return("1");
-  case 5053:
-    return("1");
-  case 5054:
-    return("1");
-  case 5060:
-    return("1");
-  case 5061:
-    return("1");
-  case 5062:
-    return("1");
-  case 5063:
-    return("1");
-  case 5064:
-    return("1");
-  case 5070:
-    return("1");
-  case 5071:
-    return("1");
-  case 5072:
-    return("1");
-  case 5073:
-    return("1");
-  case 5074:
-    return("1");
-  case 5080:
-    return("1");
-  case 5081:
-    return("1");
-  case 5082:
-    return("1");
-  case 5083:
-    return("1");
-  case 5084:
-    return("1");
-  case 5090:
-    return("1");
-  case 5091:
-    return("1");
-  case 5092:
-    return("1");
-  case 5093:
-    return("1");
-  case 5094:
-    return("1");
-  case 5200:
-    return("1");
-  case 5201:
-    return("1");
-  case 5202:
-    return("1");
-  case 5210:
-    return("1");
-  case 5211:
-    return("1");
-  case 5212:
-    return("1");
-  case 5213:
-    return("1");
-  case 5214:
-    return("1");
-  case 5400:
-    return("1");
-  case 5401:
-    return("1");
-  case 5402:
-    return("1");
-  case 5403:
-    return("1");
-  case 5420:
-    return("1");
-  case 5430:
-    return("1");
-  case 5500:
-    return("1");
-  case 5501:
-    return("1");
-  case 5502:
-    return("1");
-  case 5503:
-    return("1");
-  case 5504:
-    return("1");
-  case 5510:
-    return("1");
-  case 5511:
-    return("1");
-  case 5512:
-    return("1");
-  case 5513:
-    return("1");
-  case 5514:
-    return("1");
-  case 5520:
-    return("1");
-  case 5521:
-    return("1");
-  case 5522:
-    return("1");
-  case 5523:
-    return("1");
-  case 5524:
-    return("1");
-  case 5530:
-    return("1");
-  case 5531:
-    return("1");
-  case 5532:
-    return("1");
-  case 5533:
-    return("1");
-  case 5534:
-    return("1");
-  case 5540:
-    return("1");
-  case 5541:
-    return("1");
-  case 5542:
-    return("1");
-  case 5543:
-    return("1");
-  case 5544:
-    return("1");
-  case 5550:
-    return("1");
-  case 5551:
-    return("1");
-  case 5552:
-    return("1");
-  case 5553:
-    return("1");
-  case 5554:
-    return("1");
-  case 5560:
-    return("1");
-  case 5561:
-    return("1");
-  case 5562:
-    return("1");
-  case 5563:
-    return("1");
-  case 5564:
-    return("1");
-  case 5570:
-    return("1");
-  case 5571:
-    return("1");
-  case 5572:
-    return("1");
-  case 5573:
-    return("1");
-  case 5574:
-    return("1");
-  case 5580:
-    return("1");
-  case 5581:
-    return("1");
-  case 5582:
-    return("1");
-  case 5800:
-    return("1");
-  case 5801:
-    return("1");
-  case 5802:
-    return("1");
-  case 5803:
-    return("1");
-  case 5804:
-    return("1");
-  case 5810:
-    return("1");
-  case 5811:
-    return("1");
-  case 5812:
-    return("1");
-  case 5813:
-    return("1");
-  case 5814:
-    return("1");
-  case 5820:
-    return("1");
-  case 5821:
-    return("1");
-  case 5822:
-    return("1");
-  case 5823:
-    return("1");
-  case 5824:
-    return("1");
-  case 5830:
-    return("1");
-  case 5831:
-    return("1");
-  case 5832:
-    return("1");
-  case 5833:
-    return("1");
-  case 5834:
-    return("1");
-  case 5900:
-    return("1");
-  case 5901:
-    return("1");
-  case 5902:
-    return("1");
-  case 5903:
-    return("1");
-  case 5904:
-    return("1");
-  case 5905:
-    return("1");
-  case 5910:
-    return("1");
-  case 5911:
-    return("1");
-  case 7000:
-    return("2");
-  case 7001:
-    return("2");
-  case 7002:
-    return("2");
-  case 7003:
-    return("2");
-  case 7004:
-    return("2");
-  case 7005:
-    return("2");
-  case 7100:
-    return("2");
-  case 7101:
-    return("2");
-  case 7102:
-    return("2");
-  case 7103:
-    return("2");
-  case 7104:
-    return("2");
-  case 7105:
-    return("2");
-  case 7106:
-    return("2");
-  case 7107:
-    return("2");
-  case 7108:
-    return("2");
-  case 7109:
-    return("2");
-  case 7200:
-    return("2");
-  case 7201:
-    return("2");
-  case 7202:
-    return("2");
-  case 7203:
-    return("2");
-  case 7204:
-    return("2");
-  case 7205:
-    return("2");
-  case 7206:
-    return("2");
-  case 7300:
-    return("2");
-  case 7301:
-    return("2");
-  case 7302:
-    return("2");
-  case 7303:
-    return("2");
-  case 7304:
-    return("2");
-  case 7400:
-    return("2");
-  case 7401:
-    return("2");
-  case 7402:
-    return("2");
-  case 10001:
-    return("0");
-  case 10002:
-    return("0");
-  case 10003:
-    return("0");
-  case 10004:
-    return("0");
-  case 10005:
-    return("0");
-  case 10006:
-    return("0");
-  case 10007:
-    return("0");
-  case 10008:
-    return("0");
-  case 10011:
-    return("0");
-  case 10012:
-    return("0");
-  case 10013:
-    return("0");
-  case 10014:
-    return("0");
-  case 10015:
-    return("0");
-  case 10016:
-    return("0");
-  case 10017:
-    return("0");
-  case 10018:
-    return("0");
-  case 10021:
-    return("0");
-  case 10022:
-    return("0");
-  case 10023:
-    return("0");
-  case 10024:
-    return("0");
-  case 10025:
-    return("0");
-  case 10026:
-    return("0");
-  case 10027:
-    return("0");
-  case 10028:
-    return("0");
-  case 10201:
-    return("0");
-  case 10202:
-    return("0");
-  case 10203:
-    return("0");
-  case 10204:
-    return("0");
-  case 10205:
-    return("0");
-  case 10206:
-    return("0");
-  case 10207:
-    return("0");
-  case 10208:
-    return("0");
-  case 10211:
-    return("0");
-  case 10212:
-    return("0");
-  case 10213:
-    return("0");
-  case 10214:
-    return("0");
-  case 10215:
-    return("0");
-  case 10216:
-    return("0");
-  case 10217:
-    return("0");
-  case 10218:
-    return("0");
-  case 10225:
-    return("0");
-  case 10226:
-    return("0");
-  case 10227:
-    return("0");
-  case 10228:
-    return("0");
-  case 10231:
-    return("0");
-  case 10232:
-    return("0");
-  case 10233:
-    return("0");
-  case 10234:
-    return("0");
-  case 10235:
-    return("0");
-  case 10236:
-    return("0");
-  case 10237:
-    return("0");
-  case 10238:
-    return("0");
-  case 10301:
-    return("0");
-  case 10302:
-    return("0");
-  case 10303:
-    return("0");
-  case 10304:
-    return("0");
-  case 10305:
-    return("0");
-  case 10306:
-    return("0");
-  case 10307:
-    return("0");
-  case 10308:
-    return("0");
-  case 10311:
-    return("0");
-  case 10312:
-    return("0");
-  case 10313:
-    return("0");
-  case 10314:
-    return("0");
-  case 10315:
-    return("0");
-  case 10316:
-    return("0");
-  case 10317:
-    return("0");
-  case 10318:
-    return("0");
-  case 10321:
-    return("0");
-  case 10322:
-    return("0");
-  case 10323:
-    return("0");
-  case 10324:
-    return("0");
-  case 10325:
-    return("0");
-  case 10326:
-    return("0");
-  case 10327:
-    return("0");
-  case 10328:
-    return("0");
-  case 10505:
-    return("0");
-  case 10506:
-    return("0");
-  case 10507:
-    return("0");
-  case 10508:
-    return("0");
-  case 10515:
-    return("0");
-  case 10516:
-    return("0");
-  case 10517:
-    return("0");
-  case 10518:
-    return("0");
-  case 10525:
-    return("0");
-  case 10526:
-    return("0");
-  case 10527:
-    return("0");
-  case 10528:
-    return("0");
-  case 10601:
-    return("0");
-  case 10602:
-    return("0");
-  case 10603:
-    return("0");
-  case 10604:
-    return("0");
-  case 10605:
-    return("0");
-  case 10606:
-    return("0");
-  case 10607:
-    return("0");
-  case 10608:
-    return("0");
-  case 11000:
-    return("0");
-  case 11010:
-    return("0");
-  case 11011:
-    return("0");
-  case 11020:
-    return("0");
-  case 11021:
-    return("0");
-  case 11030:
-    return("0");
-  case 11031:
-    return("0");
-  case 11040:
-    return("0");
-  case 11041:
-    return("0");
-  case 11042:
-    return("0");
-  case 11050:
-    return("0");
-  case 11060:
-    return("0");
-  case 11070:
-    return("0");
-  case 11200:
-    return("0");
-  case 11210:
-    return("0");
-  case 11211:
-    return("0");
-  case 11220:
-    return("0");
-  case 11230:
-    return("0");
-  case 11231:
-    return("0");
-  case 11241:
-    return("0");
-  case 11300:
-    return("0");
-  case 11301:
-    return("0");
-  case 11310:
-    return("0");
-  case 11311:
-    return("0");
-  case 11501:
-    return("0");
-  case 11502:
-    return("0");
-  case 11520:
-    return("0");
-  case 11521:
-    return("0");
-  case 11600:
-    return("0");
-  case 11601:
-    return("0");
-  case 11602:
-    return("0");
-  case 28501:
-    return("0");
-  case 28502:
-    return("0");
-  case 28503:
-    return("0");
-  case 28504:
-    return("0");
-  case 28505:
-    return("0");
-  case 28506:
-    return("0");
-  case 28507:
-    return("0");
-  case 28508:
-    return("0");
-  case 28800:
-    return("0");
-}
-      return (_marketMult);
-      }
+      function itemName(_var) {
+      switch (_var) {
+      case -32:
+return("T6 Drink");
+case -31:
+return("Any Shot Pouch");
+case -30:
+return("Any Quiver");
+case -29:
+return("Any Advanced Material");
+case -28:
+return("Any Basic Material");
+case -27:
+return("Unboiled Meat");
+case -26:
+return("Any Fuel");
+case -25:
+return("Any Sauce");
+case -24:
+return("Any Bone");
+case -23:
+return("Any Stock");
+case -22:
+return("Any Flatbread");
+case -21:
+return("Any Fiber");
+case -20:
+return("Any Rare Gemstone");
+case -19:
+return("Any Common Gemstone");
+case -18:
+return("Any Polished Rare Gemstone");
+case -17:
+return("Any Polished Common Gemstone");
+case -16:
+return("Any Fodder");
+case -15:
+return("Any Flour");
+case -14:
+return("Any Seafood");
+case -13:
+return("T5 Drink");
+case -12:
+return("T4 Drink");
+case -11:
+return("T3 Drink");
+case -10:
+return("T2 Drink");
+case -8:
+return("Any Exotic Berry");
+case -7:
+return("T1 Drink");
+case -6:
+return("T2 Metal");
+case -5:
+return("Any Cooking Oil");
+case -4:
+return("Any Vegetable");
+case -3:
+return("Any Fruit");
+case -2:
+return("Any Meat");
+case -1:
+return("Any Grain");
+case 0:
+return("None");
+case 1:
+return("Arid Badlands");
+case 2:
+return("Arid Steppe");
+case 3:
+return("Arid Oasis");
+case 4:
+return("Arid River");
+case 11:
+return("Northern Rocky Waste");
+case 12:
+return("Northern Tundra");
+case 13:
+return("Northern Forest");
+case 14:
+return("Northern River");
+case 21:
+return("Rocky Heartland");
+case 22:
+return("Heartland");
+case 23:
+return("River Heartland");
+case 31:
+return("Southern Rocky");
+case 32:
+return("Southern Forest");
+case 33:
+return("Southern Jungle");
+case 34:
+return("Southern River");
+case 41:
+return("Northern Ocean");
+case 42:
+return("Central Ocean");
+case 43:
+return("Southern Ocean");
+case 44:
+return("Desolate Ocean");
+case 51:
+return("Brackish Swamp");
+case 52:
+return("Common Swamp");
+case 53:
+return("Lush Swamp");
+case 61:
+return("Red Mountain");
+case 62:
+return("Blue Mountain");
+case 63:
+return("Green Mountain");
+case 64:
+return("White Mountain");
+case 70:
+return("Ochre Plains");
+case 71:
+return("Lustrous River");
+case 72:
+return("Silver Forest");
+case 80:
+return("Golden Plains");
+case 81:
+return("Golden Forest");
+case 82:
+return("Golden Hills");
+case 501:
+return("Wheat");
+case 502:
+return("Rye");
+case 503:
+return("Rice");
+case 504:
+return("Corn");
+case 505:
+return("Sorghum");
+case 506:
+return("Apples");
+case 507:
+return("Plums");
+case 508:
+return("Olives");
+case 509:
+return("Beans");
+case 510:
+return("Mushrooms");
+case 511:
+return("Beets");
+case 512:
+return("Cassava");
+case 513:
+return("Peanuts");
+case 514:
+return("Cherries");
+case 515:
+return("Peaches");
+case 516:
+return("Garlic");
+case 517:
+return("Onion");
+case 518:
+return("Carrot");
+case 519:
+return("Sugarcane");
+case 520:
+return("Peppers");
+case 521:
+return("Allspice");
+case 522:
+return("Grapes");
+case 523:
+return("Ginseng");
+case 524:
+return("Winterberries");
+case 525:
+return("Jungleberries");
+case 526:
+return("Auric Honey");
+case 527:
+return("Wasabi");
+case 528:
+return("Rushseed");
+case 529:
+return("Exotic Herb");
+case 530:
+return("Oyster");
+case 531:
+return("Fish Meat");
+case 532:
+return("Beef");
+case 533:
+return("Chicken Meat");
+case 534:
+return("Eggs");
+case 535:
+return("Potato");
+case 536:
+return("Silver Sap");
+case 537:
+return("Honey");
+case 538:
+return("Oats");
+case 539:
+return("Milk");
+case 540:
+return("Barley");
+case 541:
+return("Exotic Meat");
+case 542:
+return("Wool");
+case 543:
+return("Cotton");
+case 544:
+return("Mutton");
+case 545:
+return("Game Meat");
+case 546:
+return("Seaweed");
+case 547:
+return("Flowers");
+case 548:
+return("Flower Petals");
+case 549:
+return("Flower Hearts");
+case 550:
+return("Organ Meat");
+case 551:
+return("Bone");
+case 552:
+return("Fat");
+case 553:
+return("Tender Meat");
+case 554:
+return("Oyster Meat");
+case 555:
+return("Crab Meat");
+case 556:
+return("Nettles");
+case 557:
+return("Joyous Flowers");
+case 558:
+return("Raw Shark Meat");
+case 559:
+return("Prepared Shark Meat");
+case 560:
+return("Life Scales");
+case 561:
+return("Roe");
+case 562:
+return("Spruce Trimming");
+case 563:
+return("Fish Organs");
+case 564:
+return("Polar Bear Liver");
+case 565:
+return("Nightberry");
+case 566:
+return("Life Bark");
+case 567:
+return("Silver Bark");
+case 568:
+return("Sweet Herbs");
+case 569:
+return("Savory Herbs");
+case 570:
+return("Spicy Herbs");
+case 571:
+return("Sweet Bark");
+case 572:
+return("Vanilla Pod");
+case 573:
+return("Rice Bran");
+case 574:
+return("Polished Rice");
+case 575:
+return("Very Polished Rice");
+case 576:
+return("Shrimp Meat");
+case 577:
+return("Rare Mushroom");
+case 578:
+return("Pomace");
+case 579:
+return("Malted Grain");
+case 580:
+return("Venison");
+case 581:
+return("Rabbit Meat");
+case 583:
+return("Butter");
+case 584:
+return("Boiled Meat");
+case 585:
+return("Peas");
+case 586:
+return("Oranges");
+case 590:
+return("Veggie Mix");
+case 1000:
+return("Ale");
+case 1001:
+return("Cider");
+case 1002:
+return("Fruit Wine");
+case 1003:
+return("Grog");
+case 1010:
+return("Wine");
+case 1011:
+return("Fine Ale");
+case 1012:
+return("Mead");
+case 1013:
+return("Spruce Beer");
+case 1014:
+return("Sweet Beer");
+case 1030:
+return("Vodka");
+case 1031:
+return("Kumis");
+case 1032:
+return("Rum");
+case 1033:
+return("Grain Whiskey");
+case 1034:
+return("Sake");
+case 1040:
+return("Brandy");
+case 1041:
+return("Silver Wine");
+case 1042:
+return("Jungle Wine");
+case 1043:
+return("Winter Wine");
+case 1044:
+return("Aged Rum");
+case 1050:
+return("Ginseng Wine");
+case 1051:
+return("Spiced Vodka");
+case 1052:
+return("Pure Alcohol");
+case 1060:
+return("Double Brandy");
+case 1061:
+return("Auric Mead");
+case 1062:
+return("Fine Sake");
+case 1200:
+return("Basic Bread");
+case 1203:
+return("Simple Spread");
+case 1204:
+return("Buttered Bread");
+case 1205:
+return("Basic Flatbread");
+case 1206:
+return("Pumpernickle");
+case 1207:
+return("Pastry");
+case 1208:
+return("Fruit Pastry");
+case 1209:
+return("Cheese Pastry");
+case 1212:
+return("Glittercake");
+case 1213:
+return("Fruit Glittercake");
+case 1220:
+return("Fruit Pie");
+case 1221:
+return("Sugar Pie");
+case 1222:
+return("Pot Pie");
+case 1223:
+return("Roasted Peanut");
+case 1224:
+return("Candied Peanut");
+case 1260:
+return("Sausage");
+case 1261:
+return("Fried Meat");
+case 1262:
+return("Roast");
+case 1268:
+return("Noble Roast");
+case 1270:
+return("Beef Stew");
+case 1271:
+return("Kings Soup");
+case 1272:
+return("Onion Soup");
+case 1273:
+return("Huntsmans Soup");
+case 1274:
+return("Chicken Soup");
+case 1275:
+return("Fish Soup");
+case 1276:
+return("Vegetable Soup");
+case 1277:
+return("Seafood Soup");
+case 1278:
+return("Turtle Soup");
+case 1279:
+return("Shark Soup");
+case 1280:
+return("Baked Beans");
+case 1281:
+return("Beans And Rice");
+case 1282:
+return("Hash");
+case 1283:
+return("Fried Crab");
+case 1284:
+return("Fish Roll");
+case 1285:
+return("Deluxe Fish Roll");
+case 1286:
+return("Rare Mushroom Soup");
+case 1287:
+return("Oatmeal");
+case 1288:
+return("Sweetend Oatmeal");
+case 1289:
+return("Simple Soup");
+case 1290:
+return("Roasted Whole Chicken");
+case 1291:
+return("Pea Pudding");
+case 1294:
+return("Mutton Stew");
+case 1295:
+return("Glazed Veggies");
+case 1296:
+return("Glazed Mutton");
+case 1299:
+return("Simple Risotto");
+case 1300:
+return("Mushroom Risotto");
+case 1301:
+return("Shrimp Risotto");
+case 1400:
+return("Vinegar");
+case 1401:
+return("Sugar");
+case 1402:
+return("Olive Oil");
+case 1403:
+return("Ketchup");
+case 1404:
+return("Basic Spice Pack");
+case 1405:
+return("Royal Spice Pack");
+case 1406:
+return("Pastry Dough");
+case 1407:
+return("Fruit Preserve");
+case 1408:
+return("Exotic Fruit Preserve");
+case 1409:
+return("Mushroom Stock");
+case 1410:
+return("Meat Stock");
+case 1411:
+return("Vegetable Stock");
+case 1412:
+return("Barm");
+case 1413:
+return("Molasses");
+case 1414:
+return("Paprika");
+case 1415:
+return("Cider Sauce");
+case 1416:
+return("Wine Sauce");
+case 1417:
+return("Spicy Sauce");
+case 1418:
+return("Common Flour");
+case 1419:
+return("Wheat Flour");
+case 1420:
+return("Rye Flour");
+case 1421:
+return("Corn Flour");
+case 1422:
+return("Cinnamon Powder");
+case 1423:
+return("Sweet Spice Pack");
+case 1424:
+return("Savory Spice Pack");
+case 1425:
+return("Spicy Spice Park");
+case 1426:
+return("Royal Sweet Spice Pack");
+case 1427:
+return("Royal Savory Spice Park");
+case 1428:
+return("Royal Spicy Spice Park");
+case 1430:
+return("Cheese");
+case 1431:
+return("Aged Cheese");
+case 1432:
+return("Imperial Cheese");
+case 1433:
+return("Dried Vegetables");
+case 1434:
+return("Pickled Vegetables");
+case 1435:
+return("Hearty Dried Vegetables");
+case 1436:
+return("Dried Fruit");
+case 1437:
+return("Brandied Fruit");
+case 1438:
+return("Exotic Dried Fruit");
+case 1439:
+return("Cured Meat");
+case 1440:
+return("Salted Meat");
+case 1441:
+return("Preserved Eggs");
+case 1442:
+return("Exotic Cured Meat");
+case 1443:
+return("Pemmican");
+case 1444:
+return("Pate");
+case 1445:
+return("Mixed Vegetables");
+case 1900:
+return("Fodder Bread");
+case 1901:
+return("Main Ration 1");
+case 1902:
+return("Main Ration 2");
+case 1903:
+return("Main Ration 3");
+case 1904:
+return("Main Ration 4");
+case 1905:
+return("Main Ration 5");
+case 1906:
+return("Main Ration 6");
+case 1907:
+return("Main Ration 7");
+case 1908:
+return("Main Ration 8");
+case 1909:
+return("Main Ration 9");
+case 1911:
+return("Extras 1");
+case 1912:
+return("Extras 2");
+case 1913:
+return("Extras 3");
+case 1914:
+return("Extras 4");
+case 1915:
+return("Extras 5");
+case 1916:
+return("Extras 6");
+case 1917:
+return("Extras 7");
+case 1918:
+return("Extras 8");
+case 1919:
+return("Extras 9");
+case 1921:
+return("Drink Pack 1");
+case 1922:
+return("Drink Pack 2");
+case 1923:
+return("Drink Pack 3");
+case 1924:
+return("Drink Pack 4");
+case 1925:
+return("Drink Pack 5");
+case 1926:
+return("Drink Pack 6");
+case 1927:
+return("Drink Pack 7");
+case 1928:
+return("Drink Pack 8");
+case 1929:
+return("Drink Pack 9");
+case 1930:
+return("Medpack");
+case 1990:
+return("Stable Peasent Ration");
+case 1991:
+return("Stable Low Noble Ration");
+case 1992:
+return("Stable High Noble Ration");
+case 2001:
+return("Stone");
+case 2002:
+return("Wood");
+case 2003:
+return("Salt");
+case 2004:
+return("Clay");
+case 2005:
+return("Kaolinite");
+case 2021:
+return("Iron Ore");
+case 2022:
+return("Gold Ore");
+case 2023:
+return("Silver Ore");
+case 2024:
+return("Copper Ore");
+case 2025:
+return("Tin Ore");
+case 2028:
+return("Tailings");
+case 2029:
+return("Galena");
+case 2080:
+return("Black Copper Ore");
+case 2101:
+return("Refined Stone");
+case 2102:
+return("Refined Wood");
+case 2103:
+return("Charcoal");
+case 2105:
+return("Washed Kaolinite");
+case 2121:
+return("Iron");
+case 2122:
+return("Gold");
+case 2123:
+return("Silver");
+case 2124:
+return("Copper");
+case 2125:
+return("Tin");
+case 2126:
+return("Aluminum");
+case 2127:
+return("Mercury");
+case 2128:
+return("Platinum");
+case 2129:
+return("Lead");
+case 2150:
+return("Basic Building Material");
+case 2151:
+return("Basic Wood Building Materials");
+case 2152:
+return("Basic Stone Building Materials");
+case 2153:
+return("Basic Mud Building Materials");
+case 2154:
+return("Basic Brick Building Material");
+case 2160:
+return("Advanced Building Material");
+case 2161:
+return("Advanced Wood Building Materials");
+case 2162:
+return("Advanced Stone Building Materials");
+case 2163:
+return("Advanced Mud Building Materials");
+case 2164:
+return("Advanced Brick Building Material");
+case 2180:
+return("Emerald Bronze");
+case 2181:
+return("Bronze");
+case 2182:
+return("Steel");
+case 2183:
+return("Damascus Steel");
+case 2200:
+return("Ruby");
+case 2201:
+return("Emerald");
+case 2202:
+return("Sapphire");
+case 2203:
+return("Diamond");
+case 2204:
+return("Amethyst");
+case 2205:
+return("Opal");
+case 2206:
+return("Citrine");
+case 2207:
+return("Pearl");
+case 2208:
+return("Moonstone");
+case 2209:
+return("Amber");
+case 2210:
+return("Onyx");
+case 2211:
+return("Aquamarine");
+case 2212:
+return("Crystal Glass");
+case 2213:
+return("Bloodstone");
+case 2214:
+return("Ice Stone");
+case 2215:
+return("Fire Stone");
+case 2300:
+return("Polished Ruby");
+case 2301:
+return("Polished Emerald");
+case 2302:
+return("Polished Sapphire");
+case 2303:
+return("Polished Diamond");
+case 2304:
+return("Polished Amethyst");
+case 2305:
+return("Polished Opal");
+case 2306:
+return("Polished Citrine");
+case 2308:
+return("Polished Moonstone");
+case 2309:
+return("Polished Amber");
+case 2310:
+return("Polished Onyx");
+case 2311:
+return("Polished Aquamarine");
+case 2312:
+return("Polished Crystal Glass");
+case 2314:
+return("Polished Ice Stone");
+case 2315:
+return("Polished Fire Stone");
+case 4000:
+return("Nails");
+case 4001:
+return("Diamond Blade");
+case 4002:
+return("Fabric");
+case 4003:
+return("Down");
+case 4004:
+return("Leather");
+case 4005:
+return("Exotic Leather");
+case 4006:
+return("Fur");
+case 4007:
+return("Exotic Fur");
+case 4008:
+return("Feather");
+case 4009:
+return("Thick Leather");
+case 4010:
+return("Antler");
+case 4011:
+return("Ivory");
+case 4012:
+return("Poison");
+case 4013:
+return("Leopard Skin");
+case 4014:
+return("Aurochs Hide");
+case 4015:
+return("Black Leopard Skin");
+case 4016:
+return("Bear Hide");
+case 4017:
+return("Polar Bear Hide");
+case 4018:
+return("Tiger Hide");
+case 4019:
+return("Rushseed Oil");
+case 4020:
+return("Cooked Bone");
+case 4021:
+return("Sugarcane Pulp");
+case 4022:
+return("Organic Pulp");
+case 4023:
+return("Ash");
+case 4024:
+return("Clay Beads");
+case 4025:
+return("Hay");
+case 4026:
+return("Antiseptic");
+case 4027:
+return("Soap");
+case 4028:
+return("Tar");
+case 4029:
+return("Paper");
+case 4030:
+return("Level 1 Fertilizer");
+case 4031:
+return("Level 2 Fertilizer");
+case 4032:
+return("Level 3 Fertilizer");
+case 4040:
+return("Rare Fertilizer");
+case 4050:
+return("Forest Glass");
+case 4051:
+return("Lead Glass");
+case 4052:
+return("Forest Glass Pane");
+case 4053:
+return("Lead Glass Pane");
+case 4054:
+return("Crystal Glass Pane");
+case 4055:
+return("Boat Part");
+case 4056:
+return("Treated Fabric");
+case 4057:
+return("Human Earth");
+case 4058:
+return("Vitae Dust");
+case 4059:
+return("Berry Dust");
+case 4060:
+return("Ink");
+case 4061:
+return("Red Dye");
+case 4062:
+return("Blue Dye");
+case 4063:
+return("Green Dye");
+case 4064:
+return("White Dye");
+case 4065:
+return("Dye Pack");
+case 4066:
+return("Gold Foil");
+case 4070:
+return("Gold Artifact Cache");
+case 4071:
+return("Bronze Artifact Cache");
+case 4100:
+return("Bronze Plate");
+case 4101:
+return("Iron Plate");
+case 4102:
+return("Steel Plate");
+case 4103:
+return("Emerald Bronze Plate");
+case 4104:
+return("Damascus Steel Plate");
+case 4105:
+return("Bronze Chainmail");
+case 4106:
+return("Iron Chainmail");
+case 4107:
+return("Steel Chainmail");
+case 4108:
+return("Emerald Bronze Chainmail");
+case 4109:
+return("Damascus Steel Chainmail");
+case 4200:
+return("Panacea");
+case 4201:
+return("Nettle Tea");
+case 4202:
+return("Life Powder");
+case 4203:
+return("Nightberry Tea");
+case 4204:
+return("Sweet Herb Tea");
+case 4205:
+return("Happiness Tea");
+case 4206:
+return("Soothing Powder");
+case 4207:
+return("Savory Herb Tea");
+case 4221:
+return("Spruce Tea");
+case 4222:
+return("Life Tincture");
+case 4223:
+return("Nightberry Tincture");
+case 4224:
+return("Sweet Herb Tincture");
+case 4225:
+return("Happiness Tincture");
+case 4226:
+return("Soothing Tea");
+case 4227:
+return("Savory Herb Tincture");
+case 4300:
+return("Ice Ticket");
+case 4301:
+return("Fire Ticket");
+case 4311:
+return("Arid Blueprint");
+case 4312:
+return("Northern Blueprint");
+case 4313:
+return("Central Blueprint");
+case 4314:
+return("Southern Blueprint");
+case 4315:
+return("Island Blueprint");
+case 4316:
+return("Swamp Blueprint");
+case 4317:
+return("Mountain Blueprint");
+case 4318:
+return("Silver Blueprint");
+case 4319:
+return("Gold Blueprint");
+case 4321:
+return("Farming Guide");
+case 4322:
+return("Jewelers Guide");
+case 4323:
+return("Brewers Guide");
+case 4324:
+return("Medicine Guide");
+case 4325:
+return("Sailing Guide");
+case 4326:
+return("Smithing Guide");
+case 4327:
+return("Art Guide");
+case 4328:
+return("Carpentry Guide");
+case 4329:
+return("Weaver Guide");
+case 4330:
+return("Masonry Guide");
+case 4331:
+return("Soldier Guide");
+case 4400:
+return("T1 Melter");
+case 4410:
+return("Small Boat");
+case 4411:
+return("Medium Boat");
+case 4412:
+return("Large Boat");
+case 4413:
+return("Fishing Boat");
+case 4414:
+return("Boat Fix Kit");
+case 4500:
+return("Fur Clothes");
+case 4501:
+return("Regular Clothes");
+case 4503:
+return("Tailored Fur Clothes");
+case 4504:
+return("Tailored Regular Clothes");
+case 4520:
+return("Bead Bracelet");
+case 4521:
+return("Copper Bracelet");
+case 4522:
+return("Silver Bracelet");
+case 4523:
+return("Gold Bracelet");
+case 4524:
+return("Aluminum Bracelet");
+case 4525:
+return("Artifact Bronze Bracelet");
+case 4526:
+return("Artifact Gold Bracelet");
+case 4527:
+return("Pearl Bracelet");
+case 4540:
+return("Basic Tool");
+case 4541:
+return("Artisan Tool");
+case 4542:
+return("Oppulant Tool");
+case 4560:
+return("Copper Ring");
+case 4561:
+return("Silver Ring");
+case 4562:
+return("Gold Ring");
+case 4563:
+return("Artifact Bronze Ring");
+case 4564:
+return("Artifact Gold Ring");
+case 4565:
+return("Aluminum Ring");
+case 4580:
+return("Basic Bedding");
+case 4581:
+return("Enhanced Bedding");
+case 4582:
+return("Down Bedding");
+case 4600:
+return("Bead Necklace");
+case 4601:
+return("Copper Necklace");
+case 4602:
+return("Silver Necklace");
+case 4603:
+return("Gold Necklace");
+case 4604:
+return("Amber Necklace");
+case 4605:
+return("Artifact Bronze Necklace");
+case 4606:
+return("Artifact Gold Necklace");
+case 4607:
+return("Aluminum Necklace");
+case 4608:
+return("Pearl Necklace");
+case 4620:
+return("Wood Table");
+case 4621:
+return("Stone Table");
+case 4622:
+return("Fine Table");
+case 4623:
+return("Carved Table");
+case 4624:
+return("Encrusted Table");
+case 4640:
+return("Wood Chair");
+case 4641:
+return("Stone Chair");
+case 4642:
+return("Fine Chair");
+case 4643:
+return("Carved Chair");
+case 4644:
+return("Encrusted Chair");
+case 4660:
+return("Wooden Tableware");
+case 4661:
+return("Stone Tableware");
+case 4662:
+return("Ceramic Tableware");
+case 4663:
+return("Fine Ceramic Tableware");
+case 4664:
+return("Silver Tableware");
+case 4665:
+return("Gold Tableware");
+case 4666:
+return("Aluminum Tableware");
+case 4667:
+return("Relic Tableware");
+case 4680:
+return("Mug");
+case 4681:
+return("Drinking Glass");
+case 4682:
+return("Crystal Drinking Glass");
+case 4683:
+return("Goblet");
+case 4684:
+return("Aincient Goblet");
+case 4700:
+return("Simple Totem");
+case 4701:
+return("Silver Totem");
+case 4702:
+return("Gold Totem");
+case 4703:
+return("Icon Statue");
+case 4704:
+return("Mysterious Totem");
+case 4720:
+return("Small Rug");
+case 4721:
+return("Rug");
+case 4722:
+return("Ornate Rug");
+case 4740:
+return("Small Painting");
+case 4741:
+return("Painting");
+case 4742:
+return("Large Painting");
+case 4743:
+return("Guilded Painting");
+case 4760:
+return("Bust");
+case 4761:
+return("Sculpture");
+case 4762:
+return("Statue");
+case 4763:
+return("Stuffed Leopard");
+case 4764:
+return("Stuffed Bear");
+case 4765:
+return("Stuffed Polar Bear");
+case 4780:
+return("Simple Storage");
+case 4781:
+return("Storage Pots");
+case 4782:
+return("Refined Storage");
+case 4783:
+return("Luxary Storage");
+case 4800:
+return("Simple Home Furniture");
+case 4801:
+return("Standard Home Furniture");
+case 4802:
+return("Ornate Home Furniture");
+case 5000:
+return("Bronze Spear");
+case 5001:
+return("Iron Spear");
+case 5002:
+return("Steel Spear");
+case 5003:
+return("Emerald Bronze Spear");
+case 5004:
+return("Damascus Steel Spear");
+case 5010:
+return("Bronze Axe");
+case 5011:
+return("Iron Axe");
+case 5012:
+return("Steel Axe");
+case 5013:
+return("Emerald Bronze Axe");
+case 5014:
+return("Damascus Steel Axe");
+case 5020:
+return("Bronze Sword");
+case 5021:
+return("Iron Sword");
+case 5022:
+return("Steel Sword");
+case 5023:
+return("Emerald Bronze Sword");
+case 5024:
+return("Damascus Steel Sword");
+case 5025:
+return("Diamond Sword");
+case 5030:
+return("Bronze Mace");
+case 5031:
+return("Iron Mace");
+case 5032:
+return("Steel Mace");
+case 5033:
+return("Emerald Bronze Mace");
+case 5034:
+return("Damascus Steel Mace");
+case 5040:
+return("Bronze Lance");
+case 5041:
+return("Iron Lance");
+case 5042:
+return("Steel Lance");
+case 5043:
+return("Emerald Bronze Lance");
+case 5044:
+return("Damascus Steel Lance");
+case 5050:
+return("Bronze Poleaxe");
+case 5051:
+return("Iron Poleaxe");
+case 5052:
+return("Steel Poleaxe");
+case 5053:
+return("Emerald Bronze Poleaxe");
+case 5054:
+return("Damascus Steel Poleaxe");
+case 5060:
+return("Bronze Greatsword");
+case 5061:
+return("Iron Greatsword");
+case 5062:
+return("Steel Greatsword");
+case 5063:
+return("Emerald Bronze Greatsword");
+case 5064:
+return("Damascus Steel Greatsword");
+case 5070:
+return("Bronze Warhammer");
+case 5071:
+return("Iron Warhammer");
+case 5072:
+return("Steel Warhammer");
+case 5073:
+return("Emerald Bronze Warhammer");
+case 5074:
+return("Damascus Steel Warhammer");
+case 5080:
+return("Bronze Elephant Tusk Cap");
+case 5081:
+return("Iron Elephant Tusk Cap");
+case 5082:
+return("Steel Elephant Tusk Cap");
+case 5083:
+return("Beryl Bronze Elephant Tusk Cap");
+case 5084:
+return("Damascus Elephant Tusk Cap");
+case 5090:
+return("Bronze Rhino Tusk Cap");
+case 5091:
+return("Iron Rhino Tusk Cap");
+case 5092:
+return("Steel Rhino Tusk Cap");
+case 5093:
+return("Beryl Bronze Rhino Tusk Cap");
+case 5094:
+return("Damascus Rhino Tusk Cap");
+case 5200:
+return("Basic Bow");
+case 5201:
+return("Longbow");
+case 5202:
+return("Greatbow");
+case 5203:
+return("Steel Arrowhead");
+case 5204:
+return("Beryl Bronze Arrowhead");
+case 5210:
+return("Simple Crossbow");
+case 5211:
+return("Basic Sling");
+case 5212:
+return("Heavy Flamer");
+case 5213:
+return("Flame Grenade");
+case 5214:
+return("Golden Sling");
+case 5400:
+return("Farm Horse");
+case 5401:
+return("Standard Army Horse");
+case 5402:
+return("Charge Horse");
+case 5403:
+return("War Horse");
+case 5404:
+return("Arctic Horse");
+case 5420:
+return("War Elephant");
+case 5421:
+return("War Wooly Elephant");
+case 5430:
+return("War Rhino");
+case 5431:
+return("War Wooly Rhino");
+case 5500:
+return("Light Bronze Mail");
+case 5501:
+return("Light Iron Mail");
+case 5502:
+return("Light Steel Mail");
+case 5503:
+return("Light Emerald Bronze Mail");
+case 5504:
+return("Light Damascus Steel Mail");
+case 5510:
+return("Light Bronze Plate");
+case 5511:
+return("Light Iron Plate");
+case 5512:
+return("Light Steel Plate");
+case 5513:
+return("Light Emerald Bronze Plate");
+case 5514:
+return("Light Damascus Steel Plate");
+case 5520:
+return("Medium Bronze Mail");
+case 5521:
+return("Medium Iron Mail");
+case 5522:
+return("Medium Steel Mail");
+case 5523:
+return("Medium Emerald Bronze Mail");
+case 5524:
+return("Medium Damascus Steel Mail");
+case 5530:
+return("Medium Bronze Plate");
+case 5531:
+return("Medium Iron Plate");
+case 5532:
+return("Medium Steel Plate");
+case 5533:
+return("Medium Emerald Bronze Plate");
+case 5534:
+return("Medium Damascus Steel Plate");
+case 5540:
+return("Heavy Bronze Armor");
+case 5541:
+return("Heavy Iron Armor");
+case 5542:
+return("Heavy Steel Armor");
+case 5543:
+return("Heavy Beryl Bronze Armor");
+case 5544:
+return("Heavy Damascus Steel Armor");
+case 5550:
+return("Light Bronze Horse Armor");
+case 5551:
+return("Light Iron Horse Armor");
+case 5552:
+return("Light Steel Horse Armor");
+case 5553:
+return("Light Emerald Bronze Horse Armor");
+case 5554:
+return("Light Damascus Steel Horse Armor");
+case 5560:
+return("Medium Bronze Horse Armor");
+case 5561:
+return("Medium Iron Horse Armor");
+case 5562:
+return("Medium Steel Horse Armor");
+case 5563:
+return("Medium Emerald Bronze Horse Armor");
+case 5564:
+return("Medium Damascus Steel Horse Armor");
+case 5570:
+return("Heavy Bronze Horse Armor");
+case 5571:
+return("Heavy Iron Horse Armor");
+case 5572:
+return("Heavy Steel Horse Armor");
+case 5573:
+return("Heavy Emerald Bronze Horse Armor");
+case 5574:
+return("Heavy Damascus Steel Horse Armor");
+case 5580:
+return("Leather Armor");
+case 5581:
+return("Thick Leather Armor");
+case 5582:
+return("Gambeson");
+case 5585:
+return("Rhino Mount Cushion");
+case 5586:
+return("Elephant Mount Cushion");
+case 5600:
+return("Stone Shot");
+case 5601:
+return("Lead Shot");
+case 5602:
+return("Gold Shot");
+case 5611:
+return("Small Fuel Tank");
+case 5612:
+return("Large Fuel Tank");
+case 5613:
+return("Quiver");
+case 5614:
+return("Stone Pouch");
+case 5620:
+return("Wood Arrow Bundle");
+case 5621:
+return("Steel Arrow Bundle");
+case 5622:
+return("Emerald Bronze Arrow Bundle");
+case 5623:
+return("Diamond Arrow Bundle");
+case 5700:
+return("Stone Shot Pouch");
+case 5701:
+return("Lead Shot Pouch");
+case 5702:
+return("Gold Shot Pouch");
+case 5720:
+return("Wood Arrow Quiver");
+case 5721:
+return("Steel Arrow Quiver");
+case 5722:
+return("Beryl Arrow Quiver");
+case 5723:
+return("Diamond Arrow Quiver");
+case 5800:
+return("Bronze Rhino Armor");
+case 5801:
+return("Iron Rhino Armor");
+case 5802:
+return("Steel Rhino Armor");
+case 5803:
+return("Emerald Bronze Rhino Armor");
+case 5804:
+return("Damascus Steel Rhino Armor");
+case 5810:
+return("Heavy Bronze Rhino Armor");
+case 5811:
+return("Heavy Iron Rhino Armor");
+case 5812:
+return("Heavy Steel Rhino Armor");
+case 5813:
+return("Heavy Emerald Bronze Rhino Armor");
+case 5814:
+return("Heavy Damascus Steel Rhino Armor");
+case 5820:
+return("Bronze Elephant Armor");
+case 5821:
+return("Iron Elephant Armor");
+case 5822:
+return("Steel Elephant Armor");
+case 5823:
+return("Emerald Bronze Elephant Armor");
+case 5824:
+return("Damascus Steel Elephant Armor");
+case 5830:
+return("Heavy Bronze Elephant Armor");
+case 5831:
+return("Heavy Iron Elephant Armor");
+case 5832:
+return("Heavy Steel Elephant Armor");
+case 5833:
+return("Heavy Emerald Bronze Elephant Armor");
+case 5834:
+return("Heavy Damascus Steel Elephant Armor");
+case 5900:
+return("Wooden Shield");
+case 5901:
+return("Banded Shield");
+case 5902:
+return("Standard Shield");
+case 5903:
+return("Metal Shield");
+case 5904:
+return("Gong Shield");
+case 5905:
+return("Heirloom Shield");
+case 5910:
+return("Wall Shield");
+case 5911:
+return("Advanced Wall Shield");
+case 7000:
+return("Rabbit");
+case 7001:
+return("Deer");
+case 7002:
+return("Turkey");
+case 7003:
+return("Fox");
+case 7004:
+return("Cyote");
+case 7005:
+return("Snake");
+case 7006:
+return("Ocean Fish");
+case 7007:
+return("Metal Fish");
+case 7008:
+return("Shrimp School");
+case 7009:
+return("Seaweed Crop");
+case 7100:
+return("Mink");
+case 7101:
+return("Boar");
+case 7102:
+return("Zebra");
+case 7103:
+return("Reindeer");
+case 7104:
+return("Leopard");
+case 7105:
+return("Crocodile");
+case 7106:
+return("Otter");
+case 7107:
+return("Wolf");
+case 7108:
+return("Seal");
+case 7109:
+return("Ostridge");
+case 7110:
+return("Turtle");
+case 7111:
+return("Crab Cluster");
+case 7200:
+return("Elk");
+case 7201:
+return("Aurochs");
+case 7202:
+return("Black Leopard");
+case 7203:
+return("Bear");
+case 7204:
+return("Sea Mink");
+case 7205:
+return("Whalrus");
+case 7206:
+return("Poison Snake");
+case 7207:
+return("Shark");
+case 7300:
+return("Elephant");
+case 7301:
+return("Rhino");
+case 7302:
+return("Polar Bear");
+case 7303:
+return("Tiger");
+case 7304:
+return("Titan Snake");
+case 7305:
+return("Whale");
+case 7306:
+return("Iron Snail");
+case 7400:
+return("Cow");
+case 7401:
+return("Chicken");
+case 7402:
+return("Sheep");
+case 7403:
+return("River Fish");
+case 11000:
+return("Bandits");
+case 11010:
+return("Peasent Levy");
+case 11011:
+return("Veteran Peasent Levy");
+case 11020:
+return("Levy Spear");
+case 11021:
+return("Veteran Levy Spear");
+case 11030:
+return("Mountain Levy");
+case 11031:
+return("Veteran Mountain Levy");
+case 11040:
+return("Mercenary Swordman");
+case 11041:
+return("Veteran Mercenary Swordman");
+case 11042:
+return("Palace Guard");
+case 11050:
+return("Mercenary Axeman");
+case 11060:
+return("Mercenary Maceman");
+case 11070:
+return("Pikeman");
+case 11200:
+return("Peasent Bowman");
+case 11210:
+return("Levy Archer");
+case 11211:
+return("Veteran Levy Archer");
+case 11220:
+return("Huntsman");
+case 11230:
+return("Slinger");
+case 11231:
+return("Golden Slinger");
+case 11241:
+return("Imperial Flamer");
+case 11300:
+return("Free Lance");
+case 11301:
+return("Knight");
+case 11310:
+return("Mounted Levy");
+case 11311:
+return("Mounted Palace Guard");
+case 11501:
+return("Mercenary War Elephant");
+case 11502:
+return("Elite Mercenary War Elephant");
+case 11520:
+return("Mercanary War Rhino");
+case 11521:
+return("Elite Mercenary War Rhino");
+case 11600:
+return("Mounted Archer");
+case 11601:
+return("Veteran Mounted Archer");
+case 11602:
+return("Palace Archer");
+case 28501:
+return("T1 XP");
+case 28502:
+return("T2 XP");
+case 28503:
+return("T3 XP");
+case 28504:
+return("T4 XP");
+case 28505:
+return("T5 XP");
+case 28506:
+return("T6 XP");
+case 28507:
+return("T7 XP");
+case 28508:
+return("T8 XP");
+case 28800:
+return("Coins");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+default:
+              return("Error: No Name");}
+          }
     function itemValue(_recipeID) {
     switch (_recipeID) {
-      case -27:
-    return("10");
-  case -26:
-    return("2");
-  case -25:
-    return("100");
-  case -24:
-    return("5");
-  case -23:
-    return("50");
-  case -22:
-    return("50");
-  case -21:
-    return("2");
-  case -20:
-    return("50");
-  case -19:
-    return("20");
-  case -18:
-    return("175");
-  case -17:
-    return("150");
-  case -16:
-    return("2");
-  case -15:
-    return("5");
-  case -14:
-    return("20");
-  case -13:
-    return("500");
-  case -12:
-    return("200");
-  case -11:
-    return("50");
-  case -10:
-    return("20");
-  case -9:
-    return("10");
-  case -8:
-    return("40");
-  case -7:
-    return("5");
-  case -6:
-    return("50");
-  case -5:
-    return("10");
-  case -4:
-    return("2");
-  case -3:
-    return("2");
-  case -2:
-    return("10");
-  case -1:
-    return("2");
-  case 0:
-    return("0");
-  case 1:
-    return("1500000");
-  case 2:
-    return("1500000");
-  case 3:
-    return("1500000");
-  case 4:
-    return("1500000");
-  case 11:
-    return("1500000");
-  case 12:
-    return("1500000");
-  case 13:
-    return("1500000");
-  case 14:
-    return("1500000");
-  case 21:
-    return("1500000");
-  case 22:
-    return("1500000");
-  case 23:
-    return("1500000");
-  case 31:
-    return("1500000");
-  case 32:
-    return("1500000");
-  case 33:
-    return("1500000");
-  case 34:
-    return("1500000");
-  case 41:
-    return("1500000");
-  case 42:
-    return("1500000");
-  case 43:
-    return("1500000");
-  case 44:
-    return("1500000");
-  case 51:
-    return("1500000");
-  case 52:
-    return("1500000");
-  case 53:
-    return("1500000");
-  case 61:
-    return("1500000");
-  case 62:
-    return("1500000");
-  case 63:
-    return("1500000");
-  case 64:
-    return("1500000");
-  case 70:
-    return("1500000");
-  case 71:
-    return("1500000");
-  case 72:
-    return("1500000");
-  case 80:
-    return("1500000");
-  case 81:
-    return("1500000");
-  case 82:
-    return("1500000");
-  case 501:
-    return("2");
-  case 502:
-    return("2");
-  case 503:
-    return("2");
-  case 504:
-    return("2");
-  case 505:
-    return("2");
-  case 506:
-    return("2");
-  case 507:
-    return("2");
-  case 508:
-    return("2");
-  case 509:
-    return("2");
-  case 510:
-    return("2");
-  case 511:
-    return("2");
-  case 512:
-    return("2");
-  case 513:
-    return("2");
-  case 514:
-    return("2");
-  case 515:
-    return("2");
-  case 516:
-    return("2");
-  case 517:
-    return("2");
-  case 518:
-    return("2");
-  case 519:
-    return("4");
-  case 520:
-    return("2");
-  case 521:
-    return("2");
-  case 522:
-    return("2");
-  case 523:
-    return("50");
-  case 524:
-    return("40");
-  case 525:
-    return("40");
-  case 526:
-    return("100");
-  case 527:
-    return("50");
-  case 528:
-    return("50");
-  case 529:
-    return("1000");
-  case 530:
-    return("20");
-  case 531:
-    return("10");
-  case 532:
-    return("20");
-  case 533:
-    return("10");
-  case 534:
-    return("10");
-  case 535:
-    return("2");
-  case 536:
-    return("20");
-  case 537:
-    return("10");
-  case 538:
-    return("2");
-  case 539:
-    return("10");
-  case 540:
-    return("2");
-  case 541:
-    return("50");
-  case 542:
-    return("2");
-  case 543:
-    return("2");
-  case 544:
-    return("10");
-  case 545:
-    return("10");
-  case 546:
-    return("20");
-  case 550:
-    return("5");
-  case 551:
-    return("5");
-  case 552:
-    return("10");
-  case 553:
-    return("50");
-  case 554:
-    return("20");
-  case 555:
-    return("20");
-  case 1000:
-    return("5");
-  case 1001:
-    return("5");
-  case 1002:
-    return("5");
-  case 1003:
-    return("5");
-  case 1004:
-    return("5");
-  case 1005:
-    return("5");
-  case 1010:
-    return("5");
-  case 1011:
-    return("5");
-  case 1012:
-    return("5");
-  case 1013:
-    return("5");
-  case 1014:
-    return("5");
-  case 1020:
-    return("5");
-  case 1021:
-    return("5");
-  case 1030:
-    return("20");
-  case 1031:
-    return("20");
-  case 1032:
-    return("20");
-  case 1033:
-    return("20");
-  case 1040:
-    return("50");
-  case 1041:
-    return("50");
-  case 1042:
-    return("50");
-  case 1043:
-    return("50");
-  case 1044:
-    return("50");
-  case 1050:
-    return("100");
-  case 1051:
-    return("100");
-  case 1060:
-    return("250");
-  case 1061:
-    return("250");
-  case 1200:
-    return("10");
-  case 1201:
-    return("10");
-  case 1202:
-    return("10");
-  case 1203:
-    return("10");
-  case 1204:
-    return("5");
-  case 1205:
-    return("5");
-  case 1206:
-    return("20");
-  case 1207:
-    return("20");
-  case 1208:
-    return("40");
-  case 1209:
-    return("40");
-  case 1210:
-    return("20");
-  case 1211:
-    return("20");
-  case 1212:
-    return("300");
-  case 1213:
-    return("500");
-  case 1220:
-    return("20");
-  case 1221:
-    return("20");
-  case 1222:
-    return("20");
-  case 1223:
-    return("20");
-  case 1224:
-    return("20");
-  case 1225:
-    return("20");
-  case 1230:
-    return("20");
-  case 1231:
-    return("60");
-  case 1232:
-    return("400");
-  case 1240:
-    return("10");
-  case 1241:
-    return("50");
-  case 1242:
-    return("10");
-  case 1250:
-    return("10");
-  case 1251:
-    return("80");
-  case 1260:
-    return("40");
-  case 1261:
-    return("20");
-  case 1262:
-    return("30");
-  case 1263:
-    return("150");
-  case 1264:
-    return("20");
-  case 1265:
-    return("50");
-  case 1266:
-    return("750");
-  case 1267:
-    return("10");
-  case 1268:
-    return("100");
-  case 1269:
-    return("20");
-  case 1270:
-    return("30");
-  case 1271:
-    return("200");
-  case 1272:
-    return("20");
-  case 1273:
-    return("200");
-  case 1274:
-    return("20");
-  case 1275:
-    return("20");
-  case 1276:
-    return("20");
-  case 1277:
-    return("30");
-  case 1280:
-    return("10");
-  case 1281:
-    return("10");
-  case 1282:
-    return("10");
-  case 1283:
-    return("25");
-  case 1300:
-    return("100");
-  case 1301:
-    return("50");
-  case 1302:
-    return("10");
-  case 1304:
-    return("100");
-  case 1305:
-    return("500");
-  case 1306:
-    return("4000");
-  case 1307:
-    return("15");
-  case 1308:
-    return("20");
-  case 1309:
-    return("300");
-  case 1310:
-    return("50");
-  case 1311:
-    return("50");
-  case 1312:
-    return("50");
-  case 1313:
-    return("50");
-  case 1314:
-    return("50");
-  case 1315:
-    return("50");
-  case 1320:
-    return("100");
-  case 1321:
-    return("100");
-  case 1322:
-    return("100");
-  case 1330:
-    return("5");
-  case 1331:
-    return("5");
-  case 1332:
-    return("5");
-  case 1333:
-    return("5");
-  case 1900:
-    return("25");
-  case 1901:
-    return("1000");
-  case 1902:
-    return("2000");
-  case 1903:
-    return("4000");
-  case 1904:
-    return("8000");
-  case 1905:
-    return("16000");
-  case 1906:
-    return("32000");
-  case 1907:
-    return("64000");
-  case 1908:
-    return("128000");
-  case 1909:
-    return("256000");
-  case 1911:
-    return("250");
-  case 1912:
-    return("500");
-  case 1913:
-    return("1000");
-  case 1914:
-    return("2100");
-  case 1915:
-    return("4000");
-  case 1916:
-    return("8000");
-  case 1917:
-    return("16000");
-  case 1918:
-    return("32000");
-  case 1919:
-    return("64000");
-  case 1921:
-    return("250");
-  case 1922:
-    return("500");
-  case 1923:
-    return("1000");
-  case 1924:
-    return("2000");
-  case 1925:
-    return("4000");
-  case 1926:
-    return("8000");
-  case 1927:
-    return("16000");
-  case 1928:
-    return("32000");
-  case 1929:
-    return("60000");
-  case 1930:
-    return("100000");
-  case 1990:
-    return("1000");
-  case 1991:
-    return("4000");
-  case 1992:
-    return("45000");
-  case 2001:
-    return("2");
-  case 2002:
-    return("2");
-  case 2003:
-    return("20");
-  case 2004:
-    return("2");
-  case 2021:
-    return("20");
-  case 2022:
-    return("200");
-  case 2023:
-    return("100");
-  case 2024:
-    return("20");
-  case 2025:
-    return("20");
-  case 2101:
-    return("200");
-  case 2102:
-    return("200");
-  case 2103:
-    return("3");
-  case 2121:
-    return("50");
-  case 2122:
-    return("1000");
-  case 2123:
-    return("200");
-  case 2124:
-    return("25");
-  case 2125:
-    return("80");
-  case 2150:
-    return("10");
-  case 2151:
-    return("10");
-  case 2152:
-    return("100");
-  case 2153:
-    return("100");
-  case 2180:
-    return("450");
-  case 2181:
-    return("50");
-  case 2182:
-    return("150");
-  case 2183:
-    return("2000");
-  case 2200:
-    return("50");
-  case 2201:
-    return("50");
-  case 2202:
-    return("50");
-  case 2203:
-    return("200");
-  case 2204:
-    return("20");
-  case 2205:
-    return("20");
-  case 2206:
-    return("20");
-  case 2207:
-    return("50");
-  case 2208:
-    return("100");
-  case 2209:
-    return("20");
-  case 2210:
-    return("20");
-  case 2211:
-    return("20");
-  case 2212:
-    return("20");
-  case 2213:
-    return("100");
-  case 2300:
-    return("175");
-  case 2301:
-    return("175");
-  case 2302:
-    return("175");
-  case 2303:
-    return("300");
-  case 2304:
-    return("150");
-  case 2305:
-    return("150");
-  case 2306:
-    return("150");
-  case 2307:
-    return("150");
-  case 2308:
-    return("225");
-  case 2309:
-    return("150");
-  case 2310:
-    return("150");
-  case 2311:
-    return("150");
-  case 2312:
-    return("150");
-  case 4000:
-    return("100");
-  case 4001:
-    return("1000");
-  case 4002:
-    return("100");
-  case 4003:
-    return("2000");
-  case 4004:
-    return("50");
-  case 4005:
-    return("500");
-  case 4006:
-    return("100");
-  case 4007:
-    return("1000");
-  case 4008:
-    return("20");
-  case 4009:
-    return("200");
-  case 4010:
-    return("50");
-  case 4011:
-    return("2500");
-  case 4012:
-    return("2000");
-  case 4013:
-    return("50000");
-  case 4014:
-    return("100000");
-  case 4015:
-    return("100000");
-  case 4016:
-    return("500000");
-  case 4017:
-    return("500000");
-  case 4018:
-    return("500000");
-  case 4019:
-    return("2500");
-  case 4020:
-    return("10");
-  case 4021:
-    return("2");
-  case 4022:
-    return("10");
-  case 4023:
-    return("10");
-  case 4024:
-    return("100");
-  case 4025:
-    return("2");
-  case 4026:
-    return("1000");
-  case 4027:
-    return("50");
-  case 4028:
-    return("50");
-  case 4030:
-    return("50");
-  case 4031:
-    return("100");
-  case 4032:
-    return("170");
-  case 4040:
-    return("800");
-  case 4100:
-    return("60000");
-  case 4101:
-    return("75000");
-  case 4102:
-    return("175000");
-  case 4103:
-    return("475000");
-  case 4104:
-    return("2025000");
-  case 4105:
-    return("37500");
-  case 4106:
-    return("75000");
-  case 4107:
-    return("125000");
-  case 4108:
-    return("275000");
-  case 4109:
-    return("1050000");
-  case 4200:
-    return("100000");
-  case 4201:
-    return("85000");
-  case 4500:
-    return("2500");
-  case 4501:
-    return("2000");
-  case 4503:
-    return("25000");
-  case 4504:
-    return("20000");
-  case 4520:
-    return("5000");
-  case 4521:
-    return("10000");
-  case 4522:
-    return("50000");
-  case 4540:
-    return("2500");
-  case 4541:
-    return("7000");
-  case 4542:
-    return("25000");
-  case 4560:
-    return("5000");
-  case 4561:
-    return("27500");
-  case 4562:
-    return("500000");
-  case 4580:
-    return("5000");
-  case 4581:
-    return("25000");
-  case 4582:
-    return("250000");
-  case 5000:
-    return("25000");
-  case 5001:
-    return("30000");
-  case 5002:
-    return("70000");
-  case 5003:
-    return("190000");
-  case 5004:
-    return("810000");
-  case 5010:
-    return("62500");
-  case 5011:
-    return("100000");
-  case 5012:
-    return("200000");
-  case 5013:
-    return("500000");
-  case 5014:
-    return("2050000");
-  case 5020:
-    return("62500");
-  case 5021:
-    return("100000");
-  case 5022:
-    return("200000");
-  case 5023:
-    return("500000");
-  case 5024:
-    return("2050000");
-  case 5025:
-    return("10000000");
-  case 5030:
-    return("62500");
-  case 5031:
-    return("100000");
-  case 5032:
-    return("200000");
-  case 5033:
-    return("500000");
-  case 5034:
-    return("2050000");
-  case 5040:
-    return("112500");
-  case 5041:
-    return("150000");
-  case 5042:
-    return("300000");
-  case 5043:
-    return("750000");
-  case 5044:
-    return("3075000");
-  case 5050:
-    return("112500");
-  case 5051:
-    return("150000");
-  case 5052:
-    return("300000");
-  case 5053:
-    return("750000");
-  case 5054:
-    return("3075000");
-  case 5060:
-    return("137500");
-  case 5061:
-    return("175000");
-  case 5062:
-    return("375000");
-  case 5063:
-    return("975000");
-  case 5064:
-    return("4075000");
-  case 5070:
-    return("112500");
-  case 5071:
-    return("150000");
-  case 5072:
-    return("300000");
-  case 5073:
-    return("750000");
-  case 5074:
-    return("3075000");
-  case 5080:
-    return("4500000");
-  case 5081:
-    return("6750000");
-  case 5082:
-    return("11750000");
-  case 5083:
-    return("26750000");
-  case 5084:
-    return("107250000");
-  case 5090:
-    return("4500000");
-  case 5091:
-    return("6750000");
-  case 5092:
-    return("11750000");
-  case 5093:
-    return("26750000");
-  case 5094:
-    return("107250000");
-  case 5200:
-    return("25000");
-  case 5201:
-    return("45000");
-  case 5202:
-    return("170000");
-  case 5210:
-    return("180000");
-  case 5211:
-    return("10000");
-  case 5212:
-    return("1000000");
-  case 5213:
-    return("15000");
-  case 5214:
-    return("2000000");
-  case 5400:
-    return("150000");
-  case 5401:
-    return("500000");
-  case 5402:
-    return("1500000");
-  case 5403:
-    return("1500000");
-  case 5420:
-    return("2500000");
-  case 5430:
-    return("2000000");
-  case 5500:
-    return("100000");
-  case 5501:
-    return("200000");
-  case 5502:
-    return("300000");
-  case 5503:
-    return("600000");
-  case 5504:
-    return("2175000");
-  case 5510:
-    return("145000");
-  case 5511:
-    return("200000");
-  case 5512:
-    return("400000");
-  case 5513:
-    return("1000000");
-  case 5514:
-    return("4100000");
-  case 5520:
-    return("150000");
-  case 5521:
-    return("350000");
-  case 5522:
-    return("550000");
-  case 5523:
-    return("1150000");
-  case 5524:
-    return("4250000");
-  case 5530:
-    return("240000");
-  case 5531:
-    return("350000");
-  case 5532:
-    return("750000");
-  case 5533:
-    return("1950000");
-  case 5534:
-    return("8150000");
-  case 5540:
-    return("340000");
-  case 5541:
-    return("650000");
-  case 5542:
-    return("1250000");
-  case 5543:
-    return("2950000");
-  case 5544:
-    return("12350000");
-  case 5550:
-    return("385000");
-  case 5551:
-    return("500000");
-  case 5552:
-    return("1100000");
-  case 5553:
-    return("2900000");
-  case 5554:
-    return("12200000");
-  case 5560:
-    return("745000");
-  case 5561:
-    return("950000");
-  case 5562:
-    return("2150000");
-  case 5563:
-    return("5750000");
-  case 5564:
-    return("24350000");
-  case 5570:
-    return("1330000");
-  case 5571:
-    return("1850000");
-  case 5572:
-    return("3950000");
-  case 5573:
-    return("10250000");
-  case 5574:
-    return("42800000");
-  case 5580:
-    return("125000");
-  case 5581:
-    return("250000");
-  case 5582:
-    return("60000");
-  case 5800:
-    return("4500000");
-  case 5801:
-    return("6750000");
-  case 5802:
-    return("11750000");
-  case 5803:
-    return("26750000");
-  case 5804:
-    return("107250000");
-  case 5810:
-    return("14250000");
-  case 5811:
-    return("26250000");
-  case 5812:
-    return("36250000");
-  case 5813:
-    return("66250000");
-  case 5814:
-    return("221250000");
-  case 5820:
-    return("9000000");
-  case 5821:
-    return("13500000");
-  case 5822:
-    return("23500000");
-  case 5823:
-    return("53500000");
-  case 5824:
-    return("214500000");
-  case 5830:
-    return("28500000");
-  case 5831:
-    return("52500000");
-  case 5832:
-    return("72500000");
-  case 5833:
-    return("132500000");
-  case 5834:
-    return("442500000");
-  case 5900:
-    return("50000");
-  case 5901:
-    return("125000");
-  case 5902:
-    return("200000");
-  case 5903:
-    return("425000");
-  case 5904:
-    return("1100000");
-  case 5905:
-    return("4800000");
-  case 5910:
-    return("400000");
-  case 5911:
-    return("1000000");
-  case 7000:
-    return("6500");
-  case 7001:
-    return("12000");
-  case 7002:
-    return("6500");
-  case 7003:
-    return("10000");
-  case 7004:
-    return("11000");
-  case 7005:
-    return("10000");
-  case 7100:
-    return("19000");
-  case 7101:
-    return("26500");
-  case 7102:
-    return("33000");
-  case 7103:
-    return("54000");
-  case 7104:
-    return("68000");
-  case 7105:
-    return("107500");
-  case 7106:
-    return("62500");
-  case 7107:
-    return("40000");
-  case 7108:
-    return("54000");
-  case 7109:
-    return("62500");
-  case 7200:
-    return("95000");
-  case 7201:
-    return("125000");
-  case 7202:
-    return("125000");
-  case 7203:
-    return("545000");
-  case 7204:
-    return("100000");
-  case 7205:
-    return("210000");
-  case 7206:
-    return("125000");
-  case 7300:
-    return("1650000");
-  case 7301:
-    return("1155000");
-  case 7302:
-    return("1090000");
-  case 7303:
-    return("590000");
-  case 7304:
-    return("1090000");
-  case 7400:
-    return("500");
-  case 7401:
-    return("200");
-  case 7402:
-    return("300");
-  case 10001:
-    return("175000");
-  case 10002:
-    return("275000");
-  case 10003:
-    return("475000");
-  case 10004:
-    return("775000");
-  case 10005:
-    return("1175000");
-  case 10006:
-    return("1775000");
-  case 10007:
-    return("2575000");
-  case 10008:
-    return("3575000");
-  case 10011:
-    return("175000");
-  case 10012:
-    return("275000");
-  case 10013:
-    return("475000");
-  case 10014:
-    return("775000");
-  case 10015:
-    return("1175000");
-  case 10016:
-    return("1775000");
-  case 10017:
-    return("2575000");
-  case 10018:
-    return("3575000");
-  case 10021:
-    return("175000");
-  case 10022:
-    return("275000");
-  case 10023:
-    return("475000");
-  case 10024:
-    return("775000");
-  case 10025:
-    return("1175000");
-  case 10026:
-    return("1775000");
-  case 10027:
-    return("2575000");
-  case 10028:
-    return("3575000");
-  case 10201:
-    return("175000");
-  case 10202:
-    return("275000");
-  case 10203:
-    return("475000");
-  case 10204:
-    return("775000");
-  case 10205:
-    return("1175000");
-  case 10206:
-    return("1775000");
-  case 10207:
-    return("2575000");
-  case 10208:
-    return("3575000");
-  case 10211:
-    return("175000");
-  case 10212:
-    return("275000");
-  case 10213:
-    return("475000");
-  case 10214:
-    return("775000");
-  case 10215:
-    return("1175000");
-  case 10216:
-    return("1775000");
-  case 10217:
-    return("2575000");
-  case 10218:
-    return("3575000");
-  case 10225:
-    return("1775000");
-  case 10226:
-    return("2775000");
-  case 10227:
-    return("4025000");
-  case 10228:
-    return("5525000");
-  case 10231:
-    return("175000");
-  case 10232:
-    return("275000");
-  case 10233:
-    return("475000");
-  case 10234:
-    return("775000");
-  case 10235:
-    return("1175000");
-  case 10236:
-    return("1775000");
-  case 10237:
-    return("2575000");
-  case 10238:
-    return("3575000");
-  case 10301:
-    return("175000");
-  case 10302:
-    return("475000");
-  case 10303:
-    return("1075000");
-  case 10304:
-    return("1975000");
-  case 10305:
-    return("3175000");
-  case 10306:
-    return("4975000");
-  case 10307:
-    return("7375000");
-  case 10308:
-    return("12375000");
-  case 10311:
-    return("175000");
-  case 10312:
-    return("475000");
-  case 10313:
-    return("1075000");
-  case 10314:
-    return("1975000");
-  case 10315:
-    return("3175000");
-  case 10316:
-    return("4975000");
-  case 10317:
-    return("7375000");
-  case 10318:
-    return("12375000");
-  case 10321:
-    return("175000");
-  case 10322:
-    return("475000");
-  case 10323:
-    return("1075000");
-  case 10324:
-    return("1975000");
-  case 10325:
-    return("3175000");
-  case 10326:
-    return("4975000");
-  case 10327:
-    return("7375000");
-  case 10328:
-    return("12375000");
-  case 10505:
-    return("6750000");
-  case 10506:
-    return("14250000");
-  case 10507:
-    return("29250000");
-  case 10508:
-    return("49250000");
-  case 10515:
-    return("6750000");
-  case 10516:
-    return("14250000");
-  case 10517:
-    return("29250000");
-  case 10518:
-    return("49250000");
-  case 10525:
-    return("6750000");
-  case 10526:
-    return("14250000");
-  case 10527:
-    return("29250000");
-  case 10528:
-    return("49250000");
-  case 10601:
-    return("175000");
-  case 10602:
-    return("475000");
-  case 10603:
-    return("1075000");
-  case 10604:
-    return("1975000");
-  case 10605:
-    return("3175000");
-  case 10606:
-    return("4975000");
-  case 10607:
-    return("7375000");
-  case 10608:
-    return("12375000");
-  case 11000:
-    return("0");
-  case 11010:
-    return("310000");
-  case 11011:
-    return("610000");
-  case 11020:
-    return("455000");
-  case 11021:
-    return("755000");
-  case 11030:
-    return("525000");
-  case 11031:
-    return("825000");
-  case 11040:
-    return("1075000");
-  case 11041:
-    return("1775000");
-  case 11042:
-    return("25000000");
-  case 11050:
-    return("1075000");
-  case 11060:
-    return("1075000");
-  case 11070:
-    return("935000");
-  case 11200:
-    return("260000");
-  case 11210:
-    return("580000");
-  case 11211:
-    return("1280000");
-  case 11220:
-    return("925000");
-  case 11230:
-    return("545000");
-  case 11231:
-    return("9500000");
-  case 11241:
-    return("17210000");
-  case 11300:
-    return("1330000");
-  case 11301:
-    return("2650000");
-  case 11310:
-    return("355000");
-  case 11311:
-    return("48030000");
-  case 11501:
-    return("1175000");
-  case 11502:
-    return("46000000");
-  case 11520:
-    return("8750000");
-  case 11521:
-    return("31250000");
-  case 11600:
-    return("735000");
-  case 11601:
-    return("1110000");
-  case 11602:
-    return("21150000");
-  case 28501:
-    return("50000");
-  case 28502:
-    return("50000");
-  case 28503:
-    return("50000");
-  case 28504:
-    return("50000");
-  case 28505:
-    return("50000");
-  case 28506:
-    return("50000");
-  case 28507:
-    return("50000");
-  case 28508:
-    return("50000");
-  case 28800:
-    return("1");
+    case -32:
+return(250);
+case -31:
+return(5000);
+case -30:
+return(5000);
+case -29:
+return(100);
+case -28:
+return(10);
+case -27:
+return(10);
+case -26:
+return(2);
+case -25:
+return(100);
+case -24:
+return(5);
+case -23:
+return(50);
+case -22:
+return(2);
+case -21:
+return(2);
+case -20:
+return(50);
+case -19:
+return(20);
+case -18:
+return(200);
+case -17:
+return(100);
+case -16:
+return(2);
+case -15:
+return(5);
+case -14:
+return(20);
+case -13:
+return(100);
+case -12:
+return(50);
+case -11:
+return(20);
+case -10:
+return(10);
+case -8:
+return(40);
+case -7:
+return(5);
+case -6:
+return(50);
+case -5:
+return(10);
+case -4:
+return(2);
+case -3:
+return(2);
+case -2:
+return(10);
+case -1:
+return(2);
+case 0:
+return(0);
+case 1:
+return(1500000);
+case 2:
+return(1500000);
+case 3:
+return(1500000);
+case 4:
+return(1500000);
+case 11:
+return(1500000);
+case 12:
+return(1500000);
+case 13:
+return(1500000);
+case 14:
+return(1500000);
+case 21:
+return(1500000);
+case 22:
+return(1500000);
+case 23:
+return(1500000);
+case 31:
+return(1500000);
+case 32:
+return(1500000);
+case 33:
+return(1500000);
+case 34:
+return(1500000);
+case 41:
+return(1500000);
+case 42:
+return(1500000);
+case 43:
+return(1500000);
+case 44:
+return(1500000);
+case 51:
+return(1500000);
+case 52:
+return(1500000);
+case 53:
+return(1500000);
+case 61:
+return(1500000);
+case 62:
+return(1500000);
+case 63:
+return(1500000);
+case 64:
+return(1500000);
+case 70:
+return(1500000);
+case 71:
+return(1500000);
+case 72:
+return(1500000);
+case 80:
+return(1500000);
+case 81:
+return(1500000);
+case 82:
+return(1500000);
+case 501:
+return(2);
+case 502:
+return(2);
+case 503:
+return(2);
+case 504:
+return(2);
+case 505:
+return(2);
+case 506:
+return(2);
+case 507:
+return(2);
+case 508:
+return(2);
+case 509:
+return(2);
+case 510:
+return(2);
+case 511:
+return(2);
+case 512:
+return(2);
+case 513:
+return(2);
+case 514:
+return(2);
+case 515:
+return(2);
+case 516:
+return(2);
+case 517:
+return(2);
+case 518:
+return(2);
+case 519:
+return(4);
+case 520:
+return(2);
+case 521:
+return(2);
+case 522:
+return(2);
+case 523:
+return(50);
+case 524:
+return(40);
+case 525:
+return(40);
+case 526:
+return(100);
+case 527:
+return(50);
+case 528:
+return(50);
+case 529:
+return(1000);
+case 530:
+return(20);
+case 531:
+return(10);
+case 532:
+return(20);
+case 533:
+return(10);
+case 534:
+return(10);
+case 535:
+return(2);
+case 536:
+return(20);
+case 537:
+return(10);
+case 538:
+return(2);
+case 539:
+return(10);
+case 540:
+return(2);
+case 541:
+return(50);
+case 542:
+return(2);
+case 543:
+return(2);
+case 544:
+return(10);
+case 545:
+return(10);
+case 546:
+return(2);
+case 547:
+return(2);
+case 548:
+return(2);
+case 549:
+return(100);
+case 550:
+return(5);
+case 551:
+return(5);
+case 552:
+return(10);
+case 553:
+return(50);
+case 554:
+return(20);
+case 555:
+return(20);
+case 556:
+return(2);
+case 557:
+return(50);
+case 558:
+return(25);
+case 559:
+return(100);
+case 560:
+return(100);
+case 561:
+return(100);
+case 562:
+return(10);
+case 563:
+return(5);
+case 564:
+return(90000);
+case 565:
+return(25);
+case 566:
+return(25);
+case 567:
+return(50);
+case 568:
+return(25);
+case 569:
+return(25);
+case 570:
+return(25);
+case 571:
+return(25);
+case 572:
+return(50);
+case 573:
+return(2);
+case 574:
+return(5);
+case 575:
+return(50);
+case 576:
+return(10);
+case 577:
+return(50);
+case 578:
+return(50);
+case 579:
+return(5);
+case 580:
+return(10);
+case 581:
+return(10);
+case 583:
+return(10);
+case 584:
+return(10);
+case 585:
+return(2);
+case 586:
+return(2);
+case 590:
+return(5);
+case 1000:
+return(5);
+case 1001:
+return(5);
+case 1002:
+return(5);
+case 1003:
+return(5);
+case 1010:
+return(10);
+case 1011:
+return(10);
+case 1012:
+return(10);
+case 1013:
+return(10);
+case 1014:
+return(10);
+case 1030:
+return(20);
+case 1031:
+return(20);
+case 1032:
+return(20);
+case 1033:
+return(20);
+case 1034:
+return(20);
+case 1040:
+return(50);
+case 1041:
+return(50);
+case 1042:
+return(50);
+case 1043:
+return(50);
+case 1044:
+return(50);
+case 1050:
+return(100);
+case 1051:
+return(100);
+case 1052:
+return(100);
+case 1060:
+return(250);
+case 1061:
+return(250);
+case 1062:
+return(250);
+case 1200:
+return(5);
+case 1203:
+return(25);
+case 1204:
+return(5);
+case 1205:
+return(2);
+case 1206:
+return(10);
+case 1207:
+return(15);
+case 1208:
+return(25);
+case 1209:
+return(25);
+case 1212:
+return(50);
+case 1213:
+return(100);
+case 1220:
+return(5);
+case 1221:
+return(5);
+case 1222:
+return(10);
+case 1223:
+return(3);
+case 1224:
+return(5);
+case 1260:
+return(40);
+case 1261:
+return(10);
+case 1262:
+return(30);
+case 1268:
+return(100);
+case 1270:
+return(30);
+case 1271:
+return(100);
+case 1272:
+return(10);
+case 1273:
+return(100);
+case 1274:
+return(20);
+case 1275:
+return(20);
+case 1276:
+return(20);
+case 1277:
+return(30);
+case 1278:
+return(50);
+case 1279:
+return(100);
+case 1280:
+return(10);
+case 1281:
+return(3);
+case 1282:
+return(10);
+case 1283:
+return(15);
+case 1284:
+return(20);
+case 1285:
+return(50);
+case 1286:
+return(100);
+case 1287:
+return(2);
+case 1288:
+return(5);
+case 1289:
+return(5);
+case 1290:
+return(30);
+case 1291:
+return(10);
+case 1294:
+return(20);
+case 1295:
+return(10);
+case 1296:
+return(20);
+case 1299:
+return(10);
+case 1300:
+return(20);
+case 1301:
+return(30);
+case 1400:
+return(10);
+case 1401:
+return(10);
+case 1402:
+return(10);
+case 1403:
+return(100);
+case 1404:
+return(250);
+case 1405:
+return(5000);
+case 1406:
+return(15);
+case 1407:
+return(20);
+case 1408:
+return(300);
+case 1409:
+return(50);
+case 1410:
+return(50);
+case 1411:
+return(50);
+case 1412:
+return(50);
+case 1413:
+return(50);
+case 1414:
+return(20);
+case 1415:
+return(100);
+case 1416:
+return(100);
+case 1417:
+return(100);
+case 1418:
+return(5);
+case 1419:
+return(5);
+case 1420:
+return(5);
+case 1421:
+return(5);
+case 1422:
+return(50);
+case 1423:
+return(50);
+case 1424:
+return(50);
+case 1425:
+return(50);
+case 1426:
+return(1000);
+case 1427:
+return(1000);
+case 1428:
+return(1000);
+case 1430:
+return(20);
+case 1431:
+return(60);
+case 1432:
+return(400);
+case 1433:
+return(10);
+case 1434:
+return(50);
+case 1435:
+return(10);
+case 1436:
+return(10);
+case 1437:
+return(80);
+case 1438:
+return(100);
+case 1439:
+return(150);
+case 1440:
+return(20);
+case 1441:
+return(50);
+case 1442:
+return(750);
+case 1443:
+return(20);
+case 1444:
+return(10);
+case 1445:
+return(5);
+case 1900:
+return(25);
+case 1901:
+return(1000);
+case 1902:
+return(2000);
+case 1903:
+return(4000);
+case 1904:
+return(8000);
+case 1905:
+return(16000);
+case 1906:
+return(32000);
+case 1907:
+return(64000);
+case 1908:
+return(128000);
+case 1909:
+return(256000);
+case 1911:
+return(250);
+case 1912:
+return(500);
+case 1913:
+return(1000);
+case 1914:
+return(2100);
+case 1915:
+return(4000);
+case 1916:
+return(8000);
+case 1917:
+return(16000);
+case 1918:
+return(32000);
+case 1919:
+return(64000);
+case 1921:
+return(250);
+case 1922:
+return(500);
+case 1923:
+return(1000);
+case 1924:
+return(2000);
+case 1925:
+return(4000);
+case 1926:
+return(8000);
+case 1927:
+return(16000);
+case 1928:
+return(32000);
+case 1929:
+return(60000);
+case 1930:
+return(400000);
+case 1990:
+return(1000);
+case 1991:
+return(4000);
+case 1992:
+return(45000);
+case 2001:
+return(2);
+case 2002:
+return(2);
+case 2003:
+return(20);
+case 2004:
+return(2);
+case 2005:
+return(2);
+case 2021:
+return(20);
+case 2022:
+return(100);
+case 2023:
+return(100);
+case 2024:
+return(20);
+case 2025:
+return(20);
+case 2028:
+return(100);
+case 2029:
+return(20);
+case 2080:
+return(20);
+case 2101:
+return(200);
+case 2102:
+return(200);
+case 2103:
+return(3);
+case 2105:
+return(5);
+case 2121:
+return(50);
+case 2122:
+return(1000);
+case 2123:
+return(200);
+case 2124:
+return(25);
+case 2125:
+return(80);
+case 2126:
+return(2000);
+case 2127:
+return(1000);
+case 2128:
+return(100000);
+case 2129:
+return(15);
+case 2150:
+return(10);
+case 2151:
+return(10);
+case 2152:
+return(10);
+case 2153:
+return(10);
+case 2154:
+return(10);
+case 2160:
+return(100);
+case 2161:
+return(100);
+case 2162:
+return(100);
+case 2163:
+return(100);
+case 2164:
+return(100);
+case 2180:
+return(450);
+case 2181:
+return(50);
+case 2182:
+return(150);
+case 2183:
+return(2000);
+case 2200:
+return(50);
+case 2201:
+return(50);
+case 2202:
+return(50);
+case 2203:
+return(200);
+case 2204:
+return(20);
+case 2205:
+return(20);
+case 2206:
+return(20);
+case 2207:
+return(50);
+case 2208:
+return(100);
+case 2209:
+return(20);
+case 2210:
+return(20);
+case 2211:
+return(20);
+case 2212:
+return(20);
+case 2213:
+return(50);
+case 2214:
+return(50);
+case 2215:
+return(50);
+case 2300:
+return(200);
+case 2301:
+return(200);
+case 2302:
+return(200);
+case 2303:
+return(500);
+case 2304:
+return(100);
+case 2305:
+return(100);
+case 2306:
+return(100);
+case 2308:
+return(300);
+case 2309:
+return(100);
+case 2310:
+return(100);
+case 2311:
+return(100);
+case 2312:
+return(100);
+case 2314:
+return(200);
+case 2315:
+return(200);
+case 4000:
+return(100);
+case 4001:
+return(1000);
+case 4002:
+return(100);
+case 4003:
+return(2000);
+case 4004:
+return(50);
+case 4005:
+return(500);
+case 4006:
+return(100);
+case 4007:
+return(1000);
+case 4008:
+return(20);
+case 4009:
+return(200);
+case 4010:
+return(50);
+case 4011:
+return(2500);
+case 4012:
+return(2000);
+case 4013:
+return(50000);
+case 4014:
+return(100000);
+case 4015:
+return(100000);
+case 4016:
+return(500000);
+case 4017:
+return(500000);
+case 4018:
+return(500000);
+case 4019:
+return(2500);
+case 4020:
+return(5);
+case 4021:
+return(2);
+case 4022:
+return(10);
+case 4023:
+return(10);
+case 4024:
+return(100);
+case 4025:
+return(10);
+case 4026:
+return(1000);
+case 4027:
+return(50);
+case 4028:
+return(50);
+case 4029:
+return(50);
+case 4030:
+return(50);
+case 4031:
+return(100);
+case 4032:
+return(170);
+case 4040:
+return(1000);
+case 4050:
+return(10);
+case 4051:
+return(50);
+case 4052:
+return(2000);
+case 4053:
+return(8000);
+case 4054:
+return(25000);
+case 4055:
+return(100000);
+case 4056:
+return(500);
+case 4057:
+return(50);
+case 4058:
+return(100);
+case 4059:
+return(100);
+case 4060:
+return(100);
+case 4061:
+return(100);
+case 4062:
+return(100);
+case 4063:
+return(100);
+case 4064:
+return(100);
+case 4065:
+return(5000);
+case 4066:
+return(1000);
+case 4070:
+return(500000);
+case 4071:
+return(100000);
+case 4100:
+return(60000);
+case 4101:
+return(75000);
+case 4102:
+return(175000);
+case 4103:
+return(475000);
+case 4104:
+return(2025000);
+case 4105:
+return(37500);
+case 4106:
+return(75000);
+case 4107:
+return(125000);
+case 4108:
+return(275000);
+case 4109:
+return(1050000);
+case 4200:
+return(70000);
+case 4201:
+return(8000);
+case 4202:
+return(8000);
+case 4203:
+return(8000);
+case 4204:
+return(8000);
+case 4205:
+return(8000);
+case 4206:
+return(8000);
+case 4207:
+return(8000);
+case 4221:
+return(20000);
+case 4222:
+return(20000);
+case 4223:
+return(20000);
+case 4224:
+return(20000);
+case 4225:
+return(20000);
+case 4226:
+return(20000);
+case 4227:
+return(20000);
+case 4300:
+return(1000000);
+case 4301:
+return(1000000);
+case 4311:
+return(50000);
+case 4312:
+return(50000);
+case 4313:
+return(50000);
+case 4314:
+return(50000);
+case 4315:
+return(50000);
+case 4316:
+return(50000);
+case 4317:
+return(50000);
+case 4318:
+return(50000);
+case 4319:
+return(50000);
+case 4321:
+return(50000);
+case 4322:
+return(50000);
+case 4323:
+return(50000);
+case 4324:
+return(50000);
+case 4325:
+return(50000);
+case 4326:
+return(50000);
+case 4327:
+return(50000);
+case 4328:
+return(50000);
+case 4329:
+return(50000);
+case 4330:
+return(50000);
+case 4331:
+return(50000);
+case 4400:
+return(1050000000);
+case 4410:
+return(9000000);
+case 4411:
+return(65000000);
+case 4412:
+return(375000000);
+case 4413:
+return(1000000);
+case 4414:
+return(10000);
+case 4500:
+return(2500);
+case 4501:
+return(2000);
+case 4503:
+return(25000);
+case 4504:
+return(20000);
+case 4520:
+return(10000);
+case 4521:
+return(25000);
+case 4522:
+return(100000);
+case 4523:
+return(500000);
+case 4524:
+return(1000000);
+case 4525:
+return(1000000);
+case 4526:
+return(10000000);
+case 4527:
+return(150000);
+case 4540:
+return(2500);
+case 4541:
+return(7000);
+case 4542:
+return(25000);
+case 4560:
+return(15000);
+case 4561:
+return(50000);
+case 4562:
+return(300000);
+case 4563:
+return(500000);
+case 4564:
+return(2500000);
+case 4565:
+return(500000);
+case 4580:
+return(5000);
+case 4581:
+return(25000);
+case 4582:
+return(250000);
+case 4600:
+return(10000);
+case 4601:
+return(50000);
+case 4602:
+return(100000);
+case 4603:
+return(500000);
+case 4604:
+return(75000);
+case 4605:
+return(1000000);
+case 4606:
+return(5000000);
+case 4607:
+return(1000000);
+case 4608:
+return(300000);
+case 4620:
+return(10000);
+case 4621:
+return(10000);
+case 4622:
+return(50000);
+case 4623:
+return(250000);
+case 4624:
+return(1000000);
+case 4640:
+return(10000);
+case 4641:
+return(10000);
+case 4642:
+return(50000);
+case 4643:
+return(250000);
+case 4644:
+return(1000000);
+case 4660:
+return(10000);
+case 4661:
+return(20000);
+case 4662:
+return(25000);
+case 4663:
+return(50000);
+case 4664:
+return(100000);
+case 4665:
+return(500000);
+case 4666:
+return(1000000);
+case 4667:
+return(2500000);
+case 4680:
+return(5000);
+case 4681:
+return(25000);
+case 4682:
+return(100000);
+case 4683:
+return(500000);
+case 4684:
+return(5000000);
+case 4700:
+return(20000);
+case 4701:
+return(100000);
+case 4702:
+return(500000);
+case 4703:
+return(750000);
+case 4704:
+return(1000000);
+case 4720:
+return(5000);
+case 4721:
+return(10000);
+case 4722:
+return(50000);
+case 4740:
+return(50000);
+case 4741:
+return(100000);
+case 4742:
+return(250000);
+case 4743:
+return(1000000);
+case 4760:
+return(250000);
+case 4761:
+return(500000);
+case 4762:
+return(1000000);
+case 4763:
+return(300000);
+case 4764:
+return(500000);
+case 4765:
+return(1000000);
+case 4780:
+return(10000);
+case 4781:
+return(25000);
+case 4782:
+return(100000);
+case 4783:
+return(500000);
+case 4800:
+return(20000);
+case 4801:
+return(100000);
+case 4802:
+return(500000);
+case 5000:
+return(25000);
+case 5001:
+return(30000);
+case 5002:
+return(70000);
+case 5003:
+return(190000);
+case 5004:
+return(810000);
+case 5010:
+return(62500);
+case 5011:
+return(100000);
+case 5012:
+return(200000);
+case 5013:
+return(500000);
+case 5014:
+return(2050000);
+case 5020:
+return(62500);
+case 5021:
+return(100000);
+case 5022:
+return(200000);
+case 5023:
+return(500000);
+case 5024:
+return(2050000);
+case 5025:
+return(10000000);
+case 5030:
+return(62500);
+case 5031:
+return(100000);
+case 5032:
+return(200000);
+case 5033:
+return(500000);
+case 5034:
+return(2050000);
+case 5040:
+return(112500);
+case 5041:
+return(150000);
+case 5042:
+return(300000);
+case 5043:
+return(750000);
+case 5044:
+return(3075000);
+case 5050:
+return(112500);
+case 5051:
+return(150000);
+case 5052:
+return(300000);
+case 5053:
+return(750000);
+case 5054:
+return(3075000);
+case 5060:
+return(137500);
+case 5061:
+return(175000);
+case 5062:
+return(375000);
+case 5063:
+return(975000);
+case 5064:
+return(4075000);
+case 5070:
+return(112500);
+case 5071:
+return(150000);
+case 5072:
+return(300000);
+case 5073:
+return(750000);
+case 5074:
+return(3075000);
+case 5080:
+return(4500000);
+case 5081:
+return(6750000);
+case 5082:
+return(11750000);
+case 5083:
+return(26750000);
+case 5084:
+return(107250000);
+case 5090:
+return(4500000);
+case 5091:
+return(6750000);
+case 5092:
+return(11750000);
+case 5093:
+return(26750000);
+case 5094:
+return(107250000);
+case 5200:
+return(25000);
+case 5201:
+return(40000);
+case 5202:
+return(170000);
+case 5203:
+return(100);
+case 5204:
+return(700);
+case 5210:
+return(170000);
+case 5211:
+return(10000);
+case 5212:
+return(1000000);
+case 5213:
+return(15000);
+case 5214:
+return(2000000);
+case 5400:
+return(150000);
+case 5401:
+return(500000);
+case 5402:
+return(1500000);
+case 5403:
+return(1500000);
+case 5404:
+return(1000000);
+case 5420:
+return(2500000);
+case 5421:
+return(10000000);
+case 5430:
+return(2000000);
+case 5431:
+return(5000000);
+case 5500:
+return(100000);
+case 5501:
+return(200000);
+case 5502:
+return(300000);
+case 5503:
+return(600000);
+case 5504:
+return(2175000);
+case 5510:
+return(145000);
+case 5511:
+return(200000);
+case 5512:
+return(400000);
+case 5513:
+return(1000000);
+case 5514:
+return(4100000);
+case 5520:
+return(175000);
+case 5521:
+return(350000);
+case 5522:
+return(550000);
+case 5523:
+return(1150000);
+case 5524:
+return(4250000);
+case 5530:
+return(265000);
+case 5531:
+return(350000);
+case 5532:
+return(750000);
+case 5533:
+return(1950000);
+case 5534:
+return(8150000);
+case 5540:
+return(415000);
+case 5541:
+return(650000);
+case 5542:
+return(1250000);
+case 5543:
+return(3050000);
+case 5544:
+return(12350000);
+case 5550:
+return(385000);
+case 5551:
+return(500000);
+case 5552:
+return(1100000);
+case 5553:
+return(2900000);
+case 5554:
+return(12200000);
+case 5560:
+return(745000);
+case 5561:
+return(950000);
+case 5562:
+return(2150000);
+case 5563:
+return(5750000);
+case 5564:
+return(24350000);
+case 5570:
+return(1330000);
+case 5571:
+return(1850000);
+case 5572:
+return(3950000);
+case 5573:
+return(10250000);
+case 5574:
+return(42800000);
+case 5580:
+return(125000);
+case 5581:
+return(250000);
+case 5582:
+return(60000);
+case 5585:
+return(50000);
+case 5586:
+return(50000);
+case 5600:
+return(0);
+case 5601:
+return(0);
+case 5602:
+return(0);
+case 5611:
+return(0);
+case 5612:
+return(0);
+case 5613:
+return(5000);
+case 5614:
+return(5000);
+case 5620:
+return(5000);
+case 5621:
+return(10000);
+case 5622:
+return(50000);
+case 5623:
+return(250000);
+case 5700:
+return(5000);
+case 5701:
+return(5000);
+case 5702:
+return(5000);
+case 5720:
+return(5000);
+case 5721:
+return(5000);
+case 5722:
+return(5000);
+case 5723:
+return(5000);
+case 5800:
+return(4500000);
+case 5801:
+return(6750000);
+case 5802:
+return(11750000);
+case 5803:
+return(26750000);
+case 5804:
+return(104250000);
+case 5810:
+return(14250000);
+case 5811:
+return(26250000);
+case 5812:
+return(36250000);
+case 5813:
+return(66250000);
+case 5814:
+return(221250000);
+case 5820:
+return(9000000);
+case 5821:
+return(13500000);
+case 5822:
+return(23500000);
+case 5823:
+return(53500000);
+case 5824:
+return(208500000);
+case 5830:
+return(31200000);
+case 5831:
+return(56700000);
+case 5832:
+return(76700000);
+case 5833:
+return(136700000);
+case 5834:
+return(446700000);
+case 5900:
+return(50000);
+case 5901:
+return(125000);
+case 5902:
+return(200000);
+case 5903:
+return(425000);
+case 5904:
+return(1100000);
+case 5905:
+return(4800000);
+case 5910:
+return(400000);
+case 5911:
+return(1000000);
+case 7000:
+return(6500);
+case 7001:
+return(16000);
+case 7002:
+return(6500);
+case 7003:
+return(19000);
+case 7004:
+return(11000);
+case 7005:
+return(10000);
+case 7006:
+return(10000);
+case 7007:
+return(10000);
+case 7008:
+return(20000);
+case 7009:
+return(5000);
+case 7100:
+return(20000);
+case 7101:
+return(26500);
+case 7102:
+return(33000);
+case 7103:
+return(54000);
+case 7104:
+return(68000);
+case 7105:
+return(107500);
+case 7106:
+return(62500);
+case 7107:
+return(40000);
+case 7108:
+return(54000);
+case 7109:
+return(62500);
+case 7110:
+return(25000);
+case 7111:
+return(25000);
+case 7200:
+return(95000);
+case 7201:
+return(125000);
+case 7202:
+return(125000);
+case 7203:
+return(545000);
+case 7204:
+return(100000);
+case 7205:
+return(210000);
+case 7206:
+return(125000);
+case 7207:
+return(400000);
+case 7300:
+return(1750000);
+case 7301:
+return(1250000);
+case 7302:
+return(1180000);
+case 7303:
+return(590000);
+case 7304:
+return(1090000);
+case 7305:
+return(2500000);
+case 7306:
+return(7500000);
+case 7400:
+return(500);
+case 7401:
+return(200);
+case 7402:
+return(300);
+case 7403:
+return(10);
+case 11000:
+return(0);
+case 11010:
+return(135000);
+case 11011:
+return(435000);
+case 11020:
+return(140000);
+case 11021:
+return(440000);
+case 11030:
+return(350000);
+case 11031:
+return(650000);
+case 11040:
+return(900000);
+case 11041:
+return(1600000);
+case 11042:
+return(25350000);
+case 11050:
+return(900000);
+case 11060:
+return(900000);
+case 11070:
+return(1015000);
+case 11200:
+return(1560000);
+case 11210:
+return(400000);
+case 11211:
+return(1100000);
+case 11220:
+return(2225000);
+case 11230:
+return(905000);
+case 11231:
+return(7575000);
+case 11241:
+return(20550000);
+case 11300:
+return(1335000);
+case 11301:
+return(2985000);
+case 11310:
+return(180000);
+case 11311:
+return(47850000);
+case 11501:
+return(27500000);
+case 11502:
+return(62500000);
+case 11520:
+return(22000000);
+case 11521:
+return(50000000);
+case 11600:
+return(2335000);
+case 11601:
+return(2725000);
+case 11602:
+return(21070000);
+case 28501:
+return(50000);
+case 28502:
+return(50000);
+case 28503:
+return(50000);
+case 28504:
+return(50000);
+case 28505:
+return(50000);
+case 28506:
+return(50000);
+case 28507:
+return(50000);
+case 28508:
+return(50000);
+case 28800:
+return(1);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
 }
         return (_recipeID);
         }
+
+  function marketSize(_value) {
+  switch (_value) {
+  case-32:
+return(0);
+case-31:
+return(0);
+case-30:
+return(0);
+case-29:
+return(0);
+case-28:
+return(0);
+case-27:
+return(0);
+case-26:
+return(0);
+case-25:
+return(0);
+case-24:
+return(0);
+case-23:
+return(0);
+case-22:
+return(0);
+case-21:
+return(0);
+case-20:
+return(0);
+case-19:
+return(0);
+case-18:
+return(0);
+case-17:
+return(0);
+case-16:
+return(0);
+case-15:
+return(0);
+case-14:
+return(0);
+case-13:
+return(0);
+case-12:
+return(0);
+case-11:
+return(0);
+case-10:
+return(0);
+case-8:
+return(0);
+case-7:
+return(0);
+case-6:
+return(0);
+case-5:
+return(0);
+case-4:
+return(0);
+case-3:
+return(0);
+case-2:
+return(0);
+case-1:
+return(0);
+case0:
+return(0);
+case1:
+return(0);
+case2:
+return(0);
+case3:
+return(0);
+case4:
+return(0);
+case11:
+return(0);
+case12:
+return(0);
+case13:
+return(0);
+case14:
+return(0);
+case21:
+return(0);
+case22:
+return(0);
+case23:
+return(0);
+case31:
+return(0);
+case32:
+return(0);
+case33:
+return(0);
+case34:
+return(0);
+case41:
+return(0);
+case42:
+return(0);
+case43:
+return(0);
+case44:
+return(0);
+case51:
+return(0);
+case52:
+return(0);
+case53:
+return(0);
+case61:
+return(0);
+case62:
+return(0);
+case63:
+return(0);
+case64:
+return(0);
+case70:
+return(0);
+case71:
+return(0);
+case72:
+return(0);
+case80:
+return(0);
+case81:
+return(0);
+case82:
+return(0);
+case501:
+return(20);
+case502:
+return(20);
+case503:
+return(20);
+case504:
+return(20);
+case505:
+return(20);
+case506:
+return(20);
+case507:
+return(20);
+case508:
+return(20);
+case509:
+return(20);
+case510:
+return(20);
+case511:
+return(20);
+case512:
+return(20);
+case513:
+return(20);
+case514:
+return(20);
+case515:
+return(20);
+case516:
+return(20);
+case517:
+return(20);
+case518:
+return(20);
+case519:
+return(20);
+case520:
+return(20);
+case521:
+return(20);
+case522:
+return(20);
+case523:
+return(10);
+case524:
+return(10);
+case525:
+return(10);
+case526:
+return(10);
+case527:
+return(10);
+case528:
+return(10);
+case529:
+return(0);
+case530:
+return(20);
+case531:
+return(20);
+case532:
+return(20);
+case533:
+return(20);
+case534:
+return(20);
+case535:
+return(20);
+case536:
+return(10);
+case537:
+return(10);
+case538:
+return(20);
+case539:
+return(20);
+case540:
+return(20);
+case541:
+return(20);
+case542:
+return(20);
+case543:
+return(20);
+case544:
+return(20);
+case545:
+return(20);
+case546:
+return(10);
+case547:
+return(10);
+case548:
+return(5);
+case549:
+return(5);
+case550:
+return(20);
+case551:
+return(20);
+case552:
+return(20);
+case553:
+return(20);
+case554:
+return(20);
+case555:
+return(20);
+case556:
+return(10);
+case557:
+return(10);
+case558:
+return(10);
+case559:
+return(10);
+case560:
+return(5);
+case561:
+return(5);
+case562:
+return(5);
+case563:
+return(5);
+case564:
+return(2);
+case565:
+return(5);
+case566:
+return(5);
+case567:
+return(5);
+case568:
+return(5);
+case569:
+return(5);
+case570:
+return(5);
+case571:
+return(5);
+case572:
+return(5);
+case573:
+return(5);
+case574:
+return(5);
+case575:
+return(5);
+case576:
+return(20);
+case577:
+return(10);
+case578:
+return(10);
+case579:
+return(5);
+case580:
+return(5);
+case581:
+return(5);
+case583:
+return(5);
+case584:
+return(5);
+case585:
+return(5);
+case586:
+return(5);
+case590:
+return(5);
+case1000:
+return(10);
+case1001:
+return(10);
+case1002:
+return(10);
+case1003:
+return(10);
+case1010:
+return(10);
+case1011:
+return(10);
+case1012:
+return(10);
+case1013:
+return(10);
+case1014:
+return(10);
+case1030:
+return(10);
+case1031:
+return(10);
+case1032:
+return(10);
+case1033:
+return(10);
+case1034:
+return(10);
+case1040:
+return(10);
+case1041:
+return(10);
+case1042:
+return(10);
+case1043:
+return(10);
+case1044:
+return(10);
+case1050:
+return(10);
+case1051:
+return(10);
+case1052:
+return(10);
+case1060:
+return(10);
+case1061:
+return(10);
+case1062:
+return(10);
+case1200:
+return(10);
+case1203:
+return(5);
+case1204:
+return(5);
+case1205:
+return(5);
+case1206:
+return(5);
+case1207:
+return(5);
+case1208:
+return(5);
+case1209:
+return(5);
+case1212:
+return(5);
+case1213:
+return(5);
+case1220:
+return(5);
+case1221:
+return(5);
+case1222:
+return(5);
+case1223:
+return(5);
+case1224:
+return(5);
+case1260:
+return(5);
+case1261:
+return(5);
+case1262:
+return(5);
+case1268:
+return(5);
+case1270:
+return(5);
+case1271:
+return(5);
+case1272:
+return(5);
+case1273:
+return(5);
+case1274:
+return(5);
+case1275:
+return(5);
+case1276:
+return(5);
+case1277:
+return(5);
+case1278:
+return(5);
+case1279:
+return(5);
+case1280:
+return(5);
+case1281:
+return(5);
+case1282:
+return(5);
+case1283:
+return(5);
+case1284:
+return(5);
+case1285:
+return(5);
+case1286:
+return(5);
+case1287:
+return(5);
+case1288:
+return(5);
+case1289:
+return(5);
+case1290:
+return(5);
+case1291:
+return(5);
+case1294:
+return(5);
+case1295:
+return(5);
+case1296:
+return(5);
+case1299:
+return(5);
+case1300:
+return(5);
+case1301:
+return(5);
+case1400:
+return(10);
+case1401:
+return(10);
+case1402:
+return(5);
+case1403:
+return(2);
+case1404:
+return(2);
+case1405:
+return(2);
+case1406:
+return(5);
+case1407:
+return(2);
+case1408:
+return(2);
+case1409:
+return(1);
+case1410:
+return(1);
+case1411:
+return(1);
+case1412:
+return(2);
+case1413:
+return(2);
+case1414:
+return(2);
+case1415:
+return(1);
+case1416:
+return(1);
+case1417:
+return(1);
+case1418:
+return(10);
+case1419:
+return(5);
+case1420:
+return(5);
+case1421:
+return(5);
+case1422:
+return(5);
+case1423:
+return(5);
+case1424:
+return(5);
+case1425:
+return(5);
+case1426:
+return(5);
+case1427:
+return(5);
+case1428:
+return(5);
+case1430:
+return(10);
+case1431:
+return(10);
+case1432:
+return(10);
+case1433:
+return(5);
+case1434:
+return(5);
+case1435:
+return(5);
+case1436:
+return(5);
+case1437:
+return(5);
+case1438:
+return(5);
+case1439:
+return(10);
+case1440:
+return(5);
+case1441:
+return(5);
+case1442:
+return(5);
+case1443:
+return(10);
+case1444:
+return(5);
+case1445:
+return(0);
+case1900:
+return(10);
+case1901:
+return(1);
+case1902:
+return(1);
+case1903:
+return(1);
+case1904:
+return(1);
+case1905:
+return(1);
+case1906:
+return(1);
+case1907:
+return(1);
+case1908:
+return(1);
+case1909:
+return(1);
+case1911:
+return(1);
+case1912:
+return(1);
+case1913:
+return(1);
+case1914:
+return(1);
+case1915:
+return(1);
+case1916:
+return(1);
+case1917:
+return(1);
+case1918:
+return(1);
+case1919:
+return(1);
+case1921:
+return(1);
+case1922:
+return(1);
+case1923:
+return(1);
+case1924:
+return(1);
+case1925:
+return(1);
+case1926:
+return(1);
+case1927:
+return(1);
+case1928:
+return(1);
+case1929:
+return(1);
+case1930:
+return(1);
+case1990:
+return(1);
+case1991:
+return(1);
+case1992:
+return(1);
+case2001:
+return(100);
+case2002:
+return(100);
+case2003:
+return(20);
+case2004:
+return(20);
+case2005:
+return(20);
+case2021:
+return(20);
+case2022:
+return(20);
+case2023:
+return(20);
+case2024:
+return(20);
+case2025:
+return(20);
+case2028:
+return(10);
+case2029:
+return(20);
+case2080:
+return(20);
+case2101:
+return(10);
+case2102:
+return(10);
+case2103:
+return(20);
+case2105:
+return(20);
+case2121:
+return(20);
+case2122:
+return(20);
+case2123:
+return(20);
+case2124:
+return(20);
+case2125:
+return(20);
+case2126:
+return(20);
+case2127:
+return(20);
+case2128:
+return(20);
+case2129:
+return(20);
+case2150:
+return(20);
+case2151:
+return(20);
+case2152:
+return(20);
+case2153:
+return(20);
+case2154:
+return(20);
+case2160:
+return(20);
+case2161:
+return(20);
+case2162:
+return(20);
+case2163:
+return(20);
+case2164:
+return(20);
+case2180:
+return(20);
+case2181:
+return(20);
+case2182:
+return(20);
+case2183:
+return(0);
+case2200:
+return(10);
+case2201:
+return(10);
+case2202:
+return(10);
+case2203:
+return(10);
+case2204:
+return(10);
+case2205:
+return(10);
+case2206:
+return(10);
+case2207:
+return(10);
+case2208:
+return(10);
+case2209:
+return(10);
+case2210:
+return(10);
+case2211:
+return(10);
+case2212:
+return(10);
+case2213:
+return(10);
+case2214:
+return(20);
+case2215:
+return(20);
+case2300:
+return(10);
+case2301:
+return(10);
+case2302:
+return(10);
+case2303:
+return(10);
+case2304:
+return(10);
+case2305:
+return(10);
+case2306:
+return(10);
+case2308:
+return(10);
+case2309:
+return(10);
+case2310:
+return(10);
+case2311:
+return(10);
+case2312:
+return(10);
+case2314:
+return(5);
+case2315:
+return(5);
+case4000:
+return(10);
+case4001:
+return(5);
+case4002:
+return(20);
+case4003:
+return(10);
+case4004:
+return(25);
+case4005:
+return(25);
+case4006:
+return(25);
+case4007:
+return(25);
+case4008:
+return(10);
+case4009:
+return(20);
+case4010:
+return(15);
+case4011:
+return(10);
+case4012:
+return(10);
+case4013:
+return(2);
+case4014:
+return(2);
+case4015:
+return(2);
+case4016:
+return(2);
+case4017:
+return(2);
+case4018:
+return(2);
+case4019:
+return(5);
+case4020:
+return(1);
+case4021:
+return(1);
+case4022:
+return(1);
+case4023:
+return(1);
+case4024:
+return(2);
+case4025:
+return(5);
+case4026:
+return(2);
+case4027:
+return(2);
+case4028:
+return(2);
+case4029:
+return(2);
+case4030:
+return(2);
+case4031:
+return(2);
+case4032:
+return(2);
+case4040:
+return(0);
+case4050:
+return(10);
+case4051:
+return(10);
+case4052:
+return(10);
+case4053:
+return(10);
+case4054:
+return(10);
+case4055:
+return(10);
+case4056:
+return(10);
+case4057:
+return(10);
+case4058:
+return(10);
+case4059:
+return(10);
+case4060:
+return(10);
+case4061:
+return(10);
+case4062:
+return(10);
+case4063:
+return(10);
+case4064:
+return(10);
+case4065:
+return(0);
+case4066:
+return(0);
+case4070:
+return(0);
+case4071:
+return(0);
+case4100:
+return(5);
+case4101:
+return(5);
+case4102:
+return(5);
+case4103:
+return(5);
+case4104:
+return(5);
+case4105:
+return(5);
+case4106:
+return(5);
+case4107:
+return(5);
+case4108:
+return(5);
+case4109:
+return(5);
+case4200:
+return(5);
+case4201:
+return(5);
+case4202:
+return(5);
+case4203:
+return(5);
+case4204:
+return(5);
+case4205:
+return(5);
+case4206:
+return(5);
+case4207:
+return(5);
+case4221:
+return(5);
+case4222:
+return(5);
+case4223:
+return(5);
+case4224:
+return(5);
+case4225:
+return(5);
+case4226:
+return(5);
+case4227:
+return(5);
+case4300:
+return(5);
+case4301:
+return(5);
+case4311:
+return(5);
+case4312:
+return(5);
+case4313:
+return(5);
+case4314:
+return(5);
+case4315:
+return(5);
+case4316:
+return(5);
+case4317:
+return(5);
+case4318:
+return(5);
+case4319:
+return(5);
+case4321:
+return(5);
+case4322:
+return(5);
+case4323:
+return(5);
+case4324:
+return(5);
+case4325:
+return(5);
+case4326:
+return(5);
+case4327:
+return(5);
+case4328:
+return(5);
+case4329:
+return(5);
+case4330:
+return(5);
+case4331:
+return(5);
+case4400:
+return(5);
+case4410:
+return(5);
+case4411:
+return(5);
+case4412:
+return(5);
+case4413:
+return(5);
+case4414:
+return(5);
+case4500:
+return(20);
+case4501:
+return(20);
+case4503:
+return(20);
+case4504:
+return(20);
+case4520:
+return(20);
+case4521:
+return(20);
+case4522:
+return(20);
+case4523:
+return(20);
+case4524:
+return(20);
+case4525:
+return(20);
+case4526:
+return(20);
+case4527:
+return(20);
+case4540:
+return(20);
+case4541:
+return(20);
+case4542:
+return(20);
+case4560:
+return(20);
+case4561:
+return(20);
+case4562:
+return(20);
+case4563:
+return(20);
+case4564:
+return(20);
+case4565:
+return(20);
+case4580:
+return(20);
+case4581:
+return(20);
+case4582:
+return(20);
+case4600:
+return(20);
+case4601:
+return(20);
+case4602:
+return(20);
+case4603:
+return(20);
+case4604:
+return(20);
+case4605:
+return(20);
+case4606:
+return(20);
+case4607:
+return(20);
+case4608:
+return(20);
+case4620:
+return(20);
+case4621:
+return(20);
+case4622:
+return(20);
+case4623:
+return(20);
+case4624:
+return(20);
+case4640:
+return(20);
+case4641:
+return(20);
+case4642:
+return(20);
+case4643:
+return(20);
+case4644:
+return(20);
+case4660:
+return(20);
+case4661:
+return(20);
+case4662:
+return(20);
+case4663:
+return(20);
+case4664:
+return(20);
+case4665:
+return(20);
+case4666:
+return(20);
+case4667:
+return(20);
+case4680:
+return(20);
+case4681:
+return(20);
+case4682:
+return(20);
+case4683:
+return(20);
+case4684:
+return(20);
+case4700:
+return(20);
+case4701:
+return(20);
+case4702:
+return(20);
+case4703:
+return(20);
+case4704:
+return(20);
+case4720:
+return(20);
+case4721:
+return(20);
+case4722:
+return(20);
+case4740:
+return(20);
+case4741:
+return(20);
+case4742:
+return(20);
+case4743:
+return(20);
+case4760:
+return(20);
+case4761:
+return(20);
+case4762:
+return(20);
+case4763:
+return(20);
+case4764:
+return(20);
+case4765:
+return(20);
+case4780:
+return(20);
+case4781:
+return(20);
+case4782:
+return(20);
+case4783:
+return(20);
+case4800:
+return(20);
+case4801:
+return(20);
+case4802:
+return(20);
+case5000:
+return(1);
+case5001:
+return(1);
+case5002:
+return(1);
+case5003:
+return(1);
+case5004:
+return(1);
+case5010:
+return(1);
+case5011:
+return(1);
+case5012:
+return(1);
+case5013:
+return(1);
+case5014:
+return(1);
+case5020:
+return(1);
+case5021:
+return(1);
+case5022:
+return(1);
+case5023:
+return(1);
+case5024:
+return(1);
+case5025:
+return(1);
+case5030:
+return(1);
+case5031:
+return(1);
+case5032:
+return(1);
+case5033:
+return(1);
+case5034:
+return(1);
+case5040:
+return(1);
+case5041:
+return(1);
+case5042:
+return(1);
+case5043:
+return(1);
+case5044:
+return(1);
+case5050:
+return(1);
+case5051:
+return(1);
+case5052:
+return(1);
+case5053:
+return(1);
+case5054:
+return(1);
+case5060:
+return(1);
+case5061:
+return(1);
+case5062:
+return(1);
+case5063:
+return(1);
+case5064:
+return(1);
+case5070:
+return(1);
+case5071:
+return(1);
+case5072:
+return(1);
+case5073:
+return(1);
+case5074:
+return(1);
+case5080:
+return(1);
+case5081:
+return(1);
+case5082:
+return(1);
+case5083:
+return(1);
+case5084:
+return(1);
+case5090:
+return(1);
+case5091:
+return(1);
+case5092:
+return(1);
+case5093:
+return(1);
+case5094:
+return(1);
+case5200:
+return(1);
+case5201:
+return(1);
+case5202:
+return(1);
+case5203:
+return(0);
+case5204:
+return(0);
+case5210:
+return(1);
+case5211:
+return(1);
+case5212:
+return(1);
+case5213:
+return(1);
+case5214:
+return(1);
+case5400:
+return(1);
+case5401:
+return(1);
+case5402:
+return(1);
+case5403:
+return(1);
+case5404:
+return(0);
+case5420:
+return(2);
+case5421:
+return(2);
+case5430:
+return(2);
+case5431:
+return(2);
+case5500:
+return(1);
+case5501:
+return(1);
+case5502:
+return(1);
+case5503:
+return(1);
+case5504:
+return(1);
+case5510:
+return(1);
+case5511:
+return(1);
+case5512:
+return(1);
+case5513:
+return(1);
+case5514:
+return(1);
+case5520:
+return(1);
+case5521:
+return(1);
+case5522:
+return(1);
+case5523:
+return(1);
+case5524:
+return(1);
+case5530:
+return(1);
+case5531:
+return(1);
+case5532:
+return(1);
+case5533:
+return(1);
+case5534:
+return(1);
+case5540:
+return(1);
+case5541:
+return(1);
+case5542:
+return(1);
+case5543:
+return(1);
+case5544:
+return(1);
+case5550:
+return(1);
+case5551:
+return(1);
+case5552:
+return(1);
+case5553:
+return(1);
+case5554:
+return(1);
+case5560:
+return(1);
+case5561:
+return(1);
+case5562:
+return(1);
+case5563:
+return(1);
+case5564:
+return(1);
+case5570:
+return(1);
+case5571:
+return(1);
+case5572:
+return(1);
+case5573:
+return(1);
+case5574:
+return(1);
+case5580:
+return(1);
+case5581:
+return(1);
+case5582:
+return(1);
+case5585:
+return(5);
+case5586:
+return(5);
+case5600:
+return(0);
+case5601:
+return(0);
+case5602:
+return(0);
+case5611:
+return(0);
+case5612:
+return(0);
+case5613:
+return(0);
+case5614:
+return(0);
+case5620:
+return(0);
+case5621:
+return(0);
+case5622:
+return(0);
+case5623:
+return(0);
+case5700:
+return(0);
+case5701:
+return(0);
+case5702:
+return(0);
+case5720:
+return(0);
+case5721:
+return(0);
+case5722:
+return(0);
+case5723:
+return(0);
+case5800:
+return(1);
+case5801:
+return(1);
+case5802:
+return(1);
+case5803:
+return(1);
+case5804:
+return(1);
+case5810:
+return(1);
+case5811:
+return(1);
+case5812:
+return(1);
+case5813:
+return(1);
+case5814:
+return(1);
+case5820:
+return(1);
+case5821:
+return(1);
+case5822:
+return(1);
+case5823:
+return(1);
+case5824:
+return(1);
+case5830:
+return(1);
+case5831:
+return(1);
+case5832:
+return(1);
+case5833:
+return(1);
+case5834:
+return(1);
+case5900:
+return(1);
+case5901:
+return(1);
+case5902:
+return(1);
+case5903:
+return(1);
+case5904:
+return(1);
+case5905:
+return(1);
+case5910:
+return(1);
+case5911:
+return(1);
+case7000:
+return(2);
+case7001:
+return(2);
+case7002:
+return(2);
+case7003:
+return(2);
+case7004:
+return(2);
+case7005:
+return(2);
+case7006:
+return(2);
+case7007:
+return(2);
+case7008:
+return(2);
+case7009:
+return(2);
+case7100:
+return(2);
+case7101:
+return(2);
+case7102:
+return(2);
+case7103:
+return(2);
+case7104:
+return(2);
+case7105:
+return(2);
+case7106:
+return(2);
+case7107:
+return(2);
+case7108:
+return(2);
+case7109:
+return(2);
+case7110:
+return(2);
+case7111:
+return(2);
+case7200:
+return(2);
+case7201:
+return(2);
+case7202:
+return(2);
+case7203:
+return(2);
+case7204:
+return(2);
+case7205:
+return(2);
+case7206:
+return(2);
+case7207:
+return(2);
+case7300:
+return(2);
+case7301:
+return(2);
+case7302:
+return(2);
+case7303:
+return(2);
+case7304:
+return(2);
+case7305:
+return(2);
+case7306:
+return(0);
+case7400:
+return(2);
+case7401:
+return(2);
+case7402:
+return(2);
+case7403:
+return(2);
+case11000:
+return(0);
+case11010:
+return(0);
+case11011:
+return(0);
+case11020:
+return(0);
+case11021:
+return(0);
+case11030:
+return(0);
+case11031:
+return(0);
+case11040:
+return(0);
+case11041:
+return(0);
+case11042:
+return(0);
+case11050:
+return(0);
+case11060:
+return(0);
+case11070:
+return(0);
+case11200:
+return(0);
+case11210:
+return(0);
+case11211:
+return(0);
+case11220:
+return(0);
+case11230:
+return(0);
+case11231:
+return(0);
+case11241:
+return(0);
+case11300:
+return(0);
+case11301:
+return(0);
+case11310:
+return(0);
+case11311:
+return(0);
+case11501:
+return(0);
+case11502:
+return(0);
+case11520:
+return(0);
+case11521:
+return(0);
+case11600:
+return(0);
+case11601:
+return(0);
+case11602:
+return(0);
+case28501:
+return(0);
+case28502:
+return(0);
+case28503:
+return(0);
+case28504:
+return(0);
+case28505:
+return(0);
+case28506:
+return(0);
+case28507:
+return(0);
+case28508:
+return(0);
+case28800:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+}
+      return (_value);
+      }
+  function getRecipies(_value) {
+  _value = Number(_value);
+  switch (_value) {
+      case 501:
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Wheat,0,0,0,0,0,0,0],  outputAmount: [400,50,0,0,0,0],  output: [1419,4025,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 502:
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Rye,0,0,0,0,0,0,0],  outputAmount: [400,50,0,0,0,0],  output: [1420,4025,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 503:
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Rice,0,0,0,0,0,0,0],  outputAmount: [400,50,0,0,0,0],  output: [1418,4025,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 504:
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Corn,0,0,0,0,0,0,0],  outputAmount: [400,100,0,0,0,0],  output: [1421,4025,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 505:
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Sorghum,0,0,0,0,0,0,0],  outputAmount: [400,50,0,0,0,0],  output: [1418,4025,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 519:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Sugarcane,0,0,0,0,0,0,0],  outputAmount: [200,250,0,0,0,0],  output: [1401,4021,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 530:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Oyster,0,0,0,0,0,0,0],  outputAmount: [500,100,0,0,0,0],  output: [554,2207,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 536:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Silver_Sap,0,0,0,0,0,0,0],  outputAmount: [250,50,0,0,0,0],  output: [1401,2123,0,0,0,0], capacityUsed: 1, timeToMake: 5, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 538:
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Oats,0,0,0,0,0,0,0],  outputAmount: [400,50,0,0,0,0],  output: [1418,4025,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 540:
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Barley,0,0,0,0,0,0,0],  outputAmount: [400,50,0,0,0,0],  output: [1418,4025,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 548:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Flowers,0,0,0,0,0,0,0],  outputAmount: [500,50,0,0,0,0],  output: [548,549,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 559:
+        return({ amount: [1000,15000,0,0,0,0,0,0],  ingrediant: [Raw_Shark_Meat,Wood,0,0,0,0,0,0],  outputAmount: [1000,500,0,0,0,0],  output: [559,4023,0,0,0,0], capacityUsed: 1, timeToMake: 100, allowableBuildings: [23,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 564:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Polar_Bear_Liver,0,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [4058,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [10,11,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 574:
+        return({ amount: [5000,0,0,0,0,0,0,0],  ingrediant: [Rice,0,0,0,0,0,0,0],  outputAmount: [2500,1250,0,0,0,0],  output: [574,573,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [9,10,11,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 575:
+        return({ amount: [2000,0,0,0,0,0,0,0],  ingrediant: [Polished_Rice,0,0,0,0,0,0,0],  outputAmount: [250,1250,0,0,0,0],  output: [575,573,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [11,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,true,false,true,false,false,false]})
+  case 578:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Pomace,0,0,0,0,0,0,0],  outputAmount: [5,0,0,0,0,0],  output: [4022,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 579:
+        return({ amount: [10000,0,0,0,0,0,0,0],  ingrediant: [Any_Grain,0,0,0,0,0,0,0],  outputAmount: [5000,0,0,0,0,0],  output: [579,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 583:
+        return({ amount: [400,50,0,0,0,0,0,0],  ingrediant: [Milk,Salt,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [583,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 584:
+        return({ amount: [500,500,500,500,0,0,0,0],  ingrediant: [Potato,Onion,Carrot,Any_Vegetable,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [590,0,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1000:
+        return({ amount: [7500,0,0,0,0,0,0,0],  ingrediant: [Any_Grain,0,0,0,0,0,0,0],  outputAmount: [3000,100,0,0,0,0],  output: [1000,1412,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [12,13,14,15,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1001:
+        return({ amount: [5000,0,0,0,0,0,0,0],  ingrediant: [Apples,0,0,0,0,0,0,0],  outputAmount: [2000,100,0,0,0,0],  output: [1001,578,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [12,13,14,15,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1002:
+        return({ amount: [5000,0,0,0,0,0,0,0],  ingrediant: [Any_Fruit,0,0,0,0,0,0,0],  outputAmount: [2000,100,0,0,0,0],  output: [1002,578,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [12,13,14,15,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1003:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Rum,0,0,0,0,0,0,0],  outputAmount: [4,0,0,0,0,0],  output: [1003,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1010:
+        return({ amount: [10000,0,0,0,0,0,0,0],  ingrediant: [Grapes,0,0,0,0,0,0,0],  outputAmount: [2000,100,0,0,0,0],  output: [1010,578,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [12,13,14,15,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1011:
+        return({ amount: [5000,0,0,0,0,0,0,0],  ingrediant: [Malted_Grain,0,0,0,0,0,0,0],  outputAmount: [2500,100,0,0,0,0],  output: [1011,1412,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [12,13,14,15,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1012:
+        return({ amount: [2000,0,0,0,0,0,0,0],  ingrediant: [Honey,0,0,0,0,0,0,0],  outputAmount: [2500,0,0,0,0,0],  output: [1012,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [12,13,14,15,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1013:
+        return({ amount: [1000,5000,0,0,0,0,0,0],  ingrediant: [Spruce_Trimming,Malted_Grain,0,0,0,0,0,0],  outputAmount: [3500,100,0,0,0,0],  output: [1013,1412,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [12,13,14,15,200,200,200,200],allowableBuildingTypes: [false,true,false,false,false,false,false,false,false]})
+  case 1014:
+        return({ amount: [200,5000,0,0,0,0,0,0],  ingrediant: [Sweet_Herbs,Malted_Grain,0,0,0,0,0,0],  outputAmount: [3000,100,0,0,0,0],  output: [1014,1412,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [12,13,14,15,200,200,200,200],allowableBuildingTypes: [false,false,true,false,false,false,false,false,false]})
+  case 1030:
+        return({ amount: [15000,0,0,0,0,0,0,0],  ingrediant: [Potato,0,0,0,0,0,0,0],  outputAmount: [1750,0,0,0,0,0],  output: [1030,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [13,14,15,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1031:
+        return({ amount: [1500,0,0,0,0,0,0,0],  ingrediant: [Milk,0,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1031,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [13,14,15,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1032:
+        return({ amount: [1500,0,0,0,0,0,0,0],  ingrediant: [Sugar,0,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1032,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [14,15,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1033:
+        return({ amount: [20000,0,0,0,0,0,0,0],  ingrediant: [Any_Grain,0,0,0,0,0,0,0],  outputAmount: [2500,0,0,0,0,0],  output: [1033,0,0,0,0,0], capacityUsed: 1, timeToMake: 20, allowableBuildings: [13,14,15,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1034:
+        return({ amount: [2000,0,0,0,0,0,0,0],  ingrediant: [Polished_Rice,0,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1034,0,0,0,0,0], capacityUsed: 1, timeToMake: 20, allowableBuildings: [13,14,15,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1040:
+        return({ amount: [250,0,0,0,0,0,0,0],  ingrediant: [Wine,0,0,0,0,0,0,0],  outputAmount: [250,0,0,0,0,0],  output: [1040,0,0,0,0,0], capacityUsed: 1, timeToMake: 20, allowableBuildings: [14,15,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1041:
+        return({ amount: [3000,0,0,0,0,0,0,0],  ingrediant: [Silver_Sap,0,0,0,0,0,0,0],  outputAmount: [1300,0,0,0,0,0],  output: [1041,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [13,14,15,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1042:
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Jungleberries,0,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1042,0,0,0,0,0], capacityUsed: 1, timeToMake: 20, allowableBuildings: [13,14,15,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1043:
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Winterberries,0,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1043,0,0,0,0,0], capacityUsed: 1, timeToMake: 20, allowableBuildings: [13,14,15,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1044:
+        return({ amount: [10000,0,0,0,0,0,0,0],  ingrediant: [Rum,0,0,0,0,0,0,0],  outputAmount: [9000,0,0,0,0,0],  output: [1044,0,0,0,0,0], capacityUsed: 1, timeToMake: 500, allowableBuildings: [23,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1050:
+        return({ amount: [100,0,0,0,0,0,0,0],  ingrediant: [Ginseng,0,0,0,0,0,0,0],  outputAmount: [150,0,0,0,0,0],  output: [1050,0,0,0,0,0], capacityUsed: 1, timeToMake: 20, allowableBuildings: [14,15,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1051:
+        return({ amount: [1000,5000,1000,500,0,0,0,0],  ingrediant: [Vodka,Allspice,Savory_Herbs,Sweet_Herbs,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1051,0,0,0,0,0], capacityUsed: 2, timeToMake: 20, allowableBuildings: [15,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1060:
+        return({ amount: [400,400,0,0,0,0,0,0],  ingrediant: [Jungle_Wine,Winter_Wine,0,0,0,0,0,0],  outputAmount: [200,0,0,0,0,0],  output: [1060,0,0,0,0,0], capacityUsed: 1, timeToMake: 20, allowableBuildings: [15,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1061:
+        return({ amount: [150,0,0,0,0,0,0,0],  ingrediant: [Auric_Honey,0,0,0,0,0,0,0],  outputAmount: [100,0,0,0,0,0],  output: [1061,0,0,0,0,0], capacityUsed: 1, timeToMake: 20, allowableBuildings: [14,15,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1062:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Very_Polished_Rice,0,0,0,0,0,0,0],  outputAmount: [140,0,0,0,0,0],  output: [1062,0,0,0,0,0], capacityUsed: 1, timeToMake: 20, allowableBuildings: [15,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1200:
+        return({ amount: [5000,3000,0,0,0,0,0,0],  ingrediant: [Any_Flour,Any_Fuel,0,0,0,0,0,0],  outputAmount: [7000,100,0,0,0,0],  output: [1200,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1204:
+        return({ amount: [5000,3000,0,0,0,0,0,0],  ingrediant: [Any_Flour,Any_Fuel,0,0,0,0,0,0],  outputAmount: [17500,100,0,0,0,0],  output: [1205,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1206:
+        return({ amount: [5000,200,50,0,0,0,0,0],  ingrediant: [Rye_Flour,Molasses,Barm,0,0,0,0,0],  outputAmount: [4000,0,0,0,0,0],  output: [1206,0,0,0,0,0], capacityUsed: 1, timeToMake: 5, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1207:
+        return({ amount: [1500,3000,100,0,0,0,0,0],  ingrediant: [Pastry_Dough,Any_Fuel,Barm,0,0,0,0,0],  outputAmount: [2500,100,0,0,0,0],  output: [1207,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1208:
+        return({ amount: [1000,1000,3000,0,0,0,0,0],  ingrediant: [Pastry_Dough,Fruit_Preserve,Any_Fuel,0,0,0,0,0],  outputAmount: [1800,100,0,0,0,0],  output: [1208,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1209:
+        return({ amount: [1000,1000,3000,0,0,0,0,0],  ingrediant: [Pastry_Dough,Aged_Cheese,Any_Fuel,0,0,0,0,0],  outputAmount: [3400,100,0,0,0,0],  output: [1209,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1212:
+        return({ amount: [75,500,100,0,0,0,0,0],  ingrediant: [Auric_Honey,Pastry_Dough,Sweet_Spice_Pack,0,0,0,0,0],  outputAmount: [600,0,0,0,0,0],  output: [1212,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [10,11,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1213:
+        return({ amount: [100,150,40,0,0,0,0,0],  ingrediant: [Exotic_Fruit_Preserve,Glittercake,Double_Brandy,0,0,0,0,0],  outputAmount: [575,0,0,0,0,0],  output: [1213,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [10,11,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1220:
+        return({ amount: [4000,5000,3000,0,0,0,0,0],  ingrediant: [Any_Flour,Any_Fruit,Any_Fuel,0,0,0,0,0],  outputAmount: [8000,100,0,0,0,0],  output: [1220,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1223:
+        return({ amount: [4000,1000,3000,0,0,0,0,0],  ingrediant: [Any_Flour,Sugar,Any_Fuel,0,0,0,0,0],  outputAmount: [8000,100,0,0,0,0],  output: [1221,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1224:
+        return({ amount: [5000,1000,5000,3000,0,0,0,0],  ingrediant: [Any_Flour,Any_Meat,Potato,Any_Fuel,0,0,0,0],  outputAmount: [5500,100,0,0,0,0],  output: [1222,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1260:
+        return({ amount: [5000,1500,1000,250,0,0,0,0],  ingrediant: [Organ_Meat,Allspice,Garlic,Salt,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1260,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1261:
+        return({ amount: [5000,1500,1000,250,0,0,0,0],  ingrediant: [Any_Meat,Any_Cooking_Oil,Any_Flour,Salt,0,0,0,0],  outputAmount: [8000,0,0,0,0,0],  output: [1261,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1262:
+        return({ amount: [1000,5000,1000,0,0,0,0,0],  ingrediant: [Any_Meat,Any_Vegetable,Fruit_Wine,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1262,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1268:
+        return({ amount: [2000,20000,2000,3000,0,0,0,0],  ingrediant: [Tender_Meat,Any_Vegetable,Silver_Wine,Any_Fuel,0,0,0,0],  outputAmount: [2500,100,0,0,0,0],  output: [1268,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [9,10,11,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1269:
+        return({ amount: [1000,1000,3000,0,0,0,0,0],  ingrediant: [Fat,Any_Meat,Any_Fuel,0,0,0,0,0],  outputAmount: [1500,100,0,0,0,0],  output: [1443,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1270:
+        return({ amount: [2000,6000,200,3000,0,0,0,0],  ingrediant: [Beef,Veggie_Mix,Any_Stock,Any_Fuel,0,0,0,0],  outputAmount: [3000,100,0,0,0,0],  output: [1270,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1271:
+        return({ amount: [2000,5000,10,100,3000,0,0,0],  ingrediant: [Tender_Meat,Veggie_Mix,Royal_Spice_Pack,Any_Stock,Any_Fuel,0,0,0],  outputAmount: [1900,100,0,0,0,0],  output: [1271,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1272:
+        return({ amount: [5000,500,100,3000,0,0,0,0],  ingrediant: [Onion,Cheese,Any_Stock,Any_Fuel,0,0,0,0],  outputAmount: [3500,100,0,0,0,0],  output: [1272,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1273:
+        return({ amount: [1500,3000,20,3000,0,0,0,0],  ingrediant: [Exotic_Meat,Veggie_Mix,Basic_Spice_Pack,Any_Fuel,0,0,0,0],  outputAmount: [1050,100,0,0,0,0],  output: [1273,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1274:
+        return({ amount: [1000,2000,5000,100,3000,0,0,0],  ingrediant: [Chicken_Meat,Any_Flour,Any_Vegetable,Any_Stock,Any_Fuel,0,0,0],  outputAmount: [2250,100,0,0,0,0],  output: [1274,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1275:
+        return({ amount: [1500,500,2500,2500,100,3000,0,0],  ingrediant: [Fish_Meat,Milk,Corn,Potato,Any_Stock,Any_Fuel,0,0],  outputAmount: [2250,100,0,0,0,0],  output: [1275,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1276:
+        return({ amount: [7500,2500,2500,2500,100,3000,0,0],  ingrediant: [Beans,Mushrooms,Corn,Potato,Vegetable_Stock,Any_Fuel,0,0],  outputAmount: [2250,100,0,0,0,0],  output: [1276,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1277:
+        return({ amount: [1000,1000,100,5000,3000,0,0,0],  ingrediant: [Any_Seafood,Milk,Spicy_Sauce,Any_Vegetable,Any_Fuel,0,0,0],  outputAmount: [2000,100,0,0,0,0],  output: [1277,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1278:
+        return({ amount: [1,1000,100,100,3000,0,0,0],  ingrediant: [Turtle,Veggie_Mix,Savory_Spice_Pack,Spicy_Spice_Park,Any_Fuel,0,0,0],  outputAmount: [1100,100,0,0,0,0],  output: [1278,4023,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [9,10,11,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1279:
+        return({ amount: [1000,100,100,3000,0,0,0,0],  ingrediant: [Prepared_Shark_Meat,Any_Stock,Savory_Spice_Pack,Any_Fuel,0,0,0,0],  outputAmount: [1250,100,0,0,0,0],  output: [1279,4023,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [9,10,11,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1280:
+        return({ amount: [10000,500,3000,0,0,0,0,0],  ingrediant: [Beans,Sugar,Any_Fuel,0,0,0,0,0],  outputAmount: [3500,100,0,0,0,0],  output: [1280,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1281:
+        return({ amount: [5000,5000,3000,0,0,0,0,0],  ingrediant: [Beans,Rice,Any_Fuel,0,0,0,0,0],  outputAmount: [10000,100,0,0,0,0],  output: [1281,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1282:
+        return({ amount: [1000,5000,2500,3000,0,0,0,0],  ingrediant: [Any_Meat,Potato,Onion,Any_Fuel,0,0,0,0],  outputAmount: [3500,100,0,0,0,0],  output: [1282,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1283:
+        return({ amount: [500,1000,3000,0,0,0,0,0],  ingrediant: [Crab_Meat,Any_Cooking_Oil,Any_Fuel,0,0,0,0,0],  outputAmount: [2000,100,0,0,0,0],  output: [1283,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1284:
+        return({ amount: [1500,2000,400,400,0,0,0,0],  ingrediant: [Seaweed,Rice,Fish_Meat,Shrimp_Meat,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1284,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1285:
+        return({ amount: [2500,2500,500,100,500,500,100,0],  ingrediant: [Seaweed,Rice,Fish_Meat,Roe,Crab_Meat,Shrimp_Meat,Spicy_Spice_Park,0],  outputAmount: [1000,0,0,0,0,0],  output: [1285,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [9,10,11,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1286:
+        return({ amount: [1000,100,10,3000,0,0,0,0],  ingrediant: [Rare_Mushroom,Mushroom_Stock,Royal_Spice_Pack,Any_Fuel,0,0,0,0],  outputAmount: [1200,100,0,0,0,0],  output: [1286,4023,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [9,10,11,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1287:
+        return({ amount: [7500,500,0,0,0,0,0,0],  ingrediant: [Oats,Any_Fuel,0,0,0,0,0,0],  outputAmount: [8000,100,0,0,0,0],  output: [1287,4023,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1288:
+        return({ amount: [7500,500,1000,2000,0,0,0,0],  ingrediant: [Oats,Any_Fuel,Sugar,Any_Fruit,0,0,0,0],  outputAmount: [6000,100,0,0,0,0],  output: [1288,4023,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1289:
+        return({ amount: [1000,5000,0,0,0,0,0,0],  ingrediant: [Unboiled_Meat,Any_Vegetable,0,0,0,0,0,0],  outputAmount: [5000,0,0,0,0,0],  output: [1289,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1290:
+        return({ amount: [5,4,0,0,0,0,0,0],  ingrediant: [Chicken,Basic_Spice_Pack,0,0,0,0,0,0],  outputAmount: [100,0,0,0,0,0],  output: [1290,0,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1291:
+        return({ amount: [10000,200,150,0,0,0,0,0],  ingrediant: [Peas,Butter,Salt,0,0,0,0,0],  outputAmount: [3000,0,0,0,0,0],  output: [1291,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1294:
+        return({ amount: [1000,5000,1000,0,0,0,0,0],  ingrediant: [Mutton,Peas,Mixed_Vegetables,0,0,0,0,0],  outputAmount: [1500,0,0,0,0,0],  output: [1294,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1295:
+        return({ amount: [500,500,0,0,0,0,0,0],  ingrediant: [Mixed_Vegetables,Sugar,0,0,0,0,0,0],  outputAmount: [1250,0,0,0,0,0],  output: [1295,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1296:
+        return({ amount: [2000,500,100,0,0,0,0,0],  ingrediant: [Mutton,Honey,Savory_Spice_Pack,0,0,0,0,0],  outputAmount: [1750,0,0,0,0,0],  output: [1296,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,false,false,false,false,false,true,true,true]})
+  case 1299:
+        return({ amount: [5000,1000,3000,0,0,0,0,0],  ingrediant: [Rice,Cheese,Any_Fuel,0,0,0,0,0],  outputAmount: [4000,100,0,0,0,0],  output: [1299,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1300:
+        return({ amount: [5000,10000,500,500,3000,0,0,0],  ingrediant: [Polished_Rice,Mushrooms,Cheese,Butter,Any_Fuel,0,0,0],  outputAmount: [3500,100,0,0,0,0],  output: [1300,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1301:
+        return({ amount: [5000,1000,1000,5000,3000,0,0,0],  ingrediant: [Polished_Rice,Cheese,Shrimp_Meat,Peas,Any_Fuel,0,0,0],  outputAmount: [2500,100,0,0,0,0],  output: [1301,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1400:
+        return({ amount: [2500,0,0,0,0,0,0,0],  ingrediant: [T1_Drink,0,0,0,0,0,0,0],  outputAmount: [2000,0,0,0,0,0],  output: [1400,0,0,0,0,0], capacityUsed: 1, timeToMake: 15, allowableBuildings: [12,13,14,15,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1402:
+        return({ amount: [10000,0,0,0,0,0,0,0],  ingrediant: [Olives,0,0,0,0,0,0,0],  outputAmount: [2500,0,0,0,0,0],  output: [1402,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1403:
+        return({ amount: [10000,0,0,0,0,0,0,0],  ingrediant: [Mushrooms,0,0,0,0,0,0,0],  outputAmount: [250,0,0,0,0,0],  output: [1403,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1404:
+        return({ amount: [2,2,1,0,0,0,0,0],  ingrediant: [Sweet_Spice_Pack,Savory_Spice_Pack,Spicy_Spice_Park,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1404,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1405:
+        return({ amount: [2,2,1,0,0,0,0,0],  ingrediant: [Royal_Sweet_Spice_Pack,Royal_Savory_Spice_Park,Royal_Spicy_Spice_Park,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1405,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1406:
+        return({ amount: [5000,1000,1000,500,500,0,0,0],  ingrediant: [Wheat_Flour,Eggs,Any_Cooking_Oil,Milk,Sugar,0,0,0],  outputAmount: [4000,0,0,0,0,0],  output: [1406,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1407:
+        return({ amount: [500,5000,0,0,0,0,0,0],  ingrediant: [Sugar,Any_Fruit,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1407,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1408:
+        return({ amount: [500,500,0,0,0,0,0,0],  ingrediant: [Sugar,Any_Exotic_Berry,0,0,0,0,0,0],  outputAmount: [100,0,0,0,0,0],  output: [1408,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1409:
+        return({ amount: [2500,500,0,0,0,0,0,0],  ingrediant: [Mushrooms,Any_Fuel,0,0,0,0,0,0],  outputAmount: [200,100,0,0,0,0],  output: [1409,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1410:
+        return({ amount: [500,500,0,0,0,0,0,0],  ingrediant: [Unboiled_Meat,Any_Fuel,0,0,0,0,0,0],  outputAmount: [100,500,100,0,0,0],  output: [1410,584,4023,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1411:
+        return({ amount: [2500,500,0,0,0,0,0,0],  ingrediant: [Any_Vegetable,Any_Fuel,0,0,0,0,0,0],  outputAmount: [200,100,0,0,0,0],  output: [1411,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1413:
+        return({ amount: [2500,0,0,0,0,0,0,0],  ingrediant: [Sugarcane_Pulp,0,0,0,0,0,0,0],  outputAmount: [150,250,0,0,0,0],  output: [1413,4022,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1414:
+        return({ amount: [5000,0,0,0,0,0,0,0],  ingrediant: [Peppers,0,0,0,0,0,0,0],  outputAmount: [750,0,0,0,0,0],  output: [1414,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1416:
+        return({ amount: [400,100,0,0,0,0,0,0],  ingrediant: [Wine,Sugar,0,0,0,0,0,0],  outputAmount: [100,0,0,0,0,0],  output: [1416,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1417:
+        return({ amount: [5000,200,150,60,0,0,0,0],  ingrediant: [Peppers,Vinegar,Sugar,Spicy_Herbs,0,0,0,0],  outputAmount: [200,0,0,0,0,0],  output: [1417,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1418:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Any_Flour,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1418,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1423:
+        return({ amount: [20,20,20,0,0,0,0,0],  ingrediant: [Cinnamon_Powder,Vanilla_Pod,Sweet_Herbs,0,0,0,0,0],  outputAmount: [150,0,0,0,0,0],  output: [1423,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1424:
+        return({ amount: [20,50,100,50,500,50,0,0],  ingrediant: [Savory_Herbs,Paprika,Vinegar,Salt,Garlic,Any_Cooking_Oil,0,0],  outputAmount: [200,0,0,0,0,0],  output: [1424,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1425:
+        return({ amount: [20,10,100,0,0,0,0,0],  ingrediant: [Spicy_Herbs,Spicy_Sauce,Vinegar,0,0,0,0,0],  outputAmount: [150,0,0,0,0,0],  output: [1425,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1426:
+        return({ amount: [10,5,0,0,0,0,0,0],  ingrediant: [Sweet_Spice_Pack,Auric_Honey,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1426,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1427:
+        return({ amount: [10,5,0,0,0,0,0,0],  ingrediant: [Savory_Spice_Pack,Flower_Hearts,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1427,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1428:
+        return({ amount: [10,10,0,0,0,0,0,0],  ingrediant: [Spicy_Spice_Park,Wasabi,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1428,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1430:
+        return({ amount: [1400,50,0,0,0,0,0,0],  ingrediant: [Milk,Salt,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1430,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1431:
+        return({ amount: [1250,0,0,0,0,0,0,0],  ingrediant: [Cheese,0,0,0,0,0,0,0],  outputAmount: [1250,0,0,0,0,0],  output: [1431,0,0,0,0,0], capacityUsed: 1, timeToMake: 100, allowableBuildings: [23,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1432:
+        return({ amount: [1250,0,0,0,0,0,0,0],  ingrediant: [Cheese,0,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1432,0,0,0,0,0], capacityUsed: 1, timeToMake: 900, allowableBuildings: [23,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1433:
+        return({ amount: [20000,0,0,0,0,0,0,0],  ingrediant: [Any_Vegetable,0,0,0,0,0,0,0],  outputAmount: [5000,0,0,0,0,0],  output: [1433,0,0,0,0,0], capacityUsed: 1, timeToMake: 20, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1434:
+        return({ amount: [10000,5000,0,0,0,0,0,0],  ingrediant: [Any_Vegetable,Vinegar,0,0,0,0,0,0],  outputAmount: [1500,0,0,0,0,0],  output: [1434,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1435:
+        return({ amount: [10000,0,0,0,0,0,0,0],  ingrediant: [Any_Fruit,0,0,0,0,0,0,0],  outputAmount: [2500,0,0,0,0,0],  output: [1436,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1436:
+        return({ amount: [5000,500,0,0,0,0,0,0],  ingrediant: [Any_Fruit,Brandy,0,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1437,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1437:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Any_Exotic_Berry,0,0,0,0,0,0,0],  outputAmount: [250,0,0,0,0,0],  output: [1438,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1439:
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Any_Meat,0,0,0,0,0,0,0],  outputAmount: [100,0,0,0,0,0],  output: [1439,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1440:
+        return({ amount: [5000,1000,0,0,0,0,0,0],  ingrediant: [Any_Meat,Salt,0,0,0,0,0,0],  outputAmount: [3750,0,0,0,0,0],  output: [1440,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1441:
+        return({ amount: [3000,1500,0,0,0,0,0,0],  ingrediant: [Ash,Eggs,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1441,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1442:
+        return({ amount: [1400,0,0,0,0,0,0,0],  ingrediant: [Exotic_Meat,0,0,0,0,0,0,0],  outputAmount: [100,0,0,0,0,0],  output: [1442,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1444:
+        return({ amount: [2000,20,0,0,0,0,0,0],  ingrediant: [Organ_Meat,Savory_Spice_Pack,0,0,0,0,0,0],  outputAmount: [1600,0,0,0,0,0],  output: [1444,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1901:
+        return({ amount: [250,50,0,0,0,0,0,0],  ingrediant: [Any_Grain,Dried_Vegetables,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1901,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1902:
+        return({ amount: [250,50,50,0,0,0,0,0],  ingrediant: [Any_Grain,Dried_Vegetables,Salted_Meat,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1902,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1903:
+        return({ amount: [200,100,100,0,0,0,0,0],  ingrediant: [Any_Flour,Dried_Vegetables,Salted_Meat,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1903,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1904:
+        return({ amount: [200,200,250,0,0,0,0,0],  ingrediant: [Any_Flour,Dried_Vegetables,Salted_Meat,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1904,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1905:
+        return({ amount: [200,200,250,0,0,0,0,0],  ingrediant: [Any_Flour,Pickled_Vegetables,Salted_Meat,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1905,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1906:
+        return({ amount: [200,200,300,300,0,0,0,0],  ingrediant: [Any_Flour,Pickled_Vegetables,Salted_Meat,Preserved_Eggs,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1906,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1907:
+        return({ amount: [200,200,300,160,0,0,0,0],  ingrediant: [Wheat_Flour,Pickled_Vegetables,Cured_Meat,Preserved_Eggs,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1907,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1908:
+        return({ amount: [400,400,600,320,0,0,0,0],  ingrediant: [Wheat_Flour,Pickled_Vegetables,Cured_Meat,Preserved_Eggs,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1908,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1909:
+        return({ amount: [200,300,300,300,0,0,0,0],  ingrediant: [Wheat_Flour,Pickled_Vegetables,Exotic_Cured_Meat,Preserved_Eggs,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1909,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1911:
+        return({ amount: [10,5,0,0,0,0,0,0],  ingrediant: [Cheese,Sugar,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1911,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1912:
+        return({ amount: [2,30,10,0,0,0,0,0],  ingrediant: [Basic_Spice_Pack,Dried_Fruit,Cheese,0,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [1912,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1913:
+        return({ amount: [2,30,10,0,0,0,0,0],  ingrediant: [Basic_Spice_Pack,Dried_Fruit,Cheese,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1913,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1914:
+        return({ amount: [2,50,30,0,0,0,0,0],  ingrediant: [Basic_Spice_Pack,Fruit_Preserve,Cheese,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1914,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1915:
+        return({ amount: [4,60,30,0,0,0,0,0],  ingrediant: [Basic_Spice_Pack,Fruit_Preserve,Aged_Cheese,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1915,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1916:
+        return({ amount: [4,50,50,0,0,0,0,0],  ingrediant: [Basic_Spice_Pack,Brandied_Fruit,Aged_Cheese,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1916,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1917:
+        return({ amount: [1,70,90,0,0,0,0,0],  ingrediant: [Royal_Spice_Pack,Brandied_Fruit,Aged_Cheese,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1917,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1918:
+        return({ amount: [1,90,50,0,0,0,0,0],  ingrediant: [Royal_Spice_Pack,Brandied_Fruit,Imperial_Cheese,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1918,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1919:
+        return({ amount: [4,150,80,0,0,0,0,0],  ingrediant: [Royal_Spice_Pack,Brandied_Fruit,Imperial_Cheese,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1919,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1921:
+        return({ amount: [50,0,0,0,0,0,0,0],  ingrediant: [T1_Drink,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1921,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1922:
+        return({ amount: [40,30,0,0,0,0,0,0],  ingrediant: [T1_Drink,T2_Drink,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1922,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1923:
+        return({ amount: [100,0,0,0,0,0,0,0],  ingrediant: [T2_Drink,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1923,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1924:
+        return({ amount: [50,100,0,0,0,0,0,0],  ingrediant: [T3_Drink,T2_Drink,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1924,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1925:
+        return({ amount: [200,0,0,0,0,0,0,0],  ingrediant: [T3_Drink,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1925,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1926:
+        return({ amount: [120,100,0,0,0,0,0,0],  ingrediant: [T4_Drink,T3_Drink,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1926,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1927:
+        return({ amount: [320,0,0,0,0,0,0,0],  ingrediant: [T4_Drink,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1927,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1928:
+        return({ amount: [320,0,0,0,0,0,0,0],  ingrediant: [T5_Drink,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1928,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1929:
+        return({ amount: [240,0,0,0,0,0,0,0],  ingrediant: [T6_Drink,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1929,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1930:
+        return({ amount: [1000,200,50,10,0,0,0,0],  ingrediant: [Soap,Treated_Fabric,Antiseptic,Soothing_Tea,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1930,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1990:
+        return({ amount: [250,100,0,0,0,0,0,0],  ingrediant: [Basic_Flatbread,T1_Drink,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1990,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1991:
+        return({ amount: [100,200,0,0,0,0,0,0],  ingrediant: [Pemmican,T2_Drink,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1991,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1992:
+        return({ amount: [50,50,120,200,200,300,300,0],  ingrediant: [Brandied_Fruit,Aged_Cheese,T4_Drink,Any_Flour,Pickled_Vegetables,Salted_Meat,Preserved_Eggs,0],  outputAmount: [1,0,0,0,0,0],  output: [1992,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2080:
+        return({ amount: [2000,3000,0,0,0,0,0,0],  ingrediant: [Black_Copper_Ore,Any_Fuel,0,0,0,0,0,0],  outputAmount: [900,600,0,0,0,0],  output: [2181,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [16,17,18,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2101:
+        return({ amount: [7500,100,0,0,0,0,0,0],  ingrediant: [Wood,Nails,0,0,0,0,0,0],  outputAmount: [150,0,0,0,0,0],  output: [2102,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2103:
+        return({ amount: [8000,0,0,0,0,0,0,0],  ingrediant: [Wood,0,0,0,0,0,0,0],  outputAmount: [10000,20,0,0,0,0],  output: [2103,4028,0,0,0,0], capacityUsed: 3, timeToMake: 10, allowableBuildings: [17,18,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2105:
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Kaolinite,0,0,0,0,0,0,0],  outputAmount: [400,10,0,0,0,0],  output: [2105,4057,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2121:
+        return({ amount: [2000,2000,0,0,0,0,0,0],  ingrediant: [Iron_Ore,Charcoal,0,0,0,0,0,0],  outputAmount: [1200,100,0,0,0,0],  output: [2121,4023,0,0,0,0], capacityUsed: 3, timeToMake: 10, allowableBuildings: [17,18,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2122:
+        return({ amount: [500,3000,0,0,0,0,0,0],  ingrediant: [Gold_Ore,Any_Fuel,0,0,0,0,0,0],  outputAmount: [50,600,100,0,0,0],  output: [2122,4023,2028,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [16,17,18,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2123:
+        return({ amount: [850,3000,0,0,0,0,0,0],  ingrediant: [Silver_Ore,Any_Fuel,0,0,0,0,0,0],  outputAmount: [500,100,0,0,0,0],  output: [2123,4023,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [16,17,18,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2124:
+        return({ amount: [2000,3000,0,0,0,0,0,0],  ingrediant: [Copper_Ore,Any_Fuel,0,0,0,0,0,0],  outputAmount: [2000,600,0,0,0,0],  output: [2124,4023,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [16,17,18,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2125:
+        return({ amount: [2000,3000,0,0,0,0,0,0],  ingrediant: [Tin_Ore,Any_Fuel,0,0,0,0,0,0],  outputAmount: [675,200,0,0,0,0],  output: [2125,4023,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [16,17,18,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2126:
+        return({ amount: [10000,10000,0,0,0,0,0,0],  ingrediant: [Ice_Stone,Charcoal,0,0,0,0,0,0],  outputAmount: [275,0,0,0,0,0],  output: [2126,0,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [18,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2127:
+        return({ amount: [10000,7000,0,0,0,0,0,0],  ingrediant: [Fire_Stone,Charcoal,0,0,0,0,0,0],  outputAmount: [525,600,0,0,0,0],  output: [2127,4023,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [16,17,18,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2128:
+        return({ amount: [1,5000,0,0,0,0,0,0],  ingrediant: [T1_Melter,Tailings,0,0,0,0,0,0],  outputAmount: [10,1,0,0,0,0],  output: [2128,4400,0,0,0,0], capacityUsed: 50, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,true,false,false,false,false,false,false,false]})
+  case 2129:
+        return({ amount: [2000,3000,0,0,0,0,0,0],  ingrediant: [Galena,Any_Fuel,0,0,0,0,0,0],  outputAmount: [2000,175,100,0,0,0],  output: [2129,2123,4023,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [17,18,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2150:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Any_Basic_Material,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [2150,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2151:
+        return({ amount: [5,0,0,0,0,0,0,0],  ingrediant: [Wood,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [2151,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2152:
+        return({ amount: [5,0,0,0,0,0,0,0],  ingrediant: [Stone,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [2152,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2153:
+        return({ amount: [1500,200,0,0,0,0,0,0],  ingrediant: [Clay,Hay,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [2153,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [23,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2154:
+        return({ amount: [5000,500,0,0,0,0,0,0],  ingrediant: [Clay,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1000,600,0,0,0,0],  output: [2154,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [16,17,18,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2160:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Any_Advanced_Material,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [2160,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2161:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Refined_Wood,0,0,0,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [2161,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2162:
+        return({ amount: [10000,0,0,0,0,0,0,0],  ingrediant: [Stone,0,0,0,0,0,0,0],  outputAmount: [250,0,0,0,0,0],  output: [2162,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [19,200,200,200,200,200,200,200],allowableBuildingTypes: [true,false,false,false,false,false,true,true,true]})
+  case 2163:
+        return({ amount: [2000,0,0,0,0,0,0,0],  ingrediant: [Washed_Kaolinite,0,0,0,0,0,0,0],  outputAmount: [200,0,0,0,0,0],  output: [2163,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2164:
+        return({ amount: [5000,5000,0,0,0,0,0,0],  ingrediant: [Clay,Charcoal,0,0,0,0,0,0],  outputAmount: [350,0,0,0,0,0],  output: [2164,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [18,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2180:
+        return({ amount: [500,250,1000,0,0,0,0,0],  ingrediant: [Copper,Emerald,Charcoal,0,0,0,0,0],  outputAmount: [100,300,0,0,0,0],  output: [2180,4023,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [18,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2181:
+        return({ amount: [800,250,1000,0,0,0,0,0],  ingrediant: [Copper,Tin,Any_Fuel,0,0,0,0,0],  outputAmount: [1000,200,0,0,0,0],  output: [2181,4023,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [16,17,18,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2182:
+        return({ amount: [500,1000,0,0,0,0,0,0],  ingrediant: [Iron,Charcoal,0,0,0,0,0,0],  outputAmount: [300,300,0,0,0,0],  output: [2182,4023,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [18,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2300:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Ruby,0,0,0,0,0,0,0],  outputAmount: [250,0,0,0,0,0],  output: [2300,0,0,0,0,0], capacityUsed: 5, timeToMake: 10, allowableBuildings: [27,28,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2301:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Emerald,0,0,0,0,0,0,0],  outputAmount: [250,0,0,0,0,0],  output: [2301,0,0,0,0,0], capacityUsed: 5, timeToMake: 10, allowableBuildings: [27,28,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2302:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Sapphire,0,0,0,0,0,0,0],  outputAmount: [250,0,0,0,0,0],  output: [2302,0,0,0,0,0], capacityUsed: 5, timeToMake: 10, allowableBuildings: [27,28,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2303:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Diamond,0,0,0,0,0,0,0],  outputAmount: [250,0,0,0,0,0],  output: [2303,0,0,0,0,0], capacityUsed: 5, timeToMake: 10, allowableBuildings: [27,28,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2304:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Amethyst,0,0,0,0,0,0,0],  outputAmount: [300,0,0,0,0,0],  output: [2304,0,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2305:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Opal,0,0,0,0,0,0,0],  outputAmount: [300,0,0,0,0,0],  output: [2305,0,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2306:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Citrine,0,0,0,0,0,0,0],  outputAmount: [300,0,0,0,0,0],  output: [2306,0,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2308:
+        return({ amount: [350,0,0,0,0,0,0,0],  ingrediant: [Moonstone,0,0,0,0,0,0,0],  outputAmount: [200,0,0,0,0,0],  output: [2308,0,0,0,0,0], capacityUsed: 5, timeToMake: 10, allowableBuildings: [27,28,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2309:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Amber,0,0,0,0,0,0,0],  outputAmount: [300,0,0,0,0,0],  output: [2309,0,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2310:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Onyx,0,0,0,0,0,0,0],  outputAmount: [300,0,0,0,0,0],  output: [2310,0,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2311:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Aquamarine,0,0,0,0,0,0,0],  outputAmount: [300,0,0,0,0,0],  output: [2311,0,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2312:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Crystal_Glass,0,0,0,0,0,0,0],  outputAmount: [300,0,0,0,0,0],  output: [2312,0,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2314:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Ice_Stone,0,0,0,0,0,0,0],  outputAmount: [250,0,0,0,0,0],  output: [2314,0,0,0,0,0], capacityUsed: 5, timeToMake: 10, allowableBuildings: [27,28,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 2315:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Fire_Stone,0,0,0,0,0,0,0],  outputAmount: [250,0,0,0,0,0],  output: [2315,0,0,0,0,0], capacityUsed: 5, timeToMake: 10, allowableBuildings: [27,28,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4000:
+        return({ amount: [40,0,0,0,0,0,0,0],  ingrediant: [T2_Metal,0,0,0,0,0,0,0],  outputAmount: [120,0,0,0,0,0],  output: [4000,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4001:
+        return({ amount: [25,0,0,0,0,0,0,0],  ingrediant: [Diamond,0,0,0,0,0,0,0],  outputAmount: [30,0,0,0,0,0],  output: [4001,0,0,0,0,0], capacityUsed: 5, timeToMake: 10, allowableBuildings: [27,28,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4002:
+        return({ amount: [2500,0,0,0,0,0,0,0],  ingrediant: [Any_Fiber,0,0,0,0,0,0,0],  outputAmount: [100,0,0,0,0,0],  output: [4002,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4019:
+        return({ amount: [400,0,0,0,0,0,0,0],  ingrediant: [Rushseed,0,0,0,0,0,0,0],  outputAmount: [10,0,0,0,0,0],  output: [4019,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4020:
+        return({ amount: [1000,500,0,0,0,0,0,0],  ingrediant: [Bone,Any_Fuel,0,0,0,0,0,0],  outputAmount: [100,1000,100,0,0,0],  output: [1410,4020,4023,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4024:
+        return({ amount: [5000,0,0,0,0,0,0,0],  ingrediant: [Clay,0,0,0,0,0,0,0],  outputAmount: [200,0,0,0,0,0],  output: [4024,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [16,17,18,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4026:
+        return({ amount: [9000,0,0,0,0,0,0,0],  ingrediant: [Wood,0,0,0,0,0,0,0],  outputAmount: [12000,40,20,0,0,0],  output: [2103,4028,4026,0,0,0], capacityUsed: 4, timeToMake: 20, allowableBuildings: [18,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4027:
+        return({ amount: [1000,1000,0,0,0,0,0,0],  ingrediant: [Ash,Fat,0,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [4027,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [16,17,18,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4028:
+        return({ amount: [9000,0,0,0,0,0,0,0],  ingrediant: [Wood,0,0,0,0,0,0,0],  outputAmount: [12000,40,0,0,0,0],  output: [2103,4028,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [18,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4029:
+        return({ amount: [200,0,0,0,0,0,0,0],  ingrediant: [Leather,0,0,0,0,0,0,0],  outputAmount: [300,0,0,0,0,0],  output: [4029,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,true,false,false,false,false,false,false]})
+  case 4030:
+        return({ amount: [5,0,0,0,0,0,0,0],  ingrediant: [Hay,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4030,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4031:
+        return({ amount: [5,5,0,0,0,0,0,0],  ingrediant: [Hay,Ash,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4031,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4032:
+        return({ amount: [1,7,0,0,0,0,0,0],  ingrediant: [Level_2_Fertilizer,Organic_Pulp,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4032,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4040:
+        return({ amount: [20,0,0,0,0,0,0,0],  ingrediant: [Bloodstone,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4040,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4050:
+        return({ amount: [700,1000,0,0,0,0,0,0],  ingrediant: [Ash,Charcoal,0,0,0,0,0,0],  outputAmount: [2000,0,0,0,0,0],  output: [4050,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [16,17,18,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4051:
+        return({ amount: [3000,1000,0,0,0,0,0,0],  ingrediant: [Lead,Charcoal,0,0,0,0,0,0],  outputAmount: [1000,300,0,0,0,0],  output: [4051,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [16,17,18,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4053:
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Forest_Glass,0,0,0,0,0,0,0],  outputAmount: [10,0,0,0,0,0],  output: [4052,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [16,17,18,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4054:
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Lead_Glass,0,0,0,0,0,0,0],  outputAmount: [10,0,0,0,0,0],  output: [4053,0,0,0,0,0], capacityUsed: 6, timeToMake: 10, allowableBuildings: [17,18,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4055:
+        return({ amount: [250,200,0,0,0,0,0,0],  ingrediant: [Refined_Wood,Tar,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4055,0,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4056:
+        return({ amount: [100,4,0,0,0,0,0,0],  ingrediant: [Fabric,Rushseed_Oil,0,0,0,0,0,0],  outputAmount: [50,0,0,0,0,0],  output: [4056,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4059:
+        return({ amount: [100,100,0,0,0,0,0,0],  ingrediant: [Winterberries,Jungleberries,0,0,0,0,0,0],  outputAmount: [100,0,0,0,0,0],  output: [4059,0,0,0,0,0], capacityUsed: 1, timeToMake: 4, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4060:
+        return({ amount: [5000,0,0,0,0,0,0,0],  ingrediant: [Charcoal,0,0,0,0,0,0,0],  outputAmount: [200,0,0,0,0,0],  output: [4060,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4061:
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Iron_Ore,0,0,0,0,0,0,0],  outputAmount: [250,0,0,0,0,0],  output: [4061,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4062:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Winterberries,0,0,0,0,0,0,0],  outputAmount: [250,0,0,0,0,0],  output: [4062,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4063:
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Organic_Pulp,0,0,0,0,0,0,0],  outputAmount: [150,0,0,0,0,0],  output: [4063,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4065:
+        return({ amount: [20,10,10,10,0,0,0,0],  ingrediant: [Ink,Red_Dye,Blue_Dye,Green_Dye,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4065,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4100:
+        return({ amount: [5000,5000,0,0,0,0,0,0],  ingrediant: [Bronze,Any_Fuel,0,0,0,0,0,0],  outputAmount: [5,1000,0,0,0,0],  output: [4100,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4101:
+        return({ amount: [2000,2000,0,0,0,0,0,0],  ingrediant: [Iron,Charcoal,0,0,0,0,0,0],  outputAmount: [2,600,0,0,0,0],  output: [4101,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4102:
+        return({ amount: [2000,2000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [2,600,0,0,0,0],  output: [4102,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4103:
+        return({ amount: [2000,2000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [2,600,0,0,0,0],  output: [4103,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4104:
+        return({ amount: [500,1000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [4109,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4105:
+        return({ amount: [2000,4000,0,0,0,0,0,0],  ingrediant: [Bronze,Any_Fuel,0,0,0,0,0,0],  outputAmount: [4,800,0,0,0,0],  output: [4105,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4106:
+        return({ amount: [500,1000,0,0,0,0,0,0],  ingrediant: [Iron,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [4106,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4107:
+        return({ amount: [500,1000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [4107,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4108:
+        return({ amount: [500,1000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [4108,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4109:
+        return({ amount: [2000,2000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [2,600,0,0,0,0],  output: [4104,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4200:
+        return({ amount: [200,400,200,0,0,0,0,0],  ingrediant: [Berry_Dust,Human_Earth,Vitae_Dust,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4200,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,true,false,false,false]})
+  case 4201:
+        return({ amount: [5500,0,0,0,0,0,0,0],  ingrediant: [Nettles,0,0,0,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4201,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4202:
+        return({ amount: [120,0,0,0,0,0,0,0],  ingrediant: [Life_Bark,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4202,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4203:
+        return({ amount: [120,0,0,0,0,0,0,0],  ingrediant: [Nightberry,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4203,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4204:
+        return({ amount: [120,0,0,0,0,0,0,0],  ingrediant: [Sweet_Herbs,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4204,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4205:
+        return({ amount: [60,0,0,0,0,0,0,0],  ingrediant: [Joyous_Flowers,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4205,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4206:
+        return({ amount: [60,0,0,0,0,0,0,0],  ingrediant: [Silver_Bark,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4206,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4207:
+        return({ amount: [120,0,0,0,0,0,0,0],  ingrediant: [Savory_Herbs,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4207,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4221:
+        return({ amount: [1500,0,0,0,0,0,0,0],  ingrediant: [Spruce_Trimming,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4221,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4222:
+        return({ amount: [400,50,0,0,0,0,0,0],  ingrediant: [Life_Bark,Pure_Alcohol,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4222,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,true,false,false,false]})
+  case 4223:
+        return({ amount: [400,50,0,0,0,0,0,0],  ingrediant: [Nightberry,Pure_Alcohol,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4223,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,true,false,false,false]})
+  case 4224:
+        return({ amount: [400,50,0,0,0,0,0,0],  ingrediant: [Sweet_Herbs,Pure_Alcohol,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4224,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,true,false,false,false]})
+  case 4225:
+        return({ amount: [200,50,0,0,0,0,0,0],  ingrediant: [Joyous_Flowers,Pure_Alcohol,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4225,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,true,false,false,false]})
+  case 4226:
+        return({ amount: [300,0,0,0,0,0,0,0],  ingrediant: [Silver_Bark,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4226,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4227:
+        return({ amount: [400,50,0,0,0,0,0,0],  ingrediant: [Savory_Herbs,Pure_Alcohol,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4227,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,true,false,false,false]})
+  case 4311:
+        return({ amount: [100,50,2000,200,0,0,0,0],  ingrediant: [Paper,Ink,Basic_Stone_Building_Materials,Advanced_Stone_Building_Materials,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4311,0,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,true,false,false,false,false,false,false,false]})
+  case 4312:
+        return({ amount: [100,50,2000,200,0,0,0,0],  ingrediant: [Paper,Ink,Basic_Mud_Building_Materials,Advanced_Mud_Building_Materials,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4312,0,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,true,false,false,false,false,false,false]})
+  case 4313:
+        return({ amount: [100,50,2000,200,0,0,0,0],  ingrediant: [Paper,Ink,Basic_Building_Material,Advanced_Building_Material,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4313,0,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [true,false,false,false,false,false,false,false,false]})
+  case 4314:
+        return({ amount: [100,50,2000,200,0,0,0,0],  ingrediant: [Paper,Ink,Basic_Wood_Building_Materials,Advanced_Wood_Building_Materials,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4314,0,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,true,false,false,false,false,false]})
+  case 4315:
+        return({ amount: [100,50,2000,200,0,0,0,0],  ingrediant: [Paper,Ink,Basic_Mud_Building_Materials,Advanced_Mud_Building_Materials,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4315,0,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,true,false,false,false,false]})
+  case 4316:
+        return({ amount: [100,50,2000,200,0,0,0,0],  ingrediant: [Paper,Ink,Basic_Wood_Building_Materials,Advanced_Wood_Building_Materials,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4316,0,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,true,false,false,false]})
+  case 4317:
+        return({ amount: [100,50,2000,200,0,0,0,0],  ingrediant: [Paper,Ink,Basic_Stone_Building_Materials,Advanced_Stone_Building_Materials,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4317,0,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,true,false,false]})
+  case 4318:
+        return({ amount: [100,50,2000,200,0,0,0,0],  ingrediant: [Paper,Ink,Basic_Brick_Building_Material,Advanced_Brick_Building_Material,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4318,0,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,false,true,false]})
+  case 4319:
+        return({ amount: [100,50,2000,200,0,0,0,0],  ingrediant: [Paper,Ink,Basic_Brick_Building_Material,Advanced_Brick_Building_Material,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4319,0,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,false,false,true]})
+  case 4321:
+        return({ amount: [100,50,750,4,0,0,0,0],  ingrediant: [Paper,Ink,Polished_Aquamarine,Basic_Tool,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4321,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4322:
+        return({ amount: [100,50,750,4,0,0,0,0],  ingrediant: [Paper,Ink,Polished_Amethyst,Basic_Tool,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4322,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4323:
+        return({ amount: [100,50,750,4,0,0,0,0],  ingrediant: [Paper,Ink,Polished_Citrine,Basic_Tool,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4323,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4324:
+        return({ amount: [100,50,250,4,0,0,0,0],  ingrediant: [Paper,Ink,Polished_Moonstone,Basic_Tool,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4324,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4325:
+        return({ amount: [100,50,375,4,0,0,0,0],  ingrediant: [Paper,Ink,Polished_Sapphire,Basic_Tool,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4325,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4326:
+        return({ amount: [100,50,750,4,0,0,0,0],  ingrediant: [Paper,Ink,Polished_Onyx,Basic_Tool,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4326,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4327:
+        return({ amount: [100,50,150,4,0,0,0,0],  ingrediant: [Paper,Ink,Polished_Diamond,Basic_Tool,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4327,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4328:
+        return({ amount: [100,50,750,4,0,0,0,0],  ingrediant: [Paper,Ink,Polished_Amber,Basic_Tool,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4328,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4329:
+        return({ amount: [100,50,750,4,0,0,0,0],  ingrediant: [Paper,Ink,Polished_Amber,Basic_Tool,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4329,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4330:
+        return({ amount: [100,50,750,4,0,0,0,0],  ingrediant: [Paper,Ink,Polished_Amber,Basic_Tool,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4330,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4331:
+        return({ amount: [100,50,375,4,0,0,0,0],  ingrediant: [Paper,Ink,Polished_Emerald,Basic_Tool,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4331,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4400:
+        return({ amount: [500000,20000,50000,0,0,0,0,0],  ingrediant: [Refined_Wood,Crystal_Glass_Pane,Lead_Glass_Pane,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4400,0,0,0,0,0], capacityUsed: 100, timeToMake: 1000, allowableBuildings: [29,30,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4410:
+        return({ amount: [75,10000,0,0,0,0,0,0],  ingrediant: [Boat_Part,Fabric,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4410,0,0,0,0,0], capacityUsed: 10, timeToMake: 100, allowableBuildings: [19,200,200,200,200,200,200,200],allowableBuildingTypes: [false,true,true,true,true,true,false,false,false]})
+  case 4411:
+        return({ amount: [500,100000,0,0,0,0,0,0],  ingrediant: [Boat_Part,Fabric,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4411,0,0,0,0,0], capacityUsed: 50, timeToMake: 200, allowableBuildings: [19,200,200,200,200,200,200,200],allowableBuildingTypes: [false,true,true,true,true,true,false,false,false]})
+  case 4412:
+        return({ amount: [2500,200000,0,0,0,0,0,0],  ingrediant: [Boat_Part,Treated_Fabric,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4412,0,0,0,0,0], capacityUsed: 250, timeToMake: 200, allowableBuildings: [19,200,200,200,200,200,200,200],allowableBuildingTypes: [false,true,true,true,true,true,false,false,false]})
+  case 4414:
+        return({ amount: [25,100,0,0,0,0,0,0],  ingrediant: [Refined_Wood,Tar,0,0,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4414,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4500:
+        return({ amount: [200,0,0,0,0,0,0,0],  ingrediant: [Fur,0,0,0,0,0,0,0],  outputAmount: [10,0,0,0,0,0],  output: [4500,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4501:
+        return({ amount: [150,0,0,0,0,0,0,0],  ingrediant: [Fabric,0,0,0,0,0,0,0],  outputAmount: [10,0,0,0,0,0],  output: [4501,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4502:
+        return({ amount: [300,0,0,0,0,0,0,0],  ingrediant: [Leather,0,0,0,0,0,0,0],  outputAmount: [8,0,0,0,0,0],  output: [4501,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4503:
+        return({ amount: [10,100,0,0,0,0,0,0],  ingrediant: [Exotic_Fur,Fur,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4503,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [31,32,33,34,35,36,37,38,39],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4504:
+        return({ amount: [150,0,0,0,0,0,0,0],  ingrediant: [Fabric,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4504,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [31,32,33,34,35,36,37,38,39],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4520:
+        return({ amount: [50,0,0,0,0,0,0,0],  ingrediant: [Clay_Beads,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4520,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4521:
+        return({ amount: [800,0,0,0,0,0,0,0],  ingrediant: [Copper,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4521,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4522:
+        return({ amount: [475,0,0,0,0,0,0,0],  ingrediant: [Silver,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4522,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4523:
+        return({ amount: [495,0,0,0,0,0,0,0],  ingrediant: [Gold,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4523,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4524:
+        return({ amount: [495,0,0,0,0,0,0,0],  ingrediant: [Aluminum,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4524,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4525:
+        return({ amount: [10,0,0,0,0,0,0,0],  ingrediant: [Bronze_Artifact_Cache,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4525,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4526:
+        return({ amount: [20,0,0,0,0,0,0,0],  ingrediant: [Gold_Artifact_Cache,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4526,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4527:
+        return({ amount: [2900,0,0,0,0,0,0,0],  ingrediant: [Pearl,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4527,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4540:
+        return({ amount: [200,10000,5000,0,0,0,0,0],  ingrediant: [T2_Metal,Wood,Stone,0,0,0,0,0],  outputAmount: [20,0,0,0,0,0],  output: [4540,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4541:
+        return({ amount: [200,5000,200,0,0,0,0,0],  ingrediant: [Steel,Wood,Antler,0,0,0,0,0],  outputAmount: [10,0,0,0,0,0],  output: [4541,0,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4542:
+        return({ amount: [100,32,100,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Ivory,Exotic_Leather,0,0,0,0,0],  outputAmount: [10,0,0,0,0,0],  output: [4542,0,0,0,0,0], capacityUsed: 15, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4560:
+        return({ amount: [400,100,0,0,0,0,0,0],  ingrediant: [Copper,Any_Polished_Common_Gemstone,0,0,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4560,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4561:
+        return({ amount: [100,50,0,0,0,0,0,0],  ingrediant: [Silver,Any_Polished_Common_Gemstone,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4561,0,0,0,0,0], capacityUsed: 5, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4562:
+        return({ amount: [180,100,0,0,0,0,0,0],  ingrediant: [Gold,Any_Polished_Rare_Gemstone,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4562,0,0,0,0,0], capacityUsed: 10, timeToMake: 20, allowableBuildings: [27,28,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4563:
+        return({ amount: [5,0,0,0,0,0,0,0],  ingrediant: [Bronze_Artifact_Cache,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4563,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4564:
+        return({ amount: [5,0,0,0,0,0,0,0],  ingrediant: [Gold_Artifact_Cache,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4564,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4565:
+        return({ amount: [175,250,0,0,0,0,0,0],  ingrediant: [Aluminum,Polished_Diamond,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4565,0,0,0,0,0], capacityUsed: 5, timeToMake: 10, allowableBuildings: [27,28,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4580:
+        return({ amount: [200,200,0,0,0,0,0,0],  ingrediant: [Fur,Fabric,0,0,0,0,0,0],  outputAmount: [10,0,0,0,0,0],  output: [4580,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4581:
+        return({ amount: [100,70,0,0,0,0,0,0],  ingrediant: [Exotic_Fur,Down,0,0,0,0,0,0],  outputAmount: [10,0,0,0,0,0],  output: [4581,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4582:
+        return({ amount: [120,0,0,0,0,0,0,0],  ingrediant: [Down,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4582,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [29,30,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4600:
+        return({ amount: [100,0,0,0,0,0,0,0],  ingrediant: [Clay_Beads,0,0,0,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4600,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4601:
+        return({ amount: [800,50,0,0,0,0,0,0],  ingrediant: [Copper,Any_Polished_Common_Gemstone,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4601,0,0,0,0,0], capacityUsed: 5, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4602:
+        return({ amount: [300,150,0,0,0,0,0,0],  ingrediant: [Silver,Any_Polished_Common_Gemstone,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4602,0,0,0,0,0], capacityUsed: 5, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4603:
+        return({ amount: [300,500,0,0,0,0,0,0],  ingrediant: [Gold,Any_Polished_Rare_Gemstone,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4603,0,0,0,0,0], capacityUsed: 20, timeToMake: 10, allowableBuildings: [27,28,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4604:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Polished_Amber,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4604,0,0,0,0,0], capacityUsed: 5, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4605:
+        return({ amount: [10,0,0,0,0,0,0,0],  ingrediant: [Bronze_Artifact_Cache,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4605,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4606:
+        return({ amount: [10,0,0,0,0,0,0,0],  ingrediant: [Gold_Artifact_Cache,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4606,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4607:
+        return({ amount: [300,1000,0,0,0,0,0,0],  ingrediant: [Aluminum,Any_Polished_Rare_Gemstone,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4607,0,0,0,0,0], capacityUsed: 20, timeToMake: 20, allowableBuildings: [27,28,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4608:
+        return({ amount: [5000,0,0,0,0,0,0,0],  ingrediant: [Pearl,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4608,0,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4620:
+        return({ amount: [2500,0,0,0,0,0,0,0],  ingrediant: [Wood,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4620,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4621:
+        return({ amount: [2500,0,0,0,0,0,0,0],  ingrediant: [Stone,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4621,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [true,false,false,false,false,false,true,true,true]})
+  case 4622:
+        return({ amount: [5000,0,0,0,0,0,0,0],  ingrediant: [Wood,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4622,0,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4623:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Refined_Wood,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4623,0,0,0,0,0], capacityUsed: 30, timeToMake: 10, allowableBuildings: [29,30,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4624:
+        return({ amount: [1500,1500,750,0,0,0,0,0],  ingrediant: [Refined_Wood,Any_Polished_Common_Gemstone,Any_Polished_Rare_Gemstone,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4624,0,0,0,0,0], capacityUsed: 80, timeToMake: 10, allowableBuildings: [29,30,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4640:
+        return({ amount: [2500,0,0,0,0,0,0,0],  ingrediant: [Wood,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4640,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4641:
+        return({ amount: [2500,0,0,0,0,0,0,0],  ingrediant: [Stone,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4641,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [19,200,200,200,200,200,200,200],allowableBuildingTypes: [true,false,false,false,false,false,true,true,true]})
+  case 4642:
+        return({ amount: [20000,0,0,0,0,0,0,0],  ingrediant: [Wood,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4642,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4643:
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Refined_Wood,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4643,0,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [29,30,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4644:
+        return({ amount: [2000,200,1500,0,0,0,0,0],  ingrediant: [Refined_Wood,Gold_Foil,Any_Polished_Rare_Gemstone,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4644,0,0,0,0,0], capacityUsed: 20, timeToMake: 10, allowableBuildings: [29,30,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4660:
+        return({ amount: [2500,0,0,0,0,0,0,0],  ingrediant: [Wood,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4660,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [29,30,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4661:
+        return({ amount: [7500,0,0,0,0,0,0,0],  ingrediant: [Stone,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4661,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [19,200,200,200,200,200,200,200],allowableBuildingTypes: [true,false,false,false,false,false,true,true,true]})
+  case 4662:
+        return({ amount: [5000,4000,0,0,0,0,0,0],  ingrediant: [Clay,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [4662,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4663:
+        return({ amount: [10000,4000,2,0,0,0,0,0],  ingrediant: [Kaolinite,Charcoal,Dye_Pack,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [4663,4023,0,0,0,0], capacityUsed: 1, timeToMake: 20, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4664:
+        return({ amount: [400,0,0,0,0,0,0,0],  ingrediant: [Silver,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4664,0,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4665:
+        return({ amount: [400,0,0,0,0,0,0,0],  ingrediant: [Gold,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4665,0,0,0,0,0], capacityUsed: 10, timeToMake: 20, allowableBuildings: [23,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4666:
+        return({ amount: [400,0,0,0,0,0,0,0],  ingrediant: [Aluminum,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4666,0,0,0,0,0], capacityUsed: 20, timeToMake: 20, allowableBuildings: [23,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4667:
+        return({ amount: [5,0,0,0,0,0,0,0],  ingrediant: [Gold_Artifact_Cache,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4667,0,0,0,0,0], capacityUsed: 0, timeToMake: 9, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4680:
+        return({ amount: [2500,0,0,0,0,0,0,0],  ingrediant: [Wood,0,0,0,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4680,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4681:
+        return({ amount: [1000,6000,0,0,0,0,0,0],  ingrediant: [Forest_Glass,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [4681,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4682:
+        return({ amount: [3000,0,0,0,0,0,0,0],  ingrediant: [Crystal_Glass,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4682,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4683:
+        return({ amount: [250,1000,0,0,0,0,0,0],  ingrediant: [Gold,Any_Polished_Rare_Gemstone,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4683,0,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [27,28,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4684:
+        return({ amount: [10,0,0,0,0,0,0,0],  ingrediant: [Gold_Artifact_Cache,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4684,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4700:
+        return({ amount: [0,0,0,0,0,0,0,0],  ingrediant: [7500,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4700,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [19,200,200,200,200,200,200,200],allowableBuildingTypes: [true,false,false,false,false,false,true,true,true]})
+  case 4701:
+        return({ amount: [400,0,0,0,0,0,0,0],  ingrediant: [Silver,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4701,0,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4702:
+        return({ amount: [400,0,0,0,0,0,0,0],  ingrediant: [Gold,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4702,0,0,0,0,0], capacityUsed: 20, timeToMake: 10, allowableBuildings: [27,28,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4703:
+        return({ amount: [7,0,0,0,0,0,0,0],  ingrediant: [Bronze_Artifact_Cache,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4703,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4704:
+        return({ amount: [2,0,0,0,0,0,0,0],  ingrediant: [Gold_Artifact_Cache,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4704,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4720:
+        return({ amount: [50,0,0,0,0,0,0,0],  ingrediant: [Fabric,0,0,0,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4720,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4721:
+        return({ amount: [50,0,0,0,0,0,0,0],  ingrediant: [Fabric,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4721,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4722:
+        return({ amount: [200,2,0,0,0,0,0,0],  ingrediant: [Fabric,Dye_Pack,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4722,0,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [31,32,33,34,35,36,37,38,39],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4740:
+        return({ amount: [150,2,0,0,0,0,0,0],  ingrediant: [Fabric,Dye_Pack,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4740,0,0,0,0,0], capacityUsed: 5, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,false,false,true]})
+  case 4741:
+        return({ amount: [300,4,0,0,0,0,0,0],  ingrediant: [Fabric,Dye_Pack,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4741,0,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,false,false,true]})
+  case 4742:
+        return({ amount: [750,10,0,0,0,0,0,0],  ingrediant: [Fabric,Dye_Pack,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4742,0,0,0,0,0], capacityUsed: 25, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,false,false,true]})
+  case 4743:
+        return({ amount: [1000,10,600,0,0,0,0,0],  ingrediant: [Fabric,Dye_Pack,Gold_Foil,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4743,0,0,0,0,0], capacityUsed: 50, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,false,false,true]})
+  case 4760:
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Refined_Stone,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4760,0,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,false,false,true]})
+  case 4761:
+        return({ amount: [2000,0,0,0,0,0,0,0],  ingrediant: [Refined_Stone,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4761,0,0,0,0,0], capacityUsed: 20, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,false,false,true]})
+  case 4762:
+        return({ amount: [4000,0,0,0,0,0,0,0],  ingrediant: [Refined_Stone,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4762,0,0,0,0,0], capacityUsed: 20, timeToMake: 20, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,false,false,true]})
+  case 4780:
+        return({ amount: [2500,0,0,0,0,0,0,0],  ingrediant: [Wood,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4780,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4781:
+        return({ amount: [2500,500,1000,0,0,0,0,0],  ingrediant: [Stone,Cooked_Bone,Charcoal,0,0,0,0,0],  outputAmount: [1,50,0,0,0,0],  output: [4781,4023,0,0,0,0], capacityUsed: 3, timeToMake: 10, allowableBuildings: [19,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4782:
+        return({ amount: [250,500,0,0,0,0,0,0],  ingrediant: [Refined_Wood,Leather,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4782,0,0,0,0,0], capacityUsed: 5, timeToMake: 10, allowableBuildings: [29,30,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4783:
+        return({ amount: [500,50,200,5,0,0,0,0],  ingrediant: [Refined_Wood,Ivory,Exotic_Leather,Storage_Pots,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4783,0,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4800:
+        return({ amount: [7500,0,0,0,0,0,0,0],  ingrediant: [Wood,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4800,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4801:
+        return({ amount: [200,600,200,0,0,0,0,0],  ingrediant: [Refined_Wood,Antler,Leather,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4801,0,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4802:
+        return({ amount: [500,100,100,0,0,0,0,0],  ingrediant: [Refined_Wood,Ivory,Exotic_Leather,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4802,0,0,0,0,0], capacityUsed: 20, timeToMake: 10, allowableBuildings: [29,30,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5000:
+        return({ amount: [4000,6000,0,0,0,0,0,0],  ingrediant: [Bronze,Any_Fuel,0,0,0,0,0,0],  outputAmount: [10,200,0,0,0,0],  output: [5000,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5001:
+        return({ amount: [2000,4000,0,0,0,0,0,0],  ingrediant: [Iron,Charcoal,0,0,0,0,0,0],  outputAmount: [5,200,0,0,0,0],  output: [5001,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5002:
+        return({ amount: [2000,4000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [5,200,0,0,0,0],  output: [5002,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5003:
+        return({ amount: [2000,4000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [5,200,0,0,0,0],  output: [5003,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5004:
+        return({ amount: [2000,4000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [5,200,0,0,0,0],  output: [5004,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5010:
+        return({ amount: [4000,6000,0,0,0,0,0,0],  ingrediant: [Bronze,Any_Fuel,0,0,0,0,0,0],  outputAmount: [4,200,0,0,0,0],  output: [5010,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5011:
+        return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Iron,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5011,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5012:
+        return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5012,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5013:
+        return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5013,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5014:
+        return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5014,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5020:
+        return({ amount: [4000,6000,0,0,0,0,0,0],  ingrediant: [Bronze,Any_Fuel,0,0,0,0,0,0],  outputAmount: [4,200,0,0,0,0],  output: [5020,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5021:
+        return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Iron,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5021,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5022:
+        return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5022,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5023:
+        return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5023,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5024:
+        return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5024,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5025:
+        return({ amount: [10000,0,0,0,0,0,0,0],  ingrediant: [Diamond_Blade,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5025,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5030:
+        return({ amount: [4000,6000,0,0,0,0,0,0],  ingrediant: [Bronze,Any_Fuel,0,0,0,0,0,0],  outputAmount: [4,200,0,0,0,0],  output: [5030,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5031:
+        return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Iron,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5031,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5032:
+        return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5032,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5033:
+        return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5033,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5034:
+        return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5034,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5040:
+        return({ amount: [3000,9000,0,0,0,0,0,0],  ingrediant: [Bronze,Any_Fuel,0,0,0,0,0,0],  outputAmount: [2,300,0,0,0,0],  output: [5040,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5041:
+        return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Iron,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5041,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5042:
+        return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5042,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5043:
+        return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5043,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5044:
+        return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5044,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5050:
+        return({ amount: [3000,9000,0,0,0,0,0,0],  ingrediant: [Bronze,Any_Fuel,0,0,0,0,0,0],  outputAmount: [2,300,0,0,0,0],  output: [5050,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5051:
+        return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Iron,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5051,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5052:
+        return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5052,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5053:
+        return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5053,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5054:
+        return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5054,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5060:
+        return({ amount: [4000,9000,0,0,0,0,0,0],  ingrediant: [Bronze,Any_Fuel,0,0,0,0,0,0],  outputAmount: [2,300,0,0,0,0],  output: [5060,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5061:
+        return({ amount: [2000,6000,0,0,0,0,0,0],  ingrediant: [Iron,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5061,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5062:
+        return({ amount: [2000,6000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5062,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5063:
+        return({ amount: [2000,6000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5063,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5064:
+        return({ amount: [2000,6000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5064,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5070:
+        return({ amount: [3000,9000,0,0,0,0,0,0],  ingrediant: [Bronze,Any_Fuel,0,0,0,0,0,0],  outputAmount: [2,300,0,0,0,0],  output: [5070,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5071:
+        return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Iron,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5071,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5072:
+        return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5072,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5073:
+        return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5073,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5074:
+        return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5074,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5080:
+        return({ amount: [50,175000,0,0,0,0,0,0],  ingrediant: [Bronze_Plate,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,5000,0,0,0,0],  output: [5080,4023,0,0,0,0], capacityUsed: 24, timeToMake: 100, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5081:
+        return({ amount: [50,225000,0,0,0,0,0,0],  ingrediant: [Iron_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,7500,0,0,0,0],  output: [5081,4023,0,0,0,0], capacityUsed: 24, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5082:
+        return({ amount: [50,225000,0,0,0,0,0,0],  ingrediant: [Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,7500,0,0,0,0],  output: [5082,4023,0,0,0,0], capacityUsed: 24, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5083:
+        return({ amount: [50,225000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,7500,0,0,0,0],  output: [5083,4023,0,0,0,0], capacityUsed: 24, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5084:
+        return({ amount: [50,450000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,15000,0,0,0,0],  output: [5084,4023,0,0,0,0], capacityUsed: 24, timeToMake: 400, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5090:
+        return({ amount: [50,175000,0,0,0,0,0,0],  ingrediant: [Bronze_Plate,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,5000,0,0,0,0],  output: [5090,4023,0,0,0,0], capacityUsed: 24, timeToMake: 100, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5091:
+        return({ amount: [50,225000,0,0,0,0,0,0],  ingrediant: [Iron_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,7500,0,0,0,0],  output: [5091,4023,0,0,0,0], capacityUsed: 24, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5092:
+        return({ amount: [50,225000,0,0,0,0,0,0],  ingrediant: [Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,7500,0,0,0,0],  output: [5092,4023,0,0,0,0], capacityUsed: 24, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5093:
+        return({ amount: [50,225000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,7500,0,0,0,0],  output: [5093,4023,0,0,0,0], capacityUsed: 24, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5094:
+        return({ amount: [50,450000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,15000,0,0,0,0],  output: [5094,4023,0,0,0,0], capacityUsed: 24, timeToMake: 400, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5200:
+        return({ amount: [5000,0,0,0,0,0,0,0],  ingrediant: [Wood,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5200,0,0,0,0,0], capacityUsed: 3, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5201:
+        return({ amount: [5000,0,0,0,0,0,0,0],  ingrediant: [Wood,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5201,0,0,0,0,0], capacityUsed: 6, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5202:
+        return({ amount: [5000,0,0,0,0,0,0,0],  ingrediant: [Wood,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5202,0,0,0,0,0], capacityUsed: 16, timeToMake: 20, allowableBuildings: [29,30,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5203:
+        return({ amount: [100,4000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [300,200,0,0,0,0],  output: [5203,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5204:
+        return({ amount: [100,4000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [150,200,0,0,0,0],  output: [5204,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5210:
+        return({ amount: [5000,2,0,0,0,0,0,0],  ingrediant: [Wood,Iron_Plate,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5210,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5211:
+        return({ amount: [75,0,0,0,0,0,0,0],  ingrediant: [Fabric,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5211,0,0,0,0,0], capacityUsed: 1, timeToMake: 5, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5212:
+        return({ amount: [12,0,0,0,0,0,0,0],  ingrediant: [Iron_Plate,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5212,0,0,0,0,0], capacityUsed: 5, timeToMake: 40, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5213:
+        return({ amount: [5000,0,0,0,0,0,0,0],  ingrediant: [Stone,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5213,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [19,200,200,200,200,200,200,200],allowableBuildingTypes: [true,false,false,false,false,false,true,true,true]})
+  case 5214:
+        return({ amount: [1,1900,0,0,0,0,0,0],  ingrediant: [Basic_Sling,Gold,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5214,0,0,0,0,0], capacityUsed: 6, timeToMake: 30, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5420:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Elephant,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5420,0,0,0,0,0], capacityUsed: 50, timeToMake: 30, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,true,false,false,false,false,false]})
+  case 5421:
+        return({ amount: [0,0,0,0,0,0,0,0],  ingrediant: [0,0,0,0,0,0,0,0],  outputAmount: [0,0,0,0,0,0],  output: [0,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5430:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Rhino,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5430,0,0,0,0,0], capacityUsed: 50, timeToMake: 30, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,true,false,false,false,false,false]})
+  case 5431:
+        return({ amount: [0,0,0,0,0,0,0,0],  ingrediant: [0,0,0,0,0,0,0,0],  outputAmount: [0,0,0,0,0,0],  output: [0,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5500:
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Bronze_Chainmail,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,400,0,0,0,0],  output: [5500,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5501:
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Iron_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5501,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5502:
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Steel_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5502,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5503:
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5503,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5504:
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5504,4023,0,0,0,0], capacityUsed: 15, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5510:
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Bronze_Plate,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,400,0,0,0,0],  output: [5510,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5511:
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Iron_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5511,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5512:
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5512,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5513:
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5513,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5514:
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5514,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5520:
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Bronze_Chainmail,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,800,0,0,0,0],  output: [5520,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5521:
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Iron_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5521,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5522:
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Steel_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5522,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5523:
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5523,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5524:
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5524,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5530:
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Bronze_Plate,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,800,0,0,0,0],  output: [5530,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5531:
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Iron_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5531,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5532:
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5532,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5533:
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5533,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5534:
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5534,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5540:
+        return({ amount: [4,4,8000,0,0,0,0,0],  ingrediant: [Bronze_Plate,Bronze_Chainmail,Any_Fuel,0,0,0,0,0],  outputAmount: [1,1600,0,0,0,0],  output: [5540,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5541:
+        return({ amount: [4,4,8000,0,0,0,0,0],  ingrediant: [Iron_Plate,Iron_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,2400,0,0,0,0],  output: [5541,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5542:
+        return({ amount: [4,4,8000,0,0,0,0,0],  ingrediant: [Steel_Plate,Steel_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,2400,0,0,0,0],  output: [5542,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5543:
+        return({ amount: [4,4,8000,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Emerald_Bronze_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,2400,0,0,0,0],  output: [5543,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5544:
+        return({ amount: [4,4,8000,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Damascus_Steel_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,2400,0,0,0,0],  output: [5544,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5550:
+        return({ amount: [6,6000,0,0,0,0,0,0],  ingrediant: [Bronze_Plate,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5550,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5551:
+        return({ amount: [6,6000,0,0,0,0,0,0],  ingrediant: [Iron_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1800,0,0,0,0],  output: [5551,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5552:
+        return({ amount: [6,6000,0,0,0,0,0,0],  ingrediant: [Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1800,0,0,0,0],  output: [5552,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5553:
+        return({ amount: [6,6000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1800,0,0,0,0],  output: [5553,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5554:
+        return({ amount: [6,6000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1800,0,0,0,0],  output: [5554,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5560:
+        return({ amount: [12,12000,0,0,0,0,0,0],  ingrediant: [Bronze_Plate,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,2400,0,0,0,0],  output: [5560,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5561:
+        return({ amount: [12,12000,0,0,0,0,0,0],  ingrediant: [Iron_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,3600,0,0,0,0],  output: [5561,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5562:
+        return({ amount: [12,12000,0,0,0,0,0,0],  ingrediant: [Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,3600,0,0,0,0],  output: [5562,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5563:
+        return({ amount: [12,12000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,3600,0,0,0,0],  output: [5563,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5564:
+        return({ amount: [12,12000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,3600,0,0,0,0],  output: [5564,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5570:
+        return({ amount: [18,6,24000,0,0,0,0,0],  ingrediant: [Bronze_Plate,Bronze_Chainmail,Any_Fuel,0,0,0,0,0],  outputAmount: [1,4800,0,0,0,0],  output: [5570,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5571:
+        return({ amount: [18,6,24000,0,0,0,0,0],  ingrediant: [Iron_Plate,Iron_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,7200,0,0,0,0],  output: [5571,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5572:
+        return({ amount: [18,6,24000,0,0,0,0,0],  ingrediant: [Steel_Plate,Steel_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,7200,0,0,0,0],  output: [5572,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5573:
+        return({ amount: [18,6,24000,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Emerald_Bronze_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,7200,0,0,0,0],  output: [5573,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5574:
+        return({ amount: [18,6,24000,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Damascus_Steel_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,7200,0,0,0,0],  output: [5574,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5580:
+        return({ amount: [2000,0,0,0,0,0,0,0],  ingrediant: [Leather,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5580,0,0,0,0,0], capacityUsed: 5, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5581:
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Thick_Leather,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5581,0,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [31,32,33,34,35,36,37,38,39],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5582:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Fabric,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5582,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5585:
+        return({ amount: [400,0,0,0,0,0,0,0],  ingrediant: [Fabric,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5585,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5586:
+        return({ amount: [400,0,0,0,0,0,0,0],  ingrediant: [Fabric,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5586,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5613:
+        return({ amount: [50,0,0,0,0,0,0,0],  ingrediant: [Fabric,0,0,0,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [5613,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5614:
+        return({ amount: [50,0,0,0,0,0,0,0],  ingrediant: [Fabric,0,0,0,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [5614,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5620:
+        return({ amount: [5000,500,0,0,0,0,0,0],  ingrediant: [Wood,Feather,0,0,0,0,0,0],  outputAmount: [4,0,0,0,0,0],  output: [5620,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [29,30,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5621:
+        return({ amount: [100,2500,500,0,0,0,0,0],  ingrediant: [Steel_Arrowhead,Wood,Feather,0,0,0,0,0],  outputAmount: [3,0,0,0,0,0],  output: [5621,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [29,30,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5622:
+        return({ amount: [100,2500,500,0,0,0,0,0],  ingrediant: [Beryl_Bronze_Arrowhead,Wood,Feather,0,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [5622,0,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [29,30,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5623:
+        return({ amount: [450,2500,500,0,0,0,0,0],  ingrediant: [Diamond_Blade,Wood,Feather,0,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [5623,0,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5700:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Any_Shot_Pouch,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5700,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5701:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Any_Shot_Pouch,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5701,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5702:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Any_Shot_Pouch,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5702,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5720:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Any_Quiver,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5720,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5721:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Any_Quiver,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5721,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5722:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Any_Quiver,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5722,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5723:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Any_Quiver,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5723,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5800:
+        return({ amount: [50,25000,0,0,0,0,0,0],  ingrediant: [Bronze_Plate,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,5000,0,0,0,0],  output: [5800,4023,0,0,0,0], capacityUsed: 30, timeToMake: 100, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5801:
+        return({ amount: [50,25000,0,0,0,0,0,0],  ingrediant: [Iron_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,7500,0,0,0,0],  output: [5801,4023,0,0,0,0], capacityUsed: 30, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5802:
+        return({ amount: [50,25000,0,0,0,0,0,0],  ingrediant: [Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,7500,0,0,0,0],  output: [5802,4023,0,0,0,0], capacityUsed: 30, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5803:
+        return({ amount: [50,25000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,7500,0,0,0,0],  output: [5803,4023,0,0,0,0], capacityUsed: 30, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5804:
+        return({ amount: [50,25000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,7500,0,0,0,0],  output: [5804,4023,0,0,0,0], capacityUsed: 30, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5810:
+        return({ amount: [50,100,75000,0,0,0,0,0],  ingrediant: [Bronze_Plate,Bronze_Chainmail,Any_Fuel,0,0,0,0,0],  outputAmount: [1,15000,0,0,0,0],  output: [5810,4023,0,0,0,0], capacityUsed: 30, timeToMake: 500, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5811:
+        return({ amount: [50,100,75000,0,0,0,0,0],  ingrediant: [Iron_Plate,Iron_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,22500,0,0,0,0],  output: [5811,4023,0,0,0,0], capacityUsed: 30, timeToMake: 1000, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5812:
+        return({ amount: [50,100,75000,0,0,0,0,0],  ingrediant: [Steel_Plate,Steel_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,22500,0,0,0,0],  output: [5812,4023,0,0,0,0], capacityUsed: 30, timeToMake: 1000, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5813:
+        return({ amount: [50,100,75000,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Emerald_Bronze_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,22500,0,0,0,0],  output: [5813,4023,0,0,0,0], capacityUsed: 30, timeToMake: 1000, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5814:
+        return({ amount: [50,100,75000,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Damascus_Steel_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,22500,0,0,0,0],  output: [5814,4023,0,0,0,0], capacityUsed: 30, timeToMake: 1000, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5820:
+        return({ amount: [100,50000,0,0,0,0,0,0],  ingrediant: [Bronze_Plate,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,10000,0,0,0,0],  output: [5820,4023,0,0,0,0], capacityUsed: 30, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5821:
+        return({ amount: [100,50000,0,0,0,0,0,0],  ingrediant: [Iron_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,15000,0,0,0,0],  output: [5821,4023,0,0,0,0], capacityUsed: 30, timeToMake: 400, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5822:
+        return({ amount: [100,50000,0,0,0,0,0,0],  ingrediant: [Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,15000,0,0,0,0],  output: [5822,4023,0,0,0,0], capacityUsed: 30, timeToMake: 400, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5823:
+        return({ amount: [100,50000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,15000,0,0,0,0],  output: [5823,4023,0,0,0,0], capacityUsed: 30, timeToMake: 400, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5824:
+        return({ amount: [100,50000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,15000,0,0,0,0],  output: [5824,4023,0,0,0,0], capacityUsed: 30, timeToMake: 400, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5830:
+        return({ amount: [100,200,1500000,0,0,0,0,0],  ingrediant: [Bronze_Plate,Bronze_Chainmail,Any_Fuel,0,0,0,0,0],  outputAmount: [1,30000,0,0,0,0],  output: [5830,4023,0,0,0,0], capacityUsed: 30, timeToMake: 1000, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5831:
+        return({ amount: [100,200,1500000,0,0,0,0,0],  ingrediant: [Iron_Plate,Iron_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,30000,0,0,0,0],  output: [5831,4023,0,0,0,0], capacityUsed: 30, timeToMake: 2000, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5832:
+        return({ amount: [100,200,1500000,0,0,0,0,0],  ingrediant: [Steel_Plate,Steel_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,30000,0,0,0,0],  output: [5832,4023,0,0,0,0], capacityUsed: 30, timeToMake: 2000, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5833:
+        return({ amount: [100,200,1500000,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Emerald_Bronze_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,30000,0,0,0,0],  output: [5833,4023,0,0,0,0], capacityUsed: 30, timeToMake: 2000, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5834:
+        return({ amount: [100,200,1500000,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Damascus_Steel_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,30000,0,0,0,0],  output: [5834,4023,0,0,0,0], capacityUsed: 30, timeToMake: 2000, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5900:
+        return({ amount: [200,0,0,0,0,0,0,0],  ingrediant: [Refined_Wood,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5900,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5901:
+        return({ amount: [200,1,0,0,0,0,0,0],  ingrediant: [Refined_Wood,Iron_Plate,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5901,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5902:
+        return({ amount: [200,1,1500,0,0,0,0,0],  ingrediant: [Refined_Wood,Iron_Plate,Leather,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5902,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5903:
+        return({ amount: [2,0,0,0,0,0,0,0],  ingrediant: [Steel_Plate,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5903,0,0,0,0,0], capacityUsed: 15, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5904:
+        return({ amount: [2,0,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5904,0,0,0,0,0], capacityUsed: 15, timeToMake: 20, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5905:
+        return({ amount: [2,0,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5905,0,0,0,0,0], capacityUsed: 15, timeToMake: 100, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5910:
+        return({ amount: [1500,0,0,0,0,0,0,0],  ingrediant: [Refined_Wood,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5910,0,0,0,0,0], capacityUsed: 20, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5911:
+        return({ amount: [1500,4,4000,0,0,0,0,0],  ingrediant: [Refined_Wood,Iron_Plate,Leather,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5911,0,0,0,0,0], capacityUsed: 40, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7000:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Rabbit,0,0,0,0,0,0,0],  outputAmount: [250,50,0,0,0,0],  output: [545,4006,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7001:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Deer,0,0,0,0,0,0,0],  outputAmount: [500,200,100,100,0,0],  output: [545,552,4004,4010,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7002:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Turkey,0,0,0,0,0,0,0],  outputAmount: [250,250,0,0,0,0],  output: [545,4008,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7003:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Fox,0,0,0,0,0,0,0],  outputAmount: [100,15,0,0,0,0],  output: [541,4007,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7004:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Cyote,0,0,0,0,0,0,0],  outputAmount: [200,100,0,0,0,0],  output: [545,4006,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7005:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Snake,0,0,0,0,0,0,0],  outputAmount: [10,20,0,0,0,0],  output: [541,4005,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7006:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Ocean_Fish,0,0,0,0,0,0,0],  outputAmount: [1200,30,0,0,0,0],  output: [531,561,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7007:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Metal_Fish,0,0,0,0,0,0,0],  outputAmount: [1000,100,0,0,0,0],  output: [531,560,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [9,10,11,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7008:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Shrimp_School,0,0,0,0,0,0,0],  outputAmount: [2500,0,0,0,0,0],  output: [576,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7009:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Seaweed_Crop,0,0,0,0,0,0,0],  outputAmount: [3000,0,0,0,0,0],  output: [546,0,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7100:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Mink,0,0,0,0,0,0,0],  outputAmount: [120,150,0,0,0,0],  output: [541,4006,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7101:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Boar,0,0,0,0,0,0,0],  outputAmount: [5,1000,100,0,0,0],  output: [4011,545,4004,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7102:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Zebra,0,0,0,0,0,0,0],  outputAmount: [400,300,0,0,0,0],  output: [541,4004,0,0,0,0], capacityUsed: 1, timeToMake: 4, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7103:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Reindeer,0,0,0,0,0,0,0],  outputAmount: [1000,1000,600,100,0,0],  output: [545,552,4004,4010,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7104:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Leopard,0,0,0,0,0,0,0],  outputAmount: [400,1,0,0,0,0],  output: [541,4013,0,0,0,0], capacityUsed: 1, timeToMake: 4, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7105:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Crocodile,0,0,0,0,0,0,0],  outputAmount: [200,200,0,0,0,0],  output: [541,4005,0,0,0,0], capacityUsed: 1, timeToMake: 5, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7106:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Otter,0,0,0,0,0,0,0],  outputAmount: [100,60,0,0,0,0],  output: [541,4007,0,0,0,0], capacityUsed: 1, timeToMake: 5, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7107:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Wolf,0,0,0,0,0,0,0],  outputAmount: [100,400,0,0,0,0],  output: [545,4006,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7108:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Seal,0,0,0,0,0,0,0],  outputAmount: [250,750,450,0,0,0],  output: [545,552,4006,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7109:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Ostridge,0,0,0,0,0,0,0],  outputAmount: [2500,80,0,0,0,0],  output: [545,4005,0,0,0,0], capacityUsed: 1, timeToMake: 5, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7111:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Crab_Cluster,0,0,0,0,0,0,0],  outputAmount: [1500,0,0,0,0,0],  output: [555,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7200:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Elk,0,0,0,0,0,0,0],  outputAmount: [5000,500,500,0,0,0],  output: [545,4004,4010,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7201:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Aurochs,0,0,0,0,0,0,0],  outputAmount: [1250,500,1,0,0,0],  output: [532,552,4014,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7202:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Black_Leopard,0,0,0,0,0,0,0],  outputAmount: [600,1,0,0,0,0],  output: [541,4015,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7203:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Bear,0,0,0,0,0,0,0],  outputAmount: [1000,1,0,0,0,0],  output: [541,4016,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7204:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Sea_Mink,0,0,0,0,0,0,0],  outputAmount: [100,100,0,0,0,0],  output: [541,4007,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7205:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Whalrus,0,0,0,0,0,0,0],  outputAmount: [1000,800,4000,50,0,0],  output: [545,4004,552,4011,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7206:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Poison_Snake,0,0,0,0,0,0,0],  outputAmount: [50,50,100,0,0,0],  output: [4005,4012,541,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7207:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Shark,0,0,0,0,0,0,0],  outputAmount: [20000,0,0,0,0,0],  output: [558,0,0,0,0,0], capacityUsed: 20, timeToMake: 10, allowableBuildings: [11,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7300:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Elephant,0,0,0,0,0,0,0],  outputAmount: [6000,200,5000,0,0,0],  output: [541,4011,4009,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7301:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Rhino,0,0,0,0,0,0,0],  outputAmount: [6000,5000,0,0,0,0],  output: [541,4009,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [11,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7302:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Polar_Bear,0,0,0,0,0,0,0],  outputAmount: [2000,2,1,0,0,0],  output: [541,4017,564,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7303:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Tiger,0,0,0,0,0,0,0],  outputAmount: [2000,1,0,0,0,0],  output: [541,4018,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7304:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Titan_Snake,0,0,0,0,0,0,0],  outputAmount: [2000,2000,0,0,0,0],  output: [541,4005,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7305:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Whale,0,0,0,0,0,0,0],  outputAmount: [150000,105000,0,0,0,0],  output: [552,545,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [10,11,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7306:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Iron_Snail,0,0,0,0,0,0,0],  outputAmount: [375000,0,0,0,0,0],  output: [2021,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7400:
+        return({ amount: [5,0,0,0,0,0,0,0],  ingrediant: [Cow,0,0,0,0,0,0,0],  outputAmount: [75,30,0,0,0,0],  output: [532,4004,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7401:
+        return({ amount: [10,0,0,0,0,0,0,0],  ingrediant: [Chicken,0,0,0,0,0,0,0],  outputAmount: [150,50,0,0,0,0],  output: [533,4008,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7402:
+        return({ amount: [10,0,0,0,0,0,0,0],  ingrediant: [Sheep,0,0,0,0,0,0,0],  outputAmount: [150,20,0,0,0,0],  output: [544,4006,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 7403:
+        return({ amount: [200,0,0,0,0,0,0,0],  ingrediant: [River_Fish,0,0,0,0,0,0,0],  outputAmount: [250,0,0,0,0,0],  output: [531,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 66000:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Basic_Tool,0,0,0,0,0,0,0],  outputAmount: [150,150,150,0,0,0],  output: [530,555,531,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [19,200,200,200,200,200,200,200],allowableBuildingTypes: [false,true,true,true,true,true,false,false,false]})
+  case 66001:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Boat_Fix_Kit,0,0,0,0,0,0,0],  outputAmount: [1500,0,0,0,0,0],  output: [531,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [19,200,200,200,200,200,200,200],allowableBuildingTypes: [false,true,true,true,true,true,false,false,false]})
+  case 66002:
+        return({ amount: [2,1,0,0,0,0,0,0],  ingrediant: [Basic_Tool,Boat_Fix_Kit,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [555,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [19,200,200,200,200,200,200,200],allowableBuildingTypes: [false,true,true,true,true,true,false,false,false]})
+  case 66003:
+        return({ amount: [2,1,0,0,0,0,0,0],  ingrediant: [Basic_Tool,Boat_Fix_Kit,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [530,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [19,200,200,200,200,200,200,200],allowableBuildingTypes: [false,true,true,true,true,true,false,false,false]})
+  case 71205:
+        return({ amount: [2500,6250,3000,0,0,0,0,0],  ingrediant: [Any_Flour,Potato,Any_Fuel,0,0,0,0,0],  outputAmount: [17500,100,0,0,0,0],  output: [1205,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 74013:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Leopard_Skin,0,0,0,0,0,0,0],  outputAmount: [300,0,0,0,0,0],  output: [4006,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 74014:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Aurochs_Hide,0,0,0,0,0,0,0],  outputAmount: [2000,0,0,0,0,0],  output: [4004,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 74015:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Black_Leopard_Skin,0,0,0,0,0,0,0],  outputAmount: [300,0,0,0,0,0],  output: [4006,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 74016:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Bear_Hide,0,0,0,0,0,0,0],  outputAmount: [300,0,0,0,0,0],  output: [4007,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 74017:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Polar_Bear_Hide,0,0,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [4007,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 74018:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Tiger_Hide,0,0,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [4007,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 74030:
+        return({ amount: [5,0,0,0,0,0,0,0],  ingrediant: [Ash,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4030,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 75164:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Any_Shot_Pouch,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5614,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 75613:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Any_Quiver,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5613,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 77400:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Cow,0,0,0,0,0,0,0],  outputAmount: [15,6,10,30,10,2],  output: [532,4004,550,551,552,553], capacityUsed: 1, timeToMake: 1, allowableBuildings: [10,11,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 77401:
+        return({ amount: [2,0,0,0,0,0,0,0],  ingrediant: [Chicken,0,0,0,0,0,0,0],  outputAmount: [30,10,10,3,10,20],  output: [533,4008,550,4004,552,551], capacityUsed: 1, timeToMake: 1, allowableBuildings: [10,11,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 77402:
+        return({ amount: [2,0,0,0,0,0,0,0],  ingrediant: [Sheep,0,0,0,0,0,0,0],  outputAmount: [30,4,20,30,5,2],  output: [544,4006,550,551,552,553], capacityUsed: 1, timeToMake: 1, allowableBuildings: [10,11,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 301200:
+        return({ amount: [2500,6250,3000,0,0,0,0,0],  ingrediant: [Any_Flour,Potato,Any_Fuel,0,0,0,0,0],  outputAmount: [7000,100,0,0,0,0],  output: [1200,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 302103:
+        return({ amount: [8000,0,0,0,0,0,0,0],  ingrediant: [Wood,0,0,0,0,0,0,0],  outputAmount: [12000,20,0,0,0,0],  output: [2103,4026,0,0,0,0], capacityUsed: 4, timeToMake: 20, allowableBuildings: [16,17,18,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 311200:
+        return({ amount: [2500,6250,50,3000,0,0,0,0],  ingrediant: [Any_Flour,Potato,Barm,Any_Fuel,0,0,0,0],  outputAmount: [7000,100,0,0,0,0],  output: [1200,4023,0,0,0,0], capacityUsed: 1, timeToMake: 5, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 701200:
+        return({ amount: [5000,50,3000,0,0,0,0,0],  ingrediant: [Any_Flour,Barm,Any_Fuel,0,0,0,0,0],  outputAmount: [7000,100,0,0,0,0],  output: [1200,4023,0,0,0,0], capacityUsed: 1, timeToMake: 5, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+}
+      return (_value);
+      }
+
+  function foodData(_value) {
+  switch (_value) {
+  case 1000:
+return([0,0,0]);
+case 1001:
+return([0,0,0]);
+case 1002:
+return([0,0,0]);
+case 1003:
+return([0,0,0]);
+case 1010:
+return([0,0,0]);
+case 1010:
+return([0,0,0]);
+case 1011:
+return([0,0,0]);
+case 1011:
+return([0,0,0]);
+case 1012:
+return([0,0,0]);
+case 1030:
+return([0,0,0]);
+case 1031:
+return([0,0,0]);
+case 1032:
+return([0,0,0]);
+case 1033:
+return([0,0,0]);
+case 1034:
+return([0,0,0]);
+case 1040:
+return([0,0,0]);
+case 1041:
+return([0,0,0]);
+case 1042:
+return([0,0,0]);
+case 1043:
+return([0,0,0]);
+case 1044:
+return([0,0,0]);
+case 1050:
+return([0,0,0]);
+case 1051:
+return([0,0,0]);
+case 1052:
+return([0,0,0]);
+case 1060:
+return([0,0,0]);
+case 1061:
+return([0,0,0]);
+case 1062:
+return([0,0,0]);
+case 1200:
+return([0,0,0]);
+case 1203:
+return([0,0,0]);
+case 1204:
+return([0,0,0]);
+case 1205:
+return([0,0,0]);
+case 1206:
+return([0,0,0]);
+case 1207:
+return([0,0,0]);
+case 1208:
+return([0,0,50]);
+case 1209:
+return([0,0,0]);
+case 1212:
+return([0,0,0]);
+case 1213:
+return([0,0,20]);
+case 1220:
+return([0,0,75]);
+case 1221:
+return([0,0,0]);
+case 1222:
+return([0,0,0]);
+case 1223:
+return([0,0,0]);
+case 1224:
+return([0,0,0]);
+case 1260:
+return([0,0,0]);
+case 1261:
+return([0,0,0]);
+case 1262:
+return([0,0,10]);
+case 1268:
+return([0,0,10]);
+case 1270:
+return([0,0,0]);
+case 1271:
+return([0,0,10]);
+case 1272:
+return([0,0,0]);
+case 1273:
+return([0,0,0]);
+case 1274:
+return([0,0,0]);
+case 1275:
+return([0,0,0]);
+case 1276:
+return([0,0,0]);
+case 1277:
+return([0,0,0]);
+case 1278:
+return([0,0,0]);
+case 1279:
+return([0,0,0]);
+case 1280:
+return([0,0,0]);
+case 1281:
+return([0,0,0]);
+case 1282:
+return([0,0,0]);
+case 1283:
+return([0,0,0]);
+case 1284:
+return([0,0,0]);
+case 1285:
+return([0,0,0]);
+case 1286:
+return([0,0,0]);
+case 1287:
+return([0,0,0]);
+case 1288:
+return([0,0,30]);
+case 1289:
+return([0,0,0]);
+case 1290:
+return([0,0,0]);
+case 1291:
+return([0,0,0]);
+case 1294:
+return([0,0,0]);
+case 1295:
+return([0,0,0]);
+case 1296:
+return([0,0,0]);
+case 1299:
+return([0,0,0]);
+case 1300:
+return([0,0,0]);
+case 1301:
+return([0,0,0]);
+}
+      return (_value);
+      }
+
+  function farmData(_value) {
+  _value = Number(_value);
+  switch (_value) {
+  case 501:
+return({ output: Wheat, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [50,100,75], minsoil: 50, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 502:
+return({ output: Rye, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [0,80,50], minsoil: 0, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 503:
+return({ output: Rice, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [110,200],temperature: [50,120,80], minsoil: 25, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 504:
+return({ output: Corn, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [50,100,75], minsoil: 25, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 505:
+return({ output: Sorghum, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [20,150],temperature: [30,120,90], minsoil: 20, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 506:
+return({ output: Wood, yield: 2500, secondaryYield: Apples, secondaryOutput: 500, water: [50,150],temperature: [60,110,80], minsoil: 25, maxheight: 100, growthTime: 50, secondaryGrowthTime: 10, isAnimal: false });
+case 507:
+return({ output: Wood, yield: 2500, secondaryYield: Plums, secondaryOutput: 500, water: [50,150],temperature: [30,110,70], minsoil: 25, maxheight: 100, growthTime: 50, secondaryGrowthTime: 10, isAnimal: false });
+case 508:
+return({ output: Wood, yield: 2500, secondaryYield: Olives, secondaryOutput: 500, water: [25,150],temperature: [50,120,80], minsoil: 0, maxheight: 100, growthTime: 50, secondaryGrowthTime: 10, isAnimal: false });
+case 509:
+return({ output: Beans, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [50,120,75], minsoil: 25, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 510:
+return({ output: Mushrooms, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,100],temperature: [30,120,60], minsoil: 0, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 511:
+return({ output: Beets, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [20,100,60], minsoil: 0, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 512:
+return({ output: Cassava, yield: 600, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [70,120,80], minsoil: 25, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 513:
+return({ output: Wood, yield: 2500, secondaryYield: Cherries, secondaryOutput: 500, water: [50,150],temperature: [60,110,80], minsoil: 25, maxheight: 100, growthTime: 50, secondaryGrowthTime: 10, isAnimal: false });
+case 514:
+return({ output: Peanuts, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [50,100,75], minsoil: 25, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 515:
+return({ output: Wood, yield: 2500, secondaryYield: Peaches, secondaryOutput: 500, water: [50,150],temperature: [60,110,80], minsoil: 25, maxheight: 100, growthTime: 50, secondaryGrowthTime: 10, isAnimal: false });
+case 516:
+return({ output: Garlic, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [50,120,75], minsoil: 25, maxheight: 200, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 517:
+return({ output: Onion, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [50,120,75], minsoil: 25, maxheight: 200, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 518:
+return({ output: Carrot, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [50,120,75], minsoil: 25, maxheight: 200, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 519:
+return({ output: Sugarcane, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [80,170],temperature: [75,150,90], minsoil: 40, maxheight: 100, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 520:
+return({ output: Peppers, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,100],temperature: [45,110,70], minsoil: 25, maxheight: 250, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 521:
+return({ output: Allspice, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [60,120,85], minsoil: 25, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 522:
+return({ output: Grapes, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [50,120,75], minsoil: 25, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 532:
+return({ output: Cow, yield: 10, secondaryYield: Milk, secondaryOutput: 100, water: [25,200],temperature: [50,120,75], minsoil: 0, maxheight: 250, growthTime: 50, secondaryGrowthTime: 10, isAnimal: true });
+case 533:
+return({ output: Chicken, yield: 10, secondaryYield: Eggs, secondaryOutput: 100, water: [25,200],temperature: [50,120,75], minsoil: 0, maxheight: 250, growthTime: 20, secondaryGrowthTime: 10, isAnimal: true });
+case 535:
+return({ output: Potato, yield: 600, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [30,110,60], minsoil: 25, maxheight: 200, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 538:
+return({ output: Oats, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [60,175],temperature: [30,80,60], minsoil: 15, maxheight: 200, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 540:
+return({ output: Barley, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [25,125],temperature: [30,110,60], minsoil: 25, maxheight: 200, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 542:
+return({ output: Cotton, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [75,150],temperature: [70,120,85], minsoil: 30, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 544:
+return({ output: Sheep, yield: 10, secondaryYield: Wool, secondaryOutput: 100, water: [25,200],temperature: [50,120,75], minsoil: 0, maxheight: 250, growthTime: 30, secondaryGrowthTime: 10, isAnimal: true });
+case 547:
+return({ output: Flowers, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [50,100,75], minsoil: 10, maxheight: 200, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 586:
+return({ output: Wood, yield: 2500, secondaryYield: Oranges, secondaryOutput: 500, water: [50,150],temperature: [60,120,80], minsoil: 25, maxheight: 150, growthTime: 50, secondaryGrowthTime: 10, isAnimal: false });
+case 585:
+return({ output: Peas, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [0,80,50], minsoil: 0, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+}
+      return (_value);
+      }
+
+  function farmLandData(_value) {
+  _value = Number(_value);
+  switch (_value) {
+  case 1:
+return({ temperature: 90, waterQuantity: 25, altitude: 50, soilQuality: 5});
+case 2:
+return({ temperature: 80, waterQuantity: 25, altitude: 50, soilQuality: 15});
+case 3:
+return({ temperature: 80, waterQuantity: 75, altitude: 50, soilQuality: 25});
+case 4:
+return({ temperature: 80, waterQuantity: 100, altitude: 50, soilQuality: 50});
+case 11:
+return({ temperature: 30, waterQuantity: 25, altitude: 50, soilQuality: 5});
+case 12:
+return({ temperature: 40, waterQuantity: 100, altitude: 50, soilQuality: 15});
+case 13:
+return({ temperature: 50, waterQuantity: 100, altitude: 50, soilQuality: 25});
+case 14:
+return({ temperature: 40, waterQuantity: 110, altitude: 50, soilQuality: 50});
+case 21:
+return({ temperature: 60, waterQuantity: 25, altitude: 50, soilQuality: 5});
+case 22:
+return({ temperature: 60, waterQuantity: 100, altitude: 50, soilQuality: 25});
+case 23:
+return({ temperature: 60, waterQuantity: 100, altitude: 50, soilQuality: 50});
+case 31:
+return({ temperature: 80, waterQuantity: 25, altitude: 50, soilQuality: 5});
+case 32:
+return({ temperature: 80, waterQuantity: 75, altitude: 50, soilQuality: 25});
+case 33:
+return({ temperature: 85, waterQuantity: 100, altitude: 50, soilQuality: 35});
+case 34:
+return({ temperature: 80, waterQuantity: 110, altitude: 50, soilQuality: 50});
+case 41:
+return({ temperature: 45, waterQuantity: 120, altitude: 0, soilQuality: 5});
+case 42:
+return({ temperature: 55, waterQuantity: 120, altitude: 0, soilQuality: 5});
+case 43:
+return({ temperature: 65, waterQuantity: 120, altitude: 0, soilQuality: 5});
+case 44:
+return({ temperature: 75, waterQuantity: 120, altitude: 0, soilQuality: 5});
+case 51:
+return({ temperature: 70, waterQuantity: 200, altitude: 50, soilQuality: 10});
+case 52:
+return({ temperature: 70, waterQuantity: 175, altitude: 50, soilQuality: 20});
+case 53:
+return({ temperature: 70, waterQuantity: 150, altitude: 50, soilQuality: 50});
+case 61:
+return({ temperature: 55, waterQuantity: 50, altitude: 175, soilQuality: 25});
+case 62:
+return({ temperature: 55, waterQuantity: 75, altitude: 175, soilQuality: 25});
+case 63:
+return({ temperature: 60, waterQuantity: 100, altitude: 150, soilQuality: 25});
+case 64:
+return({ temperature: 45, waterQuantity: 25, altitude: 200, soilQuality: 25});
+case 70:
+return({ temperature: 65, waterQuantity: 100, altitude: 50, soilQuality: 100});
+case 71:
+return({ temperature: 55, waterQuantity: 110, altitude: 50, soilQuality: 175});
+case 72:
+return({ temperature: 65, waterQuantity: 100, altitude: 50, soilQuality: 150});
+case 80:
+return({ temperature: 70, waterQuantity: 100, altitude: 50, soilQuality: 200});
+case 81:
+return({ temperature: 60, waterQuantity: 100, altitude: 100, soilQuality: 225});
+case 82:
+return({ temperature: 70, waterQuantity: 100, altitude: 50, soilQuality: 250});
+case 45:
+return({ temperature: 60, waterQuantity: 100, altitude: 150, soilQuality: 50});
+}
+      return (_value);
+      }
+
+  function wildLandData(_value) {
+  _value = Number(_value);
+  switch (_value) {
+  case 1:
+return([[Stone,Amethyst,Copper_Ore,Silver_Ore,0],[100,10,20,2,0],[0,0,Amethyst,0,Rushseed,0,0,0,0,0,Stone],[0,0,15,0,5,0,0,0,0,0,125]]);
+case 2:
+return([[Stone,Amethyst,Rushseed,0,0],[150,10,10,0,0],[0,0,Amethyst,0,Rushseed,0,0,0,0,0,Kaolinite],[0,0,15,0,5,0,0,0,0,0,125]]);
+case 3:
+return([[Wood,Clay,Oyster,0,0],[100,250,15,0,0],[0,0,Amethyst,0,Rushseed,0,0,0,0,0,Stone],[0,0,15,0,5,0,0,0,0,0,125]]);
+case 4:
+return([[Clay,Copper_Ore,Gold_Ore,Oyster,0],[250,10,2,5,0],[0,0,Amethyst,0,Rushseed,0,0,0,0,0,Stone],[0,0,15,0,5,0,0,0,0,0,125]]);
+case 11:
+return([[Stone,Winterberries,Copper_Ore,Aquamarine,0],[200,5,10,10,0],[0,0,Aquamarine,0,Sweet_Herbs,0,0,0,0,0,Stone],[0,0,15,0,10,0,0,0,0,0,125]]);
+case 12:
+return([[Stone,Black_Copper_Ore,Winterberries,0,0],[100,30,5,0,0],[0,0,Aquamarine,0,Sweet_Herbs,0,0,0,0,0,Stone],[0,0,15,0,10,0,0,0,0,0,125]]);
+case 13:
+return([[Wood,Winterberries,0,0,0],[300,10,0,0,0],[0,0,Aquamarine,0,Spruce_Trimming,0,0,0,0,0,Stone],[0,0,15,0,25,0,0,0,0,0,125]]);
+case 14:
+return([[Wood,Clay,Winterberries,Oyster,0],[100,50,5,25,0],[0,0,Aquamarine,0,Sweet_Herbs,0,0,0,0,0,Stone],[0,0,15,0,10,0,0,0,0,0,125]]);
+case 21:
+return([[Stone,Iron_Ore,Onyx,0,0],[200,20,10,0,0],[0,0,Onyx,0,Nightberry,0,0,0,0,0,Stone],[0,0,15,0,10,0,0,0,0,0,125]]);
+case 22:
+return([[Wood,Savory_Herbs,Honey,0,0],[300,4,20,0,0],[0,0,Onyx,0,Savory_Herbs,0,0,0,0,0,Stone],[0,0,15,0,10,0,0,0,0,0,125]]);
+case 23:
+return([[Oyster,Savory_Herbs,Honey,Gold_Ore,0],[10,8,20,2,0],[0,0,Onyx,0,Savory_Herbs,0,0,0,0,0,Clay],[0,0,15,0,10,0,0,0,0,0,125]]);
+case 31:
+return([[Stone,Citrine,Copper_Ore,0,0],[100,20,20,0,0],[0,0,Citrine,0,Spicy_Herbs,0,0,0,0,0,Stone],[0,0,15,0,10,0,0,0,0,0,125]]);
+case 32:
+return([[Wood,Jungleberries,Honey,0,0],[200,10,20,0,0],[0,0,Citrine,0,Life_Bark,0,0,0,0,0,Stone],[0,0,15,0,10,0,0,0,0,0,125]]);
+case 33:
+return([[Wood,Jungleberries,0,0,0],[200,15,0,0,0],[0,0,Citrine,0,Sweet_Bark,0,0,0,0,0,Stone],[0,0,15,0,10,0,0,0,0,0,125]]);
+case 34:
+return([[Wood,Jungleberries,Gold_Ore,Iron_Ore,0],[100,10,2,10,0],[0,0,Citrine,0,Spicy_Herbs,0,0,0,0,0,Stone],[0,0,15,0,10,0,0,0,0,0,125]]);
+case 41:
+return([[Wood,Salt,River_Fish,Winterberries,Amber],[100,10,20,5,10],[0,0,Aquamarine,0,Sweet_Herbs,0,0,0,0,0,Stone],[0,0,15,0,10,0,0,0,0,0,125]]);
+case 42:
+return([[Wood,Salt,River_Fish,Oyster,0],[100,20,20,10,0],[0,0,Onyx,0,Savory_Herbs,0,0,0,0,0,Stone],[0,0,15,0,10,0,0,0,0,0,125]]);
+case 43:
+return([[Wood,Salt,River_Fish,Jungleberries,0],[150,20,10,5,0],[0,0,Citrine,0,Vanilla_Pod,0,0,0,0,0,Stone],[0,0,15,0,5,0,0,0,0,0,125]]);
+case 44:
+return([[Stone,Salt,0,0,0],[100,40,0,0,0],[0,0,Amethyst,0,Rushseed,0,0,0,0,0,Stone],[0,0,15,0,5,0,0,0,0,0,125]]);
+case 51:
+return([[Wood,Clay,Salt,River_Fish,Amber],[100,100,10,20,10],[0,0,Amber,0,Nettles,0,0,0,0,0,Stone],[0,0,15,0,125,0,0,0,0,0,125]]);
+case 52:
+return([[Wood,River_Fish,Amber,Iron_Ore,0],[150,20,10,15,0],[0,0,Amber,0,Rare_Mushroom,0,0,0,0,0,Stone],[0,0,15,0,5,0,0,0,0,0,125]]);
+case 53:
+return([[Wood,River_Fish,Amber,0,0],[100,40,20,0,0],[0,0,Amber,0,Rare_Mushroom,0,0,0,0,0,Stone],[0,0,15,0,5,0,0,0,0,0,125]]);
+case 61:
+return([[Stone,Ruby,Copper_Ore,Ginseng,0],[200,2,20,2,0],[0,0,Ruby,0,Ginseng,0,0,0,0,0,Stone],[0,0,6,0,5,0,0,0,0,0,125]]);
+case 62:
+return([[Stone,Sapphire,Iron_Ore,Wasabi,0],[200,2,20,2,0],[0,0,Sapphire,0,Wasabi,0,0,0,0,0,Stone],[0,0,6,0,5,0,0,0,0,0,125]]);
+case 63:
+return([[Stone,Emerald,Iron_Ore,Wasabi,0],[200,2,20,2,0],[0,0,Emerald,0,Wasabi,0,0,0,0,0,Stone],[0,0,6,0,5,0,0,0,0,0,125]]);
+case 64:
+return([[Stone,Crystal_Glass,Tin_Ore,Ginseng,0],[200,5,20,2,0],[0,0,Crystal_Glass,0,Ginseng,0,0,0,0,0,Stone],[0,0,15,0,5,0,0,0,0,0,125]]);
+case 70:
+return([[Stone,Moonstone,Iron_Ore,Silver_Ore,0],[150,10,10,5,0],[0,0,Moonstone,0,Silver_Bark,0,0,0,0,0,Stone],[0,0,3,0,5,0,0,0,0,0,125]]);
+case 71:
+return([[Wood,Moonstone,Silver_Sap,Oyster,0],[50,5,20,50,0],[0,0,Moonstone,0,Silver_Bark,0,0,0,0,0,Stone],[0,0,3,0,5,0,0,0,0,0,125]]);
+case 72:
+return([[Wood,Silver_Sap,0,0,0],[200,80,0,0,0],[0,0,Moonstone,0,Silver_Bark,0,0,0,0,0,Stone],[0,0,3,0,5,0,0,0,0,0,125]]);
+case 80:
+return([[Stone,Gold,Diamond,0,0],[200,1,8,0,0],[0,0,Diamond,0,Joyous_Flowers,0,0,0,0,0,Stone],[0,0,2,0,5,0,0,0,0,0,125]]);
+case 81:
+return([[Wood,Gold,Auric_Honey,0,0],[200,1,16,0,0],[0,0,Diamond,0,Joyous_Flowers,0,0,0,0,0,Stone],[0,0,2,0,5,0,0,0,0,0,125]]);
+case 82:
+return([[Stone,Wood,Gold,Auric_Honey,Diamond],[100,100,1,8,4],[0,0,Diamond,0,Joyous_Flowers,0,0,0,0,0,Stone],[0,0,2,0,5,0,0,0,0,0,125]]);
+case 45:
+return([[0,0,0,0,0],[0,0,0,0,0],[0,0,undefined,0,0,0,0,0,0,0,Kaolinite],[0,0,undefined,0,0,0,0,0,0,0,125]]);
+}
+      return (_value);
+      }
+itemID = [1,2,3,4,11,12,13,14,21,22,23,31,32,33,34,41,42,43,44,51,52,53,61,62,63,64,70,71,72,80,81,82,501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579,580,581,583,584,585,586,590,1000,1001,1002,1003,1010,1011,1012,1013,1014,1030,1031,1032,1033,1034,1040,1041,1042,1043,1044,1050,1051,1052,1060,1061,1062,1200,1203,1204,1205,1206,1207,1208,1209,1212,1213,1220,1221,1222,1223,1224,1260,1261,1262,1268,1270,1271,1272,1273,1274,1275,1276,1277,1278,1279,1280,1281,1282,1283,1284,1285,1286,1287,1288,1289,1290,1291,1294,1295,1296,1299,1300,1301,1400,1401,1402,1403,1404,1405,1406,1407,1408,1409,1410,1411,1412,1413,1414,1415,1416,1417,1418,1419,1420,1421,1422,1423,1424,1425,1426,1427,1428,1430,1431,1432,1433,1434,1435,1436,1437,1438,1439,1440,1441,1442,1443,1444,1445,1900,1901,1902,1903,1904,1905,1906,1907,1908,1909,1911,1912,1913,1914,1915,1916,1917,1918,1919,1921,1922,1923,1924,1925,1926,1927,1928,1929,1930,1990,1991,1992,2001,2002,2003,2004,2005,2021,2022,2023,2024,2025,2028,2029,2080,2101,2102,2103,2105,2121,2122,2123,2124,2125,2126,2127,2128,2129,2150,2151,2152,2153,2154,2160,2161,2162,2163,2164,2180,2181,2182,2183,2200,2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2212,2213,2214,2215,2300,2301,2302,2303,2304,2305,2306,2308,2309,2310,2311,2312,2314,2315,4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025,4026,4027,4028,4029,4030,4031,4032,4040,4050,4051,4052,4053,4054,4055,4056,4057,4058,4059,4060,4061,4062,4063,4064,4065,4066,4070,4071,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4200,4201,4202,4203,4204,4205,4206,4207,4221,4222,4223,4224,4225,4226,4227,4300,4301,4311,4312,4313,4314,4315,4316,4317,4318,4319,4321,4322,4323,4324,4325,4326,4327,4328,4329,4330,4331,4400,4410,4411,4412,4413,4414,4500,4501,4503,4504,4520,4521,4522,4523,4524,4525,4526,4527,4540,4541,4542,4560,4561,4562,4563,4564,4565,4580,4581,4582,4600,4601,4602,4603,4604,4605,4606,4607,4608,4620,4621,4622,4623,4624,4640,4641,4642,4643,4644,4660,4661,4662,4663,4664,4665,4666,4667,4680,4681,4682,4683,4684,4700,4701,4702,4703,4704,4720,4721,4722,4740,4741,4742,4743,4760,4761,4762,4763,4764,4765,4780,4781,4782,4783,4800,4801,4802,5000,5001,5002,5003,5004,5010,5011,5012,5013,5014,5020,5021,5022,5023,5024,5025,5030,5031,5032,5033,5034,5040,5041,5042,5043,5044,5050,5051,5052,5053,5054,5060,5061,5062,5063,5064,5070,5071,5072,5073,5074,5080,5081,5082,5083,5084,5090,5091,5092,5093,5094,5200,5201,5202,5203,5204,5210,5211,5212,5213,5214,5400,5401,5402,5403,5404,5420,5421,5430,5431,5500,5501,5502,5503,5504,5510,5511,5512,5513,5514,5520,5521,5522,5523,5524,5530,5531,5532,5533,5534,5540,5541,5542,5543,5544,5550,5551,5552,5553,5554,5560,5561,5562,5563,5564,5570,5571,5572,5573,5574,5580,5581,5582,5585,5586,5600,5601,5602,5611,5612,5613,5614,5620,5621,5622,5623,5700,5701,5702,5720,5721,5722,5723,5800,5801,5802,5803,5804,5810,5811,5812,5813,5814,5820,5821,5822,5823,5824,5830,5831,5832,5833,5834,5900,5901,5902,5903,5904,5905,5910,5911,7000,7001,7002,7003,7004,7005,7006,7007,7008,7009,7100,7101,7102,7103,7104,7105,7106,7107,7108,7109,7110,7111,7200,7201,7202,7203,7204,7205,7206,7207,7300,7301,7302,7303,7304,7305,7306,7400,7401,7402,7403,11000,11010,11011,11020,11021,11030,11031,11040,11041,11042,11050,11060,11070,11200,11210,11211,11220,11230,11231,11241,11300,11301,11310,11311,11501,11502,11520,11521,11600,11601,11602,28501,28502,28503,28504,28505,28506,28507,28508,28800,]
+recipeID = [501,502,503,504,505,519,530,536,538,540,548,559,564,574,575,578,579,583,584,1000,1001,1002,1003,1010,1011,1012,1013,1014,1030,1031,1032,1033,1034,1040,1041,1042,1043,1044,1050,1051,1060,1061,1062,1200,1204,1206,1207,1208,1209,1212,1213,1220,1223,1224,1260,1261,1262,1268,1269,1270,1271,1272,1273,1274,1275,1276,1277,1278,1279,1280,1281,1282,1283,1284,1285,1286,1287,1288,1289,1290,1291,1294,1295,1296,1299,1300,1301,1400,1402,1403,1404,1405,1406,1407,1408,1409,1410,1411,1413,1414,1416,1417,1418,1423,1424,1425,1426,1427,1428,1430,1431,1432,1433,1434,1435,1436,1437,1439,1440,1441,1442,1444,1901,1902,1903,1904,1905,1906,1907,1908,1909,1911,1912,1913,1914,1915,1916,1917,1918,1919,1921,1922,1923,1924,1925,1926,1927,1928,1929,1930,1990,1991,1992,2080,2101,2103,2105,2121,2122,2123,2124,2125,2126,2127,2128,2129,2150,2151,2152,2153,2154,2160,2161,2162,2163,2164,2180,2181,2182,2300,2301,2302,2303,2304,2305,2306,2308,2309,2310,2311,2312,2314,2315,4000,4001,4002,4019,4020,4024,4026,4027,4028,4029,4030,4031,4032,4040,4050,4051,4053,4054,4055,4056,4059,4060,4061,4062,4063,4065,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4200,4201,4202,4203,4204,4205,4206,4207,4221,4222,4223,4224,4225,4226,4227,4311,4312,4313,4314,4315,4316,4317,4318,4319,4321,4322,4323,4324,4325,4326,4327,4328,4329,4330,4331,4400,4410,4411,4412,4414,4500,4501,4502,4503,4504,4520,4521,4522,4523,4524,4525,4526,4527,4540,4541,4542,4560,4561,4562,4563,4564,4565,4580,4581,4582,4600,4601,4602,4603,4604,4605,4606,4607,4608,4620,4621,4622,4623,4624,4640,4641,4642,4643,4644,4660,4661,4662,4663,4664,4665,4666,4667,4680,4681,4682,4683,4684,4700,4701,4702,4703,4704,4720,4721,4722,4740,4741,4742,4743,4760,4761,4762,4780,4781,4782,4783,4800,4801,4802,5000,5001,5002,5003,5004,5010,5011,5012,5013,5014,5020,5021,5022,5023,5024,5025,5030,5031,5032,5033,5034,5040,5041,5042,5043,5044,5050,5051,5052,5053,5054,5060,5061,5062,5063,5064,5070,5071,5072,5073,5074,5080,5081,5082,5083,5084,5090,5091,5092,5093,5094,5200,5201,5202,5203,5204,5210,5211,5212,5213,5214,5420,5421,5430,5431,5500,5501,5502,5503,5504,5510,5511,5512,5513,5514,5520,5521,5522,5523,5524,5530,5531,5532,5533,5534,5540,5541,5542,5543,5544,5550,5551,5552,5553,5554,5560,5561,5562,5563,5564,5570,5571,5572,5573,5574,5580,5581,5582,5585,5586,5613,5614,5620,5621,5622,5623,5700,5701,5702,5720,5721,5722,5723,5800,5801,5802,5803,5804,5810,5811,5812,5813,5814,5820,5821,5822,5823,5824,5830,5831,5832,5833,5834,5900,5901,5902,5903,5904,5905,5910,5911,7000,7001,7002,7003,7004,7005,7006,7007,7008,7009,7100,7101,7102,7103,7104,7105,7106,7107,7108,7109,7111,7200,7201,7202,7203,7204,7205,7206,7207,7300,7301,7302,7303,7304,7305,7306,7400,7401,7402,7403,66000,66001,66002,66003,71205,74013,74014,74015,74016,74017,74018,74030,75164,75613,77400,77401,77402,301200,302103,311200,701200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,]
+
+  function warItemClass(_value) {
+  _value = Number(_value);
+  switch (_value) {
+  case 0:
+return([0,0,0,0]);
+case 5000:
+return([Weapon,Melee,Spear,1]);
+case 5001:
+return([Weapon,Melee,Spear,1]);
+case 5002:
+return([Weapon,Melee,Spear,1]);
+case 5003:
+return([Weapon,Melee,Spear,1]);
+case 5004:
+return([Weapon,Melee,Spear,1]);
+case 5010:
+return([Weapon,Melee,Axe,2]);
+case 5011:
+return([Weapon,Melee,Axe,2]);
+case 5012:
+return([Weapon,Melee,Axe,2]);
+case 5013:
+return([Weapon,Melee,Axe,2]);
+case 5014:
+return([Weapon,Melee,Axe,2]);
+case 5020:
+return([Weapon,Melee,Sword,3]);
+case 5021:
+return([Weapon,Melee,Sword,3]);
+case 5022:
+return([Weapon,Melee,Sword,3]);
+case 5023:
+return([Weapon,Melee,Sword,3]);
+case 5024:
+return([Weapon,Melee,Sword,3]);
+case 5025:
+return([Weapon,Melee,Sword,3]);
+case 5030:
+return([Weapon,Melee,Mace,4]);
+case 5031:
+return([Weapon,Melee,Mace,4]);
+case 5032:
+return([Weapon,Melee,Mace,4]);
+case 5033:
+return([Weapon,Melee,Mace,4]);
+case 5034:
+return([Weapon,Melee,Mace,4]);
+case 5040:
+return([Weapon,Melee,Spear,5]);
+case 5041:
+return([Weapon,Melee,Spear,5]);
+case 5042:
+return([Weapon,Melee,Spear,5]);
+case 5043:
+return([Weapon,Melee,Spear,5]);
+case 5044:
+return([Weapon,Melee,Spear,5]);
+case 5050:
+return([Weapon,Melee,Axe,6]);
+case 5051:
+return([Weapon,Melee,Axe,6]);
+case 5052:
+return([Weapon,Melee,Axe,6]);
+case 5053:
+return([Weapon,Melee,Axe,6]);
+case 5054:
+return([Weapon,Melee,Axe,6]);
+case 5060:
+return([Weapon,Melee,Sword,7]);
+case 5061:
+return([Weapon,Melee,Sword,7]);
+case 5062:
+return([Weapon,Melee,Sword,7]);
+case 5063:
+return([Weapon,Melee,Sword,7]);
+case 5064:
+return([Weapon,Melee,Sword,7]);
+case 5070:
+return([Weapon,Melee,Mace,8]);
+case 5071:
+return([Weapon,Melee,Mace,8]);
+case 5072:
+return([Weapon,Melee,Mace,8]);
+case 5073:
+return([Weapon,Melee,Mace,8]);
+case 5074:
+return([Weapon,Melee,Mace,8]);
+case 5080:
+return([Weapon,Elephant_Weapon,Elephant_Melee,1]);
+case 5081:
+return([Weapon,Elephant_Weapon,Elephant_Melee,1]);
+case 5082:
+return([Weapon,Elephant_Weapon,Elephant_Melee,1]);
+case 5083:
+return([Weapon,Elephant_Weapon,Elephant_Melee,1]);
+case 5084:
+return([Weapon,Elephant_Weapon,Elephant_Melee,1]);
+case 5090:
+return([Weapon,Rhino_Weapon,Rhino_Melee,1]);
+case 5091:
+return([Weapon,Rhino_Weapon,Rhino_Melee,1]);
+case 5092:
+return([Weapon,Rhino_Weapon,Rhino_Melee,1]);
+case 5093:
+return([Weapon,Rhino_Weapon,Rhino_Melee,1]);
+case 5094:
+return([Weapon,Rhino_Weapon,Rhino_Melee,1]);
+case 5200:
+return([Weapon,Ranged,Bow,1]);
+case 5201:
+return([Weapon,Ranged,Bow,2]);
+case 5202:
+return([Weapon,Ranged,Bow,3]);
+case 5210:
+return([Weapon,Ranged,Crossbow,1]);
+case 5211:
+return([Weapon,Slingshot,Sling,1]);
+case 5212:
+return([Weapon,Flame_Weapon,Flamer,1]);
+case 5213:
+return([Weapon,Flame_Weapon,Grenade,1]);
+case 5220:
+return([Weapon,Elephant_Weapon,Elephant_Ranged,1]);
+case 5221:
+return([Weapon,Elephant_Weapon,Elephant_Ranged,2]);
+case 5400:
+return([Mount,Army_Horse,Army_Horse,1]);
+case 5401:
+return([Mount,Army_Horse,Army_Horse,1]);
+case 5402:
+return([Mount,Army_Horse,Army_Horse,1]);
+case 5403:
+return([Mount,Army_Horse,Army_Horse,1]);
+case 5404:
+return([Mount,Army_Horse,Army_Horse,1]);
+case 5420:
+return([Mount,Army_Elephant,Army_Elephant,1]);
+case 5421:
+return([Mount,Army_Elephant,Army_Elephant,1]);
+case 5430:
+return([Mount,Army_Rhino,Army_Rhino,1]);
+case 5431:
+return([Mount,Army_Rhino,Army_Rhino,1]);
+case 5500:
+return([Armor,Human_Armor,Human_Armor,1]);
+case 5501:
+return([Armor,Human_Armor,Human_Armor,1]);
+case 5502:
+return([Armor,Human_Armor,Human_Armor,1]);
+case 5503:
+return([Armor,Human_Armor,Human_Armor,1]);
+case 5504:
+return([Armor,Human_Armor,Human_Armor,1]);
+case 5510:
+return([Armor,Human_Armor,Human_Armor,1]);
+case 5511:
+return([Armor,Human_Armor,Human_Armor,1]);
+case 5512:
+return([Armor,Human_Armor,Human_Armor,1]);
+case 5513:
+return([Armor,Human_Armor,Human_Armor,1]);
+case 5514:
+return([Armor,Human_Armor,Human_Armor,1]);
+case 5520:
+return([Armor,Human_Armor,Human_Armor,2]);
+case 5521:
+return([Armor,Human_Armor,Human_Armor,2]);
+case 5522:
+return([Armor,Human_Armor,Human_Armor,2]);
+case 5523:
+return([Armor,Human_Armor,Human_Armor,2]);
+case 5524:
+return([Armor,Human_Armor,Human_Armor,2]);
+case 5530:
+return([Armor,Human_Armor,Human_Armor,2]);
+case 5531:
+return([Armor,Human_Armor,Human_Armor,2]);
+case 5532:
+return([Armor,Human_Armor,Human_Armor,2]);
+case 5533:
+return([Armor,Human_Armor,Human_Armor,2]);
+case 5534:
+return([Armor,Human_Armor,Human_Armor,2]);
+case 5540:
+return([Armor,Human_Armor,Human_Armor,3]);
+case 5541:
+return([Armor,Human_Armor,Human_Armor,3]);
+case 5542:
+return([Armor,Human_Armor,Human_Armor,3]);
+case 5543:
+return([Armor,Human_Armor,Human_Armor,3]);
+case 5544:
+return([Armor,Human_Armor,Human_Armor,3]);
+case 5550:
+return([Armor,Horse_Armor,Horse_Armor,1]);
+case 5551:
+return([Armor,Horse_Armor,Horse_Armor,1]);
+case 5552:
+return([Armor,Horse_Armor,Horse_Armor,1]);
+case 5553:
+return([Armor,Horse_Armor,Horse_Armor,1]);
+case 5554:
+return([Armor,Horse_Armor,Horse_Armor,1]);
+case 5560:
+return([Armor,Horse_Armor,Horse_Armor,2]);
+case 5561:
+return([Armor,Horse_Armor,Horse_Armor,2]);
+case 5562:
+return([Armor,Horse_Armor,Horse_Armor,2]);
+case 5563:
+return([Armor,Horse_Armor,Horse_Armor,2]);
+case 5564:
+return([Armor,Horse_Armor,Horse_Armor,2]);
+case 5570:
+return([Armor,Horse_Armor,Horse_Armor,3]);
+case 5571:
+return([Armor,Horse_Armor,Horse_Armor,3]);
+case 5572:
+return([Armor,Horse_Armor,Horse_Armor,3]);
+case 5573:
+return([Armor,Horse_Armor,Horse_Armor,3]);
+case 5574:
+return([Armor,Horse_Armor,Horse_Armor,3]);
+case 5580:
+return([Armor,Human_Armor,Human_Armor,1]);
+case 5581:
+return([Armor,Human_Armor,Human_Armor,2]);
+case 5582:
+return([Armor,Human_Armor,Human_Armor,1]);
+case 5583:
+return([Armor,Horse_Armor,Horse_Armor,1]);
+case 5584:
+return([Armor,Human_Armor,Human_Armor,1]);
+case 5585:
+return([Armor,Rhino_Armor,Rhino_Armor,1]);
+case 5586:
+return([Armor,Elephant_Armor,Elephant_Armor,1]);
+case 5611:
+return([Offhand,Flamer_Tank,Flamer_Tank,1]);
+case 5612:
+return([Offhand,Flamer_Tank,Flamer_Tank,1]);
+case 5700:
+return([Offhand,Sling_Ammo,Sling_Ammo,1]);
+case 5701:
+return([Offhand,Sling_Ammo,Sling_Ammo,1]);
+case 5702:
+return([Offhand,Sling_Ammo,Sling_Ammo,1]);
+case 5720:
+return([Offhand,Bow_Ammo,Bow_Ammo,1]);
+case 5721:
+return([Offhand,Bow_Ammo,Bow_Ammo,1]);
+case 5722:
+return([Offhand,Bow_Ammo,Bow_Ammo,1]);
+case 5723:
+return([Offhand,Bow_Ammo,Bow_Ammo,1]);
+case 5800:
+return([Armor,Rhino_Armor,Rhino_Armor,1]);
+case 5801:
+return([Armor,Rhino_Armor,Rhino_Armor,1]);
+case 5802:
+return([Armor,Rhino_Armor,Rhino_Armor,1]);
+case 5803:
+return([Armor,Rhino_Armor,Rhino_Armor,1]);
+case 5804:
+return([Armor,Rhino_Armor,Rhino_Armor,1]);
+case 5810:
+return([Armor,Rhino_Armor,Rhino_Armor,2]);
+case 5811:
+return([Armor,Rhino_Armor,Rhino_Armor,2]);
+case 5812:
+return([Armor,Rhino_Armor,Rhino_Armor,2]);
+case 5813:
+return([Armor,Rhino_Armor,Rhino_Armor,2]);
+case 5814:
+return([Armor,Rhino_Armor,Rhino_Armor,2]);
+case 5820:
+return([Armor,Elephant_Armor,Elephant_Armor,1]);
+case 5821:
+return([Armor,Elephant_Armor,Elephant_Armor,1]);
+case 5822:
+return([Armor,Elephant_Armor,Elephant_Armor,1]);
+case 5823:
+return([Armor,Elephant_Armor,Elephant_Armor,1]);
+case 5824:
+return([Armor,Elephant_Armor,Elephant_Armor,1]);
+case 5830:
+return([Armor,Elephant_Armor,Elephant_Armor,2]);
+case 5831:
+return([Armor,Elephant_Armor,Elephant_Armor,2]);
+case 5832:
+return([Armor,Elephant_Armor,Elephant_Armor,2]);
+case 5833:
+return([Armor,Elephant_Armor,Elephant_Armor,2]);
+case 5834:
+return([Armor,Elephant_Armor,Elephant_Armor,2]);
+case 5900:
+return([Offhand,Shield,Shield,1]);
+case 5901:
+return([Offhand,Shield,Shield,1]);
+case 5902:
+return([Offhand,Shield,Shield,1]);
+case 5903:
+return([Offhand,Shield,Shield,1]);
+case 5904:
+return([Offhand,Shield,Shield,1]);
+case 5905:
+return([Offhand,Shield,Shield,1]);
+case 5910:
+return([Offhand,Shield,Shield,2]);
+default: 
+      return([0,0,0,0]);
+  }
+      }
+
+  function warItemExclusive(_value) {
+  switch (_value) {
+  case 0:
+return([0,0,0,0]);
+case 5000:
+return([No_Limit,No_Limit,None,No_Limit]);
+case 5001:
+return([No_Limit,No_Limit,None,No_Limit]);
+case 5002:
+return([No_Limit,No_Limit,None,No_Limit]);
+case 5003:
+return([No_Limit,No_Limit,None,No_Limit]);
+case 5004:
+return([No_Limit,No_Limit,None,No_Limit]);
+case 5010:
+return([No_Limit,No_Limit,None,No_Limit]);
+case 5011:
+return([No_Limit,No_Limit,None,No_Limit]);
+case 5012:
+return([No_Limit,No_Limit,None,No_Limit]);
+case 5013:
+return([No_Limit,No_Limit,None,No_Limit]);
+case 5014:
+return([No_Limit,No_Limit,None,No_Limit]);
+case 5020:
+return([No_Limit,No_Limit,None,No_Limit]);
+case 5021:
+return([No_Limit,No_Limit,None,No_Limit]);
+case 5022:
+return([No_Limit,No_Limit,None,No_Limit]);
+case 5023:
+return([No_Limit,No_Limit,None,No_Limit]);
+case 5024:
+return([No_Limit,No_Limit,None,No_Limit]);
+case 5025:
+return([No_Limit,No_Limit,None,No_Limit]);
+case 5030:
+return([No_Limit,No_Limit,None,No_Limit]);
+case 5031:
+return([No_Limit,No_Limit,None,No_Limit]);
+case 5032:
+return([No_Limit,No_Limit,None,No_Limit]);
+case 5033:
+return([No_Limit,No_Limit,None,No_Limit]);
+case 5034:
+return([No_Limit,No_Limit,None,No_Limit]);
+case 5040:
+return([No_Limit,No_Limit,Required_Empty,No_Limit]);
+case 5041:
+return([No_Limit,No_Limit,Required_Empty,No_Limit]);
+case 5042:
+return([No_Limit,No_Limit,Required_Empty,No_Limit]);
+case 5043:
+return([No_Limit,No_Limit,Required_Empty,No_Limit]);
+case 5044:
+return([No_Limit,No_Limit,Required_Empty,No_Limit]);
+case 5050:
+return([No_Limit,No_Limit,Required_Empty,No_Limit]);
+case 5051:
+return([No_Limit,No_Limit,Required_Empty,No_Limit]);
+case 5052:
+return([No_Limit,No_Limit,Required_Empty,No_Limit]);
+case 5053:
+return([No_Limit,No_Limit,Required_Empty,No_Limit]);
+case 5054:
+return([No_Limit,No_Limit,Required_Empty,No_Limit]);
+case 5060:
+return([No_Limit,No_Limit,Required_Empty,No_Limit]);
+case 5061:
+return([No_Limit,No_Limit,Required_Empty,No_Limit]);
+case 5062:
+return([No_Limit,No_Limit,Required_Empty,No_Limit]);
+case 5063:
+return([No_Limit,No_Limit,Required_Empty,No_Limit]);
+case 5064:
+return([No_Limit,No_Limit,Required_Empty,No_Limit]);
+case 5070:
+return([No_Limit,No_Limit,Required_Empty,No_Limit]);
+case 5071:
+return([No_Limit,No_Limit,Required_Empty,No_Limit]);
+case 5072:
+return([No_Limit,No_Limit,Required_Empty,No_Limit]);
+case 5073:
+return([No_Limit,No_Limit,Required_Empty,No_Limit]);
+case 5074:
+return([No_Limit,No_Limit,Required_Empty,No_Limit]);
+case 5080:
+return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
+case 5081:
+return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
+case 5082:
+return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
+case 5083:
+return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
+case 5084:
+return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
+case 5090:
+return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
+case 5091:
+return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
+case 5092:
+return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
+case 5093:
+return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
+case 5094:
+return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
+case 5200:
+return([No_Limit,No_Limit,Bow_Ammo,No_Limit]);
+case 5201:
+return([No_Limit,No_Limit,Bow_Ammo,Required_Empty]);
+case 5202:
+return([No_Limit,No_Limit,Bow_Ammo,Required_Empty]);
+case 5210:
+return([No_Limit,No_Limit,No_Limit,No_Limit]);
+case 5211:
+return([No_Limit,No_Limit,Sling_Ammo,No_Limit]);
+case 5212:
+return([No_Limit,No_Limit,Flamer_Tank,Required_Empty]);
+case 5213:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5220:
+return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
+case 5221:
+return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
+case 5400:
+return([No_Limit,Horse_Armor,No_Limit,No_Limit]);
+case 5401:
+return([No_Limit,Horse_Armor,No_Limit,No_Limit]);
+case 5402:
+return([No_Limit,Horse_Armor,No_Limit,No_Limit]);
+case 5403:
+return([No_Limit,Horse_Armor,No_Limit,No_Limit]);
+case 5404:
+return([No_Limit,Horse_Armor,No_Limit,No_Limit]);
+case 5420:
+return([Elephant_Weapon,Elephant_Armor,No_Limit,No_Limit]);
+case 5421:
+return([Elephant_Weapon,Elephant_Armor,No_Limit,No_Limit]);
+case 5430:
+return([Rhino_Weapon,Rhino_Armor,No_Limit,No_Limit]);
+case 5431:
+return([Rhino_Weapon,Rhino_Armor,No_Limit,No_Limit]);
+case 5500:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5501:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5502:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5503:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5504:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5510:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5511:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5512:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5513:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5514:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5520:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5521:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5522:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5523:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5524:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5530:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5531:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5532:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5533:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5534:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5540:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5541:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5542:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5543:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5544:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5550:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5551:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5552:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5553:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5554:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5560:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5561:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5562:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5563:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5564:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5570:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5571:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5572:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5573:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5574:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5580:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5581:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5582:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5583:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5584:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5585:
+return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
+case 5586:
+return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
+case 5611:
+return([Flamer,No_Limit,No_Limit,No_Limit]);
+case 5612:
+return([Flamer,No_Limit,No_Limit,No_Limit]);
+case 5700:
+return([Sling,No_Limit,No_Limit,No_Limit]);
+case 5701:
+return([Sling,No_Limit,No_Limit,No_Limit]);
+case 5702:
+return([Sling,No_Limit,No_Limit,No_Limit]);
+case 5720:
+return([Bow,No_Limit,No_Limit,No_Limit]);
+case 5721:
+return([Bow,No_Limit,No_Limit,No_Limit]);
+case 5722:
+return([Bow,No_Limit,No_Limit,No_Limit]);
+case 5723:
+return([Bow,No_Limit,No_Limit,No_Limit]);
+case 5800:
+return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
+case 5801:
+return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
+case 5802:
+return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
+case 5803:
+return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
+case 5804:
+return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
+case 5810:
+return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
+case 5811:
+return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
+case 5812:
+return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
+case 5813:
+return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
+case 5814:
+return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
+case 5820:
+return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
+case 5821:
+return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
+case 5822:
+return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
+case 5823:
+return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
+case 5824:
+return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
+case 5830:
+return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
+case 5831:
+return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
+case 5832:
+return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
+case 5833:
+return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
+case 5834:
+return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
+case 5900:
+return([No_Limit,No_Limit,No_Limit,No_Limit]);
+case 5901:
+return([No_Limit,No_Limit,No_Limit,No_Limit]);
+case 5902:
+return([No_Limit,No_Limit,No_Limit,No_Limit]);
+case 5903:
+return([No_Limit,No_Limit,No_Limit,No_Limit]);
+case 5904:
+return([No_Limit,No_Limit,No_Limit,No_Limit]);
+case 5905:
+return([No_Limit,No_Limit,No_Limit,No_Limit]);
+case 5910:
+return([No_Limit,No_Limit,No_Limit,No_Limit]);
+}
+      return (_value);
+      }
+const CraftingPreq = [200,1,2,3,4,5,6,7,200,9,10,11,200,13,14,15,200,17,18,200,200,200,200,22,200,200,200,200,26,200,28,200,30]
+
+      function kingdomName(_value) {
+          _value = Number(_value);
+      switch (_value) {
+      case 1:
+          return("Arid");
+      case 2:
+          return("Boreal");
+      case 3:
+          return("Heartland");
+      case 4:
+          return("Southern");
+      case 5:
+          return("Ocean");
+      case 6:
+          return("Swamp");
+      case 7:
+          return("Mountain");
+      case 8:
+          return("Silver");
+      case 9:
+          return("Golden");
+      }
+      return (_value);
+          }
+
+      function seasonTemp(_season,_startingTemp){
+          _season = Number(_season);
+          _startingTemp = Number(_startingTemp);
+
+          if(_season == 0) {_startingTemp -= 20;}
+          else if(_season == 2) {_startingTemp += 20;}
+          else if(_season == 3) {_startingTemp -= 10;}
+
+          return(_startingTemp);
+      }
+      function getBuildingName(_value){
+          
+          _value = Number(_value);
+    switch(_value) {
+      case 0:
+        return "Peasent Hovel";
+      case 1:
+        return "Peasent Home";
+      case 2:
+        return "Peasent Community";
+      case 3:
+        return "Low Noble Home";
+      case 4:
+        return "Low Noble Mannor";
+      case 5:
+        return "Low Noble Estate";
+      case 6:
+        return "High Noble Mannor";
+      case 7:
+        return "High Noble Estate";
+      case 8:
+        return "Cookery T1";
+      case 9:
+        return "Cookery T2";
+      case 10:
+        return "Cookery T3";
+      case 11:
+        return "Cookery T4";
+      case 12:
+        return "Brewery T1";
+      case 13:
+        return "Brewery T2";
+      case 14:
+        return "Brewery T3";
+      case 15:
+        return "Brewery T4";
+      case 16:
+        return "Smeltery T1";
+      case 17:
+        return "Smeltery T2";
+      case 18:
+        return "Smeltery T3";
+      case 19:
+        return ["Mason","Port"];
+      case 21:
+        return "Blacksmith T1";
+      case 22:
+        return "Blacksmith T2";
+      case 23:
+        return "Aging Facility";
+      case 24:
+        return "Infrastructure";
+      case 25:
+        return "Harbor";
+      case 26:
+        return "Jeweler T1";
+      case 27:
+        return "Jeweler T2";
+      case 28:
+        return "Weaver T1";
+      case 29:
+        return "Weaver T2";
+      case 30:
+        return "Carpenter T1";
+      case 31:
+        return "Carpenter T2";
+      case 200:
+          return "None";
+      default:
+        return "Error: Invalid Building Name";
+    }
+  }
+    
+  function getPopJobs(_value) {
+          _value = Number(_value);
+          switch(_value) {
+          case 0:
+              return("Unskilled");
+          case 1:
+              return("Chefs");
+          case 2:
+              return("Gem Workers");
+          case 3:
+              return("Brewers");
+          case 4:
+              return("Doctors");
+          case 5:
+              return("Sailors");
+          case 6:
+              return("Blacksmiths");
+          case 7:
+              return("Artists");
+          case 8:
+              return("Carpenters");
+          case 9:
+              return("Weavers");
+          case 10:
+              return("Masons");
+          case 11:
+              return("Soldiers");
+          default:
+              return("Error: Invalid Pop Name");
+      }
+  }
+  function getNutrientName(_value) {
+      _value = Number(_value);
+      switch (_value) {
+      case 0:
+          return("Fruit");
+      case 1:
+          return("Veggies");
+      case 2:
+          return("Protein");
+      case 3:
+          return("Starch");
+      case 4:
+          return("Fat");
+      case 5:
+          return("Salt");
+      default:
+          return("Invalid Nutrient");
+      }     
+  }      
+  function getPopNames(_value) {
+          _value = Number(_value);
+          switch(_value) {
+          case 0:
+              return("Peasents");
+          case 1:
+              return("Low Nobles");
+          case 2:
+              return("High Nobles");
+      }
+  }
+  const Time_Multiplier = 10;
+  const Kingdom_Lands =
+    [[0],
+    [1, 2, 3, 4, 44, 0, 0, 0],
+    [11, 12, 13, 14, 41, 0, 0, 0],
+    [21, 22, 23, 42, 0, 0, 0, 0],
+    [31, 32, 33, 34, 43, 0, 0, 0],
+    [41, 42, 43, 44, 0, 0, 0, 0],
+    [51, 52, 53, 0, 0, 0, 0, 0],
+    [61, 62, 63, 64, 0, 0, 0, 0],
+    [70, 71, 72, 0, 0, 0, 0, 0],
+    [80, 81, 82, 0, 0, 0, 0, 0]];
+
+    
+        var popTrainingCost = [];
+
+              popTrainingCost[0] = [0,0,0,0];
+              popTrainingCost[1] = [4321,500,2000,50000];
+              popTrainingCost[2] = [4322,1000,2000,50000];
+              popTrainingCost[3] = [4323,500,2000,50000];
+              popTrainingCost[4] = [4324,750,4000,50000];
+              popTrainingCost[5] = [4325,500,2000,50000];
+              popTrainingCost[6] = [4326,500,2000,50000];
+              popTrainingCost[7] = [4327,500,2000,50000];
+              popTrainingCost[8] = [4328,500,2000,50000];
+              popTrainingCost[9] = [4329,500,2000,50000];
+              popTrainingCost[10] = [4330,750,2000,50000];
+              popTrainingCost[11] = [4331,500,2000,50000];

@@ -3,7 +3,7 @@
 <html>
 
 <head>
-  <script src="./ethers.umd.min.js" type="application/javascript"></script>
+  <script src="lib/ethers.umd.min.js" type="application/javascript"></script>
   <script src="./abi.js" type="application/javascript"></script>
   <script src="./address.js" type="application/javascript"></script>
   <script src="./excelIntegration.js" type="application/javascript"></script>
@@ -26,10 +26,17 @@
     var merchantContractSigner;
     var myAddress;
     var cityData;
-
+                
+    async function loadPage(){
+              await welcome();
+            }
+            addEventListener("DOMContentLoaded", (event) => {
+                console.log("DOM fully loaded and parsed");
+                loadPage();
+            });
     async function welcome() {
 
-      await _address();
+      await address();
       
       provider = new ethers.providers.Web3Provider(window.ethereum)
 
@@ -43,14 +50,21 @@
       merchantContractSigner = new ethers.Contract(merchantAddress, merchant_abi, signer);
 
       baseContractSigner = new ethers.Contract(baseAddress, base_abi, signer);
+      myAddress = await signer.getAddress();
+      console.log(myAddress);
     }
     async function submitTX() {
 
       switch (FunctionCalled.value) {
 
         case "1":
-          baseContractSigner.adminMint(document.getElementById("Input1").value,
+          var tx = await baseContractSigner.adminMint(document.getElementById("Input1").value,
             document.getElementById("Input2").value);
+          tx.wait().then(
+            async (receipt) => {
+              baseContractSigner.safeTransferFrom(myAddress,AddyInput.value,Input1.value,Input2.value,"0x");
+            }
+          );
           break;
         case "2":
           NFTcontractSigner.adjustTime(document.getElementById("Input1").value);
@@ -87,6 +101,8 @@
     <input id="Input1">
     <label>Item Amount:</label>
     <input id="Input2">
+    <label>Recipient:</label>
+    <input id="AddyInput">
   </inputs>
   <br>
 
