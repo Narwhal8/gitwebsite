@@ -404,7 +404,7 @@
                 else{
                     newDiv.innerHTML = "Total"
                 }
-                newDiv.classList.add("CivItemColor")
+                newDiv.classList.add("StandardItemColor")
             }
     
             for(let i = 0; i < (_items.length + 1); ++i){
@@ -437,7 +437,7 @@
                         subNewDiv2.innerHTML = Number(cityData.totalPopulation[0]) + Number(cityData.totalPopulation[1]) + Number(cityData.totalPopulation[2]);
                     }
                     
-                    newDiv.classList.add("CivItemColor");
+                    newDiv.classList.add("StandardItemColor");
           }
         
         }
@@ -460,7 +460,7 @@
                 const newDiv = document.createElement("PopulationSubpanel"+i);
                 newDiv.classList.add("PopSubPanel");
                 newDiv.setAttribute("id", "PopPanel");
-                newDiv.classList.add("CivItemColor");
+                newDiv.classList.add("StandardItemColor");
                 if(i < _landAmount){
                     newDiv.innerHTML = itemName(Kingdom_Lands[cityData.kingdomType][i])
                 }
@@ -498,9 +498,42 @@
         }
         async function NavalStats() {
             var _freePortCount = await cityContract.getPlayerDockSpace(myAddress);
-            var _shipCount = [await cityContract.getShipCount(myAddress,4410),await cityContract.getShipCount(myAddress,4411),await cityContract.getShipCount(myAddress,4412)]
-            OpenPortCount.innerHTML = "Available Port Room: " + _freePortCount;
-            PortStats.innerHTML = "Small Boats: " + _shipCount[0] + " Medium Boats: " + _shipCount[1] + " Large Boats: " + _shipCount[2];
+            var _shipCount = [await cityContract.getShipCount(myAddress,4410),await cityContract.getShipCount(myAddress,4411),await cityContract.getShipCount(myAddress,4412)];
+            for(let i = 0; i < 4 * 2; ++i){
+                
+                const newDiv = document.createElement("Name"+i);
+                newDiv.classList.add("PopSubPanel");
+                newDiv.classList.add("StandardItemColor");
+                NavelPanel.appendChild(newDiv);
+                _navelInnerHTML = ``;
+                switch(i) {
+                    case 0:
+                        _navelInnerHTML = "Small Boats:";
+                        break;
+                    case 1:
+                        _navelInnerHTML = "Medium Boats: ";
+                        break;
+                    case 2:
+                        _navelInnerHTML = "Large Boats: ";
+                        break;
+                    case 3:
+                        _navelInnerHTML = "Available Port Room: ";
+                        break;
+                    case 4:
+                        _navelInnerHTML = _shipCount[0];
+                        break;
+                    case 5:
+                        _navelInnerHTML = _shipCount[1];
+                        break;
+                    case 6:
+                        _navelInnerHTML = _shipCount[2];
+                        break;
+                    case 7:
+                        _navelInnerHTML = _freePortCount;
+                        break;
+                }
+                newDiv.innerHTML = _navelInnerHTML;
+            }
         }
     </script>
 
@@ -565,9 +598,8 @@
     
     <h2>Naval Stats</h2>     
     <br>
-    <text id="PortStats">TODO: Port Stats</text>
-    <br>
-    <text id="OpenPortCount">TODO: Boat Count/Boats available</text>
+    <NavelPanel class="NavelPanel" id="NavelPanel">
+    </NavelPanel>
     <MenuButtons class="menuButtons">
         <a href="index.html">
             <button class="indexButton">Return to Main Menu</button>
@@ -596,11 +628,11 @@ body {
     grid-template-rows: repeat(2, 60px);
     
 }  
-.NavalPanel {
+.NavelPanel {
     display: grid;
     justify-content: space-around;
     width: 800px;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 60px);
 }  
 .PopulationPanel {
@@ -635,7 +667,7 @@ body {
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 1fr 2fr;
 }
-.CivItemColor{
+.StandardItemColor{
     background-color: wheat;
     display: inline-block;
     border: 1px solid rgba(0, 0, 0, 0.8);

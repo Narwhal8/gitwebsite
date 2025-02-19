@@ -30,6 +30,39 @@
             if(_totalLandBalance == 0){NoLandWarning.style.display = "block"}
             else{NoLandWarning.style.display = "none"}
 
+            KingdomDifficultyText.innerHTML = "Starting Kingdom Difficulty: ";
+            KingdomDifficultyText.style.display = "block";
+
+            switch(Number(_value)){
+              case 1:
+                KingdomDifficultyText.innerHTML += "<b> Hard <b>";
+                break;
+              case 2:
+                KingdomDifficultyText.innerHTML += "<b> Very Hard <b>";
+                break;
+              case 3:
+                KingdomDifficultyText.innerHTML += "Easy";
+                break;
+              case 4:
+                KingdomDifficultyText.innerHTML += "<b> Hard <b>";
+                break;
+              case 5:
+                KingdomDifficultyText.innerHTML += "Medium";
+                break;
+              case 6:
+                KingdomDifficultyText.innerHTML += "Medium";
+                break;
+              case 7:
+                KingdomDifficultyText.innerHTML += "Medium";
+                break;
+              case 8:
+                KingdomDifficultyText.innerHTML += "Easy";
+                break;
+              case 9:
+                KingdomDifficultyText.innerHTML += "Easy";
+                break;
+            }
+
         }
         async function submitTX() {
 
@@ -83,6 +116,7 @@
     <text id="LandBalance5" class="InvisableOnStart"></text>
     <text id="LandBalance6" class="InvisableOnStart"></text>
     <text id="LandBalance7" class="InvisableOnStart"></text>
+    <text id="KingdomDifficultyText" class="InvisableOnStart"></text>
     <text id="NoLandWarning" class="InvisableOnStart Notice">WARNING: You do not have any valid land tiles for this type of Kingdom. If you have some other land, please locate a kingdom for which it may be used.</text>
   </Balences>
 
