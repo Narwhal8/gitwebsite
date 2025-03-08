@@ -145,7 +145,7 @@
         console.log("ERROR DETECTED:");
         ErrorText.style.display = "block";
         ErrorToast.style.display = "block";
-        ErrorText.innerHTML = "Error: " + err.message;
+        ErrorText.innerHTML = "Error: " + err.data.message;
       }
       console.log("TXLogic Ran");
     }    
@@ -422,38 +422,38 @@
       if(_mode != 5){
           _happiness = (10 * (_consumerStockpiles.stockpileLevels[2])) + await _foodvaluecalc(Amount.value * BatchAmount.value);
           _productivity = (10 * (_consumerStockpiles.stockpileLevels[1])) + _baseproduction;
-          _nutrition = cityContract.getNutrition(myAddress);
+          _nutrition = await cityContract.getNutrition(myAddress);
           if(_nutrition[0] < 1500){_happiness -= 10;}
           if(_nutrition[1] < 1500){_productivity -= 10;}
           if(_nutrition[2] < 1500){_productivity -= 10;}
           if(_nutrition[3] < 1500){_happiness -= 10;}
           if(_nutrition[4] < 1500){_comfort -= 10;}
-        }
+      }
         if(_mode == 1){
             var _infraBonus = 0;
             var _beautyBonus = 0;
             _buildingStats = await cityContract.getBuildingInfo(CID.value,BuildingKingdomType.value - 1);
             if(cityData.industrySize != 0){
-                _infraBonus = Math.round((cityData.infraCount  * 50) / cityData.industrySize);
-                _beautyBonus = Math.round((cityData.totalBeauty  * 5) / (cityData.industrySize));
+                _infraBonus = Math.floor((cityData.infraCount  * 50) / cityData.industrySize);
+                _beautyBonus = Math.floor((cityData.totalBeauty  * 5) / (cityData.industrySize));
             }
             if(_infraBonus > 50){_infraBonus = 50;}
             _productivity += _infraBonus + _buildingStats.buildingErgonommics;
             _happiness += _beautyBonus;
             _comfort += _buildingStats.buildingInsulation;
         }
-          _comfort = ((10 * _consumerStockpiles.stockpileLevels[0] + 5 * _consumerStockpiles.stockpileLevels[2]));
+        _comfort = ((10 * _consumerStockpiles.stockpileLevels[0] + 5 * _consumerStockpiles.stockpileLevels[2]));
 
-          if(_kingdomTemp > (65 + _comfort)){
-              _bonus -= _mode * (_kingdomTemp - (65 + _comfort));
-          }
-          else if(_kingdomTemp < (65 - _comfort)){
-              _bonus -= _mode * ((65 - _comfort) - _kingdomTemp);
-          }
+        if(_kingdomTemp > (65 + _comfort)){
+            _bonus -= _mode * (_kingdomTemp - (65 + _comfort));
+        }
+        else if(_kingdomTemp < (65 - _comfort)){
+            _bonus -= _mode * ((65 - _comfort) - _kingdomTemp);
+        }
           
           if(_mode != 5){ 
-              if(_happiness > _productivity){_bonus += Math.round((_happiness / 4) + Math.round(_productivity * 3 / 4));}
-              else{_bonus += Math.round(Math.round(_happiness * 3/ 4) + (_productivity / 4));}
+              if(_happiness > _productivity){_bonus += Math.floor(Math.floor(_happiness / 4) + Math.floor(_productivity * 3 / 4));}
+              else{_bonus += Math.floor(Math.floor(_happiness * 3/ 4) + Math.floor(_productivity / 4));}
           }
           else{_bonus += 35;}
           _bonus += 65;
@@ -461,7 +461,8 @@
 
     }
     async function _foodvaluecalc (_amount) {
-      var _foodStockpiles = cityContract.getGeneralStockpile(myAddress);
+      var _foodStockpiles = await cityContract.getGeneralStockpile(myAddress);
+      console.log("Food Stockpiles", _foodStockpiles);
       var _foodValue = 0;
       var _drinkValue = 0;
       if(_foodStockpiles.foodItemCount >= _amount){
@@ -471,12 +472,14 @@
       else{
             _foodValue = 0;
         }
-        
         if(_foodStockpiles.drinkItemCount >= _amount){
                 _drinkValuePer = (_foodStockpiles.drinkItemValue / _foodStockpiles.drinkItemCount);
                 _drinkValue = Math.floor(Math.sqrt(_drinkValuePer * 20));
             }
             else{_drinkValue = 0;}
+
+      
+        if(_foodValue < _drinkValue){_drinkValue = _foodValue;}
 
       return(_foodValue + _drinkValue);
     }
@@ -939,14 +942,6 @@
         document.getElementById("totalCostID").style.display = "none";
       }
       }
-    
-    function _buildTimeBasedOnFood(_value) {
-
-      let _value2 = ((Math.sqrt((_value * 20))));
-      _value2 = Math.trunc(_value2);
-      console.log("first value check", _value2);
-      return (_value2);
-    }
     function craftingMenu(_value) {
       hideAll();
       selectedItem = _value;
@@ -1356,23 +1351,23 @@
 
       if (!_cropInfo.isAnimal) {
 
-           _soilQuality = ((_landInfo.soilQuality));
+           _soilQuality = _landInfo.soilQuality;
           //TODO: This can be ran locally, currently not because lazy
           _soilQuality += 5 * await cityContract.getItemLevel(FertilizerSelector.value);
 
-          var _tempMultiplier = 0;
           // Each degree off optimal decreases yield by 1%
-          _tempMultiplier = (((_currentTemp) - ((_cropInfo.temperature[2]))));
+          var _tempMultiplier = (((_currentTemp) - ((_cropInfo.temperature[2]))));
           _tempMultiplier = Math.abs(_tempMultiplier);
           _tempMultiplier = (100 - (_tempMultiplier));
 
-          _yieldperland = Math.round((((_soilQuality) + 100) * _tempMultiplier)/100) - 100;
+          _yieldperland = Math.floor((((_soilQuality) + 100) * _tempMultiplier)/100) - 100;
           console.log("Yield Per Land:", _yieldperland);
-          if(_yieldperland <= 0){console.log("ERROR: YOU ARE TO WEAK TO FARM THIS. MINIMUM 0. YOU HAVE:", _yieldperland);}
           //require(_landInfo.soilQuality != 0,"Should have soil Quality");
           //require (_soilQuality >= ((_cropInfo.minsoil)), "Land is too barren");
 
           }
+          _yieldperland = await newBonusCalc(2,_yieldperland);
+          if(_yieldperland <= 0){console.log("ERROR: YOU ARE TO WEAK TO FARM THIS. MINIMUM 0. YOU HAVE:", _yieldperland);}
 
           //require ((_currentTemp) >= _cropInfo.temperature[0] && (_currentTemp) <= _cropInfo.temperature[1] , "Temprature too Hot/Cold");
           //require (_landInfo.waterQuantity >= _cropInfo.water[0] && _landInfo.waterQuantity <= _cropInfo.water[1], "Weather Too Wet/Dry");
@@ -1564,7 +1559,6 @@
     <option value="6">Add Land To Kingdom</option>
     <option value="7">Give Civilians Goods</option>
     <option value="8">Add Foodstuffs To City</option>
-    <option value="9">Add Medicine</option>
     <option value="10">Claim Crafting Recipe</option>
     <option value="11">Inventory</option>
     <option value="13">Transfer</option>
@@ -1594,7 +1588,7 @@
       <option value=510>Mushroom</option>
       <option value=511>Beets</option>
       <option value=512>Casava</option>
-      <option value=513>Peanut</option>
+      <option value=514>Peanut</option>
       <option value=516>Garlic</option>
       <option value=517>Onion</option>
       <option value=518>Carrot</option>
@@ -1613,7 +1607,7 @@
       <option value=506>Apple</option>
       <option value=507>Plum</option>
       <option value=508>Olives</option>
-      <option value=514>Cherry</option>
+      <option value=513>Cherry</option>
       <option value=515>Peach</option>
       <option value="_"></option>
       <option value="0">--Animals</option>

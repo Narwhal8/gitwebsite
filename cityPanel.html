@@ -8,7 +8,6 @@
     <script>
         async function test(){
             await welcome();
-            console.log("Test");
             await generateBuildingGrid();
             await generalCityInfo();
             generatePopulationGrid(); 
@@ -23,7 +22,7 @@
             });
         var _selectedPopJob;
         var _selectedPopLine;
-        var durableItemSelected;
+        var itemSelected;
 
         var provider;
         var signer;
@@ -214,15 +213,27 @@
             if(document.getElementById("enableTrainPops").checked){
                     UpgradeOrDemotePopsButton.style.display = "block";
             }
+            else{UpgradeOrDemotePopsButton.style.display = "none"}
+        }     
+        function TrainNavalCheckboxToggle() {
+            if(document.getElementById("enableNavalEdit").checked){
+                MoveBoatsButton.style.display = "block";
+            }
+            else{MoveBoatsButton.style.display = "none"}
         }        
         function MoveDurablesCheckboxToggle() {
             if(document.getElementById("enableDurableGoods").checked){
                     UpgradeOrDemoteDurablesButton.style.display = "block";
             }
+            else{UpgradeOrDemoteDurablesButton.style.display = "none"}
         }
-        function showDurableConsumptionUI(itemType,itemID) {
+        function showDurableConsumptionUI() {
             DurableAmount.style.display = "block";
             DurableAmountLabel.style.display = "block";
+        }
+        function showNavelConsumptionUI() {
+            NavelAmount.style.display = "block";
+            NavelAmountLabel.style.display = "block";
         }
         function generatePopulationGrid() {
                 PopulationPanel.innerHTML = "";
@@ -330,6 +341,18 @@
                 UpgradeOrDemotePopsButton.value = "Upgrade "
             }
         }
+        function updateNavalMode() {
+            if(MoveBoatsButton.value == "Upgrade "){
+                MoveBoatsButton.style.backgroundColor = "darkred";
+                MoveBoatsButton.innerHTML = "Downgrade Mode";
+                MoveBoatsButton.value = "Downgrade "
+            }
+            else{
+                MoveBoatsButton.style.backgroundColor = "greenyellow";
+                MoveBoatsButton.innerHTML = "Upgrade Mode";
+                MoveBoatsButton.value = "Upgrade "
+            }
+        }
         function updateDurablesChangeMode() {
             if(UpgradeOrDemoteDurablesButton.value == "Upgrade "){
                 UpgradeOrDemoteDurablesButton.style.backgroundColor = "darkred";
@@ -347,6 +370,11 @@
             DurableAmount.style.display = "block";
             DurableChangeButton.style.display = "block";
         }
+        function addNavel() {
+            NavelAmountLabel.style.display = "block";
+            NavelAmount.style.display = "block";
+            NavelChangeButton.style.display = "block";
+        }
         async function confirmDurablesChange() {
             var _amount = Number(DurableAmount.value);
             if(UpgradeOrDemoteDurablesButton.value != "Upgrade "){
@@ -354,7 +382,19 @@
             }
             console.log("Amount: ", _amount);
                 cityContractSigner.addPersonalItems(
-                    durableItemSelected,
+                    itemSelected,
+                    _amount
+                );
+        }
+        async function confirmNavelChange() {
+            console.log("Test");
+            var _amount = Number(NavelAmount.value);
+            if(MoveBoatsButton.value != "Upgrade "){
+                _amount = _amount * -1;
+            }
+            console.log("Amount: ", _amount);
+                cityContractSigner.addBoats(
+                    itemSelected,
                     _amount
                 );
         }
@@ -419,9 +459,9 @@
                         console.log(_items[i]);
                         newDiv.addEventListener("click", function() {
                             if(document.getElementById("enableDurableGoods").checked){
-                                showDurableConsumptionUI(_value,i);
+                                showDurableConsumptionUI();
                                 console.log("Div clicked!",_items[i]);
-                                durableItemSelected = _items[i]; 
+                                itemSelected = _items[i]; 
                             }
                         })
                         newDiv.innerHTML = "In City: " + Number(_cityItemBals.individualItemInventory[i]) + "<br>Inventory: " + _itemBals[i];
@@ -532,8 +572,22 @@
                         _navelInnerHTML = _freePortCount;
                         break;
                 }
+                if(i > 3 && i != 7){
+
+                    newDiv.addEventListener("click", function() {
+                            if(document.getElementById("enableNavalEdit").checked){
+                                showNavelConsumptionUI(i - 4);
+                                itemSelected = i - 4; 
+                                console.log("Div clicked!",i - 4);
+                            }
+                        })
+                }
                 newDiv.innerHTML = _navelInnerHTML;
             }
+        }
+        function showNavalEditUI(){
+            DurableAmount.style.display = "block";
+            DurableAmountLabel.style.display = "block";
         }
     </script>
 
@@ -598,8 +652,13 @@
     
     <h2>Naval Stats</h2>     
     <br>
+    <input id="enableNavalEdit" class="UpgradeOrDemoteCSS" type="checkbox" onclick="TrainNavalCheckboxToggle()">Enable Edit Mode?</input>
+    <button class="InvisableOnStart UpgradeOrDemoteButton" id="MoveBoatsButton" value="Upgrade " onclick="updateNavalMode()">Upgrade Mode</button>
     <NavelPanel class="NavelPanel" id="NavelPanel">
     </NavelPanel>
+    <text class="InvisableOnStart" id="NavelAmountLabel">How many boats are involved?</text>
+    <input type="number" class="NumericInput InvisableOnStart" id="NavelAmount" oninput="addNavel()">
+    <button class="InvisableOnStart sendTX" id="NavelChangeButton" onclick="confirmNavelChange()">Confirm</button>
     <MenuButtons class="menuButtons">
         <a href="index.html">
             <button class="indexButton">Return to Main Menu</button>
