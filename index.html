@@ -465,14 +465,14 @@
       console.log("Food Stockpiles", _foodStockpiles);
       var _foodValue = 0;
       var _drinkValue = 0;
-      if(_foodStockpiles.foodItemCount >= _amount){
+      if(_foodStockpiles.foodItemCount >= _amount && _amount != 0){
           _foodValuePer = (_foodStockpiles.foodItemValue / _foodStockpiles.foodItemCount);
           _foodValue = Math.floor(Math.sqrt(_foodValuePer * 20));
       }
       else{
             _foodValue = 0;
         }
-        if(_foodStockpiles.drinkItemCount >= _amount){
+        if(_foodStockpiles.drinkItemCount >= _amount && _amount != 0){
                 _drinkValuePer = (_foodStockpiles.drinkItemValue / _foodStockpiles.drinkItemCount);
                 _drinkValue = Math.floor(Math.sqrt(_drinkValuePer * 20));
             }
