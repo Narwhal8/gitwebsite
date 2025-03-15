@@ -14,7 +14,7 @@ async function address() {
     console.log(network);
     if(network.chainId == 421614) {
       cityAddress = "0x6Ec9d89CBE255Ea7140301B60E43fb809C30EC9c";
-      baseAddress = "0x44b47A5E7E537C041B2c3F8CbF9782A9e3d4D604";
+      baseAddress = "0x44b47a5e7e537c041b2c3f8cbf9782a9e3d4d604";
       merchantAddress = "0x09ae43D7a7951F59F466E5f4F5Bf1F7D881B2f57";
       landGiveawayAddress = "0xA740308c1aC0448546aef9c57cD2Db0e8174470C";
       warAddress = "0x125700a956c23af8b3946FbCaF7D29059F6b0F87";

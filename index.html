@@ -3,30 +3,11 @@
 <html>
 
 <head>
-  <script src="lib/ethers.umd.min.js" type="application/javascript"></script>
+  <script src="lib/ethers.umd.min(5.2).js" type="application/javascript"></script>
   <script src="./abi.js" type="application/javascript"></script>
   <script src="./address.js" type="application/javascript"></script>
   <script src="./excelIntegration.js" type="application/javascript"></script>
-  <script src="lib/sypher.umd.js" type="application/javascript"></script>
 
-  <script>
-    console.log(ethers);
-    if(typeof ethers == "undefined") {}
-    console.log(sypher);
-    addEventListener("DOMContentLoaded", (event) => {
-          console.log("DOM fully loaded and parsed");
-          sypher.init({
-        interface: {
-            button: {
-                type: "connect",
-                text: "Connect Wallet",
-                modal: true,
-                append: header
-            }
-        }
-    });
-        });
-  </script>
   
   <script>
 
@@ -80,9 +61,9 @@
     var lastRecipe;
 
     async function welcome() {
-      
+      await address();
       provider = new ethers.providers.Web3Provider(window.ethereum)
-      signer = provider.getSigner()
+      signer = await provider.getSigner();
       network = await provider.getNetwork();
       await signon();
 
@@ -140,14 +121,16 @@
     async function submitTX() {
 
       console.log("TXLogic in action")
+      await TXLogic()/*
       try{await TXLogic()}
       catch (err) {
+        console.log("error: " + err);
         console.log("ERROR DETECTED:");
         ErrorText.style.display = "block";
         ErrorToast.style.display = "block";
-        ErrorText.innerHTML = "Error: " + err.data.message;
+        ErrorText.innerHTML = "Error: " + err.data;
       }
-      console.log("TXLogic Ran");
+      console.log("TXLogic Ran");*/
     }    
     async function OnscreenTXConfirm() {
 
@@ -204,18 +187,12 @@
 
       console.log(cityData);
       var txWaiter = false;
+      var tx = null;
       switch (actionSelect.value) {
 
         case "1":
           txWaiter = true;
-          console.log("TX Input:",[
-            LandMenu.value,
-            document.getElementById("Amount").value,
-            document.getElementById("cropSelect").value,
-            Number(FertilizerSelector.value),
-            document.getElementById("TimeAmount").value,
-            0]);
-          var tx = await productionContractSigner.plant(
+          tx = await productionContractSigner.plant(
             LandMenu.value,
             document.getElementById("Amount").value,
             document.getElementById("cropSelect").value,
@@ -246,7 +223,7 @@
           }
           if(BatchAmount.value == 0 || Amount.value == 0){Error("Amount is not valid");}
           txWaiter = true;
-          var tx = await productionContractSigner.cook(
+          tx = await productionContractSigner.cook(
             lastRecipe,
             BatchAmount.value,
             recipe.ingrediant,
@@ -271,7 +248,7 @@
 
           const Trade = Number(document.getElementById("ItemMenuID").value)
           console.log("Trade:",Trade);
-          var tx = await merchantContractSigner.tradeItem(
+          tx = await merchantContractSigner.tradeItem(
             document.getElementById("ItemMenuID").value,
             document.getElementById("Amount").value,
             minTradePrice,
@@ -283,7 +260,7 @@
         txWaiter = true;
         console.log("Building Value: ",CID.value);
         console.log("Building Sub Value: ",BuildingKingdomType.value);
-          var tx = await cityContractSigner.developCity(
+          tx = await cityContractSigner.developCity(
             [document.getElementById("CID").value,BuildingKingdomType.value - 1],
             document.getElementById("Amount").value,
             LandMenu.value
@@ -291,45 +268,54 @@
           break;
         case "5":
         txWaiter = true;
-          var tx = await productionContractSigner.claim(
-            LandMenu.value
-          )
+        var _landToClaim = Kingdom_Lands[cityData.kingdomType];
+          for(let i = 0; i < 8; ++i){
+            console.log("Test " + i);
+            console.log(_landToClaim);
+            if(_landToClaim[i] == 0){break;}
+            var _timeToComplete = await cityContract.farmProgress(myAddress,i);
+            var _completedTime = Number(_timeToComplete.time) + Number(_timeToComplete.worktime);
+            console.log("Complete Time:", _completedTime);
+            if(_completedTime < (Date.now()/1000) && _completedTime != 0){
+              tx = await productionContractSigner.claim(
+                _landToClaim[i]
+              )
+            }
+          }
           break;
         case "6":
         txWaiter = true;
-          var tx = await cityContractSigner.allocateLand(
-            LandMenu.value,
-            document.getElementById("Amount").value)
+            tx = await cityContractSigner.allocateLand(LandMenu.value, document.getElementById("Amount").value);
           break;
         case "7":
         txWaiter = true;
-          var tx = await cityContractSigner.payTithe(
+          tx = await cityContractSigner.payTithe(
             document.getElementById("CivGM").value,
             document.getElementById("Amount").value)
           break;
         case "8":
           txWaiter = true;
-          var tx = await cityContractSigner.addFood(
+          tx = await cityContractSigner.addFood(
             ItemMenuID.value,
             document.getElementById("Amount").value
           ) 
           break;
         case "9":
           txWaiter = true;
-          var tx = await cityContractSigner.treatIllness(
+          tx = await cityContractSigner.treatIllness(
             [4200,4201,4202,4203,4204,4205,4206,4207]
           ) 
           break;
         case "10":
         txWaiter = true;
-          var tx = await productionContractSigner.collect(document.getElementById("CID").value)
+          tx = await productionContractSigner.collect(document.getElementById("CID").value)
           break;
         case "11":
           break;
 
         case "13":
             txWaiter = true;
-            var tx = await baseContractSigner.safeTransferFrom(myAddress,
+            tx = await baseContractSigner.safeTransferFrom(myAddress,
             document.getElementById("Address").value,
             document.getElementById("ItemMenuID").value,
             document.getElementById("Amount").value,
@@ -339,13 +325,14 @@
           console.log("Error: Invalid action selected in action select menu")
           break;
         }
-        if(txWaiter == true){
-            tx.wait().then(
+        
+        console.log("Test 5");
+          if(txWaiter){
+            console.log("Waiting...");
             async (receipt) => {console.log("Claiming Really worked",receipt);
             OnscreenTXConfirm();
             }
-
-          )}
+          }
 
 
     }
@@ -603,13 +590,7 @@
           }
           break;
         case "5":
-          showAmount();
-
-          document.getElementById("landLabel").style.display = "inline";
-          document.getElementById("landSelection").style.display = "block";
-          
-          showLandMenu();
-          hideAmount();
+        FarmingNotice.style.display = "block";
           break;
         case "6":
           const housing = await kingdomHousingCheck();
@@ -1218,7 +1199,7 @@
       hideBuildingCost();
       noHousingNotice.style.display = "none";
       lackRecipeNotice.style.display = "none";
-
+      FarmingNotice.style.display = "none";
       sendTX.style.display = "block";
 
       FertilizerSelector.style.display = "none";
@@ -1539,7 +1520,7 @@
 
 </head>
 
-<body onload=" address(); welcome(); ">
+<body onload="welcome(); ">
   
   <header id="header"></header>
   <script>
@@ -1889,6 +1870,7 @@
   <br>
   <Notices class="Notice">
     <text class="InvisableOnStart"id="landAdderNotice">NOTICE: Land added can't EVER be removed</text>
+    <text class="InvisableOnStart"id="FarmingNotice">Note: You can click confirm, and the website will automatically prompt you to claim any unclaimed land rewards</text>
     <text class="InvisableOnStart" id="noHousingNotice"><br>To prevent players from accidently Soft-Locking, You must build housing before adding land to this kingdom</text>
     <text class="InvisableOnStart" id="lackRecipeNotice"><br>You do not have enough Ingrediants to do this transaction</text>
   </Notices>
