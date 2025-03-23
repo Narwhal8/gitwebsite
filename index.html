@@ -164,10 +164,6 @@
                 ErrorText.innerHTML = "Civilian Goods Given!"
                 showToast = true;
                 break;
-              case "8":
-                ErrorText.innerHTML = "Food Added!"
-                showToast = true;
-                break;
               case "9":
                 ErrorText.innerHTML = "Medicine Added!"
                 showToast = true;
@@ -292,13 +288,6 @@
           tx = await cityContractSigner.payTithe(
             document.getElementById("CivGM").value,
             document.getElementById("Amount").value)
-          break;
-        case "8":
-          txWaiter = true;
-          tx = await cityContractSigner.addFood(
-            ItemMenuID.value,
-            document.getElementById("Amount").value
-          ) 
           break;
         case "9":
           txWaiter = true;
@@ -609,11 +598,6 @@
 
           document.getElementById("CivGoods").style.display = "block";
           document.getElementById("CivGM").style.display = "block";
-          break;
-        case "8":
-          showAmount();
-          document.getElementById("ItemMenu").style.display = "block";
-          generateItemMenu("[22,23]");
           break;
         case "9":
 
@@ -1539,7 +1523,7 @@
     <option value="5">Claim Farming Rewards</option>
     <option value="6">Add Land To Kingdom</option>
     <option value="7">Give Civilians Goods</option>
-    <option value="8">Add Foodstuffs To City</option>
+    <option value="8"></option>
     <option value="10">Claim Crafting Recipe</option>
     <option value="11">Inventory</option>
     <option value="13">Transfer</option>
@@ -1846,7 +1830,7 @@
         <option value="_"></option>
         <option value="0">Common Items</option>
         <option value="[20,21]">Basic Crops</option>
-        <option value="[22,23]">Food & Drink</option>
+        <option value="[120,121,122,123,124]">Food & Drink</option>
         <option value="24">Food Ingrediants</option>
         <option value="52">Raw Materials</option>
         <option value="24">Animal Goods</option>

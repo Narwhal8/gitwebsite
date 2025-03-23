@@ -14,6 +14,7 @@
             await NavalStats(); 
             await generateNutritionGrid(); 
             generateFoodGrid();
+            generateAddFoodGrid();
         }
         addEventListener("DOMContentLoaded", (event) => {
 
@@ -41,6 +42,8 @@
         var foodStockAmounts;
         var stockedTemporaryCivGoods;
         var stockedPermaCivGoods;
+
+        var _FoodItemDropdownsSelected = [false,false,false,false,false];
         async function welcome() {
             await address();
             provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -104,9 +107,9 @@
                 newDiv.classList.add("NutrientColor"+i);
             }
         }
-        async function generateFoodGrid () {
+        function generateFoodGrid () {
             
-            for(let i = 0; i < 7*2; ++i){
+            for(let i = 0; i < 5*2; ++i){
                 
                 const newDiv = document.createElement("FoodSubpanel"+i);
                 newDiv.classList.add("FoodValueItemColor");
@@ -119,43 +122,143 @@
                         newDiv.innerHTML = "Food Values";
                         break;
                     case 2:
-                        newDiv.innerHTML = "Drink Stocks";
-                        break;
-                    case 3:
-                        newDiv.innerHTML = "Drink Values";
-                        break;
-                    case 4:
                         newDiv.innerHTML = "Clothes Stocked";
                         break;
-                    case 5:
+                    case 3:
                         newDiv.innerHTML = "Tools Stocked";
                         break;
-                    case 6:
+                    case 4:
                         newDiv.innerHTML = "Bedding Stocked";
                         break;
-                    case 7:
+                    case 5:
                         newDiv.innerHTML = foodStockAmounts.foodItemCount;
                         break;
-                    case 8:
+                    case 6:
                         newDiv.innerHTML = foodStockAmounts.foodItemValue;
                         break;
-                    case 9:
-                        newDiv.innerHTML = foodStockAmounts.drinkItemCount;
-                        break;
-                    case 10:
-                        newDiv.innerHTML = foodStockAmounts.drinkItemValue;
-                        break;
-                    case 11:
+                    case 7:
                         newDiv.innerHTML = stockedTemporaryCivGoods.stockpiles[0]
                         break;
-                    case 12:
+                    case 8:
                         newDiv.innerHTML = stockedTemporaryCivGoods.stockpiles[1]
                         break;
-                    case 13:
+                    case 9:
                         newDiv.innerHTML = stockedTemporaryCivGoods.stockpiles[2]
                         break;
 
                 }
+            }
+        }
+        async function updateFoodCosts(){
+            for(let i = 0; i < 5; ++i){
+                document.getElementById("FoodSubpanel" + i).innerHTML = setFoodGridTitle(i);
+            }
+        }
+        async function updateFoodBal(_dropdown){
+            console.log("NUM: ",_dropdown);
+            document.getElementById("FoodSubpanel"+(_dropdown+5)).innerHTML = "You Have: "
+            + await baseContract.balanceOf(myAddress,(document.getElementById("FoodSubpanel"+_dropdown).value));
+        }
+        function setFoodGridTitle(_value){
+            
+            switch(_value) {
+                    case 0:
+                    return("Main Food <br> Units Consumed: " +  AddFoodNumberInput.value * 5);
+                        break;
+                    case 1:
+                    return("Drinks <br> Units Consumed: " +  AddFoodNumberInput.value * 5);
+                        break;
+                    case 2:
+                    return("Appetizers <br> Units Consumed: " +  AddFoodNumberInput.value * 1);
+                        break;
+                    case 3:
+                    return("Grains <br> Units Consumed: " +  AddFoodNumberInput.value * 1);
+                        break;
+                    case 4:
+                    return("Dessert <br> Units Consumed: " +  AddFoodNumberInput.value * 1);
+                        break;
+
+                }
+        }
+        async function generateAddFoodGrid() {
+                        
+            for(let i = 0; i < 5*2; ++i){
+                
+                var newDiv;
+                if(i >= 5){
+                    newDiv = document.createElement("select");
+                }
+                else{
+                    newDiv = document.createElement("div");
+                }
+                newDiv.id = ("FoodSubpanel"+i);
+                newDiv.classList.add("FoodValueItemColor");
+                newDiv.innerHTML = setFoodGridTitle(i);
+                
+                console.log("Div 3: ", newDiv.id);
+                if(i >= 5){
+                    if(i != 5){newDiv.disabled = true}
+                    _itemsTypes = [240,124,120,122,121]; 
+                    _items = groupItems(_itemsTypes[i - 5]);
+                    var _addyArray = [];
+                    _addyArray.length = _items.length;
+                    _addyArray.fill(myAddress);
+                    _userHeldItems = await baseContract.balanceOfBatch(_addyArray,_items);
+                    for(let j = -1; j < _items.length; ++j){
+                        
+                        var option;
+                        if(j == -1){
+                            option = document.createElement("option");
+                            option.text = "None";
+                            option.value = 0;
+                        }
+                        else if(_userHeldItems[j] != 0){
+                            option = document.createElement("option");
+                            option.text = itemName(_items[j]);
+                            option.value = (_items[j]);
+                            
+                        }
+                        
+                        newDiv.appendChild(option);
+                    }  
+                    newDiv.addEventListener("change", async function() {
+                        console.log("Div Clicked: ", this.id);
+                        if(this.value != 0){_FoodItemDropdownsSelected[i-5] = true}
+                        else{_FoodItemDropdownsSelected[i-5] = false}
+                        var _foodItemNumberSelected = 0;
+                        for(let j = 0; j < 5; ++j){
+                            if(_FoodItemDropdownsSelected[j]){++_foodItemNumberSelected;}
+                        }
+                        console.log("Food Selected", _foodItemNumberSelected);
+                            for(let k = 6; k < 10; ++k){
+                                if((document.getElementById(("FoodSubpanel"+ k)).value == 0 && ((itemLevel(document.getElementById(("FoodSubpanel5")).value)) <= _foodItemNumberSelected))|| document.getElementById(("FoodSubpanel5")).value == 0){
+                                    document.getElementById(("FoodSubpanel"+ k)).disabled = true;
+                                }
+                                else{
+                                    document.getElementById(("FoodSubpanel"+ k)).disabled = false;
+                                }
+                            }
+                        await updateFoodBal(i);
+                    })
+                        
+                    if(i == 5){
+                        newDiv.addEventListener("change", function() {
+                                AddFoodText.innerHTML = "Max number of additional food items: " + (itemLevel(this.value) - 1);
+                                console.log("Value: ", this.value);
+                                console.log("Max Item Level: " + itemLevel(this.value));
+                            })
+                    }     
+                }
+                AddFoodPanel.appendChild(newDiv);
+            }
+            
+            for(let i = 0; i < 5; ++i){
+                
+                var newDiv = document.createElement("div");
+                AddFoodPanel.appendChild(newDiv);
+                newDiv.id = ("FoodSubpanel"+(i+10));
+                newDiv.classList.add("FoodValueItemColor");
+                newDiv.innerHTML = "You Have: 0";
             }
         }
         async function generateBuildingGrid() {
@@ -226,6 +329,12 @@
                     UpgradeOrDemoteDurablesButton.style.display = "block";
             }
             else{UpgradeOrDemoteDurablesButton.style.display = "none"}
+        }        
+        function addFoodMenuShow() {
+            if(document.getElementById("addFoodCheckbox").checked){
+                AddFood.style.display = "block";
+            }
+            else{AddFood.style.display = "none"}
         }
         function showDurableConsumptionUI() {
             DurableAmount.style.display = "block";
@@ -374,6 +483,15 @@
             NavelAmountLabel.style.display = "block";
             NavelAmount.style.display = "block";
             NavelChangeButton.style.display = "block";
+        }
+        async function confirmFoodAdditions() {
+            var _foodTempArray = [document.getElementById("FoodSubpanel7").value,document.getElementById("FoodSubpanel9").value,document.getElementById("FoodSubpanel8").value,document.getElementById("FoodSubpanel5").value,document.getElementById("FoodSubpanel6").value];
+            console.log("Food Values: ",_foodTempArray);
+            cityContractSigner.addFood(
+                _foodTempArray,
+                AddFoodNumberInput.value
+                
+            );
         }
         async function confirmDurablesChange() {
             var _amount = Number(DurableAmount.value);
@@ -600,6 +718,14 @@
         <br>
         <FoodData id="FoodPanel" class="FoodPanel"></FoodData>
         <div id="NutritionPanel" class="NutritionPanel"></div>
+        
+        <input id="addFoodCheckbox" type="checkbox" onclick="addFoodMenuShow()">Add Food? <br></input>
+        <AddFood id="AddFood" class="InvisableOnStart">
+            <AddFoodPanel id="AddFoodPanel" class="FoodPanel"></AddFoodPanel>
+            <AddFoodText id="AddFoodText"></AddFoodText><br>
+            <input type="number" id="AddFoodNumberInput" class="NumericInput" onchange="updateFoodCosts()"> Number of meals you would like?</input><br>
+            <button class="sendTX" onclick="confirmFoodAdditions()">Confirm</button>
+        </AddFood>
         <h3>Durable Stocks</h3>
         <input id="enableDurableGoods" type="checkbox" onclick="MoveDurablesCheckboxToggle()">Enable Edit Mode? <br></input>
         <button class="InvisableOnStart UpgradeOrDemoteButton" id="UpgradeOrDemoteDurablesButton" value="Upgrade " onclick="updateDurablesChangeMode()">Add Items</button>
@@ -684,8 +810,8 @@ body {
     display: grid;
     justify-content: space-around;
     width: 800px;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(2, 60px);
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 60px 40px 40px;
     
 }  
 .NavelPanel {

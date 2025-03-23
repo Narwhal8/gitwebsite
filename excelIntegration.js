@@ -1,76 +1,122 @@
 function groupItems(_value) {
       _value = Number(_value);
       switch (_value) {
-          case 1: 
+          case 240: 
+         return([Dried_Fruit,Flatbread,Roasted_Peanut,Thin_Pottage,Beans__and__Rice,Common_Bread,Butchers_Stew,Fried_Vegetables,Fried_Meat,Oatmeal,Potato_Soup,Pottage,Ramen,Risotto,Vegetable_Congee,Vegetable_Stew,Wheat_Bread,Pea_Pudding,Simple_Hunters_Pot,Mushroom_Risotto,Ravioli,Cheesy_Pasta,Cottage_Pie,Curried_Meat,Fine_Ramen_1,Fine_Potato_Soup,Fish_Congee,Hearty_Pottage,Pot_Stew,Roast,Sushi,Fine_Ramen_2,Beef_Stew,Seafood_Pasta,Fish_Stew,Mushroom_Stew,Mutton_Stew,Shark_Soup,Turtle_Soup,Hunters_Pot,Shrimp_Rsisotto,Fine_Sushi,Oceans_Bounty,Regal_Roast,Seafood_Boil,Hotpot,Tomato_Stew,Tomato_Pasta,Mashed_Potatoes,Mashed_Casava,Feast_Hotpot,Meatball,Ceviche,Ocean_Feast]);
+  case 241: 
+         return([Ale,Cider,Fruit_Wine,Grog,Whey,Soy_Milk,Wine,Fine_Ale,Mead,Spruce_Beer,Sweet_Beer,Milk,Vodka,Kumis,Rum,Grain_Whiskey,Sake,Brandy,Silver_Wine,Jungle_Wine,Winter_Wine,Aged_Rum,Ginseng_Wine,Spiced_Vodka,Pure_Alcohol,Double_Brandy,Auric_Mead,Fine_Sake,Baked_Beans,Candied_Peanut,Fruit_Pie,Simple_Curry,Bean_and_Rice_Cake,Sausage,Snack_Bread,Pumpernickle,Sugar_Biscuits,Fine_Bread,Golden_Rice,Cheesecake,Glittercake,Pastry,Savory_Cheese_Plate,Sweet_Cheese_Plate,Fried_Sugar_Toast,Fried_Dough,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,]);
+  case 1: 
          return([Bead_Bracelet,Copper_Bracelet,Silver_Bracelet,Gold_Bracelet,Aluminum_Bracelet,Artifact_Bronze_Bracelet,Artifact_Gold_Bracelet,Pearl_Bracelet]);
-  case 5: 
-         return([Wood_Chair,Stone_Chair,Fine_Chair,Carved_Chair,Encrusted_Chair]);
-  case 7: 
-         return([Mug,Drinking_Glass,Crystal_Drinking_Glass,Goblet,Aincient_Goblet]);
-  case 13: 
-         return([Simple_Home_Furniture,Standard_Home_Furniture,Ornate_Home_Furniture]);
-  case 3: 
-         return([Bead_Necklace,Copper_Necklace,Silver_Necklace,Gold_Necklace,Amber_Necklace,Artifact_Bronze_Necklace,Artifact_Gold_Necklace,Aluminum_Necklace,Pearl_Necklace]);
-  case 8: 
-         return([Simple_Totem,Silver_Totem,Gold_Totem,Icon_Statue,Mysterious_Totem]);
   case 2: 
          return([Copper_Ring,Silver_Ring,Gold_Ring,Artifact_Bronze_Ring,Artifact_Gold_Ring,Aluminum_Ring]);
-  case 12: 
-         return([Simple_Storage,Storage_Pots,Refined_Storage,Luxary_Storage]);
+  case 3: 
+         return([Bead_Necklace,Copper_Necklace,Silver_Necklace,Gold_Necklace,Amber_Necklace,Artifact_Bronze_Necklace,Artifact_Gold_Necklace,Aluminum_Necklace,Pearl_Necklace]);
   case 4: 
          return([Wood_Table,Stone_Table,Fine_Table,Carved_Table,Encrusted_Table]);
+  case 5: 
+         return([Wood_Chair,Stone_Chair,Fine_Chair,Carved_Chair,Encrusted_Chair]);
   case 6: 
          return([Wooden_Tableware,Stone_Tableware,Ceramic_Tableware,Fine_Ceramic_Tableware,Silver_Tableware,Gold_Tableware,Aluminum_Tableware,Relic_Tableware]);
+  case 7: 
+         return([Mug,Drinking_Glass,Crystal_Drinking_Glass,Goblet,Aincient_Goblet]);
+  case 8: 
+         return([Simple_Totem,Silver_Totem,Gold_Totem,Icon_Statue,Mysterious_Totem]);
   case 9: 
          return([Small_Rug,Rug,Ornate_Rug]);
   case 10: 
          return([Small_Painting,Painting,Large_Painting,Guilded_Painting]);
-  case 101: 
-         return([Cow,Chicken,Sheep]);
-  case 24: 
-         return([Oyster,Fish_Meat,Beef,Chicken_Meat,Eggs,Milk,Exotic_Meat,Wool,Mutton,Game_Meat,Organ_Meat,Bone,Fat,Tender_Meat,Oyster_Meat,Crab_Meat,Raw_Shark_Meat,Prepared_Shark_Meat,Life_Scales,Roe,Fish_Organs,Polar_Bear_Liver,Polished_Rice,Very_Polished_Rice,Shrimp_Meat,Rare_Mushroom,Malted_Grain,Venison,Rabbit_Meat,Butter,Boiled_Meat,Veggie_Mix,Vinegar,Sugar,Olive_Oil,Ketchup,Basic_Spice_Pack,Royal_Spice_Pack,Pastry_Dough,Fruit_Preserve,Exotic_Fruit_Preserve,Mushroom_Stock,Meat_Stock,Vegetable_Stock,Barm,Molasses,Paprika,Cider_Sauce,Wine_Sauce,Spicy_Sauce,Common_Flour,Wheat_Flour,Rye_Flour,Corn_Flour,Cinnamon_Powder,Sweet_Spice_Pack,Savory_Spice_Pack,Spicy_Spice_Park,Royal_Sweet_Spice_Pack,Royal_Savory_Spice_Park,Royal_Spicy_Spice_Park,Cheese,Aged_Cheese,Imperial_Cheese,Dried_Vegetables,Pickled_Vegetables,Hearty_Dried_Vegetables,Dried_Fruit,Brandied_Fruit,Exotic_Dried_Fruit,Cured_Meat,Salted_Meat,Preserved_Eggs,Exotic_Cured_Meat,Pemmican,Pate,Mixed_Vegetables,Down,Leather,Exotic_Leather,Fur,Exotic_Fur,Feather,Thick_Leather,Antler,Ivory,Poison,Leopard_Skin,Aurochs_Hide,Black_Leopard_Skin,Bear_Hide,Polar_Bear_Hide,Tiger_Hide]);
-  case 70: 
-         return([Arid_Blueprint,Northern_Blueprint,Central_Blueprint,Southern_Blueprint,Island_Blueprint,Swamp_Blueprint,Mountain_Blueprint,Silver_Blueprint,Gold_Blueprint]);
-  case 100: 
-         return([Rabbit,Deer,Turkey,Fox,Cyote,Snake,Ocean_Fish,Metal_Fish,Shrimp_School,Seaweed_Crop,Mink,Boar,Zebra,Reindeer,Leopard,Crocodile,Otter,Wolf,Seal,Ostridge,Turtle,Crab_Cluster,Elk,Aurochs,Black_Leopard,Bear,Sea_Mink,Whalrus,Poison_Snake,Shark,Elephant,Rhino,Polar_Bear,Tiger,Titan_Snake,Whale,Iron_Snail,River_Fish]);
-  case 21: 
-         return([Wheat,Rye,Rice,Corn,Sorghum,Apples,Plums,Olives,Beans,Mushrooms,Beets,Cassava,Peanuts,Cherries,Peaches,Garlic,Onion,Carrot,Sugarcane,Peppers,Allspice,Grapes,Potato,Oats,Barley,Cotton,Peas,Oranges]);
-  case 72: 
-         return([Ice_Ticket,Fire_Ticket,T1_XP,T2_XP,T3_XP,T4_XP,T5_XP,T6_XP,T7_XP,T8_XP]);
-  case 23: 
-         return([Ale,Cider,Fruit_Wine,Grog,Wine,Fine_Ale,Mead,Spruce_Beer,Sweet_Beer,Vodka,Kumis,Rum,Grain_Whiskey,Sake,Brandy,Silver_Wine,Jungle_Wine,Winter_Wine,Aged_Rum,Ginseng_Wine,Spiced_Vodka,Pure_Alcohol,Double_Brandy,Auric_Mead,Fine_Sake]);
-  case 22: 
-         return([Basic_Bread,Simple_Spread,Buttered_Bread,Basic_Flatbread,Pumpernickle,Pastry,Fruit_Pastry,Cheese_Pastry,Glittercake,Fruit_Glittercake,Fruit_Pie,Sugar_Pie,Pot_Pie,Roasted_Peanut,Candied_Peanut,Sausage,Fried_Meat,Roast,Noble_Roast,Beef_Stew,Kings_Soup,Onion_Soup,Huntsmans_Soup,Chicken_Soup,Fish_Soup,Vegetable_Soup,Seafood_Soup,Turtle_Soup,Shark_Soup,Baked_Beans,Beans_And_Rice,Hash,Fried_Crab,Fish_Roll,Deluxe_Fish_Roll,Rare_Mushroom_Soup,Oatmeal,Sweetend_Oatmeal,Simple_Soup,Roasted_Whole_Chicken,Pea_Pudding,Mutton_Stew,Glazed_Veggies,Glazed_Mutton,Simple_Risotto,Mushroom_Risotto,Shrimp_Risotto]);
-  case 50: 
-         return([Nails,Diamond_Blade,Fabric,Bronze_Plate,Iron_Plate,Steel_Plate,Emerald_Bronze_Plate,Damascus_Steel_Plate]);
+  case 11: 
+         return([Bust,Sculpture,Statue,Stuffed_Leopard,Stuffed_Bear,Stuffed_Polar_Bear]);
+  case 12: 
+         return([Simple_Storage,Storage_Pots,Refined_Storage,Luxary_Storage]);
+  case 13: 
+         return([Simple_Home_Furniture,Standard_Home_Furniture,Ornate_Home_Furniture]);
   case 20: 
          return([Ginseng,Winterberries,Jungleberries,Auric_Honey,Wasabi,Rushseed,Exotic_Herb,Silver_Sap,Honey,Seaweed,Flowers,Flower_Petals,Flower_Hearts,Nettles,Joyous_Flowers,Spruce_Trimming,Nightberry,Life_Bark,Silver_Bark,Sweet_Herbs,Savory_Herbs,Spicy_Herbs,Sweet_Bark,Vanilla_Pod]);
-  case 51: 
-         return([Rice_Bran,Pomace,Refined_Stone,Refined_Wood,Charcoal,Washed_Kaolinite,Iron,Gold,Silver,Copper,Tin,Aluminum,Mercury,Platinum,Lead,Emerald_Bronze,Bronze,Steel,Damascus_Steel,Rushseed_Oil,Cooked_Bone,Sugarcane_Pulp,Organic_Pulp,Ash,Clay_Beads,Hay,Antiseptic,Soap,Tar,Paper,Level_1_Fertilizer,Level_2_Fertilizer,Level_3_Fertilizer,Rare_Fertilizer,Forest_Glass,Lead_Glass,Forest_Glass_Pane,Lead_Glass_Pane,Crystal_Glass_Pane,Boat_Part,Treated_Fabric,Human_Earth,Vitae_Dust,Berry_Dust,Ink,Red_Dye,Blue_Dye,Green_Dye,White_Dye,Dye_Pack,Gold_Foil,Gold_Artifact_Cache,Bronze_Artifact_Cache,Bronze_Chainmail,Iron_Chainmail,Steel_Chainmail,Emerald_Bronze_Chainmail,Damascus_Steel_Chainmail,Boat_Fix_Kit]);
-  case 230: 
-         return([Panacea,Nettle_Tea,Life_Powder,Nightberry_Tea,Sweet_Herb_Tea,Happiness_Tea,Soothing_Powder,Savory_Herb_Tea,Spruce_Tea,Life_Tincture,Nightberry_Tincture,Sweet_Herb_Tincture,Happiness_Tincture,Soothing_Tea,Savory_Herb_Tincture]);
-  case 220: 
-         return([Peasent_Levy,Veteran_Peasent_Levy,Levy_Spear,Veteran_Levy_Spear,Mountain_Levy,Veteran_Mountain_Levy,Mercenary_Swordman,Veteran_Mercenary_Swordman,Palace_Guard,Mercenary_Axeman,Mercenary_Maceman,Pikeman,Peasent_Bowman,Levy_Archer,Veteran_Levy_Archer,Huntsman,Slinger,Golden_Slinger,Imperial_Flamer,Free_Lance,Knight,Mounted_Levy,Mounted_Palace_Guard,Mercenary_War_Elephant,Elite_Mercenary_War_Elephant,Mercanary_War_Rhino,Elite_Mercenary_War_Rhino,Mounted_Archer,Veteran_Mounted_Archer,Palace_Archer]);
+  case 20: 
+         return([Ginseng,Winterberries,Jungleberries,Auric_Honey,Wasabi,Rushseed,Exotic_Herb,Silver_Sap,Honey,Seaweed,Flowers,Flower_Petals,Flower_Hearts,Nettles,Joyous_Flowers,Spruce_Trimming,Nightberry,Life_Bark,Silver_Bark,Sweet_Herbs,Savory_Herbs,Spicy_Herbs,Sweet_Bark,Vanilla_Pod]);
+  case 21: 
+         return([Wheat,Rye,Rice,Corn,Sorghum,Apples,Plums,Olives,Beans,Mushrooms,Beets,Cassava,Peanuts,Cherries,Peaches,Garlic,Onion,Carrot,Sugarcane,Peppers,Allspice,Grapes,Potato,Oats,Barley,Cotton,Peas,Lemons,Broccoli,Cabbage,Soybeans,Tomato,Green_Onion]);
+  case 22: 
+         return([undefined]);
+  case 22: 
+         return([undefined]);
+  case 23: 
+         return([undefined]);
+  case 23: 
+         return([undefined]);
+  case 24: 
+         return([Prepared_Shark_Meat,Polished_Rice,Very_Polished_Rice,Malted_Grain,Butter,Vinegar,Sugar,Olive_Oil,Ketchup,Basic_Spice_Pack,Royal_Spice_Pack,Pastry_Dough,Fruit_Preserve,Exotic_Fruit_Preserves,Mushroom_Stock,Meat_Stock,Vegetable_Stock,Barm,Molasses,Paprika,Rice_Flour,Common_Flour,Wheat_Flour,Rye_Flour,Corn_Flour,Cinnamon_Powder,Sweet_Spice_Pack,Savory_Spice_Pack,Spicy_Spice_Park,Royal_Sweet_Spice_Pack,Royal_Savory_Spice_Park,Royal_Spicy_Spice_Park,Cheese,Aged_Cheese,Imperial_Reserve_Cheese,Dried_Vegetables,Pickled_Vegetables,Hearty_Dried_Vegetables,Root_Vegetable_Mix,Brandied_Fruit,Exotic_Dried_Fruit,Cured_Meat,Salted_Meat,Preserved_Eggs,Exotic_Cured_Meat,Pemmican,Pate,Wine_Sauce,Spicy_Sauce,Fermented_Salt_Sauce]);
+  case 24: 
+         return([Prepared_Shark_Meat,Polished_Rice,Very_Polished_Rice,Malted_Grain,Butter,Vinegar,Sugar,Olive_Oil,Ketchup,Basic_Spice_Pack,Royal_Spice_Pack,Pastry_Dough,Fruit_Preserve,Exotic_Fruit_Preserves,Mushroom_Stock,Meat_Stock,Vegetable_Stock,Barm,Molasses,Paprika,Rice_Flour,Common_Flour,Wheat_Flour,Rye_Flour,Corn_Flour,Cinnamon_Powder,Sweet_Spice_Pack,Savory_Spice_Pack,Spicy_Spice_Park,Royal_Sweet_Spice_Pack,Royal_Savory_Spice_Park,Royal_Spicy_Spice_Park,Cheese,Aged_Cheese,Imperial_Reserve_Cheese,Dried_Vegetables,Pickled_Vegetables,Hearty_Dried_Vegetables,Root_Vegetable_Mix,Brandied_Fruit,Exotic_Dried_Fruit,Cured_Meat,Salted_Meat,Preserved_Eggs,Exotic_Cured_Meat,Pemmican,Pate,Wine_Sauce,Spicy_Sauce,Fermented_Salt_Sauce]);
+  case 25: 
+         return([Oyster,Fish_Meat,Beef,Chicken_Meat,Eggs,Exotic_Meat,Wool,Mutton,Game_Meat,Organ_Meat,Bone,Fat,Tender_Meat,Oyster_Meat,Crab_Meat,Raw_Shark_Meat,Life_Scales,Roe,Fish_Organs,Polar_Bear_Liver,Shrimp_Meat,Rare_Mushroom,Venison,Rabbit_Meat,Boiled_Meat,Down,Leather,Exotic_Leather,Fur,Exotic_Fur,Feather,Thick_Leather,Antler,Ivory,Poison,Leopard_Skin,Aurochs_Hide,Black_Leopard_Skin,Bear_Hide,Polar_Bear_Hide,Tiger_Hide]);
+  case 30: 
+         return([Bronze_Spear,Iron_Spear,Steel_Spear,Beryl_Bronze_Spear,Damascus_Steel_Spear,Bronze_Axe,Iron_Axe,Steel_Axe,Beryl_Bronze_Axe,Damascus_Steel_Axe,Bronze_Sword,Iron_Sword,Steel_Sword,Beryl_Bronze_Sword,Damascus_Steel_Sword,Diamond_Sword,Bronze_Mace,Iron_Mace,Steel_Mace,Beryl_Bronze_Mace,Damascus_Steel_Mace,Bronze_Lance,Iron_Lance,Steel_Lance,Beryl_Bronze_Lance,Damascus_Steel_Lance,Bronze_Poleaxe,Iron_Poleaxe,Steel_Poleaxe,Beryl_Bronze_Poleaxe,Damascus_Steel_Poleaxe,Bronze_Greatsword,Iron_Greatsword,Steel_Greatsword,Beryl_Bronze_Greatsword,Damascus_Steel_Greatsword,Bronze_Warhammer,Iron_Warhammer,Steel_Warhammer,Beryl_Bronze_Warhammer,Damascus_Steel_Warhammer,Elephant_Tusk_Cap,Rhino_Tusk_Cap,Basic_Bow,Longbow,Greatbow,Steel_Arrowhead,Beryl_Bronze_Arrowhead,Bronze_Arrowhead,Simple_Crossbow,Basic_Sling,Heavy_Flamer,Flame_Grenade]);
+  case 30: 
+         return([Bronze_Spear,Iron_Spear,Steel_Spear,Beryl_Bronze_Spear,Damascus_Steel_Spear,Bronze_Axe,Iron_Axe,Steel_Axe,Beryl_Bronze_Axe,Damascus_Steel_Axe,Bronze_Sword,Iron_Sword,Steel_Sword,Beryl_Bronze_Sword,Damascus_Steel_Sword,Diamond_Sword,Bronze_Mace,Iron_Mace,Steel_Mace,Beryl_Bronze_Mace,Damascus_Steel_Mace,Bronze_Lance,Iron_Lance,Steel_Lance,Beryl_Bronze_Lance,Damascus_Steel_Lance,Bronze_Poleaxe,Iron_Poleaxe,Steel_Poleaxe,Beryl_Bronze_Poleaxe,Damascus_Steel_Poleaxe,Bronze_Greatsword,Iron_Greatsword,Steel_Greatsword,Beryl_Bronze_Greatsword,Damascus_Steel_Greatsword,Bronze_Warhammer,Iron_Warhammer,Steel_Warhammer,Beryl_Bronze_Warhammer,Damascus_Steel_Warhammer,Elephant_Tusk_Cap,Rhino_Tusk_Cap,Basic_Bow,Longbow,Greatbow,Steel_Arrowhead,Beryl_Bronze_Arrowhead,Bronze_Arrowhead,Simple_Crossbow,Basic_Sling,Heavy_Flamer,Flame_Grenade]);
   case 31: 
-         return([Light_Bronze_Mail,Light_Iron_Mail,Light_Steel_Mail,Light_Emerald_Bronze_Mail,Light_Damascus_Steel_Mail,Light_Bronze_Plate,Light_Iron_Plate,Light_Steel_Plate,Light_Emerald_Bronze_Plate,Light_Damascus_Steel_Plate,Medium_Bronze_Mail,Medium_Iron_Mail,Medium_Steel_Mail,Medium_Emerald_Bronze_Mail,Medium_Damascus_Steel_Mail,Medium_Bronze_Plate,Medium_Iron_Plate,Medium_Steel_Plate,Medium_Emerald_Bronze_Plate,Medium_Damascus_Steel_Plate,Heavy_Bronze_Armor,Heavy_Iron_Armor,Heavy_Steel_Armor,Heavy_Beryl_Bronze_Armor,Heavy_Damascus_Steel_Armor,Light_Bronze_Horse_Armor,Light_Iron_Horse_Armor,Light_Steel_Horse_Armor,Light_Emerald_Bronze_Horse_Armor,Light_Damascus_Steel_Horse_Armor,Medium_Bronze_Horse_Armor,Medium_Iron_Horse_Armor,Medium_Steel_Horse_Armor,Medium_Emerald_Bronze_Horse_Armor,Medium_Damascus_Steel_Horse_Armor,Heavy_Bronze_Horse_Armor,Heavy_Iron_Horse_Armor,Heavy_Steel_Horse_Armor,Heavy_Emerald_Bronze_Horse_Armor,Heavy_Damascus_Steel_Horse_Armor,Leather_Armor,Thick_Leather_Armor,Gambeson,Rhino_Mount_Cushion,Elephant_Mount_Cushion,Bronze_Rhino_Armor,Iron_Rhino_Armor,Steel_Rhino_Armor,Emerald_Bronze_Rhino_Armor,Damascus_Steel_Rhino_Armor,Heavy_Bronze_Rhino_Armor,Heavy_Iron_Rhino_Armor,Heavy_Steel_Rhino_Armor,Heavy_Emerald_Bronze_Rhino_Armor,Heavy_Damascus_Steel_Rhino_Armor,Bronze_Elephant_Armor,Iron_Elephant_Armor,Steel_Elephant_Armor,Emerald_Bronze_Elephant_Armor,Damascus_Steel_Elephant_Armor,Heavy_Bronze_Elephant_Armor,Heavy_Iron_Elephant_Armor,Heavy_Steel_Elephant_Armor,Heavy_Emerald_Bronze_Elephant_Armor,Heavy_Damascus_Steel_Elephant_Armor]);
+         return([Light_Bronze_Mail,Light_Iron_Mail,Light_Steel_Mail,Light_Beryl_Bronze_Mail,Light_Damascus_Steel_Mail,Light_Dark_Steel_Mail,Light_Bronze_Plate,Light_Iron_Plate,Light_Steel_Plate,Light_Beryl_Bronze_Plate,Light_Damascus_Steel_Plate,Light_Dark_Steel_Plate,Medium_Bronze_Mail,Medium_Iron_Mail,Medium_Steel_Mail,Medium_Beryl_Bronze_Mail,Medium_Damascus_Steel_Mail,Medium_Dark_Steel_Mail,Medium_Bronze_Plate,Medium_Iron_Plate,Medium_Steel_Plate,Medium_Beryl_Bronze_Plate,Medium_Damascus_Steel_Plate,Medium_Dark_Steel_Plate,Heavy_Bronze_Armor,Heavy_Iron_Armor,Heavy_Steel_Armor,Heavy_Beryl_Bronze_Armor,Heavy_Damascus_Steel_Armor,Heavy_Dark_Steel_Armor,Light_Bronze_Horse_Armor,Light_Iron_Horse_Armor,Light_Steel_Horse_Armor,Light_Beryl_Bronze_Horse_Armor,Light_Damascus_Steel_Horse_Armor,Light_Dark_Steel_Horse_Armor,Medium_Bronze_Horse_Armor,Medium_Iron_Horse_Armor,Medium_Steel_Horse_Armor,Medium_Beryl_Bronze_Horse_Armor,Medium_Damascus_Steel_Horse_Armor,Medium_Dark_Steel_Horse_Armor,Heavy_Bronze_Horse_Armor,Heavy_Iron_Horse_Armor,Heavy_Steel_Horse_Armor,Heavy_Beryl_Bronze_Horse_Armor,Heavy_Damascus_Steel_Horse_Armor,Heavy_Dark_Steel_Horse_Armor,Leather_Armor,Thick_Leather_Armor,Gambeson,Saddle,Rhino_Mount_Cushion,Elephant_Mount_Cushion,Light_Leather_Horse_Armor,Medium_Leather_Horse_Armor,Heavy_Leather_Horse_Armor,Steel_Rhino_Armor,Heavy_Steel_Rhino_Armor,Steel_Elephant_Armor,Heavy_Steel_Elephant_Armor]);
+  case 32: 
+         return([Stone_Shot,Lead_Shot,Gold_Shot,Small_Fuel_Tank,Large_Fuel_Tank,Stone_Shot_Pouch,Lead_Shot_Pouch,Gold_Shot_Pouch,Wood_Arrow_Quiver,Bronze_Arrow_Quiver,Steel_Arrow_Quiver,Beryl_Arrow_Quiver,Diamond_Arrow_Quiver,Wooden_Shield,Banded_Shield,Standard_Shield,Metal_Shield,Gong_Shield,Heirloom_Shield,Wall_Shield,Advanced_Wall_Shield]);
   case 33: 
          return([Farm_Horse,Standard_Army_Horse,Charge_Horse,War_Horse,Arctic_Horse,War_Elephant,War_Wooly_Elephant,War_Rhino,War_Wooly_Rhino]);
-  case 32: 
-         return([Stone_Shot,Lead_Shot,Gold_Shot,Small_Fuel_Tank,Large_Fuel_Tank,Stone_Shot_Pouch,Lead_Shot_Pouch,Gold_Shot_Pouch,Wood_Arrow_Quiver,Steel_Arrow_Quiver,Beryl_Arrow_Quiver,Diamond_Arrow_Quiver,Wooden_Shield,Banded_Shield,Standard_Shield,Metal_Shield,Gong_Shield,Heirloom_Shield,Wall_Shield,Advanced_Wall_Shield]);
-  case 30: 
-         return([Bronze_Spear,Iron_Spear,Steel_Spear,Emerald_Bronze_Spear,Damascus_Steel_Spear,Bronze_Axe,Iron_Axe,Steel_Axe,Emerald_Bronze_Axe,Damascus_Steel_Axe,Bronze_Sword,Iron_Sword,Steel_Sword,Emerald_Bronze_Sword,Damascus_Steel_Sword,Diamond_Sword,Bronze_Mace,Iron_Mace,Steel_Mace,Emerald_Bronze_Mace,Damascus_Steel_Mace,Bronze_Lance,Iron_Lance,Steel_Lance,Emerald_Bronze_Lance,Damascus_Steel_Lance,Bronze_Poleaxe,Iron_Poleaxe,Steel_Poleaxe,Emerald_Bronze_Poleaxe,Damascus_Steel_Poleaxe,Bronze_Greatsword,Iron_Greatsword,Steel_Greatsword,Emerald_Bronze_Greatsword,Damascus_Steel_Greatsword,Bronze_Warhammer,Iron_Warhammer,Steel_Warhammer,Emerald_Bronze_Warhammer,Damascus_Steel_Warhammer,Bronze_Elephant_Tusk_Cap,Iron_Elephant_Tusk_Cap,Steel_Elephant_Tusk_Cap,Beryl_Bronze_Elephant_Tusk_Cap,Damascus_Elephant_Tusk_Cap,Bronze_Rhino_Tusk_Cap,Iron_Rhino_Tusk_Cap,Steel_Rhino_Tusk_Cap,Beryl_Bronze_Rhino_Tusk_Cap,Damascus_Rhino_Tusk_Cap,Basic_Bow,Longbow,Greatbow,Steel_Arrowhead,Beryl_Bronze_Arrowhead,Simple_Crossbow,Basic_Sling,Heavy_Flamer,Flame_Grenade,Golden_Sling]);
-  case 71: 
-         return([Farming_Guide,Jewelers_Guide,Brewers_Guide,Medicine_Guide,Sailing_Guide,Smithing_Guide,Art_Guide,Carpentry_Guide,Weaver_Guide,Masonry_Guide,Soldier_Guide]);
+  case 40: 
+         return([undefined]);
+  case 50: 
+         return([Nails,Diamond_Blade,Fabric,Bronze_Plate,Iron_Plate,Steel_Plate,Beryl_Bronze_Plate,Damascus_Steel_Plate]);
+  case 50: 
+         return([Nails,Diamond_Blade,Fabric,Bronze_Plate,Iron_Plate,Steel_Plate,Beryl_Bronze_Plate,Damascus_Steel_Plate]);
+  case 51: 
+         return([Rice_Bran,Pomace,Refined_Stone,Refined_Wood,Charcoal,Washed_Kaolinite,Iron,Gold,Silver,Copper,Tin,Aluminum,Mercury,Platinum,Lead,Beryl_Bronze,Bronze,Steel,Damascus_Steel,Rushseed_Oil,Cooked_Bone,Sugarcane_Pulp,Organic_Pulp,Ash,Clay_Beads,Hay,Antiseptic,Soap,Tar,Paper,Level_1_Fertilizer,Level_2_Fertilizer,Level_3_Fertilizer,Rare_Fertilizer,Forest_Glass,Lead_Glass,Forest_Glass_Pane,Lead_Glass_Pane,Crystal_Glass_Pane,Boat_Part,Treated_Fabric,Human_Earth,Vitae_Dust,Berry_Dust,Ink,Red_Dye,Blue_Dye,Green_Dye,White_Dye,Dye_Pack,Gold_Foil,Gold_Artifact_Cache,Bronze_Artifact_Cache,Bronze_Chainmail,Iron_Chainmail,Steel_Chainmail,Beryl_Bronze_Chainmail,Damascus_Steel_Chainmail,Boat_Fix_Kit]);
   case 52: 
          return([Stone,Wood,Salt,Clay,Kaolinite,Iron_Ore,Gold_Ore,Silver_Ore,Copper_Ore,Tin_Ore,Tailings,Galena,Black_Copper_Ore]);
   case 53: 
          return([Basic_Building_Material,Basic_Wood_Building_Materials,Basic_Stone_Building_Materials,Basic_Mud_Building_Materials,Basic_Brick_Building_Material,Advanced_Building_Material,Advanced_Wood_Building_Materials,Advanced_Stone_Building_Materials,Advanced_Mud_Building_Materials,Advanced_Brick_Building_Material]);
   case 54: 
          return([undefined]);
+  case 60: 
+         return([undefined]);
+  case 70: 
+         return([Arid_Blueprint,Northern_Blueprint,Central_Blueprint,Southern_Blueprint,Island_Blueprint,Swamp_Blueprint,Mountain_Blueprint,Silver_Blueprint,Gold_Blueprint]);
+  case 70: 
+         return([Arid_Blueprint,Northern_Blueprint,Central_Blueprint,Southern_Blueprint,Island_Blueprint,Swamp_Blueprint,Mountain_Blueprint,Silver_Blueprint,Gold_Blueprint]);
+  case 71: 
+         return([Farming_Guide,Jewelers_Guide,Brewers_Guide,Medicine_Guide,Sailing_Guide,Smithing_Guide,Art_Guide,Carpentry_Guide,Weaver_Guide,Masonry_Guide,Soldier_Guide]);
+  case 72: 
+         return([Ice_Ticket,Fire_Ticket,T1_XP,T2_XP,T3_XP,T4_XP,T5_XP,T6_XP,T7_XP,T8_XP]);
   case 73: 
          return([undefined]);
-  case 24: 
-         return([Oyster,Fish_Meat,Beef,Chicken_Meat,Eggs,Milk,Exotic_Meat,Wool,Mutton,Game_Meat,Organ_Meat,Bone,Fat,Tender_Meat,Oyster_Meat,Crab_Meat,Raw_Shark_Meat,Prepared_Shark_Meat,Life_Scales,Roe,Fish_Organs,Polar_Bear_Liver,Polished_Rice,Very_Polished_Rice,Shrimp_Meat,Rare_Mushroom,Malted_Grain,Venison,Rabbit_Meat,Butter,Boiled_Meat,Veggie_Mix,Vinegar,Sugar,Olive_Oil,Ketchup,Basic_Spice_Pack,Royal_Spice_Pack,Pastry_Dough,Fruit_Preserve,Exotic_Fruit_Preserve,Mushroom_Stock,Meat_Stock,Vegetable_Stock,Barm,Molasses,Paprika,Cider_Sauce,Wine_Sauce,Spicy_Sauce,Common_Flour,Wheat_Flour,Rye_Flour,Corn_Flour,Cinnamon_Powder,Sweet_Spice_Pack,Savory_Spice_Pack,Spicy_Spice_Park,Royal_Sweet_Spice_Pack,Royal_Savory_Spice_Park,Royal_Spicy_Spice_Park,Cheese,Aged_Cheese,Imperial_Cheese,Dried_Vegetables,Pickled_Vegetables,Hearty_Dried_Vegetables,Dried_Fruit,Brandied_Fruit,Exotic_Dried_Fruit,Cured_Meat,Salted_Meat,Preserved_Eggs,Exotic_Cured_Meat,Pemmican,Pate,Mixed_Vegetables,Down,Leather,Exotic_Leather,Fur,Exotic_Fur,Feather,Thick_Leather,Antler,Ivory,Poison,Leopard_Skin,Aurochs_Hide,Black_Leopard_Skin,Bear_Hide,Polar_Bear_Hide,Tiger_Hide]);
+  case 80: 
+         return([undefined]);
+  case 90: 
+         return([undefined]);
+  case 100: 
+         return([Rabbit,Deer,Turkey,Fox,Cyote,Snake,Ocean_Fish,Metal_Fish,Shrimp_School,Seaweed_Crop,Mink,Boar,Zebra,Reindeer,Leopard,Crocodile,Otter,Wolf,Seal,Ostridge,Turtle,Crab_Cluster,Elk,Aurochs,Black_Leopard,Bear,Sea_Mink,Whalrus,Poison_Snake,Shark,Elephant,Rhino,Polar_Bear,Tiger,Titan_Snake,Whale,Iron_Snail,River_Fish]);
+  case 100: 
+         return([Rabbit,Deer,Turkey,Fox,Cyote,Snake,Ocean_Fish,Metal_Fish,Shrimp_School,Seaweed_Crop,Mink,Boar,Zebra,Reindeer,Leopard,Crocodile,Otter,Wolf,Seal,Ostridge,Turtle,Crab_Cluster,Elk,Aurochs,Black_Leopard,Bear,Sea_Mink,Whalrus,Poison_Snake,Shark,Elephant,Rhino,Polar_Bear,Tiger,Titan_Snake,Whale,Iron_Snail,River_Fish]);
+  case 101: 
+         return([Cow,Chicken,Sheep]);
+  case 120: 
+         return([Roasted_Peanut,Thin_Pottage,Baked_Beans,Butchers_Stew,Fried_Vegetables,Potato_Soup,Pottage,Ramen,Vegetable_Congee,Vegetable_Stew,Pea_Pudding,Mushroom_Risotto,Cheesy_Pasta,Fine_Potato_Soup,Hearty_Pottage,Pot_Stew,Sausage,Beef_Stew,Fish_Stew,Mushroom_Stew,Mutton_Stew,Shark_Soup,Turtle_Soup,Shrimp_Rsisotto,Savory_Cheese_Plate,Tomato_Stew,Ceviche]);
+  case 121: 
+         return([Dried_Fruit,Candied_Peanut,Fruit_Pie,Bean_and_Rice_Cake,Sugar_Biscuits,Cheesecake,Glittercake,Sweet_Cheese_Plate,Fried_Sugar_Toast]);
+  case 122: 
+         return([Flatbread,Common_Bread,Oatmeal,Wheat_Bread,Snack_Bread,Pumpernickle,Fine_Bread,Golden_Rice,Oceans_Bounty,Pastry,Mashed_Potatoes,Mashed_Casava,Fried_Dough]);
+  case 123: 
+         return([Beans__and__Rice,Fried_Meat,Risotto,Simple_Curry,Simple_Hunters_Pot,Ravioli,Cottage_Pie,Curried_Meat,Fine_Ramen_1,Fish_Congee,Roast,Sushi,Fine_Ramen_2,Seafood_Pasta,Hunters_Pot,Fine_Sushi,Regal_Roast,Seafood_Boil,Hotpot,Tomato_Pasta,Feast_Hotpot,Meatball,Ocean_Feast]);
+  case 124: 
+         return([Ale,Cider,Fruit_Wine,Grog,Whey,Soy_Milk,Wine,Fine_Ale,Mead,Spruce_Beer,Sweet_Beer,Milk,Vodka,Kumis,Rum,Grain_Whiskey,Sake,Brandy,Silver_Wine,Jungle_Wine,Winter_Wine,Aged_Rum,Ginseng_Wine,Spiced_Vodka,Pure_Alcohol,Double_Brandy,Auric_Mead,Fine_Sake]);
+  case 220: 
+         return([Arid_Inf_1,Arid_Inf_2,Arid_Cav_1,Arid_Rhino,Northern_Inf_1,Northern_Range_1,Northern_Cav_1,Brickman,Raven,Marching_Dragon,Storm_Rider,Southern_Inf_1,Southern_Range_1,Southern_Elephant,Ocean_Inf_1,Ocean_Inf_2,Ocean_Ranged_1,Swamp_Inf_1,Swamp_Ranged_1,Mountain_Inf_1,Mountain_Inf_2,Mountain_Ranged_1,Mountain_Cav_1,Silver_Inf_1,Silver_Cav_1,Gold_Inf_1,Gold_Ranged_1,Golden_Cav_1]);
+  case 220: 
+         return([Arid_Inf_1,Arid_Inf_2,Arid_Cav_1,Arid_Rhino,Northern_Inf_1,Northern_Range_1,Northern_Cav_1,Brickman,Raven,Marching_Dragon,Storm_Rider,Southern_Inf_1,Southern_Range_1,Southern_Elephant,Ocean_Inf_1,Ocean_Inf_2,Ocean_Ranged_1,Swamp_Inf_1,Swamp_Ranged_1,Mountain_Inf_1,Mountain_Inf_2,Mountain_Ranged_1,Mountain_Cav_1,Silver_Inf_1,Silver_Cav_1,Gold_Inf_1,Gold_Ranged_1,Golden_Cav_1]);
+  case 230: 
+         return([Panacea,Nettle_Tea,Life_Powder,Nightberry_Tea,Sweet_Herb_Tea,Happiness_Tea,Soothing_Powder,Savory_Herb_Tea,Spruce_Tea,Life_Tincture,Nightberry_Tincture,Sweet_Herb_Tincture,Happiness_Tincture,Soothing_Tea,Savory_Herb_Tincture]);
+  case -34:
+   return([Potato,Onion,Carrot,Cassava,Beets]);
+  case -33:
+   return([Cabbage,Broccoli,Green_Onion,Peas]);
   case -32:
    return([Double_Brandy,Auric_Mead,Fine_Sake]);
   case -31:
@@ -82,11 +128,11 @@ function groupItems(_value) {
   case -28:
    return([Basic_Building_Material,Basic_Wood_Building_Materials,Basic_Stone_Building_Materials,Basic_Mud_Building_Materials,Basic_Brick_Building_Material]);
   case -27:
-   return([Beef,Chicken_Meat,Fish_Meat,Mutton,Game_Meat]);
+   return([Beef,Chicken_Meat,Fish_Meat,Mutton,Game_Meat,Venison]);
   case -26:
    return([Wood,Charcoal]);
   case -25:
-   return([Ketchup,Wine_Sauce,Spicy_Sauce,Cider_Sauce]);
+   return([]);
   case -24:
    return([Bone,Cooked_Bone]);
   case -23:
@@ -102,7 +148,7 @@ function groupItems(_value) {
   case -17:
    return([Polished_Amethyst,Polished_Opal,Polished_Citrine,Polished_Amber,Polished_Onyx,Polished_Aquamarine,Polished_Crystal_Glass]);
   case -16:
-   return([Wheat,Rye,Corn,Sorghum,Oats,Barley,Rice,Plums,Apples,Potato,Onion,Carrot,Cassava,Rice_Bran,Peas]);
+   return([Wheat,Rye,Corn,Sorghum,Oats,Barley,Rice,Plums,Apples,Potato,Onion,Carrot,Cassava,Rice_Bran,Peas,Soy_Paste,Beets]);
   case -15:
    return([Common_Flour,Wheat_Flour,Corn_Flour,Rye_Flour]);
   case -14:
@@ -139,6 +185,10 @@ function groupCrafting(_value) {
       _value = Number(_value);
       switch (_value) {
       
+case -34:
+return([[-1],[-1]]);
+case -33:
+return([[-1],[-1]]);
 case -32:
 return([[-1],[-1]]);
 case -31:
@@ -343,8 +393,6 @@ case 537:
 return([[-1],[-1]]);
 case 538:
 return([[-1],[-1]]);
-case 539:
-return([[-1],[-1]]);
 case 540:
 return([[-1],[-1]]);
 case 541:
@@ -356,7 +404,7 @@ return([[-1],[-1]]);
 case 544:
 return([[7402,77402],[-1]]);
 case 545:
-return([[7000,7001,7002,7004,7103,7107,7108,7109,7200,7205],[7101,7305]]);
+return([[7002,7004,7103,7107,7108,7109,7205],[7101,7305]]);
 case 546:
 return([[7009],[-1]]);
 case 547:
@@ -426,9 +474,9 @@ return([[-1],[1001,1002,1010]]);
 case 579:
 return([[579],[-1]]);
 case 580:
-return([[-1],[-1]]);
+return([[7001,7200],[-1]]);
 case 581:
-return([[-1],[-1]]);
+return([[7000],[-1]]);
 case 583:
 return([[583],[-1]]);
 case 584:
@@ -437,8 +485,16 @@ case 585:
 return([[-1],[-1]]);
 case 586:
 return([[-1],[-1]]);
+case 587:
+return([[-1],[-1]]);
+case 588:
+return([[-1],[-1]]);
+case 589:
+return([[-1],[-1]]);
 case 590:
-return([[584],[-1]]);
+return([[-1],[-1]]);
+case 591:
+return([[-1],[-1]]);
 case 1000:
 return([[1000],[-1]]);
 case 1001:
@@ -447,6 +503,10 @@ case 1002:
 return([[1002],[-1]]);
 case 1003:
 return([[1003],[-1]]);
+case 1004:
+return([[-1],[1430]]);
+case 1005:
+return([[1471],[-1]]);
 case 1010:
 return([[1010],[-1]]);
 case 1011:
@@ -457,6 +517,8 @@ case 1013:
 return([[1013],[-1]]);
 case 1014:
 return([[1014],[-1]]);
+case 1015:
+return([[-1],[-1]]);
 case 1030:
 return([[1030],[-1]]);
 case 1031:
@@ -490,99 +552,149 @@ return([[1061],[-1]]);
 case 1062:
 return([[1062],[-1]]);
 case 1200:
-return([[1200,301200,311200,701200],[-1]]);
+return([[1200],[-1]]);
+case 1201:
+return([[1201],[-1]]);
+case 1202:
+return([[1202],[-1]]);
 case 1203:
-return([[-1],[-1]]);
+return([[1203],[-1]]);
 case 1204:
-return([[-1],[-1]]);
+return([[1204],[-1]]);
 case 1205:
-return([[1204,71205],[-1]]);
+return([[1205],[-1]]);
 case 1206:
-return([[1206],[-1]]);
+return([[1206,71206,81206,91206],[-1]]);
 case 1207:
 return([[1207],[-1]]);
 case 1208:
 return([[1208],[-1]]);
 case 1209:
 return([[1209],[-1]]);
+case 1210:
+return([[1210],[-1]]);
+case 1211:
+return([[1211],[-1]]);
 case 1212:
 return([[1212],[-1]]);
 case 1213:
 return([[1213],[-1]]);
+case 1214:
+return([[1214],[-1]]);
+case 1215:
+return([[1215],[-1]]);
+case 1216:
+return([[1216],[-1]]);
+case 1217:
+return([[1217],[-1]]);
+case 1218:
+return([[1218],[-1]]);
+case 1219:
+return([[1219],[-1]]);
 case 1220:
 return([[1220],[-1]]);
 case 1221:
-return([[1223],[-1]]);
+return([[1221],[-1]]);
 case 1222:
-return([[1224],[-1]]);
+return([[1222],[-1]]);
 case 1223:
-return([[-1],[-1]]);
+return([[1223],[-1]]);
 case 1224:
-return([[-1],[-1]]);
+return([[1224],[-1]]);
+case 1225:
+return([[1225],[-1]]);
+case 1226:
+return([[1226],[-1]]);
+case 1227:
+return([[1227],[-1]]);
+case 1228:
+return([[1228],[-1]]);
+case 1229:
+return([[1229],[-1]]);
+case 1230:
+return([[1230],[-1]]);
+case 1231:
+return([[1231],[-1]]);
+case 1232:
+return([[1232],[-1]]);
+case 1233:
+return([[1233],[-1]]);
+case 1234:
+return([[1234],[-1]]);
+case 1235:
+return([[1235],[-1]]);
+case 1236:
+return([[1236],[-1]]);
+case 1237:
+return([[1237],[-1]]);
+case 1238:
+return([[1238],[-1]]);
+case 1239:
+return([[1239],[-1]]);
+case 1240:
+return([[1240],[-1]]);
+case 1241:
+return([[1241],[-1]]);
+case 1242:
+return([[1242],[-1]]);
+case 1243:
+return([[1243],[-1]]);
+case 1244:
+return([[1244],[-1]]);
+case 1245:
+return([[1245],[-1]]);
+case 1246:
+return([[1246],[-1]]);
+case 1247:
+return([[1247],[-1]]);
+case 1248:
+return([[1248],[-1]]);
+case 1249:
+return([[1249],[-1]]);
+case 1250:
+return([[1250],[-1]]);
+case 1251:
+return([[1251],[-1]]);
+case 1252:
+return([[1252],[-1]]);
+case 1253:
+return([[1253],[-1]]);
+case 1254:
+return([[1254],[-1]]);
+case 1255:
+return([[1255],[-1]]);
+case 1256:
+return([[1256],[-1]]);
+case 1257:
+return([[1257],[-1]]);
+case 1258:
+return([[1258],[-1]]);
+case 1259:
+return([[1259],[-1]]);
 case 1260:
 return([[1260],[-1]]);
 case 1261:
 return([[1261],[-1]]);
 case 1262:
 return([[1262],[-1]]);
+case 1263:
+return([[1263],[-1]]);
+case 1264:
+return([[-1],[-1]]);
+case 1265:
+return([[1265],[-1]]);
+case 1266:
+return([[1266],[-1]]);
+case 1267:
+return([[1267],[-1]]);
 case 1268:
 return([[1268],[-1]]);
+case 1269:
+return([[1269],[-1]]);
 case 1270:
 return([[1270],[-1]]);
 case 1271:
 return([[1271],[-1]]);
-case 1272:
-return([[1272],[-1]]);
-case 1273:
-return([[1273],[-1]]);
-case 1274:
-return([[1274],[-1]]);
-case 1275:
-return([[1275],[-1]]);
-case 1276:
-return([[1276],[-1]]);
-case 1277:
-return([[1277],[-1]]);
-case 1278:
-return([[1278],[-1]]);
-case 1279:
-return([[1279],[-1]]);
-case 1280:
-return([[1280],[-1]]);
-case 1281:
-return([[1281],[-1]]);
-case 1282:
-return([[1282],[-1]]);
-case 1283:
-return([[1283],[-1]]);
-case 1284:
-return([[1284],[-1]]);
-case 1285:
-return([[1285],[-1]]);
-case 1286:
-return([[1286],[-1]]);
-case 1287:
-return([[1287],[-1]]);
-case 1288:
-return([[1288],[-1]]);
-case 1289:
-return([[1289],[-1]]);
-case 1290:
-return([[1290],[-1]]);
-case 1291:
-return([[1291],[-1]]);
-case 1294:
-return([[1294],[-1]]);
-case 1295:
-return([[1295],[-1]]);
-case 1296:
-return([[1296],[-1]]);
-case 1299:
-return([[1299],[-1]]);
-case 1300:
-return([[1300],[-1]]);
-case 1301:
-return([[1301],[-1]]);
 case 1400:
 return([[1400],[-1]]);
 case 1401:
@@ -613,12 +725,8 @@ case 1413:
 return([[1413],[-1]]);
 case 1414:
 return([[1414],[-1]]);
-case 1415:
-return([[-1],[-1]]);
-case 1416:
-return([[1416],[-1]]);
 case 1417:
-return([[1417],[-1]]);
+return([[-1],[-1]]);
 case 1418:
 return([[503,505,538,540,1418],[-1]]);
 case 1419:
@@ -647,31 +755,53 @@ case 1431:
 return([[1431],[-1]]);
 case 1432:
 return([[1432],[-1]]);
-case 1433:
-return([[1433],[-1]]);
-case 1434:
-return([[1434],[-1]]);
-case 1435:
-return([[-1],[-1]]);
-case 1436:
-return([[1435],[-1]]);
-case 1437:
-return([[1436],[-1]]);
-case 1438:
-return([[1437],[-1]]);
-case 1439:
-return([[1439],[-1]]);
 case 1440:
-return([[1440],[-1]]);
+return([[1433],[-1]]);
 case 1441:
-return([[1441],[-1]]);
+return([[1434],[-1]]);
 case 1442:
-return([[1442],[-1]]);
+return([[-1],[-1]]);
 case 1443:
-return([[1269],[-1]]);
+return([[1443],[-1]]);
 case 1444:
+return([[-1],[-1]]);
+case 1451:
+return([[1436],[-1]]);
+case 1452:
+return([[1437],[-1]]);
+case 1460:
+return([[1439],[-1]]);
+case 1461:
+return([[1440],[-1]]);
+case 1462:
+return([[1441],[-1]]);
+case 1463:
+return([[1442],[-1]]);
+case 1464:
+return([[1443],[-1]]);
+case 1465:
 return([[1444],[-1]]);
-case 1445:
+case 1471:
+return([[-1],[1471]]);
+case 1472:
+return([[-1],[1471]]);
+case 1481:
+return([[1481],[-1]]);
+case 1482:
+return([[1482],[-1]]);
+case 1483:
+return([[1483],[-1]]);
+case 1490:
+return([[1490],[-1]]);
+case 1491:
+return([[1491],[-1]]);
+case 1492:
+return([[1492],[-1]]);
+case 1493:
+return([[1493,71493],[-1]]);
+case 1494:
+return([[-1],[-1]]);
+case 1495:
 return([[-1],[-1]]);
 case 1900:
 return([[-1],[-1]]);
@@ -924,7 +1054,7 @@ return([[-1],[519]]);
 case 4022:
 return([[578],[1413]]);
 case 4023:
-return([[-1],[559,1200,1204,1207,1208,1209,1220,1223,1224,1268,1269,1270,1271,1272,1273,1274,1275,1276,1277,1278,1279,1280,1281,1282,1283,1286,1287,1288,1299,1300,1301,1409,1410,1411,2080,2121,2122,2123,2124,2125,2127,2129,2154,2180,2181,2182,4020,4051,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4662,4663,4681,4781,5000,5001,5002,5003,5004,5010,5011,5012,5013,5014,5020,5021,5022,5023,5024,5030,5031,5032,5033,5034,5040,5041,5042,5043,5044,5050,5051,5052,5053,5054,5060,5061,5062,5063,5064,5070,5071,5072,5073,5074,5080,5081,5082,5083,5084,5090,5091,5092,5093,5094,5203,5204,5500,5501,5502,5503,5504,5510,5511,5512,5513,5514,5520,5521,5522,5523,5524,5530,5531,5532,5533,5534,5540,5541,5542,5543,5544,5550,5551,5552,5553,5554,5560,5561,5562,5563,5564,5570,5571,5572,5573,5574,5800,5801,5802,5803,5804,5810,5811,5812,5813,5814,5820,5821,5822,5823,5824,5830,5831,5832,5833,5834,71205,301200,311200,701200]]);
+return([[-1],[559,1409,1410,1411,1443,1482,2080,2121,2122,2123,2124,2125,2127,2129,2154,2180,2181,2182,4020,4051,4100,4101,4102,4103,4104,4105,4110,4111,4112,4113,4114,4115,4662,4663,4681,4781,5000,5001,5002,5003,5004,5010,5011,5012,5013,5014,5020,5021,5022,5023,5024,5030,5031,5032,5033,5034,5040,5041,5042,5043,5044,5050,5051,5052,5053,5054,5060,5061,5062,5063,5064,5070,5071,5072,5073,5074,5082,5092,5203,5204,5205,5500,5501,5502,5503,5504,5505,5510,5511,5512,5513,5514,5515,5520,5521,5522,5523,5524,5525,5530,5531,5532,5533,5534,5535,5540,5541,5542,5543,5544,5545,5560,5561,5562,5563,5564,5565,5570,5571,5572,5573,5574,5575,5601,5602,5802,5812,5822,5832]]);
 case 4024:
 return([[4024],[-1]]);
 case 4025:
@@ -992,17 +1122,21 @@ return([[4102],[-1]]);
 case 4103:
 return([[4103],[-1]]);
 case 4104:
-return([[4109],[-1]]);
+return([[4114],[-1]]);
 case 4105:
-return([[4105],[-1]]);
-case 4106:
-return([[4106],[-1]]);
-case 4107:
-return([[4107],[-1]]);
-case 4108:
-return([[4108],[-1]]);
-case 4109:
+return([[4105,75515,75535,75545,75555,75565,75575],[-1]]);
+case 4110:
+return([[4110],[-1]]);
+case 4111:
+return([[4111],[-1]]);
+case 4112:
+return([[4112],[-1]]);
+case 4113:
+return([[4113],[-1]]);
+case 4114:
 return([[4104],[-1]]);
+case 4115:
+return([[4115,75505,75525],[75545,75575]]);
 case 4200:
 return([[4200],[-1]]);
 case 4201:
@@ -1333,26 +1467,10 @@ case 5073:
 return([[5073],[-1]]);
 case 5074:
 return([[5074],[-1]]);
-case 5080:
-return([[5080],[-1]]);
-case 5081:
-return([[5081],[-1]]);
 case 5082:
 return([[5082],[-1]]);
-case 5083:
-return([[5083],[-1]]);
-case 5084:
-return([[5084],[-1]]);
-case 5090:
-return([[5090],[-1]]);
-case 5091:
-return([[5091],[-1]]);
 case 5092:
 return([[5092],[-1]]);
-case 5093:
-return([[5093],[-1]]);
-case 5094:
-return([[5094],[-1]]);
 case 5200:
 return([[5200],[-1]]);
 case 5201:
@@ -1363,6 +1481,8 @@ case 5203:
 return([[5203],[-1]]);
 case 5204:
 return([[5204],[-1]]);
+case 5205:
+return([[5205],[-1]]);
 case 5210:
 return([[5210],[-1]]);
 case 5211:
@@ -1371,8 +1491,6 @@ case 5212:
 return([[5212],[-1]]);
 case 5213:
 return([[5213],[-1]]);
-case 5214:
-return([[5214],[-1]]);
 case 5400:
 return([[-1],[-1]]);
 case 5401:
@@ -1401,6 +1519,8 @@ case 5503:
 return([[5503],[-1]]);
 case 5504:
 return([[5504],[-1]]);
+case 5505:
+return([[5505],[-1]]);
 case 5510:
 return([[5510],[-1]]);
 case 5511:
@@ -1411,6 +1531,8 @@ case 5513:
 return([[5513],[-1]]);
 case 5514:
 return([[5514],[-1]]);
+case 5515:
+return([[5515],[-1]]);
 case 5520:
 return([[5520],[-1]]);
 case 5521:
@@ -1421,6 +1543,8 @@ case 5523:
 return([[5523],[-1]]);
 case 5524:
 return([[5524],[-1]]);
+case 5525:
+return([[5525],[-1]]);
 case 5530:
 return([[5530],[-1]]);
 case 5531:
@@ -1431,6 +1555,8 @@ case 5533:
 return([[5533],[-1]]);
 case 5534:
 return([[5534],[-1]]);
+case 5535:
+return([[5535],[-1]]);
 case 5540:
 return([[5540],[-1]]);
 case 5541:
@@ -1441,6 +1567,8 @@ case 5543:
 return([[5543],[-1]]);
 case 5544:
 return([[5544],[-1]]);
+case 5545:
+return([[5545],[-1]]);
 case 5550:
 return([[5550],[-1]]);
 case 5551:
@@ -1451,6 +1579,8 @@ case 5553:
 return([[5553],[-1]]);
 case 5554:
 return([[5554],[-1]]);
+case 5555:
+return([[5555],[-1]]);
 case 5560:
 return([[5560],[-1]]);
 case 5561:
@@ -1461,6 +1591,8 @@ case 5563:
 return([[5563],[-1]]);
 case 5564:
 return([[5564],[-1]]);
+case 5565:
+return([[5565],[-1]]);
 case 5570:
 return([[5570],[-1]]);
 case 5571:
@@ -1471,26 +1603,36 @@ case 5573:
 return([[5573],[-1]]);
 case 5574:
 return([[5574],[-1]]);
+case 5575:
+return([[5575],[-1]]);
 case 5580:
 return([[5580],[-1]]);
 case 5581:
 return([[5581],[-1]]);
 case 5582:
 return([[5582],[-1]]);
+case 5583:
+return([[5583],[75555,75565,75575]]);
 case 5585:
 return([[5585],[-1]]);
 case 5586:
 return([[5586],[-1]]);
+case 5587:
+return([[5587],[-1]]);
+case 5588:
+return([[5588],[-1]]);
+case 5589:
+return([[5589],[-1]]);
 case 5600:
-return([[-1],[-1]]);
+return([[5600],[-1]]);
 case 5601:
-return([[-1],[-1]]);
+return([[5601],[-1]]);
 case 5602:
-return([[-1],[-1]]);
+return([[5602],[-1]]);
 case 5611:
-return([[-1],[-1]]);
+return([[5611],[-1]]);
 case 5612:
-return([[-1],[-1]]);
+return([[5612],[-1]]);
 case 5613:
 return([[5613,75613],[-1]]);
 case 5614:
@@ -1503,6 +1645,8 @@ case 5622:
 return([[5622],[-1]]);
 case 5623:
 return([[5623],[-1]]);
+case 5624:
+return([[5624],[-1]]);
 case 5700:
 return([[5700],[-1]]);
 case 5701:
@@ -1512,51 +1656,21 @@ return([[5702],[-1]]);
 case 5720:
 return([[5720],[-1]]);
 case 5721:
-return([[5721],[-1]]);
+return([[-1],[-1]]);
 case 5722:
-return([[5722],[-1]]);
+return([[5721],[-1]]);
 case 5723:
+return([[5722],[-1]]);
+case 5724:
 return([[5723],[-1]]);
-case 5800:
-return([[5800],[-1]]);
-case 5801:
-return([[5801],[-1]]);
 case 5802:
 return([[5802],[-1]]);
-case 5803:
-return([[5803],[-1]]);
-case 5804:
-return([[5804],[-1]]);
-case 5810:
-return([[5810],[-1]]);
-case 5811:
-return([[5811],[-1]]);
 case 5812:
 return([[5812],[-1]]);
-case 5813:
-return([[5813],[-1]]);
-case 5814:
-return([[5814],[-1]]);
-case 5820:
-return([[5820],[-1]]);
-case 5821:
-return([[5821],[-1]]);
 case 5822:
 return([[5822],[-1]]);
-case 5823:
-return([[5823],[-1]]);
-case 5824:
-return([[5824],[-1]]);
-case 5830:
-return([[5830],[-1]]);
-case 5831:
-return([[5831],[-1]]);
 case 5832:
 return([[5832],[-1]]);
-case 5833:
-return([[5833],[-1]]);
-case 5834:
-return([[5834],[-1]]);
 case 5900:
 return([[5900],[-1]]);
 case 5901:
@@ -1655,67 +1769,61 @@ case 7402:
 return([[-1],[-1]]);
 case 7403:
 return([[-1],[-1]]);
-case 11000:
+case 11100:
 return([[-1],[-1]]);
-case 11010:
+case 11101:
 return([[-1],[-1]]);
-case 11011:
+case 11130:
 return([[-1],[-1]]);
-case 11020:
-return([[-1],[-1]]);
-case 11021:
-return([[-1],[-1]]);
-case 11030:
-return([[-1],[-1]]);
-case 11031:
-return([[-1],[-1]]);
-case 11040:
-return([[-1],[-1]]);
-case 11041:
-return([[-1],[-1]]);
-case 11042:
-return([[-1],[-1]]);
-case 11050:
-return([[-1],[-1]]);
-case 11060:
-return([[-1],[-1]]);
-case 11070:
+case 11150:
 return([[-1],[-1]]);
 case 11200:
-return([[-1],[-1]]);
-case 11210:
-return([[-1],[-1]]);
-case 11211:
 return([[-1],[-1]]);
 case 11220:
 return([[-1],[-1]]);
 case 11230:
 return([[-1],[-1]]);
-case 11231:
-return([[-1],[-1]]);
-case 11241:
-return([[-1],[-1]]);
 case 11300:
 return([[-1],[-1]]);
-case 11301:
+case 11320:
 return([[-1],[-1]]);
-case 11310:
+case 11321:
 return([[-1],[-1]]);
-case 11311:
+case 11330:
+return([[-1],[-1]]);
+case 11400:
+return([[-1],[-1]]);
+case 11420:
+return([[-1],[-1]]);
+case 11450:
+return([[-1],[-1]]);
+case 11500:
 return([[-1],[-1]]);
 case 11501:
 return([[-1],[-1]]);
-case 11502:
-return([[-1],[-1]]);
 case 11520:
-return([[-1],[-1]]);
-case 11521:
 return([[-1],[-1]]);
 case 11600:
 return([[-1],[-1]]);
-case 11601:
+case 11620:
 return([[-1],[-1]]);
-case 11602:
+case 11700:
+return([[-1],[-1]]);
+case 11701:
+return([[-1],[-1]]);
+case 11720:
+return([[-1],[-1]]);
+case 11730:
+return([[-1],[-1]]);
+case 11800:
+return([[-1],[-1]]);
+case 11830:
+return([[-1],[-1]]);
+case 11900:
+return([[-1],[-1]]);
+case 11920:
+return([[-1],[-1]]);
+case 11930:
 return([[-1],[-1]]);
 case 28501:
 return([[-1],[-1]]);
@@ -1905,8 +2013,30 @@ case undefined:
 return([[-1],[-1]]);
 case undefined:
 return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
+case undefined:
+return([[-1],[-1]]);
   }
       };
+Any_Root_Vegetable = -34;
+Any_Green_Vegetable = -33;
 T6_Drink = -32;
 Any_Shot_Pouch = -31;
 Any_Quiver = -30;
@@ -2009,7 +2139,6 @@ Potato = 535;
 Silver_Sap = 536;
 Honey = 537;
 Oats = 538;
-Milk = 539;
 Barley = 540;
 Exotic_Meat = 541;
 Wool = 542;
@@ -2055,17 +2184,24 @@ Rabbit_Meat = 581;
 Butter = 583;
 Boiled_Meat = 584;
 Peas = 585;
-Oranges = 586;
-Veggie_Mix = 590;
+Lemons = 586;
+Broccoli = 587;
+Cabbage = 588;
+Soybeans = 589;
+Tomato = 590;
+Green_Onion = 591;
 Ale = 1000;
 Cider = 1001;
 Fruit_Wine = 1002;
 Grog = 1003;
+Whey = 1004;
+Soy_Milk = 1005;
 Wine = 1010;
 Fine_Ale = 1011;
 Mead = 1012;
 Spruce_Beer = 1013;
 Sweet_Beer = 1014;
+Milk = 1015;
 Vodka = 1030;
 Kumis = 1031;
 Rum = 1032;
@@ -2082,53 +2218,78 @@ Pure_Alcohol = 1052;
 Double_Brandy = 1060;
 Auric_Mead = 1061;
 Fine_Sake = 1062;
-Basic_Bread = 1200;
-Simple_Spread = 1203;
-Buttered_Bread = 1204;
-Basic_Flatbread = 1205;
-Pumpernickle = 1206;
-Pastry = 1207;
-Fruit_Pastry = 1208;
-Cheese_Pastry = 1209;
-Glittercake = 1212;
-Fruit_Glittercake = 1213;
-Fruit_Pie = 1220;
-Sugar_Pie = 1221;
-Pot_Pie = 1222;
-Roasted_Peanut = 1223;
-Candied_Peanut = 1224;
-Sausage = 1260;
-Fried_Meat = 1261;
-Roast = 1262;
-Noble_Roast = 1268;
-Beef_Stew = 1270;
-Kings_Soup = 1271;
-Onion_Soup = 1272;
-Huntsmans_Soup = 1273;
-Chicken_Soup = 1274;
-Fish_Soup = 1275;
-Vegetable_Soup = 1276;
-Seafood_Soup = 1277;
-Turtle_Soup = 1278;
-Shark_Soup = 1279;
-Baked_Beans = 1280;
-Beans_And_Rice = 1281;
-Hash = 1282;
-Fried_Crab = 1283;
-Fish_Roll = 1284;
-Deluxe_Fish_Roll = 1285;
-Rare_Mushroom_Soup = 1286;
-Oatmeal = 1287;
-Sweetend_Oatmeal = 1288;
-Simple_Soup = 1289;
-Roasted_Whole_Chicken = 1290;
-Pea_Pudding = 1291;
-Mutton_Stew = 1294;
-Glazed_Veggies = 1295;
-Glazed_Mutton = 1296;
-Simple_Risotto = 1299;
-Mushroom_Risotto = 1300;
-Shrimp_Risotto = 1301;
+Dried_Fruit = 1200;
+Flatbread = 1201;
+Roasted_Peanut = 1202;
+Thin_Pottage = 1203;
+Baked_Beans = 1204;
+Beans__and__Rice = 1205;
+Common_Bread = 1206;
+Butchers_Stew = 1207;
+Candied_Peanut = 1208;
+Fried_Vegetables = 1209;
+Fried_Meat = 1210;
+Fruit_Pie = 1211;
+Oatmeal = 1212;
+Potato_Soup = 1213;
+Pottage = 1214;
+Ramen = 1215;
+Risotto = 1216;
+Simple_Curry = 1217;
+Vegetable_Congee = 1218;
+Vegetable_Stew = 1219;
+Wheat_Bread = 1220;
+Pea_Pudding = 1221;
+Simple_Hunters_Pot = 1222;
+Mushroom_Risotto = 1223;
+Ravioli = 1224;
+Cheesy_Pasta = 1225;
+Cottage_Pie = 1226;
+Curried_Meat = 1227;
+Bean_and_Rice_Cake = 1228;
+Fine_Ramen_1 = 1229;
+Fine_Potato_Soup = 1230;
+Fish_Congee = 1231;
+Hearty_Pottage = 1232;
+Pot_Stew = 1233;
+Roast = 1234;
+Sausage = 1235;
+Snack_Bread = 1236;
+Sushi = 1237;
+Pumpernickle = 1238;
+Sugar_Biscuits = 1239;
+Fine_Ramen_2 = 1240;
+Beef_Stew = 1241;
+Seafood_Pasta = 1242;
+Fine_Bread = 1243;
+Fish_Stew = 1244;
+Golden_Rice = 1245;
+Mushroom_Stew = 1246;
+Mutton_Stew = 1247;
+Shark_Soup = 1248;
+Turtle_Soup = 1249;
+Hunters_Pot = 1250;
+Shrimp_Rsisotto = 1251;
+Cheesecake = 1252;
+Fine_Sushi = 1253;
+Glittercake = 1254;
+Oceans_Bounty = 1255;
+Pastry = 1256;
+Regal_Roast = 1257;
+Seafood_Boil = 1258;
+Hotpot = 1259;
+Savory_Cheese_Plate = 1260;
+Sweet_Cheese_Plate = 1261;
+Tomato_Stew = 1262;
+Tomato_Pasta = 1263;
+Fried_Sugar_Toast = 1264;
+Mashed_Potatoes = 1265;
+Mashed_Casava = 1266;
+Fried_Dough = 1267;
+Feast_Hotpot = 1268;
+Meatball = 1269;
+Ceviche = 1270;
+Ocean_Feast = 1271;
 Vinegar = 1400;
 Sugar = 1401;
 Olive_Oil = 1402;
@@ -2137,16 +2298,14 @@ Basic_Spice_Pack = 1404;
 Royal_Spice_Pack = 1405;
 Pastry_Dough = 1406;
 Fruit_Preserve = 1407;
-Exotic_Fruit_Preserve = 1408;
+Exotic_Fruit_Preserves = 1408;
 Mushroom_Stock = 1409;
 Meat_Stock = 1410;
 Vegetable_Stock = 1411;
 Barm = 1412;
 Molasses = 1413;
 Paprika = 1414;
-Cider_Sauce = 1415;
-Wine_Sauce = 1416;
-Spicy_Sauce = 1417;
+Rice_Flour = 1417;
 Common_Flour = 1418;
 Wheat_Flour = 1419;
 Rye_Flour = 1420;
@@ -2160,20 +2319,31 @@ Royal_Savory_Spice_Park = 1427;
 Royal_Spicy_Spice_Park = 1428;
 Cheese = 1430;
 Aged_Cheese = 1431;
-Imperial_Cheese = 1432;
-Dried_Vegetables = 1433;
-Pickled_Vegetables = 1434;
-Hearty_Dried_Vegetables = 1435;
-Dried_Fruit = 1436;
-Brandied_Fruit = 1437;
-Exotic_Dried_Fruit = 1438;
-Cured_Meat = 1439;
-Salted_Meat = 1440;
-Preserved_Eggs = 1441;
-Exotic_Cured_Meat = 1442;
-Pemmican = 1443;
-Pate = 1444;
-Mixed_Vegetables = 1445;
+Imperial_Reserve_Cheese = 1432;
+Dried_Vegetables = 1440;
+Pickled_Vegetables = 1441;
+Hearty_Dried_Vegetables = 1442;
+Root_Vegetable_Mix = 1443;
+Green_Vegetable_Mix = 1444;
+Brandied_Fruit = 1451;
+Exotic_Dried_Fruit = 1452;
+Cured_Meat = 1460;
+Salted_Meat = 1461;
+Preserved_Eggs = 1462;
+Exotic_Cured_Meat = 1463;
+Pemmican = 1464;
+Pate = 1465;
+Tofu = 1471;
+Soy_Paste = 1472;
+Whey_Cheese = 1481;
+Whey_Butter = 1482;
+Aged_Whey_Cheese = 1483;
+Wine_Sauce = 1490;
+Spicy_Sauce = 1491;
+Fermented_Salt_Sauce = 1492;
+Unfinished_Salt_Sauce = 1493;
+Curry_Sauce = 1494;
+Tomato_Sauce = 1495;
 Fodder_Bread = 1900;
 Main_Ration_1 = 1901;
 Main_Ration_2 = 1902;
@@ -2242,7 +2412,7 @@ Advanced_Wood_Building_Materials = 2161;
 Advanced_Stone_Building_Materials = 2162;
 Advanced_Mud_Building_Materials = 2163;
 Advanced_Brick_Building_Material = 2164;
-Emerald_Bronze = 2180;
+Beryl_Bronze = 2180;
 Bronze = 2181;
 Steel = 2182;
 Damascus_Steel = 2183;
@@ -2332,13 +2502,15 @@ Bronze_Artifact_Cache = 4071;
 Bronze_Plate = 4100;
 Iron_Plate = 4101;
 Steel_Plate = 4102;
-Emerald_Bronze_Plate = 4103;
+Beryl_Bronze_Plate = 4103;
 Damascus_Steel_Plate = 4104;
-Bronze_Chainmail = 4105;
-Iron_Chainmail = 4106;
-Steel_Chainmail = 4107;
-Emerald_Bronze_Chainmail = 4108;
-Damascus_Steel_Chainmail = 4109;
+Dark_Steel_Plate = 4105;
+Bronze_Chainmail = 4110;
+Iron_Chainmail = 4111;
+Steel_Chainmail = 4112;
+Beryl_Bronze_Chainmail = 4113;
+Damascus_Steel_Chainmail = 4114;
+Dark_Steel_Chainmail = 4115;
 Panacea = 4200;
 Nettle_Tea = 4201;
 Life_Powder = 4202;
@@ -2466,64 +2638,56 @@ Ornate_Home_Furniture = 4802;
 Bronze_Spear = 5000;
 Iron_Spear = 5001;
 Steel_Spear = 5002;
-Emerald_Bronze_Spear = 5003;
+Beryl_Bronze_Spear = 5003;
 Damascus_Steel_Spear = 5004;
 Bronze_Axe = 5010;
 Iron_Axe = 5011;
 Steel_Axe = 5012;
-Emerald_Bronze_Axe = 5013;
+Beryl_Bronze_Axe = 5013;
 Damascus_Steel_Axe = 5014;
 Bronze_Sword = 5020;
 Iron_Sword = 5021;
 Steel_Sword = 5022;
-Emerald_Bronze_Sword = 5023;
+Beryl_Bronze_Sword = 5023;
 Damascus_Steel_Sword = 5024;
 Diamond_Sword = 5025;
 Bronze_Mace = 5030;
 Iron_Mace = 5031;
 Steel_Mace = 5032;
-Emerald_Bronze_Mace = 5033;
+Beryl_Bronze_Mace = 5033;
 Damascus_Steel_Mace = 5034;
 Bronze_Lance = 5040;
 Iron_Lance = 5041;
 Steel_Lance = 5042;
-Emerald_Bronze_Lance = 5043;
+Beryl_Bronze_Lance = 5043;
 Damascus_Steel_Lance = 5044;
 Bronze_Poleaxe = 5050;
 Iron_Poleaxe = 5051;
 Steel_Poleaxe = 5052;
-Emerald_Bronze_Poleaxe = 5053;
+Beryl_Bronze_Poleaxe = 5053;
 Damascus_Steel_Poleaxe = 5054;
 Bronze_Greatsword = 5060;
 Iron_Greatsword = 5061;
 Steel_Greatsword = 5062;
-Emerald_Bronze_Greatsword = 5063;
+Beryl_Bronze_Greatsword = 5063;
 Damascus_Steel_Greatsword = 5064;
 Bronze_Warhammer = 5070;
 Iron_Warhammer = 5071;
 Steel_Warhammer = 5072;
-Emerald_Bronze_Warhammer = 5073;
+Beryl_Bronze_Warhammer = 5073;
 Damascus_Steel_Warhammer = 5074;
-Bronze_Elephant_Tusk_Cap = 5080;
-Iron_Elephant_Tusk_Cap = 5081;
-Steel_Elephant_Tusk_Cap = 5082;
-Beryl_Bronze_Elephant_Tusk_Cap = 5083;
-Damascus_Elephant_Tusk_Cap = 5084;
-Bronze_Rhino_Tusk_Cap = 5090;
-Iron_Rhino_Tusk_Cap = 5091;
-Steel_Rhino_Tusk_Cap = 5092;
-Beryl_Bronze_Rhino_Tusk_Cap = 5093;
-Damascus_Rhino_Tusk_Cap = 5094;
+Elephant_Tusk_Cap = 5082;
+Rhino_Tusk_Cap = 5092;
 Basic_Bow = 5200;
 Longbow = 5201;
 Greatbow = 5202;
 Steel_Arrowhead = 5203;
 Beryl_Bronze_Arrowhead = 5204;
+Bronze_Arrowhead = 5205;
 Simple_Crossbow = 5210;
 Basic_Sling = 5211;
 Heavy_Flamer = 5212;
 Flame_Grenade = 5213;
-Golden_Sling = 5214;
 Farm_Horse = 5400;
 Standard_Army_Horse = 5401;
 Charge_Horse = 5402;
@@ -2536,48 +2700,60 @@ War_Wooly_Rhino = 5431;
 Light_Bronze_Mail = 5500;
 Light_Iron_Mail = 5501;
 Light_Steel_Mail = 5502;
-Light_Emerald_Bronze_Mail = 5503;
+Light_Beryl_Bronze_Mail = 5503;
 Light_Damascus_Steel_Mail = 5504;
+Light_Dark_Steel_Mail = 5505;
 Light_Bronze_Plate = 5510;
 Light_Iron_Plate = 5511;
 Light_Steel_Plate = 5512;
-Light_Emerald_Bronze_Plate = 5513;
+Light_Beryl_Bronze_Plate = 5513;
 Light_Damascus_Steel_Plate = 5514;
+Light_Dark_Steel_Plate = 5515;
 Medium_Bronze_Mail = 5520;
 Medium_Iron_Mail = 5521;
 Medium_Steel_Mail = 5522;
-Medium_Emerald_Bronze_Mail = 5523;
+Medium_Beryl_Bronze_Mail = 5523;
 Medium_Damascus_Steel_Mail = 5524;
+Medium_Dark_Steel_Mail = 5525;
 Medium_Bronze_Plate = 5530;
 Medium_Iron_Plate = 5531;
 Medium_Steel_Plate = 5532;
-Medium_Emerald_Bronze_Plate = 5533;
+Medium_Beryl_Bronze_Plate = 5533;
 Medium_Damascus_Steel_Plate = 5534;
+Medium_Dark_Steel_Plate = 5535;
 Heavy_Bronze_Armor = 5540;
 Heavy_Iron_Armor = 5541;
 Heavy_Steel_Armor = 5542;
 Heavy_Beryl_Bronze_Armor = 5543;
 Heavy_Damascus_Steel_Armor = 5544;
+Heavy_Dark_Steel_Armor = 5545;
 Light_Bronze_Horse_Armor = 5550;
 Light_Iron_Horse_Armor = 5551;
 Light_Steel_Horse_Armor = 5552;
-Light_Emerald_Bronze_Horse_Armor = 5553;
+Light_Beryl_Bronze_Horse_Armor = 5553;
 Light_Damascus_Steel_Horse_Armor = 5554;
+Light_Dark_Steel_Horse_Armor = 5555;
 Medium_Bronze_Horse_Armor = 5560;
 Medium_Iron_Horse_Armor = 5561;
 Medium_Steel_Horse_Armor = 5562;
-Medium_Emerald_Bronze_Horse_Armor = 5563;
+Medium_Beryl_Bronze_Horse_Armor = 5563;
 Medium_Damascus_Steel_Horse_Armor = 5564;
+Medium_Dark_Steel_Horse_Armor = 5565;
 Heavy_Bronze_Horse_Armor = 5570;
 Heavy_Iron_Horse_Armor = 5571;
 Heavy_Steel_Horse_Armor = 5572;
-Heavy_Emerald_Bronze_Horse_Armor = 5573;
+Heavy_Beryl_Bronze_Horse_Armor = 5573;
 Heavy_Damascus_Steel_Horse_Armor = 5574;
+Heavy_Dark_Steel_Horse_Armor = 5575;
 Leather_Armor = 5580;
 Thick_Leather_Armor = 5581;
 Gambeson = 5582;
+Saddle = 5583;
 Rhino_Mount_Cushion = 5585;
 Elephant_Mount_Cushion = 5586;
+Light_Leather_Horse_Armor = 5587;
+Medium_Leather_Horse_Armor = 5588;
+Heavy_Leather_Horse_Armor = 5589;
 Stone_Shot = 5600;
 Lead_Shot = 5601;
 Gold_Shot = 5602;
@@ -2586,36 +2762,22 @@ Large_Fuel_Tank = 5612;
 Quiver = 5613;
 Stone_Pouch = 5614;
 Wood_Arrow_Bundle = 5620;
-Steel_Arrow_Bundle = 5621;
-Emerald_Bronze_Arrow_Bundle = 5622;
-Diamond_Arrow_Bundle = 5623;
+Bronze_Arrow_Bundle = 5621;
+Steel_Arrow_Bundle = 5622;
+Beryl_Bronze_Arrow_Bundle = 5623;
+Diamond_Arrow_Bundle = 5624;
 Stone_Shot_Pouch = 5700;
 Lead_Shot_Pouch = 5701;
 Gold_Shot_Pouch = 5702;
 Wood_Arrow_Quiver = 5720;
-Steel_Arrow_Quiver = 5721;
-Beryl_Arrow_Quiver = 5722;
-Diamond_Arrow_Quiver = 5723;
-Bronze_Rhino_Armor = 5800;
-Iron_Rhino_Armor = 5801;
+Bronze_Arrow_Quiver = 5721;
+Steel_Arrow_Quiver = 5722;
+Beryl_Arrow_Quiver = 5723;
+Diamond_Arrow_Quiver = 5724;
 Steel_Rhino_Armor = 5802;
-Emerald_Bronze_Rhino_Armor = 5803;
-Damascus_Steel_Rhino_Armor = 5804;
-Heavy_Bronze_Rhino_Armor = 5810;
-Heavy_Iron_Rhino_Armor = 5811;
 Heavy_Steel_Rhino_Armor = 5812;
-Heavy_Emerald_Bronze_Rhino_Armor = 5813;
-Heavy_Damascus_Steel_Rhino_Armor = 5814;
-Bronze_Elephant_Armor = 5820;
-Iron_Elephant_Armor = 5821;
 Steel_Elephant_Armor = 5822;
-Emerald_Bronze_Elephant_Armor = 5823;
-Damascus_Steel_Elephant_Armor = 5824;
-Heavy_Bronze_Elephant_Armor = 5830;
-Heavy_Iron_Elephant_Armor = 5831;
 Heavy_Steel_Elephant_Armor = 5832;
-Heavy_Emerald_Bronze_Elephant_Armor = 5833;
-Heavy_Damascus_Steel_Elephant_Armor = 5834;
 Wooden_Shield = 5900;
 Banded_Shield = 5901;
 Standard_Shield = 5902;
@@ -2665,37 +2827,34 @@ Cow = 7400;
 Chicken = 7401;
 Sheep = 7402;
 River_Fish = 7403;
-Bandits = 11000;
-Peasent_Levy = 11010;
-Veteran_Peasent_Levy = 11011;
-Levy_Spear = 11020;
-Veteran_Levy_Spear = 11021;
-Mountain_Levy = 11030;
-Veteran_Mountain_Levy = 11031;
-Mercenary_Swordman = 11040;
-Veteran_Mercenary_Swordman = 11041;
-Palace_Guard = 11042;
-Mercenary_Axeman = 11050;
-Mercenary_Maceman = 11060;
-Pikeman = 11070;
-Peasent_Bowman = 11200;
-Levy_Archer = 11210;
-Veteran_Levy_Archer = 11211;
-Huntsman = 11220;
-Slinger = 11230;
-Golden_Slinger = 11231;
-Imperial_Flamer = 11241;
-Free_Lance = 11300;
-Knight = 11301;
-Mounted_Levy = 11310;
-Mounted_Palace_Guard = 11311;
-Mercenary_War_Elephant = 11501;
-Elite_Mercenary_War_Elephant = 11502;
-Mercanary_War_Rhino = 11520;
-Elite_Mercenary_War_Rhino = 11521;
-Mounted_Archer = 11600;
-Veteran_Mounted_Archer = 11601;
-Palace_Archer = 11602;
+Arid_Inf_1 = 11100;
+Arid_Inf_2 = 11101;
+Arid_Cav_1 = 11130;
+Arid_Rhino = 11150;
+Northern_Inf_1 = 11200;
+Northern_Range_1 = 11220;
+Northern_Cav_1 = 11230;
+Brickman = 11300;
+Raven = 11320;
+Marching_Dragon = 11321;
+Storm_Rider = 11330;
+Southern_Inf_1 = 11400;
+Southern_Range_1 = 11420;
+Southern_Elephant = 11450;
+Ocean_Inf_1 = 11500;
+Ocean_Inf_2 = 11501;
+Ocean_Ranged_1 = 11520;
+Swamp_Inf_1 = 11600;
+Swamp_Ranged_1 = 11620;
+Mountain_Inf_1 = 11700;
+Mountain_Inf_2 = 11701;
+Mountain_Ranged_1 = 11720;
+Mountain_Cav_1 = 11730;
+Silver_Inf_1 = 11800;
+Silver_Cav_1 = 11830;
+Gold_Inf_1 = 11900;
+Gold_Ranged_1 = 11920;
+Golden_Cav_1 = 11930;
 T1_XP = 28501;
 T2_XP = 28502;
 T3_XP = 28503;
@@ -2705,104 +2864,553 @@ T6_XP = 28506;
 T7_XP = 28507;
 T8_XP = 28508;
 Coins = 28800;
-Axe = 2;
-Bow_Ammo = 19;
-Crossbow = 13;
-Elephant_Melee = 6;
-Elephant_Ranged = 11;
-Flamer_Tank = 20;
-Grenade = 10;
-Mace = 4;
-Sling = 5;
-Sling_Ammo = 21;
+function itemLevel(_value) {
+          _value = Number(_value);
+          switch (_value) {
+          case -34: 
+return(undefined);
+case -33: 
+return(undefined);
+case -32: 
+return(undefined);
+case -31: 
+return(undefined);
+case -30: 
+return(undefined);
+case 1000: 
+return(1);
+case 1001: 
+return(1);
+case 1002: 
+return(1);
+case 1003: 
+return(1);
+case 1004: 
+return(1);
+case 1005: 
+return(1);
+case 1010: 
+return(2);
+case 1011: 
+return(2);
+case 1012: 
+return(2);
+case 1013: 
+return(2);
+case 1014: 
+return(2);
+case 1015: 
+return(2);
+case 1030: 
+return(3);
+case 1031: 
+return(3);
+case 1032: 
+return(3);
+case 1033: 
+return(3);
+case 1034: 
+return(3);
+case 1040: 
+return(4);
+case 1041: 
+return(4);
+case 1042: 
+return(4);
+case 1043: 
+return(4);
+case 1044: 
+return(4);
+case 1050: 
+return(5);
+case 1051: 
+return(5);
+case 1052: 
+return(5);
+case 1060: 
+return(6);
+case 1061: 
+return(6);
+case 1062: 
+return(6);
+case 1200: 
+return(1);
+case 1201: 
+return(1);
+case 1202: 
+return(1);
+case 1203: 
+return(1);
+case 1204: 
+return(2);
+case 1205: 
+return(2);
+case 1206: 
+return(2);
+case 1207: 
+return(2);
+case 1208: 
+return(2);
+case 1209: 
+return(2);
+case 1210: 
+return(2);
+case 1211: 
+return(2);
+case 1212: 
+return(2);
+case 1213: 
+return(2);
+case 1214: 
+return(2);
+case 1215: 
+return(2);
+case 1216: 
+return(2);
+case 1217: 
+return(2);
+case 1218: 
+return(2);
+case 1219: 
+return(2);
+case 1220: 
+return(2);
+case 1221: 
+return(2);
+case 1222: 
+return(2);
+case 1223: 
+return(2);
+case 1224: 
+return(2);
+case 1225: 
+return(3);
+case 1226: 
+return(3);
+case 1227: 
+return(3);
+case 1228: 
+return(3);
+case 1229: 
+return(3);
+case 1230: 
+return(3);
+case 1231: 
+return(3);
+case 1232: 
+return(3);
+case 1233: 
+return(2);
+case 1234: 
+return(3);
+case 1235: 
+return(3);
+case 1236: 
+return(3);
+case 1237: 
+return(3);
+case 1238: 
+return(3);
+case 1239: 
+return(3);
+case 1240: 
+return(3);
+case 1241: 
+return(4);
+case 1242: 
+return(4);
+case 1243: 
+return(4);
+case 1244: 
+return(4);
+case 1245: 
+return(4);
+case 1246: 
+return(4);
+case 1247: 
+return(4);
+case 1248: 
+return(4);
+case 1249: 
+return(4);
+case 1250: 
+return(4);
+case 1251: 
+return(4);
+case 1252: 
+return(5);
+case 1253: 
+return(5);
+case 1254: 
+return(5);
+case 1255: 
+return(5);
+case 1256: 
+return(5);
+case 1257: 
+return(5);
+case 1258: 
+return(5);
+case 1259: 
+return(5);
+case 1260: 
+return(5);
+case 1261: 
+return(5);
+case 1262: 
+return(2);
+case 1263: 
+return(4);
+case 1264: 
+return(3);
+case 1265: 
+return(2);
+case 1266: 
+return(1);
+case 1267: 
+return(2);
+case 1268: 
+return(6);
+case 1269: 
+return(3);
+case 1270: 
+return(3);
+case 1271: 
+return(6);
+case 4030: 
+return(1);
+case 4031: 
+return(2);
+case 4032: 
+return(3);
+case 4040: 
+return(10);
+case 4200: 
+return(50);
+case 4201: 
+return(20);
+case 4202: 
+return(20);
+case 4203: 
+return(20);
+case 4204: 
+return(20);
+case 4205: 
+return(20);
+case 4206: 
+return(20);
+case 4207: 
+return(20);
+case 4221: 
+return(50);
+case 4222: 
+return(50);
+case 4223: 
+return(50);
+case 4224: 
+return(50);
+case 4225: 
+return(50);
+case 4226: 
+return(50);
+case 4227: 
+return(50);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+case 0: 
+return(undefined);
+default:
+      return("Error: Invalid Item Level");
+          }
+  };NaN = 0;
+No_Limit = 0;
+undefined = 0;
+Weapon = 0;
+Arid = 1;
+Armor = 1;
+Bracelet = 1;
+Melee = 1;
+Required_Empty = 1;
 Spear = 1;
+Axe = 2;
+Northern = 2;
+Offhand = 2;
+Ranged = 2;
+Ring = 2;
+Central = 3;
+Elephant_Weapon = 3;
+Mount = 3;
+Necklace = 3;
 Sword = 3;
 Accessory = 4;
-Army_Elephant = 8;
-Army_Rhino = 10;
-Bow = 9;
-Elephant_Weapon = 3;
-Flame_Weapon = 6;
-Flamer = 12;
-Melee = 1;
-Ranged = 2;
-Rhino_Melee = 7;
-Rhino_Weapon = 5;
-Slingshot = 11;
-Armor = 1;
-Mount = 3;
-Offhand = 2;
-Weapon = 0;
-Army_Horse = 103;
-Elephant_Armor = 102;
-Horse_Armor = 101;
-Human_Armor = 100;
-Human_Shield = 105;
-Rhino_Armor = 104;
-Shield = 106;
-Art = 11;
-Bracelet = 1;
-Chair = 5;
-Cup = 7;
-Home_Furniture = 13;
-Necklace = 3;
-Religous_Totem = 8;
-Ring = 2;
-Storage = 12;
-Table = 4;
-Tableware = 6;
-Tapestry = 9;
-Wall_Painting = 10;
-Land = 10;
-NaN = 0;
-No_Limit = 0;
-Required_Empty = 1;
-undefined = 0;
-Animal = 100;
-Consumable_Drink = 23;
-Consumable_Food = 22;
-Crop = 20;
-Fertilizer = 220;
-Finished_Good = 60;
-Furniture = 80;
-Inedible_Food = 24;
-Jewelery = 70;
-Military = 30;
-Personal_Items = 90;
-Processed_Material = 50;
-Raw_Material = 40;
-Arid = 1;
-Central = 3;
-Glimmering = 8;
-Guilded = 9;
-Mountain = 7;
-Northern = 2;
-Ocean = 5;
+Mace = 4;
 Southern = 4;
+Table = 4;
+Chair = 5;
+Ocean = 5;
+Rhino_Weapon = 5;
+Sling = 5;
+Elephant_Melee = 6;
+Flame_Weapon = 6;
 Swamp = 6;
-Advanced_Butcherable_Animal = 101;
-Animal_Product = 24;
-Blueprint = 70;
-Butcherable_Animal = 100;
-Common_Crop = 21;
-Concept_Item = 72;
-Consumable_Drink_UI = 23;
-Consumable_Food_UI = 22;
-Crafting_Item = 50;
+Tableware = 6;
+Cup = 7;
+Mountain = 7;
+Rhino_Melee = 7;
+Army_Elephant = 8;
+Glimmering = 8;
+Religous_Totem = 8;
+Bow = 9;
+Guilded = 9;
+Tapestry = 9;
+Army_Rhino = 10;
+Grenade = 10;
+Land = 10;
+Wall_Painting = 10;
+Art = 11;
+Elephant_Ranged = 11;
+Slingshot = 11;
+Flamer = 12;
+Storage = 12;
+Crossbow = 13;
+Home_Furniture = 13;
+Bow_Ammo = 19;
+Crop = 20;
+Flamer_Tank = 20;
 Foraged_Crop = 20;
-Industrial_Good = 51;
-Medicine = 230;
-Mercanary = 220;
-Military_Armor = 31;
-Military_Mount = 33;
-Military_Offhand = 32;
+Common_Crop = 21;
+Sling_Ammo = 21;
+Consumable_Food = 22;
+Consumable_Food_UI = 22;
+Consumable_Drink = 23;
+Consumable_Drink_UI = 23;
+Food_Ingrediant = 24;
+Inedible_Food = 24;
+Animal_Product = 25;
+Military = 30;
 Military_Weapon = 30;
-Textbook = 71;
+Military_Armor = 31;
+Military_Offhand = 32;
+Military_Mount = 33;
+Raw_Material = 40;
+Crafting_Item = 50;
+Processed_Material = 50;
+Industrial_Good = 51;
 Unprocessed = 52;
 Building_Materials = 53;
 Industry_Material = 54;
+Finished_Good = 60;
+Blueprint = 70;
+Jewelery = 70;
+Textbook = 71;
+Concept_Item = 72;
 Boat = 73;
-Food_Ingrediant = 24;
+Furniture = 80;
+Personal_Items = 90;
+Animal = 100;
+Butcherable_Animal = 100;
+Human_Armor = 100;
+Advanced_Butcherable_Animal = 101;
+Horse_Armor = 101;
+Elephant_Armor = 102;
+Army_Horse = 103;
+Rhino_Armor = 104;
+Human_Shield = 105;
+Shield = 106;
+Appatizer_Food = 120;
+Dessert_Food = 121;
+Grain_Food = 122;
+Main_Food = 123;
+Drink_Food = 124;
+Fertilizer = 220;
+Mercanary = 220;
+Medicine = 230;
 Building200 = { baseBuilding: -1, buildingVariant: 0, reasourceType: [0,0,0,0,0],reasourceAmount: [0,0,0,0,0,0,0],popRequirements: [0,0,0],employeeType: 0,employees: 0,buildingBeauty: 0, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 0};
 Building0_1 = { baseBuilding: 200, buildingVariant: 0, reasourceType: [0,0,0,0,0],reasourceAmount: [0,0,0,0,0,10,62],popRequirements: [10,0,0],employeeType: 0,employees: 10,buildingBeauty: 0, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
 Building0_2 = { baseBuilding: 200, buildingVariant: 1, reasourceType: [0,0,0,0,0],reasourceAmount: [0,0,0,0,0,10,62],popRequirements: [10,0,0],employeeType: 0,employees: 10,buildingBeauty: 0, buildingInsulation: 0, buildingErgonommics: 0, buildingInfra: 0, industrySize: 1};
@@ -3095,7 +3703,11 @@ Building31_9 = { baseBuilding: 30, buildingVariant: 8, reasourceType: [2164,2154
 
       function itemName(_var) {
       switch (_var) {
-      case -32:
+      case -34:
+return("Any Root Vegetable");
+case -33:
+return("Any Green Vegetable");
+case -32:
 return("T6 Drink");
 case -31:
 return("Any Shot Pouch");
@@ -3299,8 +3911,6 @@ case 537:
 return("Honey");
 case 538:
 return("Oats");
-case 539:
-return("Milk");
 case 540:
 return("Barley");
 case 541:
@@ -3392,9 +4002,17 @@ return("Boiled Meat");
 case 585:
 return("Peas");
 case 586:
-return("Oranges");
+return("Lemons");
+case 587:
+return("Broccoli");
+case 588:
+return("Cabbage");
+case 589:
+return("Soybeans");
 case 590:
-return("Veggie Mix");
+return("Tomato");
+case 591:
+return("Green Onion");
 case 1000:
 return("Ale");
 case 1001:
@@ -3403,6 +4021,10 @@ case 1002:
 return("Fruit Wine");
 case 1003:
 return("Grog");
+case 1004:
+return("Whey");
+case 1005:
+return("Soy Milk");
 case 1010:
 return("Wine");
 case 1011:
@@ -3413,6 +4035,8 @@ case 1013:
 return("Spruce Beer");
 case 1014:
 return("Sweet Beer");
+case 1015:
+return("Milk");
 case 1030:
 return("Vodka");
 case 1031:
@@ -3446,99 +4070,149 @@ return("Auric Mead");
 case 1062:
 return("Fine Sake");
 case 1200:
-return("Basic Bread");
-case 1203:
-return("Simple Spread");
-case 1204:
-return("Buttered Bread");
-case 1205:
-return("Basic Flatbread");
-case 1206:
-return("Pumpernickle");
-case 1207:
-return("Pastry");
-case 1208:
-return("Fruit Pastry");
-case 1209:
-return("Cheese Pastry");
-case 1212:
-return("Glittercake");
-case 1213:
-return("Fruit Glittercake");
-case 1220:
-return("Fruit Pie");
-case 1221:
-return("Sugar Pie");
-case 1222:
-return("Pot Pie");
-case 1223:
+return("Dried Fruit");
+case 1201:
+return("Flatbread");
+case 1202:
 return("Roasted Peanut");
-case 1224:
-return("Candied Peanut");
-case 1260:
-return("Sausage");
-case 1261:
-return("Fried Meat");
-case 1262:
-return("Roast");
-case 1268:
-return("Noble Roast");
-case 1270:
-return("Beef Stew");
-case 1271:
-return("Kings Soup");
-case 1272:
-return("Onion Soup");
-case 1273:
-return("Huntsmans Soup");
-case 1274:
-return("Chicken Soup");
-case 1275:
-return("Fish Soup");
-case 1276:
-return("Vegetable Soup");
-case 1277:
-return("Seafood Soup");
-case 1278:
-return("Turtle Soup");
-case 1279:
-return("Shark Soup");
-case 1280:
+case 1203:
+return("Thin Pottage");
+case 1204:
 return("Baked Beans");
-case 1281:
-return("Beans And Rice");
-case 1282:
-return("Hash");
-case 1283:
-return("Fried Crab");
-case 1284:
-return("Fish Roll");
-case 1285:
-return("Deluxe Fish Roll");
-case 1286:
-return("Rare Mushroom Soup");
-case 1287:
+case 1205:
+return("Beans  and  Rice");
+case 1206:
+return("Common Bread");
+case 1207:
+return("Butchers Stew");
+case 1208:
+return("Candied Peanut");
+case 1209:
+return("Fried Vegetables");
+case 1210:
+return("Fried Meat");
+case 1211:
+return("Fruit Pie");
+case 1212:
 return("Oatmeal");
-case 1288:
-return("Sweetend Oatmeal");
-case 1289:
-return("Simple Soup");
-case 1290:
-return("Roasted Whole Chicken");
-case 1291:
+case 1213:
+return("Potato Soup");
+case 1214:
+return("Pottage");
+case 1215:
+return("Ramen");
+case 1216:
+return("Risotto");
+case 1217:
+return("Simple Curry");
+case 1218:
+return("Vegetable Congee");
+case 1219:
+return("Vegetable Stew");
+case 1220:
+return("Wheat Bread");
+case 1221:
 return("Pea Pudding");
-case 1294:
-return("Mutton Stew");
-case 1295:
-return("Glazed Veggies");
-case 1296:
-return("Glazed Mutton");
-case 1299:
-return("Simple Risotto");
-case 1300:
+case 1222:
+return("Simple Hunters Pot");
+case 1223:
 return("Mushroom Risotto");
-case 1301:
-return("Shrimp Risotto");
+case 1224:
+return("Ravioli");
+case 1225:
+return("Cheesy Pasta");
+case 1226:
+return("Cottage Pie");
+case 1227:
+return("Curried Meat");
+case 1228:
+return("Bean and Rice Cake");
+case 1229:
+return("Fine Ramen 1");
+case 1230:
+return("Fine Potato Soup");
+case 1231:
+return("Fish Congee");
+case 1232:
+return("Hearty Pottage");
+case 1233:
+return("Pot Stew");
+case 1234:
+return("Roast");
+case 1235:
+return("Sausage");
+case 1236:
+return("Snack Bread");
+case 1237:
+return("Sushi");
+case 1238:
+return("Pumpernickle");
+case 1239:
+return("Sugar Biscuits");
+case 1240:
+return("Fine Ramen 2");
+case 1241:
+return("Beef Stew");
+case 1242:
+return("Seafood Pasta");
+case 1243:
+return("Fine Bread");
+case 1244:
+return("Fish Stew");
+case 1245:
+return("Golden Rice");
+case 1246:
+return("Mushroom Stew");
+case 1247:
+return("Mutton Stew");
+case 1248:
+return("Shark Soup");
+case 1249:
+return("Turtle Soup");
+case 1250:
+return("Hunters Pot");
+case 1251:
+return("Shrimp Rsisotto");
+case 1252:
+return("Cheesecake");
+case 1253:
+return("Fine Sushi");
+case 1254:
+return("Glittercake");
+case 1255:
+return("Oceans Bounty");
+case 1256:
+return("Pastry");
+case 1257:
+return("Regal Roast");
+case 1258:
+return("Seafood Boil");
+case 1259:
+return("Hotpot");
+case 1260:
+return("Savory Cheese Plate");
+case 1261:
+return("Sweet Cheese Plate");
+case 1262:
+return("Tomato Stew");
+case 1263:
+return("Tomato Pasta");
+case 1264:
+return("Fried Sugar Toast");
+case 1265:
+return("Mashed Potatoes");
+case 1266:
+return("Mashed Casava");
+case 1267:
+return("Fried Dough");
+case 1268:
+return("Feast Hotpot");
+case 1269:
+return("Meatball");
+case 1270:
+return("Ceviche");
+case 1271:
+return("Ocean Feast");
 case 1400:
 return("Vinegar");
 case 1401:
@@ -3556,7 +4230,7 @@ return("Pastry Dough");
 case 1407:
 return("Fruit Preserve");
 case 1408:
-return("Exotic Fruit Preserve");
+return("Exotic Fruit Preserves");
 case 1409:
 return("Mushroom Stock");
 case 1410:
@@ -3569,12 +4243,8 @@ case 1413:
 return("Molasses");
 case 1414:
 return("Paprika");
-case 1415:
-return("Cider Sauce");
-case 1416:
-return("Wine Sauce");
 case 1417:
-return("Spicy Sauce");
+return("Rice Flour");
 case 1418:
 return("Common Flour");
 case 1419:
@@ -3602,33 +4272,55 @@ return("Cheese");
 case 1431:
 return("Aged Cheese");
 case 1432:
-return("Imperial Cheese");
-case 1433:
-return("Dried Vegetables");
-case 1434:
-return("Pickled Vegetables");
-case 1435:
-return("Hearty Dried Vegetables");
-case 1436:
-return("Dried Fruit");
-case 1437:
-return("Brandied Fruit");
-case 1438:
-return("Exotic Dried Fruit");
-case 1439:
-return("Cured Meat");
+return("Imperial Reserve Cheese");
 case 1440:
-return("Salted Meat");
+return("Dried Vegetables");
 case 1441:
-return("Preserved Eggs");
+return("Pickled Vegetables");
 case 1442:
-return("Exotic Cured Meat");
+return("Hearty Dried Vegetables");
 case 1443:
-return("Pemmican");
+return("Root Vegetable Mix");
 case 1444:
+return("Green Vegetable Mix");
+case 1451:
+return("Brandied Fruit");
+case 1452:
+return("Exotic Dried Fruit");
+case 1460:
+return("Cured Meat");
+case 1461:
+return("Salted Meat");
+case 1462:
+return("Preserved Eggs");
+case 1463:
+return("Exotic Cured Meat");
+case 1464:
+return("Pemmican");
+case 1465:
 return("Pate");
-case 1445:
-return("Mixed Vegetables");
+case 1471:
+return("Tofu");
+case 1472:
+return("Soy Paste");
+case 1481:
+return("Whey Cheese");
+case 1482:
+return("Whey Butter");
+case 1483:
+return("Aged Whey Cheese");
+case 1490:
+return("Wine Sauce");
+case 1491:
+return("Spicy Sauce");
+case 1492:
+return("Fermented Salt Sauce");
+case 1493:
+return("Unfinished Salt Sauce");
+case 1494:
+return("Curry Sauce");
+case 1495:
+return("Tomato Sauce");
 case 1900:
 return("Fodder Bread");
 case 1901:
@@ -3766,7 +4458,7 @@ return("Advanced Mud Building Materials");
 case 2164:
 return("Advanced Brick Building Material");
 case 2180:
-return("Emerald Bronze");
+return("Beryl Bronze");
 case 2181:
 return("Bronze");
 case 2182:
@@ -3946,19 +4638,23 @@ return("Iron Plate");
 case 4102:
 return("Steel Plate");
 case 4103:
-return("Emerald Bronze Plate");
+return("Beryl Bronze Plate");
 case 4104:
 return("Damascus Steel Plate");
 case 4105:
+return("Dark Steel Plate");
+case 4110:
 return("Bronze Chainmail");
-case 4106:
+case 4111:
 return("Iron Chainmail");
-case 4107:
+case 4112:
 return("Steel Chainmail");
-case 4108:
-return("Emerald Bronze Chainmail");
-case 4109:
+case 4113:
+return("Beryl Bronze Chainmail");
+case 4114:
 return("Damascus Steel Chainmail");
+case 4115:
+return("Dark Steel Chainmail");
 case 4200:
 return("Panacea");
 case 4201:
@@ -4214,7 +4910,7 @@ return("Iron Spear");
 case 5002:
 return("Steel Spear");
 case 5003:
-return("Emerald Bronze Spear");
+return("Beryl Bronze Spear");
 case 5004:
 return("Damascus Steel Spear");
 case 5010:
@@ -4224,7 +4920,7 @@ return("Iron Axe");
 case 5012:
 return("Steel Axe");
 case 5013:
-return("Emerald Bronze Axe");
+return("Beryl Bronze Axe");
 case 5014:
 return("Damascus Steel Axe");
 case 5020:
@@ -4234,7 +4930,7 @@ return("Iron Sword");
 case 5022:
 return("Steel Sword");
 case 5023:
-return("Emerald Bronze Sword");
+return("Beryl Bronze Sword");
 case 5024:
 return("Damascus Steel Sword");
 case 5025:
@@ -4246,7 +4942,7 @@ return("Iron Mace");
 case 5032:
 return("Steel Mace");
 case 5033:
-return("Emerald Bronze Mace");
+return("Beryl Bronze Mace");
 case 5034:
 return("Damascus Steel Mace");
 case 5040:
@@ -4256,7 +4952,7 @@ return("Iron Lance");
 case 5042:
 return("Steel Lance");
 case 5043:
-return("Emerald Bronze Lance");
+return("Beryl Bronze Lance");
 case 5044:
 return("Damascus Steel Lance");
 case 5050:
@@ -4266,7 +4962,7 @@ return("Iron Poleaxe");
 case 5052:
 return("Steel Poleaxe");
 case 5053:
-return("Emerald Bronze Poleaxe");
+return("Beryl Bronze Poleaxe");
 case 5054:
 return("Damascus Steel Poleaxe");
 case 5060:
@@ -4276,7 +4972,7 @@ return("Iron Greatsword");
 case 5062:
 return("Steel Greatsword");
 case 5063:
-return("Emerald Bronze Greatsword");
+return("Beryl Bronze Greatsword");
 case 5064:
 return("Damascus Steel Greatsword");
 case 5070:
@@ -4286,29 +4982,13 @@ return("Iron Warhammer");
 case 5072:
 return("Steel Warhammer");
 case 5073:
-return("Emerald Bronze Warhammer");
+return("Beryl Bronze Warhammer");
 case 5074:
 return("Damascus Steel Warhammer");
-case 5080:
-return("Bronze Elephant Tusk Cap");
-case 5081:
-return("Iron Elephant Tusk Cap");
 case 5082:
-return("Steel Elephant Tusk Cap");
-case 5083:
-return("Beryl Bronze Elephant Tusk Cap");
-case 5084:
-return("Damascus Elephant Tusk Cap");
-case 5090:
-return("Bronze Rhino Tusk Cap");
-case 5091:
-return("Iron Rhino Tusk Cap");
+return("Elephant Tusk Cap");
 case 5092:
-return("Steel Rhino Tusk Cap");
-case 5093:
-return("Beryl Bronze Rhino Tusk Cap");
-case 5094:
-return("Damascus Rhino Tusk Cap");
+return("Rhino Tusk Cap");
 case 5200:
 return("Basic Bow");
 case 5201:
@@ -4319,6 +4999,8 @@ case 5203:
 return("Steel Arrowhead");
 case 5204:
 return("Beryl Bronze Arrowhead");
+case 5205:
+return("Bronze Arrowhead");
 case 5210:
 return("Simple Crossbow");
 case 5211:
@@ -4327,8 +5009,6 @@ case 5212:
 return("Heavy Flamer");
 case 5213:
 return("Flame Grenade");
-case 5214:
-return("Golden Sling");
 case 5400:
 return("Farm Horse");
 case 5401:
@@ -4354,9 +5034,11 @@ return("Light Iron Mail");
 case 5502:
 return("Light Steel Mail");
 case 5503:
-return("Light Emerald Bronze Mail");
+return("Light Beryl Bronze Mail");
 case 5504:
 return("Light Damascus Steel Mail");
+case 5505:
+return("Light Dark Steel Mail");
 case 5510:
 return("Light Bronze Plate");
 case 5511:
@@ -4364,9 +5046,11 @@ return("Light Iron Plate");
 case 5512:
 return("Light Steel Plate");
 case 5513:
-return("Light Emerald Bronze Plate");
+return("Light Beryl Bronze Plate");
 case 5514:
 return("Light Damascus Steel Plate");
+case 5515:
+return("Light Dark Steel Plate");
 case 5520:
 return("Medium Bronze Mail");
 case 5521:
@@ -4374,9 +5058,11 @@ return("Medium Iron Mail");
 case 5522:
 return("Medium Steel Mail");
 case 5523:
-return("Medium Emerald Bronze Mail");
+return("Medium Beryl Bronze Mail");
 case 5524:
 return("Medium Damascus Steel Mail");
+case 5525:
+return("Medium Dark Steel Mail");
 case 5530:
 return("Medium Bronze Plate");
 case 5531:
@@ -4384,9 +5070,11 @@ return("Medium Iron Plate");
 case 5532:
 return("Medium Steel Plate");
 case 5533:
-return("Medium Emerald Bronze Plate");
+return("Medium Beryl Bronze Plate");
 case 5534:
 return("Medium Damascus Steel Plate");
+case 5535:
+return("Medium Dark Steel Plate");
 case 5540:
 return("Heavy Bronze Armor");
 case 5541:
@@ -4397,6 +5085,8 @@ case 5543:
 return("Heavy Beryl Bronze Armor");
 case 5544:
 return("Heavy Damascus Steel Armor");
+case 5545:
+return("Heavy Dark Steel Armor");
 case 5550:
 return("Light Bronze Horse Armor");
 case 5551:
@@ -4404,9 +5094,11 @@ return("Light Iron Horse Armor");
 case 5552:
 return("Light Steel Horse Armor");
 case 5553:
-return("Light Emerald Bronze Horse Armor");
+return("Light Beryl Bronze Horse Armor");
 case 5554:
 return("Light Damascus Steel Horse Armor");
+case 5555:
+return("Light Dark Steel Horse Armor");
 case 5560:
 return("Medium Bronze Horse Armor");
 case 5561:
@@ -4414,9 +5106,11 @@ return("Medium Iron Horse Armor");
 case 5562:
 return("Medium Steel Horse Armor");
 case 5563:
-return("Medium Emerald Bronze Horse Armor");
+return("Medium Beryl Bronze Horse Armor");
 case 5564:
 return("Medium Damascus Steel Horse Armor");
+case 5565:
+return("Medium Dark Steel Horse Armor");
 case 5570:
 return("Heavy Bronze Horse Armor");
 case 5571:
@@ -4424,19 +5118,29 @@ return("Heavy Iron Horse Armor");
 case 5572:
 return("Heavy Steel Horse Armor");
 case 5573:
-return("Heavy Emerald Bronze Horse Armor");
+return("Heavy Beryl Bronze Horse Armor");
 case 5574:
 return("Heavy Damascus Steel Horse Armor");
+case 5575:
+return("Heavy Dark Steel Horse Armor");
 case 5580:
 return("Leather Armor");
 case 5581:
 return("Thick Leather Armor");
 case 5582:
 return("Gambeson");
+case 5583:
+return("Saddle");
 case 5585:
 return("Rhino Mount Cushion");
 case 5586:
 return("Elephant Mount Cushion");
+case 5587:
+return("Light Leather Horse Armor");
+case 5588:
+return("Medium Leather Horse Armor");
+case 5589:
+return("Heavy Leather Horse Armor");
 case 5600:
 return("Stone Shot");
 case 5601:
@@ -4454,10 +5158,12 @@ return("Stone Pouch");
 case 5620:
 return("Wood Arrow Bundle");
 case 5621:
-return("Steel Arrow Bundle");
+return("Bronze Arrow Bundle");
 case 5622:
-return("Emerald Bronze Arrow Bundle");
+return("Steel Arrow Bundle");
 case 5623:
+return("Beryl Bronze Arrow Bundle");
+case 5624:
 return("Diamond Arrow Bundle");
 case 5700:
 return("Stone Shot Pouch");
@@ -4468,51 +5174,21 @@ return("Gold Shot Pouch");
 case 5720:
 return("Wood Arrow Quiver");
 case 5721:
-return("Steel Arrow Quiver");
+return("Bronze Arrow Quiver");
 case 5722:
-return("Beryl Arrow Quiver");
+return("Steel Arrow Quiver");
 case 5723:
+return("Beryl Arrow Quiver");
+case 5724:
 return("Diamond Arrow Quiver");
-case 5800:
-return("Bronze Rhino Armor");
-case 5801:
-return("Iron Rhino Armor");
 case 5802:
 return("Steel Rhino Armor");
-case 5803:
-return("Emerald Bronze Rhino Armor");
-case 5804:
-return("Damascus Steel Rhino Armor");
-case 5810:
-return("Heavy Bronze Rhino Armor");
-case 5811:
-return("Heavy Iron Rhino Armor");
 case 5812:
 return("Heavy Steel Rhino Armor");
-case 5813:
-return("Heavy Emerald Bronze Rhino Armor");
-case 5814:
-return("Heavy Damascus Steel Rhino Armor");
-case 5820:
-return("Bronze Elephant Armor");
-case 5821:
-return("Iron Elephant Armor");
 case 5822:
 return("Steel Elephant Armor");
-case 5823:
-return("Emerald Bronze Elephant Armor");
-case 5824:
-return("Damascus Steel Elephant Armor");
-case 5830:
-return("Heavy Bronze Elephant Armor");
-case 5831:
-return("Heavy Iron Elephant Armor");
 case 5832:
 return("Heavy Steel Elephant Armor");
-case 5833:
-return("Heavy Emerald Bronze Elephant Armor");
-case 5834:
-return("Heavy Damascus Steel Elephant Armor");
 case 5900:
 return("Wooden Shield");
 case 5901:
@@ -4611,68 +5287,62 @@ case 7402:
 return("Sheep");
 case 7403:
 return("River Fish");
-case 11000:
-return("Bandits");
-case 11010:
-return("Peasent Levy");
-case 11011:
-return("Veteran Peasent Levy");
-case 11020:
-return("Levy Spear");
-case 11021:
-return("Veteran Levy Spear");
-case 11030:
-return("Mountain Levy");
-case 11031:
-return("Veteran Mountain Levy");
-case 11040:
-return("Mercenary Swordman");
-case 11041:
-return("Veteran Mercenary Swordman");
-case 11042:
-return("Palace Guard");
-case 11050:
-return("Mercenary Axeman");
-case 11060:
-return("Mercenary Maceman");
-case 11070:
-return("Pikeman");
+case 11100:
+return("Arid Inf 1");
+case 11101:
+return("Arid Inf 2");
+case 11130:
+return("Arid Cav 1");
+case 11150:
+return("Arid Rhino");
 case 11200:
-return("Peasent Bowman");
-case 11210:
-return("Levy Archer");
-case 11211:
-return("Veteran Levy Archer");
+return("Northern Inf 1");
 case 11220:
-return("Huntsman");
+return("Northern Range 1");
 case 11230:
-return("Slinger");
-case 11231:
-return("Golden Slinger");
-case 11241:
-return("Imperial Flamer");
+return("Northern Cav 1");
 case 11300:
-return("Free Lance");
-case 11301:
-return("Knight");
-case 11310:
-return("Mounted Levy");
-case 11311:
-return("Mounted Palace Guard");
+return("Brickman");
+case 11320:
+return("Raven");
+case 11321:
+return("Marching Dragon");
+case 11330:
+return("Storm Rider");
+case 11400:
+return("Southern Inf 1");
+case 11420:
+return("Southern Range 1");
+case 11450:
+return("Southern Elephant");
+case 11500:
+return("Ocean Inf 1");
 case 11501:
-return("Mercenary War Elephant");
-case 11502:
-return("Elite Mercenary War Elephant");
+return("Ocean Inf 2");
 case 11520:
-return("Mercanary War Rhino");
-case 11521:
-return("Elite Mercenary War Rhino");
+return("Ocean Ranged 1");
 case 11600:
-return("Mounted Archer");
-case 11601:
-return("Veteran Mounted Archer");
-case 11602:
-return("Palace Archer");
+return("Swamp Inf 1");
+case 11620:
+return("Swamp Ranged 1");
+case 11700:
+return("Mountain Inf 1");
+case 11701:
+return("Mountain Inf 2");
+case 11720:
+return("Mountain Ranged 1");
+case 11730:
+return("Mountain Cav 1");
+case 11800:
+return("Silver Inf 1");
+case 11830:
+return("Silver Cav 1");
+case 11900:
+return("Gold Inf 1");
+case 11920:
+return("Gold Ranged 1");
+case 11930:
+return("Golden Cav 1");
 case 28501:
 return("T1 XP");
 case 28502:
@@ -4861,12 +5531,36 @@ case 0:
 return("0");
 case 0:
 return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
+case 0:
+return("0");
 default:
               return("Error: No Name");}
           }
     function itemValue(_recipeID) {
     switch (_recipeID) {
-    case -32:
+    case -34:
+return(2);
+case -33:
+return(2);
+case -32:
 return(250);
 case -31:
 return(5000);
@@ -5070,8 +5764,6 @@ case 537:
 return(10);
 case 538:
 return(2);
-case 539:
-return(10);
 case 540:
 return(2);
 case 541:
@@ -5164,8 +5856,16 @@ case 585:
 return(2);
 case 586:
 return(2);
+case 587:
+return(2);
+case 588:
+return(2);
+case 589:
+return(2);
 case 590:
-return(5);
+return(2);
+case 591:
+return(2);
 case 1000:
 return(5);
 case 1001:
@@ -5173,6 +5873,10 @@ return(5);
 case 1002:
 return(5);
 case 1003:
+return(5);
+case 1004:
+return(5);
+case 1005:
 return(5);
 case 1010:
 return(10);
@@ -5183,6 +5887,8 @@ return(10);
 case 1013:
 return(10);
 case 1014:
+return(10);
+case 1015:
 return(10);
 case 1030:
 return(20);
@@ -5218,98 +5924,148 @@ case 1062:
 return(250);
 case 1200:
 return(5);
-case 1203:
-return(25);
-case 1204:
-return(5);
-case 1205:
+case 1201:
 return(2);
+case 1202:
+return(3);
+case 1203:
+return(3);
+case 1204:
+return(3);
+case 1205:
+return(3);
 case 1206:
-return(10);
+return(5);
 case 1207:
-return(15);
+return(5);
 case 1208:
-return(25);
+return(5);
 case 1209:
-return(25);
+return(5);
+case 1210:
+return(10);
+case 1211:
+return(5);
 case 1212:
-return(50);
+return(5);
 case 1213:
-return(100);
+return(5);
+case 1214:
+return(5);
+case 1215:
+return(10);
+case 1216:
+return(10);
+case 1217:
+return(8);
+case 1218:
+return(8);
+case 1219:
+return(10);
 case 1220:
-return(5);
+return(10);
 case 1221:
-return(5);
+return(8);
 case 1222:
 return(10);
 case 1223:
-return(3);
+return(12);
 case 1224:
-return(5);
-case 1260:
-return(40);
-case 1261:
-return(10);
-case 1262:
-return(30);
-case 1268:
-return(100);
-case 1270:
-return(30);
-case 1271:
-return(100);
-case 1272:
-return(10);
-case 1273:
-return(100);
-case 1274:
-return(20);
-case 1275:
-return(20);
-case 1276:
-return(20);
-case 1277:
-return(30);
-case 1278:
-return(50);
-case 1279:
-return(100);
-case 1280:
-return(10);
-case 1281:
-return(3);
-case 1282:
-return(10);
-case 1283:
 return(15);
-case 1284:
+case 1225:
+return(12);
+case 1226:
 return(20);
-case 1285:
+case 1227:
+return(20);
+case 1228:
+return(20);
+case 1229:
+return(15);
+case 1230:
+return(12);
+case 1231:
+return(12);
+case 1232:
+return(12);
+case 1233:
+return(8);
+case 1234:
+return(25);
+case 1235:
+return(20);
+case 1236:
+return(12);
+case 1237:
+return(25);
+case 1238:
+return(15);
+case 1239:
+return(12);
+case 1240:
+return(15);
+case 1241:
+return(25);
+case 1242:
+return(30);
+case 1243:
+return(25);
+case 1244:
+return(30);
+case 1245:
+return(40);
+case 1246:
+return(30);
+case 1247:
+return(40);
+case 1248:
 return(50);
-case 1286:
+case 1249:
+return(50);
+case 1250:
+return(25);
+case 1251:
+return(25);
+case 1252:
+return(50);
+case 1253:
+return(50);
+case 1254:
 return(100);
-case 1287:
+case 1255:
+return(75);
+case 1256:
+return(50);
+case 1257:
+return(75);
+case 1258:
+return(50);
+case 1259:
+return(75);
+case 1260:
+return(50);
+case 1261:
+return(50);
+case 1262:
+return(10);
+case 1263:
+return(25);
+case 1264:
+return(12);
+case 1265:
+return(5);
+case 1266:
 return(2);
-case 1288:
-return(5);
-case 1289:
-return(5);
-case 1290:
-return(30);
-case 1291:
-return(10);
-case 1294:
+case 1267:
+return(8);
+case 1268:
+return(250);
+case 1269:
 return(20);
-case 1295:
-return(10);
-case 1296:
-return(20);
-case 1299:
-return(10);
-case 1300:
-return(20);
-case 1301:
-return(30);
+case 1270:
+return(25);
+case 1271:
+return(250);
 case 1400:
 return(10);
 case 1401:
@@ -5323,7 +6079,7 @@ return(250);
 case 1405:
 return(5000);
 case 1406:
-return(15);
+return(20);
 case 1407:
 return(20);
 case 1408:
@@ -5340,12 +6096,8 @@ case 1413:
 return(50);
 case 1414:
 return(20);
-case 1415:
-return(100);
-case 1416:
-return(100);
 case 1417:
-return(100);
+return(5);
 case 1418:
 return(5);
 case 1419:
@@ -5374,32 +6126,54 @@ case 1431:
 return(60);
 case 1432:
 return(400);
-case 1433:
-return(10);
-case 1434:
-return(50);
-case 1435:
-return(10);
-case 1436:
-return(10);
-case 1437:
-return(80);
-case 1438:
-return(100);
-case 1439:
-return(150);
 case 1440:
-return(20);
+return(10);
 case 1441:
 return(50);
 case 1442:
-return(750);
-case 1443:
-return(20);
-case 1444:
 return(10);
-case 1445:
+case 1443:
 return(5);
+case 1444:
+return(5);
+case 1451:
+return(80);
+case 1452:
+return(100);
+case 1460:
+return(150);
+case 1461:
+return(20);
+case 1462:
+return(50);
+case 1463:
+return(750);
+case 1464:
+return(20);
+case 1465:
+return(10);
+case 1471:
+return(5);
+case 1472:
+return(2);
+case 1481:
+return(20);
+case 1482:
+return(250);
+case 1483:
+return(60);
+case 1490:
+return(100);
+case 1491:
+return(100);
+case 1492:
+return(100);
+case 1493:
+return(50);
+case 1494:
+return(100);
+case 1495:
+return(50);
 case 1900:
 return(25);
 case 1901:
@@ -5721,15 +6495,19 @@ return(475000);
 case 4104:
 return(2025000);
 case 4105:
+return(200000);
+case 4110:
 return(37500);
-case 4106:
+case 4111:
 return(75000);
-case 4107:
+case 4112:
 return(125000);
-case 4108:
+case 4113:
 return(275000);
-case 4109:
+case 4114:
 return(1050000);
+case 4115:
+return(150000);
 case 4200:
 return(70000);
 case 4201:
@@ -6060,26 +6838,10 @@ case 5073:
 return(750000);
 case 5074:
 return(3075000);
-case 5080:
-return(4500000);
-case 5081:
-return(6750000);
 case 5082:
 return(11750000);
-case 5083:
-return(26750000);
-case 5084:
-return(107250000);
-case 5090:
-return(4500000);
-case 5091:
-return(6750000);
 case 5092:
 return(11750000);
-case 5093:
-return(26750000);
-case 5094:
-return(107250000);
 case 5200:
 return(25000);
 case 5201:
@@ -6090,16 +6852,16 @@ case 5203:
 return(100);
 case 5204:
 return(700);
+case 5205:
+return(50);
 case 5210:
 return(170000);
 case 5211:
 return(10000);
 case 5212:
-return(1000000);
+return(2500000);
 case 5213:
 return(15000);
-case 5214:
-return(2000000);
 case 5400:
 return(150000);
 case 5401:
@@ -6128,6 +6890,8 @@ case 5503:
 return(600000);
 case 5504:
 return(2175000);
+case 5505:
+return(350000);
 case 5510:
 return(145000);
 case 5511:
@@ -6138,6 +6902,8 @@ case 5513:
 return(1000000);
 case 5514:
 return(4100000);
+case 5515:
+return(450000);
 case 5520:
 return(175000);
 case 5521:
@@ -6148,6 +6914,8 @@ case 5523:
 return(1150000);
 case 5524:
 return(4250000);
+case 5525:
+return(650000);
 case 5530:
 return(265000);
 case 5531:
@@ -6158,6 +6926,8 @@ case 5533:
 return(1950000);
 case 5534:
 return(8150000);
+case 5535:
+return(850000);
 case 5540:
 return(415000);
 case 5541:
@@ -6168,68 +6938,86 @@ case 5543:
 return(3050000);
 case 5544:
 return(12350000);
+case 5545:
+return(1450000);
 case 5550:
-return(385000);
+return(365000);
 case 5551:
-return(500000);
+return(450000);
 case 5552:
-return(1100000);
+return(850000);
 case 5553:
-return(2900000);
+return(2050000);
 case 5554:
-return(12200000);
-case 5560:
-return(745000);
-case 5561:
+return(8250000);
+case 5555:
 return(950000);
+case 5560:
+return(870000);
+case 5561:
+return(1100000);
 case 5562:
-return(2150000);
+return(2300000);
 case 5563:
-return(5750000);
+return(5900000);
 case 5564:
-return(24350000);
+return(24500000);
+case 5565:
+return(2600000);
 case 5570:
-return(1330000);
+return(1360000);
 case 5571:
-return(1850000);
+return(1900000);
 case 5572:
-return(3950000);
+return(3700000);
 case 5573:
-return(10250000);
+return(9100000);
 case 5574:
-return(42800000);
+return(37000000);
+case 5575:
+return(4200000);
 case 5580:
 return(125000);
 case 5581:
 return(250000);
 case 5582:
 return(60000);
+case 5583:
+return(100000);
 case 5585:
-return(50000);
+return(100000);
 case 5586:
-return(50000);
+return(100000);
+case 5587:
+return(225000);
+case 5588:
+return(525000);
+case 5589:
+return(1450000);
 case 5600:
-return(0);
+return(2000);
 case 5601:
-return(0);
+return(10000);
 case 5602:
-return(0);
+return(110000);
 case 5611:
-return(0);
+return(500000);
 case 5612:
-return(0);
+return(1000000);
 case 5613:
 return(5000);
 case 5614:
 return(5000);
 case 5620:
-return(5000);
+return(1000);
 case 5621:
-return(10000);
+return(5000);
 case 5622:
-return(50000);
+return(10000);
 case 5623:
-return(250000);
+return(25000);
+case 5624:
+return(100000);
 case 5700:
 return(5000);
 case 5701:
@@ -6244,46 +7032,16 @@ case 5722:
 return(5000);
 case 5723:
 return(5000);
-case 5800:
-return(4500000);
-case 5801:
-return(6750000);
+case 5724:
+return(5000);
 case 5802:
 return(11750000);
-case 5803:
-return(26750000);
-case 5804:
-return(104250000);
-case 5810:
-return(14250000);
-case 5811:
-return(26250000);
 case 5812:
 return(36250000);
-case 5813:
-return(66250000);
-case 5814:
-return(221250000);
-case 5820:
-return(9000000);
-case 5821:
-return(13500000);
 case 5822:
 return(23500000);
-case 5823:
-return(53500000);
-case 5824:
-return(208500000);
-case 5830:
-return(31200000);
-case 5831:
-return(56700000);
 case 5832:
 return(76700000);
-case 5833:
-return(136700000);
-case 5834:
-return(446700000);
 case 5900:
 return(50000);
 case 5901:
@@ -6382,68 +7140,62 @@ case 7402:
 return(300);
 case 7403:
 return(10);
-case 11000:
-return(0);
-case 11010:
-return(135000);
-case 11011:
-return(435000);
-case 11020:
-return(140000);
-case 11021:
-return(440000);
-case 11030:
-return(350000);
-case 11031:
-return(650000);
-case 11040:
-return(900000);
-case 11041:
-return(1600000);
-case 11042:
-return(25350000);
-case 11050:
-return(900000);
-case 11060:
-return(900000);
-case 11070:
-return(1015000);
+case 11100:
+return(232500);
+case 11101:
+return(1907500);
+case 11130:
+return(1322500);
+case 11150:
+return(36630000);
 case 11200:
-return(1560000);
-case 11210:
-return(400000);
-case 11211:
-return(1100000);
+return(1257500);
 case 11220:
-return(2225000);
+return(575000);
 case 11230:
-return(905000);
-case 11231:
-return(7575000);
-case 11241:
-return(20550000);
+return(2835000);
 case 11300:
-return(1335000);
-case 11301:
-return(2985000);
-case 11310:
-return(180000);
-case 11311:
-return(47850000);
+return(1220000);
+case 11320:
+return(617500);
+case 11321:
+return(7215000);
+case 11330:
+return(5800000);
+case 11400:
+return(1506250);
+case 11420:
+return(605000);
+case 11450:
+return(18130000);
+case 11500:
+return(757500);
 case 11501:
-return(27500000);
-case 11502:
-return(62500000);
+return(4822500);
 case 11520:
-return(22000000);
-case 11521:
-return(50000000);
+return(2027500);
 case 11600:
-return(2335000);
-case 11601:
-return(2725000);
-case 11602:
-return(21070000);
+return(1015000);
+case 11620:
+return(345000);
+case 11700:
+return(623750);
+case 11701:
+return(2907500);
+case 11720:
+return(382500);
+case 11730:
+return(6797500);
+case 11800:
+return(13050000);
+case 11830:
+return(29707500);
+case 11900:
+return(22165000);
+case 11920:
+return(4545000);
+case 11930:
+return(16342500);
 case 28501:
 return(50000);
 case 28502:
@@ -6632,13 +7384,37 @@ case 0:
 return(undefined);
 case 0:
 return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
+case 0:
+return(undefined);
 }
         return (_recipeID);
         }
 
   function marketSize(_value) {
   switch (_value) {
-  case-32:
+  case-34:
+return(0);
+case-33:
+return(0);
+case-32:
 return(0);
 case-31:
 return(0);
@@ -6842,8 +7618,6 @@ case537:
 return(10);
 case538:
 return(20);
-case539:
-return(20);
 case540:
 return(20);
 case541:
@@ -6936,7 +7710,15 @@ case585:
 return(5);
 case586:
 return(5);
+case587:
+return(5);
+case588:
+return(5);
+case589:
+return(5);
 case590:
+return(5);
+case591:
 return(5);
 case1000:
 return(10);
@@ -6945,6 +7727,10 @@ return(10);
 case1002:
 return(10);
 case1003:
+return(10);
+case1004:
+return(10);
+case1005:
 return(10);
 case1010:
 return(10);
@@ -6956,6 +7742,8 @@ case1013:
 return(10);
 case1014:
 return(10);
+case1015:
+return(20);
 case1030:
 return(10);
 case1031:
@@ -6990,98 +7778,148 @@ case1062:
 return(10);
 case1200:
 return(10);
+case1201:
+return(10);
+case1202:
+return(10);
 case1203:
-return(5);
+return(10);
 case1204:
-return(5);
+return(10);
 case1205:
-return(5);
+return(10);
 case1206:
-return(5);
+return(10);
 case1207:
-return(5);
+return(10);
 case1208:
-return(5);
+return(10);
 case1209:
-return(5);
+return(10);
+case1210:
+return(10);
+case1211:
+return(10);
 case1212:
-return(5);
+return(10);
 case1213:
-return(5);
+return(10);
+case1214:
+return(10);
+case1215:
+return(10);
+case1216:
+return(10);
+case1217:
+return(10);
+case1218:
+return(10);
+case1219:
+return(10);
 case1220:
-return(5);
+return(10);
 case1221:
-return(5);
+return(10);
 case1222:
-return(5);
+return(10);
 case1223:
-return(5);
+return(10);
 case1224:
-return(5);
+return(10);
+case1225:
+return(10);
+case1226:
+return(10);
+case1227:
+return(10);
+case1228:
+return(10);
+case1229:
+return(10);
+case1230:
+return(10);
+case1231:
+return(10);
+case1232:
+return(10);
+case1233:
+return(10);
+case1234:
+return(10);
+case1235:
+return(10);
+case1236:
+return(10);
+case1237:
+return(10);
+case1238:
+return(10);
+case1239:
+return(10);
+case1240:
+return(10);
+case1241:
+return(10);
+case1242:
+return(10);
+case1243:
+return(10);
+case1244:
+return(10);
+case1245:
+return(10);
+case1246:
+return(10);
+case1247:
+return(10);
+case1248:
+return(10);
+case1249:
+return(10);
+case1250:
+return(10);
+case1251:
+return(10);
+case1252:
+return(10);
+case1253:
+return(10);
+case1254:
+return(10);
+case1255:
+return(10);
+case1256:
+return(10);
+case1257:
+return(10);
+case1258:
+return(10);
+case1259:
+return(10);
 case1260:
-return(5);
+return(10);
 case1261:
-return(5);
+return(10);
 case1262:
-return(5);
+return(10);
+case1263:
+return(10);
+case1264:
+return(10);
+case1265:
+return(10);
+case1266:
+return(10);
+case1267:
+return(10);
 case1268:
-return(5);
+return(10);
+case1269:
+return(10);
 case1270:
-return(5);
+return(10);
 case1271:
-return(5);
-case1272:
-return(5);
-case1273:
-return(5);
-case1274:
-return(5);
-case1275:
-return(5);
-case1276:
-return(5);
-case1277:
-return(5);
-case1278:
-return(5);
-case1279:
-return(5);
-case1280:
-return(5);
-case1281:
-return(5);
-case1282:
-return(5);
-case1283:
-return(5);
-case1284:
-return(5);
-case1285:
-return(5);
-case1286:
-return(5);
-case1287:
-return(5);
-case1288:
-return(5);
-case1289:
-return(5);
-case1290:
-return(5);
-case1291:
-return(5);
-case1294:
-return(5);
-case1295:
-return(5);
-case1296:
-return(5);
-case1299:
-return(5);
-case1300:
-return(5);
-case1301:
-return(5);
+return(10);
 case1400:
 return(10);
 case1401:
@@ -7112,12 +7950,8 @@ case1413:
 return(2);
 case1414:
 return(2);
-case1415:
-return(1);
-case1416:
-return(1);
 case1417:
-return(1);
+return(5);
 case1418:
 return(10);
 case1419:
@@ -7146,20 +7980,6 @@ case1431:
 return(10);
 case1432:
 return(10);
-case1433:
-return(5);
-case1434:
-return(5);
-case1435:
-return(5);
-case1436:
-return(5);
-case1437:
-return(5);
-case1438:
-return(5);
-case1439:
-return(10);
 case1440:
 return(5);
 case1441:
@@ -7169,9 +7989,45 @@ return(5);
 case1443:
 return(10);
 case1444:
+return(10);
+case1451:
 return(5);
-case1445:
-return(0);
+case1452:
+return(5);
+case1460:
+return(10);
+case1461:
+return(5);
+case1462:
+return(5);
+case1463:
+return(5);
+case1464:
+return(10);
+case1465:
+return(5);
+case1471:
+return(5);
+case1472:
+return(5);
+case1481:
+return(5);
+case1482:
+return(5);
+case1483:
+return(5);
+case1490:
+return(5);
+case1491:
+return(5);
+case1492:
+return(5);
+case1493:
+return(2);
+case1494:
+return(5);
+case1495:
+return(5);
 case1900:
 return(10);
 case1901:
@@ -7475,17 +8331,17 @@ return(10);
 case4064:
 return(10);
 case4065:
-return(0);
+return(10);
 case4066:
-return(0);
+return(10);
 case4070:
-return(0);
+return(10);
 case4071:
-return(0);
+return(10);
 case4100:
-return(5);
+return(10);
 case4101:
-return(5);
+return(10);
 case4102:
 return(5);
 case4103:
@@ -7494,13 +8350,17 @@ case4104:
 return(5);
 case4105:
 return(5);
-case4106:
+case4110:
 return(5);
-case4107:
+case4111:
 return(5);
-case4108:
+case4112:
 return(5);
-case4109:
+case4113:
+return(5);
+case4114:
+return(5);
+case4115:
 return(5);
 case4200:
 return(5);
@@ -7832,25 +8692,9 @@ case5073:
 return(1);
 case5074:
 return(1);
-case5080:
-return(1);
-case5081:
-return(1);
 case5082:
 return(1);
-case5083:
-return(1);
-case5084:
-return(1);
-case5090:
-return(1);
-case5091:
-return(1);
 case5092:
-return(1);
-case5093:
-return(1);
-case5094:
 return(1);
 case5200:
 return(1);
@@ -7862,6 +8706,8 @@ case5203:
 return(0);
 case5204:
 return(0);
+case5205:
+return(0);
 case5210:
 return(1);
 case5211:
@@ -7870,26 +8716,24 @@ case5212:
 return(1);
 case5213:
 return(1);
-case5214:
-return(1);
 case5400:
-return(1);
+return(20);
 case5401:
-return(1);
+return(10);
 case5402:
-return(1);
+return(10);
 case5403:
-return(1);
+return(10);
 case5404:
-return(0);
+return(10);
 case5420:
-return(2);
+return(10);
 case5421:
-return(2);
+return(10);
 case5430:
-return(2);
+return(10);
 case5431:
-return(2);
+return(10);
 case5500:
 return(1);
 case5501:
@@ -7899,6 +8743,8 @@ return(1);
 case5503:
 return(1);
 case5504:
+return(1);
+case5505:
 return(1);
 case5510:
 return(1);
@@ -7910,6 +8756,8 @@ case5513:
 return(1);
 case5514:
 return(1);
+case5515:
+return(1);
 case5520:
 return(1);
 case5521:
@@ -7919,6 +8767,8 @@ return(1);
 case5523:
 return(1);
 case5524:
+return(1);
+case5525:
 return(1);
 case5530:
 return(1);
@@ -7930,6 +8780,8 @@ case5533:
 return(1);
 case5534:
 return(1);
+case5535:
+return(1);
 case5540:
 return(1);
 case5541:
@@ -7939,6 +8791,8 @@ return(1);
 case5543:
 return(1);
 case5544:
+return(1);
+case5545:
 return(1);
 case5550:
 return(1);
@@ -7950,6 +8804,8 @@ case5553:
 return(1);
 case5554:
 return(1);
+case5555:
+return(1);
 case5560:
 return(1);
 case5561:
@@ -7959,6 +8815,8 @@ return(1);
 case5563:
 return(1);
 case5564:
+return(1);
+case5565:
 return(1);
 case5570:
 return(1);
@@ -7970,38 +8828,50 @@ case5573:
 return(1);
 case5574:
 return(1);
+case5575:
+return(1);
 case5580:
 return(1);
 case5581:
 return(1);
 case5582:
 return(1);
+case5583:
+return(1);
 case5585:
-return(5);
+return(1);
 case5586:
-return(5);
+return(1);
+case5587:
+return(1);
+case5588:
+return(1);
+case5589:
+return(1);
 case5600:
-return(0);
+return(1);
 case5601:
-return(0);
+return(1);
 case5602:
-return(0);
+return(1);
 case5611:
-return(0);
+return(1);
 case5612:
-return(0);
+return(1);
 case5613:
-return(0);
+return(1);
 case5614:
-return(0);
+return(1);
 case5620:
-return(0);
+return(1);
 case5621:
-return(0);
+return(1);
 case5622:
-return(0);
+return(1);
 case5623:
-return(0);
+return(1);
+case5624:
+return(1);
 case5700:
 return(0);
 case5701:
@@ -8016,45 +8886,15 @@ case5722:
 return(0);
 case5723:
 return(0);
-case5800:
-return(1);
-case5801:
-return(1);
+case5724:
+return(0);
 case5802:
-return(1);
-case5803:
-return(1);
-case5804:
-return(1);
-case5810:
-return(1);
-case5811:
 return(1);
 case5812:
 return(1);
-case5813:
-return(1);
-case5814:
-return(1);
-case5820:
-return(1);
-case5821:
-return(1);
 case5822:
 return(1);
-case5823:
-return(1);
-case5824:
-return(1);
-case5830:
-return(1);
-case5831:
-return(1);
 case5832:
-return(1);
-case5833:
-return(1);
-case5834:
 return(1);
 case5900:
 return(1);
@@ -8154,67 +8994,61 @@ case7402:
 return(2);
 case7403:
 return(2);
-case11000:
+case11100:
 return(0);
-case11010:
+case11101:
 return(0);
-case11011:
+case11130:
 return(0);
-case11020:
-return(0);
-case11021:
-return(0);
-case11030:
-return(0);
-case11031:
-return(0);
-case11040:
-return(0);
-case11041:
-return(0);
-case11042:
-return(0);
-case11050:
-return(0);
-case11060:
-return(0);
-case11070:
+case11150:
 return(0);
 case11200:
-return(0);
-case11210:
-return(0);
-case11211:
 return(0);
 case11220:
 return(0);
 case11230:
 return(0);
-case11231:
-return(0);
-case11241:
-return(0);
 case11300:
 return(0);
-case11301:
+case11320:
 return(0);
-case11310:
+case11321:
 return(0);
-case11311:
+case11330:
+return(0);
+case11400:
+return(0);
+case11420:
+return(0);
+case11450:
+return(0);
+case11500:
 return(0);
 case11501:
 return(0);
-case11502:
-return(0);
 case11520:
-return(0);
-case11521:
 return(0);
 case11600:
 return(0);
-case11601:
+case11620:
 return(0);
-case11602:
+case11700:
+return(0);
+case11701:
+return(0);
+case11720:
+return(0);
+case11730:
+return(0);
+case11800:
+return(0);
+case11830:
+return(0);
+case11900:
+return(0);
+case11920:
+return(0);
+case11930:
 return(0);
 case28501:
 return(0);
@@ -8233,6 +9067,26 @@ return(0);
 case28508:
 return(0);
 case28800:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
+return(0);
+case0:
 return(0);
 case0:
 return(0);
@@ -8445,9 +9299,7 @@ return(0);
   case 579:
         return({ amount: [10000,0,0,0,0,0,0,0],  ingrediant: [Any_Grain,0,0,0,0,0,0,0],  outputAmount: [5000,0,0,0,0,0],  output: [579,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 583:
-        return({ amount: [400,50,0,0,0,0,0,0],  ingrediant: [Milk,Salt,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [583,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 584:
-        return({ amount: [500,500,500,500,0,0,0,0],  ingrediant: [Potato,Onion,Carrot,Any_Vegetable,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [590,0,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Milk,0,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [583,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1000:
         return({ amount: [7500,0,0,0,0,0,0,0],  ingrediant: [Any_Grain,0,0,0,0,0,0,0],  outputAmount: [3000,100,0,0,0,0],  output: [1000,1412,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [12,13,14,15,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1001:
@@ -8489,7 +9341,7 @@ return(0);
   case 1050:
         return({ amount: [100,0,0,0,0,0,0,0],  ingrediant: [Ginseng,0,0,0,0,0,0,0],  outputAmount: [150,0,0,0,0,0],  output: [1050,0,0,0,0,0], capacityUsed: 1, timeToMake: 20, allowableBuildings: [14,15,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1051:
-        return({ amount: [1000,5000,1000,500,0,0,0,0],  ingrediant: [Vodka,Allspice,Savory_Herbs,Sweet_Herbs,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1051,0,0,0,0,0], capacityUsed: 2, timeToMake: 20, allowableBuildings: [15,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1000,5000,1000,1000,0,0,0,0],  ingrediant: [Vodka,Allspice,Savory_Herbs,Sweet_Herbs,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1051,0,0,0,0,0], capacityUsed: 2, timeToMake: 20, allowableBuildings: [15,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1060:
         return({ amount: [400,400,0,0,0,0,0,0],  ingrediant: [Jungle_Wine,Winter_Wine,0,0,0,0,0,0],  outputAmount: [200,0,0,0,0,0],  output: [1060,0,0,0,0,0], capacityUsed: 1, timeToMake: 20, allowableBuildings: [15,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1061:
@@ -8497,95 +9349,149 @@ return(0);
   case 1062:
         return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Very_Polished_Rice,0,0,0,0,0,0,0],  outputAmount: [140,0,0,0,0,0],  output: [1062,0,0,0,0,0], capacityUsed: 1, timeToMake: 20, allowableBuildings: [15,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1200:
-        return({ amount: [5000,3000,0,0,0,0,0,0],  ingrediant: [Any_Flour,Any_Fuel,0,0,0,0,0,0],  outputAmount: [7000,100,0,0,0,0],  output: [1200,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Any_Fruit,0,0,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1200,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1201:
+        return({ amount: [200,100,0,0,0,0,0,0],  ingrediant: [Common_Flour,Any_Fuel,0,0,0,0,0,0],  outputAmount: [850,0,0,0,0,0],  output: [1201,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1202:
+        return({ amount: [1200,50,0,0,0,0,0,0],  ingrediant: [Peanuts,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1202,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1203:
+        return({ amount: [1200,50,0,0,0,0,0,0],  ingrediant: [Any_Grain,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1203,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1204:
-        return({ amount: [5000,3000,0,0,0,0,0,0],  ingrediant: [Any_Flour,Any_Fuel,0,0,0,0,0,0],  outputAmount: [17500,100,0,0,0,0],  output: [1205,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [900,50,100,0,0,0,0,0],  ingrediant: [Beans,Sugar,Any_Fuel,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1204,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1205:
+        return({ amount: [600,600,50,0,0,0,0,0],  ingrediant: [Rice,Beans,Any_Fuel,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1205,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1206:
-        return({ amount: [5000,200,50,0,0,0,0,0],  ingrediant: [Rye_Flour,Molasses,Barm,0,0,0,0,0],  outputAmount: [4000,0,0,0,0,0],  output: [1206,0,0,0,0,0], capacityUsed: 1, timeToMake: 5, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [250,10,125,0,0,0,0,0],  ingrediant: [Any_Flour,Barm,Any_Fuel,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1206,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1207:
-        return({ amount: [1500,3000,100,0,0,0,0,0],  ingrediant: [Pastry_Dough,Any_Fuel,Barm,0,0,0,0,0],  outputAmount: [2500,100,0,0,0,0],  output: [1207,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [100,500,200,50,0,0,0,0],  ingrediant: [Organ_Meat,Any_Root_Vegetable,Flatbread,Any_Fuel,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1207,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1208:
-        return({ amount: [1000,1000,3000,0,0,0,0,0],  ingrediant: [Pastry_Dough,Fruit_Preserve,Any_Fuel,0,0,0,0,0],  outputAmount: [1800,100,0,0,0,0],  output: [1208,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [800,30,50,0,0,0,0,0],  ingrediant: [Peanuts,Sugar,Any_Fuel,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1208,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1209:
-        return({ amount: [1000,1000,3000,0,0,0,0,0],  ingrediant: [Pastry_Dough,Aged_Cheese,Any_Fuel,0,0,0,0,0],  outputAmount: [3400,100,0,0,0,0],  output: [1209,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [700,5,50,0,0,0,0,0],  ingrediant: [Any_Green_Vegetable,Fermented_Salt_Sauce,Any_Fuel,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1209,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1210:
+        return({ amount: [400,16,50,0,0,0,0,0],  ingrediant: [Any_Meat,Any_Cooking_Oil,Any_Fuel,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1210,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1211:
+        return({ amount: [500,80,50,0,0,0,0,0],  ingrediant: [Any_Fruit,Any_Flour,Any_Fuel,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1211,0,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1212:
-        return({ amount: [75,500,100,0,0,0,0,0],  ingrediant: [Auric_Honey,Pastry_Dough,Sweet_Spice_Pack,0,0,0,0,0],  outputAmount: [600,0,0,0,0,0],  output: [1212,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [10,11,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [600,350,50,0,0,0,0,0],  ingrediant: [Oats,Any_Fruit,Any_Fuel,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1212,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1213:
-        return({ amount: [100,150,40,0,0,0,0,0],  ingrediant: [Exotic_Fruit_Preserve,Glittercake,Double_Brandy,0,0,0,0,0],  outputAmount: [575,0,0,0,0,0],  output: [1213,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [10,11,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [500,350,50,10,0,0,0,0],  ingrediant: [Potato,Onion,Any_Fuel,Salt,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1213,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1214:
+        return({ amount: [500,450,50,0,0,0,0,0],  ingrediant: [Any_Grain,Any_Vegetable,Any_Fuel,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1214,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1215:
+        return({ amount: [350,20,50,0,0,0,0,0],  ingrediant: [Rice_Flour,Any_Stock,Any_Fuel,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1215,0,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1216:
+        return({ amount: [1500,70,50,0,0,0,0,0],  ingrediant: [Rice,Cheese,Any_Fuel,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1216,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1217:
+        return({ amount: [1200,10,50,0,0,0,0,0],  ingrediant: [Rice,Curry_Sauce,Any_Fuel,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1217,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1218:
+        return({ amount: [525,450,100,0,0,0,0,0],  ingrediant: [Rice,Any_Green_Vegetable,Any_Fuel,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1218,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1219:
+        return({ amount: [24,800,800,50,0,0,0,0],  ingrediant: [Any_Stock,Any_Root_Vegetable,Any_Green_Vegetable,Any_Fuel,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1219,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1220:
-        return({ amount: [4000,5000,3000,0,0,0,0,0],  ingrediant: [Any_Flour,Any_Fruit,Any_Fuel,0,0,0,0,0],  outputAmount: [8000,100,0,0,0,0],  output: [1220,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [600,10,15,100,0,0,0,0],  ingrediant: [Wheat_Flour,Barm,Salt,Any_Fuel,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1220,0,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1221:
+        return({ amount: [1200,50,25,50,0,0,0,0],  ingrediant: [Peas,Butter,Salt,Any_Fuel,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1221,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1222:
+        return({ amount: [250,500,450,50,0,0,0,0],  ingrediant: [Game_Meat,Any_Root_Vegetable,Any_Green_Vegetable,Any_Fuel,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1222,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1223:
-        return({ amount: [4000,1000,3000,0,0,0,0,0],  ingrediant: [Any_Flour,Sugar,Any_Fuel,0,0,0,0,0],  outputAmount: [8000,100,0,0,0,0],  output: [1221,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1500,700,20,50,0,0,0,0],  ingrediant: [Rice,Mushrooms,Mushroom_Stock,Any_Fuel,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1223,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1224:
-        return({ amount: [5000,1000,5000,3000,0,0,0,0],  ingrediant: [Any_Flour,Any_Meat,Potato,Any_Fuel,0,0,0,0],  outputAmount: [5500,100,0,0,0,0],  output: [1222,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [400,70,20,50,0,0,0,0],  ingrediant: [Wheat_Flour,Whey_Cheese,Tomato_Sauce,Any_Fuel,0,0,0,0],  outputAmount: [400,0,0,0,0,0],  output: [1224,0,0,0,0,0], capacityUsed: 1, timeToMake: 3, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1225:
+        return({ amount: [500,60,20,50,0,0,0,0],  ingrediant: [Wheat_Flour,Cheese,Aged_Cheese,Any_Fuel,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1225,0,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1226:
+        return({ amount: [500,500,450,250,50,0,0,0],  ingrediant: [Any_Flour,Any_Root_Vegetable,Peas,Any_Meat,Any_Fuel,0,0,0],  outputAmount: [400,0,0,0,0,0],  output: [1226,0,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1227:
+        return({ amount: [800,240,10,50,0,0,0,0],  ingrediant: [Polished_Rice,Any_Meat,Curry_Sauce,Any_Fuel,0,0,0,0],  outputAmount: [400,0,0,0,0,0],  output: [1227,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1228:
+        return({ amount: [200,200,10,0,0,0,0,0],  ingrediant: [Polished_Rice,Beans,Sugar,0,0,0,0,0],  outputAmount: [100,0,0,0,0,0],  output: [1228,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1229:
+        return({ amount: [200,10,200,350,50,0,0,0],  ingrediant: [Rice_Flour,Any_Stock,Eggs,Any_Green_Vegetable,Any_Fuel,0,0,0],  outputAmount: [400,0,0,0,0,0],  output: [1229,0,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1230:
+        return({ amount: [600,300,50,50,200,50,0,0],  ingrediant: [Potato,Onion,Cheese,Milk,Any_Green_Vegetable,Any_Fuel,0,0],  outputAmount: [400,0,0,0,0,0],  output: [1230,0,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1231:
+        return({ amount: [500,160,100,0,0,0,0,0],  ingrediant: [Polished_Rice,Fish_Meat,Any_Fuel,0,0,0,0,0],  outputAmount: [400,0,0,0,0,0],  output: [1231,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1232:
+        return({ amount: [1000,425,425,10,50,0,0,0],  ingrediant: [Any_Grain,Any_Root_Vegetable,Any_Green_Vegetable,Any_Stock,Any_Fuel,0,0,0],  outputAmount: [400,0,0,0,0,0],  output: [1232,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1233:
+        return({ amount: [150,450,100,50,0,0,0,0],  ingrediant: [Unboiled_Meat,Any_Root_Vegetable,Flatbread,Any_Fuel,0,0,0,0],  outputAmount: [400,0,0,0,0,0],  output: [1233,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1234:
+        return({ amount: [300,250,500,160,100,0,0,0],  ingrediant: [Any_Meat,Any_Root_Vegetable,Wine,Common_Bread,Any_Fuel,0,0,0],  outputAmount: [400,0,0,0,0,0],  output: [1234,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1235:
+        return({ amount: [1000,50,0,0,0,0,0,0],  ingrediant: [Organ_Meat,Savory_Spice_Pack,0,0,0,0,0,0],  outputAmount: [400,0,0,0,0,0],  output: [1235,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1236:
+        return({ amount: [300,60,60,50,0,0,0,0],  ingrediant: [Common_Bread,Butter,Fruit_Preserve,Cheese,0,0,0,0],  outputAmount: [400,0,0,0,0,0],  output: [1236,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1237:
+        return({ amount: [500,500,500,10,0,0,0,0],  ingrediant: [Fish_Meat,Seaweed,Polished_Rice,Fermented_Salt_Sauce,0,0,0,0],  outputAmount: [400,0,0,0,0,0],  output: [1237,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1238:
+        return({ amount: [500,30,30,10,100,0,0,0],  ingrediant: [Rye_Flour,Molasses,Butter,Barm,Any_Fuel,0,0,0],  outputAmount: [400,0,0,0,0,0],  output: [1238,0,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1239:
+        return({ amount: [300,100,110,100,0,0,0,0],  ingrediant: [Wheat_Flour,Sugar,Butter,Any_Fuel,0,0,0,0],  outputAmount: [400,0,0,0,0,0],  output: [1239,0,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1240:
+        return({ amount: [250,10,200,450,50,0,0,0],  ingrediant: [Rice_Flour,Any_Stock,Tofu,Any_Green_Vegetable,Any_Fuel,0,0,0],  outputAmount: [400,0,0,0,0,0],  output: [1240,0,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1241:
+        return({ amount: [200,450,10,10,500,50,0,0],  ingrediant: [Beef,Any_Root_Vegetable,Meat_Stock,Savory_Spice_Pack,Peas,Any_Fuel,0,0],  outputAmount: [300,0,0,0,0,0],  output: [1241,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1242:
+        return({ amount: [200,250,100,90,50,0,0,0],  ingrediant: [Wheat_Flour,Any_Seafood,Milk,Eggs,Any_Fuel,0,0,0],  outputAmount: [300,0,0,0,0,0],  output: [1242,0,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1243:
+        return({ amount: [200,100,50,50,0,0,0,0],  ingrediant: [Wheat_Bread,Pate,Fruit_Preserve,Aged_Cheese,0,0,0,0],  outputAmount: [300,0,0,0,0,0],  output: [1243,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1244:
+        return({ amount: [500,450,100,10,500,50,0,0],  ingrediant: [Fish_Meat,Any_Root_Vegetable,Milk,Savory_Spice_Pack,Corn,Any_Fuel,0,0],  outputAmount: [300,0,0,0,0,0],  output: [1244,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1245:
+        return({ amount: [480,80,10,50,0,0,0,0],  ingrediant: [Polished_Rice,Flower_Hearts,Fermented_Salt_Sauce,Any_Fuel,0,0,0,0],  outputAmount: [300,0,0,0,0,0],  output: [1245,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1246:
+        return({ amount: [500,200,20,10,250,50,100,0],  ingrediant: [Mushrooms,Any_Root_Vegetable,Mushroom_Stock,Savory_Spice_Pack,Any_Green_Vegetable,Any_Fuel,Rare_Mushroom,0],  outputAmount: [300,0,0,0,0,0],  output: [1246,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1247:
+        return({ amount: [500,1000,24,24,1000,50,0,0],  ingrediant: [Mutton,Barley,Meat_Stock,Savory_Spice_Pack,Peas,Any_Fuel,0,0],  outputAmount: [300,0,0,0,0,0],  output: [1247,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1248:
+        return({ amount: [100,20,10,500,200,50,0,0],  ingrediant: [Prepared_Shark_Meat,Any_Stock,Savory_Spice_Pack,Root_Vegetable_Mix,Seaweed,Any_Fuel,0,0],  outputAmount: [300,0,0,0,0,0],  output: [1248,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1249:
+        return({ amount: [1,750,50,50,400,100,0,0],  ingrediant: [Turtle,Any_Root_Vegetable,Savory_Spice_Pack,Spicy_Spice_Park,Seaweed,Any_Fuel,0,0],  outputAmount: [750,0,0,0,0,0],  output: [1249,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1250:
+        return({ amount: [50,150,250,200,20,20,50,0],  ingrediant: [Exotic_Meat,Game_Meat,Any_Root_Vegetable,Any_Green_Vegetable,Savory_Spice_Pack,Any_Stock,Any_Fuel,0],  outputAmount: [300,0,0,0,0,0],  output: [1250,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1251:
+        return({ amount: [500,100,50,200,50,0,0,0],  ingrediant: [Polished_Rice,Shrimp_Meat,Aged_Cheese,Peas,Any_Fuel,0,0,0],  outputAmount: [300,0,0,0,0,0],  output: [1251,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1252:
+        return({ amount: [220,150,25,50,0,0,0,0],  ingrediant: [Whey_Cheese,Pastry_Dough,Brandied_Fruit,Any_Fuel,0,0,0,0],  outputAmount: [200,0,0,0,0,0],  output: [1252,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1253:
+        return({ amount: [100,500,200,100,100,10,10,20],  ingrediant: [Fish_Meat,Seaweed,Polished_Rice,Shrimp_Meat,Crab_Meat,Fermented_Salt_Sauce,Wasabi,Roe],  outputAmount: [200,0,0,0,0,0],  output: [1253,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1254:
+        return({ amount: [300,5,10,55,0,0,0,0],  ingrediant: [Pastry_Dough,Royal_Sweet_Spice_Pack,Exotic_Fruit_Preserves,Auric_Honey,0,0,0,0],  outputAmount: [200,0,0,0,0,0],  output: [1254,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1255:
+        return({ amount: [500,20,200,200,150,450,50,0],  ingrediant: [Polished_Rice,Flower_Hearts,Shrimp_Meat,Any_Seafood,Crab_Meat,Any_Root_Vegetable,Any_Fuel,0],  outputAmount: [200,0,0,0,0,0],  output: [1255,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1256:
+        return({ amount: [190,10,10,100,0,0,0,0],  ingrediant: [Pastry_Dough,Whey_Butter,Exotic_Fruit_Preserves,Any_Fuel,0,0,0,0],  outputAmount: [200,0,0,0,0,0],  output: [1256,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1257:
+        return({ amount: [200,200,50,80,100,0,0,0],  ingrediant: [Tender_Meat,Root_Vegetable_Mix,Brandy,Butter,Any_Fuel,0,0,0],  outputAmount: [200,0,0,0,0,0],  output: [1257,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1258:
+        return({ amount: [200,100,500,80,20,20,50,0],  ingrediant: [Any_Seafood,Sausage,Corn,Root_Vegetable_Mix,Savory_Spice_Pack,Spicy_Spice_Park,Any_Fuel,0],  outputAmount: [200,0,0,0,0,0],  output: [1258,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1259:
+        return({ amount: [100,50,100,20,50,150,150,300],  ingrediant: [Venison,Tender_Meat,Fish_Meat,Basic_Spice_Pack,Any_Cooking_Oil,Root_Vegetable_Mix,Green_Vegetable_Mix,Any_Meat],  outputAmount: [200,0,0,0,0,0],  output: [1259,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1260:
-        return({ amount: [5000,1500,1000,250,0,0,0,0],  ingrediant: [Organ_Meat,Allspice,Garlic,Salt,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1260,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [30,10,25,250,20,50,0,0],  ingrediant: [Aged_Cheese,Imperial_Reserve_Cheese,Aged_Whey_Cheese,Wheat_Bread,Pate,Tender_Meat,0,0],  outputAmount: [200,0,0,0,0,0],  output: [1260,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1261:
-        return({ amount: [5000,1500,1000,250,0,0,0,0],  ingrediant: [Any_Meat,Any_Cooking_Oil,Any_Flour,Salt,0,0,0,0],  outputAmount: [8000,0,0,0,0,0],  output: [1261,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [20,5,20,250,7,25,0,0],  ingrediant: [Aged_Cheese,Imperial_Reserve_Cheese,Aged_Whey_Cheese,Wheat_Bread,Exotic_Fruit_Preserves,Brandied_Fruit,0,0],  outputAmount: [200,0,0,0,0,0],  output: [1261,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1262:
-        return({ amount: [1000,5000,1000,0,0,0,0,0],  ingrediant: [Any_Meat,Any_Vegetable,Fruit_Wine,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1262,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1500,20,200,50,0,0,0,0],  ingrediant: [Tomato,Any_Stock,Flatbread,Any_Fuel,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1262,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1263:
+        return({ amount: [50,28,50,200,50,0,0,0],  ingrediant: [Meatball,Tomato_Sauce,Aged_Cheese,Wheat_Flour,Any_Fuel,0,0,0],  outputAmount: [300,0,0,0,0,0],  output: [1263,0,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1265:
+        return({ amount: [825,25,50,0,0,0,0,0],  ingrediant: [Potato,Butter,Any_Fuel,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1265,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1266:
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Cassava,0,0,0,0,0,0,0],  outputAmount: [1250,0,0,0,0,0],  output: [1266,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1267:
+        return({ amount: [380,60,50,0,0,0,0,0],  ingrediant: [Any_Flour,Any_Cooking_Oil,Any_Fuel,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1267,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1268:
-        return({ amount: [2000,20000,2000,3000,0,0,0,0],  ingrediant: [Tender_Meat,Any_Vegetable,Silver_Wine,Any_Fuel,0,0,0,0],  outputAmount: [2500,100,0,0,0,0],  output: [1268,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [9,10,11,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [100,200,20,200,100,0,0,0],  ingrediant: [Hotpot,Exotic_Meat,Wasabi,Crab_Meat,Meatball,0,0,0],  outputAmount: [100,0,0,0,0,0],  output: [1268,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1269:
-        return({ amount: [1000,1000,3000,0,0,0,0,0],  ingrediant: [Fat,Any_Meat,Any_Fuel,0,0,0,0,0],  outputAmount: [1500,100,0,0,0,0],  output: [1443,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [500,100,100,10,250,100,50,0],  ingrediant: [Any_Meat,Eggs,Common_Bread,Cheese,Onion,Garlic,Any_Fuel,0],  outputAmount: [400,0,0,0,0,0],  output: [1269,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1270:
-        return({ amount: [2000,6000,200,3000,0,0,0,0],  ingrediant: [Beef,Veggie_Mix,Any_Stock,Any_Fuel,0,0,0,0],  outputAmount: [3000,100,0,0,0,0],  output: [1270,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [500,1500,25,500,0,0,0,0],  ingrediant: [Fish_Meat,Lemons,Paprika,Olives,0,0,0,0],  outputAmount: [400,0,0,0,0,0],  output: [1270,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1271:
-        return({ amount: [2000,5000,10,100,3000,0,0,0],  ingrediant: [Tender_Meat,Veggie_Mix,Royal_Spice_Pack,Any_Stock,Any_Fuel,0,0,0],  outputAmount: [1900,100,0,0,0,0],  output: [1271,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1272:
-        return({ amount: [5000,500,100,3000,0,0,0,0],  ingrediant: [Onion,Cheese,Any_Stock,Any_Fuel,0,0,0,0],  outputAmount: [3500,100,0,0,0,0],  output: [1272,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1273:
-        return({ amount: [1500,3000,20,3000,0,0,0,0],  ingrediant: [Exotic_Meat,Veggie_Mix,Basic_Spice_Pack,Any_Fuel,0,0,0,0],  outputAmount: [1050,100,0,0,0,0],  output: [1273,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1274:
-        return({ amount: [1000,2000,5000,100,3000,0,0,0],  ingrediant: [Chicken_Meat,Any_Flour,Any_Vegetable,Any_Stock,Any_Fuel,0,0,0],  outputAmount: [2250,100,0,0,0,0],  output: [1274,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1275:
-        return({ amount: [1500,500,2500,2500,100,3000,0,0],  ingrediant: [Fish_Meat,Milk,Corn,Potato,Any_Stock,Any_Fuel,0,0],  outputAmount: [2250,100,0,0,0,0],  output: [1275,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1276:
-        return({ amount: [7500,2500,2500,2500,100,3000,0,0],  ingrediant: [Beans,Mushrooms,Corn,Potato,Vegetable_Stock,Any_Fuel,0,0],  outputAmount: [2250,100,0,0,0,0],  output: [1276,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1277:
-        return({ amount: [1000,1000,100,5000,3000,0,0,0],  ingrediant: [Any_Seafood,Milk,Spicy_Sauce,Any_Vegetable,Any_Fuel,0,0,0],  outputAmount: [2000,100,0,0,0,0],  output: [1277,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1278:
-        return({ amount: [1,1000,100,100,3000,0,0,0],  ingrediant: [Turtle,Veggie_Mix,Savory_Spice_Pack,Spicy_Spice_Park,Any_Fuel,0,0,0],  outputAmount: [1100,100,0,0,0,0],  output: [1278,4023,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [9,10,11,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1279:
-        return({ amount: [1000,100,100,3000,0,0,0,0],  ingrediant: [Prepared_Shark_Meat,Any_Stock,Savory_Spice_Pack,Any_Fuel,0,0,0,0],  outputAmount: [1250,100,0,0,0,0],  output: [1279,4023,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [9,10,11,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1280:
-        return({ amount: [10000,500,3000,0,0,0,0,0],  ingrediant: [Beans,Sugar,Any_Fuel,0,0,0,0,0],  outputAmount: [3500,100,0,0,0,0],  output: [1280,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1281:
-        return({ amount: [5000,5000,3000,0,0,0,0,0],  ingrediant: [Beans,Rice,Any_Fuel,0,0,0,0,0],  outputAmount: [10000,100,0,0,0,0],  output: [1281,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1282:
-        return({ amount: [1000,5000,2500,3000,0,0,0,0],  ingrediant: [Any_Meat,Potato,Onion,Any_Fuel,0,0,0,0],  outputAmount: [3500,100,0,0,0,0],  output: [1282,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1283:
-        return({ amount: [500,1000,3000,0,0,0,0,0],  ingrediant: [Crab_Meat,Any_Cooking_Oil,Any_Fuel,0,0,0,0,0],  outputAmount: [2000,100,0,0,0,0],  output: [1283,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1284:
-        return({ amount: [1500,2000,400,400,0,0,0,0],  ingrediant: [Seaweed,Rice,Fish_Meat,Shrimp_Meat,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1284,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1285:
-        return({ amount: [2500,2500,500,100,500,500,100,0],  ingrediant: [Seaweed,Rice,Fish_Meat,Roe,Crab_Meat,Shrimp_Meat,Spicy_Spice_Park,0],  outputAmount: [1000,0,0,0,0,0],  output: [1285,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [9,10,11,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1286:
-        return({ amount: [1000,100,10,3000,0,0,0,0],  ingrediant: [Rare_Mushroom,Mushroom_Stock,Royal_Spice_Pack,Any_Fuel,0,0,0,0],  outputAmount: [1200,100,0,0,0,0],  output: [1286,4023,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [9,10,11,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1287:
-        return({ amount: [7500,500,0,0,0,0,0,0],  ingrediant: [Oats,Any_Fuel,0,0,0,0,0,0],  outputAmount: [8000,100,0,0,0,0],  output: [1287,4023,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1288:
-        return({ amount: [7500,500,1000,2000,0,0,0,0],  ingrediant: [Oats,Any_Fuel,Sugar,Any_Fruit,0,0,0,0],  outputAmount: [6000,100,0,0,0,0],  output: [1288,4023,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1289:
-        return({ amount: [1000,5000,0,0,0,0,0,0],  ingrediant: [Unboiled_Meat,Any_Vegetable,0,0,0,0,0,0],  outputAmount: [5000,0,0,0,0,0],  output: [1289,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1290:
-        return({ amount: [5,4,0,0,0,0,0,0],  ingrediant: [Chicken,Basic_Spice_Pack,0,0,0,0,0,0],  outputAmount: [100,0,0,0,0,0],  output: [1290,0,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1291:
-        return({ amount: [10000,200,150,0,0,0,0,0],  ingrediant: [Peas,Butter,Salt,0,0,0,0,0],  outputAmount: [3000,0,0,0,0,0],  output: [1291,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1294:
-        return({ amount: [1000,5000,1000,0,0,0,0,0],  ingrediant: [Mutton,Peas,Mixed_Vegetables,0,0,0,0,0],  outputAmount: [1500,0,0,0,0,0],  output: [1294,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1295:
-        return({ amount: [500,500,0,0,0,0,0,0],  ingrediant: [Mixed_Vegetables,Sugar,0,0,0,0,0,0],  outputAmount: [1250,0,0,0,0,0],  output: [1295,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1296:
-        return({ amount: [2000,500,100,0,0,0,0,0],  ingrediant: [Mutton,Honey,Savory_Spice_Pack,0,0,0,0,0],  outputAmount: [1750,0,0,0,0,0],  output: [1296,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,false,false,false,false,false,true,true,true]})
-  case 1299:
-        return({ amount: [5000,1000,3000,0,0,0,0,0],  ingrediant: [Rice,Cheese,Any_Fuel,0,0,0,0,0],  outputAmount: [4000,100,0,0,0,0],  output: [1299,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1300:
-        return({ amount: [5000,10000,500,500,3000,0,0,0],  ingrediant: [Polished_Rice,Mushrooms,Cheese,Butter,Any_Fuel,0,0,0],  outputAmount: [3500,100,0,0,0,0],  output: [1300,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1301:
-        return({ amount: [5000,1000,1000,5000,3000,0,0,0],  ingrediant: [Polished_Rice,Cheese,Shrimp_Meat,Peas,Any_Fuel,0,0,0],  outputAmount: [2500,100,0,0,0,0],  output: [1301,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [100,50,50,500,75,50,50,40],  ingrediant: [Ceviche,Oceans_Bounty,Fine_Sushi,Shrimp_Meat,Shark_Soup,Turtle_Soup,Tomato_Sauce,Seafood_Boil],  outputAmount: [100,0,0,0,0,0],  output: [1271,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1400:
-        return({ amount: [2500,0,0,0,0,0,0,0],  ingrediant: [T1_Drink,0,0,0,0,0,0,0],  outputAmount: [2000,0,0,0,0,0],  output: [1400,0,0,0,0,0], capacityUsed: 1, timeToMake: 15, allowableBuildings: [12,13,14,15,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [2500,0,0,0,0,0,0,0],  ingrediant: [T1_Drink,0,0,0,0,0,0,0],  outputAmount: [1750,0,0,0,0,0],  output: [1400,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [12,13,14,15,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1402:
         return({ amount: [10000,0,0,0,0,0,0,0],  ingrediant: [Olives,0,0,0,0,0,0,0],  outputAmount: [2500,0,0,0,0,0],  output: [1402,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1403:
@@ -8595,7 +9501,7 @@ return(0);
   case 1405:
         return({ amount: [2,2,1,0,0,0,0,0],  ingrediant: [Royal_Sweet_Spice_Pack,Royal_Savory_Spice_Park,Royal_Spicy_Spice_Park,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1405,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1406:
-        return({ amount: [5000,1000,1000,500,500,0,0,0],  ingrediant: [Wheat_Flour,Eggs,Any_Cooking_Oil,Milk,Sugar,0,0,0],  outputAmount: [4000,0,0,0,0,0],  output: [1406,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [5000,1000,1000,500,500,0,0,0],  ingrediant: [Wheat_Flour,Eggs,Any_Cooking_Oil,Milk,Sugar,0,0,0],  outputAmount: [3000,0,0,0,0,0],  output: [1406,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1407:
         return({ amount: [500,5000,0,0,0,0,0,0],  ingrediant: [Sugar,Any_Fruit,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1407,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1408:
@@ -8610,10 +9516,6 @@ return(0);
         return({ amount: [2500,0,0,0,0,0,0,0],  ingrediant: [Sugarcane_Pulp,0,0,0,0,0,0,0],  outputAmount: [150,250,0,0,0,0],  output: [1413,4022,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1414:
         return({ amount: [5000,0,0,0,0,0,0,0],  ingrediant: [Peppers,0,0,0,0,0,0,0],  outputAmount: [750,0,0,0,0,0],  output: [1414,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1416:
-        return({ amount: [400,100,0,0,0,0,0,0],  ingrediant: [Wine,Sugar,0,0,0,0,0,0],  outputAmount: [100,0,0,0,0,0],  output: [1416,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1417:
-        return({ amount: [5000,200,150,60,0,0,0,0],  ingrediant: [Peppers,Vinegar,Sugar,Spicy_Herbs,0,0,0,0],  outputAmount: [200,0,0,0,0,0],  output: [1417,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1418:
         return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Any_Flour,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1418,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1423:
@@ -8629,31 +9531,49 @@ return(0);
   case 1428:
         return({ amount: [10,10,0,0,0,0,0,0],  ingrediant: [Spicy_Spice_Park,Wasabi,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1428,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1430:
-        return({ amount: [1400,50,0,0,0,0,0,0],  ingrediant: [Milk,Salt,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1430,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1000,50,0,0,0,0,0,0],  ingrediant: [Milk,Salt,0,0,0,0,0,0],  outputAmount: [600,800,0,0,0,0],  output: [1430,1004,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1431:
         return({ amount: [1250,0,0,0,0,0,0,0],  ingrediant: [Cheese,0,0,0,0,0,0,0],  outputAmount: [1250,0,0,0,0,0],  output: [1431,0,0,0,0,0], capacityUsed: 1, timeToMake: 100, allowableBuildings: [23,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1432:
         return({ amount: [1250,0,0,0,0,0,0,0],  ingrediant: [Cheese,0,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1432,0,0,0,0,0], capacityUsed: 1, timeToMake: 900, allowableBuildings: [23,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1433:
-        return({ amount: [20000,0,0,0,0,0,0,0],  ingrediant: [Any_Vegetable,0,0,0,0,0,0,0],  outputAmount: [5000,0,0,0,0,0],  output: [1433,0,0,0,0,0], capacityUsed: 1, timeToMake: 20, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [20000,0,0,0,0,0,0,0],  ingrediant: [Any_Vegetable,0,0,0,0,0,0,0],  outputAmount: [5000,0,0,0,0,0],  output: [1440,0,0,0,0,0], capacityUsed: 1, timeToMake: 20, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1434:
-        return({ amount: [10000,5000,0,0,0,0,0,0],  ingrediant: [Any_Vegetable,Vinegar,0,0,0,0,0,0],  outputAmount: [1500,0,0,0,0,0],  output: [1434,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 1435:
-        return({ amount: [10000,0,0,0,0,0,0,0],  ingrediant: [Any_Fruit,0,0,0,0,0,0,0],  outputAmount: [2500,0,0,0,0,0],  output: [1436,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [10000,5000,0,0,0,0,0,0],  ingrediant: [Any_Vegetable,Vinegar,0,0,0,0,0,0],  outputAmount: [1500,0,0,0,0,0],  output: [1441,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1436:
-        return({ amount: [5000,500,0,0,0,0,0,0],  ingrediant: [Any_Fruit,Brandy,0,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1437,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [5000,500,0,0,0,0,0,0],  ingrediant: [Any_Fruit,Brandy,0,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1451,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1437:
-        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Any_Exotic_Berry,0,0,0,0,0,0,0],  outputAmount: [250,0,0,0,0,0],  output: [1438,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Any_Exotic_Berry,0,0,0,0,0,0,0],  outputAmount: [250,0,0,0,0,0],  output: [1452,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1439:
-        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Any_Meat,0,0,0,0,0,0,0],  outputAmount: [100,0,0,0,0,0],  output: [1439,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Any_Meat,0,0,0,0,0,0,0],  outputAmount: [100,0,0,0,0,0],  output: [1460,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1440:
-        return({ amount: [5000,1000,0,0,0,0,0,0],  ingrediant: [Any_Meat,Salt,0,0,0,0,0,0],  outputAmount: [3750,0,0,0,0,0],  output: [1440,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [5000,1000,0,0,0,0,0,0],  ingrediant: [Any_Meat,Salt,0,0,0,0,0,0],  outputAmount: [3750,0,0,0,0,0],  output: [1461,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1441:
-        return({ amount: [3000,1500,0,0,0,0,0,0],  ingrediant: [Ash,Eggs,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1441,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [3000,1500,0,0,0,0,0,0],  ingrediant: [Ash,Eggs,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1462,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1442:
-        return({ amount: [1400,0,0,0,0,0,0,0],  ingrediant: [Exotic_Meat,0,0,0,0,0,0,0],  outputAmount: [100,0,0,0,0,0],  output: [1442,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1400,0,0,0,0,0,0,0],  ingrediant: [Exotic_Meat,0,0,0,0,0,0,0],  outputAmount: [100,0,0,0,0,0],  output: [1463,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1443:
+        return({ amount: [500,500,500,500,0,0,0,0],  ingrediant: [Potato,Onion,Carrot,Any_Vegetable,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [1443,0,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1443:
+        return({ amount: [1000,1000,3000,0,0,0,0,0],  ingrediant: [Fat,Any_Meat,Any_Fuel,0,0,0,0,0],  outputAmount: [1500,100,0,0,0,0],  output: [1464,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1444:
-        return({ amount: [2000,20,0,0,0,0,0,0],  ingrediant: [Organ_Meat,Savory_Spice_Pack,0,0,0,0,0,0],  outputAmount: [1600,0,0,0,0,0],  output: [1444,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [2000,20,0,0,0,0,0,0],  ingrediant: [Organ_Meat,Savory_Spice_Pack,0,0,0,0,0,0],  outputAmount: [1600,0,0,0,0,0],  output: [1465,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1471:
+        return({ amount: [3000,0,0,0,0,0,0,0],  ingrediant: [Soybeans,0,0,0,0,0,0,0],  outputAmount: [600,600,500,0,0,0],  output: [1005,1471,1472,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1481:
+        return({ amount: [1000,50,100,0,0,0,0,0],  ingrediant: [Whey,Salt,Vinegar,0,0,0,0,0],  outputAmount: [600,0,0,0,0,0],  output: [1481,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1482:
+        return({ amount: [2000,50,100,2000,0,0,0,0],  ingrediant: [Whey,Salt,Vinegar,Any_Fuel,0,0,0,0],  outputAmount: [80,100,0,0,0,0],  output: [1482,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1483:
+        return({ amount: [1250,0,0,0,0,0,0,0],  ingrediant: [Whey_Cheese,0,0,0,0,0,0,0],  outputAmount: [1250,0,0,0,0,0],  output: [1483,0,0,0,0,0], capacityUsed: 1, timeToMake: 100, allowableBuildings: [23,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1490:
+        return({ amount: [400,100,0,0,0,0,0,0],  ingrediant: [Wine,Sugar,0,0,0,0,0,0],  outputAmount: [100,0,0,0,0,0],  output: [1490,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1491:
+        return({ amount: [5000,200,150,60,0,0,0,0],  ingrediant: [Peppers,Vinegar,Sugar,Spicy_Herbs,0,0,0,0],  outputAmount: [200,0,0,0,0,0],  output: [1491,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1492:
+        return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Unfinished_Salt_Sauce,0,0,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1492,0,0,0,0,0], capacityUsed: 1, timeToMake: 50, allowableBuildings: [23,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 1493:
+        return({ amount: [100,0,0,0,0,0,0,0],  ingrediant: [Fish_Meat,0,0,0,0,0,0,0],  outputAmount: [30,0,0,0,0,0],  output: [1493,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1901:
         return({ amount: [250,50,0,0,0,0,0,0],  ingrediant: [Any_Grain,Dried_Vegetables,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1901,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1902:
@@ -8675,9 +9595,9 @@ return(0);
   case 1911:
         return({ amount: [10,5,0,0,0,0,0,0],  ingrediant: [Cheese,Sugar,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1911,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1912:
-        return({ amount: [2,30,10,0,0,0,0,0],  ingrediant: [Basic_Spice_Pack,Dried_Fruit,Cheese,0,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [1912,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1,30,5,0,0,0,0,0],  ingrediant: [Basic_Spice_Pack,Dried_Fruit,Cheese,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1912,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1913:
-        return({ amount: [2,30,10,0,0,0,0,0],  ingrediant: [Basic_Spice_Pack,Dried_Fruit,Cheese,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1913,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [2,60,10,0,0,0,0,0],  ingrediant: [Basic_Spice_Pack,Dried_Fruit,Cheese,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1913,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1914:
         return({ amount: [2,50,30,0,0,0,0,0],  ingrediant: [Basic_Spice_Pack,Fruit_Preserve,Cheese,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1914,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1915:
@@ -8687,9 +9607,9 @@ return(0);
   case 1917:
         return({ amount: [1,70,90,0,0,0,0,0],  ingrediant: [Royal_Spice_Pack,Brandied_Fruit,Aged_Cheese,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1917,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1918:
-        return({ amount: [1,90,50,0,0,0,0,0],  ingrediant: [Royal_Spice_Pack,Brandied_Fruit,Imperial_Cheese,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1918,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1,90,50,0,0,0,0,0],  ingrediant: [Royal_Spice_Pack,Brandied_Fruit,Imperial_Reserve_Cheese,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1918,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1919:
-        return({ amount: [4,150,80,0,0,0,0,0],  ingrediant: [Royal_Spice_Pack,Brandied_Fruit,Imperial_Cheese,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1919,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [4,150,80,0,0,0,0,0],  ingrediant: [Royal_Spice_Pack,Brandied_Fruit,Imperial_Reserve_Cheese,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1919,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1921:
         return({ amount: [50,0,0,0,0,0,0,0],  ingrediant: [T1_Drink,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1921,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1922:
@@ -8711,9 +9631,9 @@ return(0);
   case 1930:
         return({ amount: [1000,200,50,10,0,0,0,0],  ingrediant: [Soap,Treated_Fabric,Antiseptic,Soothing_Tea,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1930,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1990:
-        return({ amount: [250,100,0,0,0,0,0,0],  ingrediant: [Basic_Flatbread,T1_Drink,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1990,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [250,50,0,0,0,0,0,0],  ingrediant: [Flatbread,Sweet_Beer,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1990,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1991:
-        return({ amount: [100,200,0,0,0,0,0,0],  ingrediant: [Pemmican,T2_Drink,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1991,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [100,100,0,0,0,0,0,0],  ingrediant: [Pemmican,Rum,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [1991,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 1992:
         return({ amount: [50,50,120,200,200,300,300,0],  ingrediant: [Brandied_Fruit,Aged_Cheese,T4_Drink,Any_Flour,Pickled_Vegetables,Salted_Meat,Preserved_Eggs,0],  outputAmount: [1,0,0,0,0,0],  output: [1992,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 2080:
@@ -8855,19 +9775,23 @@ return(0);
   case 4102:
         return({ amount: [2000,2000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [2,600,0,0,0,0],  output: [4102,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 4103:
-        return({ amount: [2000,2000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [2,600,0,0,0,0],  output: [4103,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [2000,2000,0,0,0,0,0,0],  ingrediant: [Beryl_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [2,600,0,0,0,0],  output: [4103,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 4104:
-        return({ amount: [500,1000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [4109,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [500,1000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [4114,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 4105:
-        return({ amount: [2000,4000,0,0,0,0,0,0],  ingrediant: [Bronze,Any_Fuel,0,0,0,0,0,0],  outputAmount: [4,800,0,0,0,0],  output: [4105,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 4106:
-        return({ amount: [500,1000,0,0,0,0,0,0],  ingrediant: [Iron,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [4106,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 4107:
-        return({ amount: [500,1000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [4107,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 4108:
-        return({ amount: [500,1000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [4108,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 4109:
+        return({ amount: [2000,5000,2000,10,0,0,0,0],  ingrediant: [Steel,Charcoal,Vinegar,Rushseed_Oil,0,0,0,0],  outputAmount: [2,1000,0,0,0,0],  output: [4105,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4110:
+        return({ amount: [2000,4000,0,0,0,0,0,0],  ingrediant: [Bronze,Any_Fuel,0,0,0,0,0,0],  outputAmount: [4,800,0,0,0,0],  output: [4110,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4111:
+        return({ amount: [500,1000,0,0,0,0,0,0],  ingrediant: [Iron,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [4111,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4112:
+        return({ amount: [500,1000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [4112,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4113:
+        return({ amount: [500,1000,0,0,0,0,0,0],  ingrediant: [Beryl_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [4113,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4114:
         return({ amount: [2000,2000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [2,600,0,0,0,0],  output: [4104,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 4115:
+        return({ amount: [500,2000,1000,6,0,0,0,0],  ingrediant: [Steel,Charcoal,Vinegar,Rushseed_Oil,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [4115,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 4200:
         return({ amount: [200,400,200,0,0,0,0,0],  ingrediant: [Berry_Dust,Human_Earth,Vitae_Dust,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4200,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,true,false,false,false]})
   case 4201:
@@ -8895,7 +9819,7 @@ return(0);
   case 4225:
         return({ amount: [200,50,0,0,0,0,0,0],  ingrediant: [Joyous_Flowers,Pure_Alcohol,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4225,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,true,false,false,false]})
   case 4226:
-        return({ amount: [300,0,0,0,0,0,0,0],  ingrediant: [Silver_Bark,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4226,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [300,0,0,0,0,0,0,0],  ingrediant: [Silver_Bark,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4226,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,true,false,false,false]})
   case 4227:
         return({ amount: [400,50,0,0,0,0,0,0],  ingrediant: [Savory_Herbs,Pure_Alcohol,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4227,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,true,false,false,false]})
   case 4311:
@@ -8979,7 +9903,7 @@ return(0);
   case 4541:
         return({ amount: [200,5000,200,0,0,0,0,0],  ingrediant: [Steel,Wood,Antler,0,0,0,0,0],  outputAmount: [10,0,0,0,0,0],  output: [4541,0,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 4542:
-        return({ amount: [100,32,100,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Ivory,Exotic_Leather,0,0,0,0,0],  outputAmount: [10,0,0,0,0,0],  output: [4542,0,0,0,0,0], capacityUsed: 15, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [100,32,100,0,0,0,0,0],  ingrediant: [Beryl_Bronze,Ivory,Exotic_Leather,0,0,0,0,0],  outputAmount: [10,0,0,0,0,0],  output: [4542,0,0,0,0,0], capacityUsed: 15, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 4560:
         return({ amount: [400,100,0,0,0,0,0,0],  ingrediant: [Copper,Any_Polished_Common_Gemstone,0,0,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4560,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 4561:
@@ -9057,19 +9981,19 @@ return(0);
   case 4681:
         return({ amount: [1000,6000,0,0,0,0,0,0],  ingrediant: [Forest_Glass,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [4681,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 4682:
-        return({ amount: [3000,0,0,0,0,0,0,0],  ingrediant: [Crystal_Glass,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4682,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [3000,0,0,0,0,0,0,0],  ingrediant: [Crystal_Glass,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4682,0,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 4683:
         return({ amount: [250,1000,0,0,0,0,0,0],  ingrediant: [Gold,Any_Polished_Rare_Gemstone,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4683,0,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [27,28,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 4684:
         return({ amount: [10,0,0,0,0,0,0,0],  ingrediant: [Gold_Artifact_Cache,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4684,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 4700:
-        return({ amount: [0,0,0,0,0,0,0,0],  ingrediant: [7500,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4700,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [19,200,200,200,200,200,200,200],allowableBuildingTypes: [true,false,false,false,false,false,true,true,true]})
+        return({ amount: [7500,0,0,0,0,0,0,0],  ingrediant: [Stone,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4700,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [19,200,200,200,200,200,200,200],allowableBuildingTypes: [true,false,false,false,false,false,true,true,true]})
   case 4701:
         return({ amount: [400,0,0,0,0,0,0,0],  ingrediant: [Silver,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4701,0,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [26,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 4702:
         return({ amount: [400,0,0,0,0,0,0,0],  ingrediant: [Gold,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4702,0,0,0,0,0], capacityUsed: 20, timeToMake: 10, allowableBuildings: [27,28,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 4703:
-        return({ amount: [7,0,0,0,0,0,0,0],  ingrediant: [Bronze_Artifact_Cache,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4703,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [15,0,0,0,0,0,0,0],  ingrediant: [Bronze_Artifact_Cache,0,0,0,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4703,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 4704:
         return({ amount: [2,0,0,0,0,0,0,0],  ingrediant: [Gold_Artifact_Cache,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4704,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 4720:
@@ -9113,7 +10037,7 @@ return(0);
   case 5002:
         return({ amount: [2000,4000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [5,200,0,0,0,0],  output: [5002,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5003:
-        return({ amount: [2000,4000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [5,200,0,0,0,0],  output: [5003,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [2000,4000,0,0,0,0,0,0],  ingrediant: [Beryl_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [5,200,0,0,0,0],  output: [5003,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5004:
         return({ amount: [2000,4000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [5,200,0,0,0,0],  output: [5004,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5010:
@@ -9123,7 +10047,7 @@ return(0);
   case 5012:
         return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5012,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5013:
-        return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5013,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Beryl_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5013,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5014:
         return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5014,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5020:
@@ -9133,7 +10057,7 @@ return(0);
   case 5022:
         return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5022,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5023:
-        return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5023,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Beryl_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5023,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5024:
         return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5024,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5025:
@@ -9145,7 +10069,7 @@ return(0);
   case 5032:
         return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5032,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5033:
-        return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5033,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Beryl_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5033,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5034:
         return({ amount: [1000,4000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,200,0,0,0,0],  output: [5034,4023,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5040:
@@ -9155,7 +10079,7 @@ return(0);
   case 5042:
         return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5042,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5043:
-        return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5043,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Beryl_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5043,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5044:
         return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5044,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5050:
@@ -9165,7 +10089,7 @@ return(0);
   case 5052:
         return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5052,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5053:
-        return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5053,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Beryl_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5053,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5054:
         return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5054,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5060:
@@ -9175,7 +10099,7 @@ return(0);
   case 5062:
         return({ amount: [2000,6000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5062,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5063:
-        return({ amount: [2000,6000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5063,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [2000,6000,0,0,0,0,0,0],  ingrediant: [Beryl_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5063,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5064:
         return({ amount: [2000,6000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5064,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5070:
@@ -9185,29 +10109,13 @@ return(0);
   case 5072:
         return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5072,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5073:
-        return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5073,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Beryl_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5073,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5074:
         return({ amount: [1500,6000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [1,300,0,0,0,0],  output: [5074,4023,0,0,0,0], capacityUsed: 12, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5080:
-        return({ amount: [50,175000,0,0,0,0,0,0],  ingrediant: [Bronze_Plate,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,5000,0,0,0,0],  output: [5080,4023,0,0,0,0], capacityUsed: 24, timeToMake: 100, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5081:
-        return({ amount: [50,225000,0,0,0,0,0,0],  ingrediant: [Iron_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,7500,0,0,0,0],  output: [5081,4023,0,0,0,0], capacityUsed: 24, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5082:
         return({ amount: [50,225000,0,0,0,0,0,0],  ingrediant: [Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,7500,0,0,0,0],  output: [5082,4023,0,0,0,0], capacityUsed: 24, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5083:
-        return({ amount: [50,225000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,7500,0,0,0,0],  output: [5083,4023,0,0,0,0], capacityUsed: 24, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5084:
-        return({ amount: [50,450000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,15000,0,0,0,0],  output: [5084,4023,0,0,0,0], capacityUsed: 24, timeToMake: 400, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5090:
-        return({ amount: [50,175000,0,0,0,0,0,0],  ingrediant: [Bronze_Plate,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,5000,0,0,0,0],  output: [5090,4023,0,0,0,0], capacityUsed: 24, timeToMake: 100, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5091:
-        return({ amount: [50,225000,0,0,0,0,0,0],  ingrediant: [Iron_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,7500,0,0,0,0],  output: [5091,4023,0,0,0,0], capacityUsed: 24, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5092:
         return({ amount: [50,225000,0,0,0,0,0,0],  ingrediant: [Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,7500,0,0,0,0],  output: [5092,4023,0,0,0,0], capacityUsed: 24, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5093:
-        return({ amount: [50,225000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,7500,0,0,0,0],  output: [5093,4023,0,0,0,0], capacityUsed: 24, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5094:
-        return({ amount: [50,450000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,15000,0,0,0,0],  output: [5094,4023,0,0,0,0], capacityUsed: 24, timeToMake: 400, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5200:
         return({ amount: [5000,0,0,0,0,0,0,0],  ingrediant: [Wood,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5200,0,0,0,0,0], capacityUsed: 3, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5201:
@@ -9217,17 +10125,17 @@ return(0);
   case 5203:
         return({ amount: [100,4000,0,0,0,0,0,0],  ingrediant: [Steel,Charcoal,0,0,0,0,0,0],  outputAmount: [300,200,0,0,0,0],  output: [5203,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5204:
-        return({ amount: [100,4000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [150,200,0,0,0,0],  output: [5204,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [100,4000,0,0,0,0,0,0],  ingrediant: [Beryl_Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [150,200,0,0,0,0],  output: [5204,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5205:
+        return({ amount: [300,4000,0,0,0,0,0,0],  ingrediant: [Bronze,Charcoal,0,0,0,0,0,0],  outputAmount: [1000,200,0,0,0,0],  output: [5205,4023,0,0,0,0], capacityUsed: 5, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5210:
         return({ amount: [5000,2,0,0,0,0,0,0],  ingrediant: [Wood,Iron_Plate,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5210,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5211:
         return({ amount: [75,0,0,0,0,0,0,0],  ingrediant: [Fabric,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5211,0,0,0,0,0], capacityUsed: 1, timeToMake: 5, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5212:
-        return({ amount: [12,0,0,0,0,0,0,0],  ingrediant: [Iron_Plate,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5212,0,0,0,0,0], capacityUsed: 5, timeToMake: 40, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [30,0,0,0,0,0,0,0],  ingrediant: [Iron_Plate,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5212,0,0,0,0,0], capacityUsed: 20, timeToMake: 25, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5213:
         return({ amount: [5000,0,0,0,0,0,0,0],  ingrediant: [Stone,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5213,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [19,200,200,200,200,200,200,200],allowableBuildingTypes: [true,false,false,false,false,false,true,true,true]})
-  case 5214:
-        return({ amount: [1,1900,0,0,0,0,0,0],  ingrediant: [Basic_Sling,Gold,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5214,0,0,0,0,0], capacityUsed: 6, timeToMake: 30, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5420:
         return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Elephant,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5420,0,0,0,0,0], capacityUsed: 50, timeToMake: 30, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,true,false,false,false,false,false]})
   case 5421:
@@ -9237,107 +10145,143 @@ return(0);
   case 5431:
         return({ amount: [0,0,0,0,0,0,0,0],  ingrediant: [0,0,0,0,0,0,0,0],  outputAmount: [0,0,0,0,0,0],  output: [0,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5500:
-        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Bronze_Chainmail,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,400,0,0,0,0],  output: [5500,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Bronze_Chainmail,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,400,0,0,0,0],  output: [5500,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,true,false,false]})
   case 5501:
-        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Iron_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5501,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Iron_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5501,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,true,false,false,false]})
   case 5502:
-        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Steel_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5502,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Steel_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5502,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,true,false,false,false,false,false,false,false]})
   case 5503:
-        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5503,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Beryl_Bronze_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5503,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,true,false,false,false,false]})
   case 5504:
-        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5504,4023,0,0,0,0], capacityUsed: 15, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5504,4023,0,0,0,0], capacityUsed: 15, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,false,false,true]})
+  case 5505:
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Dark_Steel_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5505,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,true,false,false,false,false,false,false]})
   case 5510:
-        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Bronze_Plate,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,400,0,0,0,0],  output: [5510,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Bronze_Plate,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,400,0,0,0,0],  output: [5510,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,true,false,false]})
   case 5511:
-        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Iron_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5511,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Iron_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5511,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,true,false,false,false]})
   case 5512:
-        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5512,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5512,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,true,false,false,false,false,false,false,false]})
   case 5513:
-        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5513,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Beryl_Bronze_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5513,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,true,false,false]})
   case 5514:
-        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5514,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5514,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,false,true,false]})
+  case 5515:
+        return({ amount: [2,2000,0,0,0,0,0,0],  ingrediant: [Dark_Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,600,0,0,0,0],  output: [5515,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,true,false,false,false,false,false,false]})
   case 5520:
-        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Bronze_Chainmail,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,800,0,0,0,0],  output: [5520,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Bronze_Chainmail,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,800,0,0,0,0],  output: [5520,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,true,false,false]})
   case 5521:
-        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Iron_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5521,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Iron_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5521,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,true,false,false,false]})
   case 5522:
-        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Steel_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5522,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Steel_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5522,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,true,false,false,false,false,false,false,false]})
   case 5523:
-        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5523,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Beryl_Bronze_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5523,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,true,false,false,false,false]})
   case 5524:
-        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5524,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5524,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,false,false,true]})
+  case 5525:
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Dark_Steel_Chainmail,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5525,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,true,false,false,false,false,false,false]})
   case 5530:
-        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Bronze_Plate,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,800,0,0,0,0],  output: [5530,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Bronze_Plate,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,800,0,0,0,0],  output: [5530,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,true,false,false]})
   case 5531:
-        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Iron_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5531,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Iron_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5531,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,true,false,false,false]})
   case 5532:
-        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5532,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5532,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,true,false,false,false,false,false,false,false]})
   case 5533:
-        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5533,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Beryl_Bronze_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5533,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,true,false,false]})
   case 5534:
-        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5534,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5534,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,false,true,false]})
+  case 5535:
+        return({ amount: [4,4000,0,0,0,0,0,0],  ingrediant: [Dark_Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5535,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,true,false,false,false,false,false,false]})
   case 5540:
-        return({ amount: [4,4,8000,0,0,0,0,0],  ingrediant: [Bronze_Plate,Bronze_Chainmail,Any_Fuel,0,0,0,0,0],  outputAmount: [1,1600,0,0,0,0],  output: [5540,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [4,4,8000,0,0,0,0,0],  ingrediant: [Bronze_Plate,Bronze_Chainmail,Any_Fuel,0,0,0,0,0],  outputAmount: [1,1600,0,0,0,0],  output: [5540,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,true,false,false,false,false]})
   case 5541:
-        return({ amount: [4,4,8000,0,0,0,0,0],  ingrediant: [Iron_Plate,Iron_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,2400,0,0,0,0],  output: [5541,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [4,4,8000,0,0,0,0,0],  ingrediant: [Iron_Plate,Iron_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,2400,0,0,0,0],  output: [5541,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,false,false,false,false,false,false,false,false]})
   case 5542:
-        return({ amount: [4,4,8000,0,0,0,0,0],  ingrediant: [Steel_Plate,Steel_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,2400,0,0,0,0],  output: [5542,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [4,4,8000,0,0,0,0,0],  ingrediant: [Steel_Plate,Steel_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,2400,0,0,0,0],  output: [5542,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,true,false,false,false,false,false]})
   case 5543:
-        return({ amount: [4,4,8000,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Emerald_Bronze_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,2400,0,0,0,0],  output: [5543,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [4,4,8000,0,0,0,0,0],  ingrediant: [Beryl_Bronze_Plate,Beryl_Bronze_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,2400,0,0,0,0],  output: [5543,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,true,false,false,false,false]})
   case 5544:
-        return({ amount: [4,4,8000,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Damascus_Steel_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,2400,0,0,0,0],  output: [5544,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [4,4,8000,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Damascus_Steel_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,2400,0,0,0,0],  output: [5544,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,false,false,true]})
+  case 5545:
+        return({ amount: [4,4,8000,0,0,0,0,0],  ingrediant: [Dark_Steel_Plate,Dark_Steel_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,2400,0,0,0,0],  output: [5545,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,true,false,false,false,false,false,false]})
   case 5550:
-        return({ amount: [6,6000,0,0,0,0,0,0],  ingrediant: [Bronze_Plate,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,1200,0,0,0,0],  output: [5550,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1,1,0,0,0,0,0,0],  ingrediant: [Medium_Bronze_Plate,Saddle,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5550,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [None,None1,None11,None111,None1111,None11111,None111111,None1111111,None11111111],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5551:
-        return({ amount: [6,6000,0,0,0,0,0,0],  ingrediant: [Iron_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1800,0,0,0,0],  output: [5551,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1,1,0,0,0,0,0,0],  ingrediant: [Medium_Iron_Plate,Saddle,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5551,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [None,None1,None11,None111,None1111,None11111,None111111,None1111111,None11111111],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5552:
-        return({ amount: [6,6000,0,0,0,0,0,0],  ingrediant: [Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1800,0,0,0,0],  output: [5552,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1,1,0,0,0,0,0,0],  ingrediant: [Medium_Steel_Plate,Saddle,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5552,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [None,None1,None11,None111,None1111,None11111,None111111,None1111111,None11111111],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5553:
-        return({ amount: [6,6000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1800,0,0,0,0],  output: [5553,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1,1,0,0,0,0,0,0],  ingrediant: [Medium_Beryl_Bronze_Plate,Saddle,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5553,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [None,None1,None11,None111,None1111,None11111,None111111,None1111111,None11111111],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5554:
-        return({ amount: [6,6000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,1800,0,0,0,0],  output: [5554,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1,1,0,0,0,0,0,0],  ingrediant: [Medium_Damascus_Steel_Plate,Saddle,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5554,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [None,None1,None11,None111,None1111,None11111,None111111,None1111111,None11111111],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5555:
+        return({ amount: [1,1,0,0,0,0,0,0],  ingrediant: [Medium_Dark_Steel_Plate,Saddle,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5555,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [None,None1,None11,None111,None1111,None11111,None111111,None1111111,None11111111],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5560:
-        return({ amount: [12,12000,0,0,0,0,0,0],  ingrediant: [Bronze_Plate,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,2400,0,0,0,0],  output: [5560,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1,8,1,12000,0,0,0,0],  ingrediant: [Medium_Bronze_Plate,Bronze_Plate,Saddle,Any_Fuel,0,0,0,0],  outputAmount: [1,2400,0,0,0,0],  output: [5560,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,true,false,false]})
   case 5561:
-        return({ amount: [12,12000,0,0,0,0,0,0],  ingrediant: [Iron_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,3600,0,0,0,0],  output: [5561,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1,8,1,12000,0,0,0,0],  ingrediant: [Medium_Iron_Plate,Iron_Plate,Saddle,Charcoal,0,0,0,0],  outputAmount: [1,3600,0,0,0,0],  output: [5561,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,true,false,false,false,false,false,false,false]})
   case 5562:
-        return({ amount: [12,12000,0,0,0,0,0,0],  ingrediant: [Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,3600,0,0,0,0],  output: [5562,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1,8,1,12000,0,0,0,0],  ingrediant: [Medium_Steel_Plate,Steel_Plate,Saddle,Charcoal,0,0,0,0],  outputAmount: [1,3600,0,0,0,0],  output: [5562,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,false,false,false]})
   case 5563:
-        return({ amount: [12,12000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,3600,0,0,0,0],  output: [5563,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1,8,1,12000,0,0,0,0],  ingrediant: [Medium_Beryl_Bronze_Plate,Beryl_Bronze_Plate,Saddle,Charcoal,0,0,0,0],  outputAmount: [1,3600,0,0,0,0],  output: [5563,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,true,false,false]})
   case 5564:
-        return({ amount: [12,12000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,3600,0,0,0,0],  output: [5564,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1,8,1,12000,0,0,0,0],  ingrediant: [Medium_Damascus_Steel_Plate,Damascus_Steel_Plate,Saddle,Charcoal,0,0,0,0],  outputAmount: [1,3600,0,0,0,0],  output: [5564,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,false,true,false]})
+  case 5565:
+        return({ amount: [1,8,1,12000,0,0,0,0],  ingrediant: [Medium_Dark_Steel_Plate,Dark_Steel_Plate,Saddle,Charcoal,0,0,0,0],  outputAmount: [1,3600,0,0,0,0],  output: [5565,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,true,false,false,false,false,false,false]})
   case 5570:
-        return({ amount: [18,6,24000,0,0,0,0,0],  ingrediant: [Bronze_Plate,Bronze_Chainmail,Any_Fuel,0,0,0,0,0],  outputAmount: [1,4800,0,0,0,0],  output: [5570,4023,0,0,0,0], capacityUsed: 10, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1,12,1,24000,0,0,0,0],  ingrediant: [Heavy_Bronze_Armor,Bronze_Plate,Saddle,Any_Fuel,0,0,0,0],  outputAmount: [1,4800,0,0,0,0],  output: [5570,4023,0,0,0,0], capacityUsed: 10, timeToMake: 25, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,true,false,false]})
   case 5571:
-        return({ amount: [18,6,24000,0,0,0,0,0],  ingrediant: [Iron_Plate,Iron_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,7200,0,0,0,0],  output: [5571,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1,12,1,24000,0,0,0,0],  ingrediant: [Heavy_Iron_Armor,Iron_Plate,Saddle,Charcoal,0,0,0,0],  outputAmount: [1,7200,0,0,0,0],  output: [5571,4023,0,0,0,0], capacityUsed: 20, timeToMake: 25, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,true,false,false,false,false,false,false,false]})
   case 5572:
-        return({ amount: [18,6,24000,0,0,0,0,0],  ingrediant: [Steel_Plate,Steel_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,7200,0,0,0,0],  output: [5572,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1,12,1,24000,0,0,0,0],  ingrediant: [Heavy_Steel_Armor,Steel_Plate,Saddle,Charcoal,0,0,0,0],  outputAmount: [1,7200,0,0,0,0],  output: [5572,4023,0,0,0,0], capacityUsed: 20, timeToMake: 25, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,false,false,false]})
   case 5573:
-        return({ amount: [18,6,24000,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Emerald_Bronze_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,7200,0,0,0,0],  output: [5573,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1,12,1,24000,0,0,0,0],  ingrediant: [Heavy_Beryl_Bronze_Armor,Beryl_Bronze_Plate,Saddle,Charcoal,0,0,0,0],  outputAmount: [1,7200,0,0,0,0],  output: [5573,4023,0,0,0,0], capacityUsed: 20, timeToMake: 25, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,true,false,false]})
   case 5574:
-        return({ amount: [18,6,24000,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Damascus_Steel_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,7200,0,0,0,0],  output: [5574,4023,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1,12,1,24000,0,0,0,0],  ingrediant: [Heavy_Damascus_Steel_Armor,Damascus_Steel_Plate,Saddle,Charcoal,0,0,0,0],  outputAmount: [1,7200,0,0,0,0],  output: [5574,4023,0,0,0,0], capacityUsed: 20, timeToMake: 25, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,false,false,false,false,true,false]})
+  case 5575:
+        return({ amount: [1,12,1,24000,0,0,0,0],  ingrediant: [Heavy_Dark_Steel_Armor,Dark_Steel_Plate,Saddle,Charcoal,0,0,0,0],  outputAmount: [1,7200,0,0,0,0],  output: [5575,4023,0,0,0,0], capacityUsed: 20, timeToMake: 25, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [false,false,true,false,false,false,false,false,false]})
   case 5580:
-        return({ amount: [2000,0,0,0,0,0,0,0],  ingrediant: [Leather,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5580,0,0,0,0,0], capacityUsed: 5, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [2000,0,0,0,0,0,0,0],  ingrediant: [Leather,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5580,0,0,0,0,0], capacityUsed: 5, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,false,false,false,false,false,false,false,false]})
   case 5581:
-        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Thick_Leather,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5581,0,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [31,32,33,34,35,36,37,38,39],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1000,0,0,0,0,0,0,0],  ingrediant: [Thick_Leather,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5581,0,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [31,32,33,34,35,36,37,38,39],allowableBuildingTypes: [false,false,false,true,false,false,false,false,false]})
   case 5582:
         return({ amount: [500,0,0,0,0,0,0,0],  ingrediant: [Fabric,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5582,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5583:
+        return({ amount: [125,1000,0,0,0,0,0,0],  ingrediant: [Refined_Wood,Leather,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5583,0,0,0,0,0], capacityUsed: 5, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5585:
-        return({ amount: [400,0,0,0,0,0,0,0],  ingrediant: [Fabric,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5585,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [800,0,0,0,0,0,0,0],  ingrediant: [Fabric,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5585,0,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5586:
-        return({ amount: [400,0,0,0,0,0,0,0],  ingrediant: [Fabric,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5586,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [800,0,0,0,0,0,0,0],  ingrediant: [Fabric,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5586,0,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5587:
+        return({ amount: [1,1,0,0,0,0,0,0],  ingrediant: [Leather_Armor,Saddle,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5587,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [None,None1,None11,None111,None1111,None11111,None111111,None1111111,None11111111],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5588:
+        return({ amount: [5000,1,1,0,0,0,0,0],  ingrediant: [Leather,Leather_Armor,Saddle,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5588,0,0,0,0,0], capacityUsed: 10, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,false,false,false,false,false,false,false,false]})
+  case 5589:
+        return({ amount: [5000,1,1,0,0,0,0,0],  ingrediant: [Thick_Leather,Thick_Leather_Armor,Saddle,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5589,0,0,0,0,0], capacityUsed: 10, timeToMake: 20, allowableBuildings: [31,32,33,34,35,36,37,38,39],allowableBuildingTypes: [false,false,false,true,false,false,false,false,false]})
+  case 5600:
+        return({ amount: [2500,0,0,0,0,0,0,0],  ingrediant: [Stone,0,0,0,0,0,0,0],  outputAmount: [5,0,0,0,0,0],  output: [5600,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [20,200,200,200,200,200,200,200],allowableBuildingTypes: [true,false,false,false,false,false,true,true,true]})
+  case 5601:
+        return({ amount: [500,2000,0,0,0,0,0,0],  ingrediant: [Lead,Any_Fuel,0,0,0,0,0,0],  outputAmount: [2,400,0,0,0,0],  output: [5601,4023,0,0,0,0], capacityUsed: 5, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5602:
+        return({ amount: [100,2000,0,0,0,0,0,0],  ingrediant: [Gold,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,400,0,0,0,0],  output: [5602,4023,0,0,0,0], capacityUsed: 4, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5611:
+        return({ amount: [6,0,0,0,0,0,0,0],  ingrediant: [Iron_Plate,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5611,0,0,0,0,0], capacityUsed: 20, timeToMake: 5, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5612:
+        return({ amount: [12,0,0,0,0,0,0,0],  ingrediant: [Iron_Plate,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5612,0,0,0,0,0], capacityUsed: 20, timeToMake: 10, allowableBuildings: [21,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5613:
         return({ amount: [50,0,0,0,0,0,0,0],  ingrediant: [Fabric,0,0,0,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [5613,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5614:
         return({ amount: [50,0,0,0,0,0,0,0],  ingrediant: [Fabric,0,0,0,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [5614,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5620:
-        return({ amount: [5000,500,0,0,0,0,0,0],  ingrediant: [Wood,Feather,0,0,0,0,0,0],  outputAmount: [4,0,0,0,0,0],  output: [5620,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [29,30,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [5000,250,0,0,0,0,0,0],  ingrediant: [Wood,Feather,0,0,0,0,0,0],  outputAmount: [20,0,0,0,0,0],  output: [5620,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5621:
-        return({ amount: [100,2500,500,0,0,0,0,0],  ingrediant: [Steel_Arrowhead,Wood,Feather,0,0,0,0,0],  outputAmount: [3,0,0,0,0,0],  output: [5621,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [29,30,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [100,2500,250,0,0,0,0,0],  ingrediant: [Bronze_Arrowhead,Wood,Feather,0,0,0,0,0],  outputAmount: [5,0,0,0,0,0],  output: [5621,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5622:
-        return({ amount: [100,2500,500,0,0,0,0,0],  ingrediant: [Beryl_Bronze_Arrowhead,Wood,Feather,0,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [5622,0,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [29,30,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [100,2500,250,0,0,0,0,0],  ingrediant: [Steel_Arrowhead,Wood,Feather,0,0,0,0,0],  outputAmount: [3,0,0,0,0,0],  output: [5622,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5623:
-        return({ amount: [450,2500,500,0,0,0,0,0],  ingrediant: [Diamond_Blade,Wood,Feather,0,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [5623,0,0,0,0,0], capacityUsed: 8, timeToMake: 10, allowableBuildings: [30,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [100,2500,250,0,0,0,0,0],  ingrediant: [Beryl_Bronze_Arrowhead,Wood,Feather,0,0,0,0,0],  outputAmount: [4,0,0,0,0,0],  output: [5623,0,0,0,0,0], capacityUsed: 4, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5624:
+        return({ amount: [200,2500,250,0,0,0,0,0],  ingrediant: [Diamond_Blade,Wood,Feather,0,0,0,0,0],  outputAmount: [3,0,0,0,0,0],  output: [5624,0,0,0,0,0], capacityUsed: 18, timeToMake: 10, allowableBuildings: [29,30,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5700:
         return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Any_Shot_Pouch,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5700,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5701:
@@ -9347,51 +10291,19 @@ return(0);
   case 5720:
         return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Any_Quiver,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5720,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5721:
-        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Any_Quiver,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5721,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5722:
         return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Any_Quiver,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5722,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5723:
+  case 5722:
         return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Any_Quiver,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5723,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5800:
-        return({ amount: [50,25000,0,0,0,0,0,0],  ingrediant: [Bronze_Plate,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,5000,0,0,0,0],  output: [5800,4023,0,0,0,0], capacityUsed: 30, timeToMake: 100, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5801:
-        return({ amount: [50,25000,0,0,0,0,0,0],  ingrediant: [Iron_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,7500,0,0,0,0],  output: [5801,4023,0,0,0,0], capacityUsed: 30, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 5723:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Any_Quiver,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5724,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5802:
-        return({ amount: [50,25000,0,0,0,0,0,0],  ingrediant: [Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,7500,0,0,0,0],  output: [5802,4023,0,0,0,0], capacityUsed: 30, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5803:
-        return({ amount: [50,25000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,7500,0,0,0,0],  output: [5803,4023,0,0,0,0], capacityUsed: 30, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5804:
-        return({ amount: [50,25000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,7500,0,0,0,0],  output: [5804,4023,0,0,0,0], capacityUsed: 30, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5810:
-        return({ amount: [50,100,75000,0,0,0,0,0],  ingrediant: [Bronze_Plate,Bronze_Chainmail,Any_Fuel,0,0,0,0,0],  outputAmount: [1,15000,0,0,0,0],  output: [5810,4023,0,0,0,0], capacityUsed: 30, timeToMake: 500, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5811:
-        return({ amount: [50,100,75000,0,0,0,0,0],  ingrediant: [Iron_Plate,Iron_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,22500,0,0,0,0],  output: [5811,4023,0,0,0,0], capacityUsed: 30, timeToMake: 1000, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [50,25000,0,0,0,0,0,0],  ingrediant: [Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,7500,0,0,0,0],  output: [5802,4023,0,0,0,0], capacityUsed: 30, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,true,false,false,false,false,false]})
   case 5812:
-        return({ amount: [50,100,75000,0,0,0,0,0],  ingrediant: [Steel_Plate,Steel_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,22500,0,0,0,0],  output: [5812,4023,0,0,0,0], capacityUsed: 30, timeToMake: 1000, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5813:
-        return({ amount: [50,100,75000,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Emerald_Bronze_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,22500,0,0,0,0],  output: [5813,4023,0,0,0,0], capacityUsed: 30, timeToMake: 1000, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5814:
-        return({ amount: [50,100,75000,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Damascus_Steel_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,22500,0,0,0,0],  output: [5814,4023,0,0,0,0], capacityUsed: 30, timeToMake: 1000, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5820:
-        return({ amount: [100,50000,0,0,0,0,0,0],  ingrediant: [Bronze_Plate,Any_Fuel,0,0,0,0,0,0],  outputAmount: [1,10000,0,0,0,0],  output: [5820,4023,0,0,0,0], capacityUsed: 30, timeToMake: 200, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5821:
-        return({ amount: [100,50000,0,0,0,0,0,0],  ingrediant: [Iron_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,15000,0,0,0,0],  output: [5821,4023,0,0,0,0], capacityUsed: 30, timeToMake: 400, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [50,100,75000,0,0,0,0,0],  ingrediant: [Steel_Plate,Steel_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,22500,0,0,0,0],  output: [5812,4023,0,0,0,0], capacityUsed: 30, timeToMake: 1000, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [false,false,false,true,false,false,false,false,false]})
   case 5822:
-        return({ amount: [100,50000,0,0,0,0,0,0],  ingrediant: [Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,15000,0,0,0,0],  output: [5822,4023,0,0,0,0], capacityUsed: 30, timeToMake: 400, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5823:
-        return({ amount: [100,50000,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,15000,0,0,0,0],  output: [5823,4023,0,0,0,0], capacityUsed: 30, timeToMake: 400, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5824:
-        return({ amount: [100,50000,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,15000,0,0,0,0],  output: [5824,4023,0,0,0,0], capacityUsed: 30, timeToMake: 400, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5830:
-        return({ amount: [100,200,1500000,0,0,0,0,0],  ingrediant: [Bronze_Plate,Bronze_Chainmail,Any_Fuel,0,0,0,0,0],  outputAmount: [1,30000,0,0,0,0],  output: [5830,4023,0,0,0,0], capacityUsed: 30, timeToMake: 1000, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5831:
-        return({ amount: [100,200,1500000,0,0,0,0,0],  ingrediant: [Iron_Plate,Iron_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,30000,0,0,0,0],  output: [5831,4023,0,0,0,0], capacityUsed: 30, timeToMake: 2000, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [100,50000,0,0,0,0,0,0],  ingrediant: [Steel_Plate,Charcoal,0,0,0,0,0,0],  outputAmount: [1,15000,0,0,0,0],  output: [5822,4023,0,0,0,0], capacityUsed: 30, timeToMake: 400, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,false,false,false,false,false,false,false,false]})
   case 5832:
-        return({ amount: [100,200,1500000,0,0,0,0,0],  ingrediant: [Steel_Plate,Steel_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,30000,0,0,0,0],  output: [5832,4023,0,0,0,0], capacityUsed: 30, timeToMake: 2000, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5833:
-        return({ amount: [100,200,1500000,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,Emerald_Bronze_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,30000,0,0,0,0],  output: [5833,4023,0,0,0,0], capacityUsed: 30, timeToMake: 2000, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 5834:
-        return({ amount: [100,200,1500000,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,Damascus_Steel_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,30000,0,0,0,0],  output: [5834,4023,0,0,0,0], capacityUsed: 30, timeToMake: 2000, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [100,200,1500000,0,0,0,0,0],  ingrediant: [Steel_Plate,Steel_Chainmail,Charcoal,0,0,0,0,0],  outputAmount: [1,30000,0,0,0,0],  output: [5832,4023,0,0,0,0], capacityUsed: 30, timeToMake: 2000, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,false,false,false,false,false,false,false,false]})
   case 5900:
         return({ amount: [200,0,0,0,0,0,0,0],  ingrediant: [Refined_Wood,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5900,0,0,0,0,0], capacityUsed: 2, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5901:
@@ -9401,7 +10313,7 @@ return(0);
   case 5903:
         return({ amount: [2,0,0,0,0,0,0,0],  ingrediant: [Steel_Plate,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5903,0,0,0,0,0], capacityUsed: 15, timeToMake: 10, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5904:
-        return({ amount: [2,0,0,0,0,0,0,0],  ingrediant: [Emerald_Bronze_Plate,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5904,0,0,0,0,0], capacityUsed: 15, timeToMake: 20, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [2,0,0,0,0,0,0,0],  ingrediant: [Beryl_Bronze_Plate,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5904,0,0,0,0,0], capacityUsed: 15, timeToMake: 20, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5905:
         return({ amount: [2,0,0,0,0,0,0,0],  ingrediant: [Damascus_Steel_Plate,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5905,0,0,0,0,0], capacityUsed: 15, timeToMake: 100, allowableBuildings: [22,23,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 5910:
@@ -9409,9 +10321,9 @@ return(0);
   case 5911:
         return({ amount: [1500,4,4000,0,0,0,0,0],  ingrediant: [Refined_Wood,Iron_Plate,Leather,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5911,0,0,0,0,0], capacityUsed: 40, timeToMake: 10, allowableBuildings: [28,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 7000:
-        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Rabbit,0,0,0,0,0,0,0],  outputAmount: [250,50,0,0,0,0],  output: [545,4006,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Rabbit,0,0,0,0,0,0,0],  outputAmount: [250,50,0,0,0,0],  output: [581,4006,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 7001:
-        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Deer,0,0,0,0,0,0,0],  outputAmount: [500,200,100,100,0,0],  output: [545,552,4004,4010,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Deer,0,0,0,0,0,0,0],  outputAmount: [500,200,100,100,0,0],  output: [580,552,4004,4010,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 7002:
         return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Turkey,0,0,0,0,0,0,0],  outputAmount: [250,250,0,0,0,0],  output: [545,4008,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 7003:
@@ -9451,7 +10363,7 @@ return(0);
   case 7111:
         return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Crab_Cluster,0,0,0,0,0,0,0],  outputAmount: [1500,0,0,0,0,0],  output: [555,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 7200:
-        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Elk,0,0,0,0,0,0,0],  outputAmount: [5000,500,500,0,0,0],  output: [545,4004,4010,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Elk,0,0,0,0,0,0,0],  outputAmount: [5000,500,500,0,0,0],  output: [580,4004,4010,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 7201:
         return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Aurochs,0,0,0,0,0,0,0],  outputAmount: [1250,500,1,0,0,0],  output: [532,552,4014,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 7202:
@@ -9496,8 +10408,10 @@ return(0);
         return({ amount: [2,1,0,0,0,0,0,0],  ingrediant: [Basic_Tool,Boat_Fix_Kit,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [555,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [19,200,200,200,200,200,200,200],allowableBuildingTypes: [false,true,true,true,true,true,false,false,false]})
   case 66003:
         return({ amount: [2,1,0,0,0,0,0,0],  ingrediant: [Basic_Tool,Boat_Fix_Kit,0,0,0,0,0,0],  outputAmount: [1000,0,0,0,0,0],  output: [530,0,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [19,200,200,200,200,200,200,200],allowableBuildingTypes: [false,true,true,true,true,true,false,false,false]})
-  case 71205:
-        return({ amount: [2500,6250,3000,0,0,0,0,0],  ingrediant: [Any_Flour,Potato,Any_Fuel,0,0,0,0,0],  outputAmount: [17500,100,0,0,0,0],  output: [1205,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 71206:
+        return({ amount: [300,0,0,0,0,0,0,0],  ingrediant: [Common_Flour,0,0,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1206,0,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 71493:
+        return({ amount: [250,250,0,0,0,0,0,0],  ingrediant: [Soybeans,Wheat,0,0,0,0,0,0],  outputAmount: [30,0,0,0,0,0],  output: [1493,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 74013:
         return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Leopard_Skin,0,0,0,0,0,0,0],  outputAmount: [300,0,0,0,0,0],  output: [4006,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 74014:
@@ -9514,6 +10428,22 @@ return(0);
         return({ amount: [5,0,0,0,0,0,0,0],  ingrediant: [Ash,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [4030,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 75164:
         return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Any_Shot_Pouch,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5614,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 75505:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Light_Dark_Steel_Mail,0,0,0,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4115,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [None,None1,None11,None111,None1111,None11111,None111111,None1111111,None11111111],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 75515:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Light_Dark_Steel_Plate,0,0,0,0,0,0,0],  outputAmount: [2,0,0,0,0,0],  output: [4105,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [None,None1,None11,None111,None1111,None11111,None111111,None1111111,None11111111],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 75525:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Medium_Dark_Steel_Mail,0,0,0,0,0,0,0],  outputAmount: [4,0,0,0,0,0],  output: [4115,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [None,None1,None11,None111,None1111,None11111,None111111,None1111111,None11111111],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 75535:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Medium_Dark_Steel_Plate,0,0,0,0,0,0,0],  outputAmount: [4,0,0,0,0,0],  output: [4105,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [None,None1,None11,None111,None1111,None11111,None111111,None1111111,None11111111],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 75545:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Heavy_Dark_Steel_Armor,0,0,0,0,0,0,0],  outputAmount: [4,4,0,0,0,0],  output: [4105,4115,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [None,None1,None11,None111,None1111,None11111,None111111,None1111111,None11111111],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 75555:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Light_Dark_Steel_Horse_Armor,0,0,0,0,0,0,0],  outputAmount: [4,1,0,0,0,0],  output: [4105,5583,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [None,None1,None11,None111,None1111,None11111,None111111,None1111111,None11111111],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 75565:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Medium_Dark_Steel_Horse_Armor,0,0,0,0,0,0,0],  outputAmount: [12,1,0,0,0,0],  output: [4105,5583,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [None,None1,None11,None111,None1111,None11111,None111111,None1111111,None11111111],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 75575:
+        return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Heavy_Dark_Steel_Horse_Armor,0,0,0,0,0,0,0],  outputAmount: [16,4,1,0,0,0],  output: [4105,4115,5583,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [None,None1,None11,None111,None1111,None11111,None111111,None1111111,None11111111],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 75613:
         return({ amount: [1,0,0,0,0,0,0,0],  ingrediant: [Any_Quiver,0,0,0,0,0,0,0],  outputAmount: [1,0,0,0,0,0],  output: [5613,0,0,0,0,0], capacityUsed: 0, timeToMake: 0, allowableBuildings: [200,200,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 77400:
@@ -9522,14 +10452,12 @@ return(0);
         return({ amount: [2,0,0,0,0,0,0,0],  ingrediant: [Chicken,0,0,0,0,0,0,0],  outputAmount: [30,10,10,3,10,20],  output: [533,4008,550,4004,552,551], capacityUsed: 1, timeToMake: 1, allowableBuildings: [10,11,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 77402:
         return({ amount: [2,0,0,0,0,0,0,0],  ingrediant: [Sheep,0,0,0,0,0,0,0],  outputAmount: [30,4,20,30,5,2],  output: [544,4006,550,551,552,553], capacityUsed: 1, timeToMake: 1, allowableBuildings: [10,11,200,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 301200:
-        return({ amount: [2500,6250,3000,0,0,0,0,0],  ingrediant: [Any_Flour,Potato,Any_Fuel,0,0,0,0,0],  outputAmount: [7000,100,0,0,0,0],  output: [1200,4023,0,0,0,0], capacityUsed: 1, timeToMake: 10, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 81206:
+        return({ amount: [150,10,375,0,0,0,0,0],  ingrediant: [Common_Flour,Barm,Potato,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1206,0,0,0,0,0], capacityUsed: 1, timeToMake: 1, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
+  case 91206:
+        return({ amount: [150,375,0,0,0,0,0,0],  ingrediant: [Common_Flour,Potato,0,0,0,0,0,0],  outputAmount: [500,0,0,0,0,0],  output: [1206,0,0,0,0,0], capacityUsed: 1, timeToMake: 2, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
   case 302103:
         return({ amount: [8000,0,0,0,0,0,0,0],  ingrediant: [Wood,0,0,0,0,0,0,0],  outputAmount: [12000,20,0,0,0,0],  output: [2103,4026,0,0,0,0], capacityUsed: 4, timeToMake: 20, allowableBuildings: [16,17,18,200,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 311200:
-        return({ amount: [2500,6250,50,3000,0,0,0,0],  ingrediant: [Any_Flour,Potato,Barm,Any_Fuel,0,0,0,0],  outputAmount: [7000,100,0,0,0,0],  output: [1200,4023,0,0,0,0], capacityUsed: 1, timeToMake: 5, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
-  case 701200:
-        return({ amount: [5000,50,3000,0,0,0,0,0],  ingrediant: [Any_Flour,Barm,Any_Fuel,0,0,0,0,0],  outputAmount: [7000,100,0,0,0,0],  output: [1200,4023,0,0,0,0], capacityUsed: 1, timeToMake: 5, allowableBuildings: [8,9,10,11,200,200,200,200],allowableBuildingTypes: [true,true,true,true,true,true,true,true,true]})
 }
       return (_value);
       }
@@ -9537,149 +10465,205 @@ return(0);
   function foodData(_value) {
   switch (_value) {
   case 1000:
-return([0,0,0]);
+return([false,0,0]);
 case 1001:
-return([0,0,0]);
+return([false,5,0]);
 case 1002:
-return([0,0,0]);
+return([false,5,0]);
 case 1003:
-return([0,0,0]);
+return([false,0,0]);
+case 1004:
+return([false,0,0]);
+case 1005:
+return([false,0,0]);
 case 1010:
-return([0,0,0]);
-case 1010:
-return([0,0,0]);
+return([false,6,0]);
 case 1011:
-return([0,0,0]);
-case 1011:
-return([0,0,0]);
+return([false,0,0]);
 case 1012:
-return([0,0,0]);
+return([false,0,0]);
+case 1013:
+return([false,0,1]);
+case 1014:
+return([false,0,1]);
+case 1015:
+return([false,0,0]);
 case 1030:
-return([0,0,0]);
+return([false,0,0]);
 case 1031:
-return([0,0,0]);
+return([false,0,0]);
 case 1032:
-return([0,0,0]);
+return([false,0,0]);
 case 1033:
-return([0,0,0]);
+return([false,0,0]);
 case 1034:
-return([0,0,0]);
+return([false,0,0]);
 case 1040:
-return([0,0,0]);
+return([false,8,0]);
 case 1041:
-return([0,0,0]);
+return([false,8,0]);
 case 1042:
-return([0,0,0]);
+return([false,8,0]);
 case 1043:
-return([0,0,0]);
+return([false,8,0]);
 case 1044:
-return([0,0,0]);
+return([false,0,0]);
 case 1050:
-return([0,0,0]);
+return([false,3,6]);
 case 1051:
-return([0,0,0]);
+return([false,0,2]);
 case 1052:
-return([0,0,0]);
+return([false,0,0]);
 case 1060:
-return([0,0,0]);
+return([false,10,0]);
 case 1061:
-return([0,0,0]);
+return([false,0,0]);
 case 1062:
-return([0,0,0]);
+return([false,0,0]);
 case 1200:
-return([0,0,0]);
+return([true,5,0]);
+case 1201:
+return([true,0,0]);
+case 1202:
+return([true,0,0]);
 case 1203:
-return([0,0,0]);
+return([true,0,0]);
 case 1204:
-return([0,0,0]);
+return([false,0,2]);
 case 1205:
-return([0,0,0]);
+return([true,0,2]);
 case 1206:
-return([0,0,0]);
+return([true,0,0]);
 case 1207:
-return([0,0,0]);
+return([true,0,1]);
 case 1208:
-return([0,0,50]);
+return([false,0,0]);
 case 1209:
-return([0,0,0]);
+return([true,0,5]);
+case 1210:
+return([true,0,0]);
+case 1211:
+return([false,3,0]);
 case 1212:
-return([0,0,0]);
+return([true,2,0]);
 case 1213:
-return([0,0,20]);
+return([true,0,3]);
+case 1214:
+return([true,0,3]);
+case 1215:
+return([true,0,0]);
+case 1216:
+return([true,0,0]);
+case 1217:
+return([false,0,1]);
+case 1218:
+return([true,0,2]);
+case 1219:
+return([true,0,4]);
 case 1220:
-return([0,0,75]);
+return([true,0,0]);
 case 1221:
-return([0,0,0]);
+return([true,0,3]);
 case 1222:
-return([0,0,0]);
+return([true,0,1]);
 case 1223:
-return([0,0,0]);
+return([true,0,1]);
 case 1224:
-return([0,0,0]);
+return([true,0,1]);
+case 1225:
+return([true,0,0]);
+case 1226:
+return([true,0,1]);
+case 1227:
+return([true,0,0]);
+case 1228:
+return([false,0,2]);
+case 1229:
+return([true,0,1]);
+case 1230:
+return([true,0,4]);
+case 1231:
+return([true,0,0]);
+case 1232:
+return([true,0,2]);
+case 1233:
+return([true,0,1]);
+case 1234:
+return([true,1,1]);
+case 1235:
+return([false,0,0]);
+case 1236:
+return([false,1,0]);
+case 1237:
+return([true,0,1]);
+case 1238:
+return([false,0,0]);
+case 1239:
+return([false,0,0]);
+case 1240:
+return([true,0,2]);
+case 1241:
+return([true,0,2]);
+case 1242:
+return([true,0,0]);
+case 1243:
+return([false,1,0]);
+case 1244:
+return([true,0,2]);
+case 1245:
+return([false,0,0]);
+case 1246:
+return([true,0,4]);
+case 1247:
+return([true,0,2]);
+case 1248:
+return([true,0,1]);
+case 1249:
+return([true,0,1]);
+case 1250:
+return([true,0,2]);
+case 1251:
+return([true,0,0]);
+case 1252:
+return([false,1,0]);
+case 1253:
+return([true,0,1]);
+case 1254:
+return([false,1,0]);
+case 1255:
+return([true,0,2]);
+case 1256:
+return([false,1,0]);
+case 1257:
+return([true,1,1]);
+case 1258:
+return([true,0,2]);
+case 1259:
+return([true,0,2]);
 case 1260:
-return([0,0,0]);
+return([false,0,0]);
 case 1261:
-return([0,0,0]);
+return([false,2,0]);
 case 1262:
-return([0,0,10]);
+return([true,0,5]);
+case 1263:
+return([true,0,1]);
+case 1264:
+return([false,0,0]);
+case 1265:
+return([true,0,2]);
+case 1266:
+return([true,0,1]);
+case 1267:
+return([false,0,0]);
 case 1268:
-return([0,0,10]);
+return([true,0,2]);
+case 1269:
+return([true,0,0]);
 case 1270:
-return([0,0,0]);
+return([true,2,1]);
 case 1271:
-return([0,0,10]);
-case 1272:
-return([0,0,0]);
-case 1273:
-return([0,0,0]);
-case 1274:
-return([0,0,0]);
-case 1275:
-return([0,0,0]);
-case 1276:
-return([0,0,0]);
-case 1277:
-return([0,0,0]);
-case 1278:
-return([0,0,0]);
-case 1279:
-return([0,0,0]);
-case 1280:
-return([0,0,0]);
-case 1281:
-return([0,0,0]);
-case 1282:
-return([0,0,0]);
-case 1283:
-return([0,0,0]);
-case 1284:
-return([0,0,0]);
-case 1285:
-return([0,0,0]);
-case 1286:
-return([0,0,0]);
-case 1287:
-return([0,0,0]);
-case 1288:
-return([0,0,30]);
-case 1289:
-return([0,0,0]);
-case 1290:
-return([0,0,0]);
-case 1291:
-return([0,0,0]);
-case 1294:
-return([0,0,0]);
-case 1295:
-return([0,0,0]);
-case 1296:
-return([0,0,0]);
-case 1299:
-return([0,0,0]);
-case 1300:
-return([0,0,0]);
-case 1301:
-return([0,0,0]);
+return([true,0,2]);
 }
       return (_value);
       }
@@ -9698,33 +10682,33 @@ return({ output: Corn, yield: 500, secondaryYield: None, secondaryOutput: 0, wat
 case 505:
 return({ output: Sorghum, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [20,150],temperature: [30,120,90], minsoil: 20, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
 case 506:
-return({ output: Wood, yield: 2500, secondaryYield: Apples, secondaryOutput: 500, water: [50,150],temperature: [60,110,80], minsoil: 25, maxheight: 100, growthTime: 50, secondaryGrowthTime: 10, isAnimal: false });
+return({ output: Wood, yield: 3750, secondaryYield: Apples, secondaryOutput: 750, water: [50,150],temperature: [60,110,80], minsoil: 25, maxheight: 100, growthTime: 50, secondaryGrowthTime: 10, isAnimal: false });
 case 507:
-return({ output: Wood, yield: 2500, secondaryYield: Plums, secondaryOutput: 500, water: [50,150],temperature: [30,110,70], minsoil: 25, maxheight: 100, growthTime: 50, secondaryGrowthTime: 10, isAnimal: false });
+return({ output: Wood, yield: 3750, secondaryYield: Plums, secondaryOutput: 750, water: [50,150],temperature: [30,110,70], minsoil: 25, maxheight: 100, growthTime: 50, secondaryGrowthTime: 10, isAnimal: false });
 case 508:
-return({ output: Wood, yield: 2500, secondaryYield: Olives, secondaryOutput: 500, water: [25,150],temperature: [50,120,80], minsoil: 0, maxheight: 100, growthTime: 50, secondaryGrowthTime: 10, isAnimal: false });
+return({ output: Wood, yield: 3750, secondaryYield: Olives, secondaryOutput: 750, water: [25,150],temperature: [50,120,80], minsoil: 0, maxheight: 100, growthTime: 50, secondaryGrowthTime: 10, isAnimal: false });
 case 509:
 return({ output: Beans, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [50,120,75], minsoil: 25, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
 case 510:
-return({ output: Mushrooms, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,100],temperature: [30,120,60], minsoil: 0, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+return({ output: Mushrooms, yield: 375, secondaryYield: None, secondaryOutput: 0, water: [50,100],temperature: [30,120,60], minsoil: 0, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
 case 511:
 return({ output: Beets, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [20,100,60], minsoil: 0, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
 case 512:
-return({ output: Cassava, yield: 600, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [70,120,80], minsoil: 25, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+return({ output: Cassava, yield: 375, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [70,120,80], minsoil: 25, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
 case 513:
-return({ output: Wood, yield: 2500, secondaryYield: Cherries, secondaryOutput: 500, water: [50,150],temperature: [60,110,80], minsoil: 25, maxheight: 100, growthTime: 50, secondaryGrowthTime: 10, isAnimal: false });
+return({ output: Wood, yield: 3750, secondaryYield: Cherries, secondaryOutput: 750, water: [50,150],temperature: [60,110,80], minsoil: 25, maxheight: 100, growthTime: 50, secondaryGrowthTime: 10, isAnimal: false });
 case 514:
 return({ output: Peanuts, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [50,100,75], minsoil: 25, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
 case 515:
-return({ output: Wood, yield: 2500, secondaryYield: Peaches, secondaryOutput: 500, water: [50,150],temperature: [60,110,80], minsoil: 25, maxheight: 100, growthTime: 50, secondaryGrowthTime: 10, isAnimal: false });
+return({ output: Wood, yield: 3750, secondaryYield: Peaches, secondaryOutput: 750, water: [50,150],temperature: [60,110,80], minsoil: 25, maxheight: 100, growthTime: 50, secondaryGrowthTime: 10, isAnimal: false });
 case 516:
 return({ output: Garlic, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [50,120,75], minsoil: 25, maxheight: 200, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
 case 517:
-return({ output: Onion, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [50,120,75], minsoil: 25, maxheight: 200, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+return({ output: Green_Onion, yield: 375, secondaryYield: Onion, secondaryOutput: 375, water: [50,150],temperature: [30,120,60], minsoil: 25, maxheight: 200, growthTime: 10, secondaryGrowthTime: 10, isAnimal: false });
 case 518:
-return({ output: Carrot, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [50,120,75], minsoil: 25, maxheight: 200, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+return({ output: Carrot, yield: 375, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [50,120,75], minsoil: 25, maxheight: 200, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
 case 519:
-return({ output: Sugarcane, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [80,170],temperature: [75,150,90], minsoil: 40, maxheight: 100, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+return({ output: Sugarcane, yield: 250, secondaryYield: None, secondaryOutput: 0, water: [80,170],temperature: [75,150,90], minsoil: 40, maxheight: 100, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
 case 520:
 return({ output: Peppers, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,100],temperature: [45,110,70], minsoil: 25, maxheight: 250, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
 case 521:
@@ -9732,11 +10716,11 @@ return({ output: Allspice, yield: 500, secondaryYield: None, secondaryOutput: 0,
 case 522:
 return({ output: Grapes, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [50,120,75], minsoil: 25, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
 case 532:
-return({ output: Cow, yield: 10, secondaryYield: Milk, secondaryOutput: 100, water: [25,200],temperature: [50,120,75], minsoil: 0, maxheight: 250, growthTime: 50, secondaryGrowthTime: 10, isAnimal: true });
+return({ output: Cow, yield: 30, secondaryYield: Milk, secondaryOutput: 300, water: [25,200],temperature: [50,120,75], minsoil: 0, maxheight: 250, growthTime: 50, secondaryGrowthTime: 10, isAnimal: true });
 case 533:
 return({ output: Chicken, yield: 10, secondaryYield: Eggs, secondaryOutput: 100, water: [25,200],temperature: [50,120,75], minsoil: 0, maxheight: 250, growthTime: 20, secondaryGrowthTime: 10, isAnimal: true });
 case 535:
-return({ output: Potato, yield: 600, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [30,110,60], minsoil: 25, maxheight: 200, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+return({ output: Potato, yield: 375, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [30,110,60], minsoil: 25, maxheight: 200, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
 case 538:
 return({ output: Oats, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [60,175],temperature: [30,80,60], minsoil: 15, maxheight: 200, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
 case 540:
@@ -9744,13 +10728,21 @@ return({ output: Barley, yield: 500, secondaryYield: None, secondaryOutput: 0, w
 case 542:
 return({ output: Cotton, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [75,150],temperature: [70,120,85], minsoil: 30, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
 case 544:
-return({ output: Sheep, yield: 10, secondaryYield: Wool, secondaryOutput: 100, water: [25,200],temperature: [50,120,75], minsoil: 0, maxheight: 250, growthTime: 30, secondaryGrowthTime: 10, isAnimal: true });
+return({ output: Sheep, yield: 20, secondaryYield: Wool, secondaryOutput: 200, water: [25,200],temperature: [50,120,75], minsoil: 0, maxheight: 250, growthTime: 30, secondaryGrowthTime: 10, isAnimal: true });
 case 547:
 return({ output: Flowers, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [50,100,75], minsoil: 10, maxheight: 200, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
 case 586:
-return({ output: Wood, yield: 2500, secondaryYield: Oranges, secondaryOutput: 500, water: [50,150],temperature: [60,120,80], minsoil: 25, maxheight: 150, growthTime: 50, secondaryGrowthTime: 10, isAnimal: false });
+return({ output: Wood, yield: 3750, secondaryYield: Lemons, secondaryOutput: 750, water: [50,150],temperature: [60,120,80], minsoil: 25, maxheight: 150, growthTime: 50, secondaryGrowthTime: 10, isAnimal: false });
 case 585:
 return({ output: Peas, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [0,80,50], minsoil: 0, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 587:
+return({ output: Broccoli, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [40,100,70], minsoil: 0, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 588:
+return({ output: Cabbage, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [40,100,70], minsoil: 0, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 589:
+return({ output: Soybeans, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,150],temperature: [50,120,80], minsoil: 25, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
+case 590:
+return({ output: Tomato, yield: 500, secondaryYield: None, secondaryOutput: 0, water: [50,125],temperature: [50,100,70], minsoil: 25, maxheight: 150, growthTime: 10, secondaryGrowthTime: 0, isAnimal: false });
 }
       return (_value);
       }
@@ -9900,8 +10892,8 @@ return([[0,0,0,0,0],[0,0,0,0,0],[0,0,undefined,0,0,0,0,0,0,0,Kaolinite],[0,0,und
 }
       return (_value);
       }
-itemID = [1,2,3,4,11,12,13,14,21,22,23,31,32,33,34,41,42,43,44,51,52,53,61,62,63,64,70,71,72,80,81,82,501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579,580,581,583,584,585,586,590,1000,1001,1002,1003,1010,1011,1012,1013,1014,1030,1031,1032,1033,1034,1040,1041,1042,1043,1044,1050,1051,1052,1060,1061,1062,1200,1203,1204,1205,1206,1207,1208,1209,1212,1213,1220,1221,1222,1223,1224,1260,1261,1262,1268,1270,1271,1272,1273,1274,1275,1276,1277,1278,1279,1280,1281,1282,1283,1284,1285,1286,1287,1288,1289,1290,1291,1294,1295,1296,1299,1300,1301,1400,1401,1402,1403,1404,1405,1406,1407,1408,1409,1410,1411,1412,1413,1414,1415,1416,1417,1418,1419,1420,1421,1422,1423,1424,1425,1426,1427,1428,1430,1431,1432,1433,1434,1435,1436,1437,1438,1439,1440,1441,1442,1443,1444,1445,1900,1901,1902,1903,1904,1905,1906,1907,1908,1909,1911,1912,1913,1914,1915,1916,1917,1918,1919,1921,1922,1923,1924,1925,1926,1927,1928,1929,1930,1990,1991,1992,2001,2002,2003,2004,2005,2021,2022,2023,2024,2025,2028,2029,2080,2101,2102,2103,2105,2121,2122,2123,2124,2125,2126,2127,2128,2129,2150,2151,2152,2153,2154,2160,2161,2162,2163,2164,2180,2181,2182,2183,2200,2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2212,2213,2214,2215,2300,2301,2302,2303,2304,2305,2306,2308,2309,2310,2311,2312,2314,2315,4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025,4026,4027,4028,4029,4030,4031,4032,4040,4050,4051,4052,4053,4054,4055,4056,4057,4058,4059,4060,4061,4062,4063,4064,4065,4066,4070,4071,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4200,4201,4202,4203,4204,4205,4206,4207,4221,4222,4223,4224,4225,4226,4227,4300,4301,4311,4312,4313,4314,4315,4316,4317,4318,4319,4321,4322,4323,4324,4325,4326,4327,4328,4329,4330,4331,4400,4410,4411,4412,4413,4414,4500,4501,4503,4504,4520,4521,4522,4523,4524,4525,4526,4527,4540,4541,4542,4560,4561,4562,4563,4564,4565,4580,4581,4582,4600,4601,4602,4603,4604,4605,4606,4607,4608,4620,4621,4622,4623,4624,4640,4641,4642,4643,4644,4660,4661,4662,4663,4664,4665,4666,4667,4680,4681,4682,4683,4684,4700,4701,4702,4703,4704,4720,4721,4722,4740,4741,4742,4743,4760,4761,4762,4763,4764,4765,4780,4781,4782,4783,4800,4801,4802,5000,5001,5002,5003,5004,5010,5011,5012,5013,5014,5020,5021,5022,5023,5024,5025,5030,5031,5032,5033,5034,5040,5041,5042,5043,5044,5050,5051,5052,5053,5054,5060,5061,5062,5063,5064,5070,5071,5072,5073,5074,5080,5081,5082,5083,5084,5090,5091,5092,5093,5094,5200,5201,5202,5203,5204,5210,5211,5212,5213,5214,5400,5401,5402,5403,5404,5420,5421,5430,5431,5500,5501,5502,5503,5504,5510,5511,5512,5513,5514,5520,5521,5522,5523,5524,5530,5531,5532,5533,5534,5540,5541,5542,5543,5544,5550,5551,5552,5553,5554,5560,5561,5562,5563,5564,5570,5571,5572,5573,5574,5580,5581,5582,5585,5586,5600,5601,5602,5611,5612,5613,5614,5620,5621,5622,5623,5700,5701,5702,5720,5721,5722,5723,5800,5801,5802,5803,5804,5810,5811,5812,5813,5814,5820,5821,5822,5823,5824,5830,5831,5832,5833,5834,5900,5901,5902,5903,5904,5905,5910,5911,7000,7001,7002,7003,7004,7005,7006,7007,7008,7009,7100,7101,7102,7103,7104,7105,7106,7107,7108,7109,7110,7111,7200,7201,7202,7203,7204,7205,7206,7207,7300,7301,7302,7303,7304,7305,7306,7400,7401,7402,7403,11000,11010,11011,11020,11021,11030,11031,11040,11041,11042,11050,11060,11070,11200,11210,11211,11220,11230,11231,11241,11300,11301,11310,11311,11501,11502,11520,11521,11600,11601,11602,28501,28502,28503,28504,28505,28506,28507,28508,28800,]
-recipeID = [501,502,503,504,505,519,530,536,538,540,548,559,564,574,575,578,579,583,584,1000,1001,1002,1003,1010,1011,1012,1013,1014,1030,1031,1032,1033,1034,1040,1041,1042,1043,1044,1050,1051,1060,1061,1062,1200,1204,1206,1207,1208,1209,1212,1213,1220,1223,1224,1260,1261,1262,1268,1269,1270,1271,1272,1273,1274,1275,1276,1277,1278,1279,1280,1281,1282,1283,1284,1285,1286,1287,1288,1289,1290,1291,1294,1295,1296,1299,1300,1301,1400,1402,1403,1404,1405,1406,1407,1408,1409,1410,1411,1413,1414,1416,1417,1418,1423,1424,1425,1426,1427,1428,1430,1431,1432,1433,1434,1435,1436,1437,1439,1440,1441,1442,1444,1901,1902,1903,1904,1905,1906,1907,1908,1909,1911,1912,1913,1914,1915,1916,1917,1918,1919,1921,1922,1923,1924,1925,1926,1927,1928,1929,1930,1990,1991,1992,2080,2101,2103,2105,2121,2122,2123,2124,2125,2126,2127,2128,2129,2150,2151,2152,2153,2154,2160,2161,2162,2163,2164,2180,2181,2182,2300,2301,2302,2303,2304,2305,2306,2308,2309,2310,2311,2312,2314,2315,4000,4001,4002,4019,4020,4024,4026,4027,4028,4029,4030,4031,4032,4040,4050,4051,4053,4054,4055,4056,4059,4060,4061,4062,4063,4065,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4200,4201,4202,4203,4204,4205,4206,4207,4221,4222,4223,4224,4225,4226,4227,4311,4312,4313,4314,4315,4316,4317,4318,4319,4321,4322,4323,4324,4325,4326,4327,4328,4329,4330,4331,4400,4410,4411,4412,4414,4500,4501,4502,4503,4504,4520,4521,4522,4523,4524,4525,4526,4527,4540,4541,4542,4560,4561,4562,4563,4564,4565,4580,4581,4582,4600,4601,4602,4603,4604,4605,4606,4607,4608,4620,4621,4622,4623,4624,4640,4641,4642,4643,4644,4660,4661,4662,4663,4664,4665,4666,4667,4680,4681,4682,4683,4684,4700,4701,4702,4703,4704,4720,4721,4722,4740,4741,4742,4743,4760,4761,4762,4780,4781,4782,4783,4800,4801,4802,5000,5001,5002,5003,5004,5010,5011,5012,5013,5014,5020,5021,5022,5023,5024,5025,5030,5031,5032,5033,5034,5040,5041,5042,5043,5044,5050,5051,5052,5053,5054,5060,5061,5062,5063,5064,5070,5071,5072,5073,5074,5080,5081,5082,5083,5084,5090,5091,5092,5093,5094,5200,5201,5202,5203,5204,5210,5211,5212,5213,5214,5420,5421,5430,5431,5500,5501,5502,5503,5504,5510,5511,5512,5513,5514,5520,5521,5522,5523,5524,5530,5531,5532,5533,5534,5540,5541,5542,5543,5544,5550,5551,5552,5553,5554,5560,5561,5562,5563,5564,5570,5571,5572,5573,5574,5580,5581,5582,5585,5586,5613,5614,5620,5621,5622,5623,5700,5701,5702,5720,5721,5722,5723,5800,5801,5802,5803,5804,5810,5811,5812,5813,5814,5820,5821,5822,5823,5824,5830,5831,5832,5833,5834,5900,5901,5902,5903,5904,5905,5910,5911,7000,7001,7002,7003,7004,7005,7006,7007,7008,7009,7100,7101,7102,7103,7104,7105,7106,7107,7108,7109,7111,7200,7201,7202,7203,7204,7205,7206,7207,7300,7301,7302,7303,7304,7305,7306,7400,7401,7402,7403,66000,66001,66002,66003,71205,74013,74014,74015,74016,74017,74018,74030,75164,75613,77400,77401,77402,301200,302103,311200,701200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,]
+itemID = [1,2,3,4,11,12,13,14,21,22,23,31,32,33,34,41,42,43,44,51,52,53,61,62,63,64,70,71,72,80,81,82,501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579,580,581,583,584,585,586,587,588,589,590,591,1000,1001,1002,1003,1004,1005,1010,1011,1012,1013,1014,1015,1030,1031,1032,1033,1034,1040,1041,1042,1043,1044,1050,1051,1052,1060,1061,1062,1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211,1212,1213,1214,1215,1216,1217,1218,1219,1220,1221,1222,1223,1224,1225,1226,1227,1228,1229,1230,1231,1232,1233,1234,1235,1236,1237,1238,1239,1240,1241,1242,1243,1244,1245,1246,1247,1248,1249,1250,1251,1252,1253,1254,1255,1256,1257,1258,1259,1260,1261,1262,1263,1264,1265,1266,1267,1268,1269,1270,1271,1400,1401,1402,1403,1404,1405,1406,1407,1408,1409,1410,1411,1412,1413,1414,1417,1418,1419,1420,1421,1422,1423,1424,1425,1426,1427,1428,1430,1431,1432,1440,1441,1442,1443,1444,1451,1452,1460,1461,1462,1463,1464,1465,1471,1472,1481,1482,1483,1490,1491,1492,1493,1494,1495,1900,1901,1902,1903,1904,1905,1906,1907,1908,1909,1911,1912,1913,1914,1915,1916,1917,1918,1919,1921,1922,1923,1924,1925,1926,1927,1928,1929,1930,1990,1991,1992,2001,2002,2003,2004,2005,2021,2022,2023,2024,2025,2028,2029,2080,2101,2102,2103,2105,2121,2122,2123,2124,2125,2126,2127,2128,2129,2150,2151,2152,2153,2154,2160,2161,2162,2163,2164,2180,2181,2182,2183,2200,2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2212,2213,2214,2215,2300,2301,2302,2303,2304,2305,2306,2308,2309,2310,2311,2312,2314,2315,4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025,4026,4027,4028,4029,4030,4031,4032,4040,4050,4051,4052,4053,4054,4055,4056,4057,4058,4059,4060,4061,4062,4063,4064,4065,4066,4070,4071,4100,4101,4102,4103,4104,4105,4110,4111,4112,4113,4114,4115,4200,4201,4202,4203,4204,4205,4206,4207,4221,4222,4223,4224,4225,4226,4227,4300,4301,4311,4312,4313,4314,4315,4316,4317,4318,4319,4321,4322,4323,4324,4325,4326,4327,4328,4329,4330,4331,4400,4410,4411,4412,4413,4414,4500,4501,4503,4504,4520,4521,4522,4523,4524,4525,4526,4527,4540,4541,4542,4560,4561,4562,4563,4564,4565,4580,4581,4582,4600,4601,4602,4603,4604,4605,4606,4607,4608,4620,4621,4622,4623,4624,4640,4641,4642,4643,4644,4660,4661,4662,4663,4664,4665,4666,4667,4680,4681,4682,4683,4684,4700,4701,4702,4703,4704,4720,4721,4722,4740,4741,4742,4743,4760,4761,4762,4763,4764,4765,4780,4781,4782,4783,4800,4801,4802,5000,5001,5002,5003,5004,5010,5011,5012,5013,5014,5020,5021,5022,5023,5024,5025,5030,5031,5032,5033,5034,5040,5041,5042,5043,5044,5050,5051,5052,5053,5054,5060,5061,5062,5063,5064,5070,5071,5072,5073,5074,5082,5092,5200,5201,5202,5203,5204,5205,5210,5211,5212,5213,5400,5401,5402,5403,5404,5420,5421,5430,5431,5500,5501,5502,5503,5504,5505,5510,5511,5512,5513,5514,5515,5520,5521,5522,5523,5524,5525,5530,5531,5532,5533,5534,5535,5540,5541,5542,5543,5544,5545,5550,5551,5552,5553,5554,5555,5560,5561,5562,5563,5564,5565,5570,5571,5572,5573,5574,5575,5580,5581,5582,5583,5585,5586,5587,5588,5589,5600,5601,5602,5611,5612,5613,5614,5620,5621,5622,5623,5624,5700,5701,5702,5720,5721,5722,5723,5724,5802,5812,5822,5832,5900,5901,5902,5903,5904,5905,5910,5911,7000,7001,7002,7003,7004,7005,7006,7007,7008,7009,7100,7101,7102,7103,7104,7105,7106,7107,7108,7109,7110,7111,7200,7201,7202,7203,7204,7205,7206,7207,7300,7301,7302,7303,7304,7305,7306,7400,7401,7402,7403,11100,11101,11130,11150,11200,11220,11230,11300,11320,11321,11330,11400,11420,11450,11500,11501,11520,11600,11620,11700,11701,11720,11730,11800,11830,11900,11920,11930,28501,28502,28503,28504,28505,28506,28507,28508,28800,]
+recipeID = [501,502,503,504,505,519,530,536,538,540,548,559,564,574,575,578,579,583,1000,1001,1002,1003,1010,1011,1012,1013,1014,1030,1031,1032,1033,1034,1040,1041,1042,1043,1044,1050,1051,1060,1061,1062,1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211,1212,1213,1214,1215,1216,1217,1218,1219,1220,1221,1222,1223,1224,1225,1226,1227,1228,1229,1230,1231,1232,1233,1234,1235,1236,1237,1238,1239,1240,1241,1242,1243,1244,1245,1246,1247,1248,1249,1250,1251,1252,1253,1254,1255,1256,1257,1258,1259,1260,1261,1262,1263,1265,1266,1267,1268,1269,1270,1271,1400,1402,1403,1404,1405,1406,1407,1408,1409,1410,1411,1413,1414,1418,1423,1424,1425,1426,1427,1428,1430,1431,1432,1433,1434,1436,1437,1439,1440,1441,1442,1443,1443,1444,1471,1481,1482,1483,1490,1491,1492,1493,1901,1902,1903,1904,1905,1906,1907,1908,1909,1911,1912,1913,1914,1915,1916,1917,1918,1919,1921,1922,1923,1924,1925,1926,1927,1928,1929,1930,1990,1991,1992,2080,2101,2103,2105,2121,2122,2123,2124,2125,2126,2127,2128,2129,2150,2151,2152,2153,2154,2160,2161,2162,2163,2164,2180,2181,2182,2300,2301,2302,2303,2304,2305,2306,2308,2309,2310,2311,2312,2314,2315,4000,4001,4002,4019,4020,4024,4026,4027,4028,4029,4030,4031,4032,4040,4050,4051,4053,4054,4055,4056,4059,4060,4061,4062,4063,4065,4100,4101,4102,4103,4104,4105,4110,4111,4112,4113,4114,4115,4200,4201,4202,4203,4204,4205,4206,4207,4221,4222,4223,4224,4225,4226,4227,4311,4312,4313,4314,4315,4316,4317,4318,4319,4321,4322,4323,4324,4325,4326,4327,4328,4329,4330,4331,4400,4410,4411,4412,4414,4500,4501,4502,4503,4504,4520,4521,4522,4523,4524,4525,4526,4527,4540,4541,4542,4560,4561,4562,4563,4564,4565,4580,4581,4582,4600,4601,4602,4603,4604,4605,4606,4607,4608,4620,4621,4622,4623,4624,4640,4641,4642,4643,4644,4660,4661,4662,4663,4664,4665,4666,4667,4680,4681,4682,4683,4684,4700,4701,4702,4703,4704,4720,4721,4722,4740,4741,4742,4743,4760,4761,4762,4780,4781,4782,4783,4800,4801,4802,5000,5001,5002,5003,5004,5010,5011,5012,5013,5014,5020,5021,5022,5023,5024,5025,5030,5031,5032,5033,5034,5040,5041,5042,5043,5044,5050,5051,5052,5053,5054,5060,5061,5062,5063,5064,5070,5071,5072,5073,5074,5082,5092,5200,5201,5202,5203,5204,5205,5210,5211,5212,5213,5420,5421,5430,5431,5500,5501,5502,5503,5504,5505,5510,5511,5512,5513,5514,5515,5520,5521,5522,5523,5524,5525,5530,5531,5532,5533,5534,5535,5540,5541,5542,5543,5544,5545,5550,5551,5552,5553,5554,5555,5560,5561,5562,5563,5564,5565,5570,5571,5572,5573,5574,5575,5580,5581,5582,5583,5585,5586,5587,5588,5589,5600,5601,5602,5611,5612,5613,5614,5620,5621,5622,5623,5624,5700,5701,5702,5720,5721,5722,5723,5802,5812,5822,5832,5900,5901,5902,5903,5904,5905,5910,5911,7000,7001,7002,7003,7004,7005,7006,7007,7008,7009,7100,7101,7102,7103,7104,7105,7106,7107,7108,7109,7111,7200,7201,7202,7203,7204,7205,7206,7207,7300,7301,7302,7303,7304,7305,7306,7400,7401,7402,7403,66000,66001,66002,66003,71206,71493,74013,74014,74015,74016,74017,74018,74030,75164,75505,75515,75525,75535,75545,75555,75565,75575,75613,77400,77401,77402,81206,91206,302103,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,]
 
   function warItemClass(_value) {
   _value = Number(_value);
@@ -9990,25 +10982,9 @@ case 5073:
 return([Weapon,Melee,Mace,8]);
 case 5074:
 return([Weapon,Melee,Mace,8]);
-case 5080:
-return([Weapon,Elephant_Weapon,Elephant_Melee,1]);
-case 5081:
-return([Weapon,Elephant_Weapon,Elephant_Melee,1]);
 case 5082:
 return([Weapon,Elephant_Weapon,Elephant_Melee,1]);
-case 5083:
-return([Weapon,Elephant_Weapon,Elephant_Melee,1]);
-case 5084:
-return([Weapon,Elephant_Weapon,Elephant_Melee,1]);
-case 5090:
-return([Weapon,Rhino_Weapon,Rhino_Melee,1]);
-case 5091:
-return([Weapon,Rhino_Weapon,Rhino_Melee,1]);
 case 5092:
-return([Weapon,Rhino_Weapon,Rhino_Melee,1]);
-case 5093:
-return([Weapon,Rhino_Weapon,Rhino_Melee,1]);
-case 5094:
 return([Weapon,Rhino_Weapon,Rhino_Melee,1]);
 case 5200:
 return([Weapon,Ranged,Bow,1]);
@@ -10056,6 +11032,8 @@ case 5503:
 return([Armor,Human_Armor,Human_Armor,1]);
 case 5504:
 return([Armor,Human_Armor,Human_Armor,1]);
+case 5505:
+return([Armor,Human_Armor,Human_Armor,1]);
 case 5510:
 return([Armor,Human_Armor,Human_Armor,1]);
 case 5511:
@@ -10065,6 +11043,8 @@ return([Armor,Human_Armor,Human_Armor,1]);
 case 5513:
 return([Armor,Human_Armor,Human_Armor,1]);
 case 5514:
+return([Armor,Human_Armor,Human_Armor,1]);
+case 5515:
 return([Armor,Human_Armor,Human_Armor,1]);
 case 5520:
 return([Armor,Human_Armor,Human_Armor,2]);
@@ -10076,6 +11056,8 @@ case 5523:
 return([Armor,Human_Armor,Human_Armor,2]);
 case 5524:
 return([Armor,Human_Armor,Human_Armor,2]);
+case 5525:
+return([Armor,Human_Armor,Human_Armor,2]);
 case 5530:
 return([Armor,Human_Armor,Human_Armor,2]);
 case 5531:
@@ -10085,6 +11067,8 @@ return([Armor,Human_Armor,Human_Armor,2]);
 case 5533:
 return([Armor,Human_Armor,Human_Armor,2]);
 case 5534:
+return([Armor,Human_Armor,Human_Armor,2]);
+case 5535:
 return([Armor,Human_Armor,Human_Armor,2]);
 case 5540:
 return([Armor,Human_Armor,Human_Armor,3]);
@@ -10096,6 +11080,8 @@ case 5543:
 return([Armor,Human_Armor,Human_Armor,3]);
 case 5544:
 return([Armor,Human_Armor,Human_Armor,3]);
+case 5545:
+return([Armor,Human_Armor,Human_Armor,3]);
 case 5550:
 return([Armor,Horse_Armor,Horse_Armor,1]);
 case 5551:
@@ -10105,6 +11091,8 @@ return([Armor,Horse_Armor,Horse_Armor,1]);
 case 5553:
 return([Armor,Horse_Armor,Horse_Armor,1]);
 case 5554:
+return([Armor,Horse_Armor,Horse_Armor,1]);
+case 5555:
 return([Armor,Horse_Armor,Horse_Armor,1]);
 case 5560:
 return([Armor,Horse_Armor,Horse_Armor,2]);
@@ -10116,6 +11104,8 @@ case 5563:
 return([Armor,Horse_Armor,Horse_Armor,2]);
 case 5564:
 return([Armor,Horse_Armor,Horse_Armor,2]);
+case 5565:
+return([Armor,Horse_Armor,Horse_Armor,2]);
 case 5570:
 return([Armor,Horse_Armor,Horse_Armor,3]);
 case 5571:
@@ -10126,6 +11116,8 @@ case 5573:
 return([Armor,Horse_Armor,Horse_Armor,3]);
 case 5574:
 return([Armor,Horse_Armor,Horse_Armor,3]);
+case 5575:
+return([Armor,Horse_Armor,Horse_Armor,3]);
 case 5580:
 return([Armor,Human_Armor,Human_Armor,1]);
 case 5581:
@@ -10134,12 +11126,20 @@ case 5582:
 return([Armor,Human_Armor,Human_Armor,1]);
 case 5583:
 return([Armor,Horse_Armor,Horse_Armor,1]);
+case 5583:
+return([Armor,Horse_Armor,Horse_Armor,1]);
 case 5584:
 return([Armor,Human_Armor,Human_Armor,1]);
 case 5585:
 return([Armor,Rhino_Armor,Rhino_Armor,1]);
 case 5586:
 return([Armor,Elephant_Armor,Elephant_Armor,1]);
+case 5587:
+return([Armor,Horse_Armor,Horse_Armor,1]);
+case 5588:
+return([Armor,Horse_Armor,Horse_Armor,2]);
+case 5589:
+return([Armor,Horse_Armor,Horse_Armor,3]);
 case 5611:
 return([Offhand,Flamer_Tank,Flamer_Tank,1]);
 case 5612:
@@ -10158,45 +11158,15 @@ case 5722:
 return([Offhand,Bow_Ammo,Bow_Ammo,1]);
 case 5723:
 return([Offhand,Bow_Ammo,Bow_Ammo,1]);
-case 5800:
-return([Armor,Rhino_Armor,Rhino_Armor,1]);
-case 5801:
-return([Armor,Rhino_Armor,Rhino_Armor,1]);
+case 5724:
+return([Offhand,Bow_Ammo,Bow_Ammo,1]);
 case 5802:
 return([Armor,Rhino_Armor,Rhino_Armor,1]);
-case 5803:
-return([Armor,Rhino_Armor,Rhino_Armor,1]);
-case 5804:
-return([Armor,Rhino_Armor,Rhino_Armor,1]);
-case 5810:
-return([Armor,Rhino_Armor,Rhino_Armor,2]);
-case 5811:
-return([Armor,Rhino_Armor,Rhino_Armor,2]);
 case 5812:
 return([Armor,Rhino_Armor,Rhino_Armor,2]);
-case 5813:
-return([Armor,Rhino_Armor,Rhino_Armor,2]);
-case 5814:
-return([Armor,Rhino_Armor,Rhino_Armor,2]);
-case 5820:
-return([Armor,Elephant_Armor,Elephant_Armor,1]);
-case 5821:
-return([Armor,Elephant_Armor,Elephant_Armor,1]);
 case 5822:
 return([Armor,Elephant_Armor,Elephant_Armor,1]);
-case 5823:
-return([Armor,Elephant_Armor,Elephant_Armor,1]);
-case 5824:
-return([Armor,Elephant_Armor,Elephant_Armor,1]);
-case 5830:
-return([Armor,Elephant_Armor,Elephant_Armor,2]);
-case 5831:
-return([Armor,Elephant_Armor,Elephant_Armor,2]);
 case 5832:
-return([Armor,Elephant_Armor,Elephant_Armor,2]);
-case 5833:
-return([Armor,Elephant_Armor,Elephant_Armor,2]);
-case 5834:
 return([Armor,Elephant_Armor,Elephant_Armor,2]);
 case 5900:
 return([Offhand,Shield,Shield,1]);
@@ -10211,6 +11181,8 @@ return([Offhand,Shield,Shield,1]);
 case 5905:
 return([Offhand,Shield,Shield,1]);
 case 5910:
+return([Offhand,Shield,Shield,2]);
+case 5911:
 return([Offhand,Shield,Shield,2]);
 default: 
       return([0,0,0,0]);
@@ -10303,25 +11275,9 @@ case 5073:
 return([No_Limit,No_Limit,Required_Empty,No_Limit]);
 case 5074:
 return([No_Limit,No_Limit,Required_Empty,No_Limit]);
-case 5080:
-return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
-case 5081:
-return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
 case 5082:
 return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
-case 5083:
-return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
-case 5084:
-return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
-case 5090:
-return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
-case 5091:
-return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
 case 5092:
-return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
-case 5093:
-return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
-case 5094:
 return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
 case 5200:
 return([No_Limit,No_Limit,Bow_Ammo,No_Limit]);
@@ -10369,6 +11325,8 @@ case 5503:
 return([No_Limit,No_Limit,No_Limit,Required_Empty]);
 case 5504:
 return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5505:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
 case 5510:
 return([No_Limit,No_Limit,No_Limit,Required_Empty]);
 case 5511:
@@ -10378,6 +11336,8 @@ return([No_Limit,No_Limit,No_Limit,Required_Empty]);
 case 5513:
 return([No_Limit,No_Limit,No_Limit,Required_Empty]);
 case 5514:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5515:
 return([No_Limit,No_Limit,No_Limit,Required_Empty]);
 case 5520:
 return([No_Limit,No_Limit,No_Limit,Required_Empty]);
@@ -10389,6 +11349,8 @@ case 5523:
 return([No_Limit,No_Limit,No_Limit,Required_Empty]);
 case 5524:
 return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5525:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
 case 5530:
 return([No_Limit,No_Limit,No_Limit,Required_Empty]);
 case 5531:
@@ -10398,6 +11360,8 @@ return([No_Limit,No_Limit,No_Limit,Required_Empty]);
 case 5533:
 return([No_Limit,No_Limit,No_Limit,Required_Empty]);
 case 5534:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5535:
 return([No_Limit,No_Limit,No_Limit,Required_Empty]);
 case 5540:
 return([No_Limit,No_Limit,No_Limit,Required_Empty]);
@@ -10409,6 +11373,8 @@ case 5543:
 return([No_Limit,No_Limit,No_Limit,Required_Empty]);
 case 5544:
 return([No_Limit,No_Limit,No_Limit,Required_Empty]);
+case 5545:
+return([No_Limit,No_Limit,No_Limit,Required_Empty]);
 case 5550:
 return([No_Limit,No_Limit,No_Limit,Army_Horse]);
 case 5551:
@@ -10418,6 +11384,8 @@ return([No_Limit,No_Limit,No_Limit,Army_Horse]);
 case 5553:
 return([No_Limit,No_Limit,No_Limit,Army_Horse]);
 case 5554:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5555:
 return([No_Limit,No_Limit,No_Limit,Army_Horse]);
 case 5560:
 return([No_Limit,No_Limit,No_Limit,Army_Horse]);
@@ -10429,6 +11397,8 @@ case 5563:
 return([No_Limit,No_Limit,No_Limit,Army_Horse]);
 case 5564:
 return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5565:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
 case 5570:
 return([No_Limit,No_Limit,No_Limit,Army_Horse]);
 case 5571:
@@ -10439,6 +11409,8 @@ case 5573:
 return([No_Limit,No_Limit,No_Limit,Army_Horse]);
 case 5574:
 return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5575:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
 case 5580:
 return([No_Limit,No_Limit,No_Limit,Required_Empty]);
 case 5581:
@@ -10447,12 +11419,20 @@ case 5582:
 return([No_Limit,No_Limit,No_Limit,Required_Empty]);
 case 5583:
 return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5583:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
 case 5584:
 return([No_Limit,No_Limit,No_Limit,Required_Empty]);
 case 5585:
 return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
 case 5586:
 return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
+case 5587:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5588:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
+case 5589:
+return([No_Limit,No_Limit,No_Limit,Army_Horse]);
 case 5611:
 return([Flamer,No_Limit,No_Limit,No_Limit]);
 case 5612:
@@ -10471,45 +11451,15 @@ case 5722:
 return([Bow,No_Limit,No_Limit,No_Limit]);
 case 5723:
 return([Bow,No_Limit,No_Limit,No_Limit]);
-case 5800:
-return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
-case 5801:
-return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
+case 5724:
+return([Bow,No_Limit,No_Limit,No_Limit]);
 case 5802:
-return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
-case 5803:
-return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
-case 5804:
-return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
-case 5810:
-return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
-case 5811:
 return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
 case 5812:
 return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
-case 5813:
-return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
-case 5814:
-return([No_Limit,No_Limit,No_Limit,Army_Rhino]);
-case 5820:
-return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
-case 5821:
-return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
 case 5822:
 return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
-case 5823:
-return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
-case 5824:
-return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
-case 5830:
-return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
-case 5831:
-return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
 case 5832:
-return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
-case 5833:
-return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
-case 5834:
 return([No_Limit,No_Limit,No_Limit,Army_Elephant]);
 case 5900:
 return([No_Limit,No_Limit,No_Limit,No_Limit]);
@@ -10524,6 +11474,8 @@ return([No_Limit,No_Limit,No_Limit,No_Limit]);
 case 5905:
 return([No_Limit,No_Limit,No_Limit,No_Limit]);
 case 5910:
+return([No_Limit,No_Limit,No_Limit,No_Limit]);
+case 5911:
 return([No_Limit,No_Limit,No_Limit,No_Limit]);
 }
       return (_value);

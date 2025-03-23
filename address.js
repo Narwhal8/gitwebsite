@@ -13,15 +13,15 @@ async function address() {
     const network = await provider.getNetwork();
     console.log(network);
     if(network.chainId == 421614) {
-      cityAddress = "0x6Ec9d89CBE255Ea7140301B60E43fb809C30EC9c";
-      baseAddress = "0x44b47a5e7e537c041b2c3f8cbf9782a9e3d4d604";
-      merchantAddress = "0x09ae43D7a7951F59F466E5f4F5Bf1F7D881B2f57";
-      landGiveawayAddress = "0xA740308c1aC0448546aef9c57cD2Db0e8174470C";
-      warAddress = "0x125700a956c23af8b3946FbCaF7D29059F6b0F87";
-      eventAddress = "0xC5AEf37171124F6d60c769405d1d61B44325aDb0";
-      productionAddress = "0xBa487794fA6dC0D80B769f71334c8a4a9091fbb3";
+      cityAddress = "0xa8b45cfcea626f5ae32dbcf08ba4b8eaa72d35e4";
+      baseAddress = "0xb8c77c2abbbc1bce7f3d4daba530a11d4f489bbe";
+      merchantAddress = "0x705698c5f3286a4c84d34b55937221ed6a046bf2";
+      landGiveawayAddress = "0xe1f5dc06b8e14bb0f7268335262aa6fc80cea03e";
+      warAddress = "0x4E47301644Fc4073F01f06212fc40279F7284D7c";
+      eventAddress = "0x21A7e12ea4894560E2c329649da6100BF62A4246";
+      productionAddress = "0x5B50d47632AB84DE019C2c50cad4B2478adC3EcA";
 
-      console.log("Testnet Arbitrum Chain: Last Updated 2/16/2025 - 1");
+      console.log("Testnet Arbitrum Chain: Last Updated 3/23/2025 - 1");
     }
     else if(network.chainId == 31337) {
       cityAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";

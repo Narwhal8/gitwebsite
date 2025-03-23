@@ -723,14 +723,14 @@ city_abi = [
 	  "name": "addFood",
 	  "inputs": [
 		{
-		  "name": "_food",
-		  "type": "uint256",
-		  "internalType": "uint256"
+		  "name": "_foods",
+		  "type": "uint256[5]",
+		  "internalType": "uint256[5]"
 		},
 		{
 		  "name": "_amount",
-		  "type": "uint64",
-		  "internalType": "uint64"
+		  "type": "uint256",
+		  "internalType": "uint256"
 		}
 	  ],
 	  "outputs": [],
@@ -742,8 +742,8 @@ city_abi = [
 	  "inputs": [
 		{
 		  "name": "_foodInfo",
-		  "type": "tuple[32]",
-		  "internalType": "struct City.FoodInfo[32]",
+		  "type": "tuple[16]",
+		  "internalType": "struct City.FoodInfo[16]",
 		  "components": [
 			{
 			  "name": "value",
@@ -751,9 +751,9 @@ city_abi = [
 			  "internalType": "uint32"
 			},
 			{
-			  "name": "taste",
-			  "type": "uint8[2]",
-			  "internalType": "uint8[2]"
+			  "name": "isMain",
+			  "type": "bool",
+			  "internalType": "bool"
 			},
 			{
 			  "name": "nutrition",
@@ -764,8 +764,8 @@ city_abi = [
 		},
 		{
 		  "name": "_foodId",
-		  "type": "uint256[32]",
-		  "internalType": "uint256[32]"
+		  "type": "uint256[16]",
+		  "internalType": "uint256[16]"
 		}
 	  ],
 	  "outputs": [],
@@ -817,8 +817,8 @@ city_abi = [
 	  "inputs": [
 		{
 		  "name": "_recipies",
-		  "type": "tuple[64]",
-		  "internalType": "struct City.CookingRecipes[64]",
+		  "type": "tuple[16]",
+		  "internalType": "struct City.CookingRecipes[16]",
 		  "components": [
 			{
 			  "name": "amount",
@@ -864,8 +864,8 @@ city_abi = [
 		},
 		{
 		  "name": "_id",
-		  "type": "uint256[64]",
-		  "internalType": "uint256[64]"
+		  "type": "uint256[16]",
+		  "internalType": "uint256[16]"
 		}
 	  ],
 	  "outputs": [],
@@ -1516,16 +1516,6 @@ city_abi = [
 			},
 			{
 			  "name": "foodItemValue",
-			  "type": "uint256",
-			  "internalType": "uint256"
-			},
-			{
-			  "name": "drinkItemCount",
-			  "type": "uint256",
-			  "internalType": "uint256"
-			},
-			{
-			  "name": "drinkItemValue",
 			  "type": "uint256",
 			  "internalType": "uint256"
 			}
@@ -2364,16 +2354,6 @@ city_abi = [
 			  "name": "foodItemValue",
 			  "type": "uint256",
 			  "internalType": "uint256"
-			},
-			{
-			  "name": "drinkItemCount",
-			  "type": "uint256",
-			  "internalType": "uint256"
-			},
-			{
-			  "name": "drinkItemValue",
-			  "type": "uint256",
-			  "internalType": "uint256"
 			}
 		  ]
 		}
@@ -2428,13 +2408,13 @@ city_abi = [
 	  "inputs": [
 		{
 		  "name": "_itemID",
-		  "type": "uint256[64]",
-		  "internalType": "uint256[64]"
+		  "type": "uint256[16]",
+		  "internalType": "uint256[16]"
 		},
 		{
 		  "name": "_itemType",
-		  "type": "uint256[64]",
-		  "internalType": "uint256[64]"
+		  "type": "uint256[16]",
+		  "internalType": "uint256[16]"
 		}
 	  ],
 	  "outputs": [],
@@ -2691,24 +2671,6 @@ city_abi = [
 	},
 	{
 	  "type": "function",
-	  "name": "setNutrition",
-	  "inputs": [
-		{
-		  "name": "_who",
-		  "type": "address",
-		  "internalType": "address"
-		},
-		{
-		  "name": "_nutrition",
-		  "type": "uint16[6]",
-		  "internalType": "uint16[6]"
-		}
-	  ],
-	  "outputs": [],
-	  "stateMutability": "nonpayable"
-	},
-	{
-	  "type": "function",
 	  "name": "setPersonalItemLevel",
 	  "inputs": [
 		{
@@ -2720,48 +2682,6 @@ city_abi = [
 		  "name": "_data",
 		  "type": "uint8[2]",
 		  "internalType": "uint8[2]"
-		}
-	  ],
-	  "outputs": [],
-	  "stateMutability": "nonpayable"
-	},
-	{
-	  "type": "function",
-	  "name": "setPlayerCityItems",
-	  "inputs": [
-		{
-		  "name": "_who",
-		  "type": "address",
-		  "internalType": "address"
-		},
-		{
-		  "name": "_data",
-		  "type": "tuple",
-		  "internalType": "struct City.combinedCityItems",
-		  "components": [
-			{
-			  "name": "itemInventory",
-			  "type": "tuple[13]",
-			  "internalType": "struct City.cityItem[13]",
-			  "components": [
-				{
-				  "name": "individualItemInventory",
-				  "type": "uint64[15]",
-				  "internalType": "uint64[15]"
-				},
-				{
-				  "name": "individualItemAmount",
-				  "type": "uint64",
-				  "internalType": "uint64"
-				}
-			  ]
-			},
-			{
-			  "name": "itemValue",
-			  "type": "uint64",
-			  "internalType": "uint64"
-			}
-		  ]
 		}
 	  ],
 	  "outputs": [],
