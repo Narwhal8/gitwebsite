@@ -433,6 +433,7 @@
           }
           else{_bonus += 35;}
           _bonus += 65;
+          if(_bonus < 5){_bonus = 5;}
           return(_bonus);
 
     }
@@ -580,6 +581,19 @@
           break;
         case "5":
         FarmingNotice.style.display = "block";
+        var _landToClaim = Kingdom_Lands[cityData.kingdomType];
+            for(let i = 0; i < 8; ++i){
+              console.log("Test " + i);
+              console.log(_landToClaim);
+              if(_landToClaim[i] == 0){break;}
+              var _timeToComplete = await cityContract.farmProgress(myAddress,i);
+              var _completedTime = Number(_timeToComplete.time) + Number(_timeToComplete.worktime);
+              console.log("Complete Time:", _completedTime);
+              if(_completedTime < (Date.now()/1000) && _completedTime != 0 && _completedTime != 1){
+                sendTX.disabled = false;
+                break;
+              }
+            }
           break;
         case "6":
           const housing = await kingdomHousingCheck();
@@ -654,6 +668,7 @@
           ClaimButtonGrid.style.display = "grid";
           break;
         case "11":
+          console.log("Testsssir");
           var AllRecipies = itemID;
           var you_cubed = []
           for(let i = 0; i < AllRecipies.length; ++i) {
@@ -753,7 +768,7 @@
     function hideInvalidBuildings(recipe) {
 
       console.log("Recipe: ",recipe);
-      for (let i = 0; i < 32; i++) 
+      for (let i = 0; i < 31; i++) 
       { document.getElementsByClassName("buildingSelector")[i].style.display = "none"; }
       for(let i = 0; i < 8; ++i){
         if(recipe.allowableBuildings[i] != 200)
@@ -781,7 +796,6 @@
 
       document.getElementById("totalCostID").textContent = "Total Cost:";
       document.getElementById("totalCostID").style.display = "block";
-
       if (actionSelect.value == "1") {
         hideFarmYield();
         setTTC(TimeAmount.value * 10);
@@ -847,11 +861,20 @@
           if (recipe.output[2] != 0) {
               document.getElementById("totalCostID").textContent += " & " + ((recipe.outputAmount[2]) * Amount.value * document.getElementById("BatchAmount").value) + " " + itemName(recipe.output[2]);
             }
+          if(Amount.value != 0 && CID.value != "200"){
+            sendTX.disabled = false;
+          }
+          else{
+            sendTX.disabled = true;
+          }
         } 
         if (recipe.timeToMake == 0 || actionSelect.value == "7" ||
           actionSelect.value == "8" ||
           actionSelect.value == "4" ||
-          actionSelect.value == "3") { }
+          actionSelect.value == "13" ||
+          actionSelect.value == "3") {
+            sendTX.disabled = false;
+        }
         //Why is this here? Because I cant figure out how to make it work right in the if statement and its not worth the time to fix when this works
         else {
           if (document.getElementById("CID").value != 22) {
@@ -863,13 +886,13 @@
           }
           else { setTTC(Number(Amount.value) * recipe.timeToMake); }
         }
-
       }
       else if(actionSelect.value == "3") {
         totalCostID.textContent = "Total Cost: ";
         var tradeCost = await calcTradeCost();
         totalCostID.textContent += tradeCost;
         totalCostID.textContent += " Coins";
+        sendTX.disabled = false;
       }
       else if(actionSelect.value == "7") {
 
@@ -888,23 +911,11 @@
           if(i != 2){document.getElementById("totalCostID").textContent += " & "}
           
         }}
-      }
-      else if(actionSelect.value == "9") {
-        switch (RecruitSelector.value) {
-          case "0":
-            document.getElementById("totalCostID").textContent += 10000 * Amount.value + " Copper";
-            break;
-          case "1":
-            document.getElementById("totalCostID").textContent += 10000 * Amount.value + " Silver";
-            break;
-          case "2":
-            document.getElementById("totalCostID").textContent += 30000 * Amount.value + " Gold";
-            break;
-        }
-
+        sendTX.disabled = false
       }
       else{
         document.getElementById("totalCostID").style.display = "none";
+        sendTX.disabled = false;
       }
       }
     function craftingMenu(_value) {
@@ -1172,6 +1183,7 @@
       document.getElementById("BatchAmount").style.display = "none";
       document.getElementById("BatchAmountLabel").style.display = "none";
 
+      sendTX.disabled = true;
       document.getElementById("ClaimButtonGrid").style.display = "none";
 
       for(let i = 0; i < 3; ++i){
@@ -1381,36 +1393,42 @@
       console.log("Max Water: ",_cropInfo.water);
       if(Number(_availableLabor[0]) < Amount.value){
         document.getElementById("CropYieldAmount").textContent = "You don't have enough people to do this! Max: " + _availableLabor[0];
+        _finalValue = 0;
       }
       if(Number(_myLandArray[_selectedLand]) < Amount.value){
         document.getElementById("CropYieldAmount").textContent = "You don't have enough land to do this! Max: " + _myLandArray[_selectedLand];
+        _finalValue = 0;
       }
       else if(_landInfo.waterQuantity < _cropInfo.water[0]){
         document.getElementById("CropYieldAmount").textContent = "Land is too dry to grow this";
+        _finalValue = 0;
       }
       else if(_landInfo.waterQuantity > _cropInfo.water[1]){
         document.getElementById("CropYieldAmount").textContent = "Land is too wet to grow this";
+        _finalValue = 0;
       }
       else if(_cropInfo.maxHeight < _landInfo.altitude) {
         document.getElementById("CropYieldAmount").textContent = "Land is too high up for cultivation of this crop";
+        _finalValue = 0;
       }
       else if(_cropInfo.minsoil > _soilQuality) {
         document.getElementById("CropYieldAmount").textContent = "Land is too barren up for cultivation of this crop";
+        _finalValue = 0;
       }
       else if(_cropInfo.temperature[0] > _currentTemp) {
         document.getElementById("CropYieldAmount").textContent = "Land is too cold for cultivation";
+        _finalValue = 0;
       }
       else if(_cropInfo.temperature[1] < _currentTemp) {
         document.getElementById("CropYieldAmount").textContent = "Land is too hot for cultication";
+        _finalValue = 0;
       }
       else if(document.getElementById("TimeAmount").value > 25) {
         document.getElementById("CropYieldAmount").textContent = "This Is Too Long! Maximum number of repeats allowed is 25";
+        _finalValue = 0;
       }
-      if (_finalValue < 0)
-      {
-        sendTX.style.display = "none";
-      }
-      else{sendTX.style.display = "block";}
+      if (_finalValue <= 0){sendTX.disabled = true;}
+      else{sendTX.disabled = false;}
 
     }
     
@@ -1438,6 +1456,12 @@
         if(_wild_land_info[0][i + 1] == 0 || typeof(_wild_land_info[0][i + 1]) == "undefined"){break;}
         temp_name += " & ";
 
+      }
+      if(civilian_bonus <= 0){
+        sendTX.disabled = true;
+      }
+      else{
+        sendTX.disabled = false;
       }
 
       document.getElementById("CropYieldAmount").style.display = "block";
@@ -1891,7 +1915,7 @@
   <Time class="InvisableOnStart" id="Time">
     <text class="Time" id="timeToCompletion">Time To Completion:</text>
   </Time>
-    <button class="sendTX" id="sendTX" onclick="submitTX()">Confirm Transaction</button>
+    <button class="sendTX" id="sendTX" onclick="submitTX()" disabled>Confirm Transaction</button>
 
   <ErrorToast class="InvisableOnStart" id="ErrorToast">
     <text class="ErrorTextbox" id="ErrorText"></text>
@@ -2029,6 +2053,9 @@
     font-size: 16px;
     border-radius: 12px;
     bottom:10px;
+  }
+  .sendTX:disabled {
+    opacity: 0.5;
   }
 
   .Notice {
