@@ -1,0 +1,95 @@
+body {
+    background-color: var(--war-color);
+}
+
+.Footnote {
+    background-color: var(--war-color);
+    height: 150px;
+    width: 100%;
+}
+
+.WeaponOption {
+    display: inherit;
+}
+
+.WidthLimited {
+    width: 50%;
+}
+
+.BigText {
+    font-size: 18px;
+}
+
+.indexButton {
+    background-color: gray;
+    width: 150px;
+    height: 40px;
+    position: relative;
+    border-radius: 12px;
+    font-size: 16px;
+}
+
+.SuperSoldierGridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    background-color: aqua;
+}
+
+.SoldierGridContainer {
+    display: block;
+    width: 1fr;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    background-color: green;
+}
+
+.SoldierInfoGrid {
+    display: inline-block;
+}
+
+.menuButtons {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+}
+
+.sticky {
+    position: fixed;
+}
+
+
+.NumericInput {
+    background-color: wheat;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.MenuButtons {
+    position: absolute;
+    bottom: 10px;
+}
+
+.sendTX {
+    background-color: darkred;
+    color: black;
+    position: fixed;
+    width: 150px;
+    height: 80px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 12px;
+    bottom: 10px;
+    left: 10px;
+}
+
+.walletConnect {
+    background-color: darkred;
+    position: absolute;
+    right: 5%;
+    width: 150px;
+    height: 50px;
+    border-radius: 12px;
+}

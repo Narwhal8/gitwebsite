@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="lib/ethers.umd.min(5.2).js" type="application/javascript"></script>
+  <script src="./abi.js" type="application/javascript"></script>
+  <script src="./address.js" type="application/javascript"></script>
+
+  <script>
+
+
+
+    var FreeLandContractSigner;
+    var FreeLandContract;
+    var LandSaleContractSigner;
+    var LandSaleContract;
+    var cityContract;
+    var baseContract;
+
+    async function signon() {
+
+      await address();
+
+
+      provider = new ethers.providers.Web3Provider(window.ethereum)
+      await provider.send("eth_requestAccounts", []);
+      signer = provider.getSigner()
+
+      FreeLandContract = new ethers.Contract(landGiveawayAddress, giveaway_abi, provider)
+      FreeLandContractSigner = new ethers.Contract(landGiveawayAddress, giveaway_abi, signer)
+      LandSaleContract = new ethers.Contract(merchantAddress, merchant_abi, provider)
+      LandSaleContractSigner = new ethers.Contract(merchantAddress, merchant_abi, signer)
+
+
+
+      cityContract = new ethers.Contract(cityAddress, city_abi, provider)
+      baseContract = new ethers.Contract(baseAddress, base_abi, provider)
+      myAddress = await signer.getAddress()
+      console.log(myAddress);
+
+
+      _cityData = await cityContract.getKingdomInfo(myAddress);
+      console.log();
+      console.log("KingdomID:", _cityData.kingdomType);
+      if (await FreeLandContract.alreadyUsed(myAddress) == false) {
+        ClaimText.style.display = "block";
+      }
+      showLandMenu();
+
+    }
+
+    async function showLandMenu() {
+
+      var _cityData = await cityContract.getKingdomInfo(myAddress);
+
+
+      for (let i = 0; i < LandMenu.options.length; ++i) {
+        if (LandMenu.options[i].classList.contains(_cityData.kingdomType) == true || _cityData.kingdomType == 0) { LandMenu.options[i].style.display = "block" }
+        else if (typeof _cityData.kingdomType !== "undefined") { LandMenu.options[i].style.display = "none" }
+      }
+
+      document.getElementById("landSelection").style.display = "block";
+    }
+    async function totalCost() {
+      _Landvalue = Number(LandMenu.value);
+      console.log(_Landvalue)
+
+      const _adjLand = await landShopCost();
+
+
+
+      TotalCostText.textContent = "Total Cost: " + _adjLand + " Testnet Ether";
+
+      TotalCostText.style.display = "block";
+    }
+    async function submitTX() {
+      if (await FreeLandContract.alreadyUsed(myAddress) == false) {
+        FreeLandContractSigner.getFreeLand();
+      }
+      else {
+        console.log("Land sat: ", await FreeLandContract.alreadyUsed(myAddress));
+        const _adjLand = await landShopCost();
+        _landCost = ethers.utils.parseEther(String(_adjLand));
+        console.log("land type", Number(_landCost));
+        LandSaleContractSigner.SellLand(LandMenu.value, AmountInput.value, { value: _landCost })
+      }
+    }
+    async function landShopCost() {
+
+      var _amount = 1;
+      LandMenu.value = Number(LandMenu.value);
+      if ((LandMenu.value >= 70 && LandMenu.value < 80)) { _amount = 2; }
+      else if ((LandMenu.value >= 80 && LandMenu.value < 90)) { _amount = 3; }
+      const _soldAmount = await LandSaleContract.currentLandPrice(LandMenu.value)
+      var _landCost = (((((100 + Number(_soldAmount)) + Math.floor((AmountInput.value - 1) / 2))) * AmountInput.value * _amount) / 10000);
+      return (_landCost);
+    }
+  </script>
+</head>
+
+<body onload="signon()">
+  <text>Welcome to the Land Shop! Here you be able to buy more land, or for the purposes of beta testing each wallet
+    will be able to claim some randomly chosen land to start out with.</text>
+  <br>
+  <br>
+  <h2 class="InvisibleOnStart" id="ClaimText">Welcome to the Test Game. To get started, Click "Confirm Transaction" to
+    recieve your free randomized land allocation</h2>
+  <landSelection class="landSelection InvisibleOnStart" id="landSelection">
+    <label for="LandMenu">What Land would you like to buy?</label>
+    <select class="Dropdown" id="LandMenu">
+      <option value="-1"></option>
+      <option value="0">--Land</option>
+      <option value="-1"></option>
+      <option value="1" class="1">Arid Badlands</option>
+      <option value="2" class="1">Arid Steppes</option>
+      <option value="3" class="1">Arid Oasis</option>
+      <option value="4" class="1">Arid River</option>
+      <option value="11" class="2">Northern Rocky Wastes</option>
+      <option value="12" class="2">Northern Tundra</option>
+      <option value="13" class="2">Northern Forest</option>
+      <option value="14" class="2">Northern River</option>
+      <option value="21" class="3">Rocky Heartland</option>
+      <option value="22" class="3">Heartland</option>
+      <option value="23" class="3">River Heartland</option>
+      <option value="31" class="4">Southern Rocky</option>
+      <option value="32" class="4">Southern Forest</option>
+      <option value="33" class="4">Southern Jungle</option>
+      <option value="34" class="4">Southern River</option>
+      <option value="41" class="2 5">Northern Ocean</option>
+      <option value="42" class="3 5">Central Ocean</option>
+      <option value="43" class="4 5">Southern Ocean</option>
+      <option value="44" class="1 5">Desolate Ocean</option>
+      <option value="51" class="6">Brackish Swamp</option>
+      <option value="52" class="6">Swamp</option>
+      <option value="53" class="6">Lush Swamp</option>
+      <option value="61" class="7">Red Mountain</option>
+      <option value="62" class="7">Blue Mountain</option>
+      <option value="63" class="7">Green Mountain</option>
+      <option value="64" class="7">White Mountain</option>
+      <option value="70" class="8">Ochre Plains</option>
+      <option value="71" class="8">Lustrous River</option>
+      <option value="72" class="8">Silver Forest</option>
+      <option value="80" class="9">Golden Plains</option>
+      <option value="81" class="9">Golden Hills</option>
+      <option value="82" class="9">Golden Forest</option>
+    </select>
+
+
+
+  </landSelection>
+  <landAmount>
+    <br>
+    <label id="LandAmountLabel" for="AmountInput">How many parcels would you like to buy? (1 parcel = 100 land)</label>
+    <input id="AmountInput" class="NumericInput" type="number" onchange="totalCost()">
+    <text class="InvisibleOnStart" id="TotalCostText">Total Cost:</text>
+  </landAmount>
+  <landList class="InvisibleOnStart">
+
+  </landList>
+  <button class="sendTX" id="sendTX" onclick="submitTX()">Confirm Transaction</button>
+
+  <NotesButton class="MenuButtons">
+
+    <a href="faq.html">
+      <button class="notesButton">Project FAQ</button>
+    </a>
+    <a href="intro.html">
+      <button class="notesButton">Ready to Start? Click here!</button>
+    </a>
+    <a href="../index.html">
+      <button class="notesButton">Return Home</button>
+    </a>
+    <a href="wiki.html">
+      <button class="notesButton">Game Encylopedia</button>
+    </a>
+  </NotesButton>
+</body>
+<link rel="stylesheet" type="text/css" href="../style/root.css">
+<link rel="stylesheet" type="text/css" href="../style/landshop.css">
+</html>

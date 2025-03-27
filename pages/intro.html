@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<head>
+  <script src="lib/ethers.umd.min(5.2).js" type="application/javascript"></script>
+  <script src="./abi.js" type="application/javascript"></script>
+  <script src="./address.js" type="application/javascript"></script>
+  <script src="./excelIntegration.js" type="application/javascript"></script>
+  <script>
+
+    async function checkLand(_value) {
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner()
+      console.log(signer);
+      await address();
+      const cityContractSigner = new ethers.Contract(cityAddress, city_abi, signer);
+      const baseContractSigner = new ethers.Contract(baseAddress, base_abi, signer);
+      const myAddress = await signer.getAddress();
+      _add = [myAddress, myAddress, myAddress, myAddress, myAddress, myAddress, myAddress, myAddress];
+      var _totalLandBalance = 0;
+      _balance = await baseContractSigner.balanceOfBatch(_add, Kingdom_Lands[_value]);
+      for (let i = 0; i < 8; ++i) {
+        if (Kingdom_Lands[_value][i] != 0) {
+          console.log(_balance[i]);
+          document.getElementById("LandBalance" + i).textContent = itemName(Kingdom_Lands[_value][i]) + " Balance: " + _balance[i];
+          document.getElementById("LandBalance" + i).style.display = "block";
+          _totalLandBalance += _balance[i];
+        }
+        else { document.getElementById("LandBalance" + i).style.display = "none"; }
+      }
+      if (_totalLandBalance == 0) { NoLandWarning.style.display = "block" }
+      else { NoLandWarning.style.display = "none" }
+
+      KingdomDifficultyText.innerHTML = "Starting Kingdom Difficulty: ";
+      KingdomDifficultyText.style.display = "block";
+
+      switch (Number(_value)) {
+        case 1:
+          KingdomDifficultyText.innerHTML += "<b> Hard <b>";
+          break;
+        case 2:
+          KingdomDifficultyText.innerHTML += "<b> Very Hard <b>";
+          break;
+        case 3:
+          KingdomDifficultyText.innerHTML += "Easy";
+          break;
+        case 4:
+          KingdomDifficultyText.innerHTML += "<b> Hard <b>";
+          break;
+        case 5:
+          KingdomDifficultyText.innerHTML += "Medium";
+          break;
+        case 6:
+          KingdomDifficultyText.innerHTML += "Medium";
+          break;
+        case 7:
+          KingdomDifficultyText.innerHTML += "Medium";
+          break;
+        case 8:
+          KingdomDifficultyText.innerHTML += "Easy";
+          break;
+        case 9:
+          KingdomDifficultyText.innerHTML += "Easy";
+          break;
+      }
+
+    }
+    async function submitTX() {
+
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      console.log(signer);
+
+      const cityContractSigner = new ethers.Contract(cityAddress, city_abi, signer);
+
+      cityContractSigner.setKingdomType(KingdomID.value);
+    }
+  </script>
+</head>
+
+<body>
+
+  <IntroText>
+    <br>
+    <br>
+    <br>
+    Welcome to the game! To start, you will have to select which kind of Kingdom you would like. Your choice of Kingdom
+    is permanent, so it is recomended you do a little research before picking.
+    <br>
+    <h3>If you have not checked out the land shop yet, Please do so now to see what kind of free land you get</h3>
+    <br>
+    Questions about the game as a whole? Check the FAQ in the top right! Curious about the specific properties of an
+    item? See the encylopedia in the main menu.
+    <br>
+    <br>
+  </IntroText>
+
+  <KingdomInput class="KingdomInput " id="KIDInfo">
+    <label id="KIDInfo" for="KingdomID">What kind of Kingdom would you like?</label><br>
+    <select class="KingdomInput Dropdown" id="KingdomID" onchange="checkLand(this.value)">
+      <option value="-1"></option>
+      <option value="1">Arid</option>
+      <option value="2">Northern</option>
+      <option value="3">Heartland</option>
+      <option value="4">Southern</option>
+      <option value="5">Ocean</option>
+      <option value="6">Swamp</option>
+      <option value="7">Mountain</option>
+      <option value="8">Silver</option>
+      <option value="9">Gold</option>
+    </select>
+  </KingdomInput>
+  <Balences>
+    <text id="LandBalance0" class="InvisibleOnStart"></text>
+    <text id="LandBalance1" class="InvisibleOnStart"></text>
+    <text id="LandBalance2" class="InvisibleOnStart"></text>
+    <text id="LandBalance3" class="InvisibleOnStart"></text>
+    <text id="LandBalance4" class="InvisibleOnStart"></text>
+    <text id="LandBalance5" class="InvisibleOnStart"></text>
+    <text id="LandBalance6" class="InvisibleOnStart"></text>
+    <text id="LandBalance7" class="InvisibleOnStart"></text>
+    <text id="KingdomDifficultyText" class="InvisibleOnStart"></text>
+    <text id="NoLandWarning" class="InvisibleOnStart Notice">WARNING: You do not have any valid land tiles for this type
+      of Kingdom. If you have some other land, please locate a kingdom for which it may be used.</text>
+  </Balences>
+
+  <MenuButtons class="menuButtons">
+    <a href="../index.html">
+      <button class="indexButton">Return to Main Menu</button>
+    </a>
+    <a href="faq.html">
+      <button class="indexButton">Game FAQ</button>
+    </a>
+    <a href="landShop.html">
+      <button class="indexButton">Land Shop</button>
+    </a>
+  </MenuButtons>
+  <button class="sendTX" id="sendTX" onclick="submitTX()">Confirm Kingdom Choice</button>
+
+</body>
+<link rel="stylesheet" type="text/css" href="../style/root.css">
+<link rel="stylesheet" type="text/css" href="../style/intro.css">

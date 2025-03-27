@@ -1,0 +1,498 @@
+.BuildingPanel {
+    display: grid;
+    justify-content: space-around;
+    width: 800px;
+    grid-template-columns: 1.5fr repeat(10, 1fr);
+    grid-template-rows: repeat(33, 60px);
+
+}
+
+.FoodPanel {
+    display: grid;
+    justify-content: space-around;
+    width: 800px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 60px 40px 40px;
+
+}
+
+.NavelPanel {
+    display: grid;
+    justify-content: space-around;
+    width: 800px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 60px);
+}
+
+.PopulationPanel {
+    display: grid;
+    justify-content: space-around;
+    width: 800px;
+    grid-template-columns: 1.5fr repeat(13, 1fr);
+    grid-template-rows: repeat(5, 60px);
+
+}
+
+.NutritionPanel {
+    display: grid;
+    justify-content: space-around;
+    width: 800px;
+    grid-template-columns: 1.5fr repeat(6, 1fr);
+    grid-template-rows: repeat(2, 60px);
+
+}
+
+.CivItemPanel {
+    display: grid;
+    justify-content: space-around;
+    width: 800px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 60px);
+
+}
+
+.LandPanel {
+    display: grid;
+    justify-content: space-around;
+    width: 800px;
+    height: 180px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr 2fr;
+}
+
+.StandardItemColor {
+    background-color: wheat;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.FoodValueItemColor {
+    background-color: wheat;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.NutrientColor0 {
+    background-color: seagreen;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.NutrientColor1 {
+    background-color: crimson;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.NutrientColor2 {
+    background-color: green;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.NutrientColor3 {
+    background-color: saddlebrown;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.NutrientColor4 {
+    background-color: goldenrod;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.NutrientColor5 {
+    background-color: burlywood;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.NutrientColor6 {
+    background-color: ivory;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#PopPanel {
+    display: grid;
+    grid-template-columns: 20px, 20px;
+
+}
+
+#SubPanel1 {
+    height: 100%;
+    width: 100%;
+    border: 0px solid rgba(0, 0, 0, 0.8);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.8);
+    border-top: 1.5px solid rgba(0, 0, 0, 0.8);
+    background-color: none;
+    align-items: center;
+    display: flex;
+
+}
+
+#SubPanel2 {
+    height: 100%;
+    width: 100%;
+    border: 0px solid rgba(0, 0, 0, 0.8);
+    border-top: 2px solid rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+    background-color: none;
+    align-items: center;
+    display: flex;
+
+
+}
+
+.UpgradeOrDemoteButton {
+    background-color: greenyellow;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 12px;
+}
+
+.sendTX {
+    background-color: darkred;
+    color: black;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 12px;
+    bottom: 10px;
+}
+
+.sendTX:hover {
+    background-color: brown;
+}
+
+.NumericInput {
+    border-radius: 2px;
+    background-color: aqua;
+    border: none;
+}
+
+#InfoPanel {
+    display: inline-block;
+}
+
+.indexButton {
+    background-color: gray;
+    width: 150px;
+    height: 40px;
+    position: relative;
+    text-align: center;
+    border-radius: 12px;
+    font-size: 16px;
+}
+
+.menuButtons {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+}
+
+.PopulationBackground0 {
+    background-color: seagreen;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.PopulationBackground1 {
+    background-color: gray;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.PopulationBackground2 {
+    background-color: aquamarine;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.PopulationBackground3 {
+    background-color: purple;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.PopulationBackground4 {
+    background-color: gold;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.PopulationBackground5 {
+    background-color: crimson;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.PopulationBackground6 {
+    background-color: royalblue;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.PopulationBackground7 {
+    background-color: darkgrey;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.PopulationBackground8 {
+    background-color: ivory;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.PopulationBackground9 {
+    background-color: burlywood;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.PopulationBackground10 {
+    background-color: sandybrown;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.PopulationBackground11 {
+    background-color: saddlebrown;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.PopulationBackground12 {
+    background-color: green;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.PopulationBackground13 {
+    background-color: seagreen;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.KingdomBackground0 {
+    background-color: mediumseagreen;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.KingdomBackground1 {
+    background-color: sandybrown;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.KingdomBackground2 {
+    background-color: snow;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.KingdomBackground3 {
+    background-color: grey;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.KingdomBackground4 {
+    background-color: forestgreen;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.KingdomBackground5 {
+    background-color: mediumturquoise;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.KingdomBackground6 {
+    background-color: darkolivegreen;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.KingdomBackground7 {
+    background-color: saddlebrown;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.KingdomBackground8 {
+    background-color: silver;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.KingdomBackground9 {
+    background-color: goldenrod;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.KingdomBackground10 {
+    background-color: mediumseagreen;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 1fr;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

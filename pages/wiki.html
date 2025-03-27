@@ -933,18 +933,18 @@
     
         </select>
       </ItemMenu>
-    <MenuButtons class="menuButtons">
-        <a href="index.html">
+    <MenuButtons class="menuButtons-WIKI">
+        <a href="../index.html">
             <button class="indexButton">Return to Main Menu</button>
           </a>
     </MenuButtons>
     <Info>
-        <GeneralInfo id="GeneralInfo" class="InvisableOnStart">
+        <GeneralInfo id="GeneralInfo" class="InvisibleOnStart">
             <h3>General Info:</h3>
             <text id="ItemValueInfo">Item Value:</text>
             <br>
         </GeneralInfo>
-        <GrowingInfo id="GrowingInfo"class="InvisableOnStart">
+        <GrowingInfo id="GrowingInfo"class="InvisibleOnStart">
             <h3>Farming Info:</h3>
             <text id="TempratureRangeInfo">Temprature Range:</text>
             <br>
@@ -956,13 +956,13 @@
             <br>
             <text id="ByproductYieldInfo">Byproduct Yield Info:</text>
         </GrowingInfo>
-        <HuntingInfo id="HuntingInfo" class="InvisableOnStart">
+        <HuntingInfo id="HuntingInfo" class="InvisibleOnStart">
             <h3>Hunting Info:</h3>
             <text id="LowNobleHuntingInfo">Low Noble Hunt:</text>
             <br>
             <text id="HighNobleHuntingInfo">High Noble Hunt:</text>
         </HuntingInfo>
-        <CraftingInfo class="InvisableOnStart" id="CraftingInfo">
+        <CraftingInfo class="InvisibleOnStart" id="CraftingInfo">
             <h3>Crafting Info:</h3>
             <text id="CraftingInputInfo">Required Inputs:</text>
             <br>
@@ -1017,11 +1017,11 @@
                 <text id="CraftingAlternateInfo20"></text>
             </text>
         </CraftingInfo>
-        <MilitaryInfo class="InvisableOnStart" id="MilitaryInfo">
+        <MilitaryInfo class="InvisibleOnStart" id="MilitaryInfo">
             <h3>Military Info:</h3>
             
         </MilitaryInfo>
-        <LandInfo class="InvisableOnStart" id="LandInfo">
+        <LandInfo class="InvisibleOnStart" id="LandInfo">
             <h3>Land Info:</h3>
             <text id="LandTemperatureInfo">Land Temp:</text>
             <br>
@@ -1034,44 +1034,5 @@
         </LandInfo>
     </Info>
 </body>
+<link rel="stylesheet" type="text/css" href="../style/root.css">
 </html>
-
-
-<style>
-body {background-color: mediumseagreen;}
-
-
-.indexButton{
-  background-color: gray;
-  width: 150px;
-  height:40px;
-  position: relative;
-  border-radius: 12px;
-  font-size: 16px;
-}
-.SizeLimited {
-    max-width: 500px;
-}
-.Block {
-    display: block;
-}
-.InvisableOnStart {
-    display: none;
-}
-.Dropdown {
-  background-color: wheat;
-  border-radius: 4px;
-  font-size: 16px;
-}
-.menuButtons{
-    position: absolute;
-    top: 5px;
-    right:20px;
-}
-.indexButton:hover {
-    background-color: rgb(179, 165, 165);
-}
-.textBox {
-    width: 500px
-}
-</style>

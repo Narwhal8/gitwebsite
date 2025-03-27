@@ -1,0 +1,218 @@
+/*
+>> This page contains all shared global styles across pages
+- Global classes are defined first
+- Custom classes are defined second, in alphabetical order
+- Custom IDs are defined last, alphabetically
+- Page specific styling is organized into regions at the bottom of the file
+*/
+
+/* #region Global Classes */
+:root {
+    --primary-color: mediumseagreen;
+    --war-color: #d84747;
+}
+body {
+    background-color: var(--primary-color);
+}
+/* #endregion Global Classes */
+/**/
+/* #region Custom Classes */
+.Balance {
+    font-size: 24px;
+}
+.Block {
+    display: block;
+}
+.Bold {
+    font-weight: bold;
+}
+.BottomBox {
+    display: block;
+    width: 100%;
+    height: 150px;
+    background-color: var(--primary-color);
+    bottom: 0px
+}
+.ClaimButton {
+    display: inline-block;
+    background-color: purple;
+    align-self: flex-start;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    height: 75px;
+    width: 125px;
+}
+.ClaimButtonGrid {
+    display: inline-flex;
+    justify-content: space-around;
+    width: 500px;
+    grid-template-columns: repeat(4, 1fr);
+}
+.CraftingOption {
+
+    display: inline-block;
+    width: 50%;
+    height: 100px;
+    background-color: green;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+}
+.debugButton {
+    position: absolute;
+    bottom: 10px;
+    left: 700px;
+    font-size: 5px;
+    background-color: var(--primary-color);
+    border: 5px;
+}
+.Dropdown {
+    background-color: wheat;
+    border-radius: 4px;
+    font-size: 16px;
+}
+.ErrorTextbox {
+    display: block;
+    position: fixed;
+    background-color: yellowgreen;
+    width: 200px;
+    height: 100px;
+    right: 10px;
+    bottom: 10px;
+}
+.Indented {
+    text-indent: 20px;
+}
+.indexButton {
+    background-color: gray;
+    width: 150px;
+    height: 40px;
+    position: relative;
+    border-radius: 12px;
+    font-size: 16px;
+}
+.indexButton:hover {
+    background-color: rgb(179, 165, 165);
+}
+.Inputs {
+    display: block;
+}
+.InventoryPanel {
+    display: inline-flex;
+    justify-content: space-around;
+    width: 100%;
+    grid-template-columns: repeat(7, 1fr);
+}
+.InvisibleOnStart {
+    display: none;
+}
+.InventoryItem {
+    display: inline-block;
+    background-color: rgb(19, 125, 65);
+    align-self: flex-start;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    height: 100px;
+    width: 1fr;
+}
+.InventoryItem2 {
+    display: inline-block;
+    background-color: green;
+    align-self: flex-start;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    height: 100px;
+    width: 1fr;
+}
+.LongNumericInput {
+    border-radius: 2px;
+    background-color: aqua;
+    border: none;
+    width: 350px;
+}
+.MenuButtons {
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    grid-template-rows: repeat(2, 2fr);
+    left: 25%;
+    position: fixed;
+    bottom: 10px;
+}
+.notesButton {
+    background-color: gray;
+    width: 150px;
+    height: 40px;
+    position: relative;
+    border-radius: 12px;
+    font-size: 16px;
+}
+.notesButton:hover {
+    background-color: rgb(179, 165, 165);
+}
+.Notice {
+    font-size: 16px;
+    font-weight: bold;
+}
+.NumericInput {
+    border-radius: 2px;
+    background-color: aqua;
+    border: none;
+}
+.pt16 {
+    font-size: 16px;
+}
+.RecipeText {
+    font-size: 20px;
+}
+.sendTX {
+    background-color: darkred;
+    color: black;
+    position: fixed;
+    width: 150px;
+    height: 80px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 12px;
+    bottom: 10px;
+}
+.sendTX:disabled {
+    opacity: 0.5;
+}
+.sendTX:hover {
+    background-color: brown;
+    font-size: 18px;
+}
+/* #endregion Custom Classes */
+/**/
+/* #region Custom IDs */
+#connect-button {
+    background-color: darkred;
+    position: absolute;
+    right: 50px;
+    top: 75px;
+    width: 150px;
+    height: 50px;
+    border-radius: 12px;
+}
+#connect-button:hover {
+    background-color: brown;
+}
+/* #endregion Custom IDs */
+/**/
+/* #region Page Specific Styles */
+/* FAQ */
+.menuButtons-FAQ {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+}
+.textBox-FAQ {
+    width: 500px
+}
+/* FAQ */
+/* Wiki */
+.menuButtons-WIKI {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+}
+.SizeLimited {
+    max-width: 500px;
+}
+/* Wiki */
+/* #endregion Page Specific Styles */

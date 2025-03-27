@@ -26,18 +26,18 @@
     var merchantContractSigner;
     var myAddress;
     var cityData;
-                
-    async function loadPage(){
-              await welcome();
-            }
-            addEventListener("DOMContentLoaded", (event) => {
-                console.log("DOM fully loaded and parsed");
-                loadPage();
-            });
+
+    async function loadPage() {
+      await welcome();
+    }
+    addEventListener("DOMContentLoaded", (event) => {
+      console.log("DOM fully loaded and parsed");
+      loadPage();
+    });
     async function welcome() {
 
       await address();
-      
+
       provider = new ethers.providers.Web3Provider(window.ethereum)
 
       network = await provider.getNetwork();
@@ -62,7 +62,7 @@
             document.getElementById("Input2").value);
           tx.wait().then(
             async (receipt) => {
-              baseContractSigner.safeTransferFrom(myAddress,AddyInput.value,Input1.value,Input2.value,"0x");
+              baseContractSigner.safeTransferFrom(myAddress, AddyInput.value, Input1.value, Input2.value, "0x");
             }
           );
           break;
@@ -71,11 +71,11 @@
           break;
         case "3":
           const _var = await merchantContract.returnAmountSold(Number(Input1.value));
-          console.log("value",Number(_var));
+          console.log("value", Number(_var));
           break;
         case "10":
           merchantContractSigner.devIsSelling();
-        }
+      }
 
     }
   </script>
@@ -108,60 +108,13 @@
 
   <MenuButtons class="menuButtons">
     <button class="sendTX" id="sendTX" onclick="submitTX()">Confirm Transaction</button>
-    <a href="index.html">
+    <a href="../index.html">
       <button class="indexButton">Return to Main Menu</button>
     </a>
   </MenuButtons>
 
 
 </body>
-
+<link rel="stylesheet" type="text/css" href="../style/root.css">
+<link rel="stylesheet" type="text/css" href="../style/dev.css">
 </html>
-
-<style>
-  body {
-    background-color: mediumseagreen;
-  }
-
-
-  .indexButton {
-    background-color: gray;
-    width: 150px;
-    height: 40px;
-    position: relative;
-    border-radius: 12px;
-    font-size: 16px;
-    left: 25%;
-    bottom: 20px;
-  }
-
-  .menuButtons {
-    position: absolute;
-    left: 5px;
-    bottom: 20px;
-  }
-
-  .indexButton:hover {
-    background-color: rgb(179, 165, 165);
-  }
-
-  .sendTX {
-    background-color: darkred;
-    color: black;
-    position: relative;
-    width: 150px;
-    height: 80px;
-    text-align: center;
-    font-size: 16px;
-    border-radius: 12px;
-  }
-
-  .sendTX:hover {
-    background-color: brown;
-    font-size: 18px;
-  }
-
-  .Inputs {
-    display: block;
-  }
-</style>
