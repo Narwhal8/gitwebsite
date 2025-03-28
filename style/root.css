@@ -7,12 +7,32 @@
 */
 
 /* #region Global Classes */
+@font-face {
+    font-family: 'DefaultFont';
+    src: url('../assets/default_font.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'DefaultFontBold';
+    src: url('../assets/default_font_bold.ttf') format('truetype');
+}
 :root {
     --primary-color: mediumseagreen;
     --war-color: #d84747;
+    --primary-font-color: #cfcfcf;
+    --border-color: #1a1410;
+
+    --primary-font: 'DefaultFont', monospace;
+    --primary-font-bold: 'DefaultFontBold', monospace;
+}
+* {
+    font-family: var(--primary-font);
 }
 body {
     background-color: var(--primary-color);
+    background-image: url('../assets/bg.jpg');
+    background-size: 653px 900px;
+    font-family: var(--primary-font);
+    color: var(--primary-font-color);
 }
 /* #endregion Global Classes */
 /**/
@@ -77,6 +97,17 @@ body {
     right: 10px;
     bottom: 10px;
 }
+.headerBox {
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 10px;
+    width: 30%;
+    font-family: var(--primary-font-bold);
+    background-image: url('../assets/tex_stone.jpg');
+    background-size: 1000px 1000px;
+    background-position: center;
+    box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.5), inset -2px -2px 10px rgba(255, 255, 255, 0.3);
+}
 .Indented {
     text-indent: 20px;
 }
@@ -134,12 +165,16 @@ body {
     bottom: 10px;
 }
 .notesButton {
-    background-color: gray;
     width: 150px;
     height: 40px;
     position: relative;
     border-radius: 12px;
     font-size: 16px;
+    font-family: var(--primary-font);
+    color: var(--primary-font-color);
+    background-image: url('../assets/tex_stone.jpg');
+    background-size: 1000px 1000px;
+    background-position: center;
 }
 .notesButton:hover {
     background-color: rgb(179, 165, 165);
