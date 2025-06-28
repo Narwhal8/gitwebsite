@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 
 <head>
-    <script src="lib/ethers.umd.min(5.2).js" type="application/javascript"></script>
-    <script src="./abi.js" type="application/javascript"></script>
-    <script src="./address.js" type="application/javascript"></script>
-    <script src="./excelIntegration.js" type="application/javascript"></script>
+
+    <script src="../lib/ethers.umd.min(5.2).js" type="application/javascript"></script>
+    <script src="../scripts/abi.js" type="application/javascript"></script>
+    <script src="../scripts/address.js" type="application/javascript"></script>
+    <script src="../scripts/excelIntegration.js" type="application/javascript"></script>
 
     <script>
         async function test() {
@@ -47,7 +48,7 @@
         var _FoodItemDropdownsSelected = [false, false, false, false, false];
         async function welcome() {
             await address();
-            provider = new ethers.providers.Web3Provider(window.ethereum)
+            provider = await new ethers.providers.Web3Provider(window.ethereum)
             signer = await provider.getSigner()
             network = await provider.getNetwork();
 

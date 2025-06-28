@@ -4,6 +4,7 @@ body {
 
 .Footnote {
     background-color: var(--war-color);
+    opacity: 0;
     height: 150px;
     width: 100%;
 }

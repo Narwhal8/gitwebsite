@@ -19,9 +19,11 @@
     --primary-color: mediumseagreen;
     --war-color: #d84747;
     --primary-font-color: #cfcfcf;
+    --dark-font-color: #303030;
     --border-color: #1a1410;
 
     --primary-font: 'DefaultFont', monospace;
+    --dark-font: 'DefaultFont', monospace;
     --primary-font-bold: 'DefaultFontBold', monospace;
 }
 * {
@@ -92,7 +94,11 @@ body {
 .ErrorTextbox {
     display: block;
     position: fixed;
-    background-color: yellowgreen;
+    background-color: burlywood;
+    font-family: var(--dark-font);
+    color: var(--dark-font-color);
+    text-align: center;
+    font-size: 24px;
     width: 200px;
     height: 100px;
     right: 10px;
