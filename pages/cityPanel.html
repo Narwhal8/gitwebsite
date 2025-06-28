@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+
+<head>
+    <script src="lib/ethers.umd.min(5.2).js" type="application/javascript"></script>
+    <script src="./abi.js" type="application/javascript"></script>
+    <script src="./address.js" type="application/javascript"></script>
+    <script src="./excelIntegration.js" type="application/javascript"></script>
+
+    <script>
+        async function test() {
+            await welcome();
+            await generateBuildingGrid();
+            await generalCityInfo();
+            generatePopulationGrid();
+            await NavalStats();
+            await generateNutritionGrid();
+            generateFoodGrid();
+            generateAddFoodGrid();
+        }
+        addEventListener("DOMContentLoaded", (event) => {
+
+            console.log("DOM fully loaded and parsed");
+            test();
+        });
+        var _selectedPopJob;
+        var _selectedPopLine;
+        var itemSelected;
+
+        var provider;
+        var signer;
+        var network;
+
+        var cityContract;
+        var cityContractSigner;
+        var baseContract;
+        var baseContractSigner;
+        var merchantContract;
+        var merchantContractSigner;
+        var myAddress;
+
+        var cityData;
+        var buildingCount;
+        var foodStockAmounts;
+        var stockedTemporaryCivGoods;
+        var stockedPermaCivGoods;
+
+        var _FoodItemDropdownsSelected = [false, false, false, false, false];
+        async function welcome() {
+            await address();
+            provider = new ethers.providers.Web3Provider(window.ethereum)
+            signer = await provider.getSigner()
+            network = await provider.getNetwork();
+
+            cityContract = new ethers.Contract(cityAddress, city_abi, provider);
+            cityContractSigner = new ethers.Contract(cityAddress, city_abi, signer);
+            baseContract = new ethers.Contract(baseAddress, base_abi, provider);
+            baseContractSigner = new ethers.Contract(baseAddress, base_abi, signer);
+            merchantContract = new ethers.Contract(merchantAddress, merchant_abi, provider);
+            merchantContractSigner = new ethers.Contract(merchantAddress, merchant_abi, signer);
+
+            try { await signer.getAddress(); }
+            catch (err) {
+                ErrorToast.style.display = "block";
+                ErrorText.style.display = "block";
+                ErrorText.innerHTML = `ERROR: You do not currently have a wallet connected, please click "Connect Your Wallet Here" and refresh the page`;
+            }
+            myAddress = await signer.getAddress();
+            console.log("Address: ", myAddress);
+            cityData = await cityContract.getKingdomInfo(myAddress);
+
+            buildingCount = await cityContract.getBuildingCount(myAddress);
+            availableBuildingCount = await cityContract.getAvailableBuildingCount(myAddress);
+
+            foodStockAmounts = await cityContract.getGeneralStockpile(myAddress);
+
+            stockedTemporaryCivGoods = await cityContract.getStockedGoods(myAddress);
+
+            stockedPermaCivGoods = await cityContract.getPlayerCityItems(myAddress);
+            console.log("Welcome!");
+        }
+        async function generateNutritionGrid() {
+
+            NutritionPanel.innerHTML = "";
+            _nutrients = await cityContract.getNutrition(myAddress);
+            for (let i = 0; i < 7; ++i) {
+
+                const newDiv = document.createElement("NutritionInfoLabel" + i);
+                NutritionPanel.appendChild(newDiv);
+                if (i == 0) {
+                    newDiv.innerHTML = "Nutrient: ";
+                }
+                else {
+                    newDiv.innerHTML = getNutrientName(i - 1);
+                }
+                newDiv.classList.add("NutrientColor" + i);
+
+            }
+            for (let i = 0; i < 7; ++i) {
+
+                const newDiv = document.createElement("NutritionInfo" + i);
+                NutritionPanel.appendChild(newDiv);
+                if (i == 0) {
+                    newDiv.innerHTML = "Nutrient Amount: ";
+                }
+                else {
+                    newDiv.innerHTML = _nutrients[i - 1] / 100 + "%";
+                }
+                newDiv.classList.add("NutrientColor" + i);
+            }
+        }
+        function generateFoodGrid() {
+
+            for (let i = 0; i < 5 * 2; ++i) {
+
+                const newDiv = document.createElement("FoodSubpanel" + i);
+                newDiv.classList.add("FoodValueItemColor");
+                FoodPanel.appendChild(newDiv);
+                switch (i) {
+                    case 0:
+                        newDiv.innerHTML = "Food Stocks";
+                        break;
+                    case 1:
+                        newDiv.innerHTML = "Food Values";
+                        break;
+                    case 2:
+                        newDiv.innerHTML = "Clothes Stocked";
+                        break;
+                    case 3:
+                        newDiv.innerHTML = "Tools Stocked";
+                        break;
+                    case 4:
+                        newDiv.innerHTML = "Bedding Stocked";
+                        break;
+                    case 5:
+                        newDiv.innerHTML = foodStockAmounts.foodItemCount;
+                        break;
+                    case 6:
+                        newDiv.innerHTML = foodStockAmounts.foodItemValue;
+                        break;
+                    case 7:
+                        newDiv.innerHTML = stockedTemporaryCivGoods.stockpiles[0]
+                        break;
+                    case 8:
+                        newDiv.innerHTML = stockedTemporaryCivGoods.stockpiles[1]
+                        break;
+                    case 9:
+                        newDiv.innerHTML = stockedTemporaryCivGoods.stockpiles[2]
+                        break;
+
+                }
+            }
+        }
+        async function updateFoodCosts() {
+            for (let i = 0; i < 5; ++i) {
+                document.getElementById("FoodSubpanel" + i).innerHTML = setFoodGridTitle(i);
+            }
+        }
+        async function updateFoodBal(_dropdown) {
+            console.log("NUM: ", _dropdown);
+            document.getElementById("FoodSubpanel" + (_dropdown + 5)).innerHTML = "You Have: "
+                + await baseContract.balanceOf(myAddress, (document.getElementById("FoodSubpanel" + _dropdown).value));
+        }
+        function setFoodGridTitle(_value) {
+
+            switch (_value) {
+                case 0:
+                    return ("Main Food <br> Units Consumed: " + AddFoodNumberInput.value * 5);
+                    break;
+                case 1:
+                    return ("Drinks <br> Units Consumed: " + AddFoodNumberInput.value * 5);
+                    break;
+                case 2:
+                    return ("Appetizers <br> Units Consumed: " + AddFoodNumberInput.value * 1);
+                    break;
+                case 3:
+                    return ("Grains <br> Units Consumed: " + AddFoodNumberInput.value * 1);
+                    break;
+                case 4:
+                    return ("Dessert <br> Units Consumed: " + AddFoodNumberInput.value * 1);
+                    break;
+
+            }
+        }
+        async function generateAddFoodGrid() {
+
+            for (let i = 0; i < 5 * 2; ++i) {
+
+                var newDiv;
+                if (i >= 5) {
+                    newDiv = document.createElement("select");
+                }
+                else {
+                    newDiv = document.createElement("div");
+                }
+                newDiv.id = ("FoodSubpanel" + i);
+                newDiv.classList.add("FoodValueItemColor");
+                newDiv.innerHTML = setFoodGridTitle(i);
+
+                console.log("Div 3: ", newDiv.id);
+                if (i >= 5) {
+                    if (i != 5) { newDiv.disabled = true }
+                    _itemsTypes = [240, 124, 120, 122, 121];
+                    _items = groupItems(_itemsTypes[i - 5]);
+                    var _addyArray = [];
+                    _addyArray.length = _items.length;
+                    _addyArray.fill(myAddress);
+                    _userHeldItems = await baseContract.balanceOfBatch(_addyArray, _items);
+                    for (let j = -1; j < _items.length; ++j) {
+
+                        var option;
+                        if (j == -1) {
+                            option = document.createElement("option");
+                            option.text = "None";
+                            option.value = 0;
+                        }
+                        else if (_userHeldItems[j] != 0) {
+                            option = document.createElement("option");
+                            option.text = itemName(_items[j]);
+                            option.value = (_items[j]);
+
+                        }
+
+                        newDiv.appendChild(option);
+                    }
+                    newDiv.addEventListener("change", async function () {
+                        console.log("Div Clicked: ", this.id);
+                        if (this.value != 0) { _FoodItemDropdownsSelected[i - 5] = true }
+                        else { _FoodItemDropdownsSelected[i - 5] = false }
+                        var _foodItemNumberSelected = 0;
+                        for (let j = 0; j < 5; ++j) {
+                            if (_FoodItemDropdownsSelected[j]) { ++_foodItemNumberSelected; }
+                        }
+                        console.log("Food Selected", _foodItemNumberSelected);
+                        for (let k = 6; k < 10; ++k) {
+                            if ((document.getElementById(("FoodSubpanel" + k)).value == 0 && ((itemLevel(document.getElementById(("FoodSubpanel5")).value)) <= _foodItemNumberSelected)) || document.getElementById(("FoodSubpanel5")).value == 0) {
+                                document.getElementById(("FoodSubpanel" + k)).disabled = true;
+                            }
+                            else {
+                                document.getElementById(("FoodSubpanel" + k)).disabled = false;
+                            }
+                        }
+                        await updateFoodBal(i);
+                    })
+
+                    if (i == 5) {
+                        newDiv.addEventListener("change", function () {
+                            AddFoodText.innerHTML = "Max number of additional food items: " + (itemLevel(this.value) - 1);
+                            console.log("Value: ", this.value);
+                            console.log("Max Item Level: " + itemLevel(this.value));
+                        })
+                    }
+                }
+                AddFoodPanel.appendChild(newDiv);
+            }
+
+            for (let i = 0; i < 5; ++i) {
+
+                var newDiv = document.createElement("div");
+                AddFoodPanel.appendChild(newDiv);
+                newDiv.id = ("FoodSubpanel" + (i + 10));
+                newDiv.classList.add("FoodValueItemColor");
+                newDiv.innerHTML = "You Have: 0";
+            }
+        }
+        async function generateBuildingGrid() {
+
+            BuildingPanel.innerHTML = "";
+            for (let i = 0; i < 11; ++i) {
+                const newDiv = document.createElement("Name" + i);
+                BuildingPanel.appendChild(newDiv);
+                if (i == 0) {
+                    newDiv.innerHTML = "Building Name: ";
+                    newDiv.id = ("InfoPanel");
+                }
+                else if (i != 10) {
+                    newDiv.innerHTML = "Building Style: <br>" + kingdomName(((i - 1) % 9) + 1);
+                    newDiv.id = ("InfoPanel");
+                }
+                else {
+                    newDiv.innerHTML = "Total"
+                }
+                newDiv.classList.add("KingdomBackground" + ((i % 11)))
+
+            }
+            for (let i = 0; i < (32 * 11); ++i) {
+                const newDiv = document.createElement("InventorySubpanel" + i);
+                const subNewDiv1 = document.createElement("InventorySubSubpanel_1" + i);
+                const subNewDiv2 = document.createElement("InventorySubSubpanel_2" + i);
+                BuildingPanel.appendChild(newDiv);
+                newDiv.appendChild(subNewDiv1);
+                newDiv.appendChild(subNewDiv2);
+                if (i % 11 == 0) {
+                    newDiv.innerHTML = getBuildingName(Math.floor(i / 11));
+                }
+                else if (i % 11 != 10) {
+                    subNewDiv2.innerHTML = buildingCount[((i) % 11) - 1][Math.floor(i / 11)];
+                    subNewDiv1.innerHTML = availableBuildingCount[((i) % 11) - 1][Math.floor(i / 11)];
+                }
+                else {
+                    var _num = 0;
+                    for (let j = 0; j < 9; ++j) {
+                        _num += Number(buildingCount[j][Math.floor((i) / 11)]);
+                    }
+                    newDiv.innerHTML = _num;
+                }
+
+                newDiv.setAttribute("id", "PopPanel");
+                newDiv.classList.add("KingdomBackground" + ((i % 11)))
+                subNewDiv1.classList.add("KingdomBackground" + ((i % 11)))
+                subNewDiv2.classList.add("KingdomBackground" + ((i % 11)))
+                subNewDiv1.setAttribute("id", "SubPanel1");
+                subNewDiv2.setAttribute("id", "SubPanel2");
+            }
+
+        }
+        function TrainPopCheckboxToggle() {
+            if (document.getElementById("enableTrainPops").checked) {
+                UpgradeOrDemotePopsButton.style.display = "block";
+            }
+            else { UpgradeOrDemotePopsButton.style.display = "none" }
+        }
+        function TrainNavalCheckboxToggle() {
+            if (document.getElementById("enableNavalEdit").checked) {
+                MoveBoatsButton.style.display = "block";
+            }
+            else { MoveBoatsButton.style.display = "none" }
+        }
+        function MoveDurablesCheckboxToggle() {
+            if (document.getElementById("enableDurableGoods").checked) {
+                UpgradeOrDemoteDurablesButton.style.display = "block";
+            }
+            else { UpgradeOrDemoteDurablesButton.style.display = "none" }
+        }
+        function addFoodMenuShow() {
+            if (document.getElementById("addFoodCheckbox").checked) {
+                AddFood.style.display = "block";
+            }
+            else { AddFood.style.display = "none" }
+        }
+        function showDurableConsumptionUI() {
+            DurableAmount.style.display = "block";
+            DurableAmountLabel.style.display = "block";
+        }
+        function showNavelConsumptionUI() {
+            NavelAmount.style.display = "block";
+            NavelAmountLabel.style.display = "block";
+        }
+        function generatePopulationGrid() {
+            PopulationPanel.innerHTML = "";
+            for (let i = 0; i < 14; ++i) {
+                const newDiv = document.createElement("Name" + i);
+                PopulationPanel.appendChild(newDiv);
+                if (i == 0) {
+                    newDiv.innerHTML = "Pop Type: ";
+                    newDiv.setAttribute("id", "PopInfoPanel");
+                }
+                else if (i != 13) {
+                    newDiv.innerHTML = getPopJobs(i - 1);
+                    newDiv.setAttribute("id", "PopInfoPanel");
+                }
+                else {
+                    newDiv.innerHTML = "Total"
+                }
+                newDiv.classList.add("PopulationBackground" + (Math.round(i % 14)))
+            }
+
+            var _totalPop = 0;
+            var _totalUnworkedPop = 0;
+            for (let i = 0; i < (14 * 4); ++i) {
+                const newDiv = document.createElement("PopulationSubpanel" + i);
+                newDiv.classList.add("PopSubPanel");
+                const subNewDiv1 = document.createElement("PopulationSubSubpanel_1" + i);
+                const subNewDiv2 = document.createElement("PopulationSubSubpanel_2" + i);
+
+                newDiv.setAttribute("id", "PopPanel");
+                subNewDiv1.setAttribute("id", "SubPanel1");
+                subNewDiv2.setAttribute("id", "SubPanel2");
+
+                var _linecount = Math.ceil((i + 1) / 14);
+                PopulationPanel.appendChild(newDiv);
+                newDiv.appendChild(subNewDiv1);
+                newDiv.appendChild(subNewDiv2);
+
+                if (i % 14 == 0) {
+                    if (_linecount == 4) { newDiv.innerHTML = "Total: " }
+                    else { newDiv.innerHTML = getPopNames(_linecount - 1) }
+                    _totalPop = 0;
+                    _totalUnworkedPop = 0;
+
+                }
+                else if (i % 14 != 13) {
+
+                    var subdiv_1_pop;
+                    var subdiv_2_pop;
+                    if (_linecount == 4) {
+                        subdiv_1_pop = Number(cityData.nonWorkingPopulation[(i - 1) % 14][0]) + Number(cityData.nonWorkingPopulation[(i - 1) % 14][1]) + Number(cityData.nonWorkingPopulation[(i - 1) % 14][2])
+                        subdiv_2_pop = Number(cityData.population[(i - 1) % 14][0]) + Number(cityData.population[(i - 1) % 14][1]) + Number(cityData.population[(i - 1) % 14][2])
+                    }
+                    else {
+                        subdiv_1_pop = Number(cityData.nonWorkingPopulation[(i - 1) % 14][_linecount - 1]);
+                        subdiv_2_pop = Number(cityData.population[(i - 1) % 14][_linecount - 1]);
+                    }
+                    _totalPop += subdiv_1_pop;
+                    _totalUnworkedPop += subdiv_2_pop;
+                    subNewDiv1.innerHTML = subdiv_1_pop;
+                    subNewDiv2.innerHTML = subdiv_2_pop;
+                    newDiv.addEventListener("click", function () {
+                        if (document.getElementById("enableTrainPops").checked) {
+                            editPopInfo(Math.ceil((i + 1) / 14) - 1, (i - 1) % 14);
+                            console.log("Div clicked!");
+                        }
+                    })
+
+                }
+                else {
+                    subNewDiv2.innerHTML = _totalUnworkedPop;
+                    subNewDiv1.innerHTML = _totalPop;
+
+                }
+
+                newDiv.classList.add("PopulationBackground" + (Math.round(i % 14)))
+                subNewDiv1.classList.add("PopulationBackground" + (Math.round(i % 14)))
+                subNewDiv2.classList.add("PopulationBackground" + (Math.round(i % 14)))
+            }
+        }
+        async function editPopInfo(popTier, popType) {
+            console.log("Pop Type:", popType);
+            console.log("Pop Tier:", popTier);
+            _selectedPopJob = popType;
+            _selectedPopLine = popTier;
+            PopUpgradeCost.innerHTML = UpgradeOrDemotePopsButton.value + PopAmount.value;
+            if (UpgradeOrDemotePopsButton.value == "Upgrade ") {
+                PopUpgradeCost.innerHTML += " Untrained Pops into " + getPopJobs(popType) + " " + getPopNames(popTier) + "? This action will cost " + (popTrainingCost[popType][popTier + 1] * PopAmount.value +
+                    " " + itemName(popTrainingCost[popType][0]));
+            }
+            else { PopUpgradeCost.innerHTML += getPopNames(popTier) + " " + getPopJobs(popType) + " into Untrained Pops?" }
+            PopUpgradeCost.style.display = "block";
+            PopUpgradeCostButton.style.display = "block";
+            PopAmount.style.display = "block";
+            PopAmountLabel.style.display = "block";
+        }
+        function updatePopChangeMode() {
+            if (UpgradeOrDemotePopsButton.value == "Upgrade ") {
+                UpgradeOrDemotePopsButton.style.backgroundColor = "darkred";
+                UpgradeOrDemotePopsButton.innerHTML = "Downgrade Mode";
+                UpgradeOrDemotePopsButton.value = "Downgrade "
+            }
+            else {
+                UpgradeOrDemotePopsButton.style.backgroundColor = "greenyellow";
+                UpgradeOrDemotePopsButton.innerHTML = "Upgrade Mode";
+                UpgradeOrDemotePopsButton.value = "Upgrade "
+            }
+        }
+        function updateNavalMode() {
+            if (MoveBoatsButton.value == "Upgrade ") {
+                MoveBoatsButton.style.backgroundColor = "darkred";
+                MoveBoatsButton.innerHTML = "Downgrade Mode";
+                MoveBoatsButton.value = "Downgrade "
+            }
+            else {
+                MoveBoatsButton.style.backgroundColor = "greenyellow";
+                MoveBoatsButton.innerHTML = "Upgrade Mode";
+                MoveBoatsButton.value = "Upgrade "
+            }
+        }
+        function updateDurablesChangeMode() {
+            if (UpgradeOrDemoteDurablesButton.value == "Upgrade ") {
+                UpgradeOrDemoteDurablesButton.style.backgroundColor = "darkred";
+                UpgradeOrDemoteDurablesButton.innerHTML = "Remove Items";
+                UpgradeOrDemoteDurablesButton.value = "Downgrade "
+            }
+            else {
+                UpgradeOrDemoteDurablesButton.style.backgroundColor = "greenyellow";
+                UpgradeOrDemoteDurablesButton.innerHTML = "Add Items";
+                UpgradeOrDemoteDurablesButton.value = "Upgrade "
+            }
+        }
+        function addDurables() {
+            DurableAmountLabel.style.display = "block";
+            DurableAmount.style.display = "block";
+            DurableChangeButton.style.display = "block";
+        }
+        function addNavel() {
+            NavelAmountLabel.style.display = "block";
+            NavelAmount.style.display = "block";
+            NavelChangeButton.style.display = "block";
+        }
+        async function confirmFoodAdditions() {
+            var _foodTempArray = [document.getElementById("FoodSubpanel7").value, document.getElementById("FoodSubpanel9").value, document.getElementById("FoodSubpanel8").value, document.getElementById("FoodSubpanel5").value, document.getElementById("FoodSubpanel6").value];
+            console.log("Food Values: ", _foodTempArray);
+            cityContractSigner.addFood(
+                _foodTempArray,
+                AddFoodNumberInput.value
+
+            );
+        }
+        async function confirmDurablesChange() {
+            var _amount = Number(DurableAmount.value);
+            if (UpgradeOrDemoteDurablesButton.value != "Upgrade ") {
+                _amount = _amount * -1;
+            }
+            console.log("Amount: ", _amount);
+            cityContractSigner.addPersonalItems(
+                itemSelected,
+                _amount
+            );
+        }
+        async function confirmNavelChange() {
+            console.log("Test");
+            var _amount = Number(NavelAmount.value);
+            if (MoveBoatsButton.value != "Upgrade ") {
+                _amount = _amount * -1;
+            }
+            console.log("Amount: ", _amount);
+            cityContractSigner.addBoats(
+                itemSelected,
+                _amount
+            );
+        }
+        async function confirmTrainPops() {
+            if (UpgradeOrDemotePopsButton.value == "Upgrade ") {
+                cityContractSigner.trainPop(
+                    0,
+                    _selectedPopJob,
+                    _selectedPopLine,
+                    PopAmount.value
+                );
+            }
+            else {
+                cityContractSigner.trainPop(
+                    _selectedPopJob,
+                    0,
+                    _selectedPopLine,
+                    PopAmount.value
+                );
+            }
+        }
+        async function showCivItemMenu(_value) {
+            _value = Number(_value);
+            console.log("Value: ", _value);
+            const _items = groupItems(_value);
+            console.log("Items Available: ", _items);
+            var _myAddresArray = new Array(_items.length);
+            _myAddresArray.fill(myAddress);
+            const _itemBals = await baseContract.balanceOfBatch(_myAddresArray, _items);
+            var _cityItemBals = await cityContract.getPlayerCityItems(myAddress);
+            _cityItemBals = _cityItemBals[0][_value];
+            console.log("City Item Bals", _cityItemBals);
+            console.log("Items Bal: ", _itemBals);
+
+            CivItemPanel.innerHTML = "";
+
+            var _sumItems = 0;
+            CivItemPanel.setAttribute("style", "grid-template-columns:repeat(" + (Number(_items.length) + 1) + ", 1fr)");
+            for (let i = 0; i < (_items.length + 1); ++i) {
+                const newDiv = document.createElement("Name" + i);
+                CivItemPanel.appendChild(newDiv);
+                if (i != _items.length) {
+                    newDiv.innerHTML = itemName(_items[i]);
+                    newDiv.setAttribute("id", "PopInfoPanel");
+                    _sumItems += Number(_cityItemBals.individualItemInventory[i]);
+                }
+                else {
+                    newDiv.innerHTML = "Total"
+                }
+                newDiv.classList.add("StandardItemColor")
+            }
+
+            for (let i = 0; i < (_items.length + 1); ++i) {
+                const newDiv = document.createElement("DurableGoodsSubpanel" + i);
+                newDiv.classList.add("PopSubPanel");
+
+                newDiv.setAttribute("id", "PopPanel");
+                CivItemPanel.appendChild(newDiv);
+
+                if (i != _items.length) {
+                    console.log("Items: ", _items);
+                    console.log(_items[i]);
+                    newDiv.addEventListener("click", function () {
+                        if (document.getElementById("enableDurableGoods").checked) {
+                            showDurableConsumptionUI();
+                            console.log("Div clicked!", _items[i]);
+                            itemSelected = _items[i];
+                        }
+                    })
+                    newDiv.innerHTML = "In City: " + Number(_cityItemBals.individualItemInventory[i]) + "<br>Inventory: " + _itemBals[i];
+                }
+                else {
+                    const subNewDiv1 = document.createElement("PopulationSubSubpanel_1" + i);
+                    const subNewDiv2 = document.createElement("PopulationSubSubpanel_2" + i);
+
+                    subNewDiv1.setAttribute("id", "SubPanel1");
+                    subNewDiv2.setAttribute("id", "SubPanel2");
+                    newDiv.appendChild(subNewDiv1);
+                    newDiv.appendChild(subNewDiv2);
+                    subNewDiv1.innerHTML = _sumItems;
+                    subNewDiv2.innerHTML = Number(cityData.totalPopulation[0]) + Number(cityData.totalPopulation[1]) + Number(cityData.totalPopulation[2]);
+                }
+
+                newDiv.classList.add("StandardItemColor");
+            }
+
+        }
+        async function generalCityInfo() {
+            var _season = await cityContract.returnSeason();
+
+            var _land = await cityContract.getLand(myAddress);
+
+            if (_season == 0) { _season = "Winter"; }
+            if (_season == 1) { _season = "Spring"; }
+            if (_season == 2) { _season = "Summer"; }
+            if (_season == 3) { _season = "Fall"; }
+            var _landAmount = 0
+            for (_landAmount; _landAmount < 10; _landAmount++) {
+                if (Kingdom_Lands[cityData.kingdomType][_landAmount] == 0) { break; }
+            }
+            console.log("Land Amount", _landAmount);
+            LandPanel.setAttribute("style", "grid-template-columns:repeat(" + _landAmount + ", 1fr)");
+            for (let i = 0; i < 2 * _landAmount; ++i) {
+                const newDiv = document.createElement("PopulationSubpanel" + i);
+                newDiv.classList.add("PopSubPanel");
+                newDiv.setAttribute("id", "PopPanel");
+                newDiv.classList.add("StandardItemColor");
+                if (i < _landAmount) {
+                    newDiv.innerHTML = itemName(Kingdom_Lands[cityData.kingdomType][i])
+                }
+                else {
+                    newDiv.innerHTML = _land[i - _landAmount];
+                    if (cityData.isWorking[i - _landAmount] == false) { newDiv.innerHTML += `<br> Is Available!` }
+                    else {
+                        const available_time_data = await cityContract.farmProgress(myAddress, i - _landAmount);
+                        console.log(available_time_data);
+                        const available_time = Number(available_time_data.time) + Number(available_time_data.worktime);
+                        console.log(available_time, "Available Time");
+                        console.log(Date.now() / 1000, "Current Time");
+                        var time_to_available;
+                        if (available_time < (Date.now() / 1000)) { time_to_available = "NOW"; }
+                        else { time_to_available = secondsToHMS(Math.ceil(available_time - (Date.now() / 1000))) }
+                        newDiv.innerHTML += "<br> Land NOT available, will be available " + time_to_available;
+                    }
+                }
+                LandPanel.appendChild(newDiv);
+            }
+            document.getElementById("seasonData").textContent = "Season: " + _season;
+
+            CivilianGoodsValues.innerHTML = "Civilian Wealth: " + stockedPermaCivGoods.itemValue;
+            var _industryPercent;
+            var _cityBeauty;
+            if (Number(cityData.industrySize) != 0) {
+                _industryPercent = Number(cityData.infraCount) / Number(cityData.industrySize);
+                _cityBeauty = Number(cityData.totalBeauty) / Number(cityData.industrySize);
+            }
+            else {
+                _industryPercent = 0;
+                _cityBeauty = 0;
+            }
+            CityBeautyInfo.innerHTML = "Avarage City Beauty: " + _cityBeauty;
+            InfraLevelInfo.innerHTML = "Infrastructure Coverage: " + _industryPercent + "%";
+        }
+        async function NavalStats() {
+            var _freePortCount = await cityContract.getPlayerDockSpace(myAddress);
+            var _shipCount = [await cityContract.getShipCount(myAddress, 4410), await cityContract.getShipCount(myAddress, 4411), await cityContract.getShipCount(myAddress, 4412)];
+            for (let i = 0; i < 4 * 2; ++i) {
+
+                const newDiv = document.createElement("Name" + i);
+                newDiv.classList.add("PopSubPanel");
+                newDiv.classList.add("StandardItemColor");
+                NavelPanel.appendChild(newDiv);
+                _navelInnerHTML = ``;
+                switch (i) {
+                    case 0:
+                        _navelInnerHTML = "Small Boats:";
+                        break;
+                    case 1:
+                        _navelInnerHTML = "Medium Boats: ";
+                        break;
+                    case 2:
+                        _navelInnerHTML = "Large Boats: ";
+                        break;
+                    case 3:
+                        _navelInnerHTML = "Available Port Room: ";
+                        break;
+                    case 4:
+                        _navelInnerHTML = _shipCount[0];
+                        break;
+                    case 5:
+                        _navelInnerHTML = _shipCount[1];
+                        break;
+                    case 6:
+                        _navelInnerHTML = _shipCount[2];
+                        break;
+                    case 7:
+                        _navelInnerHTML = _freePortCount;
+                        break;
+                }
+                if (i > 3 && i != 7) {
+
+                    newDiv.addEventListener("click", function () {
+                        if (document.getElementById("enableNavalEdit").checked) {
+                            showNavelConsumptionUI(i - 4);
+                            itemSelected = i - 4;
+                            console.log("Div clicked!", i - 4);
+                        }
+                    })
+                }
+                newDiv.innerHTML = _navelInnerHTML;
+            }
+        }
+        function showNavalEditUI() {
+            DurableAmount.style.display = "block";
+            DurableAmountLabel.style.display = "block";
+        }
+    </script>
+
+</head>
+
+<body>
+    <StockedCityGoods id="StockedCityGoods">
+        <h2>General Stockpiles</h2>
+        <h3>Consumable Stocks</h3>
+        <br>
+        <FoodData id="FoodPanel" class="FoodPanel"></FoodData>
+        <div id="NutritionPanel" class="NutritionPanel"></div>
+
+        <input id="addFoodCheckbox" type="checkbox" onclick="addFoodMenuShow()">Add Food? <br></input>
+        <AddFood id="AddFood" class="InvisibleOnStart">
+            <AddFoodPanel id="AddFoodPanel" class="FoodPanel"></AddFoodPanel>
+            <AddFoodText id="AddFoodText"></AddFoodText><br>
+            <input type="number" id="AddFoodNumberInput" class="NumericInput" onchange="updateFoodCosts()"> Number of
+            meals you would like?</input><br>
+            <button class="sendTX" onclick="confirmFoodAdditions()">Confirm</button>
+        </AddFood>
+        <h3>Durable Stocks</h3>
+        <input id="enableDurableGoods" type="checkbox" onclick="MoveDurablesCheckboxToggle()">Enable Edit Mode?
+        <br></input>
+        <button class="InvisibleOnStart UpgradeOrDemoteButton" id="UpgradeOrDemoteDurablesButton" value="Upgrade "
+            onclick="updateDurablesChangeMode()">Add Items</button>
+        <text id="CivilianGoodsValues">TODO: Add civilian good info (Including Wealth)</text>
+        <select class="Dropdown" id="CivilianItemDropdown" onchange="showCivItemMenu(this.value)">
+            <option value="0"></option>
+            <option value="1">Bracelets</option>
+            <option value="2">Rings</option>
+            <option value="3">Necklaces</option>
+            <option value="4">Tables</option>
+            <option value="5">Chairs</option>
+            <option value="6">Tableware</option>
+            <option value="7">Cups</option>
+            <option value="8">Totems</option>
+            <option value="9">Tapestries</option>
+            <option value="10">Wall Paintings</option>
+            <option value="11">Art</option>
+            <option value="12">Storage Vessles</option>
+            <option value="13">Home Furniture</option>
+        </select>
+        <CivItemPanel class="CivItemPanel" id="CivItemPanel">
+        </CivItemPanel>
+        <text class="InvisibleOnStart" id="DurableAmountLabel">How many items are involved?</text>
+        <input type="number" class="NumericInput InvisibleOnStart" id="DurableAmount" oninput="addDurables()">
+        <button class="InvisibleOnStart sendTX" id="DurableChangeButton"
+            onclick="confirmDurablesChange()">Confirm</button>
+        <h2>Land Data</h2>
+        <br>
+        <text id="seasonData" class="Population">Current Season:</text>
+        <br class="Population">
+        <LandPanel id="LandPanel" class="LandPanel"></LandPanel>
+
+        <text id="DurableCivilianGoodsCount"></text>
+    </StockedCityGoods>
+    <br>
+    <h2>Demographics</h2>
+    <input id="enableTrainPops" type="checkbox" onclick="TrainPopCheckboxToggle()">Enable Edit Mode?</input>
+    <button class="InvisibleOnStart UpgradeOrDemoteButton" id="UpgradeOrDemotePopsButton" value="Upgrade "
+        onclick="updatePopChangeMode()">Upgrade Mode</button>
+    <text class="InvisibleOnStart" id="PopAmountLabel">How many pops would you like to upgrade?</text>
+    <input type="number" class="NumericInput InvisibleOnStart" id="PopAmount"
+        oninput="editPopInfo(_selectedPopJob,_selectedPopLine)">
+    <PopulationPanel class="PopulationPanel" id="PopulationPanel">
+    </PopulationPanel>
+    <text class="InvisibleOnStart" id="PopUpgradeCost"></text>
+    <button class="InvisibleOnStart sendTX" id="PopUpgradeCostButton" onclick="confirmTrainPops()">Train Pops</button>
+    <h2>Building Count</h2>
+    <br>
+    <text id="CityBeautyInfo">TODO: Building beauty</text>
+    <br>
+    <text id="InfraLevelInfo">TODO: Infrasturtucre Level</text>
+    <BuildingPanel class="BuildingPanel" id="BuildingPanel">
+    </BuildingPanel>
+
+    <h2>Naval Stats</h2>
+    <br>
+    <input id="enableNavalEdit" class="UpgradeOrDemoteCSS" type="checkbox" onclick="TrainNavalCheckboxToggle()">Enable
+    Edit Mode?</input>
+    <button class="InvisibleOnStart UpgradeOrDemoteButton" id="MoveBoatsButton" value="Upgrade "
+        onclick="updateNavalMode()">Upgrade Mode</button>
+    <NavelPanel class="NavelPanel" id="NavelPanel">
+    </NavelPanel>
+    <text class="InvisibleOnStart" id="NavelAmountLabel">How many boats are involved?</text>
+    <input type="number" class="NumericInput InvisibleOnStart" id="NavelAmount" oninput="addNavel()">
+    <button class="InvisibleOnStart sendTX" id="NavelChangeButton" onclick="confirmNavelChange()">Confirm</button>
+    <MenuButtons class="menuButtons">
+        <a href="../index.html">
+            <button class="indexButton">Return to Main Menu</button>
+        </a>
+    </MenuButtons>
+</body>
+<link rel="stylesheet" type="text/css" href="../style/root.css">
+<link rel="stylesheet" type="text/css" href="../style/citypanel.css">

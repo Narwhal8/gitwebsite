@@ -405,7 +405,7 @@
             <option value="7">Configure Rations</option>
 
         </select>
-        <RationSelector id="RationSelector" class="InvisableOnStart">
+        <RationSelector id="RationSelector" class="InvisibleOnStart">
             <br>
             <label for="MainRationSelector">Which Ration would you like to use?</label>
             <select id="MainRationSelector" class="Dropdown">
@@ -451,7 +451,7 @@
             <br>
             <input type="checkbox" id="UseMeds">Use medicine?</input>
         </RationSelector>
-        <SoldierSlotList id="SoldierSlotList" class="InvisableOnStart">
+        <SoldierSlotList id="SoldierSlotList" class="InvisibleOnStart">
             <label id="SSSLabel" for="SoldierSlotSelector">Which Slot does this operation involve?</label>
             <select class="Dropdown" id="SoldierSlotSelector" onchange="TroopCost()">
                 <option value="-1"></option>
@@ -469,48 +469,48 @@
                 <option value="11">Skirmish Slot 3</option>
             </select>
         </SoldierSlotList>
-        <AddMercs id="MercAdder" class="InvisableOnStart">
+        <AddMercs id="MercAdder" class="InvisibleOnStart">
             <br>
             <select class="Dropdown" id="MercList">
                 <option value="0"></option>
             </select>
             What Mercenaries would you like to add?
         </AddMercs>
-        <Questing id="QuestMenu" class="InvisableOnStart"> 
+        <Questing id="QuestMenu" class="InvisibleOnStart"> 
             <input type="number" class="NumericInput">Which Quest would you like to do?</input>
         </Questing>
-        <SoldierItemAdder id="SoldierItemAdder" class="InvisableOnStart">
-            <label for="OtherInput" class="InvisableOnStart" id="OtherInputLabel" >What Mount would you like this soldier to have?</label>
-            <select class="Dropdown InvisableOnStart" id="OtherInput" onchange="TroopCost();removeInvalidEquipment(3)">
+        <SoldierItemAdder id="SoldierItemAdder" class="InvisibleOnStart">
+            <label for="OtherInput" class="InvisibleOnStart" id="OtherInputLabel" >What Mount would you like this soldier to have?</label>
+            <select class="Dropdown InvisibleOnStart" id="OtherInput" onchange="TroopCost();removeInvalidEquipment(3)">
                 <option value="0" selected></option>
             </select>
             <label for="WeaponInput" id="WeaponInputLabel">What Weapon would you like to give?</label>
-            <select class="InvisableOnStart Dropdown" id="WeaponInput" onchange="removeInvalidEquipment(0)">
+            <select class="InvisibleOnStart Dropdown" id="WeaponInput" onchange="removeInvalidEquipment(0)">
                 <option value="0" selected></option>
             </select>
-            <label for="ArmorInput" class="InvisableOnStart" id="ArmorInputLabel">What Armor would you like to give?</label>
-            <select class="Dropdown InvisableOnStart" id="ArmorInput" onchange="removeInvalidEquipment(1)">
+            <label for="ArmorInput" class="InvisibleOnStart" id="ArmorInputLabel">What Armor would you like to give?</label>
+            <select class="Dropdown InvisibleOnStart" id="ArmorInput" onchange="removeInvalidEquipment(1)">
                 <option value="0" selected></option>
             </select>
-            <label for="OffhandInput" class="InvisableOnStart" id="OffhandInputLabel">What Offhand would you like to give?</label>
-            <select class="Dropdown InvisableOnStart" id="OffhandInput" onchange="removeInvalidEquipment(2)">
+            <label for="OffhandInput" class="InvisibleOnStart" id="OffhandInputLabel">What Offhand would you like to give?</label>
+            <select class="Dropdown InvisibleOnStart" id="OffhandInput" onchange="removeInvalidEquipment(2)">
                 <option value="0" selected></option>
             </select>
             <br>
         </SoldierItemAdder>
-        <AddTroops id="TroopAmountBlock" class="InvisableOnStart">
+        <AddTroops id="TroopAmountBlock" class="InvisibleOnStart">
             <input class="NumericInput" type="number" id="TroopAmount" onchange="TroopCost()">How many would you like to add?</input>
             <label for="UseProTroops" id="UseProTroopsLabel">Use professional soldiers?</label>
             <input type="checkbox" id="UseProTroops"></input>
             <br>
             <text id="PopCostText"></text>
         </AddTroops>
-        <TotalCost id="TotalCost" class="InvisableOnStart">
+        <TotalCost id="TotalCost" class="InvisibleOnStart">
             <text id="TotalCostText"></text>
         </TotalCost>
         <QuestMenu>
-            <text class="InvisableOnStart" id="QuestSelectorText">Which Quest Would you like to do?</text>
-            <select class="Dropdown InvisableOnStart" id="QuestSelector" onchange="questText(this.value)">
+            <text class="InvisibleOnStart" id="QuestSelectorText">Which Quest Would you like to do?</text>
+            <select class="Dropdown InvisibleOnStart" id="QuestSelector" onchange="questText(this.value)">
                 <option value="-1"></option>
                 <option value="1">Quest 1</option>
                 <option value="2">Quest 2</option>
@@ -525,7 +525,7 @@
 
 
             </select>
-            <text class="InvisableOnStart WidthLimited" id="QuestDescriptionText"></text>
+            <text class="InvisibleOnStart WidthLimited" id="QuestDescriptionText"></text>
 
         </QuestMenu>
 
@@ -536,7 +536,7 @@
         <a href="newWarpage.html">
             <button class="indexButton">View Current Army</button>
         </a>
-        <a href="index.html">
+        <a href="../index.html">
             <button class="indexButton">Return to Main Menu</button>
         </a>
 
@@ -545,109 +545,8 @@
         Transaction</button>
 
 </body>
+<link rel="stylesheet" type="text/css" href="../style/root.css">
+<link rel="stylesheet" type="text/css" href="../style/warpage.css">
 <footer>
     <div class="Footnote"></div>
 </footer>
-
-<style>
-    body {
-        background-color: rgb(216, 71, 71);
-    }
-    .Footnote{
-        background-color: rgb(216, 71, 71);;
-        height: 150px;
-        width: 100%;
-    }
-    .WeaponOption {
-        display: inherit;
-    }
-    .WidthLimited {
-        width: 50%;
-    }
-
-    .BigText {
-        font-size: 18px;
-    }
-
-    .indexButton {
-        background-color: gray;
-        width: 150px;
-        height: 40px;
-        position: relative;
-        border-radius: 12px;
-        font-size: 16px;
-    }
-    .SuperSoldierGridContainer {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(4, 1fr);
-       background-color: aqua;
-    }
-    .SoldierGridContainer {
-        display: block;
-        width: 1fr;
-        border: 1px solid rgba(0, 0, 0, 0.8);
-        background-color: green;
-    }
-    .SoldierInfoGrid {
-        display: inline-block;
-    }
-    .menuButtons{
-        position: absolute;
-        top: 5px;
-        right:20px;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(1, 1fr);
-    }
-    .sticky {
-        position: fixed;
-    }
-
-
-    .InvisableOnStart {
-        display: none;
-    }
-    .indexButton:hover {
-        background-color: rgb(179, 165, 165);
-    }
-
-    .Dropdown {
-        background-color: wheat;
-        border-radius: 4px;
-        font-size: 16px;
-    }
-
-    .NumericInput {
-        background-color: wheat;
-        border-radius: 4px;
-        font-size: 16px;
-    }
-
-    .MenuButtons {
-        position: absolute;
-        bottom: 10px;
-    }
-
-    .sendTX {
-        background-color: darkred;
-        color: black;
-        position: fixed;
-        width: 150px;
-        height: 80px;
-        text-align: center;
-        font-size: 16px;
-        border-radius: 12px;
-        bottom: 10px;
-        left: 10px;
-    }
-
-    .walletConnect {
-        background-color: darkred;
-        position: absolute;
-        right: 5%;
-        width: 150px;
-        height: 50px;
-        border-radius: 12px;
-    }
-</style>

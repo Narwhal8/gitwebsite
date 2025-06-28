@@ -1,0 +1,29 @@
+.indexButton {
+    background-color: gray;
+    width: 150px;
+    height: 40px;
+    position: relative;
+    border-radius: 12px;
+    font-size: 16px;
+    left: 25%;
+    bottom: 20px;
+}
+.menuButtons {
+    position: absolute;
+    left: 5px;
+    bottom: 20px;
+}
+.sendTX {
+    background-color: darkred;
+    color: black;
+    position: relative;
+    width: 150px;
+    height: 80px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 12px;
+}
+.sendTX:hover {
+    background-color: brown;
+    font-size: 18px;
+}

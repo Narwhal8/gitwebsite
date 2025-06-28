@@ -1,0 +1,64 @@
+.indexButton {
+    background-color: gray;
+    width: 150px;
+    height: 40px;
+    position: relative;
+    border-radius: 12px;
+    font-size: 16px;
+}
+.menuButtons {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+}
+.MenuButtons {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-template-rows: repeat(2, 2fr);
+    left: 25%;
+    position: fixed;
+    bottom: 10px;
+}
+.notesButton {
+    background-color: gray;
+    width: 150px;
+    height: 40px;
+    position: relative;
+    border-radius: 12px;
+    font-size: 16px;
+}
+.notesButton:hover {
+    background-color: rgb(179, 165, 165);
+}
+.NumericInput {
+    border-radius: 2px;
+    background-color: aqua;
+    border: none;
+}
+.sendTX {
+    background-color: darkred;
+    color: black;
+    position: fixed;
+    width: 150px;
+    height: 80px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 12px;
+    bottom: 10px;
+    left: 10px;
+}
+.sendTX {
+    background-color: darkred;
+    color: black;
+    position: fixed;
+    width: 150px;
+    height: 80px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 12px;
+    bottom: 10px;
+}
+.sendTX:hover {
+    background-color: brown;
+    font-size: 18px;
+}
