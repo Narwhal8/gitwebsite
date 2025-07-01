@@ -5,11 +5,12 @@ merchantAddress = "";
 landGiveawayAddress = "";
 warAddress = "";
 eventAddress = "";
+network = "";
 
 async function address() {
   
     provider = await ((window.ethereum != null) ? new ethers.providers.Web3Provider(window.ethereum) : ethers.providers.getDefaultProvider());
-    const network = await provider.getNetwork();
+    network = await provider.getNetwork();
     console.log(network);
     if(network.chainId == 421614) {
       cityAddress = "0xa8b45cfcea626f5ae32dbcf08ba4b8eaa72d35e4";
@@ -33,7 +34,7 @@ async function address() {
       console.log("Local Host Chain");
     }
     else{console.log("wrong chain")}
-    console.log("Website Last Updated:  7/1/2025 - 3");
+    console.log("Website Last Updated:  7/1/2025 - 4");
   }
     
   function secondsToHMS(_new_Time) {

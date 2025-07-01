@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 
 <head>
-
     <script src="../lib/ethers.umd.min(5.2).js" type="application/javascript"></script>
     <script src="../scripts/abi.js" type="application/javascript"></script>
     <script src="../scripts/address.js" type="application/javascript"></script>
     <script src="../scripts/excelIntegration.js" type="application/javascript"></script>
-
     <script>
         async function test() {
             provider = ((window.ethereum != null) ? new ethers.providers.Web3Provider(window.ethereum) : ethers.providers.getDefaultProvider());
             await address();
             signer = await provider.getSigner();
-            network = await provider.getNetwork();
 
             cityContract = new ethers.Contract(cityAddress, city_abi, provider);
             cityContractSigner = new ethers.Contract(cityAddress, city_abi, signer);
