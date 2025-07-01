@@ -8,7 +8,7 @@ eventAddress = "";
 
 async function address() {
 
-  const provider = await new ethers.providers.Web3Provider(window.ethereum)
+    provider = new ethers.providers.Web3Provider(window.ethereum);
           
     const network = await provider.getNetwork();
     console.log(network);

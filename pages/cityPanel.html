@@ -9,47 +9,9 @@
 
     <script>
         async function test() {
-            await welcome();
-            await generateBuildingGrid();
-            await generalCityInfo();
-            generatePopulationGrid();
-            await NavalStats();
-            await generateNutritionGrid();
-            generateFoodGrid();
-            generateAddFoodGrid();
-        }
-        addEventListener("DOMContentLoaded", (event) => {
-
-            console.log("DOM fully loaded and parsed");
-            test();
-        });
-        var _selectedPopJob;
-        var _selectedPopLine;
-        var itemSelected;
-
-        var provider;
-        var signer;
-        var network;
-
-        var cityContract;
-        var cityContractSigner;
-        var baseContract;
-        var baseContractSigner;
-        var merchantContract;
-        var merchantContractSigner;
-        var myAddress;
-
-        var cityData;
-        var buildingCount;
-        var foodStockAmounts;
-        var stockedTemporaryCivGoods;
-        var stockedPermaCivGoods;
-
-        var _FoodItemDropdownsSelected = [false, false, false, false, false];
-        async function welcome() {
             await address();
-            provider = await new ethers.providers.Web3Provider(window.ethereum)
-            signer = await provider.getSigner()
+            provider = new ethers.providers.Web3Provider(window.ethereum);
+            signer = await provider.getSigner();
             network = await provider.getNetwork();
 
             cityContract = new ethers.Contract(cityAddress, city_abi, provider);
@@ -78,7 +40,42 @@
 
             stockedPermaCivGoods = await cityContract.getPlayerCityItems(myAddress);
             console.log("Welcome!");
+
+            await generateBuildingGrid();
+            await generalCityInfo();
+            generatePopulationGrid();
+            await NavalStats();
+            await generateNutritionGrid();
+            generateFoodGrid();
+            generateAddFoodGrid();
         }
+        addEventListener("DOMContentLoaded", () => {
+            console.log("DOM fully loaded and parsed");
+            test().then(true,false);
+        });
+        var _selectedPopJob;
+        var _selectedPopLine;
+        var itemSelected;
+
+        var provider;
+        var signer;
+        var network;
+
+        var cityContract;
+        var cityContractSigner;
+        var baseContract;
+        var baseContractSigner;
+        var merchantContract;
+        var merchantContractSigner;
+        var myAddress;
+
+        var cityData;
+        var buildingCount;
+        var foodStockAmounts;
+        var stockedTemporaryCivGoods;
+        var stockedPermaCivGoods;
+
+        var _FoodItemDropdownsSelected = [false, false, false, false, false];
         async function generateNutritionGrid() {
 
             NutritionPanel.innerHTML = "";

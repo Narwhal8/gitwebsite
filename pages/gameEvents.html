@@ -9,7 +9,7 @@
         async function initEvent() {
             var addies = await address();
 
-            const provider = await new ethers.providers.Web3Provider(window.ethereum)
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner();
             const NFTcontract = new ethers.Contract(baseAddress, base_abi, provider)
             const Citycontract = new ethers.Contract(cityAddress, city_abi, provider)
@@ -68,7 +68,7 @@
         async function submitTX() {
             var addies = await address();
 
-            const provider = await new ethers.providers.Web3Provider(window.ethereum)
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner();
             const EventcontractSigner = new ethers.Contract(eventAddress, tradingEvent_abi, signer)
 
@@ -80,7 +80,7 @@
         async function claimReward() {
 
 
-            const provider = await new ethers.providers.Web3Provider(window.ethereum)
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner();
             const EventcontractSigner = new ethers.Contract(eventAddress, tradingEvent_abi, signer)
 
@@ -91,7 +91,7 @@
         async function eventContributionAmount(_value) {
 
 
-            const provider = await new ethers.providers.Web3Provider(window.ethereum)
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner();
             const Eventcontract = new ethers.Contract(eventAddress, tradingEvent_abi, provider)
             const Merchantcontract = new ethers.Contract(merchantAddress, merchant_abi, provider)
