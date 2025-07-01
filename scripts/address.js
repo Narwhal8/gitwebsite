@@ -8,7 +8,7 @@ eventAddress = "";
 
 async function address() {
 
-  const provider = new ethers.providers.Web3Provider(window.ethereum)
+  const provider = await new ethers.providers.Web3Provider(window.ethereum)
           
     const network = await provider.getNetwork();
     console.log(network);
@@ -34,7 +34,7 @@ async function address() {
       console.log("Local Host Chain");
     }
     else{console.log("wrong chain")}
-      console.log("Website Last Updated:  6/28/2025 - 4");
+    console.log("Website Last Updated:  7/1/2025 - 1");
   }
     
   function secondsToHMS(_new_Time) {
