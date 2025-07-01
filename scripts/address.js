@@ -34,7 +34,7 @@ async function address() {
       console.log("Local Host Chain");
     }
     else{console.log("wrong chain")}
-    console.log("Website Last Updated:  7/1/2025 - 1");
+    console.log("Website Last Updated:  7/1/2025 - 2");
   }
     
   function secondsToHMS(_new_Time) {

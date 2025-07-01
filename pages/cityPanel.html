@@ -10,7 +10,6 @@
     <script>
         async function test() {
             await address();
-            provider = new ethers.providers.Web3Provider(window.ethereum);
             signer = await provider.getSigner();
             network = await provider.getNetwork();
 
