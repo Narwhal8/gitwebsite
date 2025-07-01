@@ -7,9 +7,8 @@ warAddress = "";
 eventAddress = "";
 
 async function address() {
-
-    provider = new ethers.providers.Web3Provider(window.ethereum);
-          
+  
+    provider = await ((window.ethereum != null) ? new ethers.providers.Web3Provider(window.ethereum) : ethers.providers.getDefaultProvider());
     const network = await provider.getNetwork();
     console.log(network);
     if(network.chainId == 421614) {
@@ -34,7 +33,7 @@ async function address() {
       console.log("Local Host Chain");
     }
     else{console.log("wrong chain")}
-    console.log("Website Last Updated:  7/1/2025 - 2");
+    console.log("Website Last Updated:  7/1/2025 - 3");
   }
     
   function secondsToHMS(_new_Time) {

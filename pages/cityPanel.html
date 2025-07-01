@@ -9,6 +9,7 @@
 
     <script>
         async function test() {
+            provider = ((window.ethereum != null) ? new ethers.providers.Web3Provider(window.ethereum) : ethers.providers.getDefaultProvider());
             await address();
             signer = await provider.getSigner();
             network = await provider.getNetwork();
@@ -50,7 +51,7 @@
         }
         addEventListener("DOMContentLoaded", () => {
             console.log("DOM fully loaded and parsed");
-            test().then(true,false);
+            test();
         });
         var _selectedPopJob;
         var _selectedPopLine;
@@ -796,7 +797,7 @@
     <button class="InvisibleOnStart sendTX" id="NavelChangeButton" onclick="confirmNavelChange()">Confirm</button>
     <MenuButtons class="menuButtons">
         <a href="../index.html">
-            <button class="indexButton">Return to Main Menu</button>
+            <button class="indexButton notesButton">Return to Main Menu</button>
         </a>
     </MenuButtons>
 </body>
